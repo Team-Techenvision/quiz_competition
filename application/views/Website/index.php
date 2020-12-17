@@ -78,7 +78,7 @@
                         <div id="" class="px-4 py-2 text-white"  >
                           <h4>
                              It's Amazing
-                             
+                             <br>
                            </h4>
               </div>
                         <div class="about-two__content text-white">
