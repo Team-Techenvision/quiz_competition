@@ -21,7 +21,7 @@ class WebsiteController extends CI_Controller{
     // $this->form_validation->set_rules('user_otp', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
       $this->load->view('Website/Include/head');
-      $this->load->view('Website/login');
+      $this->load->view('Website/index');
      $this->load->view('Website/Include/footer');
 
     } else{
@@ -92,7 +92,7 @@ class WebsiteController extends CI_Controller{
       header('location:'.base_url().'WebsiteController/login');
     }
     $this->load->view('Website/Include/head');
-    $this->load->view('Website/registration');
+    $this->load->view('Website/index');
     $this->load->view('Website/Include/footer');
   }
 

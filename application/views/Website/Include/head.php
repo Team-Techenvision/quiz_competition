@@ -147,10 +147,161 @@
                         
                     </div><!-- /.right-side-box -->
               <div class="right-side-box" style="font-weight: 600px; ">
-                    <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/login">Login /</a> 
-                    <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration">Register</a>
+                    <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login /</a> 
+                    <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration" data-toggle="modal" data-target="#registration">Register</a>
                 </div>
+
+ <!---------------------------          Login Modal        ------------------------------------ -->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Login Information
+</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+      <div class="modal-body">
+      <form method="post" action="" style="margin-left: 50px;margin-right: 50px;">
+        <div class="input-group mb-3">
+          <input type="user_mobile" class="form-control" name="user_mobile" id="user_mobile" placeholder="Whatsapp No." required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <span class="text-red"> <?php echo form_error('user_mobile'); ?> </span>
+       <!--  <div class="input-group mb-3">
+          <input type="password" class="form-control" name="user_otp" id="user_otp" placeholder="Password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div> 
+        <span class="text-red"> <?php echo form_error('user_otp'); ?> </span>  -->
+        
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
+         <div class="row">
+          <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>    
+       <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
+        Invalid Information
+      </div>
+      </div>
+
+
+  <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
+<script type="text/javascript">
+<?php if($this->session->flashdata('msg')){ ?>
+  $(document).ready(function(){
+    // alert();
+    $('.msg_invalid').show().delay(5000).fadeOut();
+  });
+<?php } ?>
+</script>
+    </div>
+  </div>
+</div>
+
+
+                                <!-- Registration Modal -->
+<div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Registration Information
+</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+      <div class="modal-body modal-bodyy">
+    
+        <form id="form_action" role="form" action="" method="post">
+                <div class="card-body row">
+                  <div class="form-group col-md-12">
+                    <input type="text" class="form-control txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Participant Name" required>
+                  </div>
+                   
+                   <div class="form-group col-md-6">
+                    <input type="number" class="form-control " name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
+                  </div>
+                   <div class="form-group col-md-6">
+                    <input type="number" class="form-control user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Whatsapp No." required>
+                  </div>
+                  <div class="form-group form-check col-md-12">
+                  <label class="form-check-label " style="margin-left: 20px;">
+                    <input class="form-check-input title-case " style ="margin-top: 10px;     margin-bottom: -10px;" type="checkbox" name="remember" required> I agree <label class="text-primary t">Data Protection Policy</label> 
+                  </label>
+                </div>
+                <div class="form-group col-md-12" style="margin-top: -12px;  margin-left: 6px;">
+                  <label >Already have account  &nbsp; <a class="text-primary t" href="<?php echo base_url(); ?>WebsiteController/login">login now</a></label>
+                  </div>
                 
+                </div>                           
+                <!-- /.card-body -->
+               
+             
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
+        <?php if(isset($update)){ ?>
+                    <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
+                  <?php } else{ ?>
+                    <button id="btn_save" type="submit"  class="btn btn-success px-4">Register</button>
+                  <?php } ?>
+                  <a href="" class="btn btn-default ml-4"  onclick="this.form.reset();" data-dismiss="modal">Cancel</a>
+      </div>
+ </form>
+
+      <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> 
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+  <script>
+var user_mobile21 = $('#user_mobile').val();
+  $('.user_mobile').on('change',function(){
+    var user_mobile = $(this).val();
+    $.ajax({
+      url:'<?php echo base_url(); ?>WebsiteController/check_duplication',
+      type: 'POST',
+      data: {"column_name":"user_mobile",
+             "column_val":user_mobile,
+             "table_name":"user"},
+      context: this,
+      success: function(result){
+        // alert(result);
+        if(result > 0){
+          $('#user_mobile').val(user_mobile21);
+          // toastr.error(user_mobile2+' Mobile No Exist.');
+          alert(user_mobile+' Mobile Number Exist.');
+        }
+      }
+    });
+  });
+
+</script>
+      
+    </div>
+  </div>
+</div>
 
                 </div>
                 <!-- /.container -->
@@ -169,3 +320,4 @@
                <!--  </div> --><!-- /.site-header__decor-row -->
             <!-- </div> --><!-- /.site-header__decor -->
         </header><!-- /.site-header -->
+

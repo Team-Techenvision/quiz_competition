@@ -18,7 +18,7 @@
     }
 </style> -->
 
-<div class="container-fluid conhead">
+<!-- <div class="container-fluid conhead"> -->
        <!-- <div class="row">
          <div class="col-md-12 p-0">
            <div id="slider2" class="carousel slide" data-ride="carousel">
@@ -44,7 +44,8 @@
          </div>
        </div> -->
 
-       <div class="row">
+       <div class="row carousel">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
         <div class="owl-carousel owl-theme owl-one">
           <?php if($banner_list){
             foreach ($banner_list as $list) {
@@ -67,6 +68,7 @@
               </div>
           <?php } } } ?>
       </div>
+      </div>
      </div>
 
 
@@ -78,7 +80,6 @@
                         <div id="" class="px-4 py-2 text-white"  >
                           <h4>
                              It's Amazing
-
                            </h4>
               </div>
                         <div class="about-two__content text-white">
@@ -117,7 +118,41 @@
                 </h4>
               </div>
               <br>
-<div class="row">
+
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tab margin-top-28px margin-bottom-55px">
+                        <ul class="nav nav-tabs justify-content-center text-center" role="tablist" id="review" style=" border: none;">
+                            <li role="presentation" class="li">
+                                <a href="#nur-class1" role="tab" data-toggle="tab" class="theme-btn btn active" aria-selected="true">
+                                    Nur-1st
+                                </a>
+                            </li>
+                            <li role="presentation" class="li">
+                                <a href="#nur-class1" role="tab" data-toggle="tab" class="theme-btn btn" aria-selected="false">
+                                    2nd-5th
+                                </a>
+                            </li>
+                            <li role="presentation" class="li">
+                                <a href="#nur-class1" role="tab" data-toggle="tab" class="theme-btn btn" aria-selected="false">
+                                    6th-9th
+                                </a>
+                            </li>
+                            <li role="presentation" class="li">
+                                <a href="#nur-class1" role="tab" data-toggle="tab" class="theme-btn btn" aria-selected="false">
+                                    Males(18+)
+                                </a>
+                            </li>
+                            <li role="presentation" class="li">
+                                <a href="#nur-class1" role="tab" data-toggle="tab" class="theme-btn btn" aria-selected="false">
+                                    Females(18+)
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!-- end section-tab -->
+                </div><!-- end col-lg-12 -->
+            </div>
+<!-- <div class="row">
                <ul class="nav nav-tabs"  role="tablist" style="background-color: lightgray;width:600px;">
     <li class="nav-item " style="width:100px;">
       <a class="nav-link active" data-toggle="tab" href="#nur-class1">Nur-1st</a>
@@ -138,8 +173,9 @@
     </li>
   </ul>
 
-</div>
+</div> -->
 <!-- Tab panes -->
+
   <div class="tab-content">
     <div id="nur-class1" class="container tab-pane active"><br>
 <div class="container">
@@ -151,31 +187,31 @@
       <div class="row">
 
         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-          <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" alt="intellithon" class="img-fluid">
+          <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
           <div class="tag_inherit a" ><?php echo $list->class;?></div>
         </div>
       </div>
       <div class="row b" >
-        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
- ">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12" >
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3 " style="">
             <div class="row">
               <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                <h4 class="text-white mb-4" style=""><?php echo $list->title;?></h4>
+                <h4 class="titlee mb-4" ><?php echo $list->title;?></h4>
               </div>
             </div>
             <div class="row">
-              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
-                <span><strong><?php echo $list->subtitle;?></strong></span> <br>
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height" >
+                <span><strong style="font-weight: 500;"><?php echo $list->subtitle;?></strong></span> <br>
               </div>
             </div>
             <div class="row mt-4">
-              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
-                <button type="button" class="btn text-white" data-toggle="modal" data-target="#participate" href="" style="background-color: #00000033;"><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12  comp">
+               <a class="text-secondary"  data-toggle="modal" data-target="#participate" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a>
               </div>
-              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
-                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
-
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left  comp">
+                  <a class="text-secondary "  data-toggle="modal" data-target="#instructions_text">Instructions</a>
+                  </div>
+               
                 <!-- Modal -->
 <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -195,7 +231,7 @@
     </div>
   </div>
 </div>
-              </div>
+              
             </div>
           </div>
         </div>
