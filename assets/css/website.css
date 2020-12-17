@@ -1,0 +1,220 @@
+body {
+  font-family: "Roboto","HelveticaNeue-Light",sans-serif !important;
+/* background-color:  linear-gradient(to bottom, #141b29, #0c111b 300px) !important;*/
+	 padding: 0px!important;
+	 margin: 0px!important;
+     font-size: 18px !important;
+
+}
+
+/*.row , .container-fluid{
+	 padding: 0px!important;
+	 margin: 0px!important;
+}
+*/
+.page-wrapper {
+    background: linear-gradient(to bottom, #141b29, #0c111b 300px) !important;
+}
+.stricked-menu{
+     background: linear-gradient(to bottom, #141b29, #0c111b 300px) !important;
+     height:66px !important;
+    }
+
+
+.site-header{
+     background: linear-gradient(to bottom, #141b29, #0c111b 300px) !important;
+     height:66px !important;
+}
+.header-navigation .container {
+    height:66px !important;
+}
+.header-navigation ul.navigation-box {
+    /* margin: 0; */
+    /* padding: 0; */
+    list-style: none;
+    padding-left: 100px !important;
+    margin-top: -16px !important;
+    height: 50px !important;
+}
+dl, ol, ul {
+    /*margin-top: -19px !important;*/
+    font-size: 18px !important;
+}
+.footer-widget {
+    padding-top: 25px !important;
+    padding-bottom: 40px !important;
+}
+.footer-widget__title {
+
+    margin-bottom: 15px !important;
+    font-size: 15px !important;
+   
+}
+.title{
+     font-size: 15px !important;
+     margin-top: -10px !important;
+}
+.footer-widget__link-list li + li {
+    margin-top: 10px !important;
+    font-size: 15px !important;
+}
+.site-footer__bottom {
+    background-color: #012237;
+    margin-top: -38px !important;
+    padding: 2px !important;
+}
+
+.site-footer__social {
+    
+    padding: 6px 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+ }  
+.scroll{
+    margin-left: -327px !important;
+    height: 30px !important;
+    width: 30px !important;
+    /* padding-left: 0px; */
+    margin-top: -15px !important;
+}
+.navbox{
+   margin-top: -3px !important;  
+}
+.conhead{
+
+   min-height: calc(1170px * .34188) !important;
+    position: relative !important;
+
+ } 
+ .image-gradient{
+    
+ }  
+.carousel-item img{
+	width: 100% !important;
+	height: 500px !important;
+}
+img::before {
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    background: linear-gradient(to left,#141b29, #0c111b );
+  }
+
+.carousel-inner .carousel-caption{
+	top: 50px !important;
+	bottom: auto!important;
+	text-align: left!important;
+}
+
+.carousel-inner .carousel-caption .heading{
+	font-size: 5rem !important;
+}
+.about-two{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+   
+}
+
+.a{
+        background-color: rgba(255, 255, 255, 0.7);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 0 5px 5px 0 !important;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    font-size: 13px;
+    }
+    .b{
+         display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    }
+.text-color{
+    color:white;
+}
+
+
+    .carousel-caption h5{
+        text-shadow: 5px 5px #808080;
+    }
+.login-box{
+        padding-right: 500px !important;
+    padding-left: 500px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+.modal-body{
+    text-align: initial !important;
+}
+
+..owl-one .main-slide{
+    padding-left: 30px;
+}
+.owl-one .main-slide h1{
+  font-size: 2.5rem!important;
+  margin-top: 30px!important;
+  padding-top: 30px!important;
+  padding-left: 30px;
+}
+
+.owl-one .main-slide p{
+  font-size: 1rem!important;
+  margin-top: 10px!important;
+  padding-top: 10px!important;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.owl-one .grad{
+    margin-right: -50px;
+    height: 380px;
+  background-color: #141b29; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, #141b29 70% , #2d385c);
+  z-index: 9;
+}
+
+.owl-one .image_div img{
+    height: 380px;
+    z-index: 1;
+}
+
+.owl-one .owl-prev{
+  color: #fff!important;
+  font-size: 60px!important;
+  width: 40px;
+  height: 100px;
+  position: absolute;
+  top: 35%;
+  left: 0px;
+  transform: translateY(-50%);
+  display: block;
+  
+} 
+
+ .owl-one .owl-next{
+  color: #fff!important;
+  font-size: 60px!important;
+  width: 40px;
+  height: 100px;
+  position: absolute;
+  top: 35%;
+  right: 0px;
+  transform: translateY(-50%);
+  display: block;
+ 
+} 
+
+.site-footer{
+    background-color: #0c111b!important; 
+}
+
+.bg-website{
+    background-color: #0c111b!important; 
+}
