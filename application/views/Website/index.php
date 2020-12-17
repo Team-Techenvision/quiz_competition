@@ -78,7 +78,11 @@
                         <div id="" class="px-4 py-2 text-white"  >
                           <h4>
                              It's Amazing
+<<<<<<< HEAD
                              <br> fact
+=======
+                             
+>>>>>>> 6050d74c8a659329986ff352ab51049ddf54a412
                            </h4>
               </div>
                         <div class="about-two__content text-white">
