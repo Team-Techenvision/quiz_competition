@@ -113,8 +113,8 @@
             <div class="container">
 
                  <div id="" class="px-4 py-2 text-white">
-                <h4>
-                  Competition Activities
+                <h4 class="text-center ">
+                 <span class="heading-back"> Competition Activities </span>
                 </h4>
               </div>
               <br>
@@ -206,7 +206,7 @@
             </div>
             <div class="row mt-4">
               <div class="col-xl-7 col-md-12 col-sm-12 col-12  comp">
-               <a class="text-secondary"  data-toggle="modal" data-target="#participate" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a>
+               <a class="text-secondary"   href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a>
               </div>
               <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left  comp">
                   <a class="text-secondary "  data-toggle="modal" data-target="#instructions_text">Instructions</a>

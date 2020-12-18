@@ -8,7 +8,7 @@
             <div class="site-footer__upper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-sm-12">
+                        <div class="col-xl-4 col-lg-6 col-sm-12">
                             <div class="footer-widget footer-widget__contact">
                                 <h2 class="footer-widget__title">Address</h2><!-- /.footer-widget__title -->
 
@@ -24,7 +24,7 @@
                                 <!-- /.footer-widget__course-list -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-3 col-lg-6 col-sm-12">
+                        <div class="col-xl-4 col-lg-6 col-sm-12">
                             <div class="footer-widget footer-widget__link">
                                 <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__link-wrap">
@@ -44,7 +44,7 @@
                                 </div><!-- /.footer-widget__link-wrap -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-3 col-lg-6 col-sm-12 bg-website">
+                        <div class="col-xl-4 col-lg-6 col-sm-12 bg-website">
                             <div class="footer-widget footer-widget__gallery">
                                 <h2 class="footer-widget__title">connect with us</h2><!-- /.footer-widget__title -->
                                 <ul class="site-footer__social bg-website">
@@ -55,23 +55,15 @@
                                 </ul><!-- /.footer-widget__gallery -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-3 col-lg-6 col-sm-12 bg-website">
-                            <div class="footer-widget footer-widget__about bg-website">
-                                <h2 class="footer-widget__title">About</h2><!-- /.footer-widget__title -->
-                                <p class="footer-widget__text">Lorem ipsum dolor sit ametcon, sectetur adipiscing elit.
-                                    Phasellus vehic sagittis euismod.</p><!-- /.footer-widget__text -->
-                                
-                                <!-- /.footer-widget__btn-block -->
-                            </div><!-- /.footer-widget -->
-                        </div><!-- /.col-lg-3 -->
+                        
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </div><!-- /.site-footer__upper -->
             <div class="site-footer__bottom bg-website">
-                <div class="container">
-                    <p class="site-footer__copy">&copy; Copyright 2020 by <a href="#">quiz.com</a></p>
+                <div class="container text-center">
+                    <p class="site-footer__copy text-center w-100">&copy; <span class="text-center"> Copyright 2020 by <a href="#">quiz.com</a> </span></p>
                     <div class="site-footer__social">
-                        <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top scroll"><i class="kipso-icon-top-arrow" ></i></a>
+                       <!--  <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top scroll"><i class="kipso-icon-top-arrow" ></i></a> -->
                        
                     </div><!-- /.site-footer__social -->
                     <!-- /.site-footer__copy -->
@@ -191,7 +183,7 @@ $(function() {
    stagePadding: 80,
     margin:10,
     nav:true,
-    dots: true,
+    dots: false,
     autoplay:true,
     autoplayTimeout:3000,
     autoplayHoverPause:true,
