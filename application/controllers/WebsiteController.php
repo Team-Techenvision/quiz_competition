@@ -57,8 +57,15 @@ class WebsiteController extends CI_Controller{
 
     // if($quizweb_user_id == '' && $quizweb_company_id == ''){ header('location:'.base_url().'WebsiteController');  }
     $data['banner_list'] = $this->Website_Model->banner_list('bannerid');
+    $data['tab_list'] = $this->Website_Model->tab_list('tabinputtextid');
     $data['competition_list'] = $this->Website_Model->competition_list('competitionid','','','','','','competition');
     $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
+    $data['country'] = $this->Website_Model->fetch_country();
+    // $data['state'] = $this->Website_Model->fetch_state($countryid);
+    // $data['city'] = $this->Website_Model->fetch_city($stateid);
+    // $data['district'] = $this->Website_Model->fetch_district($cityid);
+
+
     // $data['company_list'] = $this->Website_Model->get_list('4');
 
 

@@ -28,6 +28,17 @@ class Website_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+   public function tab_list($tabinputtextid){
+    $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('tabcompetition');
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+  }
   public function competition_list($competitionid){
      $this->db->select('*');
     // $this->db->select('competition.*,state.*,state.statename,city.cityname');

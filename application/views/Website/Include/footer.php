@@ -4,27 +4,30 @@
 ?>
 
 
-<footer class="site-footer">
-            <div class="site-footer__upper">
+<footer class="site-footer" >
+            <div class="site-footer__upper mb-2">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-sm-12">
+                        <div class="col-xl-4 col-md-4 col-lg-6 col-sm-12 mr">
                             <div class="footer-widget footer-widget__contact">
-                                <h2 class="footer-widget__title">Address</h2><!-- /.footer-widget__title -->
+                                <h2 class="footer-widget__title">Contact Us</h2><!-- /.footer-widget__title -->
 
                                 <div class="title">
-                                    <span><?php echo $company_list[0]->company_address;?></span>
+                                  <i class="fas fa-map-marker-alt fafa"></i>&nbsp;&nbsp;
+                                    <span class="fatitle"><?php echo $company_list[0]->company_address;?></span>
                                 </div>
                                 <div class="title">
-                                    <span><?php echo $company_list[0]->company_mob1;?></span>
+                                  <i class="fas fa-phone-volume fafa"></i>&nbsp;&nbsp;
+                                    <span class="fatitle"><?php echo $company_list[0]->company_mob1;?></span>
                                 </div>
                                  <div class="title">
-                                    <span><?php echo $company_list[0]->company_email;?></span>
+                                  <i class="far fa-envelope fafa"></i>&nbsp;&nbsp;
+                                    <a class="fatitle mail"><?php echo $company_list[0]->company_email;?></a>
                                 </div>
                                 <!-- /.footer-widget__course-list -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-4 col-lg-6 col-sm-12">
+                        <div class="col-xl-3 col-md-3 col-lg-6 col-sm-12 mr1" >
                             <div class="footer-widget footer-widget__link">
                                 <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__link-wrap">
@@ -44,14 +47,14 @@
                                 </div><!-- /.footer-widget__link-wrap -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-4 col-lg-6 col-sm-12 bg-website">
+                        <div class="col-xl-3 col-md-3 col-lg-6 col-sm-12 bg-website ">
                             <div class="footer-widget footer-widget__gallery">
-                                <h2 class="footer-widget__title">connect with us</h2><!-- /.footer-widget__title -->
+                                <h2 class="footer-widget__title">Connect With Us</h2><!-- /.footer-widget__title -->
                                 <ul class="site-footer__social bg-website">
-                                     <a href="#"><i class="fab fa-twitter"></i></a>
-                                     <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                     <a href="#"><i class="fab fa-instagram"></i></a>
+                                     <a href="#"><i class="fab fa-twitter twit"></i></a>
+                                     <a href="#"><i class="fab fa-facebook-square face"></i></a>
+                                     <a href="#"><i class="fab fa-pinterest-p pint"></i></a>
+                                     <a href="#"><i class="fab fa-instagram insta"></i></a>
                                 </ul><!-- /.footer-widget__gallery -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
@@ -63,7 +66,9 @@
                 <div class="container text-center">
                     <p class="site-footer__copy text-center w-100">&copy; <span class="text-center"> Copyright 2020 by <a href="#">quiz.com</a> </span></p>
                     <div class="site-footer__social">
-                       <!--  <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top scroll"><i class="kipso-icon-top-arrow" ></i></a> -->
+                      
+                       <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top scroll"><i class="kipso-icon-top-arrow" ></i></a> 
+
                        
                     </div><!-- /.site-footer__social -->
                     <!-- /.site-footer__copy -->

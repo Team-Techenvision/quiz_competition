@@ -31,11 +31,11 @@
                 <div class="card-body row">
                                 
                      <div class="form-group col-md-6">
-                      <?php
+                    <!--   <?php
                       if(isset($competitionid)){?>
 
                        <input type="text" class="form-control required title-case text" name="competitionid" id="competitionid" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
-                       <?php }?>
+                       <?php }?> -->
 
 
 
@@ -76,8 +76,41 @@
                      
                   </select>
                   </div>
+                  <!-- table fetch Participant name -->
+                  <div class="form-group col-12">
+
+                   <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th class="wt_50">#</th>
+                  <th>User Name</th>
+                  <th>City</th>
+                  <th>Mobile No.</th>
+                  <th>Email</th>
+                  <th class="wt_50">Action</th>
+                </tr>
+                </thead>
+               <!--  <tbody>
+                  <?php $i = 0;
+                  foreach ($user_list as $list) {
+                    $i++; ?>
+                  <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $list->user_name ?></td>
+                    <td><?php echo $list->user_city ?></td>
+                    <td><?php echo $list->user_mobile ?></td>
+                    <td><?php echo $list->user_email ?></td>
+                    <td>
+                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                    </td>
+                  <?php } ?>
+                  </tr>
+
+                </tbody> -->
+              </table>
                
-                 
+                 </div>
                    
                 </div>
                 <!-- /.card-body -->
