@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2020 at 02:20 PM
+-- Generation Time: Dec 19, 2020 at 02:13 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -51,8 +51,21 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) 
 CREATE TABLE `assigncompetition` (
   `assigncompetitionid` int(11) NOT NULL,
   `competitionid` int(11) NOT NULL,
-  `pincode` int(11) NOT NULL
+  `pincode` int(11) NOT NULL,
+  `user_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `assigncompetition`
+--
+
+INSERT INTO `assigncompetition` (`assigncompetitionid`, `competitionid`, `pincode`, `user_id`) VALUES
+(1, 1, 30, 17),
+(2, 1, 30, 16),
+(3, 1, 30, 19),
+(4, 1, 33, 0),
+(5, 1, 33, 0),
+(6, 1, 33, 0);
 
 -- --------------------------------------------------------
 
@@ -247,6 +260,7 @@ CREATE TABLE `profile` (
   `address` varchar(255) NOT NULL,
   `pincode` bigint(10) NOT NULL,
   `competitionid` bigint(50) NOT NULL,
+  `user_id` int(50) NOT NULL,
   `created_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -254,19 +268,19 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `countryid`, `stateid`, `districtid`, `cityid`, `address`, `pincode`, `competitionid`, `created_date`) VALUES
-(1, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 2, 2, 2, 2, 'kop', 416012, 1, '0000-00-00'),
-(2, 'manish patil', '10', 'manish@gmail.com', '1', 'english model school', 1, 2, 3, 2, 'kop', 416012, 1, '0000-00-00'),
-(3, 'manish patil', '10', 'manish@gmail.com', '1', 'english model school', 1, 2, 3, 2, 'kop', 416012, 1, '0000-00-00'),
-(5, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 1, '0000-00-00'),
-(6, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, '0000-00-00'),
-(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'zzzzzzzzzzzzxxx', 410, 2, '0000-00-00'),
-(8, 'manish', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, '0000-00-00'),
-(9, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, '0000-00-00'),
-(10, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, '0000-00-00'),
-(11, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, '0000-00-00'),
-(13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, '0000-00-00'),
-(14, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 0, '0000-00-00');
+INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `countryid`, `stateid`, `districtid`, `cityid`, `address`, `pincode`, `competitionid`, `user_id`, `created_date`) VALUES
+(1, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 2, 2, 2, 2, 'kop', 416012, 1, 16, '0000-00-00'),
+(2, 'manish patil', '10', 'manish@gmail.com', '1', 'english model school', 1, 2, 3, 2, 'kop', 416012, 1, 17, '0000-00-00'),
+(3, 'manish patil', '10', 'manish@gmail.com', '1', 'english model school', 1, 2, 3, 2, 'kop', 416012, 1, 19, '0000-00-00'),
+(5, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 1, 20, '0000-00-00'),
+(6, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, 23, '0000-00-00'),
+(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'zzzzzzzzzzzzxxx', 410, 2, 26, '0000-00-00'),
+(8, 'manish', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, 29, '0000-00-00'),
+(9, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, 30, '0000-00-00'),
+(10, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, 33, '0000-00-00'),
+(11, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, 34, '0000-00-00'),
+(13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, 35, '0000-00-00'),
+(14, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 0, 36, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -492,7 +506,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `assigncompetition`
 --
 ALTER TABLE `assigncompetition`
-  MODIFY `assigncompetitionid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `assigncompetitionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `banner`
@@ -522,7 +536,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `country`
