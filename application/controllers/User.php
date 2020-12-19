@@ -660,6 +660,7 @@ function fetch_state1()
         'cityid' => $this->input->post('cityid'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
+        'user_id' => 17,
         // 'user_addedby' => $quizweb_user_id,
       );
       // print_r($save_data);
@@ -781,6 +782,10 @@ function fetch_state1()
 
   $data['competition'] = $this->User_Model->fetch_competition();
   $data['pincode'] = $this->User_Model->fetch_pincode();
+  $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
+ // $data['user_list'] = $this->User_Model->get_list_by_id('user_pincode','','','','user');
+
+
   // $data['profile'] = $this->User_Model->fetch_profile();
   // $data['city'] = $this->User_Model->fetch_city();
 
@@ -789,7 +794,20 @@ function fetch_state1()
     $this->load->view('User/assigncompetition',$data);
     $this->load->view('Include/footer',$data);
   }
-
+   public function assigncompetition_list(){
+          
+          // print_r($_POST);
+          $competitionid =$this->input->post('competitionid');
+          $pincode = $this->input->post('pincode');
+        
+     
+         $data['assigncompetition_list'] = $this->User_Model->assigncompetition_list($competitionid, $pincode);
+    
+       $this->load->view('Include/head',$data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/assigncompetition',$data);
+      $this->load->view('Include/footer',$data);
+    }
 
 /******************************* Winner Information ****************************/
 

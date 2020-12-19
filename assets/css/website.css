@@ -570,3 +570,6 @@ to{
     color: #FFF;
     text-decoration: none;
 }
+:focus {
+    outline: -webkit-focus-ring-color auto 0px !important;
+}

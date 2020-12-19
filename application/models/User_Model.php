@@ -16,7 +16,17 @@ class User_Model extends CI_Model{
     $insert_id = $this->db->insert_id();
     return  $insert_id;
   }
-
+  public function assigncompetition_list(){
+     // $this->db->select('*');
+    $this->db->select('profile.*,user.*,competition.*');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+  
+    $this->db->from('profile');
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+   }
   public function banner_list($unit_id){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -24,6 +34,17 @@ class User_Model extends CI_Model{
     //   $this->db->where('company_id', $company_id);
     // }
     $this->db->from('banner');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
+   public function getassigncompetition_list($user_id){
+    $this->db->select('*');
+    $this->db->where('is_admin', 1);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('user');
     $query = $this->db->get();
     $result = $query->result();
      return $result;
@@ -38,6 +59,7 @@ class User_Model extends CI_Model{
  function fetch_pincode()
  {
   $this->db->order_by("pincode", "");
+  // $this->db->where('is_admin', 1);
   $query = $this->db->get("profile");
   return $query->result();
   // print_r($query);

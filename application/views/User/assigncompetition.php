@@ -27,7 +27,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
+              <form id="form_action" role="form" action="assigncompetition_list" method="post" >
                 <div class="card-body row">
                                 
                      <div class="form-group col-md-6">
@@ -53,7 +53,7 @@
                      
                   </select>
                   </div>
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-4">
                      <!--  <?php
                       if(isset($pincode)){?>
 
@@ -76,42 +76,44 @@
                      
                   </select>
                   </div>
+                   <div class="form-group col-md-2">
+                   <button id="btn_search" type="search" class="btn btn-primary">Search </button>
+                 </div>
                   <!-- table fetch Participant name -->
+                   <?php
+                               if(isset($assigncompetition_list)){?>
                   <div class="form-group col-12">
 
-                   <table id="example1" class="table table-bordered table-striped">
+                             
+
+                 <table id="" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
                   <th>User Name</th>
-                  <th>City</th>
-                  <th>Mobile No.</th>
-                  <th>Email</th>
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
-               <!--  <tbody>
+                <tbody>
                   <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  foreach ($assigncompetition_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <button class="btn btn-primary">
+                        Add Competition 
+                     </button>
                     </td>
                   <?php } ?>
                   </tr>
 
-                </tbody> -->
-              </table>
-               
+                </tbody>
+              </table> 
+              
                  </div>
-                   
+                  <?php } ?>  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -120,7 +122,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
+                  <a href="" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>
@@ -139,6 +141,14 @@
 
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
  
-
+<script type="text/javascript">
+ $("#btn_search").click(function () {
+     // $("#mytable").each(function () {
+        
+             // $(this).append(tds);
+        
+     // });
+});
+</script>
 </body>
 </html>

@@ -300,7 +300,64 @@
                           </div>
                      </form>
 
-                      <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+                     
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left  comp">
+                       <button class="buttontheme"  style="">
+                        <a class=" "  data-toggle="modal" data-target="#instructions_text">Instructions</a>
+                           </button>
+                        </div>
+                   
+                     
+                      <!-- Modal -->
+                      <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Instructions for Participants:
+                      </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                           
+                            <div class="modal-body">
+                              <?php echo $list->instruction;?><!-- <?php echo $company_list[0]->company_address;?> -->
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+
+    
+   
+    <!-- ************** -->
+
+
+
+   
+
+
+</div>
+</div>
+
+    </div>
+     <?php } ?>
+
+            </div>
+          </div>
+        </section><!-- /.course-one__top-title -->
+<br>
+ <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
                       <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
 
                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
@@ -381,58 +438,3 @@
                      
                     });
                     </script>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left  comp">
-                       <button class="buttontheme"  style="">
-                        <a class=" "  data-toggle="modal" data-target="#instructions_text">Instructions</a>
-                           </button>
-                        </div>
-                   
-                     
-                      <!-- Modal -->
-                      <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Instructions for Participants:
-                      </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                           
-                            <div class="modal-body">
-                              <?php echo $list->instruction;?><!-- <?php echo $company_list[0]->company_address;?> -->
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-    </div>
-
-    
-   
-    <!-- ************** -->
-
-
-
-   
-
-
-</div>
-</div>
-
-    </div>
-     <?php } ?>
-
-            </div>
-        </section><!-- /.course-one__top-title -->
-<br>
