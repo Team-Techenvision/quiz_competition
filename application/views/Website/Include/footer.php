@@ -185,7 +185,7 @@ $(function() {
   <script type="text/javascript">
       $('.owl-one').owlCarousel({
     loop:true,
-   stagePadding: 80,
+   stagePadding: 50,
     margin:10,
     nav:true,
     dots: false,

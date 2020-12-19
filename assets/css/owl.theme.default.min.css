@@ -25,7 +25,7 @@
 }
 
 .owl-theme .owl-nav [class*=owl-]:hover {
-    background-color: #869791;
+    background-color: none;
     color: #FFF;
     text-decoration: none
 }

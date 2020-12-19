@@ -550,3 +550,23 @@ to{
 .imagemr{
   margin-top: -25px;
 }
+/*.image-gradient {
+    top: 0;
+    right: 590px;
+    width: 200px;
+    height: inherit;
+    content: '';
+    position: absolute;
+    -webkit-transition: background 0.3s ease-in;
+    -o-transition: background 0.3s ease-in;
+    transition: background 0.3s ease-in;
+    background: -webkit-gradient(linear, left top, right top, from(var(--CARD_GRADIENT)), to(rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(left, var(--CARD_GRADIENT), rgba(0,0,0,0));
+    background: -o-linear-gradient(left, var(--CARD_GRADIENT), rgba(0,0,0,0));
+    background: linear-gradient(to right, var(--CARD_GRADIENT), rgba(0,0,0,0));
+}*/
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background-color: none  !important;
+    color: #FFF;
+    text-decoration: none;
+}

@@ -41,8 +41,8 @@ class Website_Model extends CI_Model{
   }
   public function competition_list($competitionid){
      $this->db->select('*');
-    // $this->db->select('competition.*,state.*,state.statename,city.cityname');
-    // $this->db->join('state', 'competition.stateid = state.stateid', 'inner');
+    $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabid');
+    $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
     // $this->db->join('city', 'competition.cityid = city.cityid', 'inner');
 
     // $this->db->where('is_admin', 0);
