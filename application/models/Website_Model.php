@@ -39,6 +39,8 @@ class Website_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+
+  
   public function competition_list($competitionid){
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabid');
@@ -80,6 +82,8 @@ class Website_Model extends CI_Model{
 
   public function profile_list($profileid){
     $this->db->select('*');
+    $this->db->select('profile.*,pincodemaster.*,pincodemaster.pincode');
+    $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'inner');
     // $this->db->where('is_admin', 0);
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
@@ -89,6 +93,16 @@ class Website_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+
+   function fetch_pincodelist()
+ {
+  
+  $this->db->order_by("pincode", "");
+  // $this->db->where('is_admin', 1);
+  $query = $this->db->get("pincodemaster");
+  return $query->result();
+  // print_r($query);
+ }
    function fetch_country()
  {
   $this->db->order_by("countryname", "ASC");
@@ -98,45 +112,8 @@ class Website_Model extends CI_Model{
  }
 
   
- function fetch_state($countryid)
- {
-  $this->db->where('countryid', $countryid);
-  $this->db->order_by('statename', 'ASC');
-  $query = $this->db->get('state');
-  $output = '<option value="">Select State</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->stateid.'">'.$row->statename.'</option>';
-  }
-  return $output;
- }
 
- function fetch_city($stateid)
- {
-  $this->db->where('stateid', $stateid);
-  $this->db->order_by('cityname', 'ASC');
-  $query = $this->db->get('city');
-  $output = '<option value="">Select City</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
-  }
-  return $output;
- }
- function fetch_district($cityid)
- {
-  $this->db->where('cityid', $cityid);
-  $this->db->order_by('districtname ', 'ASC');
-  $query = $this->db->get('district');
-  $output = '<option value="">Select District</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
-  }
-  return $output;
- }
-
-  
+ 
   public function get_list2($id,$order,$tbl_name){
     $this->db->select('*');
     $this->db->order_by($id, $order);

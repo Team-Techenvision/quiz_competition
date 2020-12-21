@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2020 at 02:13 PM
+-- Generation Time: Dec 21, 2020 at 02:16 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -216,7 +216,7 @@ CREATE TABLE `country` (
 --
 
 INSERT INTO `country` (`countryid`, `countryname`, `created_date`) VALUES
-(1, 'india', '0000-00-00 00:00:00');
+(1, 'India', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -243,6 +243,29 @@ INSERT INTO `district` (`districtid`, `districtname`, `countryid`, `stateid`, `c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pincodemaster`
+--
+
+CREATE TABLE `pincodemaster` (
+  `pincodeid` bigint(50) NOT NULL,
+  `countryid` bigint(50) NOT NULL,
+  `stateid` bigint(50) NOT NULL,
+  `district` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `pincode` bigint(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pincodemaster`
+--
+
+INSERT INTO `pincodemaster` (`pincodeid`, `countryid`, `stateid`, `district`, `city`, `pincode`) VALUES
+(1, 1, 22, 'kolhapur', 'kolhapur', 416012),
+(2, 1, 8, 'abc', 'abc', 400255);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profile`
 --
 
@@ -253,10 +276,6 @@ CREATE TABLE `profile` (
   `emailid` varchar(255) NOT NULL,
   `grade` varchar(255) NOT NULL,
   `schoolcollegename` varchar(255) NOT NULL,
-  `countryid` bigint(50) NOT NULL,
-  `stateid` bigint(50) NOT NULL,
-  `districtid` bigint(50) NOT NULL,
-  `cityid` bigint(50) NOT NULL,
   `address` varchar(255) NOT NULL,
   `pincode` bigint(10) NOT NULL,
   `competitionid` bigint(50) NOT NULL,
@@ -268,19 +287,10 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `countryid`, `stateid`, `districtid`, `cityid`, `address`, `pincode`, `competitionid`, `user_id`, `created_date`) VALUES
-(1, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 2, 2, 2, 2, 'kop', 416012, 1, 16, '0000-00-00'),
-(2, 'manish patil', '10', 'manish@gmail.com', '1', 'english model school', 1, 2, 3, 2, 'kop', 416012, 1, 17, '0000-00-00'),
-(3, 'manish patil', '10', 'manish@gmail.com', '1', 'english model school', 1, 2, 3, 2, 'kop', 416012, 1, 19, '0000-00-00'),
-(5, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 1, 20, '0000-00-00'),
-(6, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, 23, '0000-00-00'),
-(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'zzzzzzzzzzzzxxx', 410, 2, 26, '0000-00-00'),
-(8, 'manish', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, 29, '0000-00-00'),
-(9, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 2, 30, '0000-00-00'),
-(10, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, 33, '0000-00-00'),
-(11, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, 34, '0000-00-00'),
-(13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 1, 1, 1, 1, 'kkk', 410, 3, 35, '0000-00-00'),
-(14, 'manish', '10', 'manish@gmail.com', '1', 'english model school', 1, 1, 1, 1, 'kkk', 410, 0, 36, '0000-00-00');
+INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `address`, `pincode`, `competitionid`, `user_id`, `created_date`) VALUES
+(1, 'Manish Patil', '10', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, 1, 1, '0000-00-00'),
+(2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 2, '0000-00-00'),
+(3, 'Rohan Wordpress', '20', 'rohan@gmail.com', '4', 'english model school', 'kkk', 2, 3, 3, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -291,7 +301,7 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 CREATE TABLE `state` (
   `stateid` bigint(50) NOT NULL,
   `statename` varchar(255) NOT NULL,
-  `countryid` bigint(50) NOT NULL,
+  `countryid` bigint(50) NOT NULL DEFAULT '1',
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -300,9 +310,48 @@ CREATE TABLE `state` (
 --
 
 INSERT INTO `state` (`stateid`, `statename`, `countryid`, `created_date`) VALUES
-(1, 'maharastra', 1, '2020-12-05 00:00:00'),
-(2, 'delhi', 1, '2020-12-05 00:00:00'),
-(3, 'karnataka', 1, '0000-00-00 00:00:00');
+(1, 'Andaman and Nicobar Islands', 1, '0000-00-00 00:00:00'),
+(2, 'Andhra Pradesh', 1, '0000-00-00 00:00:00'),
+(3, 'Arunachal Pradesh', 1, '0000-00-00 00:00:00'),
+(4, 'Assam', 1, '0000-00-00 00:00:00'),
+(5, 'Bihar', 1, '0000-00-00 00:00:00'),
+(6, 'Chandigarh', 1, '0000-00-00 00:00:00'),
+(7, 'Chhattisgarh', 1, '0000-00-00 00:00:00'),
+(8, 'Dadra and Nagar Haveli', 1, '0000-00-00 00:00:00'),
+(9, 'Daman and Diu', 1, '0000-00-00 00:00:00'),
+(10, 'Delhi-NCR', 1, '0000-00-00 00:00:00'),
+(11, 'Goa', 1, '0000-00-00 00:00:00'),
+(12, 'Gujarat', 1, '0000-00-00 00:00:00'),
+(13, 'Haryana', 1, '0000-00-00 00:00:00'),
+(14, 'Himachal Pradesh', 1, '0000-00-00 00:00:00'),
+(15, 'Jammu and Kashmir', 1, '0000-00-00 00:00:00'),
+(16, 'Jharkhand', 1, '0000-00-00 00:00:00'),
+(17, 'Karnataka', 1, '0000-00-00 00:00:00'),
+(18, 'Kenmore', 1, '0000-00-00 00:00:00'),
+(19, 'Kerala', 1, '0000-00-00 00:00:00'),
+(20, 'Lakshadweep', 1, '0000-00-00 00:00:00'),
+(21, 'Madhya Pradesh', 1, '0000-00-00 00:00:00'),
+(22, 'Maharashtra', 1, '0000-00-00 00:00:00'),
+(23, 'Manipur', 1, '0000-00-00 00:00:00'),
+(24, 'Meghalaya', 1, '0000-00-00 00:00:00'),
+(25, 'Mizoram', 1, '0000-00-00 00:00:00'),
+(26, 'Nagaland', 1, '0000-00-00 00:00:00'),
+(27, 'Narora', 1, '0000-00-00 00:00:00'),
+(28, 'Natwar', 1, '0000-00-00 00:00:00'),
+(29, 'Odisha', 1, '0000-00-00 00:00:00'),
+(30, 'Paschim Medinipur', 1, '0000-00-00 00:00:00'),
+(31, 'Pondicherry', 1, '0000-00-00 00:00:00'),
+(32, 'Punjab', 1, '0000-00-00 00:00:00'),
+(33, 'Rajasthan', 1, '0000-00-00 00:00:00'),
+(34, 'Sikkim', 1, '0000-00-00 00:00:00'),
+(35, 'Tamil Nadu', 1, '0000-00-00 00:00:00'),
+(36, 'Telangana', 1, '0000-00-00 00:00:00'),
+(37, 'Tripura', 1, '0000-00-00 00:00:00'),
+(38, 'TEST', 1, '0000-00-00 00:00:00'),
+(39, 'UP-1', 1, '0000-00-00 00:00:00'),
+(40, 'xxxxxx', 1, '0000-00-00 00:00:00'),
+(41, 'West Bengal', 1, '0000-00-00 00:00:00'),
+(42, 'UP-2', 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -357,36 +406,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`, `user_address`, `user_pincode`, `user_city`, `user_email`, `user_mobile`, `user_password`, `user_otp`, `user_status`, `user_addedby`, `user_date`, `is_admin`) VALUES
-(1, 1, '', 1, 'Admin', '', 0, 'Kolhapur', 'demo@email.com', '9876543210', '123456', NULL, 'active', 'Admin', '2020-12-15 06:48:50', 0),
-(6, 1, '', 2, 'Datta Mane', 'kop\r\n', 0, 'Kop', 'datta@mail.com', '9673454383', '123456', NULL, 'active', '0', '2020-12-15 06:43:59', 0),
-(11, 1, '', 2, 'rohan wordpress', 'kop', 0, 'kolhapur', 'rohan@gm.com', '897456210', '123', NULL, 'active', '0', '2020-12-15 06:44:04', 0),
-(12, 1, '', 2, 'techenvision', 'rajarampuri', 0, 'kop', 'techenvision@gmail.com', '874569214', 'tech', '11', 'active', '0', '2020-12-15 06:44:22', 0),
-(16, 0, '', 2, 'techenvision', '', 416012, '', '', '9999999999', '', '123654', 'active', '1', '2020-12-15 06:48:59', 1),
-(17, 0, '', 2, 'tech', '', 416012, '', '', '7777777777', '', '30', 'active', '1', '2020-12-15 06:49:03', 1),
-(18, 1, '', 2, 'abc', 'kk', 0, 'kolhapur', 'manish@gmail.com', '7845127845', '1234567', NULL, 'active', '1', '2020-12-15 06:47:00', 0),
-(19, 0, '', 2, 'rohan wordpress', '', 123, '', '', '6666666666', '', '123456', 'active', '1', '2020-12-15 06:49:05', 1),
-(20, 0, '', 2, 'rohan wordpress', '', 410, '', '', '9856325698', '', '10000', 'active', '1', '2020-12-15 06:49:07', 1),
-(21, 0, '', 2, 'rohan wordpress', '', 4444444, '', '', '8888888888', '', NULL, 'active', '1', '2020-12-15 06:49:10', 1),
-(23, 0, '', 2, 'rohan wordpress', '', 416, '', '', '744444444', '', NULL, 'active', '1', '2020-12-15 06:49:14', 1),
-(25, 0, '', 2, 'rohan wordpress', 'kkk', 410, 'kolhapur', 'rrr@mail.com', '7845211254', '123', NULL, 'active', '0', '2020-12-15 06:44:49', 0),
-(26, 0, '', 2, 'rohan wordpress', '', 410, '', '', '9874563214', '', NULL, 'active', '1', '2020-12-15 06:49:21', 1),
-(29, 0, '', 2, 'rohan wordpress', '', 410512, '', '', '9874563215', '', NULL, 'active', '1', '2020-12-15 06:49:23', 1),
-(30, 0, '', 2, 'rohan wordpress', '', 22, '', '', '2222222222', '', NULL, 'active', '1', '2020-12-15 06:49:25', 1),
-(33, 0, '', 2, 'rohan wordpress', '', 22, '', '', '2222', '', NULL, 'active', '1', '2020-12-15 06:49:28', 1),
-(34, 0, '', 2, 'rohan wordpress', '', 411, '', '', '1111111111', '', NULL, 'active', '1', '2020-12-15 06:49:31', 1),
-(35, 0, '', 2, 'rohan wordpress', '', 4160001, '', '', '8521478554', '', NULL, 'active', '1', '2020-12-15 06:49:35', 1),
-(36, 0, '', 2, 'rohan wordpress', '', 416, '', '', '9632587412', '', NULL, 'active', '1', '2020-12-15 06:49:38', 1),
-(37, 0, '', 2, 'rohan wordpress', '', 410, '', '', '9874563258', '', NULL, 'active', '1', '2020-12-15 06:49:40', 1),
-(39, 0, '', 2, 'rohan wordpress', '', 410, '', '', '7412589635', '', NULL, 'active', '1', '2020-12-15 06:49:42', 1),
-(41, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'rrr@gmail.com', '9865988950', '123', NULL, 'active', '1', '2020-12-15 06:46:50', 0),
-(42, 0, '', 2, 'rohan wordpress', '', 410, '', '', '7845121236', '', NULL, 'active', '1', '2020-12-15 07:06:10', 1),
-(43, 0, '', 2, 'rohan wordpress', '', 410126, '', '', '7896547890', '', NULL, 'active', '21', '2020-12-15 07:06:55', 1),
-(44, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'rrrr@aa.com', '9874563210', '123', NULL, 'active', '1', '2020-12-15 07:33:50', 0),
-(45, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'rr@r.v', '9845632108', '123', NULL, 'active', '1', '2020-12-15 07:59:23', 0),
-(46, 1, '', 2, 'abc', 'kkk', 0, 'kolhapur', 'rer@n.nn', '7771111111', '123', NULL, 'active', '1', '2020-12-15 08:04:15', 0),
-(47, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'eee@d.c', '122', '123', NULL, 'active', '1', '2020-12-15 09:29:06', 0),
-(48, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'jjj@f.cm', '44444', '123', NULL, 'active', '1', '2020-12-15 09:31:17', 0),
-(49, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'zzz@g.mm', '1555', '123', NULL, 'active', '1', '2020-12-15 09:40:20', 0);
+(1, 0, '', 2, 'Rohan Patil', '', 1, '', '', '9874563210', '', NULL, 'active', '1', '2020-12-21 09:01:20', 1),
+(2, 0, '', 2, 'techenvision', '', 1, '', '', '8956230147', '', NULL, 'active', '1', '2020-12-21 09:03:28', 1),
+(3, 0, '', 2, 'rohanwordpress', '', 2, '', '', '7777777777', '', NULL, 'active', '2', '2020-12-21 10:17:35', 1);
 
 -- --------------------------------------------------------
 
@@ -460,6 +482,12 @@ ALTER TABLE `country`
 --
 ALTER TABLE `district`
   ADD PRIMARY KEY (`districtid`);
+
+--
+-- Indexes for table `pincodemaster`
+--
+ALTER TABLE `pincodemaster`
+  ADD PRIMARY KEY (`pincodeid`);
 
 --
 -- Indexes for table `profile`
@@ -551,16 +579,22 @@ ALTER TABLE `district`
   MODIFY `districtid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `pincodemaster`
+--
+ALTER TABLE `pincodemaster`
+  MODIFY `pincodeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `state`
 --
 ALTER TABLE `state`
-  MODIFY `stateid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `stateid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tabcompetition`
@@ -572,7 +606,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `winner`

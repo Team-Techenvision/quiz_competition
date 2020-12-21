@@ -16,18 +16,8 @@ class User_Model extends CI_Model{
     $insert_id = $this->db->insert_id();
     return  $insert_id;
   }
-  public function assigncompetition_list(){
-     // $this->db->select('*');
-    $this->db->select('profile.*,user.*,competition.*');
-    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
-    $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
   
-    $this->db->from('profile');
-    $query = $this->db->get();
-    $result = $query->result();
-    return $result;
-   }
-  public function banner_list($unit_id){
+  public function banner_list($bannerid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
     // if($company_id != ''){
@@ -38,17 +28,42 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
-   public function getassigncompetition_list($user_id){
-    $this->db->select('*');
-    $this->db->where('is_admin', 1);
+   public function pincode_list($pincodeid){
+    // $this->db->select('*');
+     $this->db->select('pincodemaster.*,country.*,state.*');
+    $this->db->join('country', 'pincodemaster.countryid = country.countryid', 'left');
+    $this->db->join('state', 'pincodemaster.stateid = state.stateid', 'left');
+    // $this->db->where('is_admin', 0);
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
     // }
-    $this->db->from('user');
+    $this->db->from('pincodemaster');
     $query = $this->db->get();
     $result = $query->result();
      return $result;
   }
+  //  public function getassigncompetition_list($user_id){
+  //   $this->db->select('*');
+  //   $this->db->where('is_admin', 1);
+  //   // if($company_id != ''){
+  //   //   $this->db->where('company_id', $company_id);
+  //   // }
+  //   $this->db->from('user');
+  //   $query = $this->db->get();
+  //   $result = $query->result();
+  //    return $result;
+  // }
+  // public function getaddcompetition_list($user_id){
+  //   $this->db->select('*');
+  //   $this->db->where('is_admin', 1);
+  //   // if($company_id != ''){
+  //   //   $this->db->where('company_id', $company_id);
+  //   // }
+  //   $this->db->from('user');
+  //   $query = $this->db->get();
+  //   $result = $query->result();
+  //    return $result;
+  // }
     function fetch_competition()
  {
   $this->db->order_by("competitionid", "ASC");
@@ -58,12 +73,44 @@ class User_Model extends CI_Model{
  }
  function fetch_pincode()
  {
+  
   $this->db->order_by("pincode", "");
   // $this->db->where('is_admin', 1);
-  $query = $this->db->get("profile");
+  $query = $this->db->get("pincodemaster");
   return $query->result();
   // print_r($query);
  }
+ public function assigncompetition_list($competitionid,$pincode){
+     // $this->db->select('*');
+    $this->db->select('profile.*,user.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    $this->db->where('competitionid', $competitionid);
+    $this->db->where('pincode', $pincode);
+
+    $this->db->from('profile');
+
+    
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+   }
+   public function addassigncompetition_list($competitionid,$pincode){
+    $this->db->select('profile.*,user.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    $this->db->where('competitionid', $competitionid);
+    $this->db->where('pincode', $pincode);
+
+    $this->db->from('profile');
+
+    
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+   }
  //  function fetch_profile()
  // {
  //  $this->db->order_by("parentname", "ASC");
@@ -86,7 +133,7 @@ class User_Model extends CI_Model{
   // echo $output;
  }
 
- 
+ //for winner fetch city
  function fetch_city()
  {
   $this->db->order_by("cityname", "ASC");
@@ -105,7 +152,17 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
-   function fetch_country1()
+
+  //for pincode form fetch state
+  function fetch_state()
+   {
+      $this->db->order_by("statename", "ASC");
+      $query = $this->db->get("state");
+      return $query->result();
+      // print_r($query);
+    }
+
+function fetch_country1()
  {
   $this->db->order_by("countryname", "ASC");
   $query = $this->db->get("country");
@@ -176,13 +233,7 @@ class User_Model extends CI_Model{
  }
 
 
-   // function fetch_state()
-   // {
-   //    $this->db->order_by("statename", "ASC");
-   //    $query = $this->db->get("state");
-   //    return $query->result();
-   //    // print_r($query);
-   //  }
+   
 
    //  function fetch_city($stateid)
    //  {

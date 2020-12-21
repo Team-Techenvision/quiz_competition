@@ -21,7 +21,7 @@ class WebsiteController extends CI_Controller{
     // $this->form_validation->set_rules('user_otp', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
       $this->load->view('Website/Include/head');
-      $this->load->view('Website/index');
+      $this->load->view('Website/login');
      $this->load->view('Website/Include/footer');
 
     } else{
@@ -61,6 +61,8 @@ class WebsiteController extends CI_Controller{
     $data['competition_list'] = $this->Website_Model->competition_list('competitionid','','','','','','competition');
     $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
     $data['country'] = $this->Website_Model->fetch_country();
+    $data['pincode'] = $this->Website_Model->fetch_pincodelist();
+
     // $data['state'] = $this->Website_Model->fetch_state($countryid);
     // $data['city'] = $this->Website_Model->fetch_city($stateid);
     // $data['district'] = $this->Website_Model->fetch_district($cityid);
@@ -98,9 +100,13 @@ class WebsiteController extends CI_Controller{
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'WebsiteController/login');
     }
-    $this->load->view('Website/Include/head');
-    $this->load->view('Website/index');
-    $this->load->view('Website/Include/footer');
+    $data['pincode'] = $this->Website_Model->fetch_pincodelist();
+
+    // print_r($data);
+
+    $this->load->view('Website/Include/head',$data);
+    $this->load->view('Website/registration',$data);
+    $this->load->view('Website/Include/footer',$data);
   }
 
   // User List....
@@ -159,28 +165,7 @@ class WebsiteController extends CI_Controller{
 
 /*******************************    Profile Information     **************************/
 
-function fetch_state()
- {
-  if($this->input->post('countryid'))
-  {
-   echo $this->Website_Model->fetch_state($this->input->post('countryid'));
-  }
- }
 
- function fetch_city()
- {
-  if($this->input->post('stateid'))
-  {
-   echo $this->Website_Model->fetch_city($this->input->post('stateid'));
-  }
- }
- function fetch_district()
- {
-  if($this->input->post('cityid'))
-  {
-   echo $this->Website_Model->fetch_district($this->input->post('cityid'));
-  }
- }
 
 
  // Add New Profile....
@@ -198,10 +183,6 @@ function fetch_state()
         'emailid' => $this->input->post('emailid'),
         'grade' => $this->input->post('grade'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
-        'countryid' => $this->input->post('countryid'),
-        'stateid' => $this->input->post('stateid'),
-        'districtid' => $this->input->post('districtid'),
-        'cityid' => $this->input->post('cityid'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
         // 'user_addedby' => $quizweb_user_id,
@@ -212,7 +193,9 @@ function fetch_state()
       header('location:'.base_url().'WebsiteController/profile_list');
     }
 
-  $data['country'] = $this->Website_Model->fetch_country();
+ 
+  $data['pin'] = $this->Website_Model->fetch_pincodelist();
+
 
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/profile',$data);
@@ -247,10 +230,6 @@ function fetch_state()
         'emailid' => $this->input->post('emailid'),
         'grade' => $this->input->post('grade'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
-        'countryid' => $this->input->post('countryid'),
-        'stateid' => $this->input->post('stateid'),
-        'districtid' => $this->input->post('districtid'),
-        'cityid' => $this->input->post('cityid'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
         // 'user_addedby' => $quizweb_user_id,
@@ -269,16 +248,12 @@ function fetch_state()
       $data['emailid'] = $info->emailid;
       $data['grade'] = $info->grade;
       $data['schoolcollegename'] = $info->schoolcollegename;
-      $data['countryid'] = $info->countryid;
-      $data['stateid'] = $info->stateid;
-      $data['districtid'] = $info->districtid;
-      $data['cityid'] = $info->cityid;
       $data['address'] = $info->address;
       $data['pincode'] = $info->pincode;
     }
-
-  $data['country'] = $this->Website_Model->fetch_country();
+  $data['pin'] = $this->Website_Model->fetch_pincodelist();
     
+
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/profile',$data);
     $this->load->view('Website/Include/footer',$data);

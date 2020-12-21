@@ -239,8 +239,24 @@
                     <input type="text" class="form-control txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Participant Name" required>
                   </div>
                    
-                   <div class="form-group col-md-6">
-                    <input type="number" class="form-control " name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
+                  <div class="form-group col-md-6">
+
+                   <?php
+                      if(isset($user_pincode)){?>
+
+                      <input type="text" class="form-control required title-case text" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" disabled="">
+                       <?php }?> 
+                      <select name="user_pincode" id="user_pincode"class="form-control" required="">
+                    <option value="">Select Pincode</option>
+                   <?php foreach($pincode as $pin)
+                     {
+                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
+
+                               
+                      }
+                     ?>   
+                    
+                  </select>
                   </div>
                    <div class="form-group col-md-6">
                     <input type="number" class="form-control user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Whatsapp No." required>
