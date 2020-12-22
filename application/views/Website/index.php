@@ -115,246 +115,1703 @@
 
             <div class="container">
 
-                 <div id="" class="px-4 py-2 text-white text-center">
+                  <div id="" class="px-4 py-2 text-white text-center">
                   <h5 class="section__meta mb-2">Choose Your Competition Activities</h5>
                 <h4 class="text-center ">
                  <span class="text-white comptitle" > Competition Activities </span>
                 </h4><span class="section-divider"></span>            
                  </div>
-             
-
-              <div class="row">
+  <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tab margin-top-28px margin-bottom-55px">
                         <ul class="nav nav-tabs justify-content-center text-center" role="tablist" id="review" style=" border: none;">
-                           <?php $i = 0;
-                  foreach ($tab_list as $list) {
-                    $i++; ?>
+                          
                             <li role="presentation" class="li">
 
-                                <a href="#<?php echo $list->tabid;?>" role="tab" data-toggle="tab" class="theme-btn  " aria-selected="true">
-                                    <?php echo $list->tabinputtext;?>
+                                <a href="#nur-class1" role="tab" data-toggle="tab" class="theme-btn  " aria-selected="true">
+                                 Nur-1st   
                                 </a>
                             </li>
-                          <?php } ?>
+                              <li role="presentation" class="li">
+
+                                <a href="#class2-class5" role="tab" data-toggle="tab" class="theme-btn  " aria-selected="true">
+                                2nd-5th
+                                </a>
+                            </li>
+                              <li role="presentation" class="li">
+
+                                <a href="#class6-class9" role="tab" data-toggle="tab" class="theme-btn  " aria-selected="true">
+                                6th-9th
+                                </a>
+                            </li>
+                              <li role="presentation" class="li">
+
+                                <a href="#males" role="tab" data-toggle="tab" class="theme-btn  " aria-selected="true">
+                                Males(18+)  
+                                </a>
+                            </li>
+                              <li role="presentation" class="li">
+
+                                <a href="#females" role="tab" data-toggle="tab" class="theme-btn  " aria-selected="true">
+                                Females(18+
+                                </a>
+                            </li>
+
                         
                         </ul>
                     </div><!-- end section-tab -->
                 </div><!-- end col-lg-12 -->
             </div>
+           
+<!-- <div class="row">
+               <ul class="nav nav-tabs"  role="tablist" style="background-color: lightgray;width:600px;">
+    <li class="nav-item " style="width:100px;">
+      <a class="nav-link active" data-toggle="tab" href="#nur-class1">Nur-1st</a>
+    </li>
 
+    <li class="nav-item "style="width:100px;">
+      <a class="nav-link" data-toggle="tab" href="#class2-class5">2nd-5th</a>
+    </li>
 
+    <li class="nav-item" style="width:100px;">
+      <a class="nav-link" data-toggle="tab" href="#class6-class9">6th-9th</a>
+    </li>
+    <li class="nav-item" style="width:150px;">
+      <a class="nav-link" data-toggle="tab" href="#males">Males(18+)</a>
+    </li>
+    <li class="nav-item" style="width:150px;">
+      <a class="nav-link" data-toggle="tab" href="#females">Females(18+)</a>
+    </li>
+  </ul>
+
+</div> -->
+<!-- Tab panes -->
   <div class="tab-content">
-     <?php $i = 0;
-                  foreach ($competition_list as $list) {
-                    $i++; ?>
-    <div id="<?php echo $list->tabid;?>" class="container tab-pane active"><br>
-      <div class="container">
-        <div class="row">
-      
-        <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area" >
-          <div class="row">
+    <div id="nur-class1" class="container tab-pane active"><br>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
 
-            <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
-              <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
-                <div class="overlay"> </div>
-              <div class="tag_inherit a" ><?php echo $list->class;?></div>
-            </div>
-          </div>
-            <div class="row " >
-              <div class="col-xl-12 col-md-12 col-sm-12 col-12" >
-                <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3 " style="">
-                  <div class="row rowspace">
-                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                      <h4 class="titlee mb-4" ><?php echo $list->title;?></h4>
-                    </div>
-                  </div>
-                  <div class="row rowspace">
-                    <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height" >
-                      <span><strong style="font-weight: 500;"><?php echo $list->subtitle;?></strong></span> <br>
-                    </div>
-                  </div>
-                  <div class="row mt-4">
-                    <div class="col-xl-7 col-md-12 col-sm-12 col-12  comp">
-                      <button class="buttontheme " style="">
-                     <a class="" data-toggle="modal" data-target="#participate"  >Participate</a>
-                     </button>
-                    </div>
-                                                    <!-- Participant Modal -->
-                    <div class="modal fade" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Participant Information</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                         <form id="form_action" role="form" action="" method="post">
-                          <div class="modal-body modal-bodyy">
-                        
-                            
-                                    <div class="card-body row">
-                                      <div class="form-group col-md-12">
-                                        <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
-                                      </div>
-                                          <div class="form-group col-md-12">
-                                        <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
-                                      </div>
-                                       <div class="form-group col-md-6">
-                                        <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="age" required>
-                                      </div>
-
-                                  
-                                         <div class="form-group col-md-6">
-                                          <select name="grade" id="grade"class="form-control" >
-                                        <option value="">Select Grade</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                      </select>
-                                      </div>
-
-                                    
-                                      <div class="form-group col-md-12">
-                                      <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
-                                      </div>
-                                      <div class="form-group col-md-3">
-
-                                         <?php
-                                          if(isset($country)){?>
-
-                                          <input type="text" class="form-control required title-case text" name="countryid" id="countryid" value="<?php if(isset($countryid)){ echo $countryid; } ?>" disabled="">
-                                           <?php }?>
-                                          <select name="countryid" id="countryid"class="form-control" >
-                                        <option value="">Select Country</option>
-                                       <?php foreach($country as $country)
-                                         {
-                                              echo '<option value="'. $country->countryid.'" '.$selected.'>'. $country->countryname.'</option>';
-
-                                                   
-                                          }
-                                         ?>   
-                                        
-                                      </select>
-                                      </div>
-
-                                       <div class="form-group col-md-3">
-                                         <?php
-                                          if(isset($stateid)){?>
-
-                                          <input type="text" class="form-control required title-case text" name="stateid" id="stateid" value="<?php if(isset($stateid)){ echo $stateid; } ?>" disabled="">
-                                           <?php }?>
-                                          <select name="stateid" id="stateid"class="form-control" >
-                                            <option value="">Select State</option>
-                                       
-                                      </select>
-                                      </div>
-                                        <div class="form-group col-md-3">
-                                            <?php
-                                          if(isset($cityid)){?>
-
-                                          <input type="text" class="form-control required title-case text" name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" disabled="">
-                                           <?php }?>
-                                          <select name="cityid" id="cityid"class="form-control" >
-                                        <option value="">Select City</option>
-                                       
-                                      </select>
-                                      </div>
-                                      <div class="form-group col-md-3">
-                                          <?php
-                                          if(isset($districtid)){?>
-
-                                          <input type="text" class="form-control required title-case text" name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" disabled="">
-                                           <?php }?>
-                                          <select name="districtid" id="districtid"class="form-control" >
-                                        <option value="">Select District</option>
-                                        
-                                      </select>
-                                      </div>
-                                    
-                                       
-                                         
-                                      <div class="form-group col-md-9 mb-4">
-                                        <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
-                                      </div>
-                                       <div class="form-group col-md-3">
-                                        <input type="number" class="form-control required title-case text" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" required>
-                                      </div>
-                                     
-                                    </div>
-                                    <!-- /.card-body -->
-                                   
-                                 
-                          </div>
-                          <div class="modal-footer">
-                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
-                          <?php if(isset($update)){ ?>
-                                        <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                                      <?php } else{ ?>
-                                        <button id="btn_save" type="submit" class="btn btn-success px-4">Participate</button>
-                                      <?php } ?>
-                                      <a href="" class="btn btn-default ml-4" data-dismiss="modal">Cancel</a>
-                          </div>
-                     </form>
-
-                     
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left  comp">
-                       <button class="buttontheme"  style="">
-                        <a class=" "  data-toggle="modal" data-target="#instructions_text">Instructions</a>
-                           </button>
-                        </div>
-                   
-                     
-                      <!-- Modal -->
-                      <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Instructions for Participants:
-                      </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                           
-                            <div class="modal-body">
-                              <?php echo $list->instruction;?><!-- <?php echo $company_list[0]->company_address;?> -->
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    
-                  </div>
-                </div>
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
               </div>
             </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    
-   
     <!-- ************** -->
 
 
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-   
+  <!-- *********** -->
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+    
+
+
+  
 
 
 </div>
 </div>
 
     </div>
-     <?php } ?>
+    <div id="class2-class5" class="container tab-pane fade"><br>
+   <div class="container">
+    <div class="row">
 
+        <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 2 - Class 5</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- ************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 2 - Class 5</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- *********** -->
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 2 - Class 5</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 2 - Class 5</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 2 - Class 5</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 2 - Class 5</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+</div>
+
+
+    </div>
+    <div id="class6-class9" class="container tab-pane fade"><br>
+      <div class="container">
+    <div class="row">
+
+
+        <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 6 - Class 9</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 6 - Class 9</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- *********** -->
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 6 - Class 9</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 6 - Class 9</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 6 - Class 9</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Class 6 - Class 9</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+      
+
+
+</div>
+</div>
+    </div>
+
+     <div id="males" class="container tab-pane fade"><br>
+
+      <div class="container">
+       <div class="row">
+
+          <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Male 18+</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Male 18+</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- *********** -->
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Male 18+</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Male 18+</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- *********************** -->
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Male 18+</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
+ ">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+ <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+   <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay"> </div>
+          <div class="tag_inherit a" >Male 18+</div>
+        </div>
+      </div>
+      <div class="row b" >
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;">
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="titlee mb-4" style="">Environment</h4>
+              </div>
+            </div>
+            <div class="row rowspace">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-info pr-0 cstm-min-height">
+                <span><strong style="font-weight: 500;">Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12 comp">
+                <button type="button " class="btn buttontheme" data-toggle="modal" data-target="#participate" href="" ><a class="text-white" href="<?php echo base_url(); ?>WebsiteController/add_profile">Participate</a> </button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn buttontheme" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+     </div>
+
+    </div>
+  </div>
+
+   <!-- ****** -->
+ <div id="females" class="container tab-pane fade"><br>
+        <div class="container">
+          <div class="row">
+
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Environment.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backblue py-3" style="background-color: #68a0c7;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Environment</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_GK.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backorange py-3" style="background-color: #f1ab5c;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">GK</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_History.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backgreen py-3" style="background-color: #a0d660;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">History</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Ideas.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backred py-3" style="background-color: #de7376;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Ideas &amp; Innovation</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Comedy.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backpurple py-3" style="background-color: #b77cd8;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Comedy</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Leadership.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backlgreen py-3" style="background-color: #73c9cc;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Leadership Skills</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate"  style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Health.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backblue py-3" style="background-color: #75b3dc;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Health &amp; Happiness</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Business.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backorange py-3" style="background-color:  #efbc5e;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Business Skills</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Masti.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backgreen py-3" style="background-color: #a3d667;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Masti</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Drawing.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backred py-3" style="background-color: #e27171;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Drawing</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Communication.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backpurple py-3" style="background-color: #ae82cc;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Communication Skills</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Cooking.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backlgreen py-3" style="background-color: #abd66c;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Cooking</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Daydreaming.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backblue py-3" style="background-color: #88a2e4;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Day Dreaming</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Dialogue.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backorange py-3" style="background-color: #dea85c;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Dialogue</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Movies.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backgreen py-3" style="background-color: #5adedb;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Movies</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Acting.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backred py-3" style="background-color: #ea8787;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Acting</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Photography.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backpurple py-3" style="background-color: #8b88d4;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Photography</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Life_Skills.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backlgreen py-3" style="background-color: #68cdd0;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Life Skills</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Thinking.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backblue py-3" style="background-color: #6eabd6;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Thinking &amp; Observation</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <img src="https://s3.ap-south-1.amazonaws.com/intellithononline.com/files/images/content/Girls_Writimg.jpg" alt="intellithon" class="img-fluid">
+          <div class="tag_inherit a">Female 18+</div>
+        </div>
+      </div>
+      <div class="row b">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-12 backorange py-3" style="background-color:  #dea769;">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                <h4 class="text-white mb-4">Writing</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 text-white pr-0 cstm-min-height">
+                <span><strong>Register to see competition topic</strong></span> <br>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-7 col-md-12 col-sm-12 col-12">
+                <button type="button" class="btn btn-customm bluebtn text-white" data-toggle="modal" data-target="#participate" style="background-color: #00000033;">Participate</button>
+              </div>
+              <div class="col-xl-5 col-md-12 col-sm-12 col-12 pl-xl-0 mt-xl-0 mt-md-3 mt-sm-3 mt-3 text-xl-right text-md-left text-sm-left-text-left">
+                <button class="btn btn-outline-light btn-block" type="button" data-toggle="modal" data-target="#instructions_text">Instructions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+          </div>
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+            </div>
         </section><!-- /.course-one__top-title -->
 <br>
  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>

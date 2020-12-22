@@ -890,7 +890,7 @@ function fetch_state1()
   $data['competition'] = $this->User_Model->fetch_competition();
   $data['pincode'] = $this->User_Model->fetch_pincode();
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
- // $data['user_list'] = $this->User_Model->get_list_by_id('user_pincode','','','','user');
+ // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
 
 
   // $data['profile'] = $this->User_Model->fetch_profile();
@@ -906,29 +906,34 @@ function fetch_state1()
           // print_r($_POST);
     $competitionid =$this->input->post('competitionid');
     $pincode = $this->input->post('pincode');
-        
+    // $user_id = $this->input->post('user_id');
+     
+     // print_r($user_id);   
      
     $data['assigncompetition_list'] = $this->User_Model->assigncompetition_list($competitionid,$pincode);
+
     // print_r($data['assigncompetition_list']);
+
     $data['competitionid'] =  $competitionid;
     $data['pincodeid'] =  $pincode;
+    // $data['user_id'] =  $user_id;
 
       $this->load->view('Include/head',$data);
       $this->load->view('Include/navbar', $data);
       $this->load->view('User/assigncompetition',$data);
       $this->load->view('Include/footer',$data);
     }
-    public function addassigncompetition_list(){
-          
-          // print_r($_POST);
-    $competitionid =$this->input->post('competitionid');
-    $pincode = $this->input->post('pincode');
-        
-     
-    $data['addassigncompetition_list'] = $this->User_Model->addassigncompetition_list($competitionid,$pincode);
-    // print_r($data['assigncompetition_list']);
-    $data['competitionid'] =  $competitionid;
-    $data['pincodeid'] =  $pincode;
+   public function addassigncompetition_list(){
+    // print_r($_POST);
+
+     $competitionid=$this->input->post('competitionid');
+     $pincode=$this->input->post('pincode');
+
+     $data=$this->User_Model->addassigncompetition_list($competitionid,$pincode);
+    // print_r($data);
+      
+    // $data['competitionid'] =  $competitionid;
+    // $data['pincodeid'] =  $pincode;
 
       $this->load->view('Include/head',$data);
       $this->load->view('Include/navbar', $data);

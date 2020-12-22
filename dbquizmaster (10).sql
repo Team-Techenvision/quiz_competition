@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2020 at 02:16 PM
+-- Generation Time: Dec 22, 2020 at 02:10 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -406,7 +406,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`, `user_address`, `user_pincode`, `user_city`, `user_email`, `user_mobile`, `user_password`, `user_otp`, `user_status`, `user_addedby`, `user_date`, `is_admin`) VALUES
-(1, 0, '', 2, 'Rohan Patil', '', 1, '', '', '9874563210', '', NULL, 'active', '1', '2020-12-21 09:01:20', 1),
+(1, 0, '', 2, 'Rohan Patil', '', 1, '', 'rohan@gmial.com', '9874563210', '123456', NULL, 'active', '1', '2020-12-22 05:01:12', 1),
 (2, 0, '', 2, 'techenvision', '', 1, '', '', '8956230147', '', NULL, 'active', '1', '2020-12-21 09:03:28', 1),
 (3, 0, '', 2, 'rohanwordpress', '', 2, '', '', '7777777777', '', NULL, 'active', '2', '2020-12-21 10:17:35', 1);
 
