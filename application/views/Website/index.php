@@ -113,7 +113,7 @@
     <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
       <div class="row">
     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
-          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg" style=" height:300px;  border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
            <div class="overlay">
             <div class="text">
               <h5>Environment</h5>
