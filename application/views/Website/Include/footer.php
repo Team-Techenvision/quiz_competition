@@ -62,7 +62,7 @@
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </div><!-- /.site-footer__upper -->
-            <div class="justify-content-center" style="    padding-left: 550px;">
+            <div class="justify-content-center" style="padding-left: 550px;">
             <div class="site-footer__bottom bg-website justify-content-center">
                 <div class="container text-center">
                     <p class="site-footer__copy text-center w-100">&copy; <span class="text-center"> Copyright 2020 by <a href="#">quiz.com</a> </span></p>
