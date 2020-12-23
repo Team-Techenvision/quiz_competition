@@ -53,15 +53,17 @@
               <div class="item">
                 <div class="main-slide ">
                   <div class="row ">
-                    <div class=" col-md-6 col-12 grad">
+                   <!--  <div class=" col-md-4 col-12 ">
                         <h1><?php echo $list->title; ?> </h1>
                         <p><?php echo $list->subtitle; ?></p>
-                        <!-- <p class=""><a href="#"> Reand More  <span class="ml-3 arrow"> 
-                          <img class="svg-arw" src="<?php echo base_url(); ?>assets/images/website/arrow.svg">
-                        </span> </a>  </p>-->
-                    </div>
-                    <div class="image-gradient"></div>
-                    <div class="col-md-6 col-12 image_div">
+                        
+                    </div> -->
+                    <!-- <div class="image-gradient"></div> -->
+                    <div class="col-md-12 col-12 image_div">
+                        <div class="grad">
+                          <h1 class="text-white"><?php echo $list->title; ?> </h1>
+                        <p class="text-white"><?php echo $list->subtitle; ?></p>
+                        </div>
                         <img src="<?php echo base_url(); ?>assets/images/banner/<?php echo $list->profile_image; ?>" width="100%">
                     </div>
                   </div>
@@ -132,7 +134,7 @@
     <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
       <div class="row">
     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
-          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+          <img src="<?php echo base_url();?>assets/images/competition/img9.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
            <div class="overlay">
             <div class="text">
               <h5>Environment</h5>
@@ -170,7 +172,87 @@
     <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
       <div class="row">
     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img9.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay">
+            <div class="text">
+              <h5>Environment</h5>
+              <h6>Register to see competition topic</h6>
+              <p href="" data-toggle="modal" data-target="#participate"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Participate</p>
+              <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
+
+            </div>
+
+            </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+    
+    </div>
+     
+   </div>
+
+   <div class="row">
+    <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
           <img src="<?php echo base_url();?>assets/images/competition/img8.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay">
+            <div class="text">
+              <h5>Environment</h5>
+              <h6>Register to see competition topic</h6>
+              <p href="" data-toggle="modal" data-target="#participate"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Participate</p>
+              <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
+
+            </div>
+
+            </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+    
+    </div>
+    <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img9.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay">
+            <div class="text">
+              <h5>Environment</h5>
+              <h6>Register to see competition topic</h6>
+              <p href="" data-toggle="modal" data-target="#participate"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Participate</p>
+              <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
+
+            </div>
+
+            </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+    
+    </div>
+    <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay">
+            <div class="text">
+              <h5>Environment</h5>
+              <h6>Register to see competition topic</h6>
+              <p href="" data-toggle="modal" data-target="#participate"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Participate</p>
+              <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
+
+            </div>
+
+            </div>
+          <div class="tag_inherit a" >Nursery - Class 1</div>
+        </div>
+      </div>
+    
+    </div>
+    <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
+      <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+          <img src="<?php echo base_url();?>assets/images/competition/img9.jpg" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
            <div class="overlay">
             <div class="text">
               <h5>Environment</h5>
