@@ -22,6 +22,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <!-- plugin scripts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -146,9 +148,9 @@
                          <div class="right-side-box" style="right:150px;">
                         
                     </div><!-- /.right-side-box -->
-              <div class="right-side-box" style="font-weight: 600px; ">
-                    <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login /</a> 
-                    <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration" data-toggle="modal" data-target="#registration">Register</a>
+              <div class="right-side-box" >
+                    <a class="login/register text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login </a> 
+                    <!-- <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration" data-toggle="modal" data-target="#registration">Register</a> -->
                 </div>
 
  <!---------------------------          Login Modal        ------------------------------------ -->

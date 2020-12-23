@@ -53,7 +53,6 @@ $route['default_controller'] = 'WebsiteController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['Website'] = 'WebsiteController/index';
 // $route['upload'] = 'Upload';
 
 $route['About-Us'] = 'WebsiteController/about';

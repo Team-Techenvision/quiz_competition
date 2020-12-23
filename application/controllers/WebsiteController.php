@@ -51,7 +51,7 @@ class WebsiteController extends CI_Controller{
    /**************************      Home Page      ********************************/
   public function index(){
 
-    
+
     $data['banner_list'] = $this->Website_Model->banner_list('bannerid');
     $data['tab_list'] = $this->Website_Model->tab_list('tabinputtextid');
     $data['competition_list'] = $this->Website_Model->competition_list('competitionid','','','','','','competition');
@@ -282,11 +282,11 @@ class WebsiteController extends CI_Controller{
   }
 
 
-     public function about()
-    {
-      $this->load->view('Website/Include/head');
-    $this->load->view('Website/index');
-    $this->load->view('Website/Include/footer');
-    }
+    //  public function about()
+    // {
+    //   $this->load->view('Website/Include/head');
+    // $this->load->view('Website/index');
+    // $this->load->view('Website/Include/footer');
+    // }
 
 }
