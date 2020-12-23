@@ -51,8 +51,8 @@
             foreach ($banner_list as $list) {
               if($list->slider_possition == '1'){ ?>
               <div class="item">
-                <div class="main-slide">
-                  <div class="row">
+                <div class="main-slide ">
+                  <div class="row ">
                     <div class=" col-md-6 col-12 grad">
                         <h1><?php echo $list->title; ?> </h1>
                         <p><?php echo $list->subtitle; ?></p>

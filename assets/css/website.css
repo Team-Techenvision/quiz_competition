@@ -1,22 +1,13 @@
-@font-face { font-family: 'Roboto'; 
-/*a name to be used later*/
- src: url('https://fonts.googleapis.com/css?family=Roboto'); /*URL to font*/ 
- 
-}
-@font-face {
-  font-family: myHelveticaLight;
-  src: local("Helvetica Neue Light"),
-       local("HelveticaNeue-Light"),
-       url(HelveticaNeueLight.ttf);
-}
+
 body {
   /*font-family: "Roboto","HelveticaNeue-Light",sans-serif !important;*/
 /* background-color:  linear-gradient(to bottom, #141b29, #0c111b 300px) !important;*/
 	 padding: 0px!important;
 	 margin: 0px!important;
      /*font-size: 18px !important;*/
-     font-family: "Roboto","myHelveticaLight",sans-serif !important;
+     font-family: 'Roboto', sans-serif;
     font-size: 1.125em !important;
+
 
 }
 
@@ -30,8 +21,22 @@ body {
     cursor: pointer !important;
     text-decoration: none !important;
     display: inline-block !important;
+    font-weight: 700;
  
   
+}
+
+.login-btn{
+   padding-right: 5px !important;
+    color: #ffffffcc !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: normal !important;
+    text-transform: none !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-weight: 700;
 }
 .menu:hover{
   color:white !important;
@@ -44,7 +49,7 @@ color: var(--TEXT_COLOR_L0) !important;
     padding-top: 15px !important;
   }
   .headingtitle:hover{
-    color:#1f80e0 !important;
+    color:#fff !important;
   }
   
 /*@media only screen and (max-width: 768px) {
@@ -274,13 +279,18 @@ img::before {
     margin-left: 20px;
     height: 400px;
   background-color: #141b29; /* For browsers that do not support gradients */
-  background-image: linear-gradient(to right, #141b29 70% , #2d385c);
-  z-index: 9;
+  background-image: linear-gradient(to right, #141b29 70% , rgba(105, 122, 181, 0.5));
+  z-index: 1;
 }
+
+/*.owl-one .image_div{
+      box-sizing: border-box;
+      box-shadow: inset -250px 0 50px 10px #323e67;
+}*/
 
 .owl-one .image_div img{
     height: 400px;
-    z-index: 1;
+    z-index: 9;
 }
 
 .owl-one .owl-prev{
