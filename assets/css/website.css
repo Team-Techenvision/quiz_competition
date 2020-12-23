@@ -656,3 +656,15 @@ to{
 :focus {
     outline: -webkit-focus-ring-color auto 0px !important;
 }
+.modal-footer {
+    display: -ms-flexbox;
+     display: block !important; 
+    -ms-flex-align: center;
+     align-items: center; 
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom-right-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+}

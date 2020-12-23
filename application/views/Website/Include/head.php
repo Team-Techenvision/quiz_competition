@@ -191,11 +191,18 @@
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
          <div class="row">
-          <div class="col-12">
+          <div class="col-md-4" style="padding-left: 55px;">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-          </div>
-          <!-- /.col -->
+          </div><!-- /.col -->
+       
+     
+            <div class="form-group col-md-8" >
+               <label >Don't have an account?  &nbsp; 
+                <a class="text-primary t"  data-toggle="modal" data-target="#registration" href="<?php echo base_url(); ?>WebsiteController/add_registration">Register</a>
+               </label>
+            </div><!-- /.col -->
         </div>
+
       </form>    
        <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
         Invalid Information
