@@ -51,10 +51,7 @@ class WebsiteController extends CI_Controller{
    /**************************      Home Page      ********************************/
   public function index(){
 
-    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
-    // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    // if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+
     $data['banner_list'] = $this->Website_Model->banner_list('bannerid');
     $data['tab_list'] = $this->Website_Model->tab_list('tabinputtextid');
     $data['competition_list'] = $this->Website_Model->competition_list('competitionid','','','','','','competition');

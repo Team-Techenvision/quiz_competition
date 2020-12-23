@@ -1,11 +1,52 @@
+@font-face { font-family: 'Roboto'; 
+/*a name to be used later*/
+ src: url('https://fonts.googleapis.com/css?family=Roboto'); /*URL to font*/ 
+ 
+}
+@font-face {
+  font-family: myHelveticaLight;
+  src: local("Helvetica Neue Light"),
+       local("HelveticaNeue-Light"),
+       url(HelveticaNeueLight.ttf);
+}
 body {
-  font-family: "Roboto","HelveticaNeue-Light",sans-serif !important;
+  /*font-family: "Roboto","HelveticaNeue-Light",sans-serif !important;*/
 /* background-color:  linear-gradient(to bottom, #141b29, #0c111b 300px) !important;*/
 	 padding: 0px!important;
 	 margin: 0px!important;
-     font-size: 18px !important;
+     /*font-size: 18px !important;*/
+     font-family: "Roboto","myHelveticaLight",sans-serif !important;
+    font-size: 1.125em !important;
 
 }
+
+.header-navigation ul.navigation-box > li > a {
+    padding-right: 5px !important;
+    color: #ffffffcc !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: normal !important;
+    text-transform: none !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+ 
+  
+}
+.menu:hover{
+  color:white !important;
+}
+.headingtitle{
+color: var(--TEXT_COLOR_L0) !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    text-transform: none !important;
+    padding-top: 15px !important;
+  }
+  .headingtitle:hover{
+    color:#1f80e0 !important;
+  }
+  
 /*@media only screen and (max-width: 768px) {
    For mobile phones: 
   .carousel {
@@ -49,7 +90,8 @@ body {
     /* margin: 0; */
     /* padding: 0; */
     list-style: none;
-    padding-left: 100px !important;
+
+    padding-left: 0px !important;
     margin-top: -16px !important;
     height: 50px !important;
 }
@@ -300,6 +342,7 @@ img::before {
 .theme-btn {
     font-size: 15px !important;
     padding: 0 15px 0 15px !important;
+    margin-left: 10px !important;
     line-height: 40px !important;
     border-radius: 5px !important;
     z-index: 1 !important;
