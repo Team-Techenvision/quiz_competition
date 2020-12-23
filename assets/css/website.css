@@ -112,6 +112,7 @@ dl, ol, ul {
 
     margin-bottom: 15px !important;
     font-size: 22px !important;
+    margin-left: -24px !important; 
    
 }
 .title{
@@ -143,6 +144,7 @@ dl, ol, ul {
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
 }
+
 .mail:hover{
   color: blue;
 }
@@ -151,6 +153,7 @@ dl, ol, ul {
     padding: 6px 0 !important;
     padding-right: 0 !important;
     padding-left: 0 !important;
+    margin-left: -23px !important;
  }
  .twit:hover{
   color: rgba(29,161,242,1.00);
@@ -168,9 +171,10 @@ dl, ol, ul {
  .footer-widget .list-unstyled {
     
     margin-right: -35px !important;
+    margin-left: -23px !important;
 }  
 .scroll{
-    margin-left: 0px !important;
+    margin-left: -50px !important;
     height: 30px !important;
     width: 30px !important;
     /* padding-left: 0px; */
@@ -327,6 +331,15 @@ img::before {
 .bg-website{
     background-color: #0c111b!important; 
 }
+.site-footer__copy a {
+    color: #94a3ac !important;
+    margin-left: 10px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.footer-widget__link-list li a:hover {
+    color: #94a3ac !important;
+}
  .btn{
     background-color: #1f80e0 !important;
     color: #fff !important;
@@ -359,6 +372,7 @@ img::before {
     display: inline-block !important;
    transition: all 0.3s !important;
    font-weight: 500 !important;
+   color: #ffffffcc !important;
     background: linear-gradient(to right, #1f80e0 50%, #7190b72e 50%);
   background-size: 200% 100%;
   background-position: right bottom;
@@ -368,6 +382,7 @@ img::before {
  }
  .theme-btn:hover{
  background-position: left bottom;
+ color: white !important;
  }
 
 .li{
@@ -450,6 +465,21 @@ img::before {
 .over:hover .overlay {
     opacity: 1;
 }
+.text {
+  color: white;
+  width: 100%;
+  margin-left: 38px;
+    margin-top: 60px;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: justify;
+}
+
 .mr{
       margin-right: 100px !important;
 }

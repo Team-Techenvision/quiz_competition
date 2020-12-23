@@ -110,15 +110,24 @@
   </div>
    </div>
    <div class="row">
-    <div class="col-xl-4 col-md-4 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
+    <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area" data-groups="Nur-1st">
       <div class="row">
     <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
-          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg"  style="border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
-           <div class="overlay"> </div>
+          <img src="<?php echo base_url();?>assets/images/competition/img8.jpg" style=" height:300px;  border-radius: 4px 4px 0 0; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+           <div class="overlay">
+            <div class="text">
+              <h5>Environment</h5>
+              <h6>Register to see competition topic</h6>
+              <p href="" class="">Participate</p>
+              <p href="" class="">Instruction</p>
+
+            </div>
+
+            </div>
           <div class="tag_inherit a" >Nursery - Class 1</div>
         </div>
       </div>
-      <div class="row b" >
+      <!-- <div class="row b" >
         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
           <div class="col-xl-12 col-md-12 col-sm-12 col-12  py-3" style="background-color: #7db3ef;
  ">
@@ -142,7 +151,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
      
    </div>
