@@ -58,6 +58,8 @@ class WebsiteController extends CI_Controller{
     $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
     $data['country'] = $this->Website_Model->fetch_country();
     $data['pincode'] = $this->Website_Model->fetch_pincodelist();
+  $data['pin'] = $this->Website_Model->fetch_pincodelist();
+    
 
     // $data['state'] = $this->Website_Model->fetch_state($countryid);
     // $data['city'] = $this->Website_Model->fetch_city($stateid);
