@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2020 at 02:10 PM
+-- Generation Time: Dec 24, 2020 at 11:26 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -197,7 +197,9 @@ INSERT INTO `competition` (`competitionid`, `title`, `subtitle`, `class`, `tabin
 (6, 'Assessment Quiz', 'Register to see competition topic', 'Nursery - Class 1', 3, 'img9.jpg', 'xxxx', 'xx', '0000-00-00 00:00:00'),
 (7, 'Matching Quiz', 'Register to see competition topic', 'Nursery - Class 1', 3, 'img8.jpg', 'xxxx', 'xx', '2020-12-10 00:00:00'),
 (8, 'Envirnment', 'Register to see competition topic', 'Nursery - Class 1', 1, 'img9.jpg', 'jjjjjjj', 'jjjjjjjjjj', '2020-12-10 00:00:00'),
-(9, 'IT', 'Register to see competition topic', 'Nursery - Class 1', 4, 'img8.jpg', 'aaaaaaaa', 'aaaaaaaaaa', '2020-12-14 05:45:55');
+(9, 'IT', 'Register to see competition topic', 'Females(18+)', 5, 'photo_9_1608792745.jpg', 'aaaaaaaa', 'aaaaaaaaaa', '2020-12-14 05:45:55'),
+(10, 'first package', 'Register to see competition topic', 'Females(18+)', 5, 'photo_1608792873.png', 'das', 'sdf', '2020-12-24 06:54:32'),
+(11, 'second package', 'Register to see competition topic', 'Male(18+)', 4, 'photo_1608793042.jpg', 'aass', 'ddd', '2020-12-24 06:57:22');
 
 -- --------------------------------------------------------
 
@@ -290,7 +292,8 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `address`, `pincode`, `competitionid`, `user_id`, `created_date`) VALUES
 (1, 'Manish Patil', '10', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, 1, 1, '0000-00-00'),
 (2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 2, '0000-00-00'),
-(3, 'Rohan Wordpress', '20', 'rohan@gmail.com', '4', 'english model school', 'kkk', 2, 3, 3, '0000-00-00');
+(3, 'Rohan Wordpress', '20', 'rohan@gmail.com', '4', 'english model school', 'kkk', 2, 3, 3, '0000-00-00'),
+(4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 0, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -564,7 +567,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -588,7 +591,7 @@ ALTER TABLE `pincodemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `state`
