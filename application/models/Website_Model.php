@@ -93,6 +93,16 @@ class Website_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+function fetch_userid()
+ {
+  
+  $this->db->order_by("user_id", "");
+  // $this->db->where('is_admin', 1);
+  $query = $this->db->get("user");
+  return $query->result();
+  // print_r($query);
+ }
+  
 
    function fetch_pincodelist()
  {

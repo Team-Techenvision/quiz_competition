@@ -150,7 +150,7 @@
                                         </tr>
                                         </thead>
                                       <tbody >
-                                         <?php $i = 0;
+                                         <!-- <?php $i = 0;
                                           foreach ($assigncompetition_list as $list) {
                                             $i++; ?>
                                           <tr>
@@ -161,7 +161,7 @@
                                             </td>
                                           
                                           </tr>
-                                          <?php } ?> 
+                                          <?php } ?>  -->
                                         </tbody> 
                                       </table>  
                                                         
@@ -222,13 +222,15 @@ $(document).ready(function(){
 
         
        $.ajax({
-    url: '<?php echo base_url(); ?>User/addassigncompetition_list',
-    type: 'post',
-    data: {pincodeid: pincodeid},
-    success: function(response){ 
+         type: 'post',
+          url: '<?php echo base_url(); ?>User/addassigncompetition_list',
+          data: {pincodeid: pincodeid}, 
+          // dataType: "json",
+       success: function(response){ 
       // console.log(response);
 
-      alert(pincodeid);
+      // alert(pincodeid);
+      // alert(response);
       // Add response in Modal body
       // $('.modal-body').html(response);
 

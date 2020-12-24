@@ -721,29 +721,6 @@ class User extends CI_Controller{
   }
 /*******************************    Participate Information     **************************/
 
-function fetch_state1()
- {
-  if($this->input->post('countryid'))
-  {
-   echo $this->User_Model->fetch_state1($this->input->post('countryid'));
-  }
- }
-
- function fetch_city1()
- {
-  if($this->input->post('stateid'))
-  {
-   echo $this->User_Model->fetch_city1($this->input->post('stateid'));
-  }
- }
- function fetch_district1()
- {
-  if($this->input->post('cityid'))
-  {
-   echo $this->User_Model->fetch_district1($this->input->post('cityid'));
-  }
- }
-
 
  // Add New Profile....
   public function add_participate(){
@@ -751,7 +728,7 @@ function fetch_state1()
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
@@ -761,13 +738,8 @@ function fetch_state1()
         'emailid' => $this->input->post('emailid'),
         'grade' => $this->input->post('grade'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
-        'countryid' => $this->input->post('countryid'),
-        'stateid' => $this->input->post('stateid'),
-        'districtid' => $this->input->post('districtid'),
-        'cityid' => $this->input->post('cityid'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-        'user_id' => 17,
         // 'user_addedby' => $quizweb_user_id,
       );
       // print_r($save_data);
@@ -776,9 +748,9 @@ function fetch_state1()
       header('location:'.base_url().'User/participate_list');
     }
 
-  $data['country1'] = $this->User_Model->fetch_country1();
-  // $data['fetch_state1'] = $this->User_Model->fetch_state1();
-  
+ 
+    $data['pin'] = $this->User_Model->fetch_pincode();
+     
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -809,19 +781,15 @@ function fetch_state1()
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-      $update_data = array(
+    $update_data = array(
         'parentname' => $this->input->post('parentname'),
         'age' => $this->input->post('age'),
         'emailid' => $this->input->post('emailid'),
         'grade' => $this->input->post('grade'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
-        'countryid' => $this->input->post('countryid'),
-        'stateid' => $this->input->post('stateid'),
-        'districtid' => $this->input->post('districtid'),
-        'cityid' => $this->input->post('cityid'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-        'user_addedby' => $quizweb_user_id,
+        // 'user_addedby' => $quizweb_user_id,
       );
       $this->User_Model->update_info('profileid', $profileid, 'profile', $update_data);
       $this->session->set_flashdata('update_success','success');
@@ -837,15 +805,12 @@ function fetch_state1()
       $data['emailid'] = $info->emailid;
       $data['grade'] = $info->grade;
       $data['schoolcollegename'] = $info->schoolcollegename;
-      $data['countryid'] = $info->countryid;
-      $data['stateid'] = $info->stateid;
-      $data['districtid'] = $info->districtid;
-      $data['cityid'] = $info->cityid;
       $data['address'] = $info->address;
       $data['pincode'] = $info->pincode;
     }
 
-     $data['country1'] = $this->User_Model->fetch_country1();
+     $data['pin'] = $this->User_Model->fetch_pincode();
+    
   
     
     $this->load->view('Include/head',$data);
@@ -926,10 +891,14 @@ function fetch_state1()
    public function addassigncompetition_list(){
     // print_r($_POST);
 
+
+
      $competitionid=$this->input->post('competitionid');
      $pincode=$this->input->post('pincode');
 
+
      $data=$this->User_Model->addassigncompetition_list($competitionid,$pincode);
+     // print_r(json_encode($data));
     // print_r($data);
       
     // $data['competitionid'] =  $competitionid;

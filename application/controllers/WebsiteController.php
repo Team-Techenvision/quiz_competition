@@ -59,6 +59,7 @@ class WebsiteController extends CI_Controller{
     $data['country'] = $this->Website_Model->fetch_country();
     $data['pincode'] = $this->Website_Model->fetch_pincodelist();
   $data['pin'] = $this->Website_Model->fetch_pincodelist();
+  $data['userid'] = $this->Website_Model->fetch_userid();
     
 
     // $data['state'] = $this->Website_Model->fetch_state($countryid);
@@ -187,6 +188,7 @@ class WebsiteController extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competitionid'),
         // 'user_addedby' => $quizweb_user_id,
       );
       // print_r($save_data);
@@ -195,9 +197,11 @@ class WebsiteController extends CI_Controller{
       header('location:'.base_url().'WebsiteController/profile_list');
     }
 
- 
-  $data['pin'] = $this->Website_Model->fetch_pincodelist();
 
+  $data['pin'] = $this->Website_Model->fetch_pincodelist();
+  $data['userid'] = $this->Website_Model->fetch_userid();
+ 
+// print_r($data);
 
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/profile',$data);
@@ -234,6 +238,7 @@ class WebsiteController extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competitionid'),
         // 'user_addedby' => $quizweb_user_id,
       );
       $this->Website_Model->update_info('profileid', $profileid, 'profile', $update_data);
@@ -252,6 +257,7 @@ class WebsiteController extends CI_Controller{
       $data['schoolcollegename'] = $info->schoolcollegename;
       $data['address'] = $info->address;
       $data['pincode'] = $info->pincode;
+      $data['competitionid'] = $info->competitionid;
     }
   $data['pin'] = $this->Website_Model->fetch_pincodelist();
     

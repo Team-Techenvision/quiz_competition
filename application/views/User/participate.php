@@ -28,7 +28,7 @@
               <!-- /.card-header -->
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post">
-                <div class="card-body row">
+               <div class="card-body row">
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
                   </div>
@@ -53,67 +53,29 @@
                   <div class="form-group col-md-12">
                   <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
                   </div>
-                  <div class="form-group col-md-3">
+                  
+                  
+                  <div class="form-group col-md-9">
+                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
+                  </div>
+                    <div class="form-group col-md-3">
 
-                     <?php
-                      if(isset($countryid)){?>
+                  <?php
+                      if(isset($pincode)){?>
 
-                      <input type="text" class="form-control required title-case text" name="countryid" id="countryid" value="<?php if(isset($countryid)){ echo $countryid; } ?>" disabled="">
-                       <?php }?>
-                      <select name="countryid" id="countryid"class="form-control" required="">
-                    <option value="">Select Country</option>
-                   <?php foreach($country1 as $country1)
+                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
+                       <?php }?>  
+                      <select name="pincode" id="pincode"class="form-control" required="">
+                    <option value="">Select Pincode</option>
+                   <?php foreach($pin as $pin)
                      {
-                          echo '<option value="'. $country1->countryid.'" '.$selected.'>'. $country1->countryname.'</option>';
+                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
 
                                
                       }
                      ?>   
                     
                   </select>
-                  </div>
-
-                   <div class="form-group col-md-3">
-                     <?php
-                      if(isset($stateid)){?>
-
-                      <input type="text" class="form-control required title-case text" name="stateid" id="stateid" value="<?php if(isset($stateid)){ echo $stateid; } ?>" disabled="">
-                       <?php }?>
-                      <select name="stateid" id="stateid"class="form-control" required="">
-                        <option value="">Select State</option>
-                   
-                  </select>
-                  </div>
-                    <div class="form-group col-md-3">
-                        <?php
-                      if(isset($cityid)){?>
-
-                      <input type="text" class="form-control required title-case text" name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" disabled="">
-                       <?php }?>
-                      <select name="cityid" id="cityid"class="form-control" required="">
-                    <option value="">Select City</option>
-                   
-                  </select>
-                  </div>
-                  <div class="form-group col-md-3">
-                      <?php
-                      if(isset($districtid)){?>
-
-                      <input type="text" class="form-control required title-case text" name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" disabled="">
-                       <?php }?>
-                      <select name="districtid" id="districtid"class="form-control" required="">
-                    <option value="">Select District</option>
-                    
-                  </select>
-                  </div>
-                
-                   
-                     
-                  <div class="form-group col-md-9">
-                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
-                  </div>
-                   <div class="form-group col-md-3">
-                    <input type="number" class="form-control required title-case text" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" required>
                   </div>
                  
                 </div>

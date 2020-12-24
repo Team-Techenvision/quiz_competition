@@ -174,7 +174,7 @@
                             <div class="modal-body ">
                              
                                 <div class="card-body row">
-                                 <input type="text" name="competition_id" id="competition_model_id">
+                                 <input type="text" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
 
                                   <div class="form-group col-md-12">
                                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
