@@ -694,3 +694,44 @@ to{
     border-bottom-right-radius: .3rem;
     border-bottom-left-radius: .3rem;
 }
+
+
+
+
+.featured .card .card-img-top{
+      width: 250px;
+      height: 100%;
+      overflow: hidden!important;
+      transition: transform .4s;
+  }
+
+
+.featured .card:hover .featured-card-img{
+    transform: scale(1.1);
+    transform-origin: 50% 50%;
+  }
+
+  .featured .card .card-img-top{
+      width: 100%;
+      height: auto;
+      overflow: hidden!important;
+  }
+
+  .featured{
+  padding-top: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+
+  .line-through{
+   text-decoration: line-through;
+}
+
+
+.featured .card-title{
+    font-size: 14px !important;
+    color: #333;
+    text-align: center;
+}

@@ -32,6 +32,9 @@
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
                   </div>
+                  <div class="form-group col-md-12">
+                  <input type="text" class="form-control " name="user_id" id="competitionid" value="  "  >
+                  </div>
                    <div class="form-group col-md-3">
                     <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                   </div>
@@ -51,19 +54,19 @@
                   </select>
                   </div>
                   <div class="form-group col-md-12">
-                  <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
+                  <input type="text" class="form-control required title-case  txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
                   </div>
                   
                   
                   <div class="form-group col-md-9">
-                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
+                    <textarea type="text" class="form-control required title-case " name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
                   </div>
                     <div class="form-group col-md-3">
 
                   <?php
                       if(isset($pincode)){?>
 
-                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
+                      <input type="text" class="form-control required title-case" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                        <?php }?>  
                       <select name="pincode" id="pincode"class="form-control" required="">
                     <option value="">Select Pincode</option>
