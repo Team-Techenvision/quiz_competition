@@ -101,26 +101,8 @@
 
             </div><!-- /.container -->
         </section><!-- /.about-two -->
-        <section class="competition">
-          <div class="container">           
-  <!-- ********************************************* -->
-
-                           
-
-                    
-                     
-           
-            
-          </div>
-          <!-- container close -->
-        </section>
-
-        <!-- /.course-one__top-title -->
-<br>
-
-
-
-   <section class="featured">
+      
+      <section class="featured">
         <div class="container">
         <div class="row">   
         <div class="col-md-12" align="center">
