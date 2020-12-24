@@ -926,10 +926,14 @@ function fetch_state1()
    public function addassigncompetition_list(){
     // print_r($_POST);
 
+
+
      $competitionid=$this->input->post('competitionid');
      $pincode=$this->input->post('pincode');
 
+
      $data=$this->User_Model->addassigncompetition_list($competitionid,$pincode);
+     // print_r(json_encode($data));
     // print_r($data);
       
     // $data['competitionid'] =  $competitionid;
