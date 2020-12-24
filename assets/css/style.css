@@ -34,7 +34,7 @@
 * 1. common styles
 */
 body {
-  font-family: "Poppins";
+   font-family: 'Roboto', sans-serif!important;
   color: #81868a;
   font-size: 16px;
   line-height: 34px;

@@ -43,7 +43,7 @@ body {
 }
 .headingtitle{
 color: var(--TEXT_COLOR_L0) !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     font-size: 20px !important;
     text-transform: none !important;
     padding-top: 15px !important;
