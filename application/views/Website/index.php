@@ -105,7 +105,63 @@
           <div class="container">           
   <!-- ********************************************* -->
 
-                       <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                           
+
+                    
+                     
+           
+            
+          </div>
+          <!-- container close -->
+        </section>
+
+        <!-- /.course-one__top-title -->
+<br>
+
+
+
+   <section class="featured">
+        <div class="container">
+        <div class="row">   
+        <div class="col-md-12" align="center">
+            <button class="theme-btn " data-filter="all">All</button>
+
+            <!-- Tab button fetch dyanamic start  -->
+                <?php $i = 0;
+                  foreach ($tab_list as $list) {
+                    $i++; ?>
+                      <button class="theme-btn" data-filter="<?php echo $list->tabinputtext;?>">  <?php echo $list->tabinputtext;?> </button>
+
+                <?php } ?>
+                   <!-- Tab button fetch dyanamic ends  -->
+          </div>
+       
+
+          <!-- cart fetch dyanamic start  -->
+      <?php if($competition_list){
+          foreach ($competition_list as $list) {
+        ?>
+           <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabinputtext;?> all ">
+              <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
+                 <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+              
+               <div class="overlay">
+                  <div class="text">
+                    <h5> <?php echo $list->title;?>  </h5>
+                    <h6> <?php echo $list->subtitle;?> </h6>
+                    <button href="" data-toggle="modal" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button>
+                    <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
+                  </div>
+                </div>
+              <div class="tag_inherit a" > <?php echo $list->tabinputtext;?>  </div>
+            </div>
+          </div>    
+        </div>
+
+
+          <!-- particepation model  -->
+        <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -118,6 +174,8 @@
                             <div class="modal-body ">
                              
                                 <div class="card-body row">
+                                 <input type="text" name="competition_id" id="competition_model_id">
+
                                   <div class="form-group col-md-12">
                                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
                                   </div>
@@ -186,10 +244,9 @@
                             
                           </div>
                         </div>
-                      </div>     
+                      </div>  <!--Prticepation Modal Ends -->
 
-                    
-                    <!-- Modal -->
+                         <!--instrruction  Modal -->
                       <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -208,57 +265,9 @@
                             
                           </div>
                         </div>
-                      </div>      
-           
-            
-          </div>
-          <!-- container close -->
-        </section>
-
-        <!-- /.course-one__top-title -->
-<br>
+                      </div>  
 
 
-
-   <section class="featured">
-        <div class="container">
-        <div class="row">   
-        <div class="col-md-12" align="center">
-            <button class="theme-btn " data-filter="all">All</button>
-
-            <!-- Tab button fetch dyanamic start  -->
-                <?php $i = 0;
-                  foreach ($tab_list as $list) {
-                    $i++; ?>
-                      <button class="theme-btn" data-filter="<?php echo $list->tabinputtext;?>">  <?php echo $list->tabinputtext;?> </button>
-
-                <?php } ?>
-                   <!-- Tab button fetch dyanamic ends  -->
-          </div>
-       
-
-          <!-- cart fetch dyanamic start  -->
-      <?php if($competition_list){
-          foreach ($competition_list as $list) {
-        ?>
-           <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabinputtext;?> all ">
-              <div class="row">
-              <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
-                 <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
-              
-               <div class="overlay">
-                  <div class="text">
-                    <h5> <?php echo $list->title;?>  </h5>
-                    <h6> <?php echo $list->subtitle;?> </h6>
-                    <p href="" data-toggle="modal" data-target="#participate"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Participate</p>
-                    <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
-                  </div>
-                </div>
-              <div class="tag_inherit a" > <?php echo $list->tabinputtext;?>  </div>
-            </div>
-          </div>
-    
-        </div>
         <?php   }  } ?>
 
          <!-- cart fetch dyanamic Ends  -->
@@ -269,7 +278,6 @@
 
       <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
                       <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
-
                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 
 
@@ -348,3 +356,5 @@
                      
                     });
                     </script>
+
+                 

@@ -238,6 +238,14 @@ $(this).addClass("active");
 });
     </script>
 
+       <script>
+      $(".competition_btn").click(function() {
+        var competition_btn_id = $(this).val();
+        // alert(competition_btn_id);
+     $('#competition_model_id').val(competition_btn_id); 
+});
+                    </script>
+
 </body>
 
 </html>
