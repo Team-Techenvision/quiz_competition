@@ -290,10 +290,9 @@ img::before {
 }
 
 
-/*.owl-one .image_div{
-      box-sizing: border-box;
-      box-shadow: inset -250px 0 50px 10px #323e67;
-}*/
+.owl-one .image_div{
+      padding-left: 0px;
+}
 
 .owl-one .image_div img{
     height: 450px;
@@ -333,6 +332,10 @@ img::before {
 
 .bg-website{
     background-color: #0c111b!important; 
+}
+
+.banner_text_div{
+  padding-left: 20px;
 }
 .site-footer__copy a {
     color: #94a3ac !important;

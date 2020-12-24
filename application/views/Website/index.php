@@ -59,10 +59,13 @@
                         
                     </div> -->
                     <!-- <div class="image-gradient"></div> -->
-                    <div class="col-md-12 col-12 image_div">
-                        <div class="grad">
-                          <h1 class="text-white"><?php echo $list->title; ?> </h1>
+                    <div class="col-md-4 bg-website banner_text_div">
+                         <h1 class="text-white"><?php echo $list->title; ?> </h1>
                         <p class="text-white"><?php echo $list->subtitle; ?></p>
+                    </div>
+                    <div class="col-md-8 col-12 image_div">
+                        <div class="grad">
+                       
                         </div>
                         <img src="<?php echo base_url(); ?>assets/images/banner/<?php echo $list->profile_image; ?>" width="100%">
                     </div>
