@@ -265,8 +265,8 @@ img::before {
 }
 .owl-one .main-slide h1{
   font-size: 2.5rem!important;
-  margin-top: 30px!important;
-  padding-top: 30px!important;
+  margin-top: 50px!important;
+  padding-top: 50px!important;
   padding-left: 30px;
 }
 
@@ -278,14 +278,17 @@ img::before {
   padding-left: 30px;
 }
 
-.owl-one .grad{
-    margin-right: -30px;
-    margin-left: 20px;
-    height: 400px;
-  background-color: #141b29; /* For browsers that do not support gradients */
-  background-image: linear-gradient(to right, #141b29 70% , rgba(105, 122, 181, 0.5));
-  z-index: 1;
+.grad{
+    /*margin-right: -200px;*/
+    /*margin-left: 20px;*/
+    /*height: 400px;*/
+    width: 100%;
+    position: absolute;
+  background-image: linear-gradient(to right, rgba(13,18,28,1), rgba(13,18,28,0));
+  z-index: 9!important;
+  height: 450px;
 }
+
 
 /*.owl-one .image_div{
       box-sizing: border-box;
@@ -293,8 +296,8 @@ img::before {
 }*/
 
 .owl-one .image_div img{
-    height: 400px;
-    z-index: 9;
+    height: 450px;
+    z-index: 1;
 }
 
 .owl-one .owl-prev{
@@ -457,15 +460,17 @@ img::before {
 .overlay {
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: -1%;
     left: 0;
     right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 100%;
     width: 100%;
     opacity: 0;
     transition: 2s ease;
     /*background-color: #0c0c0c6e;*/
-    background-image: linear-gradient(rgba(13, 13, 13, 0.05),  rgba(13, 13, 13, 0.9));
+    background-image: linear-gradient(rgba(12, 17, 27, 0.05),  rgba(12, 17, 27, 0.9));
 
 }
 
