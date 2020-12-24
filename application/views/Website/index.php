@@ -180,7 +180,7 @@
                                   <div class="form-group col-md-12">
                                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
 
-                                    <input type="hidden" class="form-control txtOnly" name="competitionid" id="competitionid" value=" <?php echo $list->competitionid;?>" >
+                                    <input type="text" class="form-control txtOnly" name="competitionid" id="competitionid" value=" <?php echo $list->competitionid;?>" >
                                   </div>
                                   <div class="form-group col-md-3">
                                     <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
