@@ -211,7 +211,7 @@
 
 $(document).ready(function(){
   $('.btnadd').click(function(){
-    alert('hii'); 
+    // alert('hii'); 
     var competition=$('#competition').val();
     var pincodeid=$('#pin').val();
     var user_id=$(this).val();
@@ -229,8 +229,8 @@ $(document).ready(function(){
        success: function(response){ 
       // console.log(response);
 
-      alert(pincodeid);
-      alert(response);
+      // alert(pincodeid);
+      // alert(response);
       // Add response in Modal body
       // $('.modal-body').html(response);
 

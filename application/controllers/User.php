@@ -889,7 +889,7 @@ class User extends CI_Controller{
       $this->load->view('Include/footer',$data);
     }
    public function addassigncompetition_list(){
-    print_r($_POST);
+    // print_r($_POST);
 
 
 
