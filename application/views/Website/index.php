@@ -112,7 +112,7 @@
                 <?php $i = 0;
                   foreach ($tab_list as $list) {
                     $i++; ?>
-                      <button class="theme-btn" data-filter="<?php echo $list->tabinputtext;?>">  <?php echo $list->tabinputtext;?> </button>
+                      <button class="theme-btn" data-filter="<?php echo $list->tabid;?>">  <?php echo $list->tabinputtext;?> </button>
 
                 <?php } ?>
                    <!-- Tab button fetch dyanamic ends  -->
@@ -123,7 +123,7 @@
       <?php if($competition_list){
           foreach ($competition_list as $list) {
         ?>
-           <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabinputtext;?> all ">
+           <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabid;?> all ">
               <div class="row">
               <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
                  <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
@@ -132,7 +132,7 @@
                   <div class="text">
                     <h5> <?php echo $list->title;?>  </h5>
                     <h6> <?php echo $list->subtitle;?> </h6>
-                    <button href="" data-toggle="modal" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button>
+                    <p><button href="" data-toggle="modal" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
                     <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
                   </div>
                 </div>
@@ -152,11 +152,11 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
-                           <form id="form_action" role="form" action="" method="post">
+                           <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post">
                             <div class="modal-body ">
-                             
-                                <div class="card-body row">
-                                 <input type="text" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
+                          
+                                <div class="card-body row" style="padding-bottom: 0px;">
+                                 <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
 
                                   <div class="form-group col-md-12">
                                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
@@ -218,7 +218,7 @@
                                      <?php if(isset($update)){ ?>
                                         <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                                       <?php } else{ ?>
-                                        <button id="btn_save" type="submit" class="btn btn-success px-4">Participate</button>
+                                        <button id="btn_save" style="margin-left: 20px;" type="submit" class="btn  px-4">Participate</button>
                                       <?php } ?>
                                       <a href="" class="btn btn-default ml-4" data-dismiss="modal">Cancel</a>
                            </div>
@@ -258,85 +258,16 @@
     </section>
 
 
-      <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-                      <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
-                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-
-
-                    <script>
-                    $(document).ready(function(){
-                     $('#countryid').change(function(){
-                      var countryid = $('#countryid').val();
-                      if(countryid != '')
-                      {
-                       $.ajax({
-                        url:"<?php echo base_url(); ?>WebsiteController/fetch_state",
-                        method:"POST",
-                        data:{countryid:countryid},
-                        success:function(data)
-                        {
-                          // alert(data);
-                          // console.log(data);
-                         $('#stateid').html(data);
-                         $('#cityid').html('<option value="">Select City</option>');
-                        }
-                       });
-                      }
-                      else
-                      {
-                       $('#stateid').html('<option value="">Select State</option>');
-                       $('#cityid').html('<option value="">Select City</option>');
-                      }
-                     });
-
-                     $('#stateid').change(function(){
-                      var stateid = $('#stateid').val();
-                      if(stateid != '')
-                      {
-                       $.ajax({
-                        url:"<?php echo base_url(); ?>WebsiteController/fetch_city",
-                        method:"POST",
-                        data:{stateid:stateid},
-                        success:function(data)
-                        {
-                         $('#cityid').html(data);
-                         $('#districtid').html('<option value="">Select District</option>');
-
-                        }
-                       });
-                      }
-                      else
-                      {
-                       $('#cityid').html('<option value="">Select City</option>');
-                         $('#districtid').html('<option value="">Select District</option>');
-
-                      }
-                     });
-
-                      $('#cityid').change(function(){
-                      var cityid = $('#cityid').val();
-                      if(cityid != '')
-                      {
-                       $.ajax({
-                        url:"<?php echo base_url(); ?>WebsiteController/fetch_district",
-                        method:"POST",
-                        data:{cityid:cityid},
-                        success:function(data)
-                        {
-                         $('#districtid').html(data);
-                         
-                        }
-                       });
-                      }
-                      else
-                      {
-                       $('#districtid').html('<option value="">Select District</option>');
-                       
-
-                      }
-                     });
-                     
-                    });
-                    </script>
+<script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+<script type="text/javascript">
+  <?php if($this->session->flashdata('save_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Saved successfully');
+    });
+  <?php } ?>
+</script>
+                   
 
                  

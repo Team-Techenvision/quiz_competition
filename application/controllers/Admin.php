@@ -38,8 +38,10 @@ class Admin extends CI_Controller{
   }
 
   public function dashboard(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+     $quizweb_admin_id = $this->session->userdata('quizweb_admin_id');
+   
+    if($quizweb_admin_id == '' ){ header('location:'.base_url().'Admin'); }
+   
     $this->load->view('Admin/dashboard');
   }
 
@@ -56,10 +58,10 @@ class Admin extends CI_Controller{
   //   $this->load->view('Admin/company_information_list',$data);
   // }
   public function company_information_list(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_admin_id == '' && $out_company_id == ''){ header('location:'.base_url().'Admin'); }
+    $quizweb_admin_id = $this->session->userdata('quizweb_admin_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_admin_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'Admin'); }
 
     $data['company_list'] = $this->Admin_Model->company_list($out_company_id,'company_id','ASC','company');
     // $this->load->view('Admin/head', $data);
@@ -70,10 +72,10 @@ class Admin extends CI_Controller{
 
  public function company_information() {
 
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_admin_id == '' && $out_company_id == ''){ header('location:'.base_url().'Admin'); }
+     $quizweb_admin_id = $this->session->userdata('quizweb_admin_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_admin_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'Admin'); }
 
          $this->form_validation->set_rules('company_name', 'name', 'trim|required');
             if ($this->form_validation->run() != FALSE) {
@@ -148,10 +150,10 @@ class Admin extends CI_Controller{
   
   // Edit Company...
   public function edit_company($company_id){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_admin_id == '' && $out_company_id == ''){ header('location:'.base_url().'Admin'); }
+     $quizweb_admin_id = $this->session->userdata('quizweb_admin_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_admin_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'Admin'); }
 
     $this->form_validation->set_rules('company_name', 'company_name', 'trim|required');
     $this->form_validation->set_rules('company_address', 'company_address', 'trim|required');

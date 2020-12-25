@@ -24,7 +24,7 @@
     <!-- plugin scripts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&display=swap" rel="stylesheet">
+ 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.carousel.min.css">
@@ -154,318 +154,25 @@
                 </div>
 
  <!---------------------------          Login Modal        ------------------------------------ -->
- <style type="text/css">
-        .form {
-  position: relative;
-  text-align: center;
-  background: #fff;
-  width: 310px;
-  height: 470px;
-  border-radius: 5px;
-  padding: 30px 20px 0 20px;
-  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
-}
-.p {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 12px;
-  color: #87613d;
-  margin-bottom: 40px;
-}
-​
-.p > span {
-  padding-top: 3px;
-  display: block;
-  font-weight: 400;
-  font-size: 9px;
-}
-.h3 {
-  font-family: 'Dosis';
-  font-size: 35px;
-  text-transform: uppercase;
-  color: #87613d;
-  margin-bottom: 30px;
-}
-.input,
-.button{
-  outline: none !important; 
-}
-.button.fb {
-  border: none;
-  background: #3b5998;
-  width: 160px;
-  height: 25px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  border-radius: 4px;
-  border: 1px solid #29487d;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition:all 0.3s linear;
-}
-.button.fb:hover {
-  background: #fff;
-  color: #3b5998;
-}
 
-.button.form-btn {
-  position: absolute;
-  width: 50%;
-  height: 60px;
-  bottom: 0;
-  border: 0;
-  font-family: 'Dosis';
-  font-size: 24px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.button.form-btn.sx {
-  left: 0;
-  border-radius: 0 0 0 5px;
-  background-color: rgba(255, 125, 0, 0.35);
-  color: #fff;
-  transition:all 0.3s linear;
-}
-
-.button.form-btn.sx:hover {
-  background-color:rgba(255, 125, 0, 0.65);
-  color: #fff;
-}
-
-.button.form-btn.sx.back {
-  background-color: rgba(0, 0, 0, 0.15);
-  transition:all 0.3s linear;
-}
-
-.button.form-btn.sx.back:hover {
-  background-color: rgba(0, 0, 0, 0.35);
-}
-
-.button.form-btn.dx {
-  right: 0;
-  border-radius: 0 0 5px 0;
-  background-color: #ff7d00;
-  color: #fff;
-}
-
-.input {
-  border: none;
-  border-bottom: 1px solid #ffc185;
-  width: 85%;
-  font-family: 'Roboto';
-  color: #ff7d00;
-  text-align: center;
-  font-size: 21px;
-  font-weight:100;
-  margin-bottom:25px;
-}
-::-webkit-input-placeholder {
-   color: #ffc185;
-  font-family: 'Roboto';
-  font-weight:100;
-}
-
-:-moz-placeholder {
-   color: #ffc185;  
-  font-family: 'Roboto';
-  font-weight:100;
-}
-
-::-moz-placeholder {
-   color: #ffc185;  
-  font-family: 'Roboto';
-  font-weight:100;
-}
-
-:-ms-input-placeholder {  
-   color: #ffc185; 
-  font-family: 'Roboto';
-  font-weight:100;
-}
-.signIn input,
-.signUp .w100 {
-  width: 100%;
-}
-
-.signIn{
-    z-index: 1;
-    transform: perspective(100px) translate3d(100px, 0px, -30px);
-    opacity: 0.5;
-}
-
-.signUp {
-  z-index: 2;
-}
-
-.active-dx{
-  animation-name: foregrounding-dx;
-  animation-duration: 0.9s;
-  animation-fill-mode: forwards;
-}
-
-.active-sx{
-  animation-name: foregrounding-sx;
-  animation-duration: 0.9s;
-  animation-fill-mode: forwards;
-}
-
-.inactive-dx{
-  animation-name: overshadowing-dx;
-  animation-duration: 0.9s;
-  animation-fill-mode: forwards;
-}
-
-.inactive-sx{
-  animation-name: overshadowing-sx;
-  animation-duration: 0.9s;
-  animation-fill-mode: forwards;
-}
-@keyframes overshadowing-dx {
-  0%{
-    z-index:2;
-    transform: perspective(100px) translate3d(0px, 0px, 0px);
-    opacity: 1;
-    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
-  }
-  100%{
-    z-index: 1;
-    transform: perspective(100px) translate3d(100px, 0px, -30px);
-    opacity: 0.5;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
-  }
-}
-
-@keyframes overshadowing-sx {
-  0%{
-    z-index:2;
-    transform: perspective(100px) translate3d(0px, 0px, 0px);
-    opacity: 1;
-    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
-  }
-  100%{
-    z-index: 1;
-    transform: perspective(100px) translate3d(-100px, 0px, -30px);
-    opacity: 0.5;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
-  }
-}
-
-@keyframes foregrounding-dx {
-  0%{
-    z-index:1;
-    transform: perspective(100px) translate3d(100px, 0px, -30px);
-    opacity: 0.5;
-  }
-  50%{
-    z-index:2;
-    transform: perspective(100px) translate3d(400px, 0px, -30px);
-  }
-  100%{
-    z-index:2;
-    transform: perspective(100px) translate3d(0px, 0px, 0px);
-    opacity: 1;
-  }
-}
-
-@keyframes foregrounding-sx {
-  0%{
-    z-index:1;
-    transform: perspective(100px) translate3d(-100px, 0px, -30px);
-    opacity: 0.5;
-  }
-  50%{
-    z-index:2;
-    transform: perspective(100px) translate3d(-400px, 0px, -30px);
-  }
-  100%{
-    z-index:2;
-    transform: perspective(100px) translate3d(0px, 0px, 0px);
-    opacity: 1;
-  }
-}
-​
-      </style>
 <div class="modal fade " style="" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered " role="document">
-    <div class="modal-content form">
+    <div class="modal-content logincontent">
      
 
-      <div class="modal-body ">
+      <div class="modal-body con ">
+
        
-          <form class="signUp ">
-            <h3 class="h3">Create Your Account</h3>
-            <p class="p">Just enter your email address</br>and your password for join.</p>
-            <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' />
-            <input class="input " type="password" placeholder="Insert Password" reqired />
-            <input class="input " type="password" placeholder="Verify Password" reqired />
-            <button class="form-btn button sx log-in" type="button">Log In</button>
-            <button class="form-btn button dx" type="submit">Sign Up</button>
-         </form>
-
-            <!-- <form class="signIn">
-            <h3>Welcome</br>Back !</h3>
-            <button class="fb" type="button">Log In With Facebook</button>
-            <p>- or -</p>
-            <input type="email" placeholder="Insert eMail" autocomplete='off' reqired />
-            <input type="password" placeholder="Insert Password" reqired />
-            <button class="form-btn sx back" type="button">Back</button>
-            <button class="form-btn dx" type="submit">Log In</button>
-          </form>  -->
-    
-        
-      </div>
-    </div>
-  </div>
-
-<script type="text/javascript">
-  $(".log-in").click(function(){
-  $(".signIn").addClass("active-dx");
-  $(".signUp").addClass("inactive-sx");
-  $(".signUp").removeClass("active-sx");
-  $(".signIn").removeClass("inactive-dx");
-});
-
-$(".back").click(function(){
-  $(".signUp").addClass("active-sx");
-  $(".signIn").addClass("inactive-dx");
-  $(".signIn").removeClass("active-dx");
-  $(".signUp").removeClass("inactive-sx");
-});
-</script>
-
-                                <!-- Registration Modal -->
-<div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Registration Information
-</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-     
-      <div class="modal-body modal-bodyy">
-    
-        <form id="form_action" role="form" action="" method="post">
-                <div class="card-body row">
-                  <div class="form-group col-md-12">
-                    <input type="text" class="form-control txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Participant Name" required>
-                  </div>
-                   
-                  <div class="form-group col-md-6">
-
-                   <?php
-                      if(isset($user_pincode)){?>
-
-                      <input type="text" class="form-control required title-case text" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" disabled="">
-                       <?php }?> 
-                      <select name="user_pincode" id="user_pincode"class="form-control" required="">
+          <form class="signUp form" method="post" action="<?php echo base_url(); ?>WebsiteController/add_registration" autocomplete='off'>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <h3 class="h3">Create Your Account</h3>
+              <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
+              <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
+              <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Participant Name" reqired />
+             <!--  <input class="input" type="number" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" reqired /> -->
+               <select name="user_pincode" id="user_pincode"class="input" required="">
                     <option value="">Select Pincode</option>
                    <?php foreach($pincode as $pin)
                      {
@@ -475,42 +182,77 @@ $(".back").click(function(){
                       }
                      ?>   
                     
-                  </select>
-                  </div>
-                   <div class="form-group col-md-6">
-                    <input type="number" class="form-control user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Whatsapp No." required>
-                  </div>
-                  <div class="form-group form-check col-md-12">
-                  <label class="form-check-label " style="margin-left: 20px;">
-                    <input class="form-check-input title-case " style ="margin-top: 10px;     margin-bottom: -10px;" type="checkbox" name="remember" required> I agree <label class="text-primary t">Data Protection Policy</label> 
-                  </label>
-                </div>
-                <div class="form-group col-md-12" style="margin-top: -12px;  margin-left: 6px;">
-                  <label >Already have account  &nbsp; <a class="text-primary t" href="<?php echo base_url(); ?>WebsiteController/login">login now</a></label>
-                  </div>
-                
-                </div>                           
-                <!-- /.card-body -->
-               
-             
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
-        <?php if(isset($update)){ ?>
-                    <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                  <?php } else{ ?>
-                    <button id="btn_save" type="submit"  class="btn btn-success px-4">Register</button>
-                  <?php } ?>
-                  <a href="" class="btn btn-default ml-4"  onclick="this.form.reset();" data-dismiss="modal">Cancel</a>
-      </div>
- </form>
+                </select>
+                 <input type="number" class="input user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No." required />
 
-      <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+              <button class="form-btn button sx log-in" type="button">Log In</button>
+              <button class="form-btn button dx" type="submit">Sign Up</button>
+          </form>
+
+         <form class="signIn form" method="post" action="<?php echo base_url(); ?>WebsiteController/login" autocomplete='off'>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="h3">Welcome</br>Back !</h3>
+            <button class=" fb" type="button">Log In With Facebook</button>
+            <p class="p">- or -</p>
+            <input class="input" type="user_mobile"  name="user_mobile" id="user_mobile"  placeholder="Enter Mobile No" autocomplete='off' reqired />
+            <span class="text-red"> <?php echo form_error('user_mobile'); ?> </span>
+            <!-- <input class="input" type="password" placeholder="Insert Password" reqired /> -->
+          <button class="form-btn button sx back" type="button">Back</button>
+            <button class="form-btn button dx" type="submit">Log In</button>
+            <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
+                Invalid Information
+            </div>
+          </form> 
+     
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+                </div>
+                <!-- /.container -->
+            </nav>
+            <!-- <div class="site-header__decor">
+                <div class="site-header__decor-row">
+                    <div class="site-header__decor-single">
+                        <div class="site-header__decor-inner-1"></div> --><!-- /.site-header__decor-inner -->
+                    <!-- </div> --><!-- /.site-header__decor-single -->
+                   <!--  <div class="site-header__decor-single">
+                        <div class="site-header__decor-inner-2"></div> --><!-- /.site-header__decor-inner -->
+                   <!--  </div> --><!-- /.site-header__decor-single -->
+                   <!--  <div class="site-header__decor-single">
+                        <div class="site-header__decor-inner-3"></div> --><!-- /.site-header__decor-inner -->
+                    <!-- </div> --><!-- /.site-header__decor-single -->
+               <!--  </div> --><!-- /.site-header__decor-row -->
+            <!-- </div> --><!-- /.site-header__decor -->
+        </header><!-- /.site-header -->
+  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> 
+<!-- jQuery -->
+<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
+ <script type="text/javascript">
+<?php if($this->session->flashdata('msg')){ ?>
+  $(document).ready(function(){
+    // alert();
+    $('.msg_invalid').show().delay(5000).fadeOut();
+  });
+<?php } ?>
+</script>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
   <script>
+
 var user_mobile21 = $('#user_mobile').val();
   $('.user_mobile').on('change',function(){
     var user_mobile = $(this).val();
@@ -533,26 +275,18 @@ var user_mobile21 = $('#user_mobile').val();
   });
 
 </script>
-      
-    </div>
-  </div>
-</div>
+<script type="text/javascript">
+  $(".log-in").click(function(){
+  $(".signIn").addClass("active-dx");
+  $(".signUp").addClass("inactive-sx");
+  $(".signUp").removeClass("active-sx");
+  $(".signIn").removeClass("inactive-dx");
+});
 
-                </div>
-                <!-- /.container -->
-            </nav>
-            <!-- <div class="site-header__decor">
-                <div class="site-header__decor-row">
-                    <div class="site-header__decor-single">
-                        <div class="site-header__decor-inner-1"></div> --><!-- /.site-header__decor-inner -->
-                    <!-- </div> --><!-- /.site-header__decor-single -->
-                   <!--  <div class="site-header__decor-single">
-                        <div class="site-header__decor-inner-2"></div> --><!-- /.site-header__decor-inner -->
-                   <!--  </div> --><!-- /.site-header__decor-single -->
-                   <!--  <div class="site-header__decor-single">
-                        <div class="site-header__decor-inner-3"></div> --><!-- /.site-header__decor-inner -->
-                    <!-- </div> --><!-- /.site-header__decor-single -->
-               <!--  </div> --><!-- /.site-header__decor-row -->
-            <!-- </div> --><!-- /.site-header__decor -->
-        </header><!-- /.site-header -->
-
+$(".back").click(function(){
+  $(".signUp").addClass("active-sx");
+  $(".signIn").addClass("inactive-dx");
+  $(".signIn").removeClass("active-dx");
+  $(".signUp").removeClass("inactive-sx");
+});
+</script>

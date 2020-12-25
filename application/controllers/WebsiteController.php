@@ -20,9 +20,9 @@ class WebsiteController extends CI_Controller{
     $this->form_validation->set_rules('user_mobile', 'user_mobile', 'trim|required');
     // $this->form_validation->set_rules('user_otp', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
-      $this->load->view('Website/Include/head');
-      $this->load->view('Website/login');
-     $this->load->view('Website/Include/footer');
+     //  $this->load->view('Website/Include/head');
+     //  $this->load->view('Website/index');
+     // $this->load->view('Website/Include/footer');
 
     } else{
       $user_mobile = $this->input->post('user_mobile');
@@ -32,8 +32,9 @@ class WebsiteController extends CI_Controller{
    
       // print_r($login);
       if($login == null){
+        // alert("login_error");
         $this->session->set_flashdata('msg','login_error');
-        header('location:'.base_url().'WebsiteController/login');
+        header('location:'.base_url().'WebsiteController');
       } else{
         echo 'null not';
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
@@ -82,10 +83,11 @@ class WebsiteController extends CI_Controller{
 
   // Add add_registration....
   public function add_registration(){
-     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
-    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+
+    //  $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    // if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->form_validation->set_rules('user_name', 'First user_name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
@@ -93,20 +95,21 @@ class WebsiteController extends CI_Controller{
         'user_pincode' => $this->input->post('user_pincode'),
         'user_mobile' => $this->input->post('user_mobile'),
         'user_name' => $this->input->post('user_name'),
-        'user_addedby' => $quizweb_user_id,
-        'is_admin' => 1,
+        // 'user_addedby' => $quizweb_user_id,
+        'is_admin' => 3,
+        'roll_id' => 3,
       );
       // print_r($save_data);
       $this->Website_Model->save_data('user',$save_data);
       $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'WebsiteController/login');
+      header('location:'.base_url().'WebsiteController');
     }
     $data['pincode'] = $this->Website_Model->fetch_pincodelist();
 
     // print_r($data);
 
     $this->load->view('Website/Include/head',$data);
-    $this->load->view('Website/registration',$data);
+    $this->load->view('Website/index',$data);
     $this->load->view('Website/Include/footer',$data);
   }
 
@@ -124,7 +127,7 @@ class WebsiteController extends CI_Controller{
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->form_validation->set_rules('user_name', 'name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = array(
@@ -158,7 +161,7 @@ class WebsiteController extends CI_Controller{
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->Website_Model->delete_info('user_id', $user_id, 'user');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'WebsiteController/user_list');
@@ -168,15 +171,13 @@ class WebsiteController extends CI_Controller{
 
 
 
-
- // Add New Profile....
-  public function add_profile(){
-
+public function insert_profiledata(){
 
    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
@@ -188,8 +189,42 @@ class WebsiteController extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-        'competitionid' => $this->input->post('competitionid'),
-        // 'user_addedby' => $quizweb_user_id,
+        'competitionid' => $this->input->post('competition_id'),
+        'user_id' => $quizweb_user_id,
+        'created_date' => date('Y-m-d H:i:s'),
+      );
+      // print_r($save_data);
+      $this->Website_Model->save_data('profile',$save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'WebsiteController');
+    }
+
+
+
+}
+ // Add New Profile....
+  public function add_profile(){
+
+
+
+   $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $save_data = array(
+       
+        'parentname' => $this->input->post('parentname'),
+        'age' => $this->input->post('age'),
+        'emailid' => $this->input->post('emailid'),
+        'grade' => $this->input->post('grade'),
+        'schoolcollegename' => $this->input->post('schoolcollegename'),
+        'address' => $this->input->post('address'),
+        'pincode' => $this->input->post('pincode'),
+        'competition_id' => $this->input->post('competitionid'),
+        'user_id' => $quizweb_user_id,
+        'created_date' => date('Y-m-d H:i:s'),
       );
       // print_r($save_data);
       $this->Website_Model->save_data('profile',$save_data);
@@ -213,7 +248,7 @@ class WebsiteController extends CI_Controller{
      $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $data['profile_list'] = $this->Website_Model->profile_list('profileid');
 
 
@@ -227,7 +262,7 @@ class WebsiteController extends CI_Controller{
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = array(
@@ -272,7 +307,7 @@ class WebsiteController extends CI_Controller{
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->Website_Model->delete_info('profileid', $profileid, 'profile');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'WebsiteController/profile_list');

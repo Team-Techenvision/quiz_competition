@@ -28,6 +28,17 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
+    public function company_list(){
+     $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('company');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
    public function pincode_list($pincodeid){
     // $this->db->select('*');
      $this->db->select('pincodemaster.*,country.*,state.*');
@@ -340,7 +351,7 @@ function fetch_country1()
 
   public function user_list($company_id){
     $this->db->select('*');
-    $this->db->where('is_admin', 0);
+    $this->db->where('is_admin', 1);
     if($company_id != ''){
       $this->db->where('company_id', $company_id);
     }

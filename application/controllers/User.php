@@ -63,7 +63,8 @@ class User extends CI_Controller{
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
 
-    $data['company_list'] = $this->User_Model->get_list($quizweb_company_id,'1','ASC','company');
+    // $data['company_list'] = $this->User_Model->get_list($quizweb_company_id,'1','ASC','company');
+     $data['company_list'] = $this->User_Model->company_list($quizweb_company_id,'company_id','ASC','company');
     $this->load->view('Include/head', $data);
     $this->load->view('Include/navbar', $data);
     $this->load->view('User/company_information_list', $data);
@@ -173,6 +174,8 @@ class User extends CI_Controller{
         'user_email' => $this->input->post('user_email'),
         'user_password' => $this->input->post('user_password'),
         'user_addedby' => $quizweb_user_id,
+        'is_admin' => 1,
+        'roll_id' => 2,
       );
       $this->User_Model->save_data('user', $save_data);
       $this->session->set_flashdata('save_success','success');
@@ -361,6 +364,7 @@ class User extends CI_Controller{
                 // 'unit_id' =>  $this->input->post('unit_id'),
                 'title' => $this->input->post('title'),
                 'subtitle' => $this->input->post('subtitle'),
+                'slider_possition' =>1,
                 'created_date' => date('Y-m-d H:i:s'),
 
               
@@ -454,6 +458,7 @@ class User extends CI_Controller{
         'title' => $this->input->post('title'),
         'subtitle' => $this->input->post('subtitle'),
         'profile_image' => $this->input->post('profile_image'),
+        'slider_possition' =>1,
        
       );
 
@@ -740,6 +745,9 @@ class User extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
+         'competitionid' => $this->input->post('competitionid'),
+        'user_id' => $quizweb_user_id,
+        'created_date' => date('Y-m-d H:i:s'),
         // 'user_addedby' => $quizweb_user_id,
       );
       // print_r($save_data);
@@ -750,6 +758,7 @@ class User extends CI_Controller{
 
  
     $data['pin'] = $this->User_Model->fetch_pincode();
+    $data['competition'] = $this->User_Model->fetch_competition();
      
 
     $this->load->view('Include/head',$data);
@@ -789,6 +798,9 @@ class User extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
+         'competitionid' => $this->input->post('competitionid'),
+        'user_id' => $quizweb_user_id,
+        'created_date' => date('Y-m-d H:i:s'),
         // 'user_addedby' => $quizweb_user_id,
       );
       $this->User_Model->update_info('profileid', $profileid, 'profile', $update_data);
@@ -807,9 +819,11 @@ class User extends CI_Controller{
       $data['schoolcollegename'] = $info->schoolcollegename;
       $data['address'] = $info->address;
       $data['pincode'] = $info->pincode;
+      $data['competitionid'] = $info->competitionid;
     }
 
      $data['pin'] = $this->User_Model->fetch_pincode();
+     $data['competition'] = $this->User_Model->fetch_competition();
     
   
     

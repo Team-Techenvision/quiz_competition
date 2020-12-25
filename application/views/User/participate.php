@@ -32,12 +32,32 @@
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
                   </div>
+                   <div class="form-group col-md-12">
+                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
+                  </div>
                    <div class="form-group col-md-3">
                     <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                   </div>
 
-                  <div class="form-group col-md-6">
-                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
+                 
+                   <div class="form-group col-md-6">
+
+                  <?php
+                      if(isset($competitionid)){?>
+
+                      <input type="text" class="form-control required title-case text" name="competitionid" id="competitionid" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
+                       <?php }?>  
+                      <select name="competitionid" id="competitionid"class="form-control" required="">
+                    <option value="">Select Competition</option>
+                   <?php foreach($competition as $competition)
+                     {
+                          echo '<option value="'. $competition->competitionid.'" '.$selected.'>'. $competition->title.'</option>';
+
+                               
+                      }
+                     ?>   
+                    
+                  </select>
                   </div>
 
                    <div class="form-group col-md-3">
@@ -107,84 +127,6 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 
 
-<script>
-$(document).ready(function(){
- $('#countryid').change(function(){
-  var countryid = $('#countryid').val();
-  if(countryid != '')
-  {
-   $.ajax({
-    url:"<?php echo base_url(); ?>User/fetch_state1",
-    method:"POST",
-    data:{countryid:countryid},
-    success:function(data)
-    {
-      // alert(data);
-      // console.log(data);
-     $('#stateid').html(data);
-     $('#cityid').html('<option value="">Select City</option>');
-    }
-   });
-  }
-  else
-  {
-   $('#stateid').html('<option value="">Select State</option>');
-   $('#cityid').html('<option value="">Select City</option>');
-  }
- });
-
- $('#stateid').change(function(){
-  var stateid = $('#stateid').val();
-  if(stateid != '')
-  {
-   $.ajax({
-    url:"<?php echo base_url(); ?>User/fetch_city1",
-    method:"POST",
-    data:{stateid:stateid},
-    success:function(data)
-    {
-     $('#cityid').html(data);
-     $('#districtid').html('<option value="">Select District</option>');
-
-    }
-   });
-  }
-  else
-  {
-   $('#cityid').html('<option value="">Select City</option>');
-     $('#districtid').html('<option value="">Select District</option>');
-
-  }
- });
-
-  $('#cityid').change(function(){
-  var cityid = $('#cityid').val();
-  if(cityid != '')
-  {
-   $.ajax({
-    url:"<?php echo base_url(); ?>User/fetch_district1",
-    method:"POST",
-    data:{cityid:cityid},
-    success:function(data)
-    {
-     $('#districtid').html(data);
-     
-    }
-   });
-  }
-  else
-  {
-   $('#districtid').html('<option value="">Select District</option>');
-   
-
-  }
- });
- 
-});
-</script>
-
-
-</script>
 
 </body>
 </html>

@@ -65,14 +65,14 @@
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/company_information_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Company Information
                 </p>
               </a>
-            </li> -->
+            </li> 
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/user_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -91,12 +91,18 @@
                 <p>Competition</p>
               </a>
             </li> 
-           <!--  <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/tags_list" class="nav-link">
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/participate_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Tags</p>
+                <p>Participate</p>
               </a>
-            </li> -->
+            </li> 
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/add_assigncompetition" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Assign Competition</p>
+              </a>
+            </li> 
 
           </ul>
         </li>

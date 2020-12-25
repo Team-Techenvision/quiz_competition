@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2020 at 11:26 AM
+-- Generation Time: Dec 25, 2020 at 12:36 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -149,10 +149,10 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`company_id`, `company_name`, `company_address`, `company_city`, `company_state`, `company_district`, `company_statecode`, `company_pincode`, `company_mob1`, `company_mob2`, `company_email`, `company_website`, `company_pan_no`, `company_gst_no`, `company_lic1`, `company_lic2`, `company_start_date`, `company_end_date`, `company_logo`, `company_seal`, `date`) VALUES
-(1, 'Output Books', 'fghfgh dfgh', 'Kolhapur', 'Maharashtra', 'Kolhaput', 0, '111222', '9876543210', '9998887770', 'demo@email.com', 'www.ppp.com', '111', '222', '333', '444', '01-1-2019', '01-1-2021', 'company_logo_1_1607606087.jpg', '', '2020-12-10 13:14:47'),
+(1, 'Output Books', 'fghfgh dfgh', 'Kolhapur', 'Maharashtra', 'Kolhaput', 0, '111222', '9876543210', '9998887770', 'demo@email.com', 'www.ppp.com', '111', '222', '333', '444', '01-1-2019', '01-1-2021', 'company_logo_1_1608881143.JPG', '', '2020-12-25 07:25:43'),
 (2, 'a', 'kkk', '', '', '', 0, '410', '8888888888', '', 'manish@gmail.com', '', '', '', '', '', '', '', 'company_logo_2_1607668284.jpg', '', '2020-12-11 06:31:24'),
 (3, 'techenvision', 'rajarampuri kolhapur', '', '', '', 0, '416012', '7777777777', '', 'techenvision@gmail.com', '', '', '', '', '', '', '', 'company_logo_3_1607668265.jpg', '', '2020-12-11 06:31:05'),
-(4, 'Quiz Competition', 'D-38 IND Area Phase I Mohali, Chandigarh-160055, India', '', '', '', 0, '160055', '9041650633', '', 'support@cracslab.com', '', '', '', '', '', '', '', 'company_logo_1607672261.jpg', '', '2020-12-11 08:03:41');
+(4, 'Quiz Competition', 'D-38 IND Area Phase I Mohali, Chandigarh-160055, India', '', '', '', 0, '160055', '9041650633', '', 'support@cracslab.com', '', '', '', '', '', '', '', 'company_logo_4_1608890734.png', '', '2020-12-25 10:05:34');
 
 -- --------------------------------------------------------
 
@@ -189,17 +189,17 @@ CREATE TABLE `competition` (
 --
 
 INSERT INTO `competition` (`competitionid`, `title`, `subtitle`, `class`, `tabinputtextid`, `photo`, `termsandconditions`, `instruction`, `created_date`) VALUES
-(1, 'Diagnostic Quiz', 'The first quiz type is the Diagnostic Quiz.', 'Nursery - Class 1', 1, 'img8.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '2020-12-10 00:00:00'),
+(1, 'Diagnostic Quiz', 'Register to see competition topic', 'Nursery - Class 1', 1, 'img8.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '2020-12-10 00:00:00'),
 (2, 'Buzzfeed Style Quiz', 'Register to see competition topic', 'Nursery - Class 1', 1, 'img9.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '2020-12-10 00:00:00'),
 (3, 'Geography', 'Register to see competition topic', 'Nursery - Class 1', 2, 'img8.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '2020-12-10 00:00:00'),
 (4, 'Personality Quiz', 'Register to see competition topic', 'Nursery - Class 1', 2, 'img9.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '2020-12-10 00:00:00'),
-(5, ' True/False Quiz', 'Register to see competition topic', 'Nursery - Class 1', 1, 'img8.jpg', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2020-12-10 00:00:00'),
+(5, 'True/False Quiz', 'Register to see competition topic', 'Nursery - Class 1', 1, 'photo_5_1608880745.jpg', 'sad\r\n', 'assssssss', '2020-12-10 00:00:00'),
 (6, 'Assessment Quiz', 'Register to see competition topic', 'Nursery - Class 1', 3, 'img9.jpg', 'xxxx', 'xx', '0000-00-00 00:00:00'),
 (7, 'Matching Quiz', 'Register to see competition topic', 'Nursery - Class 1', 3, 'img8.jpg', 'xxxx', 'xx', '2020-12-10 00:00:00'),
-(8, 'Envirnment', 'Register to see competition topic', 'Nursery - Class 1', 1, 'img9.jpg', 'jjjjjjj', 'jjjjjjjjjj', '2020-12-10 00:00:00'),
 (9, 'IT', 'Register to see competition topic', 'Females(18+)', 5, 'photo_9_1608792745.jpg', 'aaaaaaaa', 'aaaaaaaaaa', '2020-12-14 05:45:55'),
 (10, 'first package', 'Register to see competition topic', 'Females(18+)', 5, 'photo_1608792873.png', 'das', 'sdf', '2020-12-24 06:54:32'),
-(11, 'second package', 'Register to see competition topic', 'Male(18+)', 4, 'photo_1608793042.jpg', 'aass', 'ddd', '2020-12-24 06:57:22');
+(11, 'second package', 'Register to see competition topic', 'Male(18+)', 4, 'photo_1608793042.jpg', 'aass', 'ddd', '2020-12-24 06:57:22'),
+(12, 'Maths Quiz', 'Register to see competition topic', 'class 6 - class 9', 3, 'photo_1608880583.jpg', 'sd', 'sd', '2020-12-25 07:16:23');
 
 -- --------------------------------------------------------
 
@@ -291,9 +291,21 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `address`, `pincode`, `competitionid`, `user_id`, `created_date`) VALUES
 (1, 'Manish Patil', '10', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, 1, 1, '0000-00-00'),
-(2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 2, '0000-00-00'),
-(3, 'Rohan Wordpress', '20', 'rohan@gmail.com', '4', 'english model school', 'kkk', 2, 3, 3, '0000-00-00'),
-(4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 0, 0, '0000-00-00');
+(2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 6, '0000-00-00'),
+(3, 'Rohan Wordpress', '20', 'rohan@gmail.com', '4', 'english model school', 'kkk', 2, 3, 11, '0000-00-00'),
+(4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 0, 12, '0000-00-00'),
+(5, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '2020-12-25'),
+(6, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '2020-12-25'),
+(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '2020-12-25'),
+(8, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 5, 0, '2020-12-25'),
+(9, 'Rohan Wordpress', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 5, 0, '2020-12-25'),
+(10, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '2020-12-25'),
+(11, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 1, '2020-12-25'),
+(12, 'manisha Pawar', '20', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 6, 6, '2020-12-25'),
+(13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 18, '2020-12-25'),
+(14, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 5, 16, '2020-12-25'),
+(15, 'Komal kadam', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 7, 17, '2020-12-25'),
+(16, 'kiran kadam', '10', 'kiran@gmail.com', '3', 'english model school', 'kkk', 1, 10, 55, '2020-12-25');
 
 -- --------------------------------------------------------
 
@@ -409,9 +421,40 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`, `user_address`, `user_pincode`, `user_city`, `user_email`, `user_mobile`, `user_password`, `user_otp`, `user_status`, `user_addedby`, `user_date`, `is_admin`) VALUES
-(1, 0, '', 2, 'Rohan Patil', '', 1, '', 'rohan@gmial.com', '9874563210', '123456', NULL, 'active', '1', '2020-12-22 05:01:12', 1),
-(2, 0, '', 2, 'techenvision', '', 1, '', '', '8956230147', '', NULL, 'active', '1', '2020-12-21 09:03:28', 1),
-(3, 0, '', 2, 'rohanwordpress', '', 2, '', '', '7777777777', '', NULL, 'active', '2', '2020-12-21 10:17:35', 1);
+(1, 1, '', 1, 'Admin', '', 1, 'Kolhapur', 'demo@email.com', '9876543210', '123456', NULL, 'active', 'Admin', '2020-12-25 06:58:39', 0),
+(6, 1, '', 2, 'Datta Mane', 'kop\r\n', 1, 'Kop', 'datta@mail.com', '9673454383', '123456', NULL, 'active', '0', '2020-12-25 06:58:44', 0),
+(11, 1, '', 2, 'rohan wordpress', 'kop', 2, 'kolhapur', 'rohan@gm.com', '897456210', '123', NULL, 'active', '0', '2020-12-25 06:58:48', 0),
+(12, 1, '', 2, 'techenvision', 'rajarampuri', 2, 'kop', 'techenvision@gmail.com', '874569214', 'tech', '11', 'active', '0', '2020-12-25 06:58:52', 0),
+(16, 0, '', 2, 'techenvision', '', 416012, '', '', '9999999999', '', '123654', 'active', '1', '2020-12-15 01:18:59', 1),
+(17, 0, '', 2, 'tech', '', 416012, '', '', '7777777777', '', '30', 'active', '1', '2020-12-15 01:19:03', 1),
+(18, 1, '', 2, 'abc', 'kk', 0, 'kolhapur', 'manish@gmail.com', '7845127845', '1234567', NULL, 'active', '1', '2020-12-15 01:17:00', 0),
+(19, 0, '', 2, 'rohan wordpress', '', 123, '', '', '6666666666', '', '123456', 'active', '1', '2020-12-15 01:19:05', 1),
+(20, 0, '', 2, 'rohan wordpress', '', 410, '', '', '9856325698', '', '10000', 'active', '1', '2020-12-15 01:19:07', 1),
+(21, 0, '', 2, 'rohan wordpress', '', 4444444, '', '', '8888888888', '', NULL, 'active', '1', '2020-12-15 01:19:10', 1),
+(23, 0, '', 2, 'rohan wordpress', '', 416, '', '', '744444444', '', NULL, 'active', '1', '2020-12-15 01:19:14', 1),
+(25, 0, '', 2, 'rohan wordpress', 'kkk', 410, 'kolhapur', 'rrr@mail.com', '7845211254', '123', NULL, 'active', '0', '2020-12-15 01:14:49', 0),
+(26, 0, '', 2, 'rohan wordpress', '', 410, '', '', '9874563214', '', NULL, 'active', '1', '2020-12-15 01:19:21', 1),
+(29, 0, '', 2, 'rohan wordpress', '', 410512, '', '', '9874563215', '', NULL, 'active', '1', '2020-12-15 01:19:23', 1),
+(30, 0, '', 2, 'rohan wordpress', '', 22, '', '', '2222222222', '', NULL, 'active', '1', '2020-12-15 01:19:25', 1),
+(33, 0, '', 2, 'rohan wordpress', '', 22, '', '', '2222', '', NULL, 'active', '1', '2020-12-15 01:19:28', 1),
+(34, 0, '', 2, 'rohan wordpress', '', 411, '', '', '1111111111', '', NULL, 'active', '1', '2020-12-15 01:19:31', 1),
+(35, 0, '', 2, 'rohan wordpress', '', 4160001, '', '', '8521478554', '', NULL, 'active', '1', '2020-12-15 01:19:35', 1),
+(36, 0, '', 2, 'rohan wordpress', '', 416, '', '', '9632587412', '', NULL, 'active', '1', '2020-12-15 01:19:38', 1),
+(37, 0, '', 2, 'rohan wordpress', '', 410, '', '', '9874563258', '', NULL, 'active', '1', '2020-12-15 01:19:40', 1),
+(39, 0, '', 2, 'rohan wordpress', '', 410, '', '', '7412589635', '', NULL, 'active', '1', '2020-12-15 01:19:42', 1),
+(41, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'rrr@gmail.com', '9865988950', '123', NULL, 'active', '1', '2020-12-15 01:16:50', 0),
+(42, 0, '', 2, 'rohan wordpress', '', 410, '', '', '7845121236', '', NULL, 'active', '1', '2020-12-15 01:36:10', 1),
+(43, 0, '', 2, 'rohan wordpress', '', 410126, '', '', '7896547890', '', NULL, 'active', '21', '2020-12-15 01:36:55', 1),
+(44, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'rrrr@aa.com', '9874563210', '123', NULL, 'active', '1', '2020-12-15 02:03:50', 0),
+(45, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'rr@r.v', '9845632108', '123', NULL, 'active', '1', '2020-12-15 02:29:23', 0),
+(46, 1, '', 2, 'abc', 'kkk', 0, 'kolhapur', 'rer@n.nn', '7771111111', '123', NULL, 'active', '1', '2020-12-15 02:34:15', 0),
+(47, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'eee@d.c', '122', '123', NULL, 'active', '1', '2020-12-15 03:59:06', 0),
+(48, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'jjj@f.cm', '44444', '123', NULL, 'active', '1', '2020-12-15 04:01:17', 0),
+(49, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'zzz@g.mm', '1555', '123', NULL, 'active', '1', '2020-12-15 04:10:20', 0),
+(50, 1, '', 2, 'Vinayak Baleghate', 'kolhapur', 0, 'kolhapur', 'vinayak@techenvision.in', '9874589632', '123456', NULL, 'active', '1', '2020-12-25 07:01:17', 1),
+(51, 1, '', 2, 'Rohan Patil', 'kolhapur', 0, 'kolhapur', 'rohan@techenvision.in', '7474747474', '123', NULL, 'active', '1', '2020-12-25 07:03:49', 1),
+(53, 1, '', 2, 'Sweta Mane', 'kolhapur', 0, 'kolhapur', 'sweta@gmail.com', '9988998899', 'sweta', NULL, 'active', '1', '2020-12-25 07:06:36', 1),
+(55, 0, '', 3, 'kiran kadam', '', 1, '', '', '8282828282', '', NULL, 'active', '', '2020-12-25 11:27:36', 3);
 
 -- --------------------------------------------------------
 
@@ -543,7 +586,7 @@ ALTER TABLE `assigncompetition`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -567,7 +610,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -591,7 +634,7 @@ ALTER TABLE `pincodemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -609,7 +652,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `winner`

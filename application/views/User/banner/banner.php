@@ -42,7 +42,7 @@
                  if(isset($profile_image)){?>
 
              
-                  <img id="blah" src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/<?php echo $profile_image; } ?>" alt="" height="150px" width="150px" />
+                  <img id="blah" src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" alt="" height="150px" width="150px" />
 
                   <!-- <input type="hidden" name="hiddenphoto" value="<?php if(!empty($data))echo $data[0]->profile_image; ?>"> -->
                    <?php }?>

@@ -40,7 +40,7 @@ if($_FILES['profile_image']['name']){
 $time = time();
 $image_name = 'profile_image_'.$time;
 
-$config['upload_path'] = 'assets/images/';
+$config['upload_path'] = 'assets/images/banner/';
 $config['allowed_types'] = 'jpg|jpeg|png|gif';
 $config['file_name'] = $image_name;
 $filename = $_FILES['profile_image']['name'];
