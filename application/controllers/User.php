@@ -924,6 +924,68 @@ class User extends CI_Controller{
       $this->load->view('Include/footer',$data);
     }
 
+
+/******************************* Assign Winner Information ****************************/
+
+ public function add_assignwinner(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $save_data = array(
+       
+        'competitionid' => $this->input->post('competitionid'),
+        'pincode' => $this->input->post('pincode'),
+        // 'pincode' => $this->input->post('pincode'),
+        // 'pincode' => $this->input->post('pincode'),
+        
+        
+        // 'user_addedby' => $quizweb_user_id,
+      );
+      // print_r($save_data);
+      $this->User_Model->save_data('assignwinner',$save_data);
+      $this->session->set_flashdata('save_success','success');
+      // header('location:'.base_url().'User/profile_list');
+    }
+
+  $data['competition'] = $this->User_Model->fetch_competition();
+  $data['pincode'] = $this->User_Model->fetch_pincode();
+  // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
+ // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
+
+
+  // $data['profile'] = $this->User_Model->fetch_profile();
+  // $data['city'] = $this->User_Model->fetch_city();
+
+   $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/assignwinner',$data);
+    $this->load->view('Include/footer',$data);
+  }
+   public function assignwinner_list(){
+          
+          // print_r($_POST);
+    $competitionid =$this->input->post('competitionid');
+    $pincode = $this->input->post('pincode');
+    // $user_id = $this->input->post('user_id');
+     
+     // print_r($user_id);   
+     
+    $data['assignwinner_list'] = $this->User_Model->assignwinner_list($competitionid,$pincode);
+
+    // print_r($data['assignwinner_list']);
+
+    $data['competitionid'] =  $competitionid;
+    $data['pincodeid'] =  $pincode;
+    // $data['user_id'] =  $user_id;
+
+      $this->load->view('Include/head',$data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/assignwinner',$data);
+      $this->load->view('Include/footer',$data);
+    }
 /******************************* Winner Information ****************************/
 
 

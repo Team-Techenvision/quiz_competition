@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 12:36 PM
+-- Generation Time: Dec 25, 2020 at 02:24 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -52,20 +52,34 @@ CREATE TABLE `assigncompetition` (
   `assigncompetitionid` int(11) NOT NULL,
   `competitionid` int(11) NOT NULL,
   `pincode` int(11) NOT NULL,
-  `user_id` int(50) NOT NULL
+  `user_id1` int(50) NOT NULL,
+  `user_id2` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `assigncompetition`
 --
 
-INSERT INTO `assigncompetition` (`assigncompetitionid`, `competitionid`, `pincode`, `user_id`) VALUES
-(1, 1, 30, 17),
-(2, 1, 30, 16),
-(3, 1, 30, 19),
-(4, 1, 33, 0),
-(5, 1, 33, 0),
-(6, 1, 33, 0);
+INSERT INTO `assigncompetition` (`assigncompetitionid`, `competitionid`, `pincode`, `user_id1`, `user_id2`) VALUES
+(1, 1, 1, 17, 19),
+(2, 2, 1, 50, 51),
+(3, 1, 2, 19, 53),
+(4, 1, 2, 0, 0),
+(5, 1, 1, 0, 0),
+(6, 1, 2, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignwinner`
+--
+
+CREATE TABLE `assignwinner` (
+  `assignwinnerid` bigint(50) NOT NULL,
+  `competitionid` bigint(50) NOT NULL,
+  `pincodeid` bigint(50) NOT NULL,
+  `user_id` bigint(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -305,7 +319,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 18, '2020-12-25'),
 (14, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 5, 16, '2020-12-25'),
 (15, 'Komal kadam', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 7, 17, '2020-12-25'),
-(16, 'kiran kadam', '10', 'kiran@gmail.com', '3', 'english model school', 'kkk', 1, 10, 55, '2020-12-25');
+(16, 'kiran kadam', '10', 'kiran@gmail.com', '3', 'english model school', 'kkk', 1, 10, 55, '2020-12-25'),
+(17, 'prathamesh chavan', '22', 'pppp@gmail.com', '3', 'english model school', 'kkk', 1, 10, 56, '2020-12-25');
 
 -- --------------------------------------------------------
 
@@ -454,7 +469,8 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (50, 1, '', 2, 'Vinayak Baleghate', 'kolhapur', 0, 'kolhapur', 'vinayak@techenvision.in', '9874589632', '123456', NULL, 'active', '1', '2020-12-25 07:01:17', 1),
 (51, 1, '', 2, 'Rohan Patil', 'kolhapur', 0, 'kolhapur', 'rohan@techenvision.in', '7474747474', '123', NULL, 'active', '1', '2020-12-25 07:03:49', 1),
 (53, 1, '', 2, 'Sweta Mane', 'kolhapur', 0, 'kolhapur', 'sweta@gmail.com', '9988998899', 'sweta', NULL, 'active', '1', '2020-12-25 07:06:36', 1),
-(55, 0, '', 3, 'kiran kadam', '', 1, '', '', '8282828282', '', NULL, 'active', '', '2020-12-25 11:27:36', 3);
+(55, 0, '', 3, 'kiran kadam', '', 1, '', '', '8282828282', '', NULL, 'active', '', '2020-12-25 11:27:36', 3),
+(56, 0, '', 3, 'prathamesh chavan', '', 1, '', '', '7417417417', '', NULL, 'active', '', '2020-12-25 11:53:06', 3);
 
 -- --------------------------------------------------------
 
@@ -486,6 +502,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `assigncompetition`
   ADD PRIMARY KEY (`assigncompetitionid`);
+
+--
+-- Indexes for table `assignwinner`
+--
+ALTER TABLE `assignwinner`
+  ADD PRIMARY KEY (`assignwinnerid`);
 
 --
 -- Indexes for table `banner`
@@ -583,10 +605,16 @@ ALTER TABLE `assigncompetition`
   MODIFY `assigncompetitionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `assignwinner`
+--
+ALTER TABLE `assignwinner`
+  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -634,7 +662,7 @@ ALTER TABLE `pincodemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -652,7 +680,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `winner`

@@ -107,6 +107,23 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
+    public function assignwinner_list($competitionid,$pincode){
+     // $this->db->select('*');
+    $this->db->select('assigncompetition.*,user.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'assigncompetition.user_id1 = user.user_id', 'left');
+    // $this->db->join('user', 'assigncompetition.user_id2 = user.user_id', 'left');
+    $this->db->where('competitionid', $competitionid);
+    $this->db->where('pincode', $pincode);
+
+    $this->db->from('assigncompetition');
+
+    
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+   }
    public function addassigncompetition_list($competitionid,$pincode){
     $this->db->select('profile.*,user.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
