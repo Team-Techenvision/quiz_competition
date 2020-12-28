@@ -38,6 +38,7 @@ class WebsiteController extends CI_Controller{
       } else{
         echo 'null not';
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+        $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
         header('location:'.base_url().'WebsiteController');
@@ -56,6 +57,9 @@ class WebsiteController extends CI_Controller{
     $data['banner_list'] = $this->Website_Model->banner_list('bannerid');
     $data['tab_list'] = $this->Website_Model->tab_list('tabinputtextid');
     $data['competition_list'] = $this->Website_Model->competition_list('competitionid','','','','','','competition');
+    $data['user_list'] = $this->Website_Model->get_list_by_id('user_id','','','','','','user');
+
+    // print_r($data['user_list']);
     $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
     $data['country'] = $this->Website_Model->fetch_country();
     $data['pincode'] = $this->Website_Model->fetch_pincodelist();

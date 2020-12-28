@@ -902,27 +902,28 @@ class User extends CI_Controller{
       $this->load->view('User/assigncompetition',$data);
       $this->load->view('Include/footer',$data);
     }
-   public function addassigncompetition_list(){
-    // print_r($_POST);
+    
+   // public function addassigncompetition_list(){
+   //  // print_r($_POST);
 
 
 
-     $competitionid=$this->input->post('competitionid');
-     $pincode=$this->input->post('pincode');
+   //   $competitionid=$this->input->post('competitionid');
+   //   $pincode=$this->input->post('pincode');
 
 
-     $data=$this->User_Model->addassigncompetition_list($competitionid,$pincode);
-     // print_r(json_encode($data));
-    // print_r($data);
+   //   $data=$this->User_Model->addassigncompetition_list($competitionid,$pincode);
+   //   // print_r(json_encode($data));
+   //  // print_r($data);
       
-    // $data['competitionid'] =  $competitionid;
-    // $data['pincodeid'] =  $pincode;
+   //  // $data['competitionid'] =  $competitionid;
+   //  // $data['pincodeid'] =  $pincode;
 
-      $this->load->view('Include/head',$data);
-      $this->load->view('Include/navbar', $data);
-      $this->load->view('User/assigncompetition',$data);
-      $this->load->view('Include/footer',$data);
-    }
+   //    $this->load->view('Include/head',$data);
+   //    $this->load->view('Include/navbar', $data);
+   //    $this->load->view('User/assigncompetition',$data);
+   //    $this->load->view('Include/footer',$data);
+   //  }
 
 
 /******************************* Assign Winner Information ****************************/

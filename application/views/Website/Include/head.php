@@ -1,6 +1,13 @@
 
 <?php
+   $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+  // $quizweb_user_name = $this->session->set_userdata('quizweb_user_name');
+  // $quizweb_company_id = $this->session->set_userdata('quizweb_company_id');
+  // $quizweb_roll_id = $this->session->set_userdata('quizweb_roll_id');
   $company_list = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
+  $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
+// print_r($user_list);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +45,13 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/website.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
+
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
     <style>
   /* Make the image fully responsive */
@@ -148,8 +162,31 @@
                          <div class="right-side-box" style="right:150px;">
                         
                     </div><!-- /.right-side-box -->
-              <div class="right-side-box" >
-                    <a class="login/register text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login </a> 
+              <div class="right-side-box ddl logout" >
+                  <!--   <a class="login/register text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login </a>  -->
+              <?php if(isset($user_list[0]->user_name)){ 
+               ?>
+                 <div class="dropdown ">
+    <button type="button" class="btn btnlogout dropdown-toggle" data-toggle="dropdown">
+      Welcome <?php echo $user_list[0]->user_name;?>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/logout">Logout</a>
+     
+    </div>
+  </div>
+                
+                   <!-- <?php print_r($quizweb_user_id); ?> -->
+                   <!--  <a type="button" ><?php echo $user_list[0]->user_name;?></a> -->
+                    
+                     <!-- <button type="button"  value=""><?php echo $user_list->quizweb_user_id;?></button> -->
+
+                 <?php }else{?>
+                   <!-- do something when doesn't exist -->
+
+                     <a class="login text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login </a> 
+              <?php }
+               ?>
                     <!-- <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration" data-toggle="modal" data-target="#registration">Register</a> -->
                 </div>
 
@@ -164,6 +201,7 @@
 
        
           <form class="signUp form" method="post" action="<?php echo base_url(); ?>WebsiteController/add_registration" autocomplete='off'>
+
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -201,7 +239,10 @@
             <span class="text-red"> <?php echo form_error('user_mobile'); ?> </span>
             <!-- <input class="input" type="password" placeholder="Insert Password" reqired /> -->
           <button class="form-btn button sx back" type="button">Back</button>
-            <button class="form-btn button dx" type="submit">Log In</button>
+          <button class="form-btn button dx" type="submit">Log In</button>
+            
+           
+
             <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
                 Invalid Information
             </div>

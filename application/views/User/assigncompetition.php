@@ -103,7 +103,7 @@
                     <td><?php echo $list->user_name ?></td>
                    
                     <td><div class="form-group col-md-12">
-                       <button class="btn btn-primary btnadd" id="btnAddCompetitor" value="<?php echo $list->user_id ?>" >Add Competitor</button>
+                       <button class="btn btn-primary btnadd" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add Competitor</button>
                      <!-- <input type="button" value="<?php echo $list->user_id ?>" id="btnadd"> -->
                       <!--  data-toggle="modal" data-target="#addcompetitionmodel" -->
                        </div>

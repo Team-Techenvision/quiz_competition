@@ -107,13 +107,20 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
+   public function add_competitor($user_id)
+ {
+  $this->db->select('*');
+  $this->db->where('user_id',$user_id);
+  $res2 = $this->db->get('user');
+  return $res2;
+ }
     public function assignwinner_list($competitionid,$pincode){
      // $this->db->select('*');
-    $this->db->select('assigncompetition.*,user.*');
+    $this->db->select('assigncompetition.*,user.user_id As user_id');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    $this->db->join('user', 'assigncompetition.user_id1 = user.user_id', 'left');
-    // $this->db->join('user', 'assigncompetition.user_id2 = user.user_id', 'left');
+    $this->db->join('user', 'assigncompetition.user_id1 As user1 = user_id', 'inner');
+    $this->db->join('user', 'assigncompetition.user_id2 As user2 = user_id', 'inner');
     $this->db->where('competitionid', $competitionid);
     $this->db->where('pincode', $pincode);
 
@@ -124,21 +131,21 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
-   public function addassigncompetition_list($competitionid,$pincode){
-    $this->db->select('profile.*,user.*');
-//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
-//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
-    $this->db->where('competitionid', $competitionid);
-    $this->db->where('pincode', $pincode);
+//    public function addassigncompetition_list($competitionid,$pincode){
+//     $this->db->select('profile.*,user.*');
+// //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+// //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+//     $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+//     $this->db->where('competitionid', $competitionid);
+//     $this->db->where('pincode', $pincode);
 
-    $this->db->from('profile');
+//     $this->db->from('profile');
 
     
-    $query = $this->db->get();
-    $result = $query->result();
-    return $result;
-   }
+//     $query = $this->db->get();
+//     $result = $query->result();
+//     return $result;
+//    }
  //  function fetch_profile()
  // {
  //  $this->db->order_by("parentname", "ASC");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 02:24 PM
+-- Generation Time: Dec 28, 2020 at 01:10 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -61,12 +61,12 @@ CREATE TABLE `assigncompetition` (
 --
 
 INSERT INTO `assigncompetition` (`assigncompetitionid`, `competitionid`, `pincode`, `user_id1`, `user_id2`) VALUES
-(1, 1, 1, 17, 19),
+(1, 1, 1, 1, 6),
 (2, 2, 1, 50, 51),
 (3, 1, 2, 19, 53),
-(4, 1, 2, 0, 0),
-(5, 1, 1, 0, 0),
-(6, 1, 2, 0, 0);
+(4, 1, 3, 0, 0),
+(5, 1, 3, 0, 0),
+(6, 1, 3, 0, 0);
 
 -- --------------------------------------------------------
 

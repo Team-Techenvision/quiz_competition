@@ -82,30 +82,32 @@
 
                      <input type="hidden" class="form-control required title-case text" name="pin" id="pin" value="<?php echo $pincodeid ?>" >
 
-
-
-                 <table id="" class="table table-bordered table-striped">
+                    
+                     <table id="" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-                  <th class="wt_50">#</th>
-                  <th>User Id</th>
-                  <th>User Name</th>
-                  <th class="wt_50">Action</th>
-                </tr>
+                
                 </thead>
                 <tbody>
                   <?php $i = 0;
                   foreach ($assignwinner_list as $list) {
                     $i++; ?>
                   <tr>
-                    <td><?php echo $i; ?></td> 
-                    <td><?php echo $list->user_id ?></td> 
-                    <td><?php echo $list->user_name ?></td>
+                   
+                    <td>   <div class="form-check-inline">
+                        <label class="form-check-label" for="radio1">
+                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="option1" checked><?php echo $list->user_name ?>
+                        </label>
+                      </div></td> 
+                    <td> <div class="form-check-inline">
+                        <label class="form-check-label" for="radio2">
+                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="option2"><?php echo $list->user_id2 ?>
+                        </label>
+                      </div></td>
                    
                     <td><div class="form-group col-md-12">
-                       <button class="btn btn-primary btnadd" id="btnAddCompetitor" value="<?php echo $list->user_id ?>" >Add Competitor</button>
-                     <!-- <input type="button" value="<?php echo $list->user_id ?>" id="btnadd"> -->
-                      <!--  data-toggle="modal" data-target="#addcompetitionmodel" -->
+                      
+                       <button type="submit" class="btn btn-primary">Submit</button>
+                    
                        </div>
                      </td>
                  
@@ -114,8 +116,15 @@
 
                 </tbody>
               </table> 
-              
-                 </div>
+
+                   
+                     
+                    
+                      
+
+                  
+
+                   </div>
                   <?php } ?>  
                </form> 
 
