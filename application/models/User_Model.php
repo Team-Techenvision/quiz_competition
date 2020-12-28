@@ -107,20 +107,20 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
-   public function add_competitor($user_id)
- {
-  $this->db->select('*');
-  $this->db->where('user_id',$user_id);
-  $res2 = $this->db->get('user');
-  return $res2;
- }
+ //   public function add_competitor($user_id)
+ // {
+ //  $this->db->select('*');
+ //  $this->db->where('user_id',$user_id);
+ //  $res2 = $this->db->get('user');
+ //  return $res2;
+ // }
     public function assignwinner_list($competitionid,$pincode){
      // $this->db->select('*');
-    $this->db->select('assigncompetition.*,user.user_id As user_id');
+    $this->db->select('assigncompetition.*,user.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    $this->db->join('user', 'assigncompetition.user_id1 As user1 = user_id', 'inner');
-    $this->db->join('user', 'assigncompetition.user_id2 As user2 = user_id', 'inner');
+    $this->db->join('user', 'assigncompetition.user_id1 = user.user_id', 'left');
+    // $this->db->join('user', 'assigncompetition.user_id2 = user.user_id', 'left');
     $this->db->where('competitionid', $competitionid);
     $this->db->where('pincode', $pincode);
 

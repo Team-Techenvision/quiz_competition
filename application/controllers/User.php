@@ -928,7 +928,9 @@ class User extends CI_Controller{
 
 /******************************* Assign Winner Information ****************************/
 
+
  public function add_assignwinner(){
+  print_r($_POST);
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -937,9 +939,9 @@ class User extends CI_Controller{
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
        
-        'competitionid' => $this->input->post('competitionid'),
-        'pincode' => $this->input->post('pincode'),
-        // 'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competition'),
+        'pincodeid' => $this->input->post('pin'),
+        'user_id' => $this->input->post('user_id'),
         // 'pincode' => $this->input->post('pincode'),
         
         
@@ -960,7 +962,7 @@ class User extends CI_Controller{
   // $data['profile'] = $this->User_Model->fetch_profile();
   // $data['city'] = $this->User_Model->fetch_city();
 
-   $this->load->view('Include/head',$data);
+    $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('User/assignwinner',$data);
     $this->load->view('Include/footer',$data);

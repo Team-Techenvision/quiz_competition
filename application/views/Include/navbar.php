@@ -103,6 +103,12 @@
                 <p>Assign Competition</p>
               </a>
             </li> 
+              <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/add_assignwinner" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Assign Winner</p>
+              </a>
+            </li> 
 
           </ul>
         </li>

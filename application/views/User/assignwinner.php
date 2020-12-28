@@ -29,7 +29,8 @@
               <!-- form start -->
               
                 <div class="card-body row">
-                     <form id="form_action" role="form" action="assignwinner_list" method="post" > <div class="row" >          
+                     <form id="form_action" role="form" action="assignwinner_list" method="post" > 
+                      <div class="row" >          
                      <div class="form-group col-md-6">
                    
 
@@ -74,9 +75,10 @@
                   </form>
                   <!-- table fetch Participant name -->
 
-                <form id="form_action" role="form" action="" method="post" >  
-                   <?php
+                               <?php
                                if(isset($assignwinner_list)){?>
+                <form id="form_action" role="form" action="<?php echo base_url(); ?>User/add_assignwinner" method="post" >  
+                 
                   <div class="form-group col-12">
                      <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php echo $competitionid ?>" >
 
@@ -95,18 +97,18 @@
                    
                     <td>   <div class="form-check-inline">
                         <label class="form-check-label" for="radio1">
-                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="option1" checked><?php echo $list->user_name ?>
+                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="1" checked><?php echo $list->user_name ?>
                         </label>
                       </div></td> 
                     <td> <div class="form-check-inline">
                         <label class="form-check-label" for="radio2">
-                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="option2"><?php echo $list->user_id2 ?>
+                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="2"><?php echo $list->user_id2 ?>
                         </label>
                       </div></td>
                    
                     <td><div class="form-group col-md-12">
                       
-                       <button type="submit" class="btn btn-primary">Submit</button>
+                       <button id="btn_save" type="submit" class="btn btn-primary px-4">Add</button>
                     
                        </div>
                      </td>
@@ -117,17 +119,10 @@
                 </tbody>
               </table> 
 
-                   
-                     
-                    
-                      
-
-                  
-
                    </div>
-                  <?php } ?>  
+                  
                </form> 
-
+               <?php } ?>  
                 </div>
                 <!-- /.card-body -->
                <!--  <div class="card-footer">
