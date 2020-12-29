@@ -40,7 +40,23 @@ class Website_Model extends CI_Model{
     return $result;
   }
 
-  
+  public function winner_list($assignwinnerid){
+     // $this->db->select('*');
+    $this->db->select('assignwinner.*,user.*,competition.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'assignwinner.user_id = user.user_id', 'left');
+    $this->db->join('competition', 'assignwinner.competitionid = competition.competitionid', 'left');
+    // $this->db->where('competitionid', $competitionid);
+    // $this->db->where('pincode', $pincode);
+
+    $this->db->from('assignwinner');
+
+    
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+   }
   public function competition_list($competitionid){
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabid');

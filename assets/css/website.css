@@ -220,7 +220,7 @@ img::before {
     bottom: 0;
     content: '';
     display: block;
-    background: linear-gradient(to left,#141b29, #0c111b );
+    /*background: linear-gradient(to left,#141b29, #0c111b );*/
   }
 
 .carousel-inner .carousel-caption{
@@ -1058,3 +1058,16 @@ font-family: 'Roboto', sans-serif;
 }
 
 /*login end*/
+
+.competitionwrapper{
+padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+} 
+.profilewrapper{
+  padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}

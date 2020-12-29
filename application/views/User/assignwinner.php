@@ -97,12 +97,12 @@
                    
                     <td>   <div class="form-check-inline">
                         <label class="form-check-label" for="radio1">
-                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="1" checked><?php echo $list->user_name ?>
+                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="1" checked><?php echo $list->user_name1 ?>
                         </label>
                       </div></td> 
                     <td> <div class="form-check-inline">
                         <label class="form-check-label" for="radio2">
-                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="2"><?php echo $list->user_id2 ?>
+                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="2"><?php echo $list->user_name2 ?>
                         </label>
                       </div></td>
                    

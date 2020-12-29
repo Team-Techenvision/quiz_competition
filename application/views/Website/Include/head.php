@@ -171,6 +171,9 @@
       Welcome <?php echo $user_list[0]->user_name;?>
     </button>
     <div class="dropdown-menu">
+      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/edit_profile" >My Profile</a>
+      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/competition_list">My Competition</a>
+      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/winner_list">Result</a>
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/logout">Logout</a>
      
     </div>

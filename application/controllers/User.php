@@ -552,7 +552,7 @@ class User extends CI_Controller{
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
         'created_date' => date('Y-m-d H:i:s'),
-        // 'user_addedby' => $quizweb_user_id,
+        'user_id' => $quizweb_user_id,
       );
       // print_r($save_data);
       $this->User_Model->save_data('competition',$save_data);
@@ -647,6 +647,7 @@ class User extends CI_Controller{
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
         'tabinputtextid' => $this->input->post('tabinputtextid'),
+        'user_id' => $quizweb_user_id,
 
 
         // 'user_addedby' => $quizweb_user_id,
@@ -930,13 +931,14 @@ class User extends CI_Controller{
 
 
  public function add_assignwinner(){
-  print_r($_POST);
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
+    $this->form_validation->set_rules('competition', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+  // print_r($_POST);
+
       $save_data = array(
        
         'competitionid' => $this->input->post('competition'),

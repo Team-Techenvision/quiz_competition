@@ -1,3 +1,4 @@
+<?php  $competition_list = $this->Website_Model->competition_list('competitionid','','','','','','competition'); ?>
 <!-- <style type="text/css">
     .a{
         background-color: rgba(255, 255, 255, 0.7);
@@ -101,10 +102,10 @@
 
             </div><!-- /.container -->
         </section><!-- /.about-two -->
-       
+
       <section class="featured">
         <div class="container">
-        <div class="row">   
+        <div class="row featuredrow">   
         <div class="col-md-12" align="center">
             <button class="theme-btn " data-filter="all">All</button>
 
@@ -124,7 +125,7 @@
           foreach ($competition_list as $list) {
         ?>
            <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabid;?> all ">
-              <div class="row">
+              <div class="row ">
               <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
                  <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
               
@@ -133,7 +134,8 @@
                     <h5> <?php echo $list->title;?>  </h5>
                     <h6> <?php echo $list->subtitle;?> </h6>
                     <p><button href="" data-toggle="modal" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
-                    <p href="" data-toggle="modal" data-target="#instructions_text"  class=""><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p>
+                    <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p>
+                   <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
                   </div>
                 </div>
               <div class="tag_inherit a" > <?php echo $list->tabinputtext;?>  </div>
@@ -241,8 +243,12 @@
                             </div>
                            
                             <div class="modal-body">
-                              Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer.
-                              <!-- <?php echo $list->instruction;?> --><!-- <?php echo $company_list[0]->company_address;?> -->
+                             <!--  Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer. -->
+                          
+                             <!-- <?php echo $list->competitionid;?> -->
+
+                            <?php echo $competition_list[0]->instruction;?> 
+                              <!-- <?php echo $company_list[0]->company_address;?> -->
                             </div>
                             
                           </div>

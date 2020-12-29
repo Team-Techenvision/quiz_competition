@@ -1,9 +1,9 @@
-<!-- <?php
-  $out_user_id = $this->session->userdata('out_user_id');
-  $out_company_id = $this->session->userdata('out_company_id');
-  $out_roll_id = $this->session->userdata('out_roll_id');
-  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $out_company_id, 'company');
-?> -->
+ <!-- <?php
+  // $out_user_id = $this->session->userdata('out_user_id');
+  // $out_company_id = $this->session->userdata('out_company_id');
+  // $out_roll_id = $this->session->userdata('out_roll_id');
+  // $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $out_company_id, 'company');
+?>  -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
