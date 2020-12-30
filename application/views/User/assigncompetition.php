@@ -35,7 +35,7 @@
 
 
                       <select name="competitionid" id="competitionid"class="form-control" required="">
-                    <option value="">Select Input Text</option>
+                    <option value="">Select Competition</option>
          
                     <?php foreach($competition as $competition)
                     {
@@ -53,7 +53,7 @@
 
 
                       <select name="pincode" id="pincode"class="form-control" required="">
-                    <option value="">Select Input Text</option>
+                    <option value="">Select Pincode</option>
          
                      <?php foreach($pincode as $pincode)
                      {

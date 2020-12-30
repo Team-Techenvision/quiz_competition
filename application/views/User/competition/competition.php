@@ -36,12 +36,20 @@
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control txtOnly"  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
                   </div>
-                   <div class="form-group col-md-12">
+                   <div class="form-group col-md-6">
                     <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required>
                   </div>
-                     <div class="form-group col-md-6">
+                  <div class="form-group col-md-3">
+                      <select name="competitiontypeid" id="competitiontypeid"class="form-control" >
+                    <option value="">Competition Type</option>
+                    <option value="1">All</option>
+                    <option value="2">one to one</option>
+                   
+                  </select>
+                  </div>
+                  <div class="form-group col-md-3">
                       <?php
-                      if(isset($photo)){?>
+                      if(isset($tabinputtextid)){?>
 
                        <input type="text" class="form-control required title-case text" name="tabinputtextid" id="tabinputtextid" value="<?php if(isset($tabinputtextid)){ echo $tabinputtextid; } ?>" disabled="">
                        <?php }?>
@@ -51,7 +59,7 @@
                       <select name="tabinputtextid" id="tabinputtextid"class="form-control" required="">
                     <option value="">Select Input Text</option>
          
-                <?php foreach($tabinputtext as $tabinputtext)
+                   <?php foreach($tabinputtext as $tabinputtext)
                     {
 
                     echo '<option value="'. $tabinputtext->tabinputtextid.'" '.$selected.'>'. $tabinputtext->tabinputtext.'</option>';
@@ -62,8 +70,41 @@
                      
                   </select>
                   </div>
+                    <div class="form-group col-md-6">
+                      <?php
+                      if(isset($levelid)){?>
+
+                       <input type="text" class="form-control required title-case " name="levelid" id="levelid" value="<?php if(isset($levelid)){ echo $levelid; } ?>" disabled="">
+                       <?php }?>
+
+
+
+                      <select name="levelid" id="levelid"class="form-control" required="">
+                    <option value="">Select Level</option>
+         
+                      <?php foreach($level as $level)
+                        {
+
+                        echo '<option value="'. $level->levelid.'" '.$selected.'>'. $level->levelname.'</option>';
+                                        
+                         }
+                        ?>  
+
+                     
+                  </select>
+                  </div>
+                   <div class="form-group col-md-3">
+                    <input type="number" class="form-control required title-case text " name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required>
+                  </div>
+                   <div class="form-group col-md-3">
+                    <input type="number" class="form-control required title-case text " name="toage" id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required>
+                  </div>
+                     
                   
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-8">
                  <input type="file" id="photo" name="photo" onchange="readURL(this);" />
 
                  <?php

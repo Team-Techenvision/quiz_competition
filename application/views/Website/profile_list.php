@@ -1,8 +1,4 @@
-<?php 
- $quizweb_user_id = $this->session->userdata('quizweb_user_id');
- $profile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','profile'); 
- 
- ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -41,10 +37,10 @@
                  <div class="row" >   
                   <div class="form-group col-md-3">
                   <?php if($profile_image != ''){  ?>
-                  <img id="blah" class="rounded-circle profileimg" src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
+                  <img id="blah" class="rounded-circle " src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
 
                   <?php }else{ ?>
-                  <img id="blah" class="rounded-circle profileimg" src="<?php echo base_url();?>assets/images/profile/profile1.jpg" alt="" height="150px" width="150px" />
+                  <img id="blah" class="rounded-circle " src="<?php echo base_url();?>assets/images/profile/profile1.jpg" alt="" height="150px" width="150px" />
                 <?php  }?>
 
                    <input type="file" id="profile_image" name="profile_image" onchange="readURL(this);" />
@@ -93,7 +89,24 @@
                                   <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required ></div>
                                 </div>
                                   </div>
-                             
+
+                             <div class="form-group col-md-12">
+                             <div class="row">
+                              <div class="col-md-3"><label for="inputName" class="form-label">Grade</label></div>
+                        
+                                 <div class="col-md-9">
+                                    <select name="grade" id="grade"class="form-control" >
+                                  <option value="">Select Grade</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                                 </div>
+                                </div>
+                                
+                              </div>
                                   
                                   
                                <div class="form-group col-md-12">
@@ -141,40 +154,6 @@
                </div>
               
                   </form>
-              <!-- <table id="example1" class="table table-bordered table-striped ">
-                <thead>
-                <tr>
-                  <th class="wt_50">#</th>
-                  <th>Parent Name</th>
-                  <th>Age</th>
-                  <th>Email ID</th>
-                  <th>School/College Name</th>
-                  <th>Address</th>
-                  <th>Pincode</th>
-                  <th class="wt_50">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <?php $i = 0;
-                  foreach ($profile_list as $list) {
-                    $i++; ?>
-                  <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $list->parentname ?></td>
-                    <td><?php echo $list->age ?></td>
-                    <td><?php echo $list->emailid ?></td>
-                    <td><?php echo $list->schoolcollegename ?></td>
-                    <td><?php echo $list->address ?></td>
-                    <td><?php echo $list->pincode ?></td>
-                    <td>
-                      <a href="<?php echo base_url(); ?>WebsiteController/edit_profile/<?php echo $list->profileid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>WebsiteController/delete_profile/<?php echo $list->profileid; ?>" onclick="return confirm('Delete this Profile');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
-                    </td>
-                  <?php } ?>
-                  </tr>
-
-                </tbody>
-              </table> -->
             </div>
             <!-- /.card-body -->
           </div>
@@ -186,7 +165,7 @@
     </section>
   </div>
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>-
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){

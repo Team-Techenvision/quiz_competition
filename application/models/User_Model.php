@@ -28,6 +28,27 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
+  public function level_list($levelid){
+    $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('levelmaster');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
+  function fetch_level()
+ {
+  
+  $this->db->order_by("levelid", "");
+  // $this->db->where('is_admin', 1);
+  $query = $this->db->get("levelmaster");
+  return $query->result();
+  // print_r($query);
+ }
+
     public function company_list(){
      $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -116,13 +137,13 @@ class User_Model extends CI_Model{
  // }
     public function assignwinner_list($competitionid,$pincode){
      // $this->db->select('*');
-    $this->db->select('assigncompetition.*,user.*');
+    $this->db->select('assigncompetition.*,user.*,competition.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
-//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('competition', 'assigncompetition.competitionid = competition.competitionid', 'left');
     $this->db->join('user', 'assigncompetition.user_id1 = user.user_id', 'left');
     // $this->db->join('user', 'assigncompetition.user_id2 = user.user_id', 'left');
-    $this->db->where('competitionid', $competitionid);
-    $this->db->where('pincode', $pincode);
+    $this->db->where('assigncompetition.competitionid', $competitionid);
+    $this->db->where('assigncompetition.pincode', $pincode);
 
     $this->db->from('assigncompetition');
 

@@ -55,7 +55,7 @@
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4" href="<?php echo base_url() ?>Banner/index">  Add</button>
+                    <button id="btn_save" type="submit" class="btn btn-success px-4" >  Add</button>
                   <?php } ?>
                   <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
                 </div>

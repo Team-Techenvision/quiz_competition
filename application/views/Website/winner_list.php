@@ -1,9 +1,4 @@
- <?php 
- $quizweb_user_id = $this->session->userdata('quizweb_user_id');
- $winner_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','assignwinner'); 
- 
- ?>
- <!-- $winner_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','assignwinner'); ?>  -->
+
 
 
 <!DOCTYPE html>
@@ -54,12 +49,13 @@
                 </thead>
                 <tbody>
                   <?php $i = 0;
+                  // print_r($winner_list);
                   foreach ($winner_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->competitionid ?></td>
-                    <td><?php echo $list->user_id ?></td>
+                    <td><?php echo $list->title ?></td>
+                    <td><?php echo $list->user_name ?></td>
                 
                   <?php } ?>
                   </tr>

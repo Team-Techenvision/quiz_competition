@@ -551,8 +551,13 @@ class User extends CI_Controller{
         'tabinputtextid' => $this->input->post('tabinputtextid'),
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
+        'competitiontypeid' => $this->input->post('competitiontypeid'),
+        'levelid' => $this->input->post('levelid'),
+        'fromage' => $this->input->post('fromage'),
+        'toage' => $this->input->post('toage'),
+        'enddate' => $this->input->post('enddate'),
         'created_date' => date('Y-m-d H:i:s'),
-        'user_id' => $quizweb_user_id,
+        
       );
       // print_r($save_data);
       $this->User_Model->save_data('competition',$save_data);
@@ -604,6 +609,7 @@ class User extends CI_Controller{
             
     }
       $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
+      $data['level'] = $this->User_Model->fetch_level();
 
 
     $this->load->view('Include/head',$data);
@@ -647,7 +653,13 @@ class User extends CI_Controller{
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
         'tabinputtextid' => $this->input->post('tabinputtextid'),
-        'user_id' => $quizweb_user_id,
+        'competitiontypeid' => $this->input->post('competitiontypeid'),
+        'levelid' => $this->input->post('levelid'),
+        'fromage' => $this->input->post('fromage'),
+        'toage' => $this->input->post('toage'),
+        'enddate' => $this->input->post('enddate'),
+        'created_date' => date('Y-m-d H:i:s'),
+       
 
 
         // 'user_addedby' => $quizweb_user_id,
@@ -705,9 +717,16 @@ class User extends CI_Controller{
       $data['termsandconditions'] = $info->termsandconditions;
       $data['instruction'] = $info->instruction;
       $data['tabinputtextid'] = $info->tabinputtextid;
+      $data['competitiontypeid'] = $info->competitiontypeid;
+      $data['levelid'] = $info->levelid;
+      $data['fromage'] = $info->fromage;
+      $data['toage'] = $info->toage;
+      $data['enddate'] = $info->enddate;
     }
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
+    $data['level'] = $this->User_Model->fetch_level();
+
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -882,7 +901,10 @@ class User extends CI_Controller{
     $this->load->view('Include/footer',$data);
   }
    public function assigncompetition_list(){
-          
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }      
           // print_r($_POST);
     $competitionid =$this->input->post('competitionid');
     $pincode = $this->input->post('pincode');
@@ -957,6 +979,8 @@ class User extends CI_Controller{
 
   $data['competition'] = $this->User_Model->fetch_competition();
   $data['pincode'] = $this->User_Model->fetch_pincode();
+
+  // print_r($data['competition']);
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
  // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
 
@@ -970,7 +994,10 @@ class User extends CI_Controller{
     $this->load->view('Include/footer',$data);
   }
    public function assignwinner_list(){
-          
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }     
           // print_r($_POST);
     $competitionid =$this->input->post('competitionid');
     $pincode = $this->input->post('pincode');
@@ -1034,6 +1061,88 @@ function fetch_profile()
     $this->load->view('User/winner',$data);
     $this->load->view('Include/footer',$data);
   }
+
+  /*******************************    Level Information      ****************************/
+
+  // Add New Level....
+  public function add_level(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('levelname', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $save_data = array(
+       
+        'levelname' => $this->input->post('levelname'),
+        'created_date' => date('Y-m-d H:i:s'),
+              
+      );
+      $this->User_Model->save_data('levelmaster', $save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'User/level_list');
+    }
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/level');
+    $this->load->view('Include/footer');
+  }
+
+  // User List....
+  public function level_list(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['level_list'] = $this->User_Model->level_list('levelid');
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/level_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Edit User....
+  public function edit_level($levelid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('levelname', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $update_data = array(
+               'levelname' => $this->input->post('levelname'),
+               'created_date' => date('Y-m-d H:i:s'),
+      );
+      $this->User_Model->update_info('levelid', $levelid, 'levelmaster', $update_data);
+      $this->session->set_flashdata('update_success','success');
+      header('location:'.base_url().'User/level_list');
+    }
+
+    $level_info = $this->User_Model->get_info('levelid', $levelid, 'levelmaster');
+    if($level_info == ''){ header('location:'.base_url().'User/level_list'); }
+    foreach($level_info as $info){
+      $data['update'] = 'update';
+      $data['levelname'] = $info->levelname;
+     
+    }
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/level',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Delete User....
+  public function delete_level($levelid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->User_Model->delete_info('levelid', $levelid, 'levelmaster');
+    $this->session->set_flashdata('delete_success','success');
+    header('location:'.base_url().'User/level_list');
+  }
+
+
 /*******************************  Check Duplication  ****************************/
   public function check_duplication(){
     $column_name = $this->input->post('column_name');

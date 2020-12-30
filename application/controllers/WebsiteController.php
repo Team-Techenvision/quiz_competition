@@ -264,9 +264,7 @@ public function insert_profiledata(){
 
   // Edit Profile....
 
-    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
-    // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+   
      
   public function edit_profile(){
     // print_r($_POST);
@@ -317,8 +315,8 @@ public function insert_profiledata(){
                    // print_r($insert_id);
 
                   $image['profile_image'] = $image_name.'.'.$ext;
-                  print_r($profile_image);
-                  $this->User_Model->update_info('user_id', $quizweb_user_id, 'profile', $image);
+                  // print_r($profile_image);
+                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'profile', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -349,9 +347,8 @@ public function insert_profiledata(){
       $data['profile_image'] = $info->profile_image;
     }
   $data['pin'] = $this->Website_Model->fetch_pincodelist();
-    
+  $profile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','profile'); 
 
-    
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/profile_list',$data);
     $this->load->view('Website/Include/footer',$data);
@@ -377,7 +374,10 @@ public function insert_profiledata(){
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
-    $data['competition_list'] = $this->Website_Model->competition_list('competitionid');
+    // $data['mycompetition_list'] = $this->Website_Model->mycompetition_list('profileid');
+     $data['mycompetition_list'] = $this->Website_Model->mycompetition_list($quizweb_user_id);
+
+    // print_r($data['mycompetition_list']);
 
     
   
@@ -387,16 +387,16 @@ public function insert_profiledata(){
     $this->load->view('Website/Include/footer',$data);
   }
 
-/*******************************  Competition list  ****************************/
+/*******************************  Winner list  ****************************/
 
-   // Competition List....
+   // Winner List....
   public function winner_list(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
-    $data['winner_list'] = $this->Website_Model->winner_list('assignwinnerid');
-
+    // $data['winner_list'] = $this->Website_Model->winner_list('user_id');
+    $data['winner_list']  = $this->Website_Model->resultwinner_list($quizweb_user_id); 
    // print_r($data['winner_list']);
 
     $this->load->view('Website/Include/head',$data);

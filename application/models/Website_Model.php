@@ -40,23 +40,36 @@ class Website_Model extends CI_Model{
     return $result;
   }
 
-  public function winner_list($assignwinnerid){
+  public function resultwinner_list($user_id){
      // $this->db->select('*');
     $this->db->select('assignwinner.*,user.*,competition.*');
-//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
-//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
     $this->db->join('user', 'assignwinner.user_id = user.user_id', 'left');
     $this->db->join('competition', 'assignwinner.competitionid = competition.competitionid', 'left');
-    // $this->db->where('competitionid', $competitionid);
-    // $this->db->where('pincode', $pincode);
+       $this->db->where('assignwinner.user_id', $user_id);
+    // $this->db->where('assignwinner.user_id', $quizweb_user_id);
 
     $this->db->from('assignwinner');
-
-    
+ 
     $query = $this->db->get();
     $result = $query->result();
     return $result;
    }
+    public function mycompetition_list($user_id){
+    // $this->db->select('*');
+    $this->db->select('profile.*,competition.*,user.*');
+    $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->where('profile.user_id', $user_id);
+    // $this->db->where('profile.user_id', $quizweb_user_id);
+    $this->db->from('profile');
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+  }
   public function competition_list($competitionid){
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabid');
@@ -95,6 +108,7 @@ class Website_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+ 
 
   public function profile_list($profileid){
     $this->db->select('*');
@@ -104,6 +118,7 @@ class Website_Model extends CI_Model{
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
     // }
+
     $this->db->from('profile');
     $query = $this->db->get();
     $result = $query->result();

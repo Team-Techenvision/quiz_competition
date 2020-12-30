@@ -36,7 +36,7 @@
 
 
                       <select name="competitionid" id="competitionid"class="form-control" required="">
-                    <option value="">Select Input Text</option>
+                    <option value="">Select Competition</option>
          
                     <?php foreach($competition as $competition)
                     {
@@ -54,7 +54,7 @@
 
 
                       <select name="pincode" id="pincode"class="form-control" required="">
-                    <option value="">Select Input Text</option>
+                    <option value="">Select Pincode</option>
          
                      <?php foreach($pincode as $pincode)
                      {
@@ -77,32 +77,35 @@
 
                                <?php
                                if(isset($assignwinner_list)){?>
+
                 <form id="form_action" role="form" action="<?php echo base_url(); ?>User/add_assignwinner" method="post" >  
                  
                   <div class="form-group col-12">
                      <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php echo $competitionid ?>" >
 
                      <input type="hidden" class="form-control required title-case text" name="pin" id="pin" value="<?php echo $pincodeid ?>" >
-
+                   <?php $i = 0;
+                  foreach ($assignwinner_list as $list) {
+                    $i++; 
+                  if($list->competitiontypeid==2){
+                    ?>
                     
-                     <table id="" class="table table-bordered table-striped">
+                     <table id="type2" class="table table-bordered table-striped">
                 <thead>
                 
                 </thead>
                 <tbody>
-                  <?php $i = 0;
-                  foreach ($assignwinner_list as $list) {
-                    $i++; ?>
+                  
                   <tr>
                    
                     <td>   <div class="form-check-inline">
                         <label class="form-check-label" for="radio1">
-                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="1" checked><?php echo $list->user_name1 ?>
+                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="<?php echo $list->user_id1 ?>" checked><?php echo $list->user_name1 ?>
                         </label>
                       </div></td> 
                     <td> <div class="form-check-inline">
                         <label class="form-check-label" for="radio2">
-                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="2"><?php echo $list->user_name2 ?>
+                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="<?php echo $list->user_id2 ?>"><?php echo $list->user_name2 ?>
                         </label>
                       </div></td>
                    
@@ -114,10 +117,43 @@
                      </td>
                  
                   </tr>
-                   <?php } ?>
+                   
 
                 </tbody>
               </table> 
+             <?php }else{?>
+
+                 <table id="type1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th class="wt_50">#</th>
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th class="wt_50">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><?php echo $i; ?></td> 
+                    <td><input class="form-check-input" type="checkbox" value="<?php echo $list->user_id1 ?>" id="flexCheckDefault"> <?php echo $list->user_id1 ?></td> 
+                    <td><?php echo $list->user_name1 ?></td>
+                   
+                    <td><div class="form-group col-md-12">
+                       <button class="btn btn-primary btnadd" type="submit" >Add</button>
+                     <!-- <input type="button" value="<?php echo $list->user_id ?>" id="btnadd"> -->
+                      <!--  data-toggle="modal" data-target="#addcompetitionmodel" -->
+                       </div>
+                     </td>
+                 
+                  </tr>
+                 
+
+                </tbody>
+              </table> 
+                <?php } }?>
+                 </div>
+                 
 
                    </div>
                   
@@ -150,7 +186,7 @@
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    
+  
 
 
 </body>
