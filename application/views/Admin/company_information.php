@@ -18,7 +18,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>COMPANY INFORMATION</h1>
+            <h1>WEBSITE INFORMATION</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -32,7 +32,7 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title">Company Information</h3>
+                <h3 class="card-title">Website Information</h3>
               </div>
                <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
               <div class="card-body row">

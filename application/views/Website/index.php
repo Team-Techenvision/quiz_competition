@@ -220,9 +220,9 @@
                                      <?php if(isset($update)){ ?>
                                         <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                                       <?php } else{ ?>
-                                        <button id="btn_save" style="margin-left: 20px;" type="submit" class="btn  px-4">Participate</button>
+                                        <button id="btn_save" onclick="return confirm('Are you sure to participate');" style="margin-left: 20px;" type="submit" class="btn btn-primary px-4">Participate</button>
                                       <?php } ?>
-                                      <a href="" class="btn btn-default ml-4" data-dismiss="modal">Cancel</a>
+                                      <a href="" class="btn btn-light ml-4" data-dismiss="modal">Cancel</a>
                            </div>
                            </form>
                             

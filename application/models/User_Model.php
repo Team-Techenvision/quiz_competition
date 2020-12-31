@@ -128,13 +128,23 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
- //   public function add_competitor($user_id)
- // {
- //  $this->db->select('*');
- //  $this->db->where('user_id',$user_id);
- //  $res2 = $this->db->get('user');
- //  return $res2;
- // }
+   public function addassigncompetition_list(){
+     // $this->db->select('*');
+    $this->db->select('profile.*,user.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    // $this->db->where('profile.user_id', $user_id);
+    // $this->db->where('pincode', $pincode);
+
+    $this->db->from('profile');
+
+    
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+   }
+ 
     public function assignwinner_list($competitionid,$pincode){
      // $this->db->select('*');
     $this->db->select('assigncompetition.*,user.*,competition.*');
@@ -265,16 +275,20 @@ function fetch_country1()
   return $output;
  }
 
-  public function competition_list($competitionid){
+  public function competition_list($competitionid,$enddate){
+     // $today = date('Y-m-d');
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabinputtext');
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
     // $this->db->join('city', 'competition.cityid = city.cityid', 'inner');
 
     // $this->db->where('slider_possition', 1);
-    // if($slider_possition != ''){
+    // if($enddate != ''){
     //   $this->db->where('slider_possition', $slider_possition);
     // }
+    // where date >= '2013-06-01 00:00:00' and date <= '2013-06-06 00:00:00'
+    // $this->db->where("(enddate <= " . now() . ")");
+    // $this->db->where('competition.strtotime($enddate) >= strtotime($today)', $enddate);
     $this->db->from('competition');
     $query = $this->db->get();
     $result = $query->result();
@@ -422,7 +436,7 @@ function fetch_country1()
   public function get_count($id_type,$company_id,$added_by,$mat_user_id,$status_col,$status_key,$tbl_name){
     $this->db->select($id_type);
     if($company_id != ''){
-      $this->db->where('company_id', $company_id);
+      $this->db->where('4', $company_id);
     }
     if($added_by != ''){
       $this->db->where($added_by, $mat_user_id);

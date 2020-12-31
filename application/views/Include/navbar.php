@@ -65,14 +65,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/company_information_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Company Information
-                </p>
-              </a>
-            </li> 
+            
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/user_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

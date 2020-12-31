@@ -47,11 +47,13 @@ class User extends CI_Controller{
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/dashboard');
-    $this->load->view('Include/footer');
+    $data['total_user'] =$this->User_Model->get_count('user_id','','','','','','user');
+    $data['total_banner'] =$this->User_Model->get_count('bannerid','','','','','','banner');
+    $data['total_competition'] =$this->User_Model->get_count('competitionid','','','','','','competition');
+    $this->load->view('Include/head', $data);
+    $this->load->view('Include/navbar', $data);
+    $this->load->view('User/dashboard', $data);
+    $this->load->view('Include/footer', $data);
   }
 
 /**************************      Company Information      ********************************/
@@ -556,6 +558,7 @@ class User extends CI_Controller{
         'fromage' => $this->input->post('fromage'),
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
+        'subjectstextarea' => $this->input->post('subjectstextarea'),
         'created_date' => date('Y-m-d H:i:s'),
         
       );
@@ -624,7 +627,7 @@ class User extends CI_Controller{
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $data['competition_list'] = $this->User_Model->competition_list('competitionid');
+    $data['competition_list'] = $this->User_Model->competition_list('competitionid','enddate');
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -658,6 +661,7 @@ class User extends CI_Controller{
         'fromage' => $this->input->post('fromage'),
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
+        'subjectstextarea' => $this->input->post('subjectstextarea'),
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -722,6 +726,7 @@ class User extends CI_Controller{
       $data['fromage'] = $info->fromage;
       $data['toage'] = $info->toage;
       $data['enddate'] = $info->enddate;
+      $data['subjectstextarea'] = $info->subjectstextarea;
     }
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
@@ -876,9 +881,9 @@ class User extends CI_Controller{
        
         'competitionid' => $this->input->post('competitionid'),
         'pincode' => $this->input->post('pincode'),
-        
-        
-        // 'user_addedby' => $quizweb_user_id,
+        'user_id1' => $this->input->post('user_id1'),
+        'user_id2' => $this->input->post('user_id2'),
+        'created_date' => date('Y-m-d H:i:s'),
       );
       // print_r($save_data);
       $this->User_Model->save_data('assigncompetition',$save_data);
@@ -926,27 +931,12 @@ class User extends CI_Controller{
       $this->load->view('Include/footer',$data);
     }
     
-   // public function addassigncompetition_list(){
-   //  // print_r($_POST);
+   public function addassigncompetition_list(){
+    // print_r($_POST);
+     $data = $this->User_Model->addassigncompetition_list();
+     echo (json_encode($data));
 
-
-
-   //   $competitionid=$this->input->post('competitionid');
-   //   $pincode=$this->input->post('pincode');
-
-
-   //   $data=$this->User_Model->addassigncompetition_list($competitionid,$pincode);
-   //   // print_r(json_encode($data));
-   //  // print_r($data);
-      
-   //  // $data['competitionid'] =  $competitionid;
-   //  // $data['pincodeid'] =  $pincode;
-
-   //    $this->load->view('Include/head',$data);
-   //    $this->load->view('Include/navbar', $data);
-   //    $this->load->view('User/assigncompetition',$data);
-   //    $this->load->view('Include/footer',$data);
-   //  }
+    }
 
 
 /******************************* Assign Winner Information ****************************/

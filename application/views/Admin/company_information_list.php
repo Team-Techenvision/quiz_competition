@@ -26,7 +26,7 @@ include('head.php');
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>VIEW ALL COMPANY INFORMATION</h4>
+            <h4>VIEW ALL WEBSITE INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -42,9 +42,9 @@ include('head.php');
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Company Information</h3>
+              <h3 class="card-title"><i class="fa fa-list"></i> List Website Information</h3>
               <div class="card-tools">
-                <a href="<?php echo base_url(); ?>Admin/company_information" class="btn btn-sm btn-block btn-primary">Add Company</a>
+                <a href="<?php echo base_url(); ?>Admin/company_information" class="btn btn-sm btn-block btn-primary">Add Website</a>
               </div>
 
             </div>
@@ -54,7 +54,7 @@ include('head.php');
                 <thead>
                 <tr>
                   <th>Sr. No.</th>
-                  <th>Company Name</th>
+                  <th>Website Name</th>
                   <th>Action</th>
                 </tr>
                 </thead>

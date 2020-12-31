@@ -13,7 +13,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>Company Information</h1>
+            <h1>Website Information</h1>
           </div>
           <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -34,7 +34,7 @@
           <div class="col-md-3 col-6">
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>15</h3>
+                <h3><?php echo $total_user; ?></h3>
                 <p>User Information</p>
               </div>
               <div class="icon">
@@ -46,25 +46,25 @@
           <div class="col-md-3 col-6">
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3>10</h3>
-                <p>Demo Information</p>
+                <h3><?php echo $total_banner; ?></h3>
+                <p>Banner Information</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="make_information_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="banner_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="small-box bg-green">
               <div class="inner">
-                <h3>5</h3>
-                <p>demo Information</p>
+                <h3><?php echo $total_competition; ?></h3>
+                <p>Competition Information</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="product_information_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3 col-6">

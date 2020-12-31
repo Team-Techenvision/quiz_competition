@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>Competition Information</h1>
+            <h1>Assign Competition Information</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -76,7 +76,7 @@
 
                    <!-- <form id="form_action" role="form" action="addassigncompetition_list" method="post" >  -->
                    <?php
-                               if(isset($assigncompetition_list)){?>
+                    if(isset($assigncompetition_list)){?>
                   <div class="form-group col-12">
                      <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php echo $competitionid ?>" >
 
@@ -84,7 +84,7 @@
 
 
 
-                 <table id="" class="table table-bordered table-striped">
+                 <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
@@ -103,10 +103,8 @@
                     <td><?php echo $list->user_name ?></td>
                    
                     <td><div class="form-group col-md-12">
-                       <button class="btn btn-primary btnadd" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add Competitor</button>
-                     <!-- <input type="button" value="<?php echo $list->user_id ?>" id="btnadd"> -->
-                      <!--  data-toggle="modal" data-target="#addcompetitionmodel" -->
-                       </div>
+                       <button class="btn btn-primary btnadd" name="user_id1" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add Competitor</button>
+                        </div>
                      </td>
                  
                   </tr>
@@ -126,7 +124,7 @@
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Add Competition</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Add Competitor</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -141,7 +139,8 @@
                                        <input type="text" class="form-control required title-case text" name="pincode1" id="pincode1" value="<?php if(isset($pincodeid)){ echo $pincodeid; } ?>" >
                                      </div>
                                   </div>
-                                    <table id="" class="table table-bordered table-striped">
+                                  <!-- <div id="compitiorlist"></div> -->
+                                     <table id="compitiorlist" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
                                           <th class="wt_50">#</th>
@@ -149,20 +148,7 @@
                                           <th class="wt_50">Action</th>
                                         </tr>
                                         </thead>
-                                      <tbody >
-                                         <!-- <?php $i = 0;
-                                          foreach ($assigncompetition_list as $list) {
-                                            $i++; ?>
-                                          <tr>
-                                            <td><?php echo $i; ?></td>
-                                            <td><?php echo $list->user_name ?></td>
-                                            <td>
-                                             <button class="btn btn-primary">Add</button>
-                                            </td>
-                                          
-                                          </tr>
-                                          <?php } ?>  -->
-                                        </tbody> 
+                                      
                                       </table>  
                                                         
                                 </form>
@@ -210,8 +196,12 @@
 // }
 
 $(document).ready(function(){
+
+   $('#dataTable').DataTable();
+
   $('.btnadd').click(function(){
     // alert('hii'); 
+    
     var competition=$('#competition').val();
     var pincodeid=$('#pin').val();
     var user_id=$(this).val();
@@ -219,29 +209,37 @@ $(document).ready(function(){
     // alert(competition);
     // alert(pincodeid);
     // alert(user_id);
-
         
        $.ajax({
-         type: 'post',
+        
           url: '<?php echo base_url(); ?>User/addassigncompetition_list',
-          data: {pincodeid: pincodeid}, 
-          // dataType: "json",
-       success: function(response){ 
-      // console.log(response);
+          type: 'POST',
+          data: {user_id: user_id}, 
+          dataType: "json",
+          success: function(response){ 
+      
+           var trHTML = '';
 
-      // alert(pincodeid);
-      // alert(response);
-      // Add response in Modal body
-      // $('.modal-body').html(response);
+          $.each(response, function (key,value) {
+             trHTML += 
+                '<tr><td>' + value.user_id + 
+                '</td><td>' + value.user_name + 
+                '</td><td>' +
+                       '<button class="btn btn-primary btnadd" name="user_id2" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add </button>'
+                        + '</td></tr>';     
+          });
 
-      // Display Modal
-      $('#addcompetitionmodel').modal('show'); 
-    }
-  });
+            $('#compitiorlist').append(trHTML);
+
+            $('#addcompetitionmodel').modal('show');
+       }
+    });
                 
    
   });
 });
+
+ 
 
 </script>
 

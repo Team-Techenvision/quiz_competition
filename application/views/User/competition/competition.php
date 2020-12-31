@@ -29,6 +29,17 @@
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
+                      <!--  <?php echo date('Y-m-d');  ?> -->
+                       <!-- <?php   
+                          $current_datetime = date('Y-m-d');
+                          $enddate = date("Y-m-d", strtotime($row['enddate'])); 
+                          if(strtotime($current_datetime) >= strtotime($enddate)){
+                              //I want to run some code here
+                            echo "true";
+                          }else{
+                            echo "false";
+                          }
+                        ?>  -->
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control required title-case text txtOnly" name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required>
                   </div>
@@ -36,6 +47,11 @@
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control txtOnly"  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
                   </div>
+                   <div class="form-group col-md-12">
+                      <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
+
+                    </div>
+           
                    <div class="form-group col-md-6">
                     <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required>
                   </div>
@@ -129,7 +145,7 @@
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
+                    <button id="btn_save"  type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
                   <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
                 </div>
@@ -149,6 +165,7 @@
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+  
   <script>
    
    $('.pis').bind("click" , function () {

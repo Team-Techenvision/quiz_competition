@@ -17,7 +17,7 @@ $page = "make_information_list";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>Company Information</h4>
+            <h4>Website Information</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -31,7 +31,7 @@ $page = "make_information_list";
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Company Information</h3>
+              <h3 class="card-title"><i class="fa fa-list"></i> List Website Information</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -39,7 +39,7 @@ $page = "make_information_list";
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>Company Name</th>
+                  <th>Website Name</th>
                   <th>Mobile</th>
                   <th>Email</th>
                   <th class="wt_50">Action</th>

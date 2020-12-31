@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>Competition Information</h1>
+            <h1>Assign Winner Information</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -111,7 +111,7 @@
                    
                     <td><div class="form-group col-md-12">
                       
-                       <button id="btn_save" type="submit" class="btn btn-primary px-4">Add</button>
+                       <button id="btn_save" type="submit" onclick="return confirm('Are you sure want to add winner ');" class="btn btn-primary px-4">Add</button>
                     
                        </div>
                      </td>
@@ -135,12 +135,12 @@
                 <tbody>
                 
                   <tr>
-                    <td><?php echo $i; ?></td> 
-                    <td><input class="form-check-input" type="checkbox" value="<?php echo $list->user_id1 ?>" id="flexCheckDefault"> <?php echo $list->user_id1 ?></td> 
+                    <td style="padding-left: 30px;"><input class="form-check-input" type="checkbox" value="<?php echo $list->user_id1 ?>" id="flexCheckDefault" name="user_id"><?php echo $i; ?></td> 
+                    <td> <?php echo $list->user_id1 ?></td> 
                     <td><?php echo $list->user_name1 ?></td>
                    
                     <td><div class="form-group col-md-12">
-                       <button class="btn btn-primary btnadd" type="submit" >Add</button>
+                       <button class="btn btn-primary btnadd" onclick="return confirm('Are you sure want to add winner');" type="submit" >Add</button>
                      <!-- <input type="button" value="<?php echo $list->user_id ?>" id="btnadd"> -->
                       <!--  data-toggle="modal" data-target="#addcompetitionmodel" -->
                        </div>
