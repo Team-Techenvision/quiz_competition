@@ -36,14 +36,15 @@
                     <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
                   </div>
                    <div class="form-group col-md-3">
-                    <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                    <input type="number" class="form-control notext" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                   </div>
 
                  
                    <div class="form-group col-md-6">
 
                   <?php
-                      if(isset($competitionid)){?>
+                      if(isset($competitionid)){
+                        ?>
 
                       <input type="text" class="form-control required title-case text" name="competitionid" id="competitionid" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
                        <?php }?>  
@@ -61,7 +62,13 @@
                   </div>
 
                    <div class="form-group col-md-3">
-                      <select name="grade" id="grade"class="form-control" >
+                    <?php
+                      if(isset($grade)){
+                        ?>
+
+                      <input type="text" class="form-control required title-case text" name="grade" id="grade" value="<?php if(isset($grade)){ echo $grade; } ?>" disabled="">
+                       <?php }?> 
+                    <select name="grade" id="grade"class="form-control" >
                     <option value="">Select Grade</option>
                     <option value="1">1</option>
                     <option value="2">2</option>

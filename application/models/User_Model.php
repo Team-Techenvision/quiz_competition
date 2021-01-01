@@ -28,6 +28,35 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
+  public function prize_list($prizeid){
+    // $this->db->select('*');
+    $this->db->select('prizemaster.*,competition.*,levelmaster.*');
+    $this->db->join('competition', 'prizemaster.competitionid = competition.competitionid', 'left');
+    $this->db->join('levelmaster', 'prizemaster.levelid = levelmaster.levelid', 'left');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('prizemaster');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
+  // public function prizelisteditbyid($prizeid){
+  //   // $this->db->select('*');
+  //   $this->db->select('prizemaster.*,competition.*,levelmaster.*');
+  //   $this->db->join('competition', 'prizemaster.competitionid = competition.competitionid', 'left');
+  //   $this->db->join('levelmaster', 'prizemaster.levelid = levelmaster.levelid', 'left');
+
+  //   // $this->db->where('prizemaster.competitionid', $competitionid);
+  //   // $this->db->where('prizemaster.levelid', $levelid);
+  //   $this->db->from('prizemaster');
+  //   $query = $this->db->get();
+  //   $result = $query->result();
+  //   return $result;
+  // }
+
+  
   public function level_list($levelid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -208,7 +237,9 @@ class User_Model extends CI_Model{
   // print_r($query);
  }
    public function participate_list($profileid){
-    $this->db->select('*');
+    // $this->db->select('*');
+     $this->db->select('profile.*,competition.*');
+    $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
     // $this->db->where('is_admin', 0);
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
@@ -218,6 +249,7 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+
 
   //for pincode form fetch state
   function fetch_state()

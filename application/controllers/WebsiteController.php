@@ -285,7 +285,7 @@ public function insert_profiledata(){
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-        'competitionid' => $this->input->post('competitionid'),
+        'competitionid' => $this->input->post('competition_id'),
         'profile_image' => $this->input->post('profile_image'),
         // 'user_addedby' => $quizweb_user_id,
       );
@@ -350,7 +350,7 @@ public function insert_profiledata(){
   $profile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','profile'); 
 
     $this->load->view('Website/Include/head',$data);
-    $this->load->view('Website/profile_list',$data);
+    $this->load->view('Website/editprofile',$data);
     $this->load->view('Website/Include/footer',$data);
   }
 

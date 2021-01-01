@@ -29,7 +29,7 @@
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
-                      <!--  <?php echo date('Y-m-d');  ?> -->
+                      <!-- <?php echo date('Y-m-d');  ?>  -->
                        <!-- <?php   
                           $current_datetime = date('Y-m-d');
                           $enddate = date("Y-m-d", strtotime($row['enddate'])); 
@@ -56,7 +56,12 @@
                     <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required>
                   </div>
                   <div class="form-group col-md-3">
-                      <select name="competitiontypeid" id="competitiontypeid"class="form-control" >
+                    <?php
+                      if(isset($competitiontypeid)){?>
+
+                       <input type="text" class="form-control required title-case text" name="competitiontypeid" id="competitiontypeid" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
+                       <?php }?>
+                    <select name="competitiontypeid" id="competitiontypeid"class="form-control" >
                     <option value="">Competition Type</option>
                     <option value="1">All</option>
                     <option value="2">one to one</option>
@@ -110,10 +115,10 @@
                   </select>
                   </div>
                    <div class="form-group col-md-3">
-                    <input type="number" class="form-control required title-case text " name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required>
+                    <input type="number" class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required>
                   </div>
                    <div class="form-group col-md-3">
-                    <input type="number" class="form-control required title-case text " name="toage" id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
+                    <input type="number" class="form-control required title-case text notext" name="toage" id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
                   </div>
                   <div class="form-group col-md-4">
                     <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required>
@@ -132,7 +137,7 @@
 
                   </div>
                  <div class="form-group col-md-12">
-                    <textarea type="text" class="form-control required title-case text" name="termsandconditions" id="termsandconditions" value="" placeholder="Enter Terms and Conditions" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
+                    <textarea type="text" class="form-control required title-case text " name="termsandconditions" id="termsandconditions" value="" placeholder="Enter Terms and Conditions" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                   </div>
                  
                     <div class="form-group col-md-12">

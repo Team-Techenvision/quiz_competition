@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2020 at 01:58 PM
+-- Generation Time: Jan 01, 2021 at 01:40 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -92,14 +92,14 @@ INSERT INTO `assignwinner` (`assignwinnerid`, `competitionid`, `pincodeid`, `use
 (1, 1, 1, 1),
 (8, 2, 1, 6),
 (9, 1, 1, 0),
-(10, 1, 1, 1),
-(11, 1, 1, 1),
 (12, 1, 1, 6),
 (13, 1, 1, 6),
 (14, 2, 1, 50),
-(15, 1, 1, 1),
 (16, 1, 1, 6),
-(17, 1, 1, 6);
+(17, 1, 1, 6),
+(18, 1, 1, 6),
+(19, 1, 1, 6),
+(20, 2, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -237,7 +237,8 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `levelid`, `fro
 (10, 1, 2, 18, 25, '2021-01-28', 'first package', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_10_1609328971.png', 'das', 'sdf', '2020-12-30 11:49:31'),
 (11, 1, 2, 18, 25, '2020-12-29', 'second package', 'Register to see competition topic', '', 'Male(18+)', 4, 'photo_11_1609328901.jpg', 'aass', 'ddd', '2020-12-30 11:48:21'),
 (12, 1, 1, 12, 15, '2021-01-28', 'Maths Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_12_1609329020.jpg', 'sd', 'sd', '2020-12-30 11:50:20'),
-(13, 1, 1, 12, 15, '2020-12-15', 'singing', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1609327502.jpg', 'asssssa', 'sdsadada', '2020-12-30 11:25:02');
+(13, 1, 1, 12, 15, '2020-12-15', 'singing', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1609327502.jpg', 'asssssa', 'sdsadada', '2020-12-30 11:25:02'),
+(14, 1, 1, 12, 15, '1970-01-01', 'quiz', 'Register to see competition topic', '<ul><li>maths</li><li>english</li></ul>', 'class 6 - class 9', 2, 'photo_1609501026.jpg', 'aaaaa', 'aaaaaaaa', '2021-01-01 11:37:06');
 
 -- --------------------------------------------------------
 
@@ -331,6 +332,29 @@ INSERT INTO `pincodemaster` (`pincodeid`, `countryid`, `stateid`, `district`, `c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prizemaster`
+--
+
+CREATE TABLE `prizemaster` (
+  `prizeid` bigint(50) NOT NULL,
+  `competitionid` bigint(50) NOT NULL,
+  `levelid` bigint(50) NOT NULL,
+  `winnerposition` bigint(50) NOT NULL,
+  `prize` bigint(50) NOT NULL,
+  `created_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `prizemaster`
+--
+
+INSERT INTO `prizemaster` (`prizeid`, `competitionid`, `levelid`, `winnerposition`, `prize`, `created_date`) VALUES
+(2, 1, 1, 1, 2000, '2021-01-01'),
+(3, 2, 2, 1, 2000, '2021-01-01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profile`
 --
 
@@ -356,15 +380,15 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `address`, `pincode`, `competitionid`, `user_id`, `profile_image`, `created_date`) VALUES
 (1, 'Manish Patil', '10', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, 1, 51, '', '0000-00-00'),
 (2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 50, '', '0000-00-00'),
-(3, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 0, 1, 'profile_image_1_1609322335.PNG', '0000-00-00'),
+(3, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 5, 36, 'profile_image_1_1609322335.PNG', '0000-00-00'),
 (4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 0, 12, '', '0000-00-00'),
-(5, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '', '2020-12-25'),
+(5, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 26, '', '2020-12-25'),
 (6, 'manish patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 0, 52, 'profile1.jpg', '2020-12-29'),
-(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '', '2020-12-25'),
-(8, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 5, 0, '', '2020-12-25'),
-(9, 'Rohan Wordpress', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 5, 0, '', '2020-12-25'),
-(10, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 0, '', '2020-12-25'),
-(11, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 0, 1, 'profile_image_1_1609322335.PNG', '2020-12-25'),
+(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 29, '', '2020-12-25'),
+(8, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 5, 30, '', '2020-12-25'),
+(9, 'Rohan Wordpress', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 5, 33, '', '2020-12-25'),
+(10, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 34, '', '2020-12-25'),
+(11, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 1, 'profile_image_1_1609322335.PNG', '2020-12-25'),
 (12, 'manisha Pawar', '20', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 7, 6, 'profile_image_6_1609303697.gif', '2020-12-25'),
 (13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 18, '', '2020-12-25'),
 (14, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 5, 16, '', '2020-12-25'),
@@ -374,8 +398,10 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (18, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 11, 20, '', '2020-12-31'),
 (19, 'Manish Patil', '10', 'manish@gmail.com', '1', 'english model school', 'kkk', 2, 2, 21, '', '2020-12-31'),
 (20, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 2, 23, '', '2020-12-31'),
-(21, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 2, 25, '', '2020-12-31'),
-(22, 'Kamini patil', '13', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 30, '', '2020-12-31');
+(21, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 1, 57, '', '2021-01-01'),
+(22, 'Kamini patil', '13', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 30, '', '2020-12-31'),
+(23, 'monika desai', '15', 'monika@gmail.com', '5', 'english model school', 'kkk', 1, 14, 35, '', '2021-01-01'),
+(24, 'Prakash', '15', 'prakash@gmail.com', '2', 'english model school', 'kkk', 2, 6, 58, 'profile_image_58_1609503496.jpg', '2021-01-01');
 
 -- --------------------------------------------------------
 
@@ -525,7 +551,9 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (51, 1, '', 2, 'Rohan Patil', 'kolhapur', 0, 'kolhapur', 'rohan@techenvision.in', '7474747474', '123', NULL, 'active', '1', '2020-12-25 07:03:49', 1),
 (53, 1, '', 2, 'Sweta Mane', 'kolhapur', 0, 'kolhapur', 'sweta@gmail.com', '9988998899', 'sweta', NULL, 'active', '1', '2020-12-25 07:06:36', 1),
 (55, 0, '', 3, 'kiran kadam', '', 1, '', '', '8282828282', '', NULL, 'active', '', '2020-12-25 11:27:36', 3),
-(56, 0, '', 3, 'prathamesh chavan', '', 1, '', '', '7417417417', '', NULL, 'active', '', '2020-12-25 11:53:06', 3);
+(56, 0, '', 3, 'prathamesh chavan', '', 1, '', '', '7417417417', '', NULL, 'active', '', '2020-12-25 11:53:06', 3),
+(57, 1, '', 2, 'tech_envision', 'kkk', 0, 'kolhapur', 'ttt@gmail.com', '4545454545', 'tech', NULL, 'active', '1', '2021-01-01 11:23:40', 1),
+(58, 0, '', 3, 'Manikarnika', '', 1, '', '', '9888888888', '', NULL, 'active', '', '2021-01-01 12:06:39', 3);
 
 -- --------------------------------------------------------
 
@@ -619,6 +647,12 @@ ALTER TABLE `pincodemaster`
   ADD PRIMARY KEY (`pincodeid`);
 
 --
+-- Indexes for table `prizemaster`
+--
+ALTER TABLE `prizemaster`
+  ADD PRIMARY KEY (`prizeid`);
+
+--
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
@@ -669,13 +703,13 @@ ALTER TABLE `assigncompetition`
 -- AUTO_INCREMENT for table `assignwinner`
 --
 ALTER TABLE `assignwinner`
-  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -699,7 +733,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -726,10 +760,16 @@ ALTER TABLE `pincodemaster`
   MODIFY `pincodeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `prizemaster`
+--
+ALTER TABLE `prizemaster`
+  MODIFY `prizeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -747,7 +787,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `winner`

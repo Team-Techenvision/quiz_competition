@@ -74,9 +74,13 @@
                   </form>
                   <!-- table fetch Participant name -->
 
-                   <!-- <form id="form_action" role="form" action="addassigncompetition_list" method="post" >  -->
-                   <?php
-                    if(isset($assigncompetition_list)){?>
+                    
+                 
+                      <!-- <form id="form_action" role="form" action="" method="post" > -->
+                         <?php
+                    if(isset($assigncompetition_list)){?> 
+
+                     
                   <div class="form-group col-12">
                      <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php echo $competitionid ?>" >
 
@@ -106,19 +110,16 @@
                        <button class="btn btn-primary btnadd" name="user_id1" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add Competitor</button>
                         </div>
                      </td>
+
+
                  
                   </tr>
                    <?php } ?>
 
                 </tbody>
               </table> 
-              
-                 </div>
-                  <?php } ?>  
-                <!-- </form> -->
-
-
-                  <!-- Modal -->
+                  
+                <!-- Modal -->
 
                        <div class="modal fade" id="addcompetitionmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -130,7 +131,7 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                               <form id="form_action" role="form" action="" method="post" >
+                              
                                  <div class="card-body row">
                                      <div class="form-group col-md-6">
                                         <input type="text" class="form-control required title-case text" name="comp" id="comp" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" >
@@ -151,7 +152,7 @@
                                       
                                       </table>  
                                                         
-                                </form>
+                               
                               </div>
                           <!--  <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -160,6 +161,15 @@
                             </div>
                           </div>
                         </div>
+                 </div>
+  
+                    <?php } ?> 
+                  <!-- </form> -->
+            
+               
+
+
+                
 
                 </div>
                 <!-- /.card-body -->

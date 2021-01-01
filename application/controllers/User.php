@@ -849,6 +849,8 @@ class User extends CI_Controller{
 
      $data['pin'] = $this->User_Model->fetch_pincode();
      $data['competition'] = $this->User_Model->fetch_competition();
+     $data['participate_list'] = $this->User_Model->participate_list('profileid');
+
     
   
     
@@ -1130,6 +1132,107 @@ function fetch_profile()
     $this->User_Model->delete_info('levelid', $levelid, 'levelmaster');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'User/level_list');
+  }
+
+/*******************************    Prizes Information      ****************************/
+
+  // Add New Prizes....
+  public function add_prize(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $save_data = array(
+       
+        'competitionid' => $this->input->post('competitionid'),
+        'levelid' => $this->input->post('levelid'),
+        'winnerposition' => $this->input->post('winnerposition'),
+        'prize' => $this->input->post('prize'),
+        'created_date' => date('Y-m-d H:i:s'),
+              
+      );
+      $this->User_Model->save_data('prizemaster', $save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'User/prize_list');
+    }
+
+    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['level'] = $this->User_Model->fetch_level();
+
+
+    $this->load->view('Include/head', $data);
+    $this->load->view('Include/navbar', $data);
+    $this->load->view('User/prize', $data);
+    $this->load->view('Include/footer', $data);
+  }
+
+  // User List....
+  public function prize_list(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['prize_list'] = $this->User_Model->prize_list('prizeid');
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/prize_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Edit User....
+  public function edit_prize($prizeid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $update_data = array(
+               
+                'competitionid' => $this->input->post('competitionid'),
+                'levelid' => $this->input->post('levelid'),
+                'winnerposition' => $this->input->post('winnerposition'),
+                'prize' => $this->input->post('prize'),
+                'created_date' => date('Y-m-d H:i:s'),
+      );
+      $this->User_Model->update_info('prizeid', $prizeid, 'prizemaster', $update_data);
+      $this->session->set_flashdata('update_success','success');
+      header('location:'.base_url().'User/prize_list');
+    }
+
+    $level_info = $this->User_Model->get_info('prizeid', $prizeid, 'prizemaster');
+    if($level_info == ''){ header('location:'.base_url().'User/prize_list'); }
+    foreach($level_info as $info){
+      $data['update'] = 'update';
+      $data['competitionid'] = $info->competitionid;
+      $data['levelid'] = $info->levelid;
+      $data['winnerposition'] = $info->winnerposition;
+      $data['prize'] = $info->prize;
+     
+    }
+    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['level'] = $this->User_Model->fetch_level();
+    // $data['prizelisteditbyid'] = $this->User_Model->prizelisteditbyid('prizeid');
+  
+    // print_r($data['prizelisteditbyid']);
+
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/prize',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Delete User....
+  public function delete_prize($prizeid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->User_Model->delete_info('prizeid', $prizeid, 'prizemaster');
+    $this->session->set_flashdata('delete_success','success');
+    header('location:'.base_url().'User/prize_list');
   }
 
 

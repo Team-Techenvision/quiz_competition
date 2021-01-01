@@ -224,7 +224,7 @@
                      ?>   
                     
                 </select>
-                 <input type="number" class="input user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No." required />
+                 <input type="number"  min=0 oninput="validity.valid||(value='');" class="input user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No." required />
 
 
               <button class="form-btn button sx log-in" type="button">Log In</button>
