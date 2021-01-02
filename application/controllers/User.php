@@ -545,6 +545,10 @@ class User extends CI_Controller{
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
+       $array = $this->input->post('choosefiletransfer');
+       $data['subject']= implode(',',$array);
+
       $save_data = array(
        
         'title' => $this->input->post('title'),
@@ -559,10 +563,14 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
+        'choosefiletransfer'=>  $data['subject'],
         'created_date' => date('Y-m-d H:i:s'),
-        
+ 
       );
-      // print_r($save_data);
+
+      
+      // print_r($array);
+      
       $this->User_Model->save_data('competition',$save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/competition_list');
@@ -637,12 +645,19 @@ class User extends CI_Controller{
 
   // Edit Competition....
   public function edit_competition($competitionid){
+    // print_r($_POST);
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == ''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
+       // $array = $this->input->post('choosefiletransfer');
+       // $data['subject']= explode(',',$array);
+
+       // print_r($data['subject']);
+
 
       $update_data = $_POST;
 
@@ -662,6 +677,7 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
+        // 'choosefiletransfer'=>  $data['subject'],
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -710,7 +726,8 @@ class User extends CI_Controller{
     }
 
     $competition_info = $this->User_Model->get_info('competitionid', $competitionid, 'competition');
-
+    
+    print_r($competition_info);
     if($competition_info == ''){ header('location:'.base_url().'User/competition_list'); }
     foreach($competition_info as $info){
       $data['update'] = 'update';
@@ -935,7 +952,7 @@ class User extends CI_Controller{
     
    public function addassigncompetition_list(){
     // print_r($_POST);
-     $data = $this->User_Model->addassigncompetition_list();
+     $data = $this->User_Model->addassigncompetition_list('user_id');
      echo (json_encode($data));
 
     }

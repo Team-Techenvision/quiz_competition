@@ -349,6 +349,8 @@ public function insert_profiledata(){
   $data['pin'] = $this->Website_Model->fetch_pincodelist();
   $profile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','profile'); 
 
+  
+
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/editprofile',$data);
     $this->load->view('Website/Include/footer',$data);

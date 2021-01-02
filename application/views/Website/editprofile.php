@@ -36,7 +36,7 @@
                <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data"> 
                  <div class="row" >   
                   <div class="form-group col-md-3">
-                  <?php if($profile_image != ''){  ?>
+                  <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
                   <img id="blah" class="rounded-circle " src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
 
                   <?php }else{ ?>

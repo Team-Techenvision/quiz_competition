@@ -33,7 +33,6 @@
                   <div class="form-group col-md-6">
                       <?php
                       if(isset($competitionid)){ 
-                       
 
                        ?>
 

@@ -15,8 +15,7 @@ class User_Model extends CI_Model{
     $this->db->insert($tbl_name, $data);
     $insert_id = $this->db->insert_id();
     return  $insert_id;
-  }
-  
+  } 
   public function banner_list($bannerid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -157,12 +156,13 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
-   public function addassigncompetition_list(){
+   public function addassigncompetition_list($user_id){
      // $this->db->select('*');
     $this->db->select('profile.*,user.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
     $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    $this->db->where('profile.user_id !=', $user_id);
     // $this->db->where('profile.user_id', $user_id);
     // $this->db->where('pincode', $pincode);
 

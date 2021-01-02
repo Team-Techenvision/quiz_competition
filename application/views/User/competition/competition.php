@@ -143,7 +143,18 @@
                     <div class="form-group col-md-12">
                     <textarea type="text" class="form-control required title-case text" name="instruction" id="instruction" value="" placeholder="Enter Instruction" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                   </div>
-                 
+                  <div class="form-group col-md-12">
+                    <div class="form-check">
+                    
+                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="<?php if(isset($choosefiletransfer)){ echo $choosefiletransfer; };?>"> Upload File<br>
+                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="<?php if(isset($choosefiletransfer)){ echo $choosefiletransfer; };?>"> E-mail<br>
+                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="<?php if(isset($choosefiletransfer)){ echo $choosefiletransfer; };?>"> Whatsapp
+                    </div>
+                   </div>
+
+
+
+                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -155,6 +166,7 @@
                   <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
+
             </div>
 
           </div>
