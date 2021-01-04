@@ -32,16 +32,16 @@
                                 <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__link-wrap">
                                     <ul class="list-unstyled footer-widget__link-list">
-                                        <li><a href="#">About</a></li>
+                                        <li><a href="<?php echo base_url(); ?>About-Us">About</a></li>
                                         <li><a href="#">Overview</a></li>
                                         <li><a href="#">Teachers</a></li>
-                                        <li><a href="#">Join Us</a></li>
+                                        <li><a href="<?php echo base_url(); ?>Privacy-Policy">Privacy Policy</a></li>
                                        
                                     </ul><!-- /.footer-widget__link-list -->
                                     <ul class="list-unstyled footer-widget__link-list">
-                                         <li><a href="#">Our News</a></li>
-                                        <li><a href="#">Help </a></li>
-                                        <li><a href="#">Contact</a></li>
+                                         <li><a href="<?php echo base_url(); ?>Terms-and-Condition">Terms and Conditions</a></li>
+                                        <li><a href="<?php echo base_url(); ?>FAQ">FAQ </a></li>
+                                        <li><a href="<?php echo base_url(); ?>Contact-Us">Contact</a></li>
                                         <li><a href="#">Register Now</a></li>
                                     </ul><!-- /.footer-widget__link-list -->
                                 </div><!-- /.footer-widget__link-wrap -->

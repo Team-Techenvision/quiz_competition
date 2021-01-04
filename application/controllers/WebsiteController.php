@@ -82,7 +82,51 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/index',$data);
     $this->load->view('Website/Include/footer',$data);
 }
-   
+  /**************************      About Us      ********************************/
+  public function about(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/about_us');
+    $this->load->view('Website/Include/footer');
+}
+
+
+  
+
+/**************************      Contact Us      ********************************/
+  public function contact(){
+
+    $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/contact_us');
+    $this->load->view('Website/Include/footer');
+}
+  
+  /**************************     Privacy Policy      ********************************/
+  public function privacypolicy(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/privacy_policy');
+    $this->load->view('Website/Include/footer');
+}
+
+/**************************    Terms and Coditions     ********************************/
+  public function termsandcondition(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/termsandcondition');
+    $this->load->view('Website/Include/footer');
+}     
+
+/**************************    FAQ     ********************************/
+  public function faq(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/faq');
+    $this->load->view('Website/Include/footer');
+}     
+
   
 /******************************  Registration Information      ****************************/
 
@@ -417,12 +461,5 @@ public function insert_profiledata(){
     echo $cnt;
   }
 
-
-    //  public function about()
-    // {
-    //   $this->load->view('Website/Include/head');
-    // $this->load->view('Website/index');
-    // $this->load->view('Website/Include/footer');
-    // }
 
 }

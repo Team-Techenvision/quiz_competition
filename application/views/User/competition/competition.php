@@ -152,7 +152,7 @@
                     </div>
                    </div>
 
-
+<!--   <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Upload File" <?php(in_array("Upload File",$d) ? 'checked=""' : '')?>> Upload File<br> -->
 
                   
                 </div>

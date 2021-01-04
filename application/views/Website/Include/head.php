@@ -118,7 +118,7 @@
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a class="menu text-white" href="#">Pages</a>
+                                <a class="menu text-white" href="<?php echo base_url(); ?>About-Us">About Us</a>
                                 <ul class="sub-menu">
                                     <!-- <li><a href="<?php echo base_url(); ?>About-Us">About Page</a></li>
                                     <li><a href="gallery.html">Gallery</a></li>
@@ -149,7 +149,7 @@
                                 </ul> --><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a class="menu text-white" href="#">Contact</a>
+                                <a class="menu text-white" href="<?php echo base_url(); ?>Contact-Us">Contact</a>
                             </li>
                         </ul>
 

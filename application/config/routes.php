@@ -56,5 +56,9 @@ $route['translate_uri_dashes'] = FALSE;
 // $route['upload'] = 'Upload';
 
 $route['About-Us'] = 'WebsiteController/about';
+$route['Contact-Us'] = 'WebsiteController/contact';
+$route['Privacy-Policy'] = 'WebsiteController/privacypolicy';
+$route['Terms-and-Condition'] = 'WebsiteController/termsandcondition';
+$route['FAQ'] = 'WebsiteController/faq';
 $route['upload-image'] = 'Upload';
 $route['store-image'] = 'Upload/store';
