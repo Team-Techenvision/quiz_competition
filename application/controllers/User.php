@@ -653,12 +653,7 @@ class User extends CI_Controller{
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
 
-       // $array = $this->input->post('choosefiletransfer');
-       // $data['subject']= explode(',',$array);
-
-       // print_r($data['subject']);
-
-
+     
       $update_data = $_POST;
 
       // print_r($update_data);
@@ -725,9 +720,13 @@ class User extends CI_Controller{
       header('location:'.base_url().'User/competition_list');
     }
 
-    $competition_info = $this->User_Model->get_info('competitionid', $competitionid, 'competition');
+
+
+
+    $competition_info= $this->User_Model->get_info('competitionid', $competitionid, 'competition');
     
-    print_r($competition_info);
+    // print_r($competition_info);
+
     if($competition_info == ''){ header('location:'.base_url().'User/competition_list'); }
     foreach($competition_info as $info){
       $data['update'] = 'update';
@@ -744,6 +743,7 @@ class User extends CI_Controller{
       $data['toage'] = $info->toage;
       $data['enddate'] = $info->enddate;
       $data['subjectstextarea'] = $info->subjectstextarea;
+      $data['choosefiletransfer'] = $info->choosefiletransfer;
     }
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
