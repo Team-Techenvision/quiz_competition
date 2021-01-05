@@ -113,7 +113,13 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p>Prize</p>
               </a>
-            </li> 
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Dynamic Competition</p>
+              </a>
+            </li>  
 
           </ul>
         </li>

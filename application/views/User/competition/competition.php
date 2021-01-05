@@ -29,16 +29,16 @@
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
-                      <!-- <?php echo date('Y-m-d');  ?>  -->
+                       <!-- <?php //echo date('Y-m-d');  ?>  -->
                        <!-- <?php   
-                          $current_datetime = date('Y-m-d');
-                          $enddate = date("Y-m-d", strtotime($row['enddate'])); 
-                          if(strtotime($current_datetime) >= strtotime($enddate)){
+                          // $current_datetime = date('Y-m-d');
+                          // $enddate = date("Y-m-d", strtotime($row['enddate'])); 
+                          // if(strtotime($current_datetime) >= strtotime($enddate)){
                               //I want to run some code here
-                            echo "true";
-                          }else{
-                            echo "false";
-                          }
+                            // echo "true";
+                          // }else{
+                            // echo "false";
+                          // }
                         ?>  -->
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control required title-case text txtOnly" name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required>
@@ -145,11 +145,20 @@
                   </div>
                   <div class="form-group col-md-12">
                     <div class="form-check">
-                     
-    <!--   <?php echo $choosefiletransfer; ?>  -->
-                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Upload File"  > Upload File <br> 
-                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="E-mail"  > E-mail <br>
-                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Whatsapp" > Whatsapp
+              
+      
+      <?php 
+       // echo $choosefiletransfer;
+            if(empty($choosefiletransfer)){$choosefiletransfer="";}
+            $b = explode(",", $choosefiletransfer);
+
+            // print_r($choosefiletransfer);
+   
+       ?> 
+
+                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Upload File" <?php if(in_array("Upload File",$b)) { echo "checked";} ?> > Upload File <br> 
+                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="E-mail" <?php if(in_array("E-mail",$b)){ echo "checked";} ?> > E-mail <br>
+                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Whatsapp" <?php if(in_array("Whatsapp",$b)){ echo "checked";} ?>> Whatsapp
 
                     </div>
                    </div>

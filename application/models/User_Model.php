@@ -163,9 +163,8 @@ class User_Model extends CI_Model{
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
     $this->db->join('user', 'profile.user_id = user.user_id', 'left');
     $this->db->where('profile.user_id !=', $user_id);
-    // $this->db->where('profile.user_id', $user_id);
+    // $this->db->where('competitionid', $competitionid);
     // $this->db->where('pincode', $pincode);
-
     $this->db->from('profile');
 
     
@@ -307,7 +306,7 @@ function fetch_country1()
   return $output;
  }
 
-  public function competition_list($competitionid,$enddate){
+  public function competition_list($competitionid){
      // $today = date('Y-m-d');
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabinputtext');

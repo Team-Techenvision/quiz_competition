@@ -227,6 +227,8 @@ $(document).ready(function(){
           data: {user_id: user_id}, 
           dataType: "json",
           success: function(response){ 
+
+            // console.log(response);
       
            var trHTML = '';
 

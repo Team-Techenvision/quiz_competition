@@ -80,6 +80,8 @@ class Website_Model extends CI_Model{
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
     // }
+    $c_date = date('Y-m-d');   
+    $this->db->where('enddate >=', $c_date);
     $this->db->from('competition');
     $query = $this->db->get();
     $result = $query->result();

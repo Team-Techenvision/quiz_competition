@@ -56,6 +56,16 @@ class User extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
+
+/**************************      Dynamic Competition      ********************************/
+  public function dynamiccompetition(){
+
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/dynamic_competition');
+    $this->load->view('Include/footer');
+  }
+
 /**************************      Company Information      ********************************/
 
   // Company List...
@@ -635,7 +645,7 @@ class User extends CI_Controller{
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $data['competition_list'] = $this->User_Model->competition_list('competitionid','enddate');
+    $data['competition_list'] = $this->User_Model->competition_list('competitionid');
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -653,7 +663,8 @@ class User extends CI_Controller{
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
 
-     
+       $array = $this->input->post('choosefiletransfer');
+       $data['subject']= implode(',',$array);
       $update_data = $_POST;
 
       // print_r($update_data);
@@ -672,7 +683,7 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
-        // 'choosefiletransfer'=>  $data['subject'],
+        'choosefiletransfer'=>  $data['subject'],
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -748,6 +759,8 @@ class User extends CI_Controller{
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
     $data['level'] = $this->User_Model->fetch_level();
+    $data['competition_list'] = $this->User_Model->competition_list('competitionid');
+
 
 
     $this->load->view('Include/head',$data);
@@ -954,6 +967,8 @@ class User extends CI_Controller{
     // print_r($_POST);
      $data = $this->User_Model->addassigncompetition_list('user_id');
      echo (json_encode($data));
+
+     
 
     }
 
