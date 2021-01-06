@@ -117,9 +117,9 @@
 <script src="<?php echo base_url(); ?>assets/js/form-render.min.js"></script>
 <script> 
 
-    <!-- template scripts -->
+   // <!-- template scripts -->
 
-    <script>
+
       AOS.init();
     </script>
 

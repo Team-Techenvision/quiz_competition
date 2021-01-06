@@ -20,7 +20,7 @@
 </div>
 
 <!-- jQuery -->
-
+<script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -64,10 +64,68 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
+     <!-- email validation  -->
+ <script type="text/javascript">
+ 
+  // Wait for the DOM to be ready
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='user_name']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      name: "required",
+      phone: "required",
+      address: "required",
+      pin_code: "required",
+      email: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        email: true
+      },
+      
+    },
+    // Specify validation error messages
+    messages: {
+      name: "Please enter your name",
+      phone: "Please enter your phone",
+      email: "Please enter a valid email address",
+      pin_code: "Please enter a valid pincode",
+      address: "Please enter Street Address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+ </script>
+ <!-- only text no number  -->
+ <script>
+ $( document ).ready(function() {
+                $( ".txtOnly" ).keypress(function(e) {
+                    var key = e.keyCode;
+                    if (key >= 48 && key <= 57) {
+                        e.preventDefault();
+                    }
+                });
+            });
+ </script>
 
-
-
-
+ <!-- only number input -->
+ <script>
+  document.querySelector(".notext").addEventListener("keypress", function (evt) {
+    if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
+    {
+        evt.preventDefault();
+    }
+});
+ </script>
 <script type="text/javascript">
   $('#date1').datetimepicker({
     format: 'DD-MM-Y'

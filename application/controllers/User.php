@@ -59,12 +59,129 @@ class User extends CI_Controller{
 
 /**************************      Dynamic Competition      ********************************/
   public function dynamiccompetition(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('question', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+
+       $array = $this->input->post('answertype');
+       $data['ans']= implode(',',$array);
+
+      // $data['json'] = json_encode($this->input->post('text'));
+
+      $save_data = array(
+        'question' => $this->input->post('question'),
+        'answertype' => $data['ans'],
+        'created_date' => date('Y-m-d H:i:s'),
+        
+      );
+      $this->User_Model->save_data('dynamiccompetition', $save_data);
+
+      $lastid = $this->db->insert_id();
+       // print_r($lastid); die();
+
+      $this->session->set_flashdata('save_success','success');
+      // header('location:'.base_url().'User/quizanswer');
+      $this->quizanswer($lastid);
+    }
+     // print_r($lastid); die();
+    // $data['anslastid'] = $lastid 
 
     $this->load->view('Include/head');
     $this->load->view('Include/navbar');
     $this->load->view('User/dynamic_competition');
     $this->load->view('Include/footer');
   }
+
+  /**************************      Quiz answer      ********************************/
+
+
+    public function quizanswer($q_id)
+    {
+      // echo $q_id; 
+              // $lastid = $this->db->insert_id();
+              // echo $lastid;
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    // $this->form_validation->set_rules('question', 'First Name', 'trim|required');
+    // if ($this->form_validation->run() == FALSE) {
+
+
+       // $array = $this->input->post('answertype');
+       // $data['ans']= implode(',',$array);
+
+      // $data['json'] = json_encode($this->input->post('text'));
+// print_r($this->input->post('addmore')); die();
+        // if(!empty($this->input->post('addmore'))){
+        //     foreach ($this->input->post('addmore') as $key => $value) {
+        //         // print_r($value); die();
+
+        //         $this->User_Model->save_data('quizanswer', $value);
+        //         $this->session->set_flashdata('save_success','success');
+        //     }
+            
+        // }
+           // echo "hii"; die();
+      // $save_data = array(
+      //   'question' => $this->input->post('question'),
+      //   'answertype' => $data['ans'],
+      //   'created_date' => date('Y-m-d H:i:s'),
+        
+      // );
+      // $this->User_Model->save_data('dynamiccompetition', $save_data);
+      // $this->session->set_flashdata('save_success','success');
+      // header('location:'.base_url().'User/user_list');
+    // }
+    // $data['competition'] = $this->User_Model->fetch_competition();
+    $data['quizquestion'] = $this->User_Model->fetch_quizquestion($q_id);
+
+   
+
+
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/quiz_answer',$data);
+    $this->load->view('Include/footer');
+       
+
+        // print_r('Record Added Successfully.');
+    }
+/**************************      save addmore data quiz answer      ********************************/
+ // public function addmore_quizanswer(){
+ //    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+ //    // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+ //    // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+ //    // if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+
+ //   if(!empty($this->input->post('addmore'))){
+
+ //   // echo "str"; die();
+ //            foreach ($this->input->post('addmore') as $key => $value) {
+
+ //              // print_r($value); die();
+
+
+ //                $this->User_Model->save_data('quizanswer', $value);
+ //                $this->session->set_flashdata('save_success','success');
+ //            }
+            
+ //        }
+
+ //    //  $data['quizquestion'] = $this->User_Model->fetch_quizquestion();
+   
+
+
+ //    // $this->load->view('Include/head',$data);
+ //    // $this->load->view('Include/navbar',$data);
+ //    // $this->load->view('User/quiz_answer',$data);
+ //    // $this->load->view('Include/footer',$data);
+
+ // }
+
 
 /**************************      Company Information      ********************************/
 
@@ -85,6 +202,7 @@ class User extends CI_Controller{
 
   // Edit Company...
   public function edit_company($company_id){
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -387,10 +505,11 @@ class User extends CI_Controller{
 
               $this->session->set_flashdata('save_success','success');
               header('location:'.base_url().'User/banner_list');
+
               $lastid = $this->db->insert_id();
 
               // $lastId = $this->db->insert_id();
-              // print_r($lastId);
+              // print_r($lastId); 
 
 
               if($_FILES['profile_image']['name']){
@@ -549,6 +668,7 @@ class User extends CI_Controller{
 
  // Add Competition....
   public function add_competition(){
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -578,12 +698,14 @@ class User extends CI_Controller{
  
       );
 
-      
+    // echo "hii"; die();
       // print_r($array);
       
       $this->User_Model->save_data('competition',$save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/competition_list');
+
+
 
       $lastid = $this->db->insert_id();
 
@@ -600,10 +722,18 @@ class User extends CI_Controller{
               $config['file_name'] = $image_name;
               $filename = $_FILES['photo']['name'];
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              // $allowed = array('gif', 'png', 'jpg');
+
+// print_r($allowed);  echo $ext; die();
+              // if (!in_array($ext, $allowed)) {
+              //     echo 'error';
+              //     die();
+              // }
+              // else{
+ 
               $this->upload->initialize($config); // if upload library autoloaded
 
-
-                    // print_r($_POST);
+                   // print_r($_POST);
                      
 
               if ($this->upload->do_upload('photo') && $lastid && $image_name && $ext && $filename) {
@@ -624,6 +754,7 @@ class User extends CI_Controller{
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+      // }
      }
 
 
