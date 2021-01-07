@@ -951,10 +951,17 @@ class User extends CI_Controller{
     }
     
    public function addassigncompetition_list(){
-    // print_r($_POST);
+ /*print_r($_POST); die();*/
+
+   /* echo $_POST['user_id'];die();*/
      $data = $this->User_Model->addassigncompetition_list('user_id');
      echo (json_encode($data));
 
+    }
+
+    public function addassigncompetition_list_test()
+    {
+      echo $_POST['user'];die();
     }
 
 
