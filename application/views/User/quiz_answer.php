@@ -30,68 +30,79 @@
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post">
                 <div class="card-body">
-                      <div class="row">
-      	                  <!-- text area -->
+                  <div class="row">
+                <!-- <input type="text" name="queNo" value="<?php echo $queNo; ?>"> -->
+            	        <table class="table table-bordered text-center" >
+                        <?php 
 
-
-                  <?php $i = 0;
                   foreach ($quizquestion as $list) {
-                    $i++; 
-                      // print_r($list);
 
-                    
-                      $b = explode(",", $list->answertype);
-                       foreach ($b as $value) {
-                         # code...
-                       // print_r($value); 
-                       // echo "<br>";
-                    
-                       if($value=="btn_txta" ){
+                               
+                    $AnsT = $list['answertype'];
+                    $queNo = $list['dynamiccompetitionid'];
+
+                   // print_r($list); die();
+
+                     if($AnsT=="2"){
 
                     ?> 
-                    <!-- <input type="text" name="q_id" value="
-                      < ?php echo $list->q_id; ?>"> -->
+                    <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
+                        <!-- checkbox -->
+                           <tr >  
+                              <td id="dynamic_checkbox" class="p-0"> <div class="form-check mb-2 mt-2">
+                              <input class="form-check-input" type="checkbox" value="1" name="correctans[]" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                    <input type="text"  placeholder="Enter field name"  name="addmore[]" class="form-control " required="" />
+                                  </label>
+                                </div>
+                               </td>  
+                              <td><button type="button" name="add" id="add_checkbox" class="btn btn-success">Add More</button></td>  
+                          </tr> 
+                        <?php }elseif ($AnsT=="3"){ ?>
+                       <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
+                          <!-- textbox -->
+                          <tr >  
+                              <td id="dynamic_textbox" class=""><input type="text" class="form-control mb-2 "  id="exampleFormControlTextbox1" name="addmore[]" placeholder="Enter Text Field" required="" ></td>  
+                              <td><button type="button" name="add" id="add_textbox" class="btn btn-success">Add More</button></td>  
+                          </tr>  
+                           <?php }elseif ($AnsT=="4"){ ?>
+                        <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
+                       <!-- textarea -->
+                          <tr >  
+                              <td id="dynamic_textarea"><textarea type="text" class="form-control mb-2"  id="exampleFormControlTextarea1" name="addmore[]" placeholder="Enter Text" required="" ></textarea></td>  
+                              <td><button type="button" name="add" id="add_textarea" class="btn btn-success">Add More</button></td>  
+                          </tr> 
+                            <?php }elseif ($AnsT=="5"){ ?>
+                              <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
+                           <!-- dropdown -->
+                          <tr >  
+                              <td id="dynamic_dropdown" class="p-0">  <div class="form-check mb-2 mt-2" >
+                                  <input class="form-check-input" type="radio" name="correctans" value="1"  id="flexRadioDefault1">
+                                  <label class="form-check-label" for="flexRadioDefault1">
+                                    <input type="text"  placeholder="Enter Option"  name="addmore[]" class="form-control " required="" />
+                                  </label>
+                                </div>  
+                              <td><button type="button" name="add" id="add_dropdown" class="btn btn-success">Add More</button></td>  
+                          </tr>
+                             <?php }else{  ?>
+                                 
+                      <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
+                            <!-- Radio button -->
+                       <tr >  
+                              <td id="dynamic_radiobtn" class="p-0"> <div class="form-check mb-2 mt-2" >
+                                  <input class="form-check-input" type="radio" name="correctans" value="1" id="flexRadioDefault1">
+                                  <label class="form-check-label" for="flexRadioDefault1">
+                                    <input type="text"  placeholder="Enter field name"  name="addmore[]" class="form-control " required="" />
+                                  </label>
+                                </div>
+                               </td>  
+                              <td><button type="button" name="add" id="add_radiobtn" class="btn btn-success">Add More</button></td>  
+                          </tr>  
 
 
-                 <table class="table table-bordered text-center" id="dynamic_textarea">  
-                    <tr>  
-                        <td><textarea type="text" class="form-control" class="form-control name_list" id="exampleFormControlTextarea1" name="addmore[][textareaans]" placeholder="Enter Description" required="" ></textarea></td>  
-                        <td><button type="button" name="add" id="add_textarea" class="btn btn-success">Add More</button></td>  
-                    </tr>  
-                </table> 
-             <?php }elseif($value=="btn_rb"){?>
-                 <!-- radio button --> 
-                 <table class="table table-bordered text-center" id="dynamic_radiobtn">  
-                    <tr>  
-                        <td> <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              <input type="text"  placeholder="Enter feild name"  name="addmore[][radiobuttonans]" class="form-control " required="" />
-                            </label>
-                          </div>
-                         </td>  
-                        <td><button type="button" name="add" id="add_radiobtn" class="btn btn-success">Add More</button></td>  
-                    </tr>  
-                </table> 
-              <?php }else{?>
-                <!-- check box --> 
-                 <table class="table table-bordered text-center" id="dynamic_checkbox">  
-                    <tr>  
-                        <td> <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                              <input type="text"  placeholder="Enter feild name"  name="addmore[][checkboxans]" class="form-control " required="" />
-                            </label>
-                          </div>
-                         </td>  
-                        <td><button type="button" name="add" id="add_checkbox" class="btn btn-success">Add More</button></td>  
-                    </tr>  
-                </table> 
-                <?php }  
-
-                       }
-                     }  ?>
-                      </div>
+                      <?php } } ?>
+                      </table> 
+                    </div>
                 </div>
              
 	                                   
@@ -119,25 +130,44 @@
   <br>
 <script type="text/javascript">
     $(document).ready(function(){      
-      var i=1;  
+      var i=1; 
+      var j=1; 
 
 
       $('#add_textarea').click(function(){  
-           i++;  
+           i++; 
+ 
          
-            $('#dynamic_textarea').append('<tr id="row'+i+'" class="dynamic-added"><td><textarea type="text" class="form-control" class="form-control name_list" id="exampleFormControlTextarea1" name="addmore[][textareaans]" placeholder="Enter Description" required="" ></textarea></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+            $('#dynamic_textarea').append('<tr id="row'+i+'" class="dynamic-added "><td  class="dynamic-added w-100"><textarea type="text" class="form-control" class="form-control name_list"  id="exampleFormControlTextarea1" name="addmore[]" placeholder="Enter Description" required="" ></textarea></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+      });
+
+      $('#add_textbox').click(function(){  
+           i++;  
+          
+         
+            $('#dynamic_textbox').append('<tr id="row'+i+'" class="dynamic-added "><td  class="dynamic-added w-100"><input type="text" class="form-control "  id="exampleFormControlTextbox1"  name="addmore[]" placeholder="Enter Text Field" required="" ></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+      });
+
+       $('#add_dropdown').click(function(){  
+           i++; 
+           j++; 
+         
+            $('#dynamic_dropdown').append('<tr id="row'+i+'" class="dynamic-added "><td  class="dynamic-added w-100"><div class="form-check"><input class="form-check-input" type="radio" name="correctans" value="'+j+'" id="flexRadioDefault1"><label class="form-check-label" style="margin-left: 4px;" for="flexRadioDefault1"><input type="text" name="addmore[]" placeholder="Enter Option" class="form-control " required="" /></label></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
       });
 
       $('#add_radiobtn').click(function(){  
-           i++;  
+           i++; 
+           j++; 
          
-            $('#dynamic_radiobtn').append('<tr id="row'+i+'" class="dynamic-added"><td> <div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label class="form-check-label" style="margin-left: 4px;" for="flexRadioDefault1"><input type="text" name="addmore[][radiobuttonans]" placeholder="Enter feild name" class="form-control " required="" /></label></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+            $('#dynamic_radiobtn').append('<tr id="row'+i+'" class="dynamic-added"><td class="dynamic-added w-100"> <div class="form-check"><input class="form-check-input" type="radio" name="correctans" value="'+j+'" id="flexRadioDefault1"><label class="form-check-label" style="margin-left: 4px;" for="flexRadioDefault1"><input type="text" name="addmore[]" placeholder="Enter field name" class="form-control " required="" /></label></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+
       });
 
       $('#add_checkbox').click(function(){  
-           i++;  
+           i++; 
+           j++; 
          
-            $('#dynamic_checkbox').append('<tr id="row'+i+'" class="dynamic-added"><td> <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"><label class="form-check-label" style="margin-left: 4px;" for="flexCheckDefault"><input type="text" name="addmore[][checkboxans]" placeholder="Enter feild name" class="form-control " required="" /></label></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+            $('#dynamic_checkbox').append('<tr id="row'+i+'" class="dynamic-added"><td class="dynamic-added w-100"> <div class="form-check"><input class="form-check-input" type="checkbox" value="'+j+'" name="correctans[]" id="flexCheckDefault"><label class="form-check-label" style="margin-left: 4px;" for="flexCheckDefault"><input type="text" name="addmore[]" placeholder="Enter field name" class="form-control " required="" /></label></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
       });
 
 
@@ -149,6 +179,7 @@
 
     });  
 </script>
+ 
 
-</body>
-</html>
+
+

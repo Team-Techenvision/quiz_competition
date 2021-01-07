@@ -31,7 +31,8 @@
               <form id="form_action" role="form" action="" method="post">
                 <div class="card-body">
                 <div class="row">
-	                <!--  <div class="form-group col-md-6">
+	               <div class="form-group col-md-6">
+                  <label>Competition</label>
 			                 <?php
 		                      if(isset($competitionid)){?>
 
@@ -51,7 +52,7 @@
 
 			                     
 			                 </select>
-	                  </div> -->
+	                  </div> 
 	                  <div class="form-group col-md-12">
 	                  	<label>Question</label>
 			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php if(isset($question)){ echo $question; } ?>" placeholder="Enter Question">
@@ -59,10 +60,37 @@
                       </div>
                         <div class="form-group col-md-12">
                              <label>Answer Type</label>
-		                       <div class="form-check">
+                             <div class="form-check">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="answertype" value="1" checked>Radio Button
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="answertype" value="2">Check Box
+                                </label>
+                              </div>
+                              <div class="form-check disabled">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="answertype" value="3" >Text Box
+                                </label>
+                              </div>
+                               <div class="form-check disabled">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="answertype" value="4">TextArea
+                                </label>
+                              </div>
+                               <div class="form-check disabled">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="answertype" value="5">Dropdown List
+                                </label>
+                              </div>
+
+
+		                       <!-- <div class="form-check">
 		              
 		      
-		                        <?php 
+		                        < ?php 
 		                         // echo $answertype;
 		                              if(empty($answertype)){$answertype="";}
 		                              $b = explode(",", $answertype);
@@ -71,11 +99,11 @@
 		                     
 		                         ?> 
 
-		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_rb" <?php if(in_array("btn_rb",$b)) { echo "checked";} ?> > Radio Button <br> 
-		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_cb" <?php if(in_array("btn_cb",$b)){ echo "checked";} ?> > Check Box <br>
-		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_txta" <?php if(in_array("btn_txta",$b)){ echo "checked";} ?>> Textarea
+		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_rb" < ?php if(in_array("btn_rb",$b)) { echo "checked";} ?> > Radio Button <br> 
+		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_cb" < ?php if(in_array("btn_cb",$b)){ echo "checked";} ?> > Check Box <br>
+		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_txta" < ?php if(in_array("btn_txta",$b)){ echo "checked";} ?>> Textarea
 
-		                    </div>
+		                    </div> -->
                      </div>
                   </div>
              
