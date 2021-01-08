@@ -33,9 +33,10 @@
                 <div class="row">
 	                <?php $i=1;
                         foreach ($fetch_dynamicquizlist as $list){
-                      
 
-// echo $list['answertype']; die();
+                        $selectans = $list['correctans']; 
+                        $anstype = $list['answertype']; 
+
                          ?>
 
 	                  <div class="form-group col-md-12">
@@ -43,6 +44,9 @@
 			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question">
 		                   
                       </div>
+                     <?php if($anstype!="3" && $anstype!="4"){
+
+                      ?>
                        <div class="form-group col-md-12">
 
                          <?php $myString = $list['optionvalues'];
@@ -51,20 +55,23 @@
                       $correct = $list['correctans'];
                       $corAns = explode(',', $correct); 
 
+                        // echo  $corAns; die();
+
+
                       foreach($myArray as $my_Array)
                       {  
-                        foreach ($corAns as $value) {
-                          # code...
-                       
-                        // echo  $my_Array; 
 
                         ?>
-                         <div class="row">
-                        
-                           <input class="form-check-input col-md-2"  type="radio" name="correctans[]" value="<?php echo $value ;?>"  id="flexRadioDefault1"><input type="text" name="optionvalues[]"  class="form-control col-md-10" value="<?php echo $my_Array ;?>" >
+                         <div class="row pl-4">
+                        <?php if($selectans==$i){?>
+                           <input class="form-check-input "  type="radio" name="correctans[]" value="<?php echo $my_Array; ?>"  id="flexRadioDefault1" checked><?php  }else{ ?><input class="form-check-input "  type="radio" name="correctans[]" value="<?php echo $my_Array; ?>"  id="flexRadioDefault1">
+                         <?php } $i++;?>
+
+                           <input type="text" name="optionvalues[]"  class="form-control col-md-10" value="<?php echo $my_Array ;?>" >
                          </div>
-                      <?php } } }?>
+                      <?php } } ?>
                        </div>
+                     <?php } ?>
 
                     
                      <!--   <table class="table table-bordered text-center" >

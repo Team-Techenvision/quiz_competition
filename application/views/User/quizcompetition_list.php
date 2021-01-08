@@ -25,7 +25,7 @@
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-list"></i> List Quiz Information</h3>
               <div class="card-tools">
-                <a href="add_user" class="btn btn-sm btn-block btn-primary">Add Quiz</a>
+                <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="btn btn-sm btn-block btn-primary">Add Quiz</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -35,9 +35,7 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Question</th>
-                  <th>Answer Type</th>
-                  <th>Option Values</th>
-                  <th>Correct Answer</th>
+                
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
@@ -48,9 +46,7 @@
                   <tr>
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->question ?></td>
-                    <td><?php echo $list->answertype ?></td>
-                    <td><?php echo $list->optionvalues ?></td>
-                    <td><?php echo $list->correctans ?></td>
+                   
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
                       <a href="<?php echo base_url(); ?>User/delete_quizcompetition/<?php echo $list->dynamiccompetitionid; ?>" onclick="return confirm('Do you want to Delete this question?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
