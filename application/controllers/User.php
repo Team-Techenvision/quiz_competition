@@ -85,9 +85,21 @@ class User extends CI_Controller{
 
       $que_id = $this->db->insert_id();
        // print_r($lastid); die();
+       // $this->session->set_flashdata('q_id',$que_id);
+      $answertype = $save_data['answertype'];
+      // print_r($answertype); die();
+      if($answertype=="3"){
 
-      // $this->session->set_flashdata('q_id',$que_id);
-      header('location:'.base_url().'User/quizanswer/'.$que_id);
+         header('location:'.base_url().'User/dynamiccompetition');
+      }
+      elseif($answertype=="4"){
+
+         header('location:'.base_url().'User/dynamiccompetition');
+      }
+      else{
+
+        header('location:'.base_url().'User/quizanswer/'.$que_id);
+      }
 
       // $this->quizanswer($lastid);
     }
@@ -111,11 +123,6 @@ class User extends CI_Controller{
 
       $que_id = $this->uri->segment(3);
 
-      // echo $que_id; 
-      // $array = $this->input->post('answertype');
-      // echo $q_id; 
-              // $que_id = $this->db->insert_id();
-              // echo $lastid;
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -127,25 +134,25 @@ class User extends CI_Controller{
         $queNo = $this->input->post('queNo');
         $correct = $this->input->post('correctans');
       // echo count($correct); die();
-        // $check = implode( ',' , $correct );
+     
       
         if(!empty($admore)){
         
         $all_tags = implode( ',' , $admore );
-        // print_r($all_tags);
+        $check = implode( ',' , $correct );
 
-         //
-        // print_r($all_tags); 
-           
+        // print_r($all_tags);
+          
         $update_data = array(
                 'optionvalues' => $all_tags,
-                'correctans' =>  $correct,
-         //        'created_date' => date('Y-m-d H:i:s'),
+                'correctans' =>  $check,
+             // 'created_date' => date('Y-m-d H:i:s'),
                 
               );
           
-              // $this->User_Model->save_AnswerData($value,$queNo);
+            
            $this->User_Model->update_info('dynamiccompetitionid',$queNo,'dynamiccompetition', $update_data);
+           header('location:'.base_url().'User/dynamiccompetition');
 
         }
     $data['quizquestion'] = $this->User_Model->fetch_quizquestion($que_id);
@@ -161,6 +168,92 @@ class User extends CI_Controller{
 
     }
 
+     // QuizCompetition List....
+  public function quizcompetition_list(){
+
+      $competitionid = $this->uri->segment(3);
+
+    // print_r($_POST); die();
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    // $data['quizcompetition_list'] = $this->User_Model->get_list_by_id('dynamiccompetitionid','','','','','','dynamiccompetition');
+
+    $data['quizcompetition_list'] = $this->User_Model->quizcompetition_list($competitionid);
+
+// print_r($data); die();
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/quizcompetition_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+   // Edit QuizCompetition....
+  public function edit_quizcompetition($dynamiccompetitionid){
+
+     $dynamiccompetitionid = $this->uri->segment(3);
+
+     // print_r($dynamiccompetitionid); die();
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+    $update_data = array(
+       'question' => $this->input->post('question'),
+       // 'optionvalues' => $all_tags,
+       // 'correctans' =>  $check,
+        'created_date' => date('Y-m-d H:i:s'),
+        // 'user_addedby' => $quizweb_user_id,
+      );
+      $this->User_Model->update_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition', $update_data);
+      $this->session->set_flashdata('update_success','success');
+      header('location:'.base_url().'User/quizcompetition_list');
+    }
+
+    $quiz_info = $this->User_Model->get_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition');
+
+    // print_r($quiz_info); die();
+    if($quiz_info == ''){ header('location:'.base_url().'User/quizcompetition_list'); }
+    foreach($quiz_info as $info){
+      $data['update'] = 'update';
+      $data['question'] = $info->question;
+      // $data['age'] = $info->age;
+      // $data['emailid'] = $info->emailid;
+      // $data['grade'] = $info->grade;
+      // $data['schoolcollegename'] = $info->schoolcollegename;
+      // $data['address'] = $info->address;
+      // $data['pincode'] = $info->pincode;
+      // $data['competitionid'] = $info->competitionid;
+    }
+
+    
+    $data['fetch_dynamicquizlist'] = $this->User_Model->fetch_dynamicquizlist($dynamiccompetitionid);
+
+    // print_r($data); die();
+  
+    
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/QuizCompetition',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Delete QuizCompetition....
+  public function delete_quizcompetition($dynamiccompetitionid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->User_Model->delete_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition');
+    $this->session->set_flashdata('delete_success','success');
+    header('location:'.base_url().'User/quizcompetition_list');
+  }
+
+
 
 /**************************      Company Information      ********************************/
 
@@ -173,6 +266,7 @@ class User extends CI_Controller{
 
     // $data['company_list'] = $this->User_Model->get_list($quizweb_company_id,'1','ASC','company');
      $data['company_list'] = $this->User_Model->company_list($quizweb_company_id,'company_id','ASC','company');
+
     $this->load->view('Include/head', $data);
     $this->load->view('Include/navbar', $data);
     $this->load->view('User/company_information_list', $data);
@@ -655,9 +749,34 @@ class User extends CI_Controller{
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
 
-       $array = $this->input->post('choosefiletransfer');
-       $data['subject']= implode(',',$array);
+       // $array = $this->input->post('choosefiletransfer');
+       // $data['subject']= implode(',',$array);
+      $data['uploadfile'] = $this->input->post('uploadfile');
+      if (isset($data['uploadfile'])) {
+        echo $data['uploadfile'] = 1; 
+      }
+      else {
+       echo $data['uploadfile'] = 0;
 
+      }
+
+      $data['email'] = $this->input->post('email');
+      if(isset($data['email'])){
+         echo $data['email'] = 1;
+      }
+      else{
+         echo $data['email'] = 0;
+      }
+
+      $data['whatsapp'] = $this->input->post('whatsapp');
+      if( isset($data['whatsapp']))
+      {
+         echo $data['whatsapp'] = 1;
+      }
+      else{
+
+        echo $data['whatsapp'] = 0;
+      }
       $save_data = array(
        
         'title' => $this->input->post('title'),
@@ -672,7 +791,11 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
-        'choosefiletransfer'=>  $data['subject'],
+        'uploadfile'=>   $data['uploadfile'],
+        'email'=>  $data['email'],
+        'emailaddress'=>  $this->input->post('emailaddress'),
+        'whatsapp'=>  $data['whatsapp'],
+        'whatsappnumber'=>  $this->input->post('whatsappnumber'),
         'created_date' => date('Y-m-d H:i:s'),
  
       );
@@ -756,7 +879,7 @@ class User extends CI_Controller{
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $data['competition_list'] = $this->User_Model->competition_list('competitionid');
-
+    
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('User/competition/competition_list',$data);
@@ -773,10 +896,36 @@ class User extends CI_Controller{
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
 
-       $array = $this->input->post('choosefiletransfer');
-       $data['subject']= implode(',',$array);
+       // $array = $this->input->post('choosefiletransfer');
+       // $data['subject']= implode(',',$array);
       $update_data = $_POST;
 
+      $data['uploadfile'] = $this->input->post('uploadfile');
+      if (isset($data['uploadfile'])) {
+        echo $data['uploadfile'] = 1; 
+      }
+      else {
+       echo $data['uploadfile'] = 0;
+
+      }
+
+      $data['email'] = $this->input->post('email');
+      if(isset($data['email'])){
+         echo $data['email'] = 1;
+      }
+      else{
+         echo $data['email'] = 0;
+      }
+
+      $data['whatsapp'] = $this->input->post('whatsapp');
+      if( isset($data['whatsapp']))
+      {
+         echo $data['whatsapp'] = 1;
+      }
+      else{
+
+        echo $data['whatsapp'] = 0;
+      }
       // print_r($update_data);
 
       $update_data = array(
@@ -793,7 +942,11 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
-        'choosefiletransfer'=>  $data['subject'],
+        'uploadfile'=>   $data['uploadfile'],
+        'email'=>  $data['email'],
+        'emailaddress'=>  $this->input->post('emailaddress'),
+        'whatsapp'=>  $data['whatsapp'],
+        'whatsappnumber'=>  $this->input->post('whatsappnumber'),
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -864,7 +1017,11 @@ class User extends CI_Controller{
       $data['toage'] = $info->toage;
       $data['enddate'] = $info->enddate;
       $data['subjectstextarea'] = $info->subjectstextarea;
-      $data['choosefiletransfer'] = $info->choosefiletransfer;
+      $data['uploadfile'] = $info->uploadfile;
+      $data['email'] = $info->email;
+      $data['emailaddress'] = $info->emailaddress;
+      $data['whatsapp'] = $info->whatsapp;
+      $data['whatsappnumber'] = $info->whatsappnumber;
     }
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();

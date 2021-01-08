@@ -24,6 +24,9 @@
             <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Add Competition</h3>
+                <div class="card-tools col-md-3 " >
+                <a href="competition_list" class="btn btn-sm btn-block btn-primary "  >Competition List</a>
+              </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -137,19 +140,22 @@
                   <div class="form-group col-md-12">
                     <div class="form-check">
               
-      
-                        <?php 
-                         // echo $choosefiletransfer;
-                              if(empty($choosefiletransfer)){$choosefiletransfer="";}
-                              $b = explode(",", $choosefiletransfer);
-
-                              // print_r($choosefiletransfer);
-                     
-                         ?> 
-
-                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Upload File" <?php if(in_array("Upload File",$b)) { echo "checked";} ?> > Upload File <br> 
-                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="E-mail" <?php if(in_array("E-mail",$b)){ echo "checked";} ?> > E-mail <br>
-                        <input type="checkbox" id="choosefiletransfer" name="choosefiletransfer[]" value="Whatsapp" <?php if(in_array("Whatsapp",$b)){ echo "checked";} ?>> Whatsapp
+                       <div class="row">
+                        <div class="col-md-4">
+                          <?php  if(empty($uploadfile)){$uploadfile="";} ?>
+                        <input type="checkbox" id="uploadfile" name="uploadfile" value="1" <?php if($uploadfile=="1") { echo "checked";} ?> > Upload File
+                        </div>
+                        </div> <br> 
+                        <div class="row">
+                          <div class="col-md-2">
+                             <?php  if(empty($email)){$email="";} ?>
+                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control required title-case text " name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" placeholder=" Enter E-mail Address" ></div>
+                      </div><br>
+                       <div class="row">
+                          <div class="col-md-2">
+                             <?php  if(empty($whatsapp)){$whatsapp="";} ?>
+                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div><div class="col-md-10"><input type="text" class="form-control required title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" ></div>
+                      </div>
 
                     </div>
                    </div>

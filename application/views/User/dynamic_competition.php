@@ -87,23 +87,6 @@
                               </div>
 
 
-		                       <!-- <div class="form-check">
-		              
-		      
-		                        < ?php 
-		                         // echo $answertype;
-		                              if(empty($answertype)){$answertype="";}
-		                              $b = explode(",", $answertype);
-
-		                              // print_r($answertype);
-		                     
-		                         ?> 
-
-		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_rb" < ?php if(in_array("btn_rb",$b)) { echo "checked";} ?> > Radio Button <br> 
-		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_cb" < ?php if(in_array("btn_cb",$b)){ echo "checked";} ?> > Check Box <br>
-		                        <input type="checkbox" id="answertype" name="answertype[]" value="btn_txta" < ?php if(in_array("btn_txta",$b)){ echo "checked";} ?>> Textarea
-
-		                    </div> -->
                      </div>
                   </div>
              

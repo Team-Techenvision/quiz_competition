@@ -77,17 +77,30 @@ class User_Model extends CI_Model{
   // print_r($query);
  }
 
- //save_AnwerOption save--------
+  public function quizcompetition_list($competitionid){
+    $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+     $this->db->select('dynamiccompetition.*,competition.*');
+    $this->db->join('competition', 'dynamiccompetition.competitionid = competition.competitionid', 'left');
+    $this->db->where('dynamiccompetition.competitionid', $competitionid);
+    $this->db->from('dynamiccompetition');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
 
- function save_AnswerData($value,$queNo){
+  }
+  function fetch_dynamicquizlist($dynamiccompetitionid){
+    
+    $this->db->order_by("dynamiccompetitionid", "");
+    $this->db->where('dynamiccompetitionid', $dynamiccompetitionid);
+    $query = $this->db->get("dynamiccompetition");
+    // print_r($query->result_array()); die();
+    return $query->result_array();
+  }
 
-$cmd = "INSERT INTO `dynamiccompetition`( `radiobuttonans` , `dynamiccompetitionid`) VALUES ($value, $queNo)";
-    // $this->db->insert('quizanswer', $value);
-    $this->db->where('dynamiccompetitionid', $queNo);
-    $this->db->query($cmd);  
-    $insert_id = $this->db->insert_id();
-    return  $insert_id;
- }
  function fetch_quizquestion($que_id)
  {
   
@@ -149,6 +162,8 @@ $cmd = "INSERT INTO `dynamiccompetition`( `radiobuttonans` , `dynamiccompetition
     function fetch_competition()
  {
   $this->db->order_by("competitionid", "ASC");
+  $c_date = date('Y-m-d');   
+  $this->db->where('enddate >=', $c_date);
   $query = $this->db->get("competition");
   return $query->result();
   // print_r($query);
@@ -333,7 +348,7 @@ function fetch_country1()
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabinputtext');
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
-   
+   $this->db->order_by('enddate ', 'DESC');
     $this->db->from('competition');
     $query = $this->db->get();
     $result = $query->result();

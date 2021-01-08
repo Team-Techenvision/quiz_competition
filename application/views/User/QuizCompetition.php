@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h2>Quiz Answer</h2>
+            <h2>Dynamic Competition</h2>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -24,30 +24,65 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h4 class="card-title">Add Quiz Answer</h4>
+                <h4 class="card-title">Add Quiz</h4>
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post">
                 <div class="card-body">
-                  <div class="row">
-                <!-- <input type="text" name="queNo" value="<?php echo $queNo; ?>"> -->
-            	        <table class="table table-bordered text-center" >
-                        <?php 
+                <div class="row">
+	                <?php $i=1;
+                        foreach ($fetch_dynamicquizlist as $list){
+                      
 
-                  foreach ($quizquestion as $list) {
+// echo $list['answertype']; die();
+                         ?>
+
+	                  <div class="form-group col-md-12">
+	                  	<label>Question</label>
+			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question">
+		                   
+                      </div>
+                       <div class="form-group col-md-12">
+
+                         <?php $myString = $list['optionvalues'];
+                      $myArray = explode(',', $myString); 
+
+                      $correct = $list['correctans'];
+                      $corAns = explode(',', $correct); 
+
+                      foreach($myArray as $my_Array)
+                      {  
+                        foreach ($corAns as $value) {
+                          # code...
+                       
+                        // echo  $my_Array; 
+
+                        ?>
+                         <div class="row">
+                        
+                           <input class="form-check-input col-md-2"  type="radio" name="correctans[]" value="<?php echo $value ;?>"  id="flexRadioDefault1"><input type="text" name="optionvalues[]"  class="form-control col-md-10" value="<?php echo $my_Array ;?>" >
+                         </div>
+                      <?php } } }?>
+                       </div>
+
+                    
+                     <!--   <table class="table table-bordered text-center" >
+                       
+                  
+
+                    < ?php  if($list['answertype']=="2"){  // print_r( $list); die();
 
                                
-                    $AnsT = $list['answertype'];
-                    $queNo = $list['dynamiccompetitionid'];
+                    // $AnsT = $list['answertype'];
+                    // $queNo = $list['dynamiccompetitionid'];
 
                    // print_r($list); die();
 
-                     if($AnsT=="2"){
-
                     ?> 
-                    <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
-                        <!-- checkbox -->
+                    < !--
+                     <input type="hidden" name="queNo" value="<?php echo $queNo; ?>"> - - >
+                        < !-- checkbox - ->
 
                            <tr >  
                             <td id="dynamic_checkbox" class="p-0"> <div class="form-check mb-2 mt-2">
@@ -60,23 +95,23 @@
                                </td>  
                               <td><button type="button" name="add" id="add_checkbox" class="btn btn-success">Add More</button></td>  
                           </tr> 
-                        <?php }elseif ($AnsT=="3"){ ?>
-                       <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
-                          <!-- textbox -->
+                        < ?php }elseif ($list['answertype']=="3"){ ?>
+                       < !-- <input type="hidden" name="queNo" value="<?php echo $queNo; ?>"> - ->
+                          < !-- textbox - ->
                           <tr >  
                               <td id="dynamic_textbox" class=""><input type="text" class="form-control mb-2 "  id="exampleFormControlTextbox1" name="addmore[]" placeholder="Enter Text Field" required="" ></td>  
                               <td><button type="button" name="add" id="add_textbox" class="btn btn-success">Add More</button></td>  
                           </tr>  
-                           <?php }elseif ($AnsT=="4"){ ?>
-                        <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
-                       <!-- textarea -->
-                          <tr >  
+                           < ?php }elseif ($list['answertype']=="4"){ ?>
+                        < !-- <input type="hidden" name="queNo" value="<?php echo $queNo; ?>"> - - >
+                       < !-- textarea - ->
+                          <tr>  
                               <td id="dynamic_textarea"><textarea type="text" class="form-control mb-2"  id="exampleFormControlTextarea1" name="addmore[]" placeholder="Enter Text" required="" ></textarea></td>  
                               <td><button type="button" name="add" id="add_textarea" class="btn btn-success">Add More</button></td>  
                           </tr> 
-                            <?php }elseif ($AnsT=="5"){ ?>
-                              <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
-                           <!-- dropdown -->
+                            < ?php }elseif ($list['answertype']=="5"){ ?>
+                              < !-- <input type="hidden" name="queNo" value="<?php echo $queNo; ?>"> - ->
+                           < !-- dropdown - ->
                           <tr >  
                               <td id="dynamic_dropdown" class="p-0">  <div class="form-check mb-2 mt-2" >
                                   <input class="form-check-input" type="radio" name="correctans[]" value="1"  id="flexRadioDefault1">
@@ -86,10 +121,10 @@
                                 </div>  
                               <td><button type="button" name="add" id="add_dropdown" class="btn btn-success">Add More</button></td>  
                           </tr>
-                             <?php }else{  ?>
+                             < ?php }else{  ?>
                                  
-                      <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
-                            <!-- Radio button -->
+                      < !-- <input type="hidden" name="queNo" value="<?php echo $queNo; ?>"> - ->
+                            < !-- Radio button - ->
                        <tr >  
                               <td id="dynamic_radiobtn" class="p-0"> <div class="form-check mb-2 mt-2" >
                                   <input class="form-check-input" type="radio" name="correctans[]" value="1" id="flexRadioDefault1">
@@ -99,15 +134,19 @@
                                 </div>
                                </td>  
                               <td><button type="button" name="add" id="add_radiobtn" class="btn btn-success">Add More</button></td>  
-                          </tr>  
+                          </tr>  -->
 
 
-                      <?php } } ?>
-                      </table> 
-                    </div>
-                </div>
+                <!--    < ?php }  ?> -->
+                      <!-- </table>   -->
+                       
+                  </div>
              
-	                                   
+	                 <!--  <div id="build-wrap" name="text">
+
+	                  </div> -->
+       
+                </div>                           
                 <!-- /.card-body -->
                <div class="card-footer">
                   <?php if(isset($update)){ ?>
@@ -130,7 +169,16 @@
     </section>
   </div>
   <br>
-<script type="text/javascript">
+<!-- <script src="<?php echo base_url(); ?>assets/dist/js/form-builder.min.js"></script> -->
+<!-- <script src="<?php echo base_url(); ?>assets/dist/js/form-render.min.js"></script> -->
+<!-- <script>
+jQuery($ => {
+  const fbTemplate = document.getElementById('build-wrap');
+  $(fbTemplate).formBuilder();
+});
+</script>
+ -->
+ <!-- <script type="text/javascript">
     $(document).ready(function(){      
       var i=1; 
       var j=1; 
@@ -181,7 +229,6 @@
 
     });  
 </script>
-
-
-
-
+ -->
+</body>
+</html>
