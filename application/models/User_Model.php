@@ -195,6 +195,7 @@ class User_Model extends CI_Model{
    }
    public function addassigncompetition_list($user_id){
      // $this->db->select('*');
+   /* echo $user_id;die();*/
     $this->db->select('profile.*,user.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');

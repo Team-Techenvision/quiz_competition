@@ -1231,12 +1231,19 @@ class User extends CI_Controller{
     }
     
    public function addassigncompetition_list(){
-    // print_r($_POST);
+ /*print_r($_POST); die();*/
+
+   /* echo $_POST['user_id'];die();*/
      $data = $this->User_Model->addassigncompetition_list('user_id');
      echo (json_encode($data));
 
      
 
+    }
+
+    public function addassigncompetition_list_test()
+    {
+      echo $_POST['user'];die();
     }
 
 
@@ -1545,8 +1552,45 @@ function fetch_profile()
     echo $cnt;
   }
 
+/*************** view_question ******************************/
+  public function view_question()
+  {
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+   /* $this->form_validation->set_rules('question', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
 
+       $array = $this->input->post('answertype');
+       $data['ans']= implode(',',$array);
 
+      // $data['json'] = json_encode($this->input->post('text'));
+
+      $save_data = array(
+        'question' => $this->input->post('question'),
+        'answertype' => $data['ans'],
+        'created_date' => date('Y-m-d H:i:s'),
+        
+      );
+      $this->User_Model->save_data('dynamiccompetition', $save_data);
+
+      $lastid = $this->db->insert_id();
+       // print_r($lastid); die();
+
+      $this->session->set_flashdata('save_success','success');
+      // header('location:'.base_url().'User/quizanswer');
+      $this->quizanswer($lastid);
+    }*/
+     // print_r($lastid); die();
+    // $data['anslastid'] = $lastid 
+
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/viewque');
+    $this->load->view('Include/footer');
+
+  }
  
 }
 ?>

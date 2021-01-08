@@ -44,7 +44,7 @@
                   <th>Title</th>
                   <th>Sub Title</th>
                           
-                  <th>Image</th>
+                  <th>Option</th>
                  
                
                 </tr>
@@ -52,6 +52,7 @@
                 <tbody>
                   <?php $i = 0;
                   foreach ($mycompetition_list as $list) {
+                   /* print_r($list);die();*/
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
@@ -60,8 +61,8 @@
                     <td><?php echo $list->subtitle ?></td>
                    
                     
-                    <td><img src="<?php echo base_url("assets/images/competition/".$list->photo);?>"height="150px" width="150px"/></td>
-                     
+                   <!--  <td><img src="< ?php echo base_url("assets/images/competition/".$list->photo);?>"height="150px" width="150px"/></td> -->
+                      <td><a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $list->competitionid ?>" class="btn btn-info">Start</a></td>
                   <?php } ?>
                   </tr>
 

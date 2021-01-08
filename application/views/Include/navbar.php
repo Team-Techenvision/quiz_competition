@@ -29,8 +29,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
-    <img src="dist/img/AdminLTELogo.png" alt="" class="brand-image img-circle elevation-3"
-         style="opacity: .8">
+    <img src="" alt="" class="brand-image img-circle elevation-3"
+         style="opacity: .8"><!-- < ?php echo base_url();?>assets/dist/img/AdminLTELogo.png -->
     <span class="brand-text font-weight-light"></span>
   </a>
   <!-- Sidebar -->
@@ -120,6 +120,12 @@
                 <p>Dynamic Competition</p>
               </a>
             </li> 
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/view_question" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View Question</p>
+              </a>
+            </li>
             <!-- <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/quizanswer" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
