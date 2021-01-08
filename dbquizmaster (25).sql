@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2021 at 01:55 PM
+-- Generation Time: Jan 07, 2021 at 02:46 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -305,6 +305,8 @@ CREATE TABLE `dynamiccompetition` (
   `competitionid` bigint(50) NOT NULL,
   `question` varchar(255) NOT NULL,
   `answertype` varchar(255) NOT NULL,
+  `optionvalues` varchar(255) NOT NULL,
+  `correctans` varchar(255) NOT NULL,
   `created_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -312,59 +314,10 @@ CREATE TABLE `dynamiccompetition` (
 -- Dumping data for table `dynamiccompetition`
 --
 
-INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `question`, `answertype`, `created_date`) VALUES
-(15, 0, 'how are you?', 'Radio Button', '2021-01-06'),
-(16, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
-(17, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
-(18, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
-(19, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
-(20, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(21, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(22, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(23, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(24, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(25, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(26, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(27, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(28, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(29, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(30, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(31, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
-(32, 0, 'how are you?', 'btn_cb,btn_txta', '2021-01-06'),
-(33, 0, 'how are you?', 'btn_rb,btn_cb,btn_txta', '2021-01-06'),
-(34, 0, 'how are you?', 'btn_rb,btn_cb,btn_txta', '2021-01-06'),
-(35, 0, 'how are you?', 'btn_rb', '2021-01-06'),
-(36, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(37, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(38, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(39, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(40, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(41, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(42, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(43, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(44, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(45, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(46, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(47, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(48, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(49, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(50, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(51, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(52, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(53, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(54, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
-(55, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
-(56, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(57, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(58, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(59, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(60, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(61, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(62, 0, 'how are you?', 'btn_txta', '2021-01-06'),
-(63, 0, 'how are you?', 'btn_cb', '2021-01-06'),
-(64, 0, 'how are you?', 'btn_cb', '2021-01-06'),
-(65, 0, 'how are you?', 'btn_cb', '2021-01-06'),
-(66, 0, 'how are you?', 'btn_cb', '2021-01-06');
+INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `question`, `answertype`, `optionvalues`, `correctans`, `created_date`) VALUES
+(10, 1, 'how are you?', '1', 'dsf,dfa,das', '3', '2021-01-07'),
+(11, 1, 'how are you?', '1', 'abc,def,ghi,jkl', '2', '2021-01-07'),
+(13, 2, 'how are you?', '2', 'g,gf,j,hg', '2', '2021-01-07');
 
 -- --------------------------------------------------------
 
@@ -497,34 +450,81 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 
 CREATE TABLE `quizanswer` (
   `quizanswerid` bigint(50) NOT NULL,
-  `radiobuttonans` varchar(255) NOT NULL,
+  `dynamiccompetitionid` int(11) NOT NULL,
+  `optionvalues` varchar(255) NOT NULL,
   `checkboxans` varchar(255) NOT NULL,
   `textareaans` varchar(255) NOT NULL,
-  `created_date` date NOT NULL
+  `textbox` varchar(255) NOT NULL,
+  `dropdown` varchar(255) NOT NULL,
+  `correctans` int(11) NOT NULL DEFAULT '0' COMMENT 'default=0,correct=1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `quizanswer`
 --
 
-INSERT INTO `quizanswer` (`quizanswerid`, `radiobuttonans`, `checkboxans`, `textareaans`, `created_date`) VALUES
-(1, '', '', 'ads', '0000-00-00'),
-(2, '', '', 'asdads', '0000-00-00'),
-(3, '', '', 'sdad', '0000-00-00'),
-(4, '', '', 'asdads', '0000-00-00'),
-(5, '', '', 'sdad', '0000-00-00'),
-(6, '', '', 'gghh', '0000-00-00'),
-(7, '', '', 'hhghgh', '0000-00-00'),
-(8, '', '', 'gghh', '0000-00-00'),
-(9, '', '', 'hhghgh', '0000-00-00'),
-(10, '', '', 'gghh', '0000-00-00'),
-(11, '', '', 'hhghgh', '0000-00-00'),
-(12, '', '', 'gghh', '0000-00-00'),
-(13, '', '', 'hhghgh', '0000-00-00'),
-(14, '', '', 'gghh', '0000-00-00'),
-(15, '', '', 'hhghgh', '0000-00-00'),
-(16, '', '', 'gghh', '0000-00-00'),
-(17, '', '', 'hhghgh', '0000-00-00');
+INSERT INTO `quizanswer` (`quizanswerid`, `dynamiccompetitionid`, `optionvalues`, `checkboxans`, `textareaans`, `textbox`, `dropdown`, `correctans`, `created_date`) VALUES
+(1, 0, '', '', 'ads', '', '', 0, '0000-00-00 00:00:00'),
+(2, 0, '', '', 'asdads', '', '', 0, '0000-00-00 00:00:00'),
+(3, 0, '', '', 'sdad', '', '', 0, '0000-00-00 00:00:00'),
+(4, 0, '', '', 'asdads', '', '', 0, '0000-00-00 00:00:00'),
+(5, 0, '', '', 'sdad', '', '', 0, '0000-00-00 00:00:00'),
+(6, 0, '', '', 'gghh', '', '', 0, '0000-00-00 00:00:00'),
+(7, 0, '', '', 'hhghgh', '', '', 0, '0000-00-00 00:00:00'),
+(8, 0, '', '', 'gghh', '', '', 0, '0000-00-00 00:00:00'),
+(9, 0, '', '', 'hhghgh', '', '', 0, '0000-00-00 00:00:00'),
+(10, 0, '', '', 'gghh', '', '', 0, '0000-00-00 00:00:00'),
+(11, 0, '', '', 'hhghgh', '', '', 0, '0000-00-00 00:00:00'),
+(12, 0, '', '', 'gghh', '', '', 0, '0000-00-00 00:00:00'),
+(13, 0, '', '', 'hhghgh', '', '', 0, '0000-00-00 00:00:00'),
+(14, 0, '', '', 'gghh', '', '', 0, '0000-00-00 00:00:00'),
+(15, 0, '', '', 'hhghgh', '', '', 0, '0000-00-00 00:00:00'),
+(16, 0, '', '', 'gghh', '', '', 0, '0000-00-00 00:00:00'),
+(17, 0, '', '', 'hhghgh', '', '', 0, '0000-00-00 00:00:00'),
+(18, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:12:56'),
+(19, 0, 'india', '', '', '', '', 0, '2021-01-07 08:12:56'),
+(20, 97, '', '', '', '', '', 0, '2021-01-07 08:14:05'),
+(21, 97, '', '', '', '', '', 0, '2021-01-07 08:14:05'),
+(22, 97, '', '', '', '', '', 0, '2021-01-07 08:14:05'),
+(23, 0, 'india', '', '', '', '', 0, '2021-01-07 08:19:13'),
+(24, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:19:13'),
+(25, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:19:13'),
+(26, 0, 'india', '', '', '', '', 0, '2021-01-07 08:20:04'),
+(27, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:20:04'),
+(28, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:20:04'),
+(29, 0, 'india', '', '', '', '', 0, '2021-01-07 08:22:07'),
+(30, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:22:07'),
+(31, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:22:07'),
+(32, 0, 'india', '', '', '', '', 0, '2021-01-07 08:24:07'),
+(33, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:24:07'),
+(34, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:24:07'),
+(35, 0, 'india', '', '', '', '', 0, '2021-01-07 08:24:29'),
+(36, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:24:29'),
+(37, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:24:29'),
+(38, 0, 'india', '', '', '', '', 0, '2021-01-07 08:25:05'),
+(39, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:25:05'),
+(40, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:25:05'),
+(41, 0, 'india', '', '', '', '', 0, '2021-01-07 08:25:23'),
+(42, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:25:23'),
+(43, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:25:23'),
+(44, 0, 'india', '', '', '', '', 0, '2021-01-07 08:26:17'),
+(45, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:26:17'),
+(46, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:26:17'),
+(47, 0, 'india', '', '', '', '', 0, '2021-01-07 08:27:11'),
+(48, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:27:11'),
+(49, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:27:11'),
+(50, 0, 'india', '', '', '', '', 0, '2021-01-07 08:28:41'),
+(51, 0, 'uk', '', '', '', '', 0, '2021-01-07 08:28:41'),
+(52, 0, 'aa', '', '', '', '', 0, '2021-01-07 08:28:41'),
+(53, 0, 'india', '', '', '', '', 0, '2021-01-07 08:28:46'),
+(54, 0, 'india', '', '', '', '', 0, '2021-01-07 08:29:05'),
+(55, 0, 'india', '', '', '', '', 0, '2021-01-07 08:36:36'),
+(56, 0, 'india', '', '', '', '', 0, '2021-01-07 08:36:41'),
+(57, 0, '97', '', '', '', '', 0, '2021-01-07 10:07:33'),
+(58, 97, 'india', '', '', '', '', 0, '2021-01-07 10:09:33'),
+(59, 0, 'india', '', '', '', '', 0, '2021-01-07 10:23:42'),
+(60, 9, 'dsf,dsf,dsfds,ddf', '', '', '', '', 0, '2021-01-07 12:59:17');
 
 -- --------------------------------------------------------
 
@@ -888,7 +888,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `dynamiccompetition`
 --
 ALTER TABLE `dynamiccompetition`
-  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `levelmaster`
@@ -918,7 +918,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT for table `quizanswer`
 --
 ALTER TABLE `quizanswer`
-  MODIFY `quizanswerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `quizanswerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `state`

@@ -76,13 +76,27 @@ class User_Model extends CI_Model{
   return $query->result();
   // print_r($query);
  }
- function fetch_quizquestion($q_id)
+
+ //save_AnwerOption save--------
+
+ function save_AnswerData($value,$queNo){
+
+$cmd = "INSERT INTO `dynamiccompetition`( `radiobuttonans` , `dynamiccompetitionid`) VALUES ($value, $queNo)";
+    // $this->db->insert('quizanswer', $value);
+    $this->db->where('dynamiccompetitionid', $queNo);
+    $this->db->query($cmd);  
+    $insert_id = $this->db->insert_id();
+    return  $insert_id;
+ }
+ function fetch_quizquestion($que_id)
  {
   
-  // $this->db->order_by("dynamiccompetitionid", "");
-  $this->db->where('dynamiccompetitionid', $q_id);
-  $query = $this->db->get("dynamiccompetition");
-  return $query->result();
+  $this->db->order_by("dynamiccompetitionid", "");
+  $this->db->where('dynamiccompetitionid', $que_id);
+  $query = $this->db->get("dynamiccompetition");  
+  
+// $result=$query->result_array();  die();
+  return $query->result_array();
   // print_r($query);
  }
     public function company_list(){
