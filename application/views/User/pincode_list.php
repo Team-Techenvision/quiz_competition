@@ -55,7 +55,7 @@
                     <td><?php echo $list->pincode ?></td>
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_pincode/<?php echo $list->pincodeid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_pincode/<?php echo $list->pincodeid; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_pincode/<?php echo $list->pincodeid; ?>" onclick="return confirm('Do you want to Delete this Area Information?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>

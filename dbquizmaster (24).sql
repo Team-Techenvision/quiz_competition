@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2021 at 11:14 AM
+-- Generation Time: Jan 06, 2021 at 01:55 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -123,7 +123,8 @@ CREATE TABLE `banner` (
 INSERT INTO `banner` (`bannerid`, `title`, `subtitle`, `profile_image`, `slider_possition`, `created_date`) VALUES
 (1, 'Preview: Aus vs India, 1st Test', 'Australia host India in the first of four Tests starting this Thursday and here\'s all you need to know', 'profile_image_1_1608269477.jpg', 1, '0000-00-00 00:00:00'),
 (2, 'Preview: Aus vs India, 1st Test', 'Australia host India in the first of four Tests starting this Thursday and here\'s all you need to know', 'profile_image_2_1608269490.jpg', 1, '0000-00-00 00:00:00'),
-(5, 'Preview: Aus vs India, 1st Test', 'Australia host India in the first of four Tests starting this Thursday and here\'s all you need to know', 'profile_image_5_1608269500.jpg', 1, '0000-00-00 00:00:00');
+(5, 'Preview: Aus vs India, 1st Test', 'Australia host India in the first of four Tests starting this Thursday and here\'s all you need to know', 'profile_image_5_1608269500.jpg', 1, '0000-00-00 00:00:00'),
+(6, 'first package', 'Register to see competition topic', 'profile_image_1609929842.jpg', 1, '2021-01-06 10:44:02');
 
 -- --------------------------------------------------------
 
@@ -227,23 +228,30 @@ CREATE TABLE `competition` (
 --
 
 INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `levelid`, `fromage`, `toage`, `enddate`, `title`, `subtitle`, `subjectstextarea`, `class`, `tabinputtextid`, `photo`, `termsandconditions`, `instruction`, `choosefiletransfer`, `created_date`) VALUES
-(1, 2, 1, 5, 7, '1970-01-01', 'Diagnostic Quiz', 'Register to see competition topic', '<ul><li>xyz</li><li>abc</li></ul>', 'Nursery - Class 1', 1, 'photo_1_1609585088.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '', '2021-01-02 10:58:08'),
-(2, 1, 1, 5, 7, '2021-01-20', 'Buzzfeed Style Quiz', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_2_1609328581.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '', '2020-12-30 11:43:00'),
-(3, 1, 1, 5, 7, '2021-01-21', 'Geography', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_3_1609328666.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '', '2020-12-30 11:44:26'),
-(4, 1, 1, 8, 11, '2021-01-27', 'Personality Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_4_1609328762.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', '', '2020-12-30 11:46:02'),
-(5, 1, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_5_1609328725.jpg', 'sad\r\n', 'assssssss', '', '2020-12-30 11:45:25'),
-(6, 1, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_6_1609328805.jpg', 'xxxx', 'xx', '', '2020-12-30 11:46:44'),
-(7, 1, 1, 12, 15, '2021-01-27', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_7_1609328841.jpg', 'xxxx', 'xx', '', '2020-12-30 11:47:21'),
-(9, 1, 2, 18, 25, '2021-01-28', 'IT', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_9_1609328940.png', 'aaaaaaaa', 'aaaaaaaaaa', '', '2020-12-30 11:49:00'),
-(10, 1, 2, 18, 25, '2021-01-28', 'first package', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_10_1609328971.png', 'das', 'sdf', '', '2020-12-30 11:49:31'),
-(11, 1, 2, 18, 25, '2020-12-29', 'second package', 'Register to see competition topic', '', 'Male(18+)', 4, 'photo_11_1609328901.jpg', 'aass', 'ddd', '', '2020-12-30 11:48:21'),
-(12, 1, 1, 12, 15, '2021-01-28', 'Maths Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_12_1609329020.jpg', 'sd', 'sd', '', '2020-12-30 11:50:20'),
-(13, 1, 1, 12, 15, '2020-12-15', 'singing', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1609327502.jpg', 'asssssa', 'sdsadada', '', '2020-12-30 11:25:02'),
-(14, 1, 1, 12, 15, '1970-01-01', 'quiz', 'Register to see competition topic', '<ul><li>maths</li><li>english</li></ul>', 'class 6 - class 9', 2, 'photo_1609501026.jpg', 'aaaaa', 'aaaaaaaa', '', '2021-01-01 11:37:06'),
-(15, 1, 1, 2, 7, '2021-01-21', 'first package', 'Register to see competition topic', '<ul><li>asa</li></ul>', 'Nursery - Class 1', 1, 'photo_1609585575.jpg', 'sdsa', 'sad', '', '2021-01-02 11:06:15'),
-(16, 2, 1, 4, 7, '1970-01-01', 'first package', 'Register to see competition topic', '<p>ssd</p>', 'Nursery - Class 1', 2, 'photo_1609586639.jpg', 'ZCDDF', 'FSDSDD', '', '2021-01-02 11:23:58'),
-(17, 1, 1, 4, 7, '1970-01-01', 'first package', 'Register to see competition topic', '<p>dsaf</p>', 'Nursery - Class 1', 1, 'photo_1609586692.jpg', 'tgdxtr', 'fgvc', '', '2021-01-02 11:24:52'),
-(18, 1, 1, 14, 16, '1970-01-01', 'science quiz', 'Register to see competition topic', '<p>dddddddddf</p>', 'class 6 - class 9', 3, 'photo_1609586889.jpg', 'ughn', 'hjjjhy', 'Upload File,E-mail', '2021-01-02 11:28:09');
+(1, 2, 1, 5, 7, '1970-01-01', 'Diagnostic Quiz', 'Register to see competition topic', '<ul><li>xyz</li><li>abc</li></ul>', 'Nursery - Class 1', 1, 'photo_1_1609849985.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Upload File', '2021-01-05 12:33:05'),
+(2, 1, 1, 5, 7, '1970-01-01', 'Buzzfeed Style Quiz', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_2_1609850012.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Upload File', '2021-01-05 12:33:32'),
+(3, 1, 1, 5, 7, '2021-01-21', 'Geography', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_3_1609328666.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Upload File', '2020-12-30 11:44:26'),
+(4, 1, 1, 8, 11, '2021-01-27', 'Personality Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_4_1609328762.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Upload File', '2020-12-30 11:46:02'),
+(5, 1, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_5_1609328725.jpg', 'sad\r\n', 'assssssss', 'Upload File', '2020-12-30 11:45:25'),
+(6, 1, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_6_1609328805.jpg', 'xxxx', 'xx', 'Upload File', '2020-12-30 11:46:44'),
+(7, 1, 1, 12, 15, '2021-01-27', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_7_1609328841.jpg', 'xxxx', 'xx', 'Upload File', '2020-12-30 11:47:21'),
+(9, 1, 2, 18, 25, '2021-01-28', 'IT', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_9_1609328940.png', 'aaaaaaaa', 'aaaaaaaaaa', 'Upload File', '2020-12-30 11:49:00'),
+(10, 1, 2, 18, 25, '2021-01-28', 'first package', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_10_1609328971.png', 'das', 'sdf', 'Upload File', '2020-12-30 11:49:31'),
+(11, 1, 2, 18, 25, '2020-12-29', 'second package', 'Register to see competition topic', '', 'Male(18+)', 4, 'photo_11_1609328901.jpg', 'aass', 'ddd', 'Upload File', '2020-12-30 11:48:21'),
+(12, 1, 1, 12, 15, '2021-01-28', 'Maths Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_12_1609329020.jpg', 'sd', 'sd', 'Upload File', '2020-12-30 11:50:20'),
+(13, 1, 1, 12, 15, '2020-12-15', 'singing', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1609327502.jpg', 'asssssa', 'sdsadada', 'Upload File', '2020-12-30 11:25:02'),
+(14, 1, 1, 12, 15, '1970-01-01', 'quiz', 'Register to see competition topic', '<ul><li>maths</li><li>english</li></ul>', 'class 6 - class 9', 2, 'photo_1609501026.jpg', 'aaaaa', 'aaaaaaaa', 'Upload File', '2021-01-01 11:37:06'),
+(15, 1, 1, 2, 7, '2021-01-21', 'first package', 'Register to see competition topic', '<ul><li>asa</li></ul>', 'Nursery - Class 1', 1, 'photo_1609585575.jpg', 'sdsa', 'sad', 'Upload File', '2021-01-02 11:06:15'),
+(16, 2, 1, 4, 7, '1970-01-01', 'first package', 'Register to see competition topic', '<p>ssd</p>', 'Nursery - Class 1', 2, 'photo_1609586639.jpg', 'ZCDDF', 'FSDSDD', 'Upload File', '2021-01-02 11:23:58'),
+(17, 1, 1, 4, 7, '1970-01-01', 'first package', 'Register to see competition topic', '<p>dsaf</p>', 'Nursery - Class 1', 1, 'photo_1609586692.jpg', 'tgdxtr', 'fgvc', 'Upload File', '2021-01-02 11:24:52'),
+(18, 2, 1, 14, 16, '1970-01-01', 'science quiz', 'Register to see competition topic', '<p>dddddddddf</p>', 'class 6 - class 9', 2, '', 'ughn', 'hjjjhy', 'Upload File,Whatsapp', '2021-01-05 11:46:56'),
+(19, 1, 1, 12, 15, '2021-01-21', 'first package', 'Register to see competition topic', '', 'class 6 - class 9', 2, 'photo_1609852283.jpg', 'sd', 'sdd', 'Upload File,E-mail', '2021-01-05 13:11:23'),
+(20, 2, 1, 5, 8, '2021-01-09', 'first package', 'Register to see competition topic', 'ds', 'Nursery - Class 1', 2, '', 'gdg', 'fd', 'Upload File', '2021-01-06 08:12:07'),
+(21, 1, 1, 4, 5, '2021-01-07', 'first package', 'Register to see competition topic', 'xfs', 'Nursery - Class 1', 1, 'photo_21_1609924059.jpg', 'jj', 'jj', 'Upload File', '2021-01-06 09:07:39'),
+(22, 2, 1, 4, 6, '2021-01-14', 'first package', 'Register to see competition topic', 'd', 'Nursery - Class 1', 1, '', 'gtdg', ' vgf', 'Upload File', '2021-01-06 08:53:35'),
+(23, 2, 1, 7, 9, '2021-01-12', 'first package', 'Register to see competition topic', 'jhg', 'Nursery - Class 1', 1, '', 'ghrh', 'bhh', 'Upload File', '2021-01-06 08:56:15'),
+(24, 2, 1, 4, 9, '2021-01-14', 'first package', 'Register to see competition topic', ';lj', 'Nursery - Class 1', 1, '', 'yh', 'h', 'Upload File', '2021-01-06 08:58:15'),
+(25, 1, 1, 15, 18, '2021-01-08', 'first package', 'Register to see competition topic', 'ghf', 'class 6 - class 9', 3, 'photo_1609924026.jpg', ' dfd', 'ds', 'Upload File', '2021-01-06 09:07:06');
 
 -- --------------------------------------------------------
 
@@ -285,6 +293,78 @@ CREATE TABLE `district` (
 
 INSERT INTO `district` (`districtid`, `districtname`, `countryid`, `stateid`, `cityid`, `created_date`) VALUES
 (1, 'ajara', 1, 1, 1, '2020-12-05 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dynamiccompetition`
+--
+
+CREATE TABLE `dynamiccompetition` (
+  `dynamiccompetitionid` bigint(50) NOT NULL,
+  `competitionid` bigint(50) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `answertype` varchar(255) NOT NULL,
+  `created_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dynamiccompetition`
+--
+
+INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `question`, `answertype`, `created_date`) VALUES
+(15, 0, 'how are you?', 'Radio Button', '2021-01-06'),
+(16, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
+(17, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
+(18, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
+(19, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
+(20, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(21, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(22, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(23, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(24, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(25, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(26, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(27, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(28, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(29, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(30, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(31, 0, 'how are you?', 'btn_rb,btn_txta', '2021-01-06'),
+(32, 0, 'how are you?', 'btn_cb,btn_txta', '2021-01-06'),
+(33, 0, 'how are you?', 'btn_rb,btn_cb,btn_txta', '2021-01-06'),
+(34, 0, 'how are you?', 'btn_rb,btn_cb,btn_txta', '2021-01-06'),
+(35, 0, 'how are you?', 'btn_rb', '2021-01-06'),
+(36, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(37, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(38, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(39, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(40, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(41, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(42, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(43, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(44, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(45, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(46, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(47, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(48, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(49, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(50, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(51, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(52, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(53, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(54, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
+(55, 0, 'how are you?', 'btn_rb,btn_cb', '2021-01-06'),
+(56, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(57, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(58, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(59, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(60, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(61, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(62, 0, 'how are you?', 'btn_txta', '2021-01-06'),
+(63, 0, 'how are you?', 'btn_cb', '2021-01-06'),
+(64, 0, 'how are you?', 'btn_cb', '2021-01-06'),
+(65, 0, 'how are you?', 'btn_cb', '2021-01-06'),
+(66, 0, 'how are you?', 'btn_cb', '2021-01-06');
 
 -- --------------------------------------------------------
 
@@ -408,6 +488,43 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (23, 'monika desai', '15', 'monika@gmail.com', '5', 'english model school', 'kkk', 1, 14, 35, '', '2021-01-01'),
 (24, 'Prakash', '15', 'prakash@gmail.com', '2', 'english model school', 'kkk', 2, 6, 58, 'profile_image_58_1609503496.jpg', '2021-01-01'),
 (25, 'Rohan Wordpress', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 2, 59, '', '2021-01-02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizanswer`
+--
+
+CREATE TABLE `quizanswer` (
+  `quizanswerid` bigint(50) NOT NULL,
+  `radiobuttonans` varchar(255) NOT NULL,
+  `checkboxans` varchar(255) NOT NULL,
+  `textareaans` varchar(255) NOT NULL,
+  `created_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `quizanswer`
+--
+
+INSERT INTO `quizanswer` (`quizanswerid`, `radiobuttonans`, `checkboxans`, `textareaans`, `created_date`) VALUES
+(1, '', '', 'ads', '0000-00-00'),
+(2, '', '', 'asdads', '0000-00-00'),
+(3, '', '', 'sdad', '0000-00-00'),
+(4, '', '', 'asdads', '0000-00-00'),
+(5, '', '', 'sdad', '0000-00-00'),
+(6, '', '', 'gghh', '0000-00-00'),
+(7, '', '', 'hhghgh', '0000-00-00'),
+(8, '', '', 'gghh', '0000-00-00'),
+(9, '', '', 'hhghgh', '0000-00-00'),
+(10, '', '', 'gghh', '0000-00-00'),
+(11, '', '', 'hhghgh', '0000-00-00'),
+(12, '', '', 'gghh', '0000-00-00'),
+(13, '', '', 'hhghgh', '0000-00-00'),
+(14, '', '', 'gghh', '0000-00-00'),
+(15, '', '', 'hhghgh', '0000-00-00'),
+(16, '', '', 'gghh', '0000-00-00'),
+(17, '', '', 'hhghgh', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -553,14 +670,15 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (47, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'eee@d.c', '122', '123', NULL, 'active', '1', '2020-12-15 03:59:06', 0),
 (48, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'jjj@f.cm', '44444', '123', NULL, 'active', '1', '2020-12-15 04:01:17', 0),
 (49, 1, '', 2, 'rohan wordpress', 'kkk', 0, 'kolhapur', 'zzz@g.mm', '1555', '123', NULL, 'active', '1', '2020-12-15 04:10:20', 0),
-(50, 1, '', 2, 'Vinayak Baleghate', 'kolhapur', 0, 'kolhapur', 'vinayak@techenvision.in', '9874589632', '123456', NULL, 'active', '1', '2020-12-25 07:01:17', 1),
+(50, 1, '', 2, 'Vinayak Baleghate', 'kolhapur', 0, 'kolhapur', 'vinayak@techenvision.in', '9874577777', '123456', NULL, 'active', '1', '2021-01-06 07:43:37', 1),
 (51, 1, '', 2, 'Rohan Patil', 'kolhapur', 0, 'kolhapur', 'rohan@techenvision.in', '7474747474', '123', NULL, 'active', '1', '2020-12-25 07:03:49', 1),
 (53, 1, '', 2, 'Sweta Mane', 'kolhapur', 0, 'kolhapur', 'sweta@gmail.com', '9988998899', 'sweta', NULL, 'active', '1', '2020-12-25 07:06:36', 1),
 (55, 0, '', 3, 'kiran kadam', '', 1, '', '', '8282828282', '', NULL, 'active', '', '2020-12-25 11:27:36', 3),
 (56, 0, '', 3, 'prathamesh chavan', '', 1, '', '', '7417417417', '', NULL, 'active', '', '2020-12-25 11:53:06', 3),
-(57, 1, '', 2, 'tech_envision', 'kkk', 0, 'kolhapur', 'ttt@gmail.com', '4545454545', 'tech', NULL, 'active', '1', '2021-01-01 11:23:40', 1),
 (58, 0, '', 3, 'Manikarnika', '', 1, '', '', '9888888888', '', NULL, 'active', '', '2021-01-01 12:06:39', 3),
-(59, 0, '', 3, 'abc', '', 2, '', '', '7897897897', '', NULL, 'active', '', '2021-01-02 12:16:02', 3);
+(59, 0, '', 3, 'abc', '', 2, '', '', '7897897897', '', NULL, 'active', '', '2021-01-02 12:16:02', 3),
+(60, 0, '', 3, 'sdf', '', 2, '', '', '9666666666', '', NULL, 'active', '', '2021-01-06 06:20:25', 3),
+(61, 1, '', 2, 'abc', 'kkk', 0, 'kolhapur', 'df@gm.com', '9333333333', '123', NULL, 'active', '1', '2021-01-06 07:46:10', 1);
 
 -- --------------------------------------------------------
 
@@ -642,6 +760,12 @@ ALTER TABLE `district`
   ADD PRIMARY KEY (`districtid`);
 
 --
+-- Indexes for table `dynamiccompetition`
+--
+ALTER TABLE `dynamiccompetition`
+  ADD PRIMARY KEY (`dynamiccompetitionid`);
+
+--
 -- Indexes for table `levelmaster`
 --
 ALTER TABLE `levelmaster`
@@ -664,6 +788,12 @@ ALTER TABLE `prizemaster`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profileid`);
+
+--
+-- Indexes for table `quizanswer`
+--
+ALTER TABLE `quizanswer`
+  ADD PRIMARY KEY (`quizanswerid`);
 
 --
 -- Indexes for table `state`
@@ -716,7 +846,7 @@ ALTER TABLE `assignwinner`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -740,7 +870,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -753,6 +883,12 @@ ALTER TABLE `country`
 --
 ALTER TABLE `district`
   MODIFY `districtid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `dynamiccompetition`
+--
+ALTER TABLE `dynamiccompetition`
+  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `levelmaster`
@@ -779,6 +915,12 @@ ALTER TABLE `profile`
   MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT for table `quizanswer`
+--
+ALTER TABLE `quizanswer`
+  MODIFY `quizanswerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `state`
 --
 ALTER TABLE `state`
@@ -794,7 +936,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `winner`

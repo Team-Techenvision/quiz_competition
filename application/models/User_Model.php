@@ -76,7 +76,15 @@ class User_Model extends CI_Model{
   return $query->result();
   // print_r($query);
  }
-
+ function fetch_quizquestion($q_id)
+ {
+  
+  // $this->db->order_by("dynamiccompetitionid", "");
+  $this->db->where('dynamiccompetitionid', $q_id);
+  $query = $this->db->get("dynamiccompetition");
+  return $query->result();
+  // print_r($query);
+ }
     public function company_list(){
      $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -164,9 +172,8 @@ class User_Model extends CI_Model{
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
     $this->db->join('user', 'profile.user_id = user.user_id', 'left');
     $this->db->where('profile.user_id !=', $user_id);
-    // $this->db->where('profile.user_id', $user_id);
+    // $this->db->where('competitionid', $competitionid);
     // $this->db->where('pincode', $pincode);
-
     $this->db->from('profile');
 
     
@@ -308,24 +315,18 @@ function fetch_country1()
   return $output;
  }
 
-  public function competition_list($competitionid,$enddate){
+  public function competition_list($competitionid){
      // $today = date('Y-m-d');
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabinputtext');
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
-    // $this->db->join('city', 'competition.cityid = city.cityid', 'inner');
-
-    // $this->db->where('slider_possition', 1);
-    // if($enddate != ''){
-    //   $this->db->where('slider_possition', $slider_possition);
-    // }
-    // where date >= '2013-06-01 00:00:00' and date <= '2013-06-06 00:00:00'
-    // $this->db->where("(enddate <= " . now() . ")");
-    // $this->db->where('competition.strtotime($enddate) >= strtotime($today)', $enddate);
+   
     $this->db->from('competition');
     $query = $this->db->get();
     $result = $query->result();
+    // print_r($result); 
     return $result;
+
   }
    function fetch_tabinputtext()
  {

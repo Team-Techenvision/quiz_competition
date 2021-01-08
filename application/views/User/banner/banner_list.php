@@ -53,7 +53,7 @@
                    
                    <td>
                       <a href="<?php echo base_url(); ?>User/edit_banner/<?php echo $list->bannerid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_banner/<?php echo $list->bannerid; ?>" onclick="return confirm('Delete this banner');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_banner/<?php echo $list->bannerid; ?>" onclick="return confirm('Do you want to Delete this banner?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td> 
                   <?php } ?>
                   </tr>
@@ -75,17 +75,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Saved successfully');
+      toastr.success('Banner Saved successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Updated successfully');
+      toastr.success('Banner Updated successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Deleted successfully');
+      toastr.error('Banner Deleted successfully');
     });
   <?php } ?>
 

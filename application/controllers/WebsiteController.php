@@ -17,7 +17,7 @@ class WebsiteController extends CI_Controller{
 /**************************      Login      ********************************/
   public function login(){
     // print_r($_POST);
-    $this->form_validation->set_rules('user_mobile', 'user_mobile', 'trim|required');
+    $this->form_validation->set_rules('user_mobile', 'user_mobile', 'required|regex_match[/^[0-9]{10}$/]');
     // $this->form_validation->set_rules('user_otp', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
      //  $this->load->view('Website/Include/head');
@@ -460,6 +460,127 @@ public function insert_profiledata(){
     $cnt = $this->Website_Model->check_dupli_num($company_id,$column_val,$column_name,$table_name);
     echo $cnt;
   }
+
+
+
+
+
+
+  //---------------------------------------------/
+  public function question_view(){
+    // print_r($_POST);
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+
+        $update_data = $_POST; 
+
+      $update_data = array(
+        'parentname' => $this->input->post('parentname'),
+        'age' => $this->input->post('age'),
+        'emailid' => $this->input->post('emailid'),
+        'grade' => $this->input->post('grade'),
+        'schoolcollegename' => $this->input->post('schoolcollegename'),
+        'address' => $this->input->post('address'),
+        'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competition_id'),
+        'profile_image' => $this->input->post('profile_image'),
+        // 'user_addedby' => $quizweb_user_id,
+      );
+      $this->Website_Model->update_info('user_id', $quizweb_user_id, 'profile', $update_data);
+
+   
+
+      if($_FILES['profile_image']['name']){
+              $time = time();
+              // $image_name = 'profile_image_'.$time;
+              $image_name = 'profile_image_'.$quizweb_user_id.'_'.$time;
+
+              $config['upload_path'] = 'assets/images/profile/';
+              $config['allowed_types'] = 'jpg|jpeg|png|gif';
+              $config['file_name'] = $image_name;
+              $filename = $_FILES['profile_image']['name'];
+              $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+                    // print_r($_POST);
+                     
+
+              if ($this->upload->do_upload('profile_image') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+                   // print_r($insert_id);
+
+                  $image['profile_image'] = $image_name.'.'.$ext;
+                  // print_r($profile_image);
+                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'profile', $image);
+                   // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+                  $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+        } 
+        else 
+        {
+           $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_error',$error);
+        }
+     }
+
+      $this->session->set_flashdata('update_success','success');
+      // header('location:'.base_url().'WebsiteController/edit_profile');
+    }
+
+    $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'profile');
+    // if($profile_info == ''){ header('location:'.base_url().'WebsiteController/edit_profile'); }
+    foreach($profile_info as $info){
+      $data['update'] = 'update';
+      $data['parentname'] = $info->parentname;
+      $data['age'] = $info->age;
+      $data['emailid'] = $info->emailid;
+      $data['grade'] = $info->grade;
+      $data['schoolcollegename'] = $info->schoolcollegename;
+      $data['address'] = $info->address;
+      $data['pincode'] = $info->pincode;
+      $data['competitionid'] = $info->competitionid;
+      $data['profile_image'] = $info->profile_image;
+    }
+  $data['pin'] = $this->Website_Model->fetch_pincodelist();
+  $profile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','profile'); 
+
+    $this->load->view('Website/Include/head',$data);
+    $this->load->view('Website/star_quizs',$data);
+    $this->load->view('Website/Include/footer',$data);
+  }
+
+  //---------------------------------------------/
+
+  public function star_competion()
+  {
+    $quiz_id = $this->uri->segment(3);
+   /* echo $quiz_id;   die();*/
+     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+    // $data['mycompetition_list'] = $this->Website_Model->mycompetition_list('profileid');
+    // $data['mycompetition_list'] = $this->Website_Model->mycompetition_list($quizweb_user_id);
+    $data['result'] = $this->Website_Model->quize_get($quiz_id);
+
+    // print_r($data['mycompetition_list']);
+
+    
+  
+    $this->load->view('Website/Include/head');
+    // $this->load->view('Include/navbar',$data);
+     $this->load->view('Website/star_quizs',$data);
+    /*$this->load->view('Website/competition_list',$data);*/
+    $this->load->view('Website/Include/footer');
+  }
+
+
 
 
 }

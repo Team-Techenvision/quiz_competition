@@ -39,7 +39,8 @@
                     <input type="text" class="form-control txtOnly" name="user_city" id="user_city" value="<?php if(isset($user_city)){ echo $user_city; } ?>" placeholder="Enter City" required>
                   </div>
                   <div class="form-group col-md-12">
-                    <input type="number"  min=0 oninput="validity.valid||(value='');" class="form-control notext" name="user_mobile" id="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No."  minlength="10" maxlenght="10" required>
+                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="form-control notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+                 
                   </div>
                   <div class="form-group col-md-12">
                     <input type="email" class="form-control" name="user_email" id="user_email" value="<?php if(isset($user_email)){ echo $user_email; } ?>" placeholder="Enter Email Id." required>
@@ -71,6 +72,7 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script type="text/javascript">
 // Check Mobile Duplication..

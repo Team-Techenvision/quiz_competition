@@ -224,7 +224,12 @@
                      ?>   
                     
                 </select>
-                 <input type="number"  min=0 oninput="validity.valid||(value='');" class="input user_mobile" name="user_mobile" id="user_mobile" maxlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No." required />
+                  <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+
+                  <label class="form-check-label " style="margin-left: 20px;">
+                    <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required> I agree <label class="text-primary t">Data Protection Policy</label> 
+                  </label>
+             
 
 
               <button class="form-btn button sx log-in" type="button">Log In</button>

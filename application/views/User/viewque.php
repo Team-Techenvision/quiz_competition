@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>Assign Competition Information</h1>
+            <h1>Name Competition Information</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -20,13 +20,52 @@
         <div class="row">
           <!-- left column -->
           <div class="col-md-8 offset-md-2">
+          <div>
+            <span class="h4 row">Q.1 Question.....?</span>
+            <div class="radio">
+                <label><input type="radio" name="optradio" >Option 1</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">Option 2</label>
+              </div>
+              <div class="radio disabled">
+                <label><input type="radio" name="optradio">Option 3</label>
+              </div>
+          </div>
+           <div>
+            <span class="h4 row">Q.2 Question.....?</span>
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Option 1</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Option 2</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Option 3</label>
+            </div>
+          </div>
+           <div>
+            <span class="h4 row">Q.3 Question.....?</span>
+            <div>
+              <input type="text" name="textans" class="form-control" placeholder="Anser.....">
+            </div>
+          </div>
+           <div>
+            <span class="h4 row">Q.4 Question.....?</span>
+            <div>
+              <textarea placeholder="Anser In Details...."class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="m-4 row">
+            <input type="button" name="submit" value="submit" class="btn btn-success m-auto">
+          </div>
             <!-- general form elements -->
-            <div class="card card-default">
+           <!--  <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Add Assign Competition</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
+              <! -- /.card-header - ->
+              <! -- form start - ->
               
                 <div class="card-body row">
                      <form id="form_action" role="form" action="assigncompetition_list" method="post" > <div class="row" >          
@@ -72,11 +111,11 @@
                  </div>
                </div>
                   </form>
-                  <!-- table fetch Participant name -->
+                  <! -- table fetch Participant name - ->
 
                     
                  
-                      <!-- <form id="form_action" role="form" action="" method="post" > -->
+                      <! -- <form id="form_action" role="form" action="" method="post" > - ->
                          <?php
                     if(isset($assigncompetition_list)){?> 
 
@@ -119,7 +158,7 @@
                 </tbody>
               </table> 
                   
-                <!-- Modal -->
+                <! -- Modal - ->
 
                        <div class="modal fade" id="addcompetitionmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -140,7 +179,7 @@
                                        <input type="text" class="form-control required title-case text" name="pincode1" id="pincode1" value="<?php if(isset($pincodeid)){ echo $pincodeid; } ?>" >
                                      </div>
                                   </div>
-                                  <!-- <div id="compitiorlist"></div> -->
+                                  <! -- <div id="compitiorlist"></div> - ->
                                      <table id="compitiorlist" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
@@ -154,17 +193,17 @@
                                                         
                                
                               </div>
-                          <!--  <div class="modal-footer">
+                          <! --  <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                               
-                              </div> -->
+                              </div> - ->
                             </div>
                           </div>
                         </div>
                  </div>
   
                     <?php } ?> 
-                  <!-- </form> -->
+                  <! -- </form> - ->
             
                
 
@@ -172,7 +211,7 @@
                 
 
                 </div>
-                <!-- /.card-body -->
+                <! -- /.card-body -->
                <!--  <div class="card-footer">
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
@@ -180,15 +219,17 @@
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
                   <a href="" class="btn btn-default ml-4">Cancel</a>
-                </div> -->
+                </div> - ->
              
              
             </div>
 
-          </div>
+          </div> -->
           <!--/.col (left) -->
           <!-- right column -->
           <!--/.col (right) -->
+
+        <!--------------------    ----------------------->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
