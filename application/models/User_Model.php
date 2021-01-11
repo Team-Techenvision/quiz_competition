@@ -16,6 +16,10 @@ class User_Model extends CI_Model{
     $insert_id = $this->db->insert_id();
     return  $insert_id;
   } 
+  //  public function update($competitionid,$data){
+  //   $this->db->where($competitionid, $competitionid)
+  //   ->update('competitionquizsubject',$data);
+  // }
   public function banner_list($bannerid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -23,6 +27,17 @@ class User_Model extends CI_Model{
     //   $this->db->where('company_id', $company_id);
     // }
     $this->db->from('banner');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
+    public function competitiontype_list($competitiontypeid){
+    $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('competitiontype');
     $query = $this->db->get();
     $result = $query->result();
      return $result;
@@ -73,6 +88,15 @@ class User_Model extends CI_Model{
   $this->db->order_by("levelid", "");
   // $this->db->where('is_admin', 1);
   $query = $this->db->get("levelmaster");
+  return $query->result();
+  // print_r($query);
+ }
+  function fetch_competitiontype()
+ {
+  
+  $this->db->order_by("competitiontypeid", "");
+  // $this->db->where('is_admin', 1);
+  $query = $this->db->get("competitiontype");
   return $query->result();
   // print_r($query);
  }

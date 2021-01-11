@@ -32,7 +32,33 @@
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
-                       
+                  <div class="form-group col-md-4">
+                      <?php
+                      if(isset($competitiontypeid)){?>
+
+                       <input type="text" class="form-control required title-case text" name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
+                       <?php }?>
+
+
+
+                      <select name="competitiontypeid" id="competitiontypeid"class="form-control" required="">
+                    <option value="">Select Competition Type</option>
+
+
+                <?php foreach($competitiontype as $competitiontype)
+                    {
+
+                    echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
+                                    
+                     }
+                    ?>  
+
+                     
+                  </select>
+                  </div>
+                    <div class="form-group col-md-8">
+                    <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="<?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" required>
+                  </div>
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control required title-case text txtOnly" name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required>
                   </div>
@@ -50,12 +76,12 @@
                   </div>
                   <div class="form-group col-md-3">
                     <?php
-                      if(isset($competitiontypeid)){?>
+                      if(isset($competitionusertype)){?>
 
-                       <input type="text" class="form-control required title-case text" name="competitiontypeid" id="competitiontypeid" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
+                       <input type="text" class="form-control required title-case text" name="competitionusertype" id="competitionusertype" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
                        <?php }?>
-                    <select name="competitiontypeid" id="competitiontypeid"class="form-control" >
-                    <option value="">Competition Type</option>
+                    <select name="competitionusertype" id="competitionusertype"class="form-control" >
+                    <option value="">Competition User Type</option>
                     <option value="1">All</option>
                     <option value="2">one to one</option>
                    
@@ -209,8 +235,27 @@
                   reader.readAsDataURL(input.files[0]);
               }
           }
-  </script>
 
+
+       
+  </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#quizsubject").hide();
+
+    $('#competitiontypeid').on('change', function() {
+      if ( this.value == '1')
+      {
+        $("#quizsubject").show();
+      }
+      else
+      {
+        $("#quizsubject").hide();
+      }
+    });
+});
+</script>
 
 
 </body>

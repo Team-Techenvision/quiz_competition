@@ -78,6 +78,12 @@
                 <p>Banner</p>
               </a>
             </li>
+              <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Competition Type</p>
+              </a>
+            </li> 
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/competition_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -121,9 +127,9 @@
               </a>
             </li> 
              <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/view_question" class="nav-link">
+              <a href="<?php echo base_url(); ?>User/pincode_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>View Question</p>
+                <p>Area Information</p>
               </a>
             </li>
             <!-- <li class="nav-item">

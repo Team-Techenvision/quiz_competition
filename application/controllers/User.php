@@ -191,7 +191,7 @@ class User extends CI_Controller{
 
    // Edit QuizCompetition....
   public function edit_quizcompetition($dynamiccompetitionid){
-
+  // print_r($_POST); die();
      $dynamiccompetitionid = $this->uri->segment(3);
 
      // print_r($dynamiccompetitionid); die();
@@ -243,16 +243,104 @@ class User extends CI_Controller{
   }
 
   // Delete QuizCompetition....
-  public function delete_quizcompetition($dynamiccompetitionid){
+  public function delete_quizcompetition(){
+ 
+    $compid = $this->uri->segment(3);
+    $competitionid = $this->uri->segment(4);
+
+
+    // echo $competitionid; die();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $this->User_Model->delete_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition');
+    $this->User_Model->delete_info('dynamiccompetitionid', $competitionid, 'dynamiccompetition');
     $this->session->set_flashdata('delete_success','success');
-    header('location:'.base_url().'User/quizcompetition_list');
+    header('location:'.base_url().'User/quizcompetition_list/'.$compid);
   }
 
+/*******************************    Competition Type Information      ****************************/
+
+  // Add New Competition Type....
+  public function add_competitiontype(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('competitiontype', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $save_data = array(
+   
+        'competitiontype' => $this->input->post('competitiontype'),
+        'created_date' => date('Y-m-d H:i:s'),
+        
+      );
+      $this->User_Model->save_data('competitiontype', $save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'User/competitiontype_list');
+    }
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/competitiontype');
+    $this->load->view('Include/footer');
+  }
+
+  // User List....
+  public function competitiontype_list(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['competitiontype_list'] = $this->User_Model->competitiontype_list($quizweb_company_id);
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/competitiontype_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Edit User....
+  public function edit_competitiontype($competitiontypeid){
+
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('competitiontype', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $update_data = array(
+         'competitiontype' => $this->input->post('competitiontype'),
+         'created_date' => date('Y-m-d H:i:s'),
+      );
+      $this->User_Model->update_info('competitiontypeid', $competitiontypeid, 'competitiontype', $update_data);
+      $this->session->set_flashdata('update_success','success');
+      header('location:'.base_url().'User/competitiontype_list');
+    }
+
+    $user_info = $this->User_Model->get_info('competitiontypeid', $competitiontypeid, 'competitiontype');
+    if($user_info == ''){ header('location:'.base_url().'User/competitiontype_list'); }
+    foreach($user_info as $info){
+      $data['update'] = 'update';
+      $data['competitiontype'] = $info->competitiontype;
+     
+    }
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/competitiontype',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Delete User....
+  public function delete_competitiontype($competitiontypeid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->User_Model->delete_info('competitiontypeid', $competitiontypeid, 'competitiontype');
+    $this->session->set_flashdata('delete_success','success');
+    header('location:'.base_url().'User/competitiontype_list');
+  }
 
 
 /**************************      Company Information      ********************************/
@@ -456,6 +544,9 @@ class User extends CI_Controller{
 /******************************* Pincode Information ****************************/
  // Add New Pincode info....
   public function add_pincode(){
+
+   // print_r($_POST); die();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -742,6 +833,8 @@ class User extends CI_Controller{
  // Add Competition....
   public function add_competition(){
 
+    // print_r($_POST); die();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -751,6 +844,7 @@ class User extends CI_Controller{
 
        // $array = $this->input->post('choosefiletransfer');
        // $data['subject']= implode(',',$array);
+
       $data['uploadfile'] = $this->input->post('uploadfile');
       if (isset($data['uploadfile'])) {
         echo $data['uploadfile'] = 1; 
@@ -785,7 +879,7 @@ class User extends CI_Controller{
         'tabinputtextid' => $this->input->post('tabinputtextid'),
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
-        'competitiontypeid' => $this->input->post('competitiontypeid'),
+        'competitionusertype' => $this->input->post('competitionusertype'),
         'levelid' => $this->input->post('levelid'),
         'fromage' => $this->input->post('fromage'),
         'toage' => $this->input->post('toage'),
@@ -796,19 +890,32 @@ class User extends CI_Controller{
         'emailaddress'=>  $this->input->post('emailaddress'),
         'whatsapp'=>  $data['whatsapp'],
         'whatsappnumber'=>  $this->input->post('whatsappnumber'),
+        'competitiontypeid'=>  $this->input->post('competitiontypeid'),
         'created_date' => date('Y-m-d H:i:s'),
  
       );
 
-    // echo "hii"; die();
+      // echo "hii"; die();
       // print_r($array);
+
+
       
-      $this->User_Model->save_data('competition',$save_data);
-      $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'User/competition_list');
+      $id = $this->User_Model->save_data('competition',$save_data);
+       
+       // $competitionid = $this->input->post('competitionid');
+      
+        $data_view = array(
+            'competitionid' => $id,
+            'quizsubject' => $this->input->post('quizsubject'),
+        );
+
+        $this->User_Model->save_data('competitionquizsubject',$data_view);
 
 
+      // $this->session->set_flashdata('save_success','success');
+      // header('location:'.base_url().'User/competition_list');
 
+     
       $lastid = $this->db->insert_id();
 
               // $lastId = $this->db->insert_id();
@@ -826,7 +933,7 @@ class User extends CI_Controller{
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               // $allowed = array('gif', 'png', 'jpg');
 
-// print_r($allowed);  echo $ext; die();
+              // print_r($allowed);  echo $ext; die();
               // if (!in_array($ext, $allowed)) {
               //     echo 'error';
               //     die();
@@ -864,6 +971,7 @@ class User extends CI_Controller{
     }
       $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
       $data['level'] = $this->User_Model->fetch_level();
+      $data['competitiontype'] = $this->User_Model->fetch_competitiontype();
 
 
     $this->load->view('Include/head',$data);
@@ -874,6 +982,7 @@ class User extends CI_Controller{
 
   // Competition List....
   public function competition_list(){
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -888,7 +997,9 @@ class User extends CI_Controller{
 
   // Edit Competition....
   public function edit_competition($competitionid){
-    // print_r($_POST);
+
+     $competitionid = $this->uri->segment(3);
+    // print_r($competitionid); die();
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -936,7 +1047,7 @@ class User extends CI_Controller{
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
         'tabinputtextid' => $this->input->post('tabinputtextid'),
-        'competitiontypeid' => $this->input->post('competitiontypeid'),
+        'competitionusertype' => $this->input->post('competitionusertype'),
         'levelid' => $this->input->post('levelid'),
         'fromage' => $this->input->post('fromage'),
         'toage' => $this->input->post('toage'),
@@ -947,6 +1058,7 @@ class User extends CI_Controller{
         'emailaddress'=>  $this->input->post('emailaddress'),
         'whatsapp'=>  $data['whatsapp'],
         'whatsappnumber'=>  $this->input->post('whatsappnumber'),
+        'competitiontypeid'=>  $this->input->post('competitiontypeid'),
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -955,7 +1067,22 @@ class User extends CI_Controller{
       );
       // print_r($update_data);
 
-      $this->User_Model->update_info('competitionid', $competitionid, 'competition', $update_data);
+     $this->User_Model->update_info('competitionid', $competitionid, 'competition', $update_data);
+  
+
+      $updateid = $competitionid;
+  // print_r($updateid); die();
+      // $competitionid = $this->input->post('competitionid');
+      
+        $update_view = array(
+            'competitionid' => $updateid,
+            'quizsubject' => $this->input->post('quizsubject'),
+        );
+
+        // print_r($update_view); die();
+
+       $this->User_Model->update_info('competitionid', $updateid, 'competitionquizsubject', $update_view);
+
 
       if($_FILES['photo']['name']){
               $time = time();
@@ -998,10 +1125,11 @@ class User extends CI_Controller{
 
 
     $competition_info= $this->User_Model->get_info('competitionid', $competitionid, 'competition');
+    $compquizsubject_info= $this->User_Model->get_info('competitionid', $competitionid, 'competitionquizsubject');
     
-    // print_r($competition_info);
+    // print_r($compquizsubject_info); die();
 
-    if($competition_info == ''){ header('location:'.base_url().'User/competition_list'); }
+    if($competition_info == '' && $compquizsubject_info == ''  ){ header('location:'.base_url().'User/competition_list'); }
     foreach($competition_info as $info){
       $data['update'] = 'update';
       $data['title'] = $info->title;
@@ -1011,7 +1139,7 @@ class User extends CI_Controller{
       $data['termsandconditions'] = $info->termsandconditions;
       $data['instruction'] = $info->instruction;
       $data['tabinputtextid'] = $info->tabinputtextid;
-      $data['competitiontypeid'] = $info->competitiontypeid;
+      $data['competitionusertype'] = $info->competitionusertype;
       $data['levelid'] = $info->levelid;
       $data['fromage'] = $info->fromage;
       $data['toage'] = $info->toage;
@@ -1022,13 +1150,20 @@ class User extends CI_Controller{
       $data['emailaddress'] = $info->emailaddress;
       $data['whatsapp'] = $info->whatsapp;
       $data['whatsappnumber'] = $info->whatsappnumber;
+      $data['competitiontypeid'] = $info->competitiontypeid;
     }
+     foreach($compquizsubject_info as $info){
+      $data['update'] = 'update';
+      $data['competitionid'] = $info->competitionid;
+      $data['quizsubject'] = $info->quizsubject;
+     
+    }
+    // print_r($data); die();
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
     $data['level'] = $this->User_Model->fetch_level();
     $data['competition_list'] = $this->User_Model->competition_list('competitionid');
-
-
+    $data['competitiontype'] = $this->User_Model->fetch_competitiontype();
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);

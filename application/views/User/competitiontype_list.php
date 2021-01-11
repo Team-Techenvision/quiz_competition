@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>QUIZ INFORMATION</h4>
+            <h4>COMPETITION TYPE INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -22,10 +22,11 @@
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card">
-            <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Quiz Information</h3>
-              <div class="card-tools">
-                <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="btn btn-sm btn-block btn-primary">Add Quiz</a>
+            <div class="card-header ">
+            
+              <h3 class="card-title "><i class="fa fa-list"></i> List Competition Information</h3>
+              <div class="card-tools col-md-2 " style=" margin-left: 80%;">
+                <a href="add_competitiontype" class="btn btn-sm btn-block btn-primary">Add Competition</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -34,22 +35,21 @@
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>Question</th>
-                
+                  <th>Competition Type</th>
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php $i = 0;
-                  foreach ($quizcompetition_list as $list) {
+                  foreach ($competitiontype_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->question ?></td>
-                   
+                    <td><?php echo $list->competitiontype ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>" onclick="return confirm('Do you want to Delete this question?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_competitiontype/<?php echo $list->competitiontypeid; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to Delete this Competition Type?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                     
                     </td>
                   <?php } ?>
                   </tr>
@@ -66,22 +66,22 @@
       </div><!-- /.container-fluid -->
     </section>
   </div>
-  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+ <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Saved successfully');
+      toastr.success('Competition Type Saved successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Updated successfully');
+      toastr.success('Competition Type Updated successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Deleted successfully');
+      toastr.error('Competition Type Deleted successfully');
     });
   <?php } ?>
 

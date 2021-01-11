@@ -31,45 +31,73 @@
               <form id="form_action" role="form" action="" method="post">
                 <div class="card-body">
                 <div class="row">
-	                <?php $i=1;
+                  <?php $i=1;
+
                         foreach ($fetch_dynamicquizlist as $list){
+                        $anstype = $list['answertype']; 
+
+                        $myString = $list['optionvalues'];
+                        $myArray = explode(',', $myString); 
 
                         $selectans = $list['correctans']; 
-                        $anstype = $list['answertype']; 
+                        $corAns = explode(',', $selectans); 
+
+
+                        // print_r($corAns); die();
 
                          ?>
 
-	                  <div class="form-group col-md-12">
-	                  	<label>Question</label>
-			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question">
-		                   
+
+                    <div class="form-group col-md-12">
+                      <label>Question</label>
+                   <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question">
+                       
                       </div>
-                     <?php if($anstype!="3" && $anstype!="4"){
+                     <?php if($anstype=="1" ){
 
                       ?>
                        <div class="form-group col-md-12">
+                           <?php   foreach($myArray as $my_Array)
+                      { ?>                             
+                       
+                      <div class="row pl-4">
+                    
+                         <?php if($selectans==$i){?>
 
-                         <?php $myString = $list['optionvalues'];
-                      $myArray = explode(',', $myString); 
-
-                      $correct = $list['correctans'];
-                      $corAns = explode(',', $correct); 
-
-                        // echo  $corAns; die();
-
-
-                      foreach($myArray as $my_Array)
-                      {  
-
-                        ?>
-                         <div class="row pl-4">
-                        <?php if($selectans==$i){?>
-                           <input class="form-check-input "  type="radio" name="correctans[]" value="<?php echo $my_Array; ?>"  id="flexRadioDefault1" checked><?php  }else{ ?><input class="form-check-input "  type="radio" name="correctans[]" value="<?php echo $my_Array; ?>"  id="flexRadioDefault1">
+                           <input class="form-check-input "  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1" checked="checked"><?php  }else{ ?><input class="form-check-input "  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1">
                          <?php } $i++;?>
-
-                           <input type="text" name="optionvalues[]"  class="form-control col-md-10" value="<?php echo $my_Array ;?>" >
+              
+                      
+                           <input type="text" name="optionvalues[]"  class="form-control col-md-10" value="<?php echo $my_Array;?>" >
                          </div>
-                      <?php } } ?>
+
+                        
+
+                          <?php } } ?>
+
+                        
+
+                        
+
+                        <!-- < ?php }elseif($anstype=="2") {?>
+                           < !-- checkbox -->
+                       <!--  <div class="row pl-4">
+                         <input type="checkbox"  name="correctans[]" value="<?php   ?>" < ?php if(in_array("1",$corAns)) { echo "checked";} ?> ><br/> -->
+                         <!-- <input type="checkbox"  name="correctans[]" value="<?php   ?>" < ?php if(in_array("2",$corAns)) { echo "checked";} ?> ><br/> -->
+                        <!--  <input type="checkbox"  name="correctans[]" value="<?php   ?>" < ?php if(in_array("3",$corAns)) { echo "checked";} ?> ><br/> -->
+                         <!-- <input type="checkbox"  name="correctans[]" value="<?php   ?>" < ?php if(in_array("4",$corAns)) { echo "checked";} ?> ><br/>
+ --><!-- 
+                           <input type="text" name="optionvalues[]"  class="form-control col-md-10" value="<?php ?>" >
+                         </div>    -->
+                      <!--  < ?php }else{
+
+                       } ?>  -->
+
+
+
+
+
+
                        </div>
                      <?php } ?>
 
@@ -149,9 +177,9 @@
                        
                   </div>
              
-	                 <!--  <div id="build-wrap" name="text">
+                   <!--  <div id="build-wrap" name="text">
 
-	                  </div> -->
+                    </div> -->
        
                 </div>                           
                 <!-- /.card-body -->
