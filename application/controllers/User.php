@@ -192,26 +192,42 @@ class User extends CI_Controller{
    // Edit QuizCompetition....
   public function edit_quizcompetition($dynamiccompetitionid){
   // print_r($_POST); die();
-     $dynamiccompetitionid = $this->uri->segment(3);
-
-     // print_r($dynamiccompetitionid); die();
+    $compid = $this->uri->segment(3);
+    $dynamiccompetitionid = $this->uri->segment(4);
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+    $this->form_validation->set_rules('question', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-    $update_data = array(
-       'question' => $this->input->post('question'),
-       // 'optionvalues' => $all_tags,
-       // 'correctans' =>  $check,
-        'created_date' => date('Y-m-d H:i:s'),
-        // 'user_addedby' => $quizweb_user_id,
-      );
-      $this->User_Model->update_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition', $update_data);
-      $this->session->set_flashdata('update_success','success');
-      header('location:'.base_url().'User/quizcompetition_list');
+
+        $admore  = $this->input->post('addmore');
+        $correct = $this->input->post('correctans');
+     // print_r($this->input->post('correctans')); die();
+     
+      
+        if(!empty($admore)){
+
+        $all_tags = implode( ',' , $admore );
+        $check = implode( ',' , $correct );
+
+        // print_r($all_tags); die();
+        // echo $admore; die();
+
+          $update_data = array(
+             'question' => $this->input->post('question'),
+             'optionvalues' => $all_tags,
+             'correctans' =>  $check,
+             'created_date' => date('Y-m-d H:i:s'),
+              // 'user_addedby' => $quizweb_user_id,
+            );
+
+          $this->User_Model->update_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition', $update_data);
+          $this->session->set_flashdata('update_success','success');
+          header('location:'.base_url().'User/quizcompetition_list/'.$compid);
+
+    }
     }
 
     $quiz_info = $this->User_Model->get_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition');
@@ -221,8 +237,8 @@ class User extends CI_Controller{
     foreach($quiz_info as $info){
       $data['update'] = 'update';
       $data['question'] = $info->question;
-      // $data['age'] = $info->age;
-      // $data['emailid'] = $info->emailid;
+      $data['optionvalues'] = $info->optionvalues;
+      $data['correctans'] = $info->correctans;
       // $data['grade'] = $info->grade;
       // $data['schoolcollegename'] = $info->schoolcollegename;
       // $data['address'] = $info->address;
@@ -902,7 +918,7 @@ class User extends CI_Controller{
       
       $id = $this->User_Model->save_data('competition',$save_data);
        
-       // $competitionid = $this->input->post('competitionid');
+       $comptype = $save_data['competitiontypeid'];
       
         $data_view = array(
             'competitionid' => $id,
@@ -910,10 +926,13 @@ class User extends CI_Controller{
         );
 
         $this->User_Model->save_data('competitionquizsubject',$data_view);
+        $this->session->set_flashdata('save_success','success');
 
-
-      // $this->session->set_flashdata('save_success','success');
-      // header('location:'.base_url().'User/competition_list');
+        if($comptype=="1"){
+          header('location:'.base_url().'User/dynamiccompetition');
+        }else{
+          header('location:'.base_url().'User/competition_list');
+        }
 
      
       $lastid = $this->db->insert_id();

@@ -254,9 +254,7 @@ public function insert_profiledata(){
  // Add New Profile....
   public function add_profile(){
 
-
-
-   $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
      if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
@@ -555,32 +553,67 @@ public function insert_profiledata(){
     $this->load->view('Website/Include/footer',$data);
   }
 
-  //---------------------------------------------/
+     //------------------------  start quiz competition ------------------------------------/        
 
   public function star_competion()
   {
     $quiz_id = $this->uri->segment(3);
    /* echo $quiz_id;   die();*/
-     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
-    // $data['mycompetition_list'] = $this->Website_Model->mycompetition_list('profileid');
-    // $data['mycompetition_list'] = $this->Website_Model->mycompetition_list($quizweb_user_id);
+    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $save_data = array(
+       
+        'parentname' => $this->input->post('parentname'),
+        'age' => $this->input->post('age'),
+        'emailid' => $this->input->post('emailid'),
+        'grade' => $this->input->post('grade'),
+        'schoolcollegename' => $this->input->post('schoolcollegename'),
+        'address' => $this->input->post('address'),
+        'pincode' => $this->input->post('pincode'),
+        'competition_id' => $this->input->post('competitionid'),
+        'user_id' => $quizweb_user_id,
+        'created_date' => date('Y-m-d H:i:s'),
+      );
+      // print_r($save_data);
+      $this->Website_Model->save_data('profile',$save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'WebsiteController/profile_list');
+    }
+
     $data['result'] = $this->Website_Model->quize_get($quiz_id);
-
     // print_r($data['mycompetition_list']);
-
-    
-  
-    $this->load->view('Website/Include/head');
-    // $this->load->view('Include/navbar',$data);
-     $this->load->view('Website/star_quizs',$data);
-    /*$this->load->view('Website/competition_list',$data);*/
-    $this->load->view('Website/Include/footer');
+    $this->load->view('Website/Include/head',$data);
+    $this->load->view('Website/star_quizs',$data);
+    $this->load->view('Website/Include/footer',$data);
   }
+public function quiz_Start()
+{  
+ //echo "String";die();
+ $arr = $_POST;
+ print_r($arr);
+ // echo count($arr);
+ // echo "<pre>";
+ $data="";
+ //print_r($arr);die();
+foreach ($arr as $rows)
+{
+ if($_POST['ddlquiz']=="ddlquiz")
+ {
+   $arr = $_POST['ddlquiz'];
+   $chk_value = implode(",",$arr);
+   $data['ans']  = $chk_value;
+   //print_r ($data);
+   //echo $data['ans'];
+ }
 
 
-
+}
+ 
+ 
+}
 
 }

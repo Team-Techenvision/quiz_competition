@@ -32,7 +32,7 @@
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-12">
                       <?php
                       if(isset($competitiontypeid)){?>
 
@@ -42,21 +42,21 @@
 
 
                       <select name="competitiontypeid" id="competitiontypeid"class="form-control" required="">
-                    <option value="">Select Competition Type</option>
+                        <option value="">Select Competition Type</option>
 
 
-                <?php foreach($competitiontype as $competitiontype)
-                    {
+                    <?php foreach($competitiontype as $competitiontype)
+                        {
 
-                    echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
-                                    
-                     }
-                    ?>  
+                        echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
+                                        
+                         }
+                        ?>  
 
-                     
-                  </select>
+                         
+                      </select>
                   </div>
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-12">
                     <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="<?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" required>
                   </div>
                   <div class="form-group col-md-12">
@@ -75,18 +75,9 @@
                     <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required>
                   </div>
                   <div class="form-group col-md-3">
-                    <?php
-                      if(isset($competitionusertype)){?>
-
-                       <input type="text" class="form-control required title-case text" name="competitionusertype" id="competitionusertype" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
-                       <?php }?>
-                    <select name="competitionusertype" id="competitionusertype"class="form-control" >
-                    <option value="">Competition User Type</option>
-                    <option value="1">All</option>
-                    <option value="2">one to one</option>
-                   
-                  </select>
+                    <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required>
                   </div>
+                  
                   <div class="form-group col-md-3">
                       <?php
                       if(isset($tabinputtextid)){?>
@@ -97,20 +88,20 @@
 
 
                       <select name="tabinputtextid" id="tabinputtextid"class="form-control" required="">
-                    <option value="">Select Input Text</option>
+                        <option value="">Select Input Text</option>
 
 
-                <?php foreach($tabinputtext as $tabinputtext)
-                    {
+                    <?php foreach($tabinputtext as $tabinputtext)
+                        {
 
-                    echo '<option value="'. $tabinputtext->tabinputtextid.'" '.$selected.'>'. $tabinputtext->tabinputtext.'</option>';
-                                    
-                     }
-                    ?>  
+                        echo '<option value="'. $tabinputtext->tabinputtextid.'" '.$selected.'>'. $tabinputtext->tabinputtext.'</option>';
+                                        
+                         }
+                        ?>  
 
-                     
-                  </select>
-                  </div>
+                         
+                      </select>
+                    </div>
                     <div class="form-group col-md-6">
                       <?php
                       if(isset($levelid)){?>
@@ -140,12 +131,22 @@
                    <div class="form-group col-md-3">
                     <input type="number" class="form-control required title-case text notext" name="toage" id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
                   </div>
-                  <div class="form-group col-md-4">
-                    <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required>
+                  <div class="form-group col-md-6">
+                    <?php
+                      if(isset($competitionusertype)){?>
+
+                       <input type="text" class="form-control required title-case text" name="competitionusertype" id="competitionusertype" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
+                       <?php }?>
+                    <select name="competitionusertype" id="competitionusertype"class="form-control" >
+                    <option value="">Competition User Type</option>
+                    <option value="1">All</option>
+                    <option value="2">one to one</option>
+                   
+                  </select>
                   </div>
                      
                   
-                  <div class="form-group col-md-8">
+                  <div class="form-group col-md-6">
                  <input type="file" id="photo" name="photo" onchange="readURL(this);" />
 
                  <?php
@@ -161,8 +162,8 @@
                   </div>
                  
                     <div class="form-group col-md-12">
-                    <textarea type="text" class="form-control required title-case text" name="instruction" id="instruction" value="" placeholder="Enter Instruction" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
-                  </div>
+                    <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
+                   </div>
                   <div class="form-group col-md-12">
                     <div class="form-check">
               
@@ -239,7 +240,7 @@
 
        
   </script>
-<script type="text/javascript">
+ <script type="text/javascript">
   $(document).ready(function(){
 
     $("#quizsubject").hide();
@@ -255,7 +256,7 @@
       }
     });
 });
-</script>
+</script> 
 
 
 </body>

@@ -48,7 +48,7 @@
                     <td><?php echo $list->question ?></td>
                    
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
                       <a href="<?php echo base_url(); ?>User/delete_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>" onclick="return confirm('Do you want to Delete this question?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>

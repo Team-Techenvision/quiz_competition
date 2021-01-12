@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2021 at 02:36 PM
+-- Generation Time: Jan 12, 2021 at 01:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -237,7 +237,7 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (2, 1, 0, 1, 5, 7, '1970-01-01', 'Buzzfeed Style Quiz', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610351525.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2021-01-05 12:33:32'),
 (3, 1, 0, 1, 5, 7, '2021-01-21', 'Geography', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610351921.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2020-12-30 11:44:26'),
 (4, 1, 0, 1, 8, 11, '2021-01-27', 'Personality Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_1610356867.png', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2020-12-30 11:46:02'),
-(5, 1, 0, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_5_1609328725.jpg', 'sad\r\n', 'assssssss', 0, 0, '', 0, '0', '2020-12-30 11:45:25'),
+(5, 1, 0, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_1610436588.jpg', 'sad\r\n', 'assssssss', 0, 0, '', 0, '0', '2020-12-30 11:45:25'),
 (6, 1, 0, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_6_1609328805.jpg', 'xxxx', 'xx', 0, 0, '', 0, '0', '2020-12-30 11:46:44'),
 (7, 1, 0, 1, 12, 15, '2021-01-27', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_7_1610105444.png', 'xxxx', 'xx', 1, 0, '', 0, '0', '2021-01-08 11:30:44'),
 (9, 1, 0, 2, 18, 25, '2021-01-28', 'IT', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_9_1609328940.png', 'aaaaaaaa', 'aaaaaaaaaa', 0, 0, '', 0, '0', '2020-12-30 11:49:00'),
@@ -270,7 +270,10 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (36, 1, 0, 1, 5, 7, '2021-01-21', 'first package', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610092351.jpg', 'gjjjjjjjjjjjj', 'fggggg', 1, 0, '', 1, '9999999999', '2021-01-08 07:52:31'),
 (41, 1, 1, 1, 12, 15, '2021-01-27', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_41_1610359605.png', 'sfdfdd', 'dsfasdf', 0, 0, '', 0, '', '2021-01-11 10:06:45'),
 (46, 1, 1, 1, 8, 11, '2021-01-27', 'English Quiz', 'Register to see competition topic', '<div><br></div>', 'Class 2 - Class 5', 2, 'photo_46_1610359545.jpg', 'sdad', 'saaaaaa', 0, 0, '', 0, '', '2021-01-11 10:05:45'),
-(47, 1, 1, 1, 12, 15, '2021-01-20', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_47_1610359705.jpg', 'sfafd', 'dsaf', 0, 0, '', 0, '', '2021-01-11 10:08:25');
+(47, 1, 1, 1, 12, 15, '2021-01-20', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_47_1610359705.jpg', 'sfafd', 'dsaf', 0, 0, '', 0, '', '2021-01-11 10:08:25'),
+(48, 1, 1, 1, 12, 15, '2021-01-25', 'E-commerce Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, '', 'gggggggggggg', '<p>jhhhhhh</p>', 0, 0, '', 0, '', '2021-01-12 07:27:54'),
+(49, 1, 1, 1, 12, 15, '2021-01-25', 'E-commerce Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, '', 'gggggggggggg', '<p>jhhhhhh</p>', 0, 0, '', 0, '', '2021-01-12 07:28:39'),
+(50, 1, 1, 1, 12, 15, '2021-01-25', 'E-commerce Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, '', 'gggggggggggg', '<p>jhhhhhh</p>', 0, 0, '', 0, '', '2021-01-12 07:29:48');
 
 -- --------------------------------------------------------
 
@@ -292,7 +295,8 @@ CREATE TABLE `competitionquizsubject` (
 INSERT INTO `competitionquizsubject` (`quizsubjectid`, `competitionid`, `quizsubject`, `created_date`) VALUES
 (1, 46, 'Eng Quiz', '2021-01-11 07:45:44'),
 (2, 45, 'Mathematics Quiz', '2021-01-11 07:52:05'),
-(4, 47, 'GK Quiz', '2021-01-11 09:21:07');
+(4, 47, 'GK Quiz', '2021-01-11 09:21:07'),
+(5, 50, 'E-commerce Quiz', '2021-01-12 07:29:48');
 
 -- --------------------------------------------------------
 
@@ -389,8 +393,16 @@ INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `ques
 (38, 7, 'ICAO stands for', '2', 'International Civil Aviation Organization,Indian Corporation of Agriculture Organization,Institute of Company of Accounts Organization,None of the above', '1', '2021-01-08'),
 (39, 7, 'In which year of First World War Germany declared war on Russia and France?', '3', '', '', '2021-01-08'),
 (40, 7, 'In which year, terrorists crash two planes into New York\'s World Trade Centre on September 11 in a sequence of destruction?', '4', '', '', '2021-01-08'),
-(41, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '1', 'dsf,a,dsf,gdf', '2', '2021-01-11'),
-(42, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '1', 'iiiii,a,dsf,gdf', '1', '2021-01-11');
+(41, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '1', 'dsf,a,dsf,gdf', '3', '2021-01-12'),
+(42, 4, 'Which of the following statement is/are correct about Subhash Chandra Bose?', '1', 'iiiii,a,dsf,gdf', '3', '2021-01-12'),
+(43, 4, 'Who is known as the political guru of Subhash Chandra Bose?', '2', 'Chittaranjan Das,Gopal Krishna Gokhle,Mahatma Gandhi,Vivekananda', '1', '2021-01-12'),
+(44, 4, 'How many Lok Sabha seats belong to Rajasthan?', '2', 'as,sds,dfg,fgh', '1,2,3', '2021-01-12'),
+(45, 4, 'ICAO stands for', '2', 'hgh,gfh,ggh,ghh', '3,4', '2021-01-12'),
+(46, 4, 'In which year of First World War Germany declared war on Russia and France?', '2', 'ghgh,hh,kk,kk', '1,2', '2021-01-12'),
+(47, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '1', 'kj,h,jk,jk', '2', '2021-01-12'),
+(48, 4, 'In which year of First World War Germany declared war on Russia and France?', '1', 'jk,kkk,jku,uuuk', '3', '2021-01-12'),
+(49, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '5', 'hk,jk,jk,kjk', '1', '2021-01-12'),
+(50, 4, 'In which year of First World War Germany declared war on Russia and France?', '2', 'kjhk,jhkjg,jhg,jk', '1,2,4', '2021-01-12');
 
 -- --------------------------------------------------------
 
@@ -672,6 +684,21 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `userquizsubmit`
+--
+
+CREATE TABLE `userquizsubmit` (
+  `userquizsubmitid` bigint(50) NOT NULL,
+  `user_id` bigint(50) NOT NULL,
+  `dynamiccompetitionid` bigint(50) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `selectanswertext` varchar(255) NOT NULL,
+  `ceated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `winner`
 --
 
@@ -810,6 +837,12 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `user_mobile` (`user_mobile`);
 
 --
+-- Indexes for table `userquizsubmit`
+--
+ALTER TABLE `userquizsubmit`
+  ADD PRIMARY KEY (`userquizsubmitid`);
+
+--
 -- Indexes for table `winner`
 --
 ALTER TABLE `winner`
@@ -865,13 +898,13 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `competitionquizsubject`
 --
 ALTER TABLE `competitionquizsubject`
-  MODIFY `quizsubjectid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `quizsubjectid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `competitiontype`
@@ -895,7 +928,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `dynamiccompetition`
 --
 ALTER TABLE `dynamiccompetition`
-  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `levelmaster`
@@ -938,6 +971,12 @@ ALTER TABLE `tabcompetition`
 --
 ALTER TABLE `user`
   MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT for table `userquizsubmit`
+--
+ALTER TABLE `userquizsubmit`
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `winner`
