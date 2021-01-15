@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h2>Dynamic Competition</h2>
+            <h2>Dynamic Quiz Competition</h2>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -25,6 +25,9 @@
             <div class="card card-default">
               <div class="card-header">
                 <h4 class="card-title">Add Quiz</h4>
+                <div class="card-tools col-md-3 " >
+                <a href="competition_list" class="btn btn-sm btn-block btn-primary">View Question</a>
+              </div>
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
@@ -102,7 +105,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
+                  <a href="<?php echo base_url() ?>User/add_competition" class="btn btn-default ml-4">Cancel</a>
                 </div> 
               </form>
             </div>
@@ -126,6 +129,14 @@ jQuery($ => {
 });
 </script>
  -->
-
+  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+<script>
+  <?php if($this->session->flashdata('save_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Record Saved successfully');
+    });
+  <?php } ?>
+</script>
 </body>
 </html>

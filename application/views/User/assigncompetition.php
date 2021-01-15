@@ -197,7 +197,7 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     
 <script type="text/javascript">
 
@@ -219,13 +219,16 @@ $(document).ready(function(){
     // alert(competition);
     // alert(pincodeid);
     // alert(user_id);
-    $.post('<?php echo base_url(); ?>User/addassigncompetition_list_test',{user:user_id},function(data,status){
-      alert(data);
-    });
+    // $.post('<?php echo base_url(); ?>User/addassigncompetition_list_test',
+    //   {user:user_id},
+
+    //   function(data,status){
+    //   alert(data);
+    // });
         
-     /*  $.ajax({
+       $.ajax({
         
-          url: '< ?php echo base_url(); ?>User/addassigncompetition_list',
+          url: '<?php echo base_url(); ?>User/addassigncompetition_list',
           type: 'POST',
           data: {user_id: user_id}, 
           dataType: "json",
@@ -242,13 +245,13 @@ $(document).ready(function(){
                 '</td><td>' +
                        '<button class="btn btn-primary btnadd" name="user_id2" id="btnAddCompetitor < ?php echo $list->user_id ?>" value="< ?php echo $list->user_id ?>" >Add </button>'
                         + '</td></tr>';     
-          });
+            });
 
             $('#compitiorlist').append(trHTML);
 
             $('#addcompetitionmodel').modal('show');
        }
-    });*/
+    });
                 
    
   });

@@ -25,8 +25,8 @@
             <div class="card-header ">
             
               <h3 class="card-title "><i class="fa fa-list"></i> List Competition Information</h3>
-              <div class="card-tools col-md-2 " style=" margin-left: 80%;">
-                <a href="add_competitiontype" class="btn btn-sm btn-block btn-primary">Add Competition</a>
+              <div class="card-tools col-md-3 " style=" margin-left: 80%;">
+                <a href="add_competitiontype" class="btn btn-sm btn-block btn-primary">Add Competition Type</a>
               </div>
             </div>
             <!-- /.card-header -->

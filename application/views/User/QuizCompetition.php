@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h2>Dynamic Competition</h2>
+            <h2>Dynamic Quiz Competition</h2>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -24,7 +24,11 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h4 class="card-title">Add Quiz</h4>
+                <h4 class="card-title">Edit Quiz</h4>
+                <!-- <div class="card-tools col-md-2 " >< !-- < ? php echo $compid; ?> -->
+                <!-- <a href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $compid['compid']; ?>" class="btn btn-sm btn-block btn-primary">Quiz List</a> -->
+              <!-- </div>  -->
+                
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
@@ -73,17 +77,18 @@
                     
                          <?php if($selectans==$i){?>
 
-                           <input class="form-check-input"  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1" checked="checked"><?php  }else{ ?><input class="form-check-input"  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1">
+                           <input class="form-check-input"  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1" checked="checked" required><?php  }else{ ?><input class="form-check-input"  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1" required>
                          <?php } $i++;?>
               
                         
-                           <input type="text" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array;?>" ><button type="button" name="remove" id="'+k+'" class="btn btn-danger btn_remove">X</button>
+                           <input type="text" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array;?>" >
+                          <!--  <button type="button" name="remove" id="'+k+'" class="btn btn-danger btn_remove">X</button> -->
 
                         
                       </div>
                       <?php }?>
 
-                      <button type="button" name="add" id="add_radiobtn" class="btn btn-sm btn-success">Add More</button>
+                      <!-- <button type="button" name="add" id="add_radiobtn" class="btn btn-sm btn-success">Add More</button> -->
 
                     <?php } ?>
 
@@ -202,7 +207,7 @@ jQuery($ => {
 });
 </script>
  -->
- <script type="text/javascript">
+<!--  <script type="text/javascript">
     $(document).ready(function(){      
       var k=1; 
       var j=1; 
@@ -253,6 +258,6 @@ jQuery($ => {
 
     });  
 </script>
-
+ -->
 </body>
 </html>

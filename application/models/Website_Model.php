@@ -329,14 +329,14 @@ function fetch_userid()
    
     return $result->result_array();
   }
-
-public function view_ques()
-{
-  $result = $this->db->get('competition');
-  //print_r($result->result_array());die();
-  return $result->result_array();
-
-}
+  public function view_ques($q_id)
+  {
+    $this->db->select('title');
+    $this->db->where('competitionid',$q_id);
+    $result = $this->db->get('competition');
+    //print_r($result->result_array());die();
+    return $result->result_array();
+  }
 
 }
 ?><!-- 

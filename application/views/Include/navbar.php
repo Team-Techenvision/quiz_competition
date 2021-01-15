@@ -64,9 +64,9 @@
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview" style="display: none;">
+          <ul class="nav nav-treeview">
             
-            <li class="nav-item">
+            <li class="nav-item ">
               <a href="<?php echo base_url(); ?>User/user_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>User</p>

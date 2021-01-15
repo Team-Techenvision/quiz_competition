@@ -58,7 +58,7 @@
                     <td><?php echo $list->pincode ?></td>
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_participate/<?php echo $list->profileid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_participate/<?php echo $list->profileid; ?>" onclick="return confirm('Delete this Profile');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_participate/<?php echo $list->profileid; ?>" onclick="return confirm('Do you want to Delete this Participant?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>
@@ -75,22 +75,22 @@
       </div><!-- /.container-fluid -->
     </section>
   </div>
- <!--  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>--->
+  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Saved successfully');
+      toastr.success('Participant Saved successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Updated successfully');
+      toastr.success('Participant Updated successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Deleted successfully');
+      toastr.error('Participant Deleted successfully');
     });
   <?php } ?>
 

@@ -556,64 +556,97 @@ public function insert_profiledata(){
      //------------------------  start quiz competition ------------------------------------/        
 
   public function star_competion()
-  {
+  { 
+    // print_r($_POST);
+    // $result = [];
+   //    $arr = $_POST['quiz_id1'];
+   // $chk_value = implode(",",$arr);
+   // print_r($chk_value); die();
+   foreach ($_POST as $row)
+    {
+      
+        print_r($row);
+
+     }
+    // echo '<pre>';
+// print_r($result);
+// echo '</pre>';
+    // die();
+
     $quiz_id = $this->uri->segment(3);
-   /* echo $quiz_id;   die();*/
+    // echo $quiz_id;   die();
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
-    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+    $this->form_validation->set_rules('question', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
+      // $a[0] = array('dynamicco mpetitionid'=>$dynamiccompetitionid, 'ansoption'=>$ansoption);
+
+      // print_r($a[0]); die();
+
+      // foreach ($quizsubmit as $value) {
+
+      //     foreach($$val['name'] as $value){     
+
+      //     }
+      // }
+
+ //       $res= $data = [];
+ // $a = array(array('dynamiccompetitionid'=>$dynamiccompetitionid, 'ansoption'=>$ansoption),array('dynamiccompetitionid'=> $dynamiccompetitionid, 'rodio'=>$rodio));
+
+ // print_r($a); die();
+ // foreach($a as $val){
+ //     $res[$val['name']] = $this->home_model->get_product($val['category_id']);
+ // }
+ // $data['category'] = $res;
+ // $this->load->view('main',$data);
+
       $save_data = array(
        
-        'parentname' => $this->input->post('parentname'),
-        'age' => $this->input->post('age'),
-        'emailid' => $this->input->post('emailid'),
-        'grade' => $this->input->post('grade'),
-        'schoolcollegename' => $this->input->post('schoolcollegename'),
-        'address' => $this->input->post('address'),
-        'pincode' => $this->input->post('pincode'),
-        'competition_id' => $this->input->post('competitionid'),
+        'dynamiccompetitionid' => $this->input->post('dynamiccompetitionid'),
+        'question' => $this->input->post('question'),
+        'selectanswertext' => $this->input->post('selectanswertext'),
         'user_id' => $quizweb_user_id,
-        'created_date' => date('Y-m-d H:i:s'),
+      
       );
       // print_r($save_data);
-      $this->Website_Model->save_data('profile',$save_data);
+      $this->Website_Model->save_data('userquizsubmit',$save_data);
       $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'WebsiteController/profile_list');
+      // header('location:'.base_url().'WebsiteController/profile_list');
     }
 
     $data['result'] = $this->Website_Model->quize_get($quiz_id);
-    // print_r($data['mycompetition_list']);
+    // print_r($data['result']);
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/star_quizs',$data);
     $this->load->view('Website/Include/footer',$data);
   }
-public function quiz_Start()
-{  
- //echo "String";die();
- $arr = $_POST;
- print_r($arr);
- // echo count($arr);
- // echo "<pre>";
- $data="";
- //print_r($arr);die();
-foreach ($arr as $rows)
-{
- if($_POST['ddlquiz']=="ddlquiz")
- {
-   $arr = $_POST['ddlquiz'];
-   $chk_value = implode(",",$arr);
-   $data['ans']  = $chk_value;
-   //print_r ($data);
-   //echo $data['ans'];
- }
+// public function quiz_Start()
+// {  
+//  //echo "String";die();
+//  $arr = $_POST;
+//  print_r($arr);
+//  // echo count($arr);
+//  // echo "<pre>";
+//  $data="";
+//  //print_r($arr);die();
+// foreach ($arr as $rows)
+// {
+//  if($_POST['ddlquiz']=="ddlquiz")
+//  {
+//    $arr = $_POST['ddlquiz'];
+//    $chk_value = implode(",",$arr);
+//    $data['ans']  = $chk_value;
+//    //print_r ($data);
+//    //echo $data['ans'];
+//  }
 
 
-}
+// }
  
  
-}
+// }
 
 }

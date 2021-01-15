@@ -23,7 +23,10 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title">Add Prizes</h3>
+                <h3 class="card-title">Add Prize</h3>
+                 <div class="card-tools col-md-2 " >
+                <a href="prize_list" class="btn btn-sm btn-block btn-primary "  >Prize List</a>
+              </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -112,7 +115,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
+                  <a href="<?php echo base_url() ?>User/prize_list" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>

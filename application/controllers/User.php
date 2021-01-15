@@ -82,6 +82,8 @@ class User extends CI_Controller{
         
       );
       $this->User_Model->save_data('dynamiccompetition', $save_data);
+      $this->session->set_flashdata('save_success','success');
+     
 
       $que_id = $this->db->insert_id();
        // print_r($lastid); die();
@@ -98,7 +100,7 @@ class User extends CI_Controller{
       }
       else{
 
-        header('location:'.base_url().'User/quizanswer/'.$que_id);
+         header('location:'.base_url().'User/quizanswer/'.$que_id);
       }
 
       // $this->quizanswer($lastid);
@@ -152,6 +154,7 @@ class User extends CI_Controller{
           
             
            $this->User_Model->update_info('dynamiccompetitionid',$queNo,'dynamiccompetition', $update_data);
+           $this->session->set_flashdata('save_success','success');
            header('location:'.base_url().'User/dynamiccompetition');
 
         }
@@ -229,6 +232,8 @@ class User extends CI_Controller{
 
     }
     }
+    $data['compid'] = $compid;
+    // print_r($data['compid']); die();
 
     $quiz_info = $this->User_Model->get_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition');
 
@@ -917,7 +922,8 @@ class User extends CI_Controller{
 
       
       $id = $this->User_Model->save_data('competition',$save_data);
-       
+     // print_r($save_data); die();
+      $this->session->set_flashdata('save_success','success');
        $comptype = $save_data['competitiontypeid'];
       
         $data_view = array(
@@ -998,7 +1004,40 @@ class User extends CI_Controller{
     $this->load->view('User/competition/competition',$data);
     $this->load->view('Include/footer',$data);
   }
+  public function getcompetitionlist(){
+    $output='';
+    $competitionid=$this->input->post();
+    $data=$this->C->User_Model($competitionid);
+    // $currentdate=date('Y-m-d');
 
+
+    if(!empty($data))
+    {
+    $i=0;
+    foreach ($data as $key => $value) {
+      $i++;
+      $output.='<tr>
+      <td>'.$value->title.'</td>
+   
+      </tr>';
+    }
+    }
+  }
+  //    <td>'.$value->driverName.'</td>
+      // <td>'.$value->VehicleName.'</td>
+      // <td>'.$value->vehicleNumber.'</td>
+      // <td>'.$value->referenceName.'</td>
+      // <td>'.$value->driverLicenceNumber.'</td>
+      // <td>'.$value->contactNumber.'</td>
+      // <td>'.$value->birthDate.'</td>
+   public function competitionName_list(){
+    // print_r($_POST); die();
+   $competitionid=$this->input->post('competitionid');
+   $data=$this->User_Model->competitionName_list($competitionid);
+   echo (json_encode($data));
+      }
+
+  
   // Competition List....
   public function competition_list(){
 
@@ -1390,9 +1429,6 @@ class User extends CI_Controller{
    /* echo $_POST['user_id'];die();*/
      $data = $this->User_Model->addassigncompetition_list('user_id');
      echo (json_encode($data));
-
-     
-
     }
 
     public function addassigncompetition_list_test()

@@ -76,12 +76,12 @@
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Updated successfully');
+      toastr.success('Quiz Updated successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Deleted successfully');
+      toastr.error('Quiz Deleted successfully');
     });
   <?php } ?>
 

@@ -1,3 +1,7 @@
+<?php $page = 'user'; 
+// echo $page; die();
+?>
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -24,6 +28,9 @@
             <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Add User</h3>
+                <div class="card-tools col-md-2 " >
+                <a href="user_list" class="btn btn-sm btn-block btn-primary">User List</a>
+              </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -33,7 +40,7 @@
                     <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name of User" required>
                   </div>
                    <div class="form-group col-md-12">
-                    <textarea type="text" class="form-control required title-case text " name="user_address" id="user_address" value="" placeholder="Enter Address of User" required ><?php if(isset($user_address)){ echo $user_address; } ?></textarea>
+                    <textarea type="text" class="form-control required title-case text txtOnly" name="user_address" id="user_address" value="" placeholder="Enter Address of User" required ><?php if(isset($user_address)){ echo $user_address; } ?></textarea>
                   </div>
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control txtOnly" name="user_city" id="user_city" value="<?php if(isset($user_city)){ echo $user_city; } ?>" placeholder="Enter City" required>
@@ -56,7 +63,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
+                  <a href="<?php echo base_url() ?>User/user_list" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>
@@ -72,7 +79,7 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 <script type="text/javascript">
 // Check Mobile Duplication..

@@ -115,7 +115,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/dashboard" class="btn btn-default ml-4">Cancel</a>
+                  <a href="<?php echo base_url() ?>User/dynamiccompetition" class="btn btn-default ml-4">Cancel</a>
                 </div> 
               </form>
             </div>
@@ -130,6 +130,15 @@
     </section>
   </div>
   <br>
+   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+<script>
+  <?php if($this->session->flashdata('save_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Quetion Saved successfully');
+    });
+  <?php } ?>
+</script>
 <script type="text/javascript">
     $(document).ready(function(){      
       var i=1; 

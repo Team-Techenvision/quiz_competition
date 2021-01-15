@@ -43,7 +43,6 @@
                   <th class="wt_50">#</th>
                   <th>Title</th>
                   <th>Sub Title</th>
-                          
                   <th>Option</th>
                  
                
@@ -56,7 +55,6 @@
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                 
                     <td><?php echo $list->title ?></td>
                     <td><?php echo $list->subtitle ?></td>
                    
