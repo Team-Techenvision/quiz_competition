@@ -187,7 +187,7 @@
                  <?php }else{?>
                    <!-- do something when doesn't exist -->
 
-                     <a class="login text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login </a> 
+                     <a class="login text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login / Register </a> 
               <?php }
                ?>
                     <!-- <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration" data-toggle="modal" data-target="#registration">Register</a> -->
@@ -241,13 +241,13 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <h3 class="h3">Welcome</br>Back !</h3>
-            <button class=" fb" type="button">Log In With Facebook</button>
-            <p class="p">- or -</p>
+            <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
+            <!-- <p class="p">- or -</p> -->
             <input class="input" type="user_mobile"  name="user_mobile" id="user_mobile"  placeholder="Enter Mobile No" autocomplete='off' reqired />
-            <span class="text-red"> <?php echo form_error('user_mobile'); ?> </span>
+            <span class="text-red"> <?php echo form_error('user_mobile'); ?></span>
             <!-- <input class="input" type="password" placeholder="Insert Password" reqired /> -->
           <button class="form-btn button sx back" type="button">Back</button>
-          <button class="form-btn button dx" type="submit">Log In</button>
+          <button class="form-btn button dx" type="submit" >Log In</button>
             
            
 
@@ -339,3 +339,27 @@ $(".back").click(function(){
   $(".signUp").removeClass("inactive-sx");
 });
 </script>
+
+<script>
+ // function myFunction() {
+ // document.getElementById("demo").innerHTML = Date();
+ // }
+ // <!-- addition of two numbers-->
+
+ // function login(){
+ // var a = document.getElementById("user_mobile").value;
+ // // var b = document.getElementById("txt2").value;
+ // if (a == "" )
+ // {
+ //    alert('Please enter any number');
+ //    return;
+ // }
+ // if (isNaN(a) || isNaN(b))
+ // {
+ //    alert('Please enter any number');
+ //    return;
+ // }
+ // var x = Number(a) + Number(b);
+ // document.getElementById("demo").innerHTML = "Add Value: " + x;
+ // }
+ </script>

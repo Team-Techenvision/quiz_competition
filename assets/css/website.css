@@ -54,9 +54,10 @@ color: var(--TEXT_COLOR_L0) !important;
     font-size: 20px !important;
     text-transform: none !important;
     padding-top: 15px !important;
+     color:#ffffffcc!important;
   }
   .headingtitle:hover{
-    color:#fff !important;
+    color:#e2ddddcc!important;
   }
   
 /*@media only screen and (max-width: 768px) {
@@ -277,14 +278,14 @@ img::before {
     padding-left: 30px;
 }
 .owl-one .main-slide h1{
-  font-size: 2.5rem!important;
+  font-size: 2.2rem!important;
   margin-top: 50px!important;
   padding-top: 50px!important;
   padding-left: 30px;
 }
 
 .owl-one .main-slide p{
-  font-size: 1rem!important;
+  font-size: 1.2rem!important;
   margin-top: 10px!important;
   padding-top: 10px!important;
   text-align: left;

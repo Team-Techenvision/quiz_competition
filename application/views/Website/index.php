@@ -1,4 +1,8 @@
-<?php  $competition_list = $this->Website_Model->competition_list('competitionid','','','','','','competition'); ?>
+<?php  $competition_list = $this->Website_Model->competition_list('competitionid','','','','','','competition'); 
+    $banner_list = $this->Website_Model->banner_list('bannerid');
+    $tab_list = $this->Website_Model->tab_list('tabinputtextid');
+?>
+
 <!-- <style type="text/css">
     .a{
         background-color: rgba(255, 255, 255, 0.7);
@@ -24,14 +28,14 @@
          <div class="col-md-12 p-0">
            <div id="slider2" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <?php $i=0; foreach ($banner_list as $list) {
+                < ?php $i=0; foreach ($banner_list as $list) {
                   if($list->slider_possition == 1 ){ $i++;
                 ?>
-                  <div class="carousel-item image-gradient <?php if($i == 1){ echo 'active'; } ?>">
-                    <img class="middle-img border-img" src="<?php echo base_url('assets/images/banner/'.$list->profile_image); ?>" alt="First slide">
+                  <div class="carousel-item image-gradient < ?php if($i == 1){ echo 'active'; } ?>">
+                    <img class="middle-img border-img" src="< ?php echo base_url('assets/images/banner/'.$list->profile_image); ?>" alt="First slide">
                
                   </div>
-                <?php } } ?>
+                < ?php } } ?>
               </div>
               <a class="carousel-control-prev" href="#slider2" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -48,21 +52,21 @@
        <div class="row carousel">
         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
         <div class="owl-carousel owl-theme owl-one">
-          <?php if($banner_list){
+        <?php if($banner_list){
             foreach ($banner_list as $list) {
               if($list->slider_possition == '1'){ ?>
               <div class="item">
                 <div class="main-slide ">
                   <div class="row ">
                    <!--  <div class=" col-md-4 col-12 ">
-                        <h1><?php echo $list->title; ?> </h1>
-                        <p><?php echo $list->subtitle; ?></p>
+                        <h1>< ?php echo $list->title; ?> </h1>
+                        <p>< ?php echo $list->subtitle; ?></p>
                         
                     </div> -->
                     <!-- <div class="image-gradient"></div> -->
                     <div class="col-md-4 bg-website banner_text_div">
                          <h1 class="text-white"><?php echo $list->title; ?> </h1>
-                        <p class="text-white"><?php echo $list->subtitle; ?></p>
+                        <p class=""><?php echo $list->subtitle; ?></p>
                     </div>
                     <div class="col-md-8 col-12 image_div">
                         <div class="grad">
@@ -85,7 +89,7 @@
                     <div class="col-xl-12">
 
                      
-                        <div class="about-two__content text-white abt">
+                        <div class="about-two__content  abt">
 
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12 " >
                               <!-- data-aos="fade-up" data-aos-duration="7000" -->
@@ -135,7 +139,7 @@
                     <h6> <?php echo $list->subtitle;?> </h6>
                     <p><button href="" data-toggle="modal" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
                     <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p>
-                   <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
+                   <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="< ?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
                   </div>
                 </div>
               <div class="tag_inherit a" > <?php echo $list->tabinputtext;?>  </div>
@@ -154,24 +158,28 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
-                           <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post">
+                           <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post">
                             <div class="modal-body ">
                           
                                 <div class="card-body row" style="padding-bottom: 0px;">
                                  <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
 
                                   <div class="form-group col-md-12">
+                                    <label>Parent Name</label>&nbsp;<label style="color:red;">*</label>
                                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
                                   </div>
                                    <div class="form-group col-md-3">
+                                    <label>Age</label>&nbsp;<label style="color:red;">*</label>
                                     <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                                   </div>
 
                                   <div class="form-group col-md-6">
+                                     <label>Email-ID</label>&nbsp;<label style="color:red;">*</label>
                                     <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
                                   </div>
 
                                    <div class="form-group col-md-3">
+                                     <label>Grade</label>
                                       <select name="grade" id="grade"class="form-control" >
                                     <option value="">Select Grade</option>
                                     <option value="1">1</option>
@@ -183,21 +191,24 @@
                                   </div>
                                  
                                   <div class="form-group col-md-12">
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
+                                     <label>School/College Name</label>
+                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
                                   </div>
                              
                                   
                                   
                                   <div class="form-group col-md-9">
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
+                                     <label>Address</label>
+                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php if(isset($address)){ echo $address; } ?></textarea>
                                   </div>
                                     <div class="form-group col-md-3">
 
-                                  <!-- <?php
+                                  <!-- < ?php
                                       if(isset($pincode)){?>
 
-                                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
-                                       <?php }?>   -->
+                                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
+                                       < ?php }?>   -->
+                                        <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
                                       <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>
                                    <?php foreach($pin as $pin)
@@ -220,10 +231,10 @@
                                      <?php if(isset($update)){ ?>
                                         <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                                       <?php } else{ ?>
-                                        <button id="btn_save" onclick="return confirm('Are you sure to participate');" style="margin-left: 20px;" type="submit" class="btn btn-primary px-4">Participate</button>
+                                        <button id="btn_save"  style="margin-left: 20px;" type="submit" class="btn btn-primary px-4">Participate</button>
                                       <?php } ?>
-                                      <a href="" class="btn btn-light ml-4" data-dismiss="modal">Cancel</a>
-                           </div>
+                                      <a href="" class="btn btn-light ml-4" data-dismiss="modal" onclick="myFunction()">Cancel</a>
+                             </div>
                            </form>
                             
                           </div>
@@ -245,10 +256,10 @@
                             <div class="modal-body">
                              <!--  Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer. -->
                           
-                             <!-- <?php echo $list->competitionid;?> -->
+                             <!-- < ?php echo $list->competitionid;?> -->
 
                             <?php echo $competition_list[0]->instruction;?> 
-                              <!-- <?php echo $company_list[0]->company_address;?> -->
+                              <!-- < ?php echo $company_list[0]->company_address;?> -->
                             </div>
                             
                           </div>
@@ -266,13 +277,30 @@
 
 <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
 <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Saved successfully');
+      toastr.success('participated successfully..');
     });
   <?php } ?>
+</script>
+<script type="text/javascript">
+  $('#btn_save').click(function(){
+    // alert('hii');
+
+   if($.trim($('#emailid').val()) == ''||$.trim($('#parentname').val()) == ''||$.trim($('#age').val()) == ''||$.trim($('#pincode').val()) == ''){
+      alert('Fill all the necessary fields');
+   }
+   else{
+    return confirm('Are you sure want to save Record....')
+   }
+});
+
+function myFunction() {
+            document.getElementById("myForm").reset();
+        }
+
 </script>
                    
 

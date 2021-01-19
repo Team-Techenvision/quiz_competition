@@ -59,7 +59,7 @@
 
                       <a href="<?php echo base_url(); ?>User/delete_competition/<?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to Delete this Competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
 
-                      <a type="button" id="example" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href=""><?php echo $list->competitionid; ?>View</a>
+                      <a type="button" id="example" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href=""><!-- < ?php echo $list->competitionid; ?> -->View</a>
 
                       <a type="button" id="" name="" class="btn btn-sm btn-primary " href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>">view Question</a>
                     </td>

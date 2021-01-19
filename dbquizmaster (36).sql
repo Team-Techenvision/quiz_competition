@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 02:05 PM
+-- Generation Time: Jan 19, 2021 at 02:23 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -237,7 +237,7 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (3, 1, 0, 1, 5, 7, '2021-01-21', 'Geography', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610351921.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2020-12-30 11:44:26'),
 (4, 1, 0, 1, 8, 11, '2021-01-27', 'Personality Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_1610356867.png', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2020-12-30 11:46:02'),
 (5, 1, 0, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_1610436588.jpg', 'sad\r\n', 'assssssss', 0, 0, '', 0, '0', '2020-12-30 11:45:25'),
-(6, 1, 0, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610695585.jpg', 'xxxx', 'xx', 0, 0, '', 0, '0', '2020-12-30 11:46:44'),
+(6, 1, 1, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_6_1611039684.jpg', 'xxxx', 'xx', 0, 0, '', 0, '0', '2021-01-19 07:01:24'),
 (7, 1, 0, 1, 12, 15, '2021-01-27', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610695638.jpg', 'xxxx', 'xx', 1, 0, '', 0, '0', '2021-01-08 11:30:44'),
 (9, 1, 0, 2, 18, 25, '2021-01-28', 'IT', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_1610695986.jpg', 'aaaaaaaa', 'aaaaaaaaaa', 0, 0, '', 0, '0', '2020-12-30 11:49:00'),
 (10, 1, 0, 2, 18, 25, '2021-01-28', 'first package', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_1610696036.jpg', 'das', 'sdf', 0, 0, '', 0, '0', '2020-12-30 11:49:31'),
@@ -269,9 +269,6 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (41, 1, 1, 1, 12, 15, '2021-01-27', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_41_1610359605.png', 'sfdfdd', 'dsfasdf', 0, 0, '', 0, '', '2021-01-11 10:06:45'),
 (46, 1, 1, 1, 8, 11, '2021-01-27', 'English Quiz', 'Register to see competition topic', '<div><br></div>', 'Class 2 - Class 5', 2, 'photo_46_1610359545.jpg', 'sdad', 'saaaaaa', 0, 0, '', 0, '', '2021-01-11 10:05:45'),
 (47, 1, 1, 1, 12, 15, '2021-01-20', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_47_1610359705.jpg', 'sfafd', 'dsaf', 0, 0, '', 0, '', '2021-01-11 10:08:25'),
-(48, 1, 1, 1, 12, 15, '2021-01-25', 'E-commerce Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, '', 'gggggggggggg', '<p>jhhhhhh</p>', 0, 0, '', 0, '', '2021-01-12 07:27:54'),
-(49, 1, 1, 1, 12, 15, '2021-01-25', 'E-commerce Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, '', 'gggggggggggg', '<p>jhhhhhh</p>', 0, 0, '', 0, '', '2021-01-12 07:28:39'),
-(50, 1, 1, 1, 12, 15, '2021-01-25', 'E-commerce Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, '', 'gggggggggggg', '<p>jhhhhhh</p>', 0, 0, '', 0, '', '2021-01-12 07:29:48'),
 (51, 1, 1, 2, 18, 25, '2021-01-17', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, '', 'hfgfg', '<p>gh</p><p>fdh</p>', 0, 0, '', 0, '', '2021-01-15 07:26:25'),
 (52, 1, 1, 2, 18, 25, '2021-01-17', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, '', 'hfgfg', '<p>gh</p><p>fdh</p>', 0, 0, '', 0, '', '2021-01-15 07:27:18'),
 (53, 1, 1, 2, 18, 25, '2021-01-29', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_53_1610696227.png', 'klk', '<p>kll;</p>', 0, 0, '', 0, '', '2021-01-15 07:37:07'),
@@ -895,7 +892,7 @@ ALTER TABLE `assignwinner`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -931,7 +928,7 @@ ALTER TABLE `competitionquizsubject`
 -- AUTO_INCREMENT for table `competitiontype`
 --
 ALTER TABLE `competitiontype`
-  MODIFY `competitiontypeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `competitiontypeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -955,13 +952,13 @@ ALTER TABLE `dynamiccompetition`
 -- AUTO_INCREMENT for table `levelmaster`
 --
 ALTER TABLE `levelmaster`
-  MODIFY `levelid` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `levelid` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pincodemaster`
 --
 ALTER TABLE `pincodemaster`
-  MODIFY `pincodeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pincodeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prizemaster`

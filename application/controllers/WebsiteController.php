@@ -17,7 +17,7 @@ class WebsiteController extends CI_Controller{
 /**************************      Login      ********************************/
   public function login(){
     // print_r($_POST);
-    $this->form_validation->set_rules('user_mobile', 'user_mobile', 'required|regex_match[/^[0-9]{10}$/]');
+    $this->form_validation->set_rules('user_mobile', 'user_mobile', 'trim|required');
     // $this->form_validation->set_rules('user_otp', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
      //  $this->load->view('Website/Include/head');
