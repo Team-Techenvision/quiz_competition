@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2021 at 02:23 PM
+-- Generation Time: Jan 20, 2021 at 02:06 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -542,7 +542,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (23, 'monika desai', '15', 'monika@gmail.com', '5', 'english model school', 'kkk', 1, 14, 35, '', '2021-01-01'),
 (24, 'Prakash', '15', 'prakash@gmail.com', '2', 'english model school', 'kkk', 2, 6, 58, 'profile_image_58_1609503496.jpg', '2021-01-01'),
 (25, 'Rohan Wordpress', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 2, 59, '', '2021-01-02'),
-(26, 'Manish Mane', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 53, 62, '', '2021-01-15');
+(26, 'Manish Mane', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 53, 62, '', '2021-01-15'),
+(27, 'Suresh Gavali', '23', 'sayali@gamil.com', '1', 'dot', 'Kolhapur', 1, 59, 63, '', '2021-01-20');
 
 -- --------------------------------------------------------
 
@@ -697,7 +698,8 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (59, 0, '', 3, 'abc', '', 2, '', '', '7897897897', '', NULL, 'active', '', '2021-01-02 12:16:02', 3),
 (60, 0, '', 3, 'sdf', '', 2, '', '', '9666666666', '', NULL, 'active', '', '2021-01-06 06:20:25', 3),
 (61, 1, '', 2, 'Rahul Patil', 'kkk', 0, 'kolhapur', 'df@gm.com', '9333333333', '123', NULL, 'active', '1', '2021-01-15 07:12:21', 1),
-(62, 1, '', 2, 'Omkar Mane', 'kolhapur', 0, 'kolhapur', 'omkar@gmail.com', '9639639630', 'omkar', NULL, 'active', '1', '2021-01-15 07:06:03', 1);
+(62, 1, '', 2, 'Omkar Mane', 'kolhapur', 0, 'kolhapur', 'omkar@gmail.com', '9639639630', 'omkar', NULL, 'active', '1', '2021-01-15 07:06:03', 1),
+(63, 0, '', 3, 'Sayali Gavali', '', 416012, '', '', '9512364789', '', NULL, 'active', '', '2021-01-20 06:37:07', 3);
 
 -- --------------------------------------------------------
 
@@ -970,7 +972,7 @@ ALTER TABLE `prizemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -988,7 +990,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
