@@ -17,18 +17,18 @@ class WebsiteController extends CI_Controller{
 /**************************      Login      ********************************/
   public function login(){
     // print_r($_POST);
-    $this->form_validation->set_rules('user_mobile', 'user_mobile', 'trim|required');
-    // $this->form_validation->set_rules('user_otp', 'password', 'trim|required');
+    $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
+    // $this->form_validation->set_rules('password', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
      //  $this->load->view('Website/Include/head');
      //  $this->load->view('Website/index');
      // $this->load->view('Website/Include/footer');
 
     } else{
-      $user_mobile = $this->input->post('user_mobile');
-      // $user_otp = $this->input->post('user_otp');
+      $mobile = $this->input->post('mobile');
+      // $password = $this->input->post('password');
 
-      $login = $this->Website_Model->check_login($user_mobile);
+      $login = $this->Website_Model->check_login($mobile);
    
       // print_r($login);
       if($login == null){
@@ -221,8 +221,8 @@ class WebsiteController extends CI_Controller{
 
 
 public function insert_profiledata(){
-
-   $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }

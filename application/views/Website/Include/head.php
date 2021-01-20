@@ -211,11 +211,11 @@
               <h3 class="h3">Create Your Account</h3>
               <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
-              <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Participant Name" reqired />
-             <!--  <input class="input" type="number" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" reqired /> -->
-               <select name="user_pincode" id="user_pincode"class="input" required="">
+              <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" />
+              <input class="input" type="number" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
+               <!-- <select name="user_pincode" id="user_pincode"class="input" required="">
                     <option value="">Select Pincode</option>
-                   <?php foreach($pincode as $pin)
+                   < ?php foreach($pincode as $pin)
                      {
                           echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
 
@@ -223,8 +223,10 @@
                       }
                      ?>   
                     
-                </select>
+                </select> -->
                   <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+
+                   <input type="password" id="user_password" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required>
 
                   <label class="form-check-label " style="margin-left: 20px;">
                     <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required> I agree <label class="text-primary t">Data Protection Policy</label> 
@@ -243,14 +245,14 @@
             <h3 class="h3">Welcome</br>Back !</h3>
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
-            <input class="input" type="user_mobile"  name="user_mobile" id="user_mobile"  placeholder="Enter Mobile No" autocomplete='off' reqired />
-            <span class="text-red"> <?php echo form_error('user_mobile'); ?></span>
-            <!-- <input class="input" type="password" placeholder="Insert Password" reqired /> -->
-          <button class="form-btn button sx back" type="button">Back</button>
-          <button class="form-btn button dx" type="submit" >Log In</button>
-            
-           
+            <input  type="text"  name="mobile" id="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" placeholder="Enter Mobile No" autocomplete='off' reqired />
+            <span class="text-red"> <?php echo form_error('mobile'); ?></span>
+            <!-- <input type="password" class="input" name="password" id="password" placeholder="Password" required>
+            <span class="text-red"> <?php echo form_error('password'); ?> </span>-->
 
+            <button class="form-btn button sx back" type="button">Back</button>
+            <button class="form-btn button dx" type="submit" >Log In</button>
+            
             <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
                 Invalid Information
             </div>

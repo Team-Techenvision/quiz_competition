@@ -1,10 +1,10 @@
 <?php
 class Website_Model extends CI_Model{
 
-   function check_login($user_mobile){
+  function check_login($mobile){
     $query = $this->db->select('*')
-      ->where('user_mobile', $user_mobile)
-      // ->where('user_otp', $user_otp)
+      ->where('user_mobile', $mobile)
+      // ->where('user_password', $password)
       ->from('user')
       ->get();
     $result = $query->result_array();
@@ -141,7 +141,7 @@ function fetch_userid()
    function fetch_pincodelist()
  {
   
-  $this->db->order_by("pincode", "");
+  $this->db->order_by("pincodeid", "");
   // $this->db->where('is_admin', 1);
   $query = $this->db->get("pincodemaster");
   return $query->result();
