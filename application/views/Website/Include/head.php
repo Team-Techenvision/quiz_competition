@@ -224,12 +224,12 @@
                      ?>   
                     
                 </select> -->
-                  <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+                  <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 
-                   <input type="password" id="user_password" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required>
+                   <input type="password" id="user_password" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required="" />
 
                   <label class="form-check-label " style="margin-left: 20px;">
-                    <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required> I agree <label class="text-primary t">Data Protection Policy</label> 
+                    <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
                   </label>
              
 
@@ -237,7 +237,7 @@
               <button class="form-btn button sx log-in" type="button">Log In</button>
               <button class="form-btn button dx" type="submit">Sign Up</button>
           </form>
-
+         <!-- <?php if(isset($error_msg)){ echo $error_msg; } ?> -->
          <form class="signIn form" method="post" action="<?php echo base_url(); ?>WebsiteController/login" autocomplete='off'>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -245,10 +245,10 @@
             <h3 class="h3">Welcome</br>Back !</h3>
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
-            <input  type="text"  name="mobile" id="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" placeholder="Enter Mobile No" autocomplete='off' reqired />
+            <input  type="text"  name="mobile" id="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" placeholder="Enter Mobile No" autocomplete='off' required="" />
             <span class="text-red"> <?php echo form_error('mobile'); ?></span>
-            <!-- <input type="password" class="input" name="password" id="password" placeholder="Password" required>
-            <span class="text-red"> <?php echo form_error('password'); ?> </span>-->
+             <input type="password" class="input" name="password" id="password" placeholder="Password" required="">
+            <span class="text-red"> <?php echo form_error('password'); ?> </span>
 
             <button class="form-btn button sx back" type="button">Back</button>
             <button class="form-btn button dx" type="submit" >Log In</button>
@@ -257,6 +257,7 @@
                 Invalid Information
             </div>
           </form> 
+ <!-- <?php if(isset($script)){ echo $script; } ?> -->
      
         
       </div>
@@ -343,25 +344,8 @@ $(".back").click(function(){
 </script>
 
 <script>
- // function myFunction() {
- // document.getElementById("demo").innerHTML = Date();
- // }
- // <!-- addition of two numbers-->
-
- // function login(){
- // var a = document.getElementById("user_mobile").value;
- // // var b = document.getElementById("txt2").value;
- // if (a == "" )
- // {
- //    alert('Please enter any number');
- //    return;
- // }
- // if (isNaN(a) || isNaN(b))
- // {
- //    alert('Please enter any number');
- //    return;
- // }
- // var x = Number(a) + Number(b);
- // document.getElementById("demo").innerHTML = "Add Value: " + x;
- // }
+$(document).on('hide.bs.modal','#login', function () {
+                alert('error');
+ //Do stuff here
+});
  </script>

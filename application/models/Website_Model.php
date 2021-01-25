@@ -1,10 +1,10 @@
 <?php
 class Website_Model extends CI_Model{
 
-  function check_login($mobile){
+  function check_login($mobile,$password){
     $query = $this->db->select('*')
       ->where('user_mobile', $mobile)
-      // ->where('user_password', $password)
+      ->where('user_password', $password)
       ->from('user')
       ->get();
     $result = $query->result_array();

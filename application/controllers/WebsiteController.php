@@ -18,7 +18,7 @@ class WebsiteController extends CI_Controller{
   public function login(){
     // print_r($_POST);
     $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
-    // $this->form_validation->set_rules('password', 'password', 'trim|required');
+    $this->form_validation->set_rules('password', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
      //  $this->load->view('Website/Include/head');
      //  $this->load->view('Website/index');
@@ -26,16 +26,20 @@ class WebsiteController extends CI_Controller{
 
     } else{
       $mobile = $this->input->post('mobile');
-      // $password = $this->input->post('password');
+      $password = $this->input->post('password');
 
-      $login = $this->Website_Model->check_login($mobile);
+      $login = $this->Website_Model->check_login($mobile,$password);
    
-      // print_r($login);
+      // print_r($login);die();
       if($login == null){
+        // print_r($login); die();
+         // $error_msg = "<div class='login-modal'>Username or password is incorrect</div>";
+         // $script =  "<script> $(document).ready(function(){ $('#login').modal('show'); }); </script>";
         // alert("login_error");
         $this->session->set_flashdata('msg','login_error');
         header('location:'.base_url().'WebsiteController');
       } else{
+       // print_r($login); die();
         echo 'null not';
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
         // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);

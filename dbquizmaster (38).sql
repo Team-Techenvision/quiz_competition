@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2021 at 02:06 PM
+-- Generation Time: Jan 25, 2021 at 02:24 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -256,7 +256,7 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (23, 2, 0, 1, 7, 9, '2021-01-12', 'first package', 'Register to see competition topic', 'jhg', 'Nursery - Class 1', 1, 'photo_23_1610093286.jpg', 'ghrh', 'bhh', 1, 0, '', 0, '0', '2021-01-08 08:08:06'),
 (24, 2, 0, 1, 4, 9, '2021-01-14', 'first package', 'Register to see competition topic', ';lj', 'Nursery - Class 1', 1, 'photo_24_1610093250.jpg', 'yh', 'h', 1, 0, '', 0, '0', '2021-01-08 08:07:30'),
 (25, 1, 0, 1, 15, 18, '2021-01-08', 'first package', 'Register to see competition topic', 'ghf', 'class 6 - class 9', 3, 'photo_1609924026.jpg', ' dfd', 'ds', 0, 0, '', 0, '0', '2021-01-06 09:07:06'),
-(26, 1, 0, 1, 12, 15, '2021-01-28', 'Dancing Competition', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610088825.jpg', 'asdfaf', 'dsafd', 0, 0, 'demo@gmail.com', 0, '9999999999', '2021-01-08 06:53:45'),
+(26, 3, 0, 1, 12, 15, '2021-01-28', 'Dancing Competition', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610088825.jpg', 'asdfaf', 'dsafd', 0, 1, 'demo@gmail.com', 1, '9999999999', '2021-01-08 06:53:45'),
 (27, 1, 0, 4, 12, 15, '2021-01-21', 'easy', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_27_1610093339.jpg', 'sgdf', 'fsgsdf', 1, 0, '', 0, '', '2021-01-08 08:08:59'),
 (28, 2, 0, 1, 12, 15, '2021-01-21', 'first package', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610090867.jpg', 'xzC', 'xc', 0, 0, '', 0, '', '2021-01-08 07:27:47'),
 (29, 1, 0, 2, 12, 15, '2021-01-21', 'first package', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610090955.jpg', 'fghh', 'fgfgfgf', 0, 0, '', 0, '', '2021-01-08 07:29:15'),
@@ -265,7 +265,7 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (32, 1, 0, 1, 4, 5, '2021-01-22', 'first package', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610091875.jpg', 'gjhgf', 'hgj', 1, 0, '', 0, '', '2021-01-08 07:44:35'),
 (33, 1, 0, 1, 12, 15, '2021-01-21', 'first package', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1610092034.jpg', 'ghfh', 'dfghgh', 0, 0, '', 0, '9999999999', '2021-01-08 07:47:14'),
 (34, 0, 0, 1, 12, 15, '2021-01-28', 'first package', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610092107.jpg', 'gdsfg', 'dfs', 1, 1, '', 1, '9999999999', '2021-01-08 07:48:27'),
-(36, 1, 0, 1, 5, 7, '2021-01-21', 'first package', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610092351.jpg', 'gjjjjjjjjjjjj', 'fggggg', 1, 0, '', 1, '9999999999', '2021-01-08 07:52:31'),
+(36, 2, 0, 1, 5, 7, '2021-01-21', 'first package', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610092351.jpg', 'gjjjjjjjjjjjj', 'fggggg', 1, 0, '', 1, '9999999999', '2021-01-08 07:52:31'),
 (41, 1, 1, 1, 12, 15, '2021-01-27', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_41_1610359605.png', 'sfdfdd', 'dsfasdf', 0, 0, '', 0, '', '2021-01-11 10:06:45'),
 (46, 1, 1, 1, 8, 11, '2021-01-27', 'English Quiz', 'Register to see competition topic', '<div><br></div>', 'Class 2 - Class 5', 2, 'photo_46_1610359545.jpg', 'sdad', 'saaaaaa', 0, 0, '', 0, '', '2021-01-11 10:05:45'),
 (47, 1, 1, 1, 12, 15, '2021-01-20', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_47_1610359705.jpg', 'sfafd', 'dsaf', 0, 0, '', 0, '', '2021-01-11 10:08:25'),
@@ -521,10 +521,10 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (1, 'Manish Patil', '10', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, 19, 62, '', '2021-01-15'),
 (2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 50, '', '0000-00-00'),
 (3, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 5, 36, 'profile_image_1_1609322335.PNG', '0000-00-00'),
-(4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 0, 12, '', '0000-00-00'),
+(4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 34, 12, '', '0000-00-00'),
 (6, 'manish patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 26, 53, 'profile1.jpg', '2020-12-29'),
 (7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 29, '', '2020-12-25'),
-(8, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 5, 30, '', '2020-12-25'),
+(8, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 36, 30, '', '2020-12-25'),
 (9, 'Rohan Wordpress', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 5, 33, '', '2020-12-25'),
 (10, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 34, '', '2020-12-25'),
 (11, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 1, 'profile_image_1_1609322335.PNG', '2020-12-25'),
@@ -662,7 +662,7 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (1, 1, '', 1, 'Admin', '', 1, 'Kolhapur', 'demo@email.com', '9876543210', '123456', NULL, 'active', 'Admin', '2020-12-25 06:58:39', 0),
 (6, 1, '', 2, 'Datta Mane', 'kop\r\n', 1, 'Kop', 'datta@mail.com', '9673454383', '123456', NULL, 'active', '0', '2020-12-25 06:58:44', 0),
 (11, 1, '', 2, 'rohan wordpress', 'kop', 2, 'kolhapur', 'rohan@gm.com', '897456210', '123', NULL, 'active', '0', '2020-12-25 06:58:48', 0),
-(12, 1, '', 2, 'techenvision', 'rajarampuri', 2, 'kop', 'techenvision@gmail.com', '874569214', 'tech', '11', 'active', '0', '2020-12-25 06:58:52', 0),
+(12, 1, '', 2, 'techenvision', 'rajarampuri', 2, 'kop', 'techenvision@gmail.com', '8421751394', 'tech', '11', 'active', '0', '2021-01-21 06:08:05', 0),
 (16, 0, '', 2, 'techenvision', '', 416012, '', '', '9999999999', '', '123654', 'active', '1', '2020-12-15 01:18:59', 1),
 (17, 0, '', 2, 'tech', '', 416012, '', '', '7777777777', '', '30', 'active', '1', '2020-12-15 01:19:03', 1),
 (18, 1, '', 2, 'abc', 'kk', 0, 'kolhapur', 'manish@gmail.com', '7845127845', '1234567', NULL, 'active', '1', '2020-12-15 01:17:00', 0),

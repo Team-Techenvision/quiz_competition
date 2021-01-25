@@ -51,7 +51,14 @@
                 <tbody>
                   <?php $i = 0;
                   foreach ($mycompetition_list as $list) {
-                   /* print_r($list);die();*/
+                    // print_r($list);die();
+                    $comptype = $list->competitiontypeid;
+                    $upload = $list->uploadfile;
+                    $email = $list->email;
+                    $whatsapp = $list->whatsapp;
+                    // print_r($upload);
+                    // print_r($email);
+                    // print_r($whatsapp);
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
@@ -60,7 +67,82 @@
                    
                     
                    <!--  <td><img src="< ?php echo base_url("assets/images/competition/".$list->photo);?>"height="150px" width="150px"/></td> -->
-                      <td><a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $list->competitionid ?>" class="btn btn-info">Start</a></td>
+                      <td> 
+                        <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
+                           <?php if($comptype=='2'){ ?>
+                             
+                              <div class="row">
+                                 <?php if($upload=='1') {?>
+                                    <div class="form-group col-md-12">
+                                   <input type="file" id="photo" name="photo" onchange="readURL(this);" />
+
+                                  <!--  <?php if(isset($photo)){?> -->
+                                    <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
+
+                                  <!--   <?php }?> -->
+
+                                    <button id="btn_save"  type="submit" class="btn btn-success px-4">Submit</button>
+
+
+                                    </div>
+                                <?php  } ?>
+                                <?php if($whatsapp=='1') {?>
+                                   <div class="form-group col-md-2">
+                                    <a href="https://wa.me/91<?php echo $list->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
+                                  </div>
+                                <?php }?>
+                                 <?php if($email=='1') {?>
+                                   <div class="form-group col-md-2">
+                                  <a href = "mailto: abc@example.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="40px" width="40px"/></a>
+                                  </div>
+                                <?php }?>
+                                  </div>
+
+                                 
+
+                            
+                              <!--  href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $list->competitionid ?>" -->
+
+
+                             <?php }elseif ($comptype=='3') { ?>
+                             
+
+                              <div class="row">
+                                 <?php if($upload=='1') {?>
+                                    <div class="form-group col-md-12">
+                                   <input type="file" id="photo" name="photo" onchange="readURL(this);" />
+
+                                  <!--  <?php if(isset($photo)){?> -->
+                                    <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
+
+                                  <!--   <?php }?> -->
+
+                                    <button id="btn_save"  type="submit" class="btn btn-success px-4">Submit</button>
+
+
+                                    </div>
+                                <?php  } ?>
+                              <?php if($whatsapp=='1') {?>
+                                   <div class="form-group col-md-2">
+                                    <a href="https://wa.me/91<?php echo $list->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
+                                  </div>
+                                <?php }?>
+                                 <?php if($email=='1') {?>
+                                   <div class="form-group col-md-6">
+                                  <a href="mailto:priyanka.techenvision@gmail.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="40px" width="40px"/></a>
+                                  </div>
+                                <?php }?>
+                                  </div>
+
+                                 
+                             <?php }else {?>
+                            
+                               <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $list->competitionid ?>" class="btn btn-info">Start</a>
+                            <?php } ?>
+
+                             </form>
+                          
+                        </td>
                   <?php } ?>
                   </tr>
 
@@ -111,3 +193,25 @@ $(document).ready(function(){
 
 </body>
 </html>
+<script>
+   
+   $('.pis').bind("click" , function () {
+          $('#photo').click();
+   });
+   
+    function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#blah')
+                          .attr('src', e.target.result);
+                  };
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+
+
+       
+  </script>
