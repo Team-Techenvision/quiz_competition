@@ -85,6 +85,7 @@ color: var(--TEXT_COLOR_L0) !important;
 
 .page-wrapper {
     background: linear-gradient(to bottom, #141b29, #0c111b 300px) !important;
+    /*background-image: C:/xampp/htdocs/quiz_competition/assets/imagesbackprofile.jpg*/
 }
 .stricked-menu{
      background: linear-gradient(to bottom, #141b29, #0c111b 300px) !important;
@@ -1024,7 +1025,7 @@ to{
 }
 .dropdown .btnlogout {
      background-color: none !important; 
-    color: #fff !important;
+    color: #ffffffcc !important;
     
 }
 .btn.focus, .btn:focus {
@@ -1039,7 +1040,7 @@ to{
     padding: .25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #f5f5f5 !important;
+    color:#ffffffcc !important;
     text-align: inherit;
     white-space: nowrap;
     background-color: #181e31 !important;
@@ -1067,10 +1068,28 @@ padding-left: 100px;
     padding-bottom: 50px;
 } 
 .profilewrapper{
-  padding-left: 150px;
-    padding-right: 150px;
+  padding-left: 460px;
+    padding-right: 25px;
+    padding-top: 125px;
+    padding-bottom: 106px;
+}
+.resultwrapper{
+  padding-left: 200px;
+    padding-right: 200px;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+.winnerwrap{
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #1111117a;
+}
+.profilecon{
+  padding-left: 460px;
+    padding-right: 25px;
+    padding-top: 106px;
+    padding-bottom: 106px;
 }
 .aboutus{
     padding-top: 50px;

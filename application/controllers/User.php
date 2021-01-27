@@ -1004,25 +1004,25 @@ class User extends CI_Controller{
     $this->load->view('User/competition/competition',$data);
     $this->load->view('Include/footer',$data);
   }
-  public function getcompetitionlist(){
-    $output='';
-    $competitionid=$this->input->post();
-    $data=$this->C->User_Model($competitionid);
-    // $currentdate=date('Y-m-d');
+  // public function getcompetitionlist(){
+  //   $output='';
+  //   $competitionid=$this->input->post();
+  //   $data=$this->C->User_Model($competitionid);
+  //   // $currentdate=date('Y-m-d');
 
 
-    if(!empty($data))
-    {
-    $i=0;
-    foreach ($data as $key => $value) {
-      $i++;
-      $output.='<tr>
-      <td>'.$value->title.'</td>
+  //   if(!empty($data))
+  //   {
+  //   $i=0;
+  //   foreach ($data as $key => $value) {
+  //     $i++;
+  //     $output.='<tr>
+  //     <td>'.$value->title.'</td>
    
-      </tr>';
-    }
-    }
-  }
+  //     </tr>';
+  //   }
+  //   }
+  // }
   //    <td>'.$value->driverName.'</td>
       // <td>'.$value->VehicleName.'</td>
       // <td>'.$value->vehicleNumber.'</td>
@@ -1030,12 +1030,12 @@ class User extends CI_Controller{
       // <td>'.$value->driverLicenceNumber.'</td>
       // <td>'.$value->contactNumber.'</td>
       // <td>'.$value->birthDate.'</td>
-   public function competitionName_list(){
-    // print_r($_POST); die();
-   $competitionid=$this->input->post('competitionid');
-   $data=$this->User_Model->competitionName_list($competitionid);
-   echo (json_encode($data));
-      }
+   // public function competitionName_list(){
+   //  // print_r($_POST); die();
+   // $competitionid=$this->input->post('competitionid');
+   // $data=$this->User_Model->competitionName_list($competitionid);
+   // echo (json_encode($data));
+   //    }
 
   
   // Competition List....

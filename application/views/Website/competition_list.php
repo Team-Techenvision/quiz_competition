@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/backcomp1.jpg');">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper competitionwrapper">
     <!-- Content Header (Page header) -->
@@ -26,13 +26,13 @@
             <div class="card">
             <div class="card-header ">
             
-              <h3 class="card-title "><!-- <i class="fa fa-list"></i>  -->Competition List Information</h3>
+              <h4 class="card-title text-center" style="color: crimson;"><!-- <i class="fa fa-list"></i>  -->Competition List Information</h4>
              <!--  <div class="card-tools col-md-2 " style=" margin-left: 80%;">
                 <a href="add_competition" class="btn btn-sm btn-block btn-primary "  >Add Competition</a>
               </div> -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body text-center">
               <div class="form-group float-right search btn-group">
                   <input class="form-control search-input" id="tableSearch" type="search" placeholder="Search" autocomplete="off"><br>
               </div>

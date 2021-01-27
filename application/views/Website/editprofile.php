@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper" style="background-image:url('<?php echo base_url(); ?>/assets/images/backprofile.jpg');">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper profilewrapper">
     <!-- Content Header (Page header) -->
@@ -19,14 +19,14 @@
 
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row" >
           <!-- left column -->
           <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card">
+            <div class="card" style="border-radius: 2.25rem!important; border:none!important;">
             <div class="card-header ">
             
-              <h5 class="card-title "><!-- <i class="fa fa-list"></i>  -->Profile Information</h5>
+              <h4 class="card-title text-center" style="color: #e22d2d;"><!-- <i class="fa fa-list"></i>  -->Profile Information</h4>
              <!--  <div class="card-tools col-md-2 " >
                 <a href="add_profile" class="btn btn-sm btn-block btn-primary "  >Add Participation</a>
               </div> -->
@@ -35,7 +35,7 @@
             <div class="card-body">
                <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data"> 
                  <div class="row" >   
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                   <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
                   <img id="blah" class="rounded-circle " src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
 
@@ -50,7 +50,7 @@
                    
                       <!--  <img id="blah"  class="rounded-circle" src="<?php  echo base_url();?>assets/images/profile1.jpg" alt="" height="150px" width="150px" /> -->
                    </div> 
-                   <div class="form-group col-md-9">
+                   <div class="form-group col-md-8">
                       <div class="row" >
                            <div class="form-group col-md-12">
                             <div class="row">
@@ -96,11 +96,11 @@
                               <div class="col-md-3"><label for="inputName" class="form-label">Grade</label></div>
                         
                                  <div class="col-md-9">
-                                   <?php
+                                 <!--   <?php
                                       if(isset($grade)){?>
 
                                       <input type="text" class="form-control title-case " name="grade" id="grade" value="<?php if(isset($grade)){ echo $grade; } ?>" disabled="">
-                                    <?php }?>  
+                                    <?php }?>   -->
                                   <select name="grade" id="grade"class="form-control" >
                                   <option value="">Select Grade</option>
                                   <option value="1">1</option>
@@ -129,11 +129,11 @@
                               <div class="col-md-3"><label for="inputName" class="form-label">Pincode</label></div>
                         
                                  <div class="col-md-9">
-                                  <?php
+                                 <!--  <?php
                                       if(isset($pincode)){?>
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
-                                       <?php }?>  
+                                       <?php }?>   -->
                                     
                                       <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>
@@ -153,9 +153,9 @@
 
                     </div>      
                     <div class="row " >   
-                   <div class="form-group col-md-3"></div>
+                   <div class="form-group col-md-5"></div>
                    <div class="form-group col-md-2">
-                   <button id="btn_update" type="submit" class="btn btn-primary">Edit </button>
+                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary">Edit </button>
                  </div>
                </div>
               

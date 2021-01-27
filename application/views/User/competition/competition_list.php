@@ -59,7 +59,7 @@
 
                       <a href="<?php echo base_url(); ?>User/delete_competition/<?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to Delete this Competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
 
-                      <a type="button" id="example" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href=""><!-- < ?php echo $list->competitionid; ?> -->View</a>
+                     <!--  <a type="button" id="example" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href="">< ?php echo $list->competitionid; ?> View</a> -->
 
                       <a type="button" id="" name="" class="btn btn-sm btn-primary " href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>">view Question</a>
                     </td>
@@ -69,7 +69,7 @@
                 </tbody>
               </table>
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+             <!--  <div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -80,16 +80,16 @@
                     </div>
                     <div class="modal-body">
                       <form> 
-                       <input type="text" name="competition_id" id="competition_m_id" value="<?php echo $list->competitionid;?>">  
+                       <input type="text" name="competition_id" id="competition_m_id" value="<?php echo $list->competitionid;?>">   -->
                         <!-- <div class="form-group">
                           <label for="message-text" class="col-form-label"> photo:</label>
                           <label for="message-text" id="photoPath" class="col-form-label"></label>
                           <img style="width:50px; height: 60px;" src="<?php echo base_url();?>upload/<?php echo 'photoPath'; ?>" class="thumbnail">
                         </div> -->
-                        <div class="form-group">
+                      <!--   <div class="form-group">
                           <label for="recipient-name"  class="col-form-label">Competition Type :</label>
                           <label for="recipient-name" id="titlell" type="text" class="col-form-label"></label>
-                        </div>
+                        </div> -->
                         <!-- <div class="form-group">
                           <label for="message-text" class="col-form-label">Vehicle Name:</label>
                           <label for="message-text" id="vehiclell" class="col-form-label"></label>
@@ -106,15 +106,15 @@
                           <label for="text" class="col-form-label">BirthDate:</label>
                           <input type="Date" id="birthdate1" class="form-control col-md-4" name="birthDate">
                         </div> -->
-                    </form>
+                   <!--  </form>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                       <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                    </div>
+                  <!--   </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
            <!-- /.end modal -->
 
             </div>
@@ -147,7 +147,7 @@
   <?php } ?>
 
 </script>
-<script>
+<!-- <script>
     $(".competition_btn").click(function() {
        
          var text = $(this).attr('value');
@@ -155,9 +155,9 @@
          $('#competition_m_id').val(text);
 
     });
-</script>
+</script> -->
 
-  <script>
+  <!-- <script>
     $(document).ready(function(){
 
       $('#example').click(function(){
@@ -192,5 +192,5 @@
     });
 });
 
-  </script> 
+  </script>  -->
 

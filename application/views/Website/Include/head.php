@@ -343,9 +343,9 @@ $(".back").click(function(){
 });
 </script>
 
-<script>
+<!-- <script>
 $(document).on('hide.bs.modal','#login', function () {
                 alert('error');
  //Do stuff here
 });
- </script>
+ </script> -->

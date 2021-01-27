@@ -3,7 +3,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper profilewrapper">
+  <div class="content-wrapper competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/93128-OJM4KV-79.jpg');background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #14230f87;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -24,7 +27,7 @@
            <div class="card">
             <div class="card-header ">
             
-              <h5 class="card-title text-center h4"><!-- <i class="fa fa-list"></i>  -->
+              <h5 class="card-title text-center h4" style="color: crimson;"><!-- <i class="fa fa-list"></i>  -->
                 <?php $q_id="0"; foreach ($result as $value) { $q_id = $value['competitionid'];} ?>
               <?php foreach ($this->Website_Model->view_ques($q_id) as $value)
               {
@@ -102,7 +105,7 @@
                  <!-- <input type="text" name="quiz_id" value="< ?php echo $value['dynamiccompetitionid'];?>"> -->              
 
                   <?php if($value['answertype']=="1"){ ?>
-                  <input type="text" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>">
+                  <input type="hidden" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>">
                     <?php $myString = $value['optionvalues'];
                       $myArray = explode(',', $myString);                       
                       foreach($myArray as $my_Array)
@@ -116,7 +119,7 @@
                   <?php } elseif ($value['answertype']=="2") 
                   {?>
 
-                   <input type="text" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>" required>
+                   <input type="hidden" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>" required>
 
                       <?php $myString = $value['optionvalues'];
                       $myArray = explode(',', $myString);
@@ -129,19 +132,19 @@
                    
                   <?php } elseif ($value['answertype']=="3") { ?>
 
-                   <input type="text" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>" >
+                   <input type="hidden" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>" >
 
                       <input type="text" name="quiz_id1[1]['quiz_id1']" class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" required>
 
                 <?php  } elseif ($value['answertype']=="4") { ?>
 
-                    <input type="text" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>">
+                    <input type="hidden" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>">
 
                     <textarea name="quiz_id1[1]['quiz_id1']" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" required></textarea>
 
                 <?php } else { ?>
 
-                  <input type="text" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>">
+                  <input type="hidden" name="quiz_id[0]['quiz_id']" value="<?php echo $value['dynamiccompetitionid'];?>">
 
                                  <select name="quiz_id1[1]['quiz_id1']" id="ansoption" class="form-control w-25" required>
 

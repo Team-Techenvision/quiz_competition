@@ -82,28 +82,28 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
-  function getcompetitionlist()
-  {
+  // function getcompetitionlist()
+  // {
   
-  $this->db->order_by("competitionid", "");
-  // $this->db->where('is_admin', 1);
-  $query = $this->db->get("competition");
-  return $query->result();
-  // print_r($query);
-  }
-  public function competitionName_list($competitionid){
-     // $today = date('Y-m-d');
-     // $this->db->select('*');
-    $this->db->select('competition.*');
-    // $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
-   // $this->db->order_by('enddate ', 'DESC');
-    $this->db->from('competition');
-    $this->db->where('competitionid',$competitionid);
-    $query = $this->db->get();
-    $result = $query->result();
-    return $result;
+  // $this->db->order_by("competitionid", "");
+  // // $this->db->where('is_admin', 1);
+  // $query = $this->db->get("competition");
+  // return $query->result();
+  // // print_r($query);
+  // }
+  // public function competitionName_list($competitionid){
+  //    // $today = date('Y-m-d');
+  //    // $this->db->select('*');
+  //   $this->db->select('competition.*');
+  //   // $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
+  //  // $this->db->order_by('enddate ', 'DESC');
+  //   $this->db->from('competition');
+  //   $this->db->where('competitionid',$competitionid);
+  //   $query = $this->db->get();
+  //   $result = $query->result();
+  //   return $result;
 
-  }
+  // }
   function fetch_level()
   {
   
