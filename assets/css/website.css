@@ -1185,4 +1185,9 @@ position:absolute;
 .contactaddress img{
   margin-left:50%;
 }
-
+.toast-success {
+  background-color: #51A351;
+}
+.toast-error {
+  background-color: #BD362F;
+}
