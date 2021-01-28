@@ -34,7 +34,7 @@ class WebsiteController extends CI_Controller{
       if($login == null){
         // alert("login_error");
         $this->session->set_flashdata('msg','login_error');
-         $this->session->set_flashdata('login_ermsg','success');
+         $this->session->set_flashdata('login_ermsg','error');
         header('location:'.base_url().'WebsiteController');
 
       } else{
