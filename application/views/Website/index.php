@@ -127,6 +127,8 @@
           <!-- cart fetch dyanamic start  -->
       <?php if($competition_list){
           foreach ($competition_list as $list) {
+
+            // print_r($list);
         ?>
            <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabid;?> all ">
               <div class="row ">
@@ -137,7 +139,7 @@
                   <div class="text">
                     <h5> <?php echo $list->title;?>  </h5>
                     <h6> <?php echo $list->subtitle;?> </h6>
-                    <p><button href="" data-toggle="modal" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
+                    <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
                     <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p>
                    <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="< ?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
                   </div>
@@ -174,8 +176,8 @@
                                   </div>
 
                                   <div class="form-group col-md-6">
-                                     <label>Email-ID</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
+                                     <label>Email Address</label>&nbsp;<label style="color:red;">*</label>
+                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
                                   </div>
 
                                    <div class="form-group col-md-3">
@@ -246,7 +248,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Instructions for Participants:
+                              <h5 class="modal-title" id="exampleModalLongTitle">Instructions for Participants
                       </h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -287,6 +289,14 @@
 </script>
 
 <script type="text/javascript">
+  <?php if($this->session->flashdata('login_ermsg')){ ?>
+    $(document).ready(function(){
+      toastr.success('Invalid Details..');
+    });
+  <?php } ?>
+</script>
+
+<script type="text/javascript">
   <?php if($this->session->flashdata('register_success')){ ?>
     $(document).ready(function(){
       toastr.success('Registration successfully..');
@@ -318,6 +328,11 @@ function myFunction() {
         }
 
 </script>
-                   
+ <!-- <script type="text/javascript">
+    $('#participate_btn').click(function(){
+     
 
-                 
+    });
+ </script>                  
+
+                 --> 
