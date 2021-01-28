@@ -149,7 +149,7 @@
           </div>    
         </div>
 
-
+    
           <!-- particepation model  -->
         <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -257,6 +257,7 @@
                         </div>
                       </div>  <!--Prticepation Modal Ends -->
 
+
                          <!--instrruction  Modal -->
                       <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -305,7 +306,7 @@
 <script type="text/javascript">
   <?php if($this->session->flashdata('login_ermsg')){ ?>
     $(document).ready(function(){
-      toastr.success('Invalid Details..');
+      toastr.error('Invalid Details..');
     });
   <?php } ?>
 </script>
