@@ -1,6 +1,13 @@
-<?php  $competition_list = $this->Website_Model->competition_list('competitionid','','','','','','competition'); 
-    $banner_list = $this->Website_Model->banner_list('bannerid');
-    $tab_list = $this->Website_Model->tab_list('tabinputtextid');
+<?php  
+
+$quizweb_user_id = $this->session->userdata('quizweb_user_id');
+$competition_list = $this->Website_Model->competition_list('competitionid','','','','','','competition'); 
+$banner_list = $this->Website_Model->banner_list('bannerid');
+$tab_list = $this->Website_Model->tab_list('tabinputtextid');
+$user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
+
+// print_r($user_list);die();
+
 ?>
 
 <!-- <style type="text/css">
@@ -126,6 +133,7 @@
 
           <!-- cart fetch dyanamic start  -->
       <?php if($competition_list){
+
           foreach ($competition_list as $list) {
 
             // print_r($list);
@@ -217,23 +225,23 @@
                                   </div>
                                     <div class="form-group col-md-3">
 
-                                  <!-- < ?php
-                                      if(isset($pincode)){?>
+                                 <!--  < ?php
+                                      if($user_list->user_pincode)){?>
 
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
                                         <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                      <select name="pincode" id="pincode"class="form-control" required="">
+                                         <input type="number" class="form-control" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
+
+                                    <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>
-                                   <?php foreach($pin as $pin)
+                                   < ?php foreach($pin as $pin)
                                      {
                                           echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
-
-                                               
-                                      }
+                                              }
                                      ?>   
                                     
-                                  </select>
+                                  </select> -->
                                   </div>
                                  
                                 </div>
@@ -284,7 +292,7 @@
                       </div>  
 
 
-        <?php   }  } ?>
+        <?php   }  } ?>  
 
          <!-- cart fetch dyanamic Ends  -->
         </div>  <!-- main row Ends  -->
@@ -298,7 +306,7 @@
 <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('participated successfully..');
+      toastr.success('participated successfully');
     });
   <?php } ?>
 </script>
@@ -306,7 +314,7 @@
 <script type="text/javascript">
   <?php if($this->session->flashdata('login_ermsg')){ ?>
     $(document).ready(function(){
-      toastr.error('Invalid Details..');
+      toastr.error('Invalid Details Please Login again');
     });
   <?php } ?>
 </script>
@@ -314,7 +322,7 @@
 <script type="text/javascript">
   <?php if($this->session->flashdata('register_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Registration successfully..');
+      toastr.success('Registration successfully');
     });
   <?php } ?>
 </script>
@@ -322,7 +330,7 @@
 <script type="text/javascript">
   <?php if($this->session->flashdata('login_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Login successfully..');
+      toastr.success('Login successfully');
     });
   <?php } ?>
 </script>
@@ -334,7 +342,7 @@
       alert('Fill all the necessary fields');
    }
    else{
-    return confirm('Are you sure want to save Record....')
+    return confirm('Are you sure want to save Record')
    }
 });
 

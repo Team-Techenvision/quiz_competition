@@ -136,17 +136,36 @@ function fetch_userid()
   return $query->result();
   // print_r($query);
  }
+  // public function fetch_pincodelist(){
+  //   $this->db->select('*');
+  //   // $this->db->select('user.*,profile.*');
+  //   // $this->db->join('user', 'profile.pincode = user.user_pincode', 'inner');
+  //   // $this->db->where('user.user_pincode', $user_id);
+  //   $this->db->from('user');
+  //   $query = $this->db->get();
+  //   $result = $query->result();
+  //   return $result;
+  // }
+// public function fetch_pincodelist(){
+//     // $this->db->select('*');
+//     $this->db->select('user.*,profile.*');
+//     $this->db->join('user', 'profile.pincode = user.user_pincode', 'left');
+//     // $this->db->where('user.user_id', $user_pincode);
+//     // $this->db->where('profile.user_id', $quizweb_user_id);
+//     $this->db->from('profile');
+//     $query = $this->db->get();
+//     $result = $query->result();
+//     return $result;
+//   }
+ //   function fetch_pincodelist()
+ // {
   
-
-   function fetch_pincodelist()
- {
-  
-  $this->db->order_by("pincodeid", "");
-  // $this->db->where('is_admin', 1);
-  $query = $this->db->get("pincodemaster");
-  return $query->result();
-  // print_r($query);
- }
+ //  $this->db->order_by("pincodeid", "");
+ //  // $this->db->where('is_admin', 1);
+ //  $query = $this->db->get("pincodemaster");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
    function fetch_country()
  {
   $this->db->order_by("countryname", "ASC");

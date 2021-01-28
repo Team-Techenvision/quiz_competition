@@ -6,7 +6,7 @@
   // $quizweb_roll_id = $this->session->set_userdata('quizweb_roll_id');
   $company_list = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
   $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
-// print_r($user_list);
+// print_r($user_list);die();
 
 ?>
 <!DOCTYPE html>

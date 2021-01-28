@@ -68,9 +68,9 @@ class WebsiteController extends CI_Controller{
     // print_r($data['user_list']);
     $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
     $data['country'] = $this->Website_Model->fetch_country();
-    $data['pincode'] = $this->Website_Model->fetch_pincodelist();
-    $data['pin'] = $this->Website_Model->fetch_pincodelist();
-    $data['userid'] = $this->Website_Model->fetch_userid();
+    // $data['pincode'] = $this->Website_Model->fetch_pincodelist();
+    // $data['pin'] = $this->Website_Model->fetch_pincodelist();
+    // $data['userid'] = $this->Website_Model->fetch_userid();
     
 
     // $data['state'] = $this->Website_Model->fetch_state($countryid);
@@ -184,7 +184,7 @@ class WebsiteController extends CI_Controller{
 
          //*********************   remove this code after demo   *********************
     }
-    $data['pincode'] = $this->Website_Model->fetch_pincodelist();
+    // $data['pincode'] = $this->Website_Model->fetch_pincodelist();
 
     // print_r($data);
 
@@ -597,7 +597,7 @@ public function insert_profiledata(){
    foreach ($_POST as $row)
     {
       
-        print_r($row);
+        // print_r($row);
 
      }
     // echo '<pre>';
