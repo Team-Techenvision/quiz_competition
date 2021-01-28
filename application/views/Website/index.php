@@ -154,8 +154,20 @@
         <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content">
+                            <?php if(!isset($quizweb_user_id)){ ?>
+
+                              <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Please Login To Participate </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                             
+                            </div>
+
+                            <?php }else{  ?>
+
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Add Participate</h5>
+                              <h5 class="modal-title" id="exampleModalLongTitle">Add Participate </h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -228,6 +240,8 @@
                                 <!-- /.card-body -->
                              
                             </div>
+
+                        
                             <div class="modal-footer">
                             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
                                      <?php if(isset($update)){ ?>
@@ -238,7 +252,7 @@
                                       <a href="" class="btn btn-light ml-4" data-dismiss="modal" onclick="myFunction()">Cancel</a>
                              </div>
                            </form>
-                            
+                              <?php } ?>
                           </div>
                         </div>
                       </div>  <!--Prticepation Modal Ends -->
