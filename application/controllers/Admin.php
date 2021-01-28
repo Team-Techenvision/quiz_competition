@@ -30,7 +30,7 @@ class Admin extends CI_Controller{
       }
       else{
         foreach ($login as $login){
-          $this->session->set_userdata('out_admin_id', $login['admin_id']);
+          $this->session->set_userdata('quizweb_admin_id', $login['admin_id']);
         }
         header('location:'.base_url().'Admin/dashboard');
       }
@@ -63,7 +63,7 @@ class Admin extends CI_Controller{
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_admin_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'Admin'); }
 
-    $data['company_list'] = $this->Admin_Model->company_list($out_company_id,'company_id','ASC','company');
+    $data['company_list'] = $this->Admin_Model->company_list($quizweb_company_id,'company_id','ASC','company');
     // $this->load->view('Admin/head', $data);
     // $this->load->view('Admin/navbar', $data);
     $this->load->view('Admin/company_information_list', $data);
@@ -229,8 +229,8 @@ class Admin extends CI_Controller{
 
 
   public function delete_company(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $quizweb_admin_id = $this->session->userdata('quizweb_admin_id');
+    if($quizweb_admin_id == ''){ header('location:'.base_url().'Admin'); }
     // $company_id = $this->input->post('company_id');
     $this->Admin_Model->delete_info('company_id', $company_id, 'law_company');
     header('location:'.base_url().'Admin/company_information_list');

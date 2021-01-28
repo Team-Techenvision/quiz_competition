@@ -32,12 +32,10 @@ class WebsiteController extends CI_Controller{
    
       // print_r($login);die();
       if($login == null){
-        // print_r($login); die();
-         // $error_msg = "<div class='login-modal'>Username or password is incorrect</div>";
-         // $script =  "<script> $(document).ready(function(){ $('#login').modal('show'); }); </script>";
         // alert("login_error");
         $this->session->set_flashdata('msg','login_error');
         header('location:'.base_url().'WebsiteController');
+
       } else{
        // print_r($login); die();
         echo 'null not';
@@ -45,6 +43,8 @@ class WebsiteController extends CI_Controller{
         // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+
+        $this->session->set_flashdata('login_success','success');
         header('location:'.base_url().'WebsiteController');
        
       }
@@ -154,7 +154,7 @@ class WebsiteController extends CI_Controller{
       );
       // print_r($save_data);
       $this->Website_Model->save_data('user',$save_data);
-      $this->session->set_flashdata('save_success','success');
+      $this->session->set_flashdata('register_success','success');
       header('location:'.base_url().'WebsiteController');
     }
     $data['pincode'] = $this->Website_Model->fetch_pincodelist();

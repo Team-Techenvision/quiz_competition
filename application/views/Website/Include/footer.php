@@ -65,7 +65,7 @@
             <div class="justify-content-center" style="padding-left: 550px;">
             <div class="site-footer__bottom bg-website justify-content-center">
                 <div class="container text-center">
-                    <p class="site-footer__copy text-center w-100">&copy; <span class="text-center"> Copyright 2020 by <a href="#">quiz.com</a> </span></p>
+                    <p class="site-footer__copy text-center w-100">&copy; &nbsp;<span class="text-center"> Copyright 2020 </span></p>
                     <div class="site-footer__social">
                       
                        <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top scroll"><i class="kipso-icon-top-arrow" ></i></a> 
@@ -245,6 +245,7 @@ $(this).addClass("active");
         var competition_btn_id = $(this).val();
         // alert(competition_btn_id);
      $('#competition_model_id').val(competition_btn_id); 
+     $('#instruction_model_id').val(competition_btn_id); 
 });
                     </script>
 

@@ -13,7 +13,7 @@ body {
 
 .header-navigation ul.navigation-box > li > a {
     padding-right: 5px !important;
-    color: #ffffffcc !important;
+    color: #fffffffa !important;
     font-weight: 400 !important;
     font-size: 16px !important;
     line-height: normal !important;
@@ -35,7 +35,7 @@ body {
 
 .login-btn{
    padding-right: 5px !important;
-    color: #ffffffcc !important;
+    color: #fffffffa !important;
     font-weight: 400 !important;
     font-size: 16px !important;
     line-height: normal !important;
@@ -49,16 +49,16 @@ body {
   color:white !important;
 }
 .headingtitle{
-color: var(--TEXT_COLOR_L0) !important;
+/*color: var(--TEXT_COLOR_L0) !important;*/
     font-weight: 400 !important;
-    font-size: 20px !important;
+    font-size: 18px !important;
     text-transform: none !important;
     padding-top: 15px !important;
-     color:#ffffffcc!important;
+     color:#fffffffa!important;
   }
-  .headingtitle:hover{
+  /*.headingtitle:hover{
     color:#e2ddddcc!important;
-  }
+  }*/
   
 /*@media only screen and (max-width: 768px) {
    For mobile phones: 
@@ -77,6 +77,10 @@ color: var(--TEXT_COLOR_L0) !important;
   padding-bottom: 0px !important;
     margin-bottom: -35px !important;
     padding-top: 0px !important;
+}
+.t{
+  font-size: 16px;
+
 }
   .t:hover{
         
@@ -120,21 +124,25 @@ dl, ol, ul {
 .footer-widget__title {
 
     margin-bottom: 15px !important;
-    font-size: 22px !important;
-    margin-left: -24px !important; 
+    /*font-size: 22px !important;*/
+    margin-left: -24px !important;
+    font-size: 1.25rem!important;
+    font-weight: 500!important;
+    color: #fff!important; 
    
 }
 .title{
      font-size: 16px !important;
      margin-top: -8px !important;
       font-family: 'Roboto', sans-serif;
-       color: #94a3ac !important; 
+       color: #fffffffa !important; 
 }
 .fatitle{
    padding-left: 0px;
    font-family: 'Roboto', sans-serif;
-   font-weight: 500;
-   color: #94a3ac !important;
+   font-weight: 400;
+   color: #fffffffa !important;
+   font-size: 16px !important;
 
 }
 .fafa{
@@ -153,9 +161,9 @@ dl, ol, ul {
     line-height: 1.2em !important;
 }
 .footer-widget__link-list li a {
-    color: #94a3ac;
+    color: #fffffffa;
     font-size: 16px !important;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
 }
@@ -170,18 +178,29 @@ dl, ol, ul {
     padding-left: 0 !important;
     margin-left: -23px !important;
  }
+ /*.twit{
+  color: #fffffffa!important;
+ }*/
  .twit:hover{
-  color: rgba(29,161,242,1.00);
+  color: rgba(29,161,242,1.00)!important;
  }
+ /*.face{
+  color: #fffffffa!important;
+ }*/
  .face:hover{
-  color: #0a3b6f;
+  color: #0a3b6f!important;
  }
- 
+/* .pint{
+   color: #fffffffa!important;
+ }*/
  .pint:hover{
-  color:rgb(230, 0, 35); 
+  color:rgb(230, 0, 35)!important; 
  }
+/* .insta{
+   color: #fffffffa!important;
+ }*/
  .insta:hover{
-  color: #8a3ab9 ; 
+  color: #8a3ab9 !important ; 
  }
  .footer-widget .list-unstyled {
     
@@ -353,13 +372,18 @@ img::before {
   padding-left: 20px;
 }
 .site-footer__copy a {
-    color: #94a3ac !important;
+    color: #fffffffa!important;
     margin-left: 10px;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
 }
+.site-footer__bottom p  {
+    color: #fffffffa!important;
+    font-size: 16px!important;
+    font-weight: 400!important;
+}
 .footer-widget__link-list li a:hover {
-    color: #94a3ac !important;
+    color: #fffffffa !important;
 }
  /*.btn{
     background-color: #1f80e0 !important;
@@ -392,8 +416,8 @@ img::before {
     z-index: 1 !important;
     display: inline-block !important;
    transition: all 0.3s !important;
-   font-weight: 500 !important;
-   color: #ffffffcc !important;
+   font-weight: 400 !important;
+   color: #fffffffa !important;
     background: linear-gradient(to right, #1f80e0 50%, #7190b72e 50%);
   background-size: 200% 100%;
   background-position: right bottom;
@@ -769,7 +793,7 @@ to{
   text-align: center;
   background: #fff;
   width: 310px;
-  height: 450px;
+  height: 415px;
   border-radius: 5px;
   padding: 30px 20px 0 20px;
   box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
@@ -792,10 +816,11 @@ to{
 }
 .h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 28px;
+  font-size: 1.25rem;
   text-transform: uppercase;
   color: #87613d;
   margin-bottom: 30px;
+  font-weight: 500!important;
 }
 
 .input,
@@ -872,7 +897,7 @@ to{
   font-family: 'Roboto', sans-serif;
   color: #ff7d00;
   /*text-align: center;*/
-  font-size: 18px;
+  font-size: 16px;
   font-weight:100;
   margin-bottom:25px;
 }
@@ -914,20 +939,14 @@ to{
   z-index: 2;
 }
 
-.active-dx{
-  animation-name: foregrounding-dx;
-  animation-duration: 0.9s;
-  animation-fill-mode: forwards;
-}
-
 .active-sx{
   animation-name: foregrounding-sx;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-.inactive-dx{
-  animation-name: overshadowing-dx;
+.active-dx{
+  animation-name: foregrounding-dx;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
@@ -937,7 +956,13 @@ to{
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
-@keyframes overshadowing-dx {
+
+.inactive-dx{
+  animation-name: overshadowing-dx;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+@keyframes overshadowing-sx {
   0%{
     z-index:2;
     transform: perspective(100px) translate3d(0px, 0px, 0px);
@@ -952,7 +977,7 @@ to{
   }
 }
 
-@keyframes overshadowing-sx {
+@keyframes overshadowing-dx {
   0%{
     z-index:2;
     transform: perspective(100px) translate3d(0px, 0px, 0px);
@@ -967,7 +992,7 @@ to{
   }
 }
 
-@keyframes foregrounding-dx {
+@keyframes foregrounding-sx {
   0%{
     z-index:1;
     transform: perspective(100px) translate3d(100px, 0px, -30px);
@@ -984,7 +1009,7 @@ to{
   }
 }
 
-@keyframes foregrounding-sx {
+@keyframes foregrounding-dx {
   0%{
     z-index:1;
     transform: perspective(100px) translate3d(-100px, 0px, -30px);
@@ -1025,7 +1050,8 @@ to{
 }
 .dropdown .btnlogout {
      background-color: none !important; 
-    color: #ffffffcc !important;
+    color: #fffffffa !important;
+    font-size: 16px!important;
     
 }
 .btn.focus, .btn:focus {
@@ -1040,11 +1066,12 @@ to{
     padding: .25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color:#ffffffcc !important;
+    color:#fffffffa !important;
     text-align: inherit;
     white-space: nowrap;
     background-color: #181e31 !important;
     border: 0;
+    font-size: 16px!important;
 }
 .featuredrow{
    

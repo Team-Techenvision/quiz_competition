@@ -208,7 +208,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
-              <h3 class="h3">Create Your Account</h3>
+              <h4 class="h3">Create Your Account</h4>
               <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
               <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" />
@@ -234,7 +234,7 @@
              
 
 
-              <button class="form-btn button sx log-in" type="button">Log In</button>
+              <button class="form-btn button sx back" type="button">Back</button>
               <button class="form-btn button dx" type="submit">Sign Up</button>
           </form>
          <!-- <?php if(isset($error_msg)){ echo $error_msg; } ?> -->
@@ -242,7 +242,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h3 class="h3">Welcome</br>Back !</h3>
+            <h4 class="h3">Welcome Back !</h4>
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
             <input  type="text"  name="mobile" id="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" placeholder="Enter Mobile No" autocomplete='off' required="" />
@@ -250,7 +250,7 @@
              <input type="password" class="input" name="password" id="password" placeholder="Password" required="">
             <span class="text-red"> <?php echo form_error('password'); ?> </span>
 
-            <button class="form-btn button sx back" type="button">Back</button>
+            <button class="form-btn button sx sign-in" type="button">Sign In</button>
             <button class="form-btn button dx" type="submit" >Log In</button>
             
             <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
@@ -328,19 +328,30 @@ var user_mobile21 = $('#user_mobile').val();
 
 </script>
 <script type="text/javascript">
-  $(".log-in").click(function(){
-  $(".signIn").addClass("active-dx");
-  $(".signUp").addClass("inactive-sx");
-  $(".signUp").removeClass("active-sx");
-  $(".signIn").removeClass("inactive-dx");
+ $(".login").click(function(){
+
+  $(".signIn").addClass("active-sx");
+  $(".signUp").addClass("inactive-dx");
+  $(".signUp").removeClass("active-dx");
+  $(".signIn").removeClass("inactive-sx");
+
+ });
+
+  $(".sign-in").click(function(){
+  $(".signUp").addClass("active-dx");
+  $(".signIn").addClass("inactive-sx");
+  $(".signIn").removeClass("active-sx");
+  $(".signUp").removeClass("inactive-dx");
 });
 
-$(".back").click(function(){
-  $(".signUp").addClass("active-sx");
-  $(".signIn").addClass("inactive-dx");
-  $(".signIn").removeClass("active-dx");
-  $(".signUp").removeClass("inactive-sx");
+  $(".back").click(function(){
+  $(".signIn").addClass("active-sx");
+  $(".signUp").addClass("inactive-dx");
+  $(".signUp").removeClass("active-dx");
+  $(".signIn").removeClass("inactive-sx");
 });
+
+
 </script>
 
 <!-- <script>

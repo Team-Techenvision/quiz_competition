@@ -256,9 +256,9 @@
                             <div class="modal-body">
                              <!--  Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer. -->
                           
-                             <!-- < ?php echo $list->competitionid;?> -->
+                             <input type="text" name="competition_id" id="instruction_model_id" value="<?php echo $list->competitionid;?>">
 
-                            <?php echo $competition_list[0]->instruction;?> 
+                          <?php echo $list->instruction;?> 
                               <!-- < ?php echo $company_list[0]->company_address;?> -->
                             </div>
                             
@@ -282,6 +282,22 @@
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
       toastr.success('participated successfully..');
+    });
+  <?php } ?>
+</script>
+
+<script type="text/javascript">
+  <?php if($this->session->flashdata('register_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Registration successfully..');
+    });
+  <?php } ?>
+</script>
+
+<script type="text/javascript">
+  <?php if($this->session->flashdata('login_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Login successfully..');
     });
   <?php } ?>
 </script>
