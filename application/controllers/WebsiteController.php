@@ -149,14 +149,40 @@ class WebsiteController extends CI_Controller{
         'user_pincode' => $this->input->post('user_pincode'),
         'user_mobile' => $this->input->post('user_mobile'),
         'user_name' => $this->input->post('user_name'),
+        'user_password' => $this->input->post('user_password'),
         // 'user_addedby' => $quizweb_user_id,
         'is_admin' => 3,
         'roll_id' => 3,
       );
       // print_r($save_data);
-      $this->Website_Model->save_data('user',$save_data);
-      $this->session->set_flashdata('register_success','success');
-      header('location:'.base_url().'WebsiteController');
+
+       $this->Website_Model->save_data('user',$save_data);
+
+      //*********************   remove this code after demo   *********************
+      $mobile = $this->input->post('user_mobile');
+      $password = $this->input->post('user_password');
+
+      $login = $this->Website_Model->check_login($mobile,$password);
+   
+      // print_r($login);die();
+      if($login == null){
+        // alert("login_error");
+        $this->session->set_flashdata('msg','login_error');
+         $this->session->set_flashdata('login_ermsg','error');
+        header('location:'.base_url().'WebsiteController');
+
+      } else{
+       // print_r($login); die();
+        echo 'null not';
+        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+        // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
+        $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
+        $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+
+        $this->session->set_flashdata('login_success','success');
+        header('location:'.base_url().'WebsiteController');
+
+         //*********************   remove this code after demo   *********************
     }
     $data['pincode'] = $this->Website_Model->fetch_pincodelist();
 
@@ -166,6 +192,7 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/index',$data);
     $this->load->view('Website/Include/footer',$data);
   }
+}
 
   // User List....
   public function user_list(){
