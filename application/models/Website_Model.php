@@ -10,6 +10,16 @@ class Website_Model extends CI_Model{
     $result = $query->result_array();
     return $result;
   }
+  function check_reg($mobile){
+    $query = $this->db->select('*')
+      ->where('user_mobile', $mobile)
+     
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+    // print_r($result);
+    return $result;
+  }
 
   public function save_data($tbl_name, $data){
     $this->db->insert($tbl_name, $data);
@@ -157,15 +167,15 @@ function fetch_userid()
 //     $result = $query->result();
 //     return $result;
 //   }
- //   function fetch_pincodelist()
- // {
+   function fetch_pincodelist()
+ {
   
- //  $this->db->order_by("pincodeid", "");
- //  // $this->db->where('is_admin', 1);
- //  $query = $this->db->get("pincodemaster");
- //  return $query->result();
- //  // print_r($query);
- // }
+  $this->db->order_by("pincodeid", "");
+  // $this->db->where('is_admin', 1);
+  $query = $this->db->get("pincodemaster");
+  return $query->result();
+  // print_r($query);
+ }
    function fetch_country()
  {
   $this->db->order_by("countryname", "ASC");
@@ -358,28 +368,31 @@ function fetch_userid()
   }
 
 }
-?><!-- 
-select * from dynamiccompetition where competitionid=1
+
+
+
+// select * from dynamiccompetition where competitionid=1
 
 
 
 
-SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid;
+// SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid;
 
 
 
-SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid WHERE competition.enddate >= now();
+// SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid WHERE competition.enddate >= now();
 
-SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid WHERE competition.enddate >= now() && profile.competitionid = 2;
+// SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid WHERE competition.enddate >= now() && profile.competitionid = 2;
 
 
 
-$this->db->select('*');
-    $this->db->from('users');
-    $this->db->join('show_guides', 'show_guides.user_id = users.user_id');
-    $this->db->where('users.user_id', $user_id['user_id'], 'left outer');
+// $this->db->select('*');
+//     $this->db->from('users');
+//     $this->db->join('show_guides', 'show_guides.user_id = users.user_id');
+//     $this->db->where('users.user_id', $user_id['user_id'], 'left outer');
 
-    $query = $this->db->get();
-    foreach ($query->result_array() as $row) {
-        $results = $row;
- -->
+//     $query = $this->db->get();
+//     foreach ($query->result_array() as $row) {
+//         $results = $row;
+
+?>

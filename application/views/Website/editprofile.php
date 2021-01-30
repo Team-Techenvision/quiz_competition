@@ -134,18 +134,8 @@
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                    
-                                      <select name="pincode" id="pincode"class="form-control" required="">
-                                    <option value="">Select Pincode</option>
-                                   <?php foreach($pin as $pin)
-                                     {
-                                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
-
-                                               
-                                      }
-                                     ?>   
-                                    
-                                  </select></div></div>
+                                     <input type="number" class="form-control" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
+                                    </div></div>
                                   </div>
                                     </div>
 

@@ -136,9 +136,26 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
           foreach ($competition_list as $list) {
 
-            // print_r($list);
+           // $tab = $list->tabid;
+
+
+          // if($list==null){
+          //     echo "no competition available";
+          // } 
+
+            // print_r($tab);
         ?>
+              <?php  
+               // print_r($list);
+             if(!isset($list->title)){?>
+
+         <h4 class="text-white">no competition available <?php echo $list->title; ?></h4>
+
+
+         <?php } else{?>        
            <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabid;?> all ">
+         
+
               <div class="row ">
               <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
                  <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
@@ -154,10 +171,11 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                 </div>
               <div class="tag_inherit a" > <?php echo $list->tabinputtext;?>  </div>
             </div>
-          </div>    
-        </div>
+          </div>
 
-    
+        </div>
+    <?php }?>
+
           <!-- particepation model  -->
         <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -292,7 +310,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                       </div>  
 
 
-        <?php   }  } ?>  
+        <?php   }  }  ?>  
 
          <!-- cart fetch dyanamic Ends  -->
         </div>  <!-- main row Ends  -->

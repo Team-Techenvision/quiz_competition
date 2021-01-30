@@ -203,7 +203,7 @@
       <div class="modal-body con ">
 
        
-          <form class="signUp form" method="post" action="<?php echo base_url(); ?>WebsiteController/add_registration" autocomplete='off'>
+          <form class="signUp form"  id="signupForm" role="form" autocomplete='off'>
 
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -213,18 +213,8 @@
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
               <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" />
               <input class="input" type="number" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
-               <!-- <select name="user_pincode" id="user_pincode"class="input" required="">
-                    <option value="">Select Pincode</option>
-                   < ?php foreach($pincode as $pin)
-                     {
-                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
-
-                               
-                      }
-                     ?>   
-                    
-                </select> -->
-                  <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+             
+               <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 
                    <input type="password" id="user_password" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required="" />
 
@@ -232,30 +222,35 @@
                     <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
                   </label>
              
-
+                 <h6 class="alert alert-danger mobileerror"></h6>
+                 <h6 class="alert alert-success mobilesuccess"></h6>
+                  
 
               <button class="form-btn button sx back" type="button">Back</button>
               <button class="form-btn button dx" type="submit">Sign Up</button>
           </form>
          <!-- <?php if(isset($error_msg)){ echo $error_msg; } ?> -->
-         <form class="signIn form" method="post" action="<?php echo base_url(); ?>WebsiteController/login" autocomplete='off'>
+         <form class="signIn form" id="signInForm" role="form" autocomplete='off'>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <h4 class="h3">Welcome Back !</h4>
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
-            <input  type="text"  name="mobile" id="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" placeholder="Enter Mobile No" autocomplete='off' required="" />
+            
+            <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
             <span class="text-red"> <?php echo form_error('mobile'); ?></span>
              <input type="password" class="input" name="password" id="password" placeholder="Password" required="">
             <span class="text-red"> <?php echo form_error('password'); ?> </span>
 
-            <button class="form-btn button sx sign-in" type="button">Sign In</button>
+            <h6 class="alert alert-success successresponse"></h6>
+            <h6 class="alert alert-danger errorresponse"></h6>
+       
+            <button class="form-btn button sx sign-in" type="button">Sign Up</button>
             <button class="form-btn button dx" type="submit" >Log In</button>
-            
-            <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
-                Invalid Information
-            </div>
+
+             <!-- <div id="messages"></div> -->
+         
           </form> 
  <!-- <?php if(isset($script)){ echo $script; } ?> -->
      
@@ -353,10 +348,107 @@ var user_mobile21 = $('#user_mobile').val();
 
 
 </script>
-
-<!-- <script>
-$(document).on('hide.bs.modal','#login', function () {
-                alert('error');
- //Do stuff here
+<script type="text/javascript">
+  $( document ).ready(function() {
+   
+     $('.successresponse').hide();  
+     $('.errorresponse').hide();  
+     $('.mobileerror').hide();  
+     $('.mobilesuccess').hide();  
 });
- </script> -->
+         
+  
+</script>
+ <script>
+
+  $('#signInForm').submit(function(e) {
+
+     var mobile = $('#mobile').val();
+      var password = $('#password').val();
+      // alert(mobile);
+      // alert(password);
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/login1",
+           method:"POST",
+           data:{mobile:mobile,password:password},
+           success:function(data)
+            {
+               // alert(data);
+               // console.log(data);
+               if(data=='Successful'){
+                $('.alert-success').html(data);
+                $('.successresponse').show().delay(3000).fadeOut();
+                $('.errorresponse').hide();
+
+
+                window.location.reload();
+               }
+               else{
+                $('.alert-danger').html(data);
+                $('.errorresponse').show().delay(3000).fadeOut();
+                $('.successresponse').hide();
+                
+                document.getElementById("signInForm").reset();
+               }
+
+            }
+
+            });
+            e.preventDefault();
+  });
+</script>
+<script>
+
+  $('#signupForm').submit(function(e) {
+
+     var mobile = $('#user_mobile').val();
+     var pincode = $('#user_pincode').val();
+     var name = $('#user_name').val();
+     var password = $('#user_password').val();
+    
+      // alert(mobile);
+      // alert(pincode);
+      // alert(name);
+      // alert(password);
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/add_registration",
+           method:"POST",
+           data:{user_mobile:mobile,user_pincode:pincode,user_name:name,user_password:password},
+           success:function(data)
+            {
+               // alert(data);
+               // console.log(data);
+                 if(data=='Sign Up Successfully'){
+                $('.alert-success').html(data);
+                $('.mobileerror').hide();
+                $('.mobilesuccess').show().delay(1000).fadeOut();
+
+                 document.getElementById("signupForm").reset();
+
+                // $('.mobilesuccess').hide();
+
+
+                 $(".signUp").addClass("inactive-dx");
+                  $(".signIn").addClass("active-sx");
+                  $(".signIn").removeClass("inactive-sx");
+                  $(".signUp").removeClass("active-dx");  
+
+                // window.location.reload();
+
+               }
+               else{
+                $('.alert-danger').html(data);
+                $('.mobileerror').show().delay(3000).fadeOut();
+                $('.mobilesuccess').hide();  
+                document.getElementById("signupForm").reset();
+               }
+               
+
+            }
+
+
+            });
+            e.preventDefault();
+  });
+</script>

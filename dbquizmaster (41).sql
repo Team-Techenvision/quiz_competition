@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 02:31 PM
+-- Generation Time: Jan 30, 2021 at 06:55 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -229,10 +229,10 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (4, 1, 1, 1, 8, 11, '2021-01-27', 'Personality Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_4_1611751248.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2021-01-27 12:40:48'),
 (5, 1, 1, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_5_1611751122.jpg', 'sad\r\n', 'assssssss', 0, 0, '', 0, '0', '2021-01-27 12:38:42'),
 (6, 1, 1, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_6_1611751903.jpg', 'xxxx', 'xx', 0, 0, '', 0, '0', '2021-01-27 12:51:43'),
-(7, 1, 1, 1, 12, 15, '2021-01-27', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_7_1611753589.jpg', 'xxxx', 'xx', 1, 0, '', 0, '0', '2021-01-27 13:19:49'),
+(7, 1, 1, 1, 12, 15, '2021-03-10', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_7_1611982112.jpg', 'xxxx', 'xx', 1, 0, '', 0, '0', '2021-01-30 04:48:32'),
 (9, 1, 1, 1, 12, 15, '2021-01-28', 'IT Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_9_1611752081.jpg', 'aaaaaaaa', 'aaaaaaaaaa', 0, 0, '', 0, '0', '2021-01-27 12:54:41'),
 (11, 1, 0, 2, 18, 25, '2020-12-29', 'second package', 'Register to see competition topic', '', 'Male(18+)', 4, 'photo_1610696124.jpg', 'aass', 'ddd', 0, 0, '', 0, '0', '2020-12-30 11:48:21'),
-(12, 1, 1, 1, 12, 15, '2021-01-28', 'Maths Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_12_1611751865.jpg', 'sd', 'sd', 0, 0, '', 0, '0', '2021-01-27 12:51:05'),
+(12, 1, 1, 1, 12, 15, '2021-03-10', 'Maths Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_12_1611982189.jpg', 'sd', 'sd', 0, 0, '', 0, '0', '2021-01-30 04:49:49'),
 (13, 1, 0, 1, 12, 15, '2020-12-15', 'singing', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_1609327502.jpg', 'asssssa', 'sdsadada', 0, 0, '', 0, '0', '2020-12-30 11:25:02'),
 (14, 1, 0, 1, 12, 15, '1970-01-01', 'quiz', 'Register to see competition topic', '<ul><li>maths</li><li>english</li></ul>', 'class 6 - class 9', 2, 'photo_1609501026.jpg', 'aaaaa', 'aaaaaaaa', 0, 0, '', 0, '0', '2021-01-01 11:37:06'),
 (15, 1, 0, 1, 2, 7, '2021-01-21', 'first package', 'Register to see competition topic', '<ul><li>asa</li></ul>', 'Nursery - Class 1', 1, 'photo_1609585575.jpg', 'sdsa', 'sad', 0, 0, '', 0, '0', '2021-01-02 11:06:15'),
@@ -259,8 +259,8 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (47, 1, 1, 1, 12, 15, '2021-01-20', 'GK Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_47_1610359705.jpg', 'sfafd', 'dsaf', 0, 0, '', 0, '', '2021-01-11 10:08:25'),
 (51, 1, 1, 2, 18, 25, '2021-01-17', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, '', 'hfgfg', '<p>gh</p><p>fdh</p>', 0, 0, '', 0, '', '2021-01-15 07:26:25'),
 (52, 1, 1, 2, 18, 25, '2021-01-17', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, '', 'hfgfg', '<p>gh</p><p>fdh</p>', 0, 0, '', 0, '', '2021-01-15 07:27:18'),
-(53, 1, 1, 1, 8, 10, '2021-01-29', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_53_1611753430.jpg', 'klk', '<p>kll;</p>', 0, 0, '', 0, '', '2021-01-27 13:17:10'),
-(59, 2, 1, 2, 18, 25, '2021-01-29', 'Classical Singing', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_59_1611752882.jpg', 'klk', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 1, 0, '', 0, '', '2021-01-27 13:08:02');
+(53, 1, 1, 1, 8, 10, '2021-02-10', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_53_1611981866.jpg', 'klk', '<p>kll;</p>', 0, 0, '', 0, '', '2021-01-30 04:44:26'),
+(59, 2, 1, 2, 18, 25, '2021-03-10', 'Classical Singing', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_59_1611981950.jpg', 'klk', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 1, 0, '', 0, '', '2021-01-30 04:45:50');
 
 -- --------------------------------------------------------
 
@@ -690,7 +690,32 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (62, 1, '', 2, 'Omkar Mane', 'kolhapur', 0, 'kolhapur', 'omkar@gmail.com', '9639639630', 'omkar', NULL, 'active', '1', '2021-01-15 07:06:03', 1),
 (63, 0, '', 3, 'Sayali Gavali', '', 416012, '', '', '9512364789', '', NULL, 'active', '', '2021-01-20 06:37:07', 3),
 (64, 0, '', 3, 'gkshadg', '', 596, '', '', '9685714254', '', NULL, 'active', '', '2021-01-27 13:27:51', 3),
-(65, 0, '', 3, 'Sweta', '', 416012, '', '', '8698066940', '123456', NULL, 'active', '', '2021-01-28 11:22:03', 3);
+(65, 0, '', 3, 'Sweta', '', 416012, '', '', '8698066940', '123456', NULL, 'active', '', '2021-01-28 11:22:03', 3),
+(66, 0, '', 3, 'aaa', '', 416, '', '', '9856325555', '123', NULL, 'active', '', '2021-01-29 05:39:26', 3),
+(67, 0, '', 3, 'bbbb', '', 416012, '', '', '7410000000', '123', NULL, 'active', '', '2021-01-29 11:56:38', 3),
+(68, 0, '', 3, 'cccc', '', 416012, '', '', '8698066920', '123', NULL, 'active', '', '2021-01-29 11:58:03', 3),
+(69, 0, '', 3, 'aaaa', '', 1425, '', '', '8520000000', '123', NULL, 'active', '', '2021-01-29 11:59:25', 3),
+(71, 0, '', 3, 'aaa', '', 416012, '', '', '8540000000', '123', NULL, 'active', '', '2021-01-29 12:02:28', 3),
+(72, 0, '', 3, 'aaa', '', 1445, '', '', '8521000000', '123', NULL, 'active', '', '2021-01-29 12:05:44', 3),
+(73, 0, '', 3, 'jjj', '', 416012, '', '', '8536000000', '123', NULL, 'active', '', '2021-01-29 12:10:23', 3),
+(74, 0, '', 3, 'ssss', '', 416, '', '', '8456320000', '123', NULL, 'active', '', '2021-01-29 12:13:30', 3),
+(75, 0, '', 3, 'ddds', '', 11455, '', '', '8563200000', '123', NULL, 'active', '', '2021-01-29 12:15:41', 3),
+(76, 0, '', 3, 'ssss', '', 416012, '', '', '7896540000', '123', NULL, 'active', '', '2021-01-29 12:19:24', 3),
+(77, 0, '', 3, 'asss', '', 416, '', '', '8965000000', '41256', NULL, 'active', '', '2021-01-29 12:20:19', 3),
+(78, 0, '', 3, 'fgd', '', 416, '', '', '8563200001', '123', NULL, 'active', '', '2021-01-29 12:23:03', 3),
+(79, 0, '', 3, 'ssss', '', 54646, '', '', '4563210000', '123', NULL, 'active', '', '2021-01-29 12:23:55', 3),
+(80, 0, '', 3, 'tetert', '', 453, '', '', '8745454333', '123', NULL, 'active', '', '2021-01-29 12:25:29', 3),
+(81, 0, '', 3, 'fdgddddddd', '', 4160, '', '', '8654123000', '123', NULL, 'active', '', '2021-01-29 12:28:16', 3),
+(82, 0, '', 3, 'hfhg', '', 41, '', '', '8652365400', '123', NULL, 'active', '', '2021-01-29 12:32:18', 3),
+(83, 0, '', 3, 'gfdh', '', 456, '', '', '8745600000', '123', NULL, 'active', '', '2021-01-29 12:40:26', 3),
+(84, 0, '', 3, 'dsf', '', 456, '', '', '8965412000', '123', NULL, 'active', '', '2021-01-29 12:42:52', 3),
+(85, 0, '', 3, 'dsaf', '', 456, '', '', '9685698000', '0012', NULL, 'active', '', '2021-01-29 12:43:59', 3),
+(86, 0, '', 3, 'gdfgsd', '', 323, '', '', '1234686543', '32', NULL, 'active', '', '2021-01-29 12:47:02', 3),
+(87, 0, '', 3, 'kjhgk', '', 456, '', '', '7896541236', '154', NULL, 'active', '', '2021-01-29 12:48:03', 3),
+(88, 0, '', 3, 'gfhfg', '', 54534, '', '', '4563789654', '123', NULL, 'active', '', '2021-01-29 12:50:09', 3),
+(89, 0, '', 3, 'dfs', '', 456, '', '', '8965412345', '123', NULL, 'active', '', '2021-01-29 12:52:07', 3),
+(90, 0, '', 3, 'shweta P', '', 416012, '', '', '9527205327', '1234', NULL, 'active', '', '2021-01-29 13:01:35', 3),
+(91, 0, '', 3, 'fsds', '', 456321, '', '', '9284355156', '123', NULL, 'active', '', '2021-01-30 04:42:20', 3);
 
 -- --------------------------------------------------------
 
@@ -981,7 +1006,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
