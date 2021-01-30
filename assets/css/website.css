@@ -1191,3 +1191,17 @@ position:absolute;
 .toast-error {
   background-color: #BD362F;
 }
+.titleS{
+    font-size: 25px;
+    font-weight: 600;
+    color: crimson;
+}
+.labelS{
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000de;
+}
+.labelSC{
+  font-size: 20px;
+    font-weight: 500;
+}

@@ -49,7 +49,18 @@ class Website_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
-
+  public function get_competitionlist_by_id($competition){
+    // $this->db->select('*');
+    $this->db->select('competition.*,competitiontype.*,levelmaster.*');
+    $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'left');
+    $this->db->join('levelmaster', 'competition.levelid = levelmaster.levelid', 'left');
+    
+    $this->db->where('competitionid', $competition);
+    $this->db->from('competition');
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+  }
   public function resultwinner_list($user_id){
      // $this->db->select('*');
     $this->db->select('assignwinner.*,user.*,competition.*');

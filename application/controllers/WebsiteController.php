@@ -168,7 +168,9 @@ class WebsiteController extends CI_Controller{
 
     // print_r($competitionid);
 
-    $data['competition_list'] = $this->Website_Model->competition_list('competitionid',$competitionid,'','','','','competition');
+    // $data['competition_list'] = $this->Website_Model->get_list_by_id('competitionid',$competitionid,'','','','','competition');
+
+     $data['competition_list'] = $this->Website_Model->get_competitionlist_by_id($competitionid);
    
     // print_r($data);
 
