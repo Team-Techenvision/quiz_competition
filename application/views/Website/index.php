@@ -153,19 +153,19 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
 
          <?php } else{?>        
-           <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area filter <?php echo $list->tabid;?> all ">
+           <div class="col-xl-3 col-md-3 col-sm-12 col-12 mt-4 mobile_area singleview filter <?php echo $list->tabid;?> all " >
          
 
               <div class="row ">
-              <div class="col-xl-12 col-md-12 col-sm-12 col-12 over">
-                 <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid">
+              <div class="col-xl-12 col-md-12 col-sm-12 col-12 over" >
+                 <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 4px 4px 4px 4px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid" >
               
-               <div class="overlay">
+             <div class="overlay">
                   <div class="text">
-                    <h5> <?php echo $list->title;?>  </h5>
+                      <a class="text-white" href="<?php echo base_url(); ?>WebsiteController/competition_singlepage/<?php echo "$list->competitionid"; ?>" ><h5 > <?php echo $list->title;?>  </h5></a>
                     <h6> <?php echo $list->subtitle;?> </h6>
-                    <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
-                    <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p>
+                    <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn pb-4" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
+                  <!--   <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p> -->
                    <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="< ?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
                   </div>
                 </div>
@@ -285,7 +285,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
 
                          <!--instrruction  Modal -->
-                      <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <!--   <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -297,17 +297,17 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                             </div>
                            
                             <div class="modal-body">
-                             <!--  Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer. -->
+                             < !--  Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer. -->
                           
-                             <input type="text" name="competition_id" id="instruction_model_id" value="<?php echo $list->competitionid;?>">
+                            <!--  <input type="text" name="competition_id" id="instruction_model_id" value="<?php echo $list->competitionid;?>">
 
-                          <?php echo $list->instruction;?> 
+                          <?php echo $list->instruction;?>  -->
                               <!-- < ?php echo $company_list[0]->company_address;?> -->
-                            </div>
+                         <!--    </div>
                             
                           </div>
                         </div>
-                      </div>  
+                      </div>   - -->
 
 
         <?php   }  }  ?>  
@@ -369,11 +369,5 @@ function myFunction() {
         }
 
 </script>
- <!-- <script type="text/javascript">
-    $('#participate_btn').click(function(){
-     
 
-    });
- </script>                  
-
-                 --> 
+                 

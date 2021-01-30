@@ -157,9 +157,12 @@
 
 
                   </div>
-                 <div class="form-group col-md-12">
+                <!--  <div class="form-group col-md-12">
                     <textarea type="text" class="form-control required title-case text " name="termsandconditions" id="termsandconditions" value="" placeholder="Enter Terms and Conditions" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
-                  </div>
+                  </div> -->
+                   <div class="form-group col-md-12">
+                    <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
+                   </div>
                  
                     <div class="form-group col-md-12">
                     <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($instruction)){ echo $instruction; } ?></textarea>

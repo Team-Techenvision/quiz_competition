@@ -162,12 +162,19 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/Include/footer');
 }     
 
-/**************************    FAQ     ********************************/
-  public function faq(){
+/**************************    Competition Single Page View    *****************************/
+  public function competition_singlepage(){
+    $competitionid = $this->uri->segment(3);
 
-    $this->load->view('Website/Include/head');
-    $this->load->view('Website/faq');
-    $this->load->view('Website/Include/footer');
+    // print_r($competitionid);
+
+    $data['competition_list'] = $this->Website_Model->competition_list('competitionid',$competitionid,'','','','','competition');
+   
+    // print_r($data);
+
+    $this->load->view('Website/Include/head',$data);
+    $this->load->view('Website/competition_singlepage',$data);
+    $this->load->view('Website/Include/footer',$data);
 }     
 
   
