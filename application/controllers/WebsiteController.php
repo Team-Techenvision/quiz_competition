@@ -15,50 +15,83 @@ class WebsiteController extends CI_Controller{
 
  
 /**************************      Login      ********************************/
-  public function login(){
-    // print_r($_POST);
-    $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
-    $this->form_validation->set_rules('password', 'password', 'trim|required');
-    if ($this->form_validation->run() == FALSE) {
-     //  $this->load->view('Website/Include/head');
-     //  $this->load->view('Website/index');
-     // $this->load->view('Website/Include/footer');
+  // public function login(){
+  //   // print_r($_POST);
+  //   $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
+  //   $this->form_validation->set_rules('password', 'password', 'trim|required');
+  //   if ($this->form_validation->run() == FALSE) {
+  //    //  $this->load->view('Website/Include/head');
+  //    //  $this->load->view('Website/index');
+  //    // $this->load->view('Website/Include/footer');
 
-    } else{
-      $mobile = $this->input->post('mobile');
-      $password = $this->input->post('password');
+  //   } else{
+  //     $mobile = $this->input->post('mobile');
+  //     $password = $this->input->post('password');
 
-      $login = $this->Website_Model->check_login($mobile,$password);
+  //     $login = $this->Website_Model->check_login($mobile,$password);
    
-      // print_r($login);die();
-      if($login == null){
-        // alert("login_error");
-        $this->session->set_flashdata('msg','login_error');
-         $this->session->set_flashdata('login_ermsg','error');
-        header('location:'.base_url().'WebsiteController');
+  //     // print_r($login);die();
+  //     if($login == null){
+  //       // alert("login_error");
+  //       $this->session->set_flashdata('msg','login_error');
+  //        $this->session->set_flashdata('login_ermsg','error');
+  //       header('location:'.base_url().'WebsiteController');
 
-      } else{
-       // print_r($login); die();
-        echo 'null not';
-        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
-        // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
-        $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
-        $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+  //     } else{
+  //      // print_r($login); die();
+  //       echo 'null not';
+  //       $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+  //       // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
+  //       $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
+  //       $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
 
-        $this->session->set_flashdata('login_success','success');
-        header('location:'.base_url().'WebsiteController');
+  //       $this->session->set_flashdata('login_success','success');
+  //       header('location:'.base_url().'WebsiteController');
        
-      }
+  //     }
 
      
-    }
+  //   }
     
     
-  }
+  // }
 
 
   public function login1()
   {
+    // echo "string";
+
+    // print_r($_POST);
+    
+      $mobile = $this->input->post('mobile');
+      $password = $this->input->post('password');
+
+      $login = $this->Website_Model->check_login($mobile,$password);
+
+      // print_r($login);
+
+     if($login == null){
+        // alert("login_error");
+       echo "Invalid Mobile Number and Password";
+
+      } else{
+       // print_r($login); die();
+      
+        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+        $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
+        $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+        echo 'Successful';
+        // $this->session->set_flashdata('login_success','success');
+        // header('location:'.base_url().'WebsiteController');
+       
+      }
+
+  }
+
+   /********************  Competition Participate check     *************************/
+
+   public function check_competition()
+   {
     // echo "string";
 
     // print_r($_POST);
@@ -164,6 +197,8 @@ class WebsiteController extends CI_Controller{
 
 /**************************    Competition Single Page View    *****************************/
   public function competition_singlepage(){
+
+    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $competitionid = $this->uri->segment(3);
 
     // print_r($competitionid);
@@ -171,6 +206,7 @@ class WebsiteController extends CI_Controller{
     // $data['competition_list'] = $this->Website_Model->get_list_by_id('competitionid',$competitionid,'','','','','competition');
 
      $data['competition_list'] = $this->Website_Model->get_competitionlist_by_id($competitionid);
+    
    
     // print_r($data);
 

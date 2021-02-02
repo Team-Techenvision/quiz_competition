@@ -57,7 +57,7 @@
                       </select>
                   </div>
                     <div class="form-group col-md-12">
-                    <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="<?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" required>
+                    <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="<?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" >
                   </div>
                   <div class="form-group col-md-12">
                     <input type="text" class="form-control required title-case text txtOnly" name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required>

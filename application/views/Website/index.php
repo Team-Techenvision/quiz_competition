@@ -6,7 +6,11 @@ $banner_list = $this->Website_Model->banner_list('bannerid');
 $tab_list = $this->Website_Model->tab_list('tabinputtextid');
 $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
 
-// print_r($user_list);die();
+// $competitionid = $this->input->post('53');
+// $profile_list = $this->Website_Model->check_competition($quizweb_user_id);
+
+
+// print_r($profile_list);die();
 
 ?>
 
@@ -164,7 +168,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                   <div class="text">
                       <a class="text-white" href="<?php echo base_url(); ?>WebsiteController/competition_singlepage/<?php echo "$list->competitionid"; ?>" ><h5 > <?php echo $list->title;?>  </h5></a>
                     <h6> <?php echo $list->subtitle;?> </h6>
+                   
                     <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn pb-4" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
+                 
                   <!--   <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p> -->
                    <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="< ?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
                   </div>
@@ -179,8 +185,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
           <!-- particepation model  -->
         <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                          <?php if(count) ?>
                           <div class="modal-content">
-                            <?php if(!isset($quizweb_user_id)){ ?>
+                            <?php if(!isset($quizweb_user_id)){  ?>
 
                               <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLongTitle">Please Login To Participate </h5>

@@ -6,7 +6,11 @@
   // $quizweb_roll_id = $this->session->set_userdata('quizweb_roll_id');
   $company_list = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
   $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
-// print_r($user_list);die();
+   $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','profile');
+    $winner_list  = $this->Website_Model->resultwinner_list($quizweb_user_id); 
+
+
+// print_r($profile_list);die();
 
 ?>
 <!DOCTYPE html>
@@ -171,9 +175,18 @@
       Welcome <?php echo $user_list[0]->user_name;?>
     </button>
     <div class="dropdown-menu">
+      <?php if(isset($profile_list[0]->user_id)) { 
+        // print_r($profile_list[0]->user_id);
+        ?> 
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/edit_profile" >My Profile</a>
+  
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/competition_list">My Competition</a>
+
+      <?php if(isset($winner_list[0]->user_id)) { 
+        // print_r($winner_list[0]->user_id);
+        ?> 
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/winner_list">Result</a>
+        <?php } }?>
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/logout">Logout</a>
      
     </div>
