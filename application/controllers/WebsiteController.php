@@ -90,39 +90,39 @@ class WebsiteController extends CI_Controller{
 
    /********************  Competition Participate check     *************************/
 
-   public function check_competition()
-   {
-    // echo "string";
+  //  public function check_competition()
+  //  {
+  //   // echo "string";
 
-    // print_r($_POST);
+  //   // print_r($_POST);
     
-      $mobile = $this->input->post('mobile');
-      $password = $this->input->post('password');
+  //     $mobile = $this->input->post('mobile');
+  //     // $password = $this->input->post('password');
 
-      $login = $this->Website_Model->check_login($mobile,$password);
+  //     $login = $this->Website_Model->check_competition($mobile,$password);
 
-      // print_r($login);
+  //     // print_r($login);
 
-     if($login == null){
-        // alert("login_error");
-       echo "Invalid Mobile Number and Password";
+  //    if($login == null){
+  //       // alert("login_error");
+  //      echo "Invalid Mobile Number and Password";
 
-      } else{
-       // print_r($login); die();
+  //     } else{
+  //      // print_r($login); die();
       
-        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
-        $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
-        $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
-        echo 'Successful';
-        // $this->session->set_flashdata('login_success','success');
-        // header('location:'.base_url().'WebsiteController');
+  //       $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+  //       $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
+  //       $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+  //       echo 'Successful';
+  //       // $this->session->set_flashdata('login_success','success');
+  //       // header('location:'.base_url().'WebsiteController');
        
-      }
+  //     }
 
   
    
 
-  }
+  // }
 
 
    /**************************      Home Page      ********************************/

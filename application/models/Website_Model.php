@@ -20,16 +20,16 @@ class Website_Model extends CI_Model{
     // print_r($result);
     return $result;
   }
-  function check_competition($competitionid){
-    $query = $this->db->select('*')
-      ->where('competitionid', $competitionid)
+  // function check_competition($competitionid){
+  //   $query = $this->db->select('*')
+  //     ->where('competitionid', $competitionid)
      
-      ->from('profile')
-      ->get();
-    $result = $query->num_rows();
-    // print_r($result);
-    return $result;
-  }
+  //     ->from('profile')
+  //     ->get();
+  //   $result = $query->num_rows();
+  //   // print_r($result);
+  //   return $result;
+  // }
 
   public function save_data($tbl_name, $data){
     $this->db->insert($tbl_name, $data);
