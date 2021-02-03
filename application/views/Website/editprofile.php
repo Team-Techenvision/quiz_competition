@@ -42,8 +42,9 @@
                   <?php }else{ ?>
                   <img id="blah" class="rounded-circle " src="<?php echo base_url();?>assets/images/profile/profile1.jpg" alt="" height="150px" width="150px" />
                 <?php  }?>
+                <br>
 
-                   <input type="file" id="profile_image" name="profile_image" onchange="readURL(this);" />
+                   <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" />
 
                   <!-- 
                   src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
@@ -54,9 +55,9 @@
                       <div class="row" >
                            <div class="form-group col-md-12">
                             <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label"> Parent Name</label></div>
+                              <div class="col-md-4"><label>Parent Name</label>&nbsp;<label style="color:red;">*</label></div>
                         
-                         <div class="col-md-9"><input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required></div>
+                         <div class="col-md-8"><input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required></div>
                        </div>
                         <input type="hidden" name="competition_id" id="competition_model_id" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>">
                   
@@ -64,19 +65,19 @@
                     
                         <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label">age</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">age</label>&nbsp;<label style="color:red;">*</label></div>
                         
-                                 <div class="col-md-9">
-                                    <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required></div>
+                                 <div class="col-md-8">
+                                    <input type="number" class="form-control" min="0" step="1" oninput="validity.valid||(value='');"  name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required></div>
                                   </div>
                                   </div>
 
                                    <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label">Email</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Email Address</label>&nbsp;<label style="color:red;">*</label></div>
                         
-                                 <div class="col-md-9">
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
+                                 <div class="col-md-8">
+                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
                                   </div></div>
                                   </div>
 
@@ -84,18 +85,18 @@
                                  
                                   <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label">School/College Name</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">School/College Name</label></div>
                         
-                                 <div class="col-md-9">
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required ></div>
+                                 <div class="col-md-8">
+                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  ></div>
                                 </div>
                                   </div>
 
                              <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label">Grade</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Grade</label></div>
                         
-                                 <div class="col-md-9">
+                                 <div class="col-md-8">
                                  <!--   <?php
                                       if(isset($grade)){?>
 
@@ -117,24 +118,24 @@
                                   
                                <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label">Address</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Address</label></div>
                         
-                                 <div class="col-md-9">
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
+                                 <div class="col-md-8">
+                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php if(isset($address)){ echo $address; } ?></textarea>
                                   </div></div>
                                   </div>
                                   
                             <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-3"><label for="inputName" class="form-label">Pincode</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Pincode</label>&nbsp;<label style="color:red;">*</label></div>
                         
-                                 <div class="col-md-9">
+                                 <div class="col-md-4">
                                  <!--  <?php
                                       if(isset($pincode)){?>
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="number" class="form-control" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
+                                     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
                                     </div></div>
                                   </div>
                                     </div>

@@ -10,10 +10,28 @@ class Website_Model extends CI_Model{
     $result = $query->result_array();
     return $result;
   }
+  // function check_loginP($password){
+  //   $query = $this->db->select('*')
+  //     // ->where('user_mobile', $mobile)
+  //     ->where('user_password', $password)
+  //     ->from('user')
+  //     ->get();
+  //   $result = $query->result_array();
+  //   return $result;
+  // }
   function check_reg($mobile){
     $query = $this->db->select('*')
       ->where('user_mobile', $mobile)
      
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+    // print_r($result);
+    return $result;
+  }
+   function check_regP($password){
+    $query = $this->db->select('*')
+      ->where('user_password', $password)
       ->from('user')
       ->get();
     $result = $query->result_array();

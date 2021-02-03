@@ -371,6 +371,9 @@ img::before {
 .banner_text_div{
   padding-left: 20px;
 }
+.banner_text_div .ptitle{
+  color: #fffffffa!important;
+}
 .site-footer__copy a {
     color: #fffffffa!important;
     margin-left: 10px;
@@ -1268,4 +1271,21 @@ a {
 
 #button-6:hover a {
   color: #fff;
+}
+.form-control{
+  border: 1px solid #0a0a0a!important;
+  color: black!important;
+}
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: black;
+}
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: black;
+}
+label .mandatory{
+  color: red;
 }

@@ -33,9 +33,9 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body text-center">
-              <div class="form-group float-right search btn-group">
+           <!--    <div class="form-group float-right search btn-group">
                   <input class="form-control search-input" id="tableSearch" type="search" placeholder="Search" autocomplete="off"><br>
-              </div>
+              </div> -->
 
               <table id="example1" class="table table-bordered table-hover "  data-search="true">
                 <thead class="thead-light">
@@ -178,7 +178,7 @@
   <?php } ?>
 
   </script> -->
-  <script type="text/javascript">
+<!--   <script type="text/javascript">
     // Filter table
 
 $(document).ready(function(){
@@ -189,7 +189,7 @@ $(document).ready(function(){
     });
   });
 });
-  </script>
+  </script> -->
 
 </body>
 </html>

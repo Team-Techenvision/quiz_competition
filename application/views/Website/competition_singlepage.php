@@ -142,7 +142,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                   </div>
                                    <div class="form-group col-md-3">
                                     <label>Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="number" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                                   </div>
 
                                   <div class="form-group col-md-6">
@@ -181,7 +181,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
                                         <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="number" class="form-control" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
+                                         <input type="number"  min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
 
                                     <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>

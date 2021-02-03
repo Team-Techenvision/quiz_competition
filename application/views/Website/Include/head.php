@@ -229,7 +229,9 @@
              
                <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 
-                   <input type="password" id="user_password" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required="" />
+                <!--    <input type="password" id="user_password" minlength="8" maxlength="8" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required="" /> -->
+
+                    <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="">
 
                   <label class="form-check-label " style="margin-left: 20px;">
                     <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
@@ -253,7 +255,9 @@
             
             <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
             <span class="text-red"> <?php echo form_error('mobile'); ?></span>
+
              <input type="password" class="input" name="password" id="password" placeholder="Password" required="">
+          
             <span class="text-red"> <?php echo form_error('password'); ?> </span>
 
             <h6 class="alert alert-success successresponse"></h6>
@@ -388,7 +392,7 @@ var user_mobile21 = $('#user_mobile').val();
             {
                // alert(data);
                // console.log(data);
-               if(data=='Successful'){
+               if(data=='Sign In Successful'){
                 $('.alert-success').html(data);
                 $('.successresponse').show().delay(3000).fadeOut();
                 $('.errorresponse').hide();

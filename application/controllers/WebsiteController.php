@@ -56,21 +56,31 @@ class WebsiteController extends CI_Controller{
     
   // }
 
-
+  
   public function login1()
   {
     // echo "string";
 
     // print_r($_POST);
+    $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
+    $this->form_validation->set_rules('password', 'password', 'trim|required');
+    if ($this->form_validation->run() == FALSE) {
+ 
+    } else{
     
       $mobile = $this->input->post('mobile');
       $password = $this->input->post('password');
 
       $login = $this->Website_Model->check_login($mobile,$password);
+      // $loginM = $this->Website_Model->check_loginM($mobile);
+      // $loginP = $this->Website_Model->check_loginP($password);
+  
 
       // print_r($login);
 
-     if($login == null){
+     if($login == null ){
+
+
         // alert("login_error");
        echo "Invalid Mobile Number and Password";
 
@@ -80,13 +90,16 @@ class WebsiteController extends CI_Controller{
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
-        echo 'Successful';
+        echo 'Sign In Successful';
         // $this->session->set_flashdata('login_success','success');
         // header('location:'.base_url().'WebsiteController');
        
       }
+    }
 
   }
+
+
 
    /********************  Competition Participate check     *************************/
 
@@ -227,7 +240,9 @@ class WebsiteController extends CI_Controller{
     // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     // if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+  
     $this->form_validation->set_rules('user_name', 'First user_name', 'trim|required');
+
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
        
@@ -241,10 +256,12 @@ class WebsiteController extends CI_Controller{
       );
 
       $mobile = $this->input->post('user_mobile');
+   
       $mob = $this->Website_Model->check_reg($mobile);
-      // print_r($mobile); 
-
+   
       if($mob == null){
+    
+
       echo "Sign Up Successfully";
        $this->Website_Model->save_data('user',$save_data);
        // $this->session->set_flashdata('register_success','success');
@@ -257,7 +274,7 @@ class WebsiteController extends CI_Controller{
 
     } 
 
-    
+   // }
   }
 
   // User List....
@@ -469,7 +486,7 @@ public function insert_profiledata(){
      }
 
       $this->session->set_flashdata('update_success','success');
-      // header('location:'.base_url().'WebsiteController/edit_profile');
+      header('location:'.base_url().'WebsiteController');
     }
 
     $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'profile');
