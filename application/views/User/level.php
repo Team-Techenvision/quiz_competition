@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add Level</h3>
                 <div class="card-tools col-md-2 " >
-                <a href="level_list" class="btn btn-sm btn-block btn-primary "  >Level List</a>
+                <a href="<?php echo base_url(); ?>User/level_list" class="btn btn-sm btn-block btn-primary "  >Level List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -33,7 +33,8 @@
               <form id="form_action" role="form" action="" method="post" >
                 <div class="card-body row">
                  <div class="form-group col-md-12">
-                    <input type="text" class="form-control required title-case txtOnly" name="levelname" id="levelname" value="<?php if(isset($levelname)){ echo $levelname; } ?>" placeholder="Enter Level " required>
+                  <label>Level <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control required title-case " name="levelname" id="levelname" value="<?php if(isset($levelname)){ echo $levelname; } ?>" placeholder="Enter Level " required="">
                   </div>
                  
                 </div>

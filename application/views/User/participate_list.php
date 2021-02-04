@@ -58,7 +58,7 @@
                     <td><?php echo $list->pincode ?></td>
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_participate/<?php echo $list->profileid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_participate/<?php echo $list->profileid; ?>" onclick="return confirm('Do you want to Delete this Participant?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_participate/<?php echo $list->profileid; ?>" onclick="return confirm('Do you want to delete this participant?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>
@@ -80,17 +80,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Participant Saved successfully');
+      toastr.success('Participant Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Participant Updated successfully');
+      toastr.success('Participant Updated Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Participant Deleted successfully');
+      toastr.error('Participant Deleted Successfully');
     });
   <?php } ?>
 

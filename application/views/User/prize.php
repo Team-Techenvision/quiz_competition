@@ -25,15 +25,16 @@
               <div class="card-header">
                 <h3 class="card-title">Add Prize</h3>
                  <div class="card-tools col-md-2 " >
-                <a href="prize_list" class="btn btn-sm btn-block btn-primary "  >Prize List</a>
+                <a href="<?php echo base_url(); ?>User/prize_list" class="btn btn-sm btn-block btn-primary "  >Prize List</a>
               </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form id="form_action" role="form" action="" method="post" >
                 <div class="card-body row">
-                   
                   <div class="form-group col-md-6">
+                   <label>Competiton Title <span style="color: red;">*</span></label>
+                    
                       <?php
                       if(isset($competitionid)){ 
 
@@ -61,6 +62,7 @@
                   </select>
                   </div>
                    <div class="form-group col-md-6">
+                    <label>Level <span style="color: red;">*</span></label>
                       <?php
                       if(isset($levelid)){
                      
@@ -86,6 +88,7 @@
                   </select>
                   </div>
                    <div class="form-group col-md-4">
+                    <label>Winner Position <span style="color: red;">*</span></label>
                     <?php
                       if(isset($levelid)){
                      
@@ -94,7 +97,7 @@
                        <input type="text" class="form-control required title-case text" name="winnerposition" id="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>" disabled="">
                        <?php  }?>
 
-                    <select name="winnerposition" id="winnerposition" class="form-control" >
+                    <select name="winnerposition" id="winnerposition" class="form-control" required="">
                     <option value="">Select Winner Position</option>
                     <option value="1">1st Position</option>
                     <option value="2">2nd Position</option>
@@ -103,7 +106,8 @@
                   </select>
                    </div>
                    <div class="form-group col-md-4">
-                     <input type="number" class="form-control required title-case notext" name="prize" id="prize" value="<?php if(isset($prize)){ echo $prize; } ?>" placeholder="Enter prize " required>
+                    <label>Prize <span style="color: red;">*</span></label>
+                     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case " name="prize" id="prize" value="<?php if(isset($prize)){ echo $prize; } ?>" placeholder="Enter prize " required >
                    </div>
                     
                  

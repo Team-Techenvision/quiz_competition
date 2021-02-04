@@ -31,9 +31,7 @@
                 <div class="card-body row">
                      <form id="form_action" role="form" action="assigncompetition_list" method="post" > <div class="row" >          
                      <div class="form-group col-md-6">
-                   
-
-
+                     <label>Competition Title <span style="color: red;">*</span></label>        
                       <select name="competitionid" id="competitionid"class="form-control" required="">
                     <option value="">Select Competition</option>
          
@@ -49,10 +47,11 @@
                   </select>
                   </div>
                   <div class="form-group col-md-4">
-                   
+                    <label>Pincode</label>
+                     <!--  <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" > -->
 
 
-                      <select name="pincode" id="pincode"class="form-control" required="">
+                      <select name="pincode" id="pincode"class="form-control">
                     <option value="">Select Pincode</option>
          
                      <?php foreach($pincode as $pincode)
@@ -64,11 +63,11 @@
                      ?>  
 
                      
-                  </select>
+                  </select> 
                   </div>
                   
                    <div class="form-group col-md-2">
-                   <button id="btn_search" type="search" class="btn btn-primary">Search </button>
+                   <button id="btn_search" type="search" style="margin-top: 32px;" class="btn btn-primary">Search </button>
                  </div>
                </div>
                   </form>
@@ -134,9 +133,11 @@
                               
                                  <div class="card-body row">
                                      <div class="form-group col-md-6">
+                                      <label>Competition Title</label>
                                         <input type="text" class="form-control required title-case text" name="comp" id="comp" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" >
                                      </div>
                                      <div class="form-group col-md-6">
+                                      <label>Pincode</label>
                                        <input type="text" class="form-control required title-case text" name="pincode1" id="pincode1" value="<?php if(isset($pincodeid)){ echo $pincodeid; } ?>" >
                                      </div>
                                   </div>

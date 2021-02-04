@@ -68,7 +68,7 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">age</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                    <input type="number" class="form-control" min="0" step="1" oninput="validity.valid||(value='');"  name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required></div>
+                                    <input type="number" class="form-control" minlength="2" maxlength="2" min="0" step="1" oninput="validity.valid||(value='');"  name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required></div>
                                   </div>
                                   </div>
 
@@ -135,7 +135,7 @@
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
+                                     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
                                     </div></div>
                                   </div>
                                     </div>
@@ -200,6 +200,6 @@
               }
           }
   </script>
-
+ 
 </body>
 </html>

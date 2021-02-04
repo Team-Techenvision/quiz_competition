@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add Competition Type</h3>
                 <div class="card-tools col-md-4 " >
-                <a href="competitiontype_list" class="btn btn-sm btn-block btn-primary ">Competition Type List</a>
+                <a href="<?php echo base_url(); ?>User/competitiontype_list" class="btn btn-sm btn-block btn-primary ">Competition Type List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -34,7 +34,8 @@
                 <div class="card-body row">
                        
                   <div class="form-group col-md-12">
-                    <input type="text" class="form-control required title-case text txtOnly" name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontype)){ echo $competitiontype; } ?>" placeholder="Enter title" required>
+                    <label>Competition Type <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control required title-case text " name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontype)){ echo $competitiontype; } ?>" placeholder="Enter Competition Type" required>
                   </div>
                   
                 </div>

@@ -71,23 +71,32 @@ class WebsiteController extends CI_Controller{
       $mobile = $this->input->post('mobile');
       $password = $this->input->post('password');
 
-      $login = $this->Website_Model->check_login($mobile,$password);
-      // $loginM = $this->Website_Model->check_loginM($mobile);
-      // $loginP = $this->Website_Model->check_loginP($password);
+      // $login = $this->Website_Model->check_login($mobile,$password);
+      $loginM = $this->Website_Model->check_loginM($mobile);
+      $loginP = $this->Website_Model->check_loginP($password);
   
-
+     $login =$loginM;
+     $login =$loginP;
       // print_r($login);
 
-     if($login == null ){
+     if($loginM == null && $loginP == null){
+       // alert("login_error");
+         echo "Invalid Mobile Number and Password";
 
 
-        // alert("login_error");
-       echo "Invalid Mobile Number and Password";
+      }elseif ($loginP == null) {
+
+        echo "Invalid Password";
+
+      }elseif ( $loginM == null) {
+
+       echo "Invalid Mobile Number";
+       
 
       } else{
        // print_r($login); die();
       
-        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id'] );
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
         echo 'Sign In Successful';
@@ -485,7 +494,7 @@ public function insert_profiledata(){
         }
      }
 
-      $this->session->set_flashdata('update_success','success');
+      $this->session->set_flashdata('updateProfile_success','success');
       header('location:'.base_url().'WebsiteController');
     }
 

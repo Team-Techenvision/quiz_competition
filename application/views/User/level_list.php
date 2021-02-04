@@ -49,7 +49,7 @@
                    
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_level/<?php echo $list->levelid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_level/<?php echo $list->levelid; ?>" onclick="return confirm('Do you want to Delete this Level?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_level/<?php echo $list->levelid; ?>" onclick="return confirm('Do you want to delete this level?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>
@@ -71,17 +71,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Level Saved successfully');
+      toastr.success('Level Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Level Updated successfully');
+      toastr.success('Level Updated Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Level Deleted successfully');
+      toastr.error('Level Deleted Successfully');
     });
   <?php } ?>
 

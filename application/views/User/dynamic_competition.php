@@ -26,7 +26,7 @@
               <div class="card-header">
                 <h4 class="card-title">Add Quiz</h4>
                 <div class="card-tools col-md-3 " >
-                <a href="competition_list" class="btn btn-sm btn-block btn-primary">View Question</a>
+                <a href="<?php echo base_url(); ?>User/competition_list" class="btn btn-sm btn-block btn-primary">View Question</a>
               </div>
               </div> 
               <!-- /.card-header -->
@@ -35,7 +35,7 @@
                 <div class="card-body">
                 <div class="row">
 	               <div class="form-group col-md-6">
-                  <label>Competition</label>
+                  <label>Competition Title <span style="color: red;">*</span></label>
 			                 <?php
 		                      if(isset($competitionid)){?>
 
@@ -57,12 +57,12 @@
 			                 </select>
 	                  </div> 
 	                  <div class="form-group col-md-12">
-	                  	<label>Question</label>
-			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php if(isset($question)){ echo $question; } ?>" placeholder="Enter Question">
+	                  	<label>Question <span style="color: red;">*</span></label>
+			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php if(isset($question)){ echo $question; } ?>" placeholder="Enter Question" required="">
 		                   
                       </div>
                         <div class="form-group col-md-12">
-                             <label>Answer Type</label>
+                             <label>Answer Type <span style="color: red;">*</span></label>
                              <div class="form-check">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="answertype" value="1" checked>Radio Button
@@ -134,7 +134,7 @@ jQuery($ => {
 <script>
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Record Saved successfully');
+      toastr.success('Record Saved Successfully');
     });
   <?php } ?>
 </script>

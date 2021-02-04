@@ -48,7 +48,7 @@
                     <td><?php echo $list->competitiontype ?></td>
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_competitiontype/<?php echo $list->competitiontypeid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to Delete this Competition Type?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to delete this competition type?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                      
                     </td>
                   <?php } ?>
@@ -71,17 +71,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Competition Type Saved successfully');
+      toastr.success('Competition Type Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Competition Type Updated successfully');
+      toastr.success('Competition Type Updated Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Competition Type Deleted successfully');
+      toastr.error('Competition Type Deleted Successfully');
     });
   <?php } ?>
 

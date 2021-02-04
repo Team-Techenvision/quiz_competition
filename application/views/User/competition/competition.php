@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add Competition</h3>
                 <div class="card-tools col-md-3 " >
-                <a href="competition_list" class="btn btn-sm btn-block btn-primary "  >Competition List</a>
+                <a href="<?php echo base_url(); ?>User/competition_list" class="btn btn-sm btn-block btn-primary "  >Competition List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -33,13 +33,14 @@
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
                   <div class="form-group col-md-12">
+                    <label>Competition Type <span style="color: red;">*</span></label>
                       <?php
                       if(isset($competitiontypeid)){?>
 
                        <input type="text" class="form-control required title-case text" name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
                        <?php }?>
 
-
+                
 
                       <select name="competitiontypeid" id="competitiontypeid"class="form-control" required="">
                         <option value="">Select Competition Type</option>
@@ -55,30 +56,42 @@
 
                          
                       </select>
-                  </div>
-                    <div class="form-group col-md-12">
+                  </div> 
+                    <div class="form-group col-md-12" id="quiz">
+                      <label>Quiz Subject </label>
                     <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="<?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" >
                   </div>
                   <div class="form-group col-md-12">
-                    <input type="text" class="form-control required title-case text txtOnly" name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required>
+                    <label>Competition Title <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required="" >
                   </div>
                   
                   <div class="form-group col-md-12">
-                    <input type="text" class="form-control txtOnly"  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
+                    <label>Competition Sub Title <span style="color: red;">*</span></label>
+
+                    <input type="text" class="form-control "  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required="">
                   </div>
                    <div class="form-group col-md-12">
+                    <label>Competition Topics</label>
+
                       <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
 
                     </div>
            
                    <div class="form-group col-md-6">
-                    <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required>
+                    <label>Class <span style="color: red;">*</span></label>
+
+                    <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required="">
                   </div>
                   <div class="form-group col-md-3">
-                    <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required>
+                    <label> End Date <span style="color: red;">*</span></label>
+
+                    <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required="">
                   </div>
                   
                   <div class="form-group col-md-3">
+                    <label>Tab Input Text <span style="color: red;">*</span></label>
+
                       <?php
                       if(isset($tabinputtextid)){?>
 
@@ -103,6 +116,8 @@
                       </select>
                     </div>
                     <div class="form-group col-md-6">
+                    <label>Competition level <span style="color: red;">*</span></label>
+
                       <?php
                       if(isset($levelid)){?>
 
@@ -126,12 +141,18 @@
                   </select>
                   </div>
                    <div class="form-group col-md-3">
-                    <input type="number" class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required>
+                    <label>From Age <span style="color: red;">*</span></label>
+
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text notext"minlength="2" maxlength="2" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required="">
                   </div>
                    <div class="form-group col-md-3">
-                    <input type="number" class="form-control required title-case text notext" name="toage" id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
+                    <label>To Age <span style="color: red;">*</span></label>
+
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text notext" name="toage" minlength="2" maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required="">
                   </div>
                   <div class="form-group col-md-6">
+                    <label>Competition User Type</label>
+
                     <?php
                       if(isset($competitionusertype)){?>
 
@@ -147,11 +168,15 @@
                      
                   
                   <div class="form-group col-md-6">
-                 <input type="file" id="photo" name="photo" onchange="readURL(this);" />
+                    <label>Competition Image <span style="color: red;">*</span></label>
+
+                 <input type="file" id="photo" name="photo" onchange="readURL(this);"  />
 
                  <?php
                  if(isset($photo)){?>
                   <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
+
+                   <input type="hidden" name="old_photo" value="<?php if(isset($photo)){ echo $photo; } ?>"> 
 
                   <?php }?>
 
@@ -161,13 +186,19 @@
                     <textarea type="text" class="form-control required title-case text " name="termsandconditions" id="termsandconditions" value="" placeholder="Enter Terms and Conditions" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                   </div> -->
                    <div class="form-group col-md-12">
-                    <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
+                    <label>Terms and Comditions <span style="color: red;">*</span></label>
+
+                    <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required=""><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                    </div>
                  
                     <div class="form-group col-md-12">
-                    <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
+                    <label>Instruction <span style="color: red;">*</span></label>
+
+                    <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required=""><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                    </div>
                   <div class="form-group col-md-12">
+                    <label>Options</label>
+
                     <div class="form-check">
               
                        <div class="row">
@@ -246,16 +277,16 @@
  <script type="text/javascript">
   $(document).ready(function(){
 
-    $("#quizsubject").hide();
+    $("#quiz").hide();
 
     $('#competitiontypeid').on('change', function() {
       if ( this.value == '1')
       {
-        $("#quizsubject").show();
+        $("#quiz").show();
       }
       else
       {
-        $("#quizsubject").hide();
+        $("#quiz").hide();
       }
     });
 });

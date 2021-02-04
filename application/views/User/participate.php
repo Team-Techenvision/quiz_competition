@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add Participant Profile</h3>
                   <div class="card-tools col-md-3 " >
-                <a href="participate_list" class="btn btn-sm btn-block btn-primary">Participate List</a>
+                <a href="<?php echo base_url(); ?>User/participate_list" class="btn btn-sm btn-block btn-primary">Participate List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -33,18 +33,21 @@
               <form id="form_action" role="form" action="" method="post">
                <div class="card-body row">
                   <div class="form-group col-md-12">
-                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
+                    <label>Parent Name <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required="">
                   </div>
                    <div class="form-group col-md-12">
-                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email ID" required>
+                    <label>Email Address <span style="color: red;">*</span></label>
+                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required="">
                   </div>
                    <div class="form-group col-md-3">
-                    <input type="number" class="form-control notext" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                    <label>Participant Age <span style="color: red;">*</span></label>
+                    <input type="number"  min="0" step="1" oninput="validity.valid||(value='');" class="form-control notext" minlength="2" maxlength="2" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required="">
                   </div>
 
                  
                    <div class="form-group col-md-6">
-
+                   <label>Competition Title <span style="color: red;">*</span></label>
                   <?php
                       if(isset($competitionid)){
                         ?>
@@ -65,6 +68,7 @@
                   </div>
 
                    <div class="form-group col-md-3">
+                    <label>Grade</label>
                     <?php
                       if(isset($grade)){
                         ?>
@@ -81,31 +85,19 @@
                   </select>
                   </div>
                   <div class="form-group col-md-12">
-                  <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
+                    <label>School/College Name</label>
+                  <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
                   </div>
                   
                   
                   <div class="form-group col-md-9">
-                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required><?php if(isset($address)){ echo $address; } ?></textarea>
+                    <label>Address</label>
+                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required=""><?php if(isset($address)){ echo $address; } ?></textarea>
                   </div>
                     <div class="form-group col-md-3">
+                      <label>Pincode <span style="color: red;">*</span></label>
+                      <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text " minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" required="">
 
-                  <?php
-                      if(isset($pincode)){?>
-
-                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
-                       <?php }?>  
-                      <select name="pincode" id="pincode"class="form-control" required="">
-                    <option value="">Select Pincode</option>
-                   <?php foreach($pin as $pin)
-                     {
-                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
-
-                               
-                      }
-                     ?>   
-                    
-                  </select>
                   </div>
                  
                 </div>

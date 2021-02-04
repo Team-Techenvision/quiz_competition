@@ -53,7 +53,7 @@
                     <td><?php echo $list->user_email ?></td>
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Do you want to Delete this User?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Do you want to delete this user?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>
@@ -75,17 +75,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('User Saved successfully');
+      toastr.success('User Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('User Updated successfully');
+      toastr.success('User Updated Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('User Deleted successfully');
+      toastr.error('User Deleted Successfully');
     });
   <?php } ?>
 

@@ -33,7 +33,7 @@
                       <div class="row" >          
                      <div class="form-group col-md-6">
                    
-
+                     <label>Competiton Title <span style="color: red;">*</span></label>
 
                       <select name="competitionid" id="competitionid"class="form-control" required="">
                     <option value="">Select Competition</option>
@@ -51,7 +51,7 @@
                   </div>
                   <div class="form-group col-md-4">
                    
-
+                    <label>Pincode</label>
 
                       <select name="pincode" id="pincode"class="form-control" required="">
                     <option value="">Select Pincode</option>
@@ -69,7 +69,7 @@
                   </div>
                   
                    <div class="form-group col-md-2">
-                   <button id="btn_search" type="search" class="btn btn-primary">Search </button>
+                   <button id="btn_search" type="search" style="margin-top: 32px;" class="btn btn-primary">Search </button>
                  </div>
                </div>
                   </form>
@@ -100,12 +100,12 @@
                    
                     <td>   <div class="form-check-inline">
                         <label class="form-check-label" for="radio1">
-                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="<?php echo $list->user_id1 ?>" checked><?php echo $list->user_name1 ?>
+                          <input type="radio" class="form-check-input" id="radio1" name="user_id" value="<?php echo $list->user_id1 ?>" checked><?php echo $list->user_name1; ?>
                         </label>
                       </div></td> 
                     <td> <div class="form-check-inline">
                         <label class="form-check-label" for="radio2">
-                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="<?php echo $list->user_id2 ?>"><?php echo $list->user_name2 ?>
+                          <input type="radio" class="form-check-input" id="radio2" name="user_id" value="<?php echo $list->user_id2 ?>"><?php echo $list->user_name2; ?>
                         </label>
                       </div></td>
                    

@@ -224,14 +224,29 @@
               <h4 class="h3">Create Your Account</h4>
               <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
-              <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" />
-              <input class="input" type="number" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
+              <div class="row">
+                <div class="col-md-12">
+                   <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" /> 
+                </div>
+                <div class="col-md-12">
+                   <input class="input" type="number" name="user_pincode"  min="0" step="1" oninput="validity.valid||(value='');" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
+                </div>
+                <div class="col-md-12">
+                   <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+                </div>
+                <div class="col-md-12">
+                   <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> <span style="margin-left: -30px;" toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+                </div>
+              </div>
+            
              
-               <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+             
+              
 
                 <!--    <input type="password" id="user_password" minlength="8" maxlength="8" name="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" class="input notext" placeholder="Enter Password" required="" /> -->
 
-                    <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="">
+                   
+                   
 
                   <label class="form-check-label " style="margin-left: 20px;">
                     <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
@@ -256,7 +271,7 @@
             <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
             <span class="text-red"> <?php echo form_error('mobile'); ?></span>
 
-             <input type="password" class="input" name="password" id="password" placeholder="Password" required="">
+             <input type="password" class="input" name="password" id="password" placeholder="Password" required=""><span toggle="#password-field" style="margin-left: -30px;" class="fa fa-fw fa-eye field_icon toggle-password"></span>
           
             <span class="text-red"> <?php echo form_error('password'); ?> </span>
 
@@ -468,4 +483,23 @@ var user_mobile21 = $('#user_mobile').val();
             });
             e.preventDefault();
   });
+</script>
+<script type="text/javascript">
+  $(document).on('click', '.toggle-password', function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    
+    var input = $("#user_password");
+    input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});
+</script>
+
+<script type="text/javascript">
+  $(document).on('click', '.toggle-password', function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    
+    var input = $("#password");
+    input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});
 </script>

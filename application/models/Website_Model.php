@@ -1,24 +1,24 @@
 <?php
 class Website_Model extends CI_Model{
 
-  function check_login($mobile,$password){
-    $query = $this->db->select('*')
+  function check_loginM($mobile){
+    $query = $this->db->select('user.user_mobile,user.*')
       ->where('user_mobile', $mobile)
+      // ->where('user_password', $password)
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+    return $result;
+  }
+  function check_loginP($password){
+    $query = $this->db->select('user.user_password,user.*')
+      // ->where('user_mobile', $mobile)
       ->where('user_password', $password)
       ->from('user')
       ->get();
     $result = $query->result_array();
     return $result;
   }
-  // function check_loginP($password){
-  //   $query = $this->db->select('*')
-  //     // ->where('user_mobile', $mobile)
-  //     ->where('user_password', $password)
-  //     ->from('user')
-  //     ->get();
-  //   $result = $query->result_array();
-  //   return $result;
-  // }
   function check_reg($mobile){
     $query = $this->db->select('*')
       ->where('user_mobile', $mobile)
@@ -123,7 +123,7 @@ class Website_Model extends CI_Model{
      $this->db->select('*');
     $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabid');
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
-    // $this->db->join('city', 'competition.cityid = city.cityid', 'inner');
+    
     // $this->db->where('is_admin', 0);
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);

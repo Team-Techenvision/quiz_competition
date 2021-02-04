@@ -756,6 +756,8 @@ class User extends CI_Controller{
 
     // Edit Banner....
     public function edit_banner($bannerid){
+      
+    // print_r($_POST);  
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -765,11 +767,18 @@ class User extends CI_Controller{
 
       $update_data = $_POST;
       // unset($update_data['old_profile_image']);
-
-     // $lastid = $this->db->insert_id();
-
-
-// print_r($update_data);
+       // print_r($update_data);
+      
+      if($old_image=$this->input->post('old_image')){
+      $update_data = array(
+        // print_r($old_image);
+        'title' => $this->input->post('title'),
+        'subtitle' => $this->input->post('subtitle'),
+        // 'profile_image' => $this->input->post('old_image'),
+        'slider_possition' =>1,
+       
+      );
+    }else{
       $update_data = array(
         'title' => $this->input->post('title'),
         'subtitle' => $this->input->post('subtitle'),
@@ -777,6 +786,7 @@ class User extends CI_Controller{
         'slider_possition' =>1,
        
       );
+    }
 
       $this->User_Model->update_info('bannerid', $bannerid, 'banner', $update_data);
 
@@ -800,18 +810,18 @@ class User extends CI_Controller{
 
                    // print_r($insert_id);
 
-                  $image['profile_image'] = $image_name.'.'.$ext;
+                $image['profile_image'] = $image_name.'.'.$ext;
                   // print_r($profile_image);
-                  $this->User_Model->update_info('bannerid', $bannerid, 'banner', $image);
+                $this->User_Model->update_info('bannerid', $bannerid, 'banner', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
-                  $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+                $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
-        } 
-        else 
-        {
-           $error = $this->upload->display_errors();
-            $this->session->set_flashdata('upload_error',$error);
-        }
+                } 
+                else 
+                {
+                   $error = $this->upload->display_errors();
+                    $this->session->set_flashdata('upload_error',$error);
+                }
      }
       $this->session->set_flashdata('update_success','success');
       
@@ -825,6 +835,7 @@ class User extends CI_Controller{
       $data['title'] = $info->title;
       $data['subtitle'] = $info->subtitle;
       $data['profile_image'] = $info->profile_image;
+      // $data['profile_image'] = $info->profile_image;
     
     }
     
@@ -1096,7 +1107,35 @@ class User extends CI_Controller{
         echo $data['whatsapp'] = 0;
       }
       // print_r($update_data);
+       if($old_photo=$this->input->post('old_photo')){
+      $update_data = array(
+        'title' => $this->input->post('title'),
+        'subtitle' => $this->input->post('subtitle'),
+        'class' => $this->input->post('class'),
+        // 'photo' => $this->input->post('photo'),
+        'termsandconditions' => $this->input->post('termsandconditions'),
+        'instruction' => $this->input->post('instruction'),
+        'tabinputtextid' => $this->input->post('tabinputtextid'),
+        'competitionusertype' => $this->input->post('competitionusertype'),
+        'levelid' => $this->input->post('levelid'),
+        'fromage' => $this->input->post('fromage'),
+        'toage' => $this->input->post('toage'),
+        'enddate' => $this->input->post('enddate'),
+        'subjectstextarea' => $this->input->post('subjectstextarea'),
+        'uploadfile'=>   $data['uploadfile'],
+        'email'=>  $data['email'],
+        'emailaddress'=>  $this->input->post('emailaddress'),
+        'whatsapp'=>  $data['whatsapp'],
+        'whatsappnumber'=>  $this->input->post('whatsappnumber'),
+        'competitiontypeid'=>  $this->input->post('competitiontypeid'),
+        'created_date' => date('Y-m-d H:i:s'),
+       
 
+
+        // 'user_addedby' => $quizweb_user_id,
+      );
+    }
+    else{
       $update_data = array(
         'title' => $this->input->post('title'),
         'subtitle' => $this->input->post('subtitle'),
@@ -1123,6 +1162,7 @@ class User extends CI_Controller{
 
         // 'user_addedby' => $quizweb_user_id,
       );
+    }
       // print_r($update_data);
 
      $this->User_Model->update_info('competitionid', $competitionid, 'competition', $update_data);

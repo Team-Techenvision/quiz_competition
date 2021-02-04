@@ -35,8 +35,8 @@
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
+                  <th>Competition Type</th>
                   <th>Title</th>
-                  <th>Sub Title</th>
                   <th>From-To Class</th>
                   <th>End Date</th>
                                 
@@ -49,15 +49,15 @@
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
+                    <td><?php echo $list->competitiontype ?></td>
                     <td><?php echo $list->title ?></td>
-                    <td><?php echo $list->subtitle ?></td>
                     <td><?php echo $list->class ?></td>
                     <td><?php echo $list->enddate ?></td>
                     <td>
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
                       <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>"> <i class="fa fa-edit"></i> </a>
 
-                      <a href="<?php echo base_url(); ?>User/delete_competition/<?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to Delete this Competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_competition/<?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to delete this competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
 
                      <!--  <a type="button" id="example" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href="">< ?php echo $list->competitionid; ?> View</a> -->
 
@@ -132,7 +132,7 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Competition Saved successfully');
+      toastr.success('Competition Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
@@ -142,7 +142,7 @@
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Competition Deleted successfully');
+      toastr.error('Competition Deleted Successfully');
     });
   <?php } ?>
 

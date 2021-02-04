@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">Add Banner</h3>
                 <div class="card-tools col-md-2 " >
-                <a href="banner_list" class="btn btn-sm btn-block btn-primary "  >Banner List</a>
+                <a href="<?php echo base_url(); ?>User/banner_list" class="btn btn-sm btn-block btn-primary "  >Banner List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -33,21 +33,24 @@
               <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
                   <div class="form-group col-md-12">
-                    <input type="text" class="form-control required title-case text txtOnly" name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" required>
+                   <label>Banner Title <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" required>
                   </div>
                   
                   <div class="form-group col-md-12">
-                    <input type="text" class="form-control txtOnly"  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter banner sub title" required>
+                   <label>Banner Sub Title <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control "  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter banner sub title" required>
                   </div>
                   <div class="form-group col-md-4">
-                 <input type="file" id="profile_image" name="profile_image" onchange="readURL(this);" />
+                    <label>Banner Image <span style="color: red;">*</span></label>
+                 <input type="file" id="profile_image" name="profile_image"  onchange="readURL(this);" />
                  <?php
                  if(isset($profile_image)){?>
 
              
                   <img id="blah" src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" alt="" height="150px" width="150px" />
 
-                  <!-- <input type="hidden" name="hiddenphoto" value="<?php if(!empty($data))echo $data[0]->profile_image; ?>"> -->
+                <input type="hidden" name="old_image" value="<?php if(isset($profile_image)){ echo $profile_image; } ?>"> 
                    <?php }?>
 
 

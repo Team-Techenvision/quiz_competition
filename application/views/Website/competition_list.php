@@ -71,7 +71,7 @@
                         <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                            <?php if($comptype=='2'){ ?>
                              
-                              <div class="row">
+                              <div class="row text-left">
                                  <?php if($upload=='1') {?>
                                     <div class="form-group col-md-12">
                                    <input type="file" id="photo" name="photo" onchange="readURL(this);" />
@@ -107,9 +107,20 @@
                              <?php }elseif ($comptype=='3') { ?>
                              
 
-                              <div class="row">
+                              <div class="row text-left">
+                                
+                              <?php if($whatsapp=='1') {?>
+                                   <div class="form-group col-md-1">
+                                    <a href="https://wa.me/91<?php echo $list->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
+                                  </div>
+                                <?php }?>
+                                 <?php if($email=='1') {?>
+                                   <div class="form-group col-md-1">
+                                  <a href="mailto:priyanka.techenvision@gmail.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="45px" width="45px"/></a>
+                                  </div>
+                                <?php }?>
                                  <?php if($upload=='1') {?>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-10">
                                    <input type="file" id="photo" name="photo" onchange="readURL(this);" />
 
                                   <!--  <?php if(isset($photo)){?> -->
@@ -122,16 +133,6 @@
 
                                     </div>
                                 <?php  } ?>
-                              <?php if($whatsapp=='1') {?>
-                                   <div class="form-group col-md-2">
-                                    <a href="https://wa.me/91<?php echo $list->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
-                                  </div>
-                                <?php }?>
-                                 <?php if($email=='1') {?>
-                                   <div class="form-group col-md-6">
-                                  <a href="mailto:priyanka.techenvision@gmail.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="40px" width="40px"/></a>
-                                  </div>
-                                <?php }?>
                                   </div>
 
                                  
@@ -139,6 +140,7 @@
                             
                                <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $list->competitionid ?>" class="btn btn-info">Start</a>
                             <?php } ?>
+
 
                              </form>
                           

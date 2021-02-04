@@ -123,15 +123,15 @@
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Dynamic Competition</p>
+                <p>Dynamic Quiz Competition</p>
               </a>
             </li> 
-             <li class="nav-item">
+           <!--   <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/pincode_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Area Information</p>
               </a>
-            </li>
+            </li> -->
             <!-- <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/quizanswer" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

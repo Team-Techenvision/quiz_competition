@@ -52,8 +52,8 @@
 
 
                     <div class="form-group col-md-12">
-                      <label>Question</label>
-                   <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question">
+                      <label>Question </label>
+                   <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question" >
                        
                       </div>
                         <div class="form-group col-md-12">

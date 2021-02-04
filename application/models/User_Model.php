@@ -393,8 +393,9 @@ function fetch_country1()
   public function competition_list($competitionid){
      // $today = date('Y-m-d');
      $this->db->select('*');
-    $this->db->select('competition.*,tabcompetition.*,tabcompetition.tabinputtext');
+    $this->db->select('competition.*,tabcompetition.*,competitiontype.*,competitiontype.competitiontype,tabcompetition.tabid');
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
+    $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
    $this->db->order_by('enddate ', 'DESC');
     $this->db->from('competition');
     $query = $this->db->get();

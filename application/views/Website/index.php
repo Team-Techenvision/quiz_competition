@@ -217,7 +217,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                   </div>
                                    <div class="form-group col-md-3">
                                     <label>Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="number"  min="0" step="1" oninput="validity.valid||(value='');" class="form-control notext" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                                    <input type="number"  min="0" step="1" oninput="validity.valid||(value='');" minlength="2" maxlength="2" class="form-control notext" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                                   </div>
 
                                   <div class="form-group col-md-6">
@@ -256,7 +256,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
                                         <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
+                                         <input type="number" min="0" step="1" oninput="validity.valid||(value='');" minlength="6" maxlength="6" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
 
                                     <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>
@@ -331,7 +331,14 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('participated successfully');
+      toastr.success('Participated Successfully');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('updateProfile_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Profile Updated Successfully');
     });
   <?php } ?>
 </script>
@@ -339,7 +346,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 <script type="text/javascript">
   <?php if($this->session->flashdata('login_ermsg')){ ?>
     $(document).ready(function(){
-      toastr.error('Invalid Details Please Login again');
+      toastr.error('Invalid Details Please Login Again');
     });
   <?php } ?>
 </script>
@@ -347,7 +354,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 <script type="text/javascript">
   <?php if($this->session->flashdata('register_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Registration successfully');
+      toastr.success('Registration Successfully');
     });
   <?php } ?>
 </script>
@@ -355,7 +362,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 <script type="text/javascript">
   <?php if($this->session->flashdata('login_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Login successfully');
+      toastr.success('Login Successfully');
     });
   <?php } ?>
 </script>
@@ -367,7 +374,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
       alert('Fill all the necessary fields');
    }
    else{
-    return confirm('Are you sure want to save Record')
+    return confirm('Are you sure you want to participate?')
    }
 });
 
