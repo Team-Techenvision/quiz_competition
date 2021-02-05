@@ -65,10 +65,12 @@
                     
                         <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">age</label>&nbsp;<label style="color:red;">*</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Participant Age</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                    <input type="number" class="form-control" minlength="2" maxlength="2" min="0" step="1" oninput="validity.valid||(value='');"  name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required></div>
+                                  <input type="text" class="form-control notext"  name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" minlength="2" maxlength="2"placeholder="Enter age" required>
+
+                                </div>
                                   </div>
                                   </div>
 
@@ -135,7 +137,7 @@
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
+                                     <input type="text" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
                                     </div></div>
                                   </div>
                                     </div>
@@ -146,7 +148,11 @@
                     <div class="row " >   
                    <div class="form-group col-md-5"></div>
                    <div class="form-group col-md-2">
-                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary">Edit </button>
+                     <center><div class="button11" id="button-6">
+                       <div id="spin"></div>
+                       <a href="#" id="btn_update" type="submit" >Update</a>
+                      </div></center>
+                  <!--  <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary">Edit </button> -->
                  </div>
                </div>
               

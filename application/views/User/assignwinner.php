@@ -29,7 +29,7 @@
               <!-- form start -->
               
                 <div class="card-body row">
-                     <form id="form_action" role="form" action="assignwinner_list" method="post" > 
+                     <form id="form_action" role="form" action="<?php echo base_url(); ?>User/assignwinner_list" method="post" > 
                       <div class="row" >          
                      <div class="form-group col-md-6">
                    
@@ -52,8 +52,9 @@
                   <div class="form-group col-md-4">
                    
                     <label>Pincode</label>
+                    <input type="text" class="form-control required title-case text " name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" >
 
-                      <select name="pincode" id="pincode"class="form-control" required="">
+                     <!--  <select name="pincode" id="pincode"class="form-control" required="">
                     <option value="">Select Pincode</option>
          
                      <?php foreach($pincode as $pincode)
@@ -65,7 +66,7 @@
                      ?>  
 
                      
-                  </select>
+                  </select> -->
                   </div>
                   
                    <div class="form-group col-md-2">

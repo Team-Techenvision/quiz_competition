@@ -29,7 +29,7 @@
               <!-- form start -->
               
                 <div class="card-body row">
-                     <form id="form_action" role="form" action="assigncompetition_list" method="post" > <div class="row" >          
+                     <form id="form_action" role="form" action="<?php echo base_url(); ?>User/assigncompetition_list" method="post" > <div class="row" >          
                      <div class="form-group col-md-6">
                      <label>Competition Title <span style="color: red;">*</span></label>        
                       <select name="competitionid" id="competitionid"class="form-control" required="">
@@ -48,10 +48,10 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label>Pincode</label>
-                     <!--  <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" > -->
+                      <input type="text" class="form-control required title-case text " name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" >
 
 
-                      <select name="pincode" id="pincode"class="form-control">
+                    <!--   <select name="pincode" id="pincode"class="form-control">
                     <option value="">Select Pincode</option>
          
                      <?php foreach($pincode as $pincode)
@@ -63,7 +63,7 @@
                      ?>  
 
                      
-                  </select> 
+                  </select>  -->
                   </div>
                   
                    <div class="form-group col-md-2">
@@ -141,6 +141,7 @@
                                        <input type="text" class="form-control required title-case text" name="pincode1" id="pincode1" value="<?php if(isset($pincodeid)){ echo $pincodeid; } ?>" >
                                      </div>
                                   </div>
+                                  <!-- <div id="customers-list"></div> -->
                                   <!-- <div id="compitiorlist"></div> -->
                                      <table id="compitiorlist" class="table table-bordered table-striped">
                                         <thead>
@@ -218,7 +219,7 @@ $(document).ready(function(){
     var user_id=$(this).val();
 
     // alert(competition);
-    // alert(pincodeid);
+    // alert(pincodeid); 
     // alert(user_id);
     // $.post('<?php echo base_url(); ?>User/addassigncompetition_list_test',
     //   {user:user_id},
@@ -231,11 +232,11 @@ $(document).ready(function(){
         
           url: '<?php echo base_url(); ?>User/addassigncompetition_list',
           type: 'POST',
-          data: {user_id: user_id}, 
+          data: {user_id: user_id,competitionid:competition}, 
           dataType: "json",
           success: function(response){ 
 
-            // console.log(response);
+            console.log(response);
       
            var trHTML = '';
 
@@ -244,7 +245,7 @@ $(document).ready(function(){
                 '<tr><td>' + value.user_id + 
                 '</td><td>' + value.user_name + 
                 '</td><td>' +
-                       '<button class="btn btn-primary btnadd" name="user_id2" id="btnAddCompetitor < ?php echo $list->user_id ?>" value="< ?php echo $list->user_id ?>" >Add </button>'
+                       '<button class="btn btn-primary btnadd" name="user_id2" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add </button>'
                         + '</td></tr>';     
             });
 
@@ -262,6 +263,17 @@ $(document).ready(function(){
 
 </script>
 
+<!-- <script type="text/javascript">
+$(".btnadd").click(function() {
+    $.ajax({
+        type: "POST",
+        url: "<?php echo site_url('User/show_customers'); ?>",
+        success: function(data) {
+            $("#customers-list").html(data);
+        }
+    });
+});
+</script> -->
 
 </body>
 </html>

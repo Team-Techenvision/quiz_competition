@@ -1424,7 +1424,7 @@ class User extends CI_Controller{
     }
 
   $data['competition'] = $this->User_Model->fetch_competition();
-  $data['pincode'] = $this->User_Model->fetch_pincode();
+  // $data['pincode'] = $this->User_Model->fetch_pincode();
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
  // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
 
@@ -1463,18 +1463,26 @@ class User extends CI_Controller{
       $this->load->view('Include/footer',$data);
     }
     
+    
    public function addassigncompetition_list(){
- /*print_r($_POST); die();*/
+ // print_r($_POST); 
 
    /* echo $_POST['user_id'];die();*/
-     $data = $this->User_Model->addassigncompetition_list('user_id');
+     $this->load->model('User_Model');
+    // $data['results'] = $this->get_db->getAll();
+    // echo json_encode($data);
+     // $data = $this->User_Model->addassigncompetition_list();
+     $data = $this->User_Model->addassigncompetition_list('user_id','competitionid');
+
      echo (json_encode($data));
+
+     // print_r($data);
     }
 
-    public function addassigncompetition_list_test()
-    {
-      echo $_POST['user'];die();
-    }
+    // public function addassigncompetition_list_test()
+    // {
+    //   echo $_POST['user'];die();
+    // }
 
 
 /******************************* Assign Winner Information ****************************/
@@ -1506,7 +1514,7 @@ class User extends CI_Controller{
     }
 
   $data['competition'] = $this->User_Model->fetch_competition();
-  $data['pincode'] = $this->User_Model->fetch_pincode();
+  // $data['pincode'] = $this->User_Model->fetch_pincode();
 
   // print_r($data['competition']);
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');

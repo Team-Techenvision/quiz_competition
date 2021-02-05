@@ -159,7 +159,11 @@
                 </div>
                <?php $q++; } ?>              
                 <div class="d-flex m-5">
-                  <button class="btn btn-primary">Submit</button>
+                  <div class="button11" id="button-6">
+                    <div id="spin"></div>
+                     <a href="#" id="btn_save" type="submit" >Submit</a>
+                  </div>
+               <!--    <button class="btn btn-primary">Submit</button> -->
                   <!--<input type="submit" name="btn_submit" value="Submit" class="btn btn-primary">-->
                 </div>
                   </form>

@@ -3,6 +3,7 @@ $quizweb_user_id = $this->session->userdata('quizweb_user_id');
 $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -51,7 +52,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                  </div>
                  <div class="row mb-4">
                     <div class="col-md-3 m-4" >
-                    <img src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="350px" width="300px"/>
+                    <img class="imgBox" src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="350px" width="300px"/>
                    </div>
                    <div class="col-md-7 m-4">
                       <div class="col ml-4" >
@@ -97,9 +98,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                        <center><!-- <button  data-toggle="modal"  data-target="#participate"  class="btn-primary" value="<?php echo $value->competitionid;?>">Participate</button> -->
 
                         <div class="button11" id="button-6">
-    <div id="spin"></div>
-    <a href="#" data-toggle="modal"  data-target="#participate" value="<?php echo $value->competitionid;?>">Participate</a>
-  </div>
+                          <div id="spin"></div>
+                          <a href="#" data-toggle="modal"  data-target="#participate" value="<?php echo $value->competitionid;?>">Participate</a>
+                        </div>
                        </center>
                      </div>
 
@@ -141,8 +142,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
                                   </div>
                                    <div class="form-group col-md-3">
-                                    <label>Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="age" id="age" minlength="2" maxlength="2" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                                    <label>Participant Age</label>&nbsp;<label style="color:red;">*</label>
+                                    <input type="text"  class="form-control" name="age" id="age" minlength="2" maxlength="2" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
                                   </div>
 
                                   <div class="form-group col-md-6">
@@ -181,7 +182,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
                                         <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="number"  min="0" step="1" oninput="validity.valid||(value='');" class="form-control" name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
+                                         <input type="text" class="form-control" name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
 
                                     <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>

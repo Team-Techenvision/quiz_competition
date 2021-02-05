@@ -245,9 +245,9 @@ class User_Model extends CI_Model{
     $this->db->select('profile.*,user.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
 //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
     $this->db->where('profile.user_id !=', $user_id);
-    // $this->db->where('competitionid', $competitionid);
+    // $this->db->where('profile.competitionid !=', $competitionid);
     // $this->db->where('pincode', $pincode);
     $this->db->from('profile');
 

@@ -42,7 +42,7 @@
                   </div>
                    <div class="form-group col-md-3">
                     <label>Participant Age <span style="color: red;">*</span></label>
-                    <input type="number"  min="0" step="1" oninput="validity.valid||(value='');" class="form-control notext" minlength="2" maxlength="2" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required="">
+                    <input type="text" class="form-control notext" minlength="2" maxlength="2" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required="">
                   </div>
 
                  
@@ -96,7 +96,7 @@
                   </div>
                     <div class="form-group col-md-3">
                       <label>Pincode <span style="color: red;">*</span></label>
-                      <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text " minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" required="">
+                      <input type="text" class="form-control required title-case text " minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" required="">
 
                   </div>
                  

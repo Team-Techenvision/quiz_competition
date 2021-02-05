@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2021 at 02:26 PM
+-- Generation Time: Feb 05, 2021 at 01:53 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -545,7 +545,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (28, 'manish patil', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, 53, 65, 'profile_image_65_1612357338.jpg', '2021-02-02'),
 (29, 'Bhimrao Chavan', '20', 'manishc@gmail.com', '3', 'english model school', 'kolhapur', 416012, 53, 92, '', '2021-02-02'),
 (30, 'Ganesh Chavan', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, 53, 93, '', '2021-02-02'),
-(31, 'xyz', '45', 'xyz@gmail.com', '', 'ppgh', 'kolhapur', 416012, 26, 94, '', '2021-02-03');
+(31, 'xyz', '45', 'xyz@gmail.com', '', 'ppgh', 'kolhapur', 416012, 26, 94, '', '2021-02-03'),
+(32, 'manish patil', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, 7, 65, '', '2021-02-05');
 
 -- --------------------------------------------------------
 
@@ -661,8 +662,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`, `user_address`, `user_pincode`, `user_city`, `user_email`, `user_mobile`, `user_password`, `user_otp`, `user_status`, `user_addedby`, `user_date`, `is_admin`) VALUES
-(1, 1, '', 1, 'Admin', '', 1, 'Kolhapur', 'demo@email.com', '9876543210', '123456', NULL, 'active', 'Admin', '2020-12-25 06:58:39', 0),
-(6, 1, '', 2, 'Datta Mane', 'kop\r\n', 416012, 'Kop', 'datta@mail.com', '9673454383', '123456', NULL, 'active', '0', '2021-01-28 13:17:18', 0),
+(1, 1, '', 1, 'Admin', '', 1, 'Kolhapur', 'demo@email.com', '9876543210', '12345678', NULL, 'active', 'Admin', '2021-02-05 05:00:50', 0),
+(6, 1, '', 2, 'Datta Mane', 'kop\r\n', 416012, 'Kop', 'datta@mail.com', '9673454383', '12345689', NULL, 'active', '0', '2021-02-05 05:01:37', 0),
 (11, 1, '', 2, 'rohan wordpress', 'kop', 2, 'kolhapur', 'rohan@gm.com', '897456210', '1234', NULL, 'active', '0', '2021-02-04 06:56:13', 0),
 (12, 1, '', 2, 'techenvision', 'rajarampuri', 2, 'kop', 'techenvision@gmail.com', '8421751394', 'tech', '11', 'active', '0', '2021-01-21 06:08:05', 0),
 (16, 0, '', 2, 'techenvision', '', 416012, '', '', '9999999999', '', '123654', 'active', '1', '2020-12-15 01:18:59', 1),
@@ -703,7 +704,7 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (62, 1, '', 2, 'Omkar Mane', 'kolhapur', 0, 'kolhapur', 'omkar@gmail.com', '9639639630', 'omkar', NULL, 'active', '1', '2021-01-15 07:06:03', 1),
 (63, 0, '', 3, 'Sayali Gavali', '', 416012, '', '', '9512364789', '', NULL, 'active', '', '2021-01-20 06:37:07', 3),
 (64, 0, '', 3, 'gkshadg', '', 596, '', '', '9685714254', '', NULL, 'active', '', '2021-01-27 13:27:51', 3),
-(65, 0, '', 3, 'Sweta', '', 416012, '', '', '8698066940', '1234567', NULL, 'active', '', '2021-02-04 06:57:16', 3),
+(65, 0, '', 3, 'Sweta', '', 416012, '', '', '8698066940', '123456789', NULL, 'active', '', '2021-02-05 05:02:31', 3),
 (66, 0, '', 3, 'aaa', '', 416, '', '', '9856325555', '12387', NULL, 'active', '', '2021-02-04 06:57:26', 3),
 (67, 0, '', 3, 'bbbb', '', 416012, '', '', '7410000000', '123676', NULL, 'active', '', '2021-02-04 06:57:29', 3),
 (68, 0, '', 3, 'cccc', '', 416012, '', '', '8698066920', '12365', NULL, 'active', '', '2021-02-04 06:57:33', 3),
@@ -944,7 +945,7 @@ ALTER TABLE `assignwinner`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -1022,7 +1023,7 @@ ALTER TABLE `prizemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `state`

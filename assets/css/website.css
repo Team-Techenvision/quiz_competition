@@ -1286,3 +1286,72 @@ label {
     line-height: 1.5;
     color: black;
 }
+ .imgBox:hover
+    {
+      -moz-box-shadow: 0 0 15px #ccc;
+      -webkit-box-shadow: 0 0 15px #ccc;
+      box-shadow: 0 0 15px #ccc;
+    }
+/*   my competition css start  */
+ .competitioncard{
+  height:300px;  
+  /*border-radius: 50%!important; */
+  vertical-align: middle; 
+  border-style: none;
+}
+.hovereffect {
+  border-radius: 10px;
+  width: 100%;
+  height: 80%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.hovereffect:hover img {
+ 
+ /* filter: grayscale(1) blur(0px);
+  -webkit-filter: grayscale(1) blur(0px);*/
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+  .complabelT{
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #184ba7;
+
+  }
+  .complabelT:hover{
+    color: #0757eafa;
+
+  }
+   .userSTitle{
+    font-size: 30px;font-weight: 600;color: #225dca;
+  }
+  .userSSubtitle{
+    color: black;
+    font-size: 20px;
+    padding-top: 15px;
+    font-weight: 400;
+  }
+
+/*  my competition end */

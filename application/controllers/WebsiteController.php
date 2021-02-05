@@ -237,6 +237,27 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/Include/footer',$data);
 }     
 
+
+/**************************    Competition Single Page View    *****************************/
+  public function competition_usersave(){
+
+    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $competitionid = $this->uri->segment(3);
+
+    // print_r($competitionid);
+
+    // $data['competition_list'] = $this->Website_Model->get_list_by_id('competitionid',$competitionid,'','','','','competition');
+
+     $data['competition_list'] = $this->Website_Model->get_competitionlist_by_id($competitionid);
+    
+   
+    // print_r($data);
+
+    $this->load->view('Website/Include/head',$data);
+    $this->load->view('Website/competition_usersave',$data);
+    $this->load->view('Website/Include/footer',$data);
+}     
+
   
 /******************************  Registration Information      ****************************/
 

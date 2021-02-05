@@ -56,7 +56,7 @@
                   </div>
                      <div class="form-group col-md-12">
                     <label>Pincode<span style="color: red;">*</span></label>
-                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text " minlength="6" maxlength="6" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
+                    <input type="text" class="form-control required title-case text " minlength="6" maxlength="6" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
                   </div>
                   <div class="form-group col-md-12">
                     <label>City<span style="color: red;">*</span></label>
