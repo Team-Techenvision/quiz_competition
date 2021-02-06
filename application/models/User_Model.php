@@ -91,19 +91,26 @@ class User_Model extends CI_Model{
   // return $query->result();
   // // print_r($query);
   // }
-  // public function competitionName_list($competitionid){
-  //    // $today = date('Y-m-d');
-  //    // $this->db->select('*');
-  //   $this->db->select('competition.*');
-  //   // $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
-  //  // $this->db->order_by('enddate ', 'DESC');
-  //   $this->db->from('competition');
-  //   $this->db->where('competitionid',$competitionid);
-  //   $query = $this->db->get();
-  //   $result = $query->result();
-  //   return $result;
+  public function competitionName_list($competitionid){
+   //   // $today = date('Y-m-d');
+   //   // $this->db->select('*');
+   //  $this->db->select('competition.*');
+   //  // $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
+   // // $this->db->order_by('enddate ', 'DESC');
+   //  $this->db->from('competition');
+   //  $this->db->where('competitionid',$competitionid);
+   //  $query = $this->db->get();
+   //  $result = $query->result_array();
+      $this->db->select('competition.*,competitiontype.*,levelmaster.*');
+      $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
+      $this->db->join('levelmaster', 'competition.levelid = levelmaster.levelid', 'inner');
+    
+      $this->db->where('competitionid',$competitionid);
+      $query = $this->db->get('competition');
+      $result = $query->result_array();
+      return $result;
 
-  // }
+  }
   function fetch_level()
   {
   
@@ -239,23 +246,54 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
    }
-   public function addassigncompetition_list($user_id){
-     // $this->db->select('*');
-   /* echo $user_id;die();*/
-    $this->db->select('profile.*,user.*');
-//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
-//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
-    $this->db->where('profile.user_id !=', $user_id);
-    // $this->db->where('profile.competitionid !=', $competitionid);
-    // $this->db->where('pincode', $pincode);
-    $this->db->from('profile');
+//    public function addassigncompetition_list($user_id){
+    
+//    /* echo $user_id;die();*/
+//      // $this->db->select('*');
+//     $this->db->select('profile.*,user.*');
+//     // $this->db->select
+// //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+// //     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+//     $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
+  
+//     $this->db->where('profile.user_id !=', $user_id);
+//     // $this->db->where('profile.competitionid', $competitionid);
+//     // $this->db->where('profile.pincode', $pincode);
+//     $this->db->from('profile');
 
     
-    $query = $this->db->get();
-    $result = $query->result();
-    return $result;
-   }
+//     $query = $this->db->get();
+//     $result = $query->result_array();
+//     // print_r($result);die();
+//     return $result;
+//    }
+    public function addassigncompetition_list($user_id){
+      $pincode="";
+      $competition="";
+      $user="";
+      // echo $user_id;die();
+
+      $this->db->where('user_id',$user_id);
+      $query = $this->db->get('profile');
+      $result = $query->result_array();
+      
+      foreach ($result as $value) {
+        # code...
+      $pincode = $value['pincode'];
+      $competition = $value['competitionid'];
+      $user = $value['user_id'];
+
+      }
+       $this->db->select('profile.*,user.*');
+       $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
+       $this->db->where('profile.user_id !=', $user);
+       $this->db->where('profile.competitionid', $competition);
+       $this->db->where('profile.pincode', $pincode);
+       $query = $this->db->get('profile');
+       $result = $query->result_array();
+
+       return $result;
+    }
  
     public function assignwinner_list($competitionid,$pincode){
      // $this->db->select('*');

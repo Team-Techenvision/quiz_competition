@@ -151,6 +151,12 @@
                                           <th class="wt_50">Action</th>
                                         </tr>
                                         </thead>
+                                        <tbody class="" id="competitor">
+                                          <form action="<?php echo base_url(); ?>User/add_assigncompetition">
+                        
+                                          </form>
+                                          
+                                        </tbody>
                                       
                                       </table>  
                                                         
@@ -221,59 +227,38 @@ $(document).ready(function(){
     // alert(competition);
     // alert(pincodeid); 
     // alert(user_id);
-    // $.post('<?php echo base_url(); ?>User/addassigncompetition_list_test',
-    //   {user:user_id},
+    $.post('<?php echo base_url(); ?>User/addassigncompetition_list_test',
+      {user:user_id},
 
-    //   function(data,status){
-    //   alert(data);
-    // });
-        
-       $.ajax({
-        
-          url: '<?php echo base_url(); ?>User/addassigncompetition_list',
-          type: 'POST',
-          data: {user_id: user_id,competitionid:competition}, 
-          dataType: "json",
-          success: function(response){ 
+      function(data,status){
 
-            console.log(response);
-      
-           var trHTML = '';
+      // alert(data);
+      // console.log(data);
+      $('#competitor').html(data);
 
-          $.each(response, function (key,value) {
-             trHTML += 
-                '<tr><td>' + value.user_id + 
-                '</td><td>' + value.user_name + 
-                '</td><td>' +
-                       '<button class="btn btn-primary btnadd" name="user_id2" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add </button>'
-                        + '</td></tr>';     
-            });
 
-            $('#compitiorlist').append(trHTML);
-
-            $('#addcompetitionmodel').modal('show');
-       }
     });
-                
+    $('#addcompetitionmodel').modal('show');
+
    
   });
+
+ $(".btnaddcomp").click(function() {
+  alert("hiii");
+         document.location = '@Url.Action("add_assigncompetition","User")';
+    });
+
 });
 
  
 
 </script>
-
 <!-- <script type="text/javascript">
-$(".btnadd").click(function() {
-    $.ajax({
-        type: "POST",
-        url: "<?php echo site_url('User/show_customers'); ?>",
-        success: function(data) {
-            $("#customers-list").html(data);
-        }
-    });
+  $(document).ready(function(){
+  $('.btnaddcomp').click(function(){
+  alert('hello');
+  });
 });
 </script> -->
-
 </body>
 </html>

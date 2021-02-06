@@ -1015,38 +1015,61 @@ class User extends CI_Controller{
     $this->load->view('User/competition/competition',$data);
     $this->load->view('Include/footer',$data);
   }
-  // public function getcompetitionlist(){
-  //   $output='';
-  //   $competitionid=$this->input->post();
-  //   $data=$this->C->User_Model($competitionid);
-  //   // $currentdate=date('Y-m-d');
-
-
-  //   if(!empty($data))
-  //   {
-  //   $i=0;
-  //   foreach ($data as $key => $value) {
-  //     $i++;
-  //     $output.='<tr>
-  //     <td>'.$value->title.'</td>
-   
-  //     </tr>';
-  //   }
-  //   }
-  // }
-  //    <td>'.$value->driverName.'</td>
-      // <td>'.$value->VehicleName.'</td>
-      // <td>'.$value->vehicleNumber.'</td>
-      // <td>'.$value->referenceName.'</td>
-      // <td>'.$value->driverLicenceNumber.'</td>
-      // <td>'.$value->contactNumber.'</td>
-      // <td>'.$value->birthDate.'</td>
-   // public function competitionName_list(){
-   //  // print_r($_POST); die();
-   // $competitionid=$this->input->post('competitionid');
-   // $data=$this->User_Model->competitionName_list($competitionid);
+ 
+   public function competitionName_list(){
+    // echo $_POST['competitionid']; die();
+   $competitionid=$this->input->post('competitionid');
+   $data=$this->User_Model->competitionName_list($competitionid);
    // echo (json_encode($data));
-   //    }
+  foreach ($data as $value) {
+    ?>
+          <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition Type :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['competitiontype']; ?></label>
+          </div>
+           <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition Title :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['title']; ?></label>
+          </div>
+           <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition Sub Title :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['subtitle']; ?></label>
+          </div>
+           <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition Level :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['levelname']; ?></label>
+          </div>
+           <div class="">
+          <label for="recipient-name"  class="col-form-label">Age :</label>
+          <label>From</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['fromage']; ?></label>
+          <label>To</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['toage']; ?></label>
+          </div>
+            <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition End Date :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['enddate']; ?></label>
+          </div>
+            <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition Class :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['class']; ?></label>
+          </div>
+           <div class="">
+          <label for="recipient-name"  class="col-form-label">Terms and Conditions :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['termsandconditions']; ?></label>
+          </div>
+           <div class="">
+          <label for="recipient-name"  class="col-form-label">Instructions :</label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['instruction']; ?></label>
+          </div>
+          <div class="">
+          <label for="recipient-name"  class="col-form-label">Competition Image :</label><br/>
+          <img src="<?php echo base_url(); ?>assets/images/competition/<?php echo $value['photo']; ?>" height="150" width="150">
+          </div>
+    <?php
+  }
+    
+  }
 
   
   // Competition List....
@@ -1464,25 +1487,48 @@ class User extends CI_Controller{
     }
     
     
-   public function addassigncompetition_list(){
- // print_r($_POST); 
+   // public function addassigncompetition_list(){
 
-   /* echo $_POST['user_id'];die();*/
-     $this->load->model('User_Model');
-    // $data['results'] = $this->get_db->getAll();
-    // echo json_encode($data);
-     // $data = $this->User_Model->addassigncompetition_list();
-     $data = $this->User_Model->addassigncompetition_list('user_id','competitionid');
+   // // $a = $_POST['user_id'];die();
+  
+   //   // $data = $this->User_Model->addassigncompetition_list('user_id');
+   //   // echo (json_encode($data));
 
-     echo (json_encode($data));
+   //   // print_r($data);
+   //  }
 
-     // print_r($data);
+    public function addassigncompetition_list_test()
+    {
+      $userId = $_POST['user'];
+     
+      $data = $this->User_Model->addassigncompetition_list($userId);
+      // echo (json_encode($data));
+
+      foreach ($data as $value) {
+        # code...
+        ?> 
+                <tr><td><?php  echo $value['user_id']; ?></td>
+                <td><?php  echo $value['user_name']; ?></td>
+              <td><button class="btn btn-primary btnaddcomp" name="user_id2" id="" value="<?php echo $value['user_id']; ?>" >Add </button></td></tr>  
+
+             
+
+        <?php
+
+      }
+
+      ?>
+              <script type="text/javascript">
+              $(document).ready(function(){
+              $('.btnaddcomp').click(function(){
+                var user_id=$(this).val();
+
+                alert(user_id);
+                });
+               });
+              </script>
+       <?php
     }
-
-    // public function addassigncompetition_list_test()
-    // {
-    //   echo $_POST['user'];die();
-    // }
 
 
 /******************************* Assign Winner Information ****************************/

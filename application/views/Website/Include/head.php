@@ -229,7 +229,7 @@
                    <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" /> 
                 </div>
                 <div class="col-md-12">
-                   <input class="input" type="number" name="user_pincode"  min="0" step="1" oninput="validity.valid||(value='');" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
+                   <input class="input" type="text" name="user_pincode" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
                 </div>
                 <div class="col-md-12">
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
