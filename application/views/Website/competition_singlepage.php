@@ -1,6 +1,7 @@
 <?php  
 $quizweb_user_id = $this->session->userdata('quizweb_user_id');
 $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
+$profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','profile');
 ?>
 
 
@@ -130,8 +131,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
-                            </div>
-                           <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post">
+                            </div><!-- action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" -->
+                           <form id="myForm" role="form"    method="post" autocomplete="off">
                             <div class="modal-body ">
                           
                                 <div class="card-body row" style="padding-bottom: 0px;">
@@ -139,16 +140,16 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                   <div class="form-group col-md-12">
                                     <label>Parent Name</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
+                                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php  if(isset($profile_list[0]->parentname)){ echo $profile_list[0]->parentname; } ?>" placeholder="Enter Parent Name" required>
                                   </div>
                                    <div class="form-group col-md-3">
                                     <label>Participant Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text"  class="form-control" name="age" id="age" minlength="2" maxlength="2" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                                    <input type="text"  class="form-control" name="age" id="age" minlength="2" maxlength="2" value="<?php  if(isset($profile_list[0]->age)){ echo $profile_list[0]->age; } ?>" placeholder="Enter age" required>
                                   </div>
 
                                   <div class="form-group col-md-6">
                                      <label>Email Address</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
+                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php  if(isset($profile_list[0]->emailid)){ echo $profile_list[0]->emailid; } ?>" placeholder="Enter Email Address" required>
                                   </div>
 
                                    <div class="form-group col-md-3">
@@ -165,14 +166,14 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                  
                                   <div class="form-group col-md-12">
                                      <label>School/College Name</label>
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
+                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php  if(isset($profile_list[0]->schoolcollegename)){ echo $profile_list[0]->schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
                                   </div>
                              
                                   
                                   
                                   <div class="form-group col-md-9">
                                      <label>Address</label>
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php if(isset($address)){ echo $address; } ?></textarea>
+                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php  if(isset($profile_list[0]->address)){ echo $profile_list[0]->address; } ?></textarea>
                                   </div>
                                     <div class="form-group col-md-3">
 
@@ -182,7 +183,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
                                         <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="text" class="form-control" name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
+                                         <input type="text" class="form-control" name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" readonly>
 
                                     <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>

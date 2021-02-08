@@ -143,7 +143,7 @@
                    <div class="form-group col-md-3">
                     <label>From Age <span style="color: red;">*</span></label>
 
-                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text notext"minlength="2" maxlength="2" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required="">
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required="">
                   </div>
                    <div class="form-group col-md-3">
                     <label>To Age <span style="color: red;">*</span></label>

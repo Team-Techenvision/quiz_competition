@@ -448,25 +448,29 @@ var user_mobile21 = $('#user_mobile').val();
            method:"POST",
            data:{user_mobile:mobile,user_pincode:pincode,user_name:name,user_password:password},
            success:function(data)
-            {
+            {   
+
                // alert(data);
                // console.log(data);
                  if(data=='Sign Up Successfully'){
-                $('.alert-success').html(data);
-                $('.mobileerror').hide();
-                $('.mobilesuccess').show().delay(1000).fadeOut();
 
-                 document.getElementById("signupForm").reset();
+                  window.location.reload();
+                  
+                // $('.alert-success').html(data);
+                // $('.mobileerror').hide();
+                // $('.mobilesuccess').show().delay(1000).fadeOut();
+
+                //  document.getElementById("signupForm").reset();
 
                 // $('.mobilesuccess').hide();
 
 
-                 $(".signUp").addClass("inactive-dx");
-                  $(".signIn").addClass("active-sx");
-                  $(".signIn").removeClass("inactive-sx");
-                  $(".signUp").removeClass("active-dx");  
+                 // $(".signUp").addClass("inactive-dx");
+                 //  $(".signIn").addClass("active-sx");
+                 //  $(".signIn").removeClass("inactive-sx");
+                 //  $(".signUp").removeClass("active-dx");  
 
-                // window.location.reload();
+               
 
                }
                else{

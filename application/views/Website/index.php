@@ -5,6 +5,7 @@ $competition_list = $this->Website_Model->competition_list('competitionid','',''
 $banner_list = $this->Website_Model->banner_list('bannerid');
 $tab_list = $this->Website_Model->tab_list('tabinputtextid');
 $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
+$profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','profile');
 
 // $competitionid = $this->input->post('53');
 // $profile_list = $this->Website_Model->check_competition($quizweb_user_id);
@@ -13,6 +14,45 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 // print_r($profile_list);die();
 
 ?>
+<!-- <style type="text/css">
+.button11 {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button11 button {
+  position: relative;
+  transition: all .45s ease-Out;
+}
+
+.spin {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  left: 70px;
+  top: 20px;
+  transform: rotate(0deg);
+  background: none;
+  position: absolute;
+  transition: all .5s ease-Out;
+}
+
+.button11:hover .spin {
+  width: 200%;
+  height: 500%;
+  opacity: 1;
+  left: -70px;
+  top: -70px;
+  background: #1d69bb;
+  transform: rotate(80deg);
+}
+
+.button11:hover button {
+  color: #fff;
+}
+
+</style> -->
 
 <!-- <style type="text/css">
     .a{
@@ -205,24 +245,25 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
-                           <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post">
+                           <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post" autocomplete="off">
                             <div class="modal-body ">
+                 
                           
                                 <div class="card-body row" style="padding-bottom: 0px;">
-                                 <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
+                                 <input type="hidden" name="competition_id" id="competition_model_id" value="echo $list->competitionid;?>">
 
                                   <div class="form-group col-md-12">
                                     <label>Parent Name</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required>
+                                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php  if(isset($profile_list[0]->parentname)){ echo $profile_list[0]->parentname; } ?>" placeholder="Enter Parent Name" required>
                                   </div>
                                    <div class="form-group col-md-3">
                                     <label>Participant Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text"  minlength="2" maxlength="2" class="form-control notext" name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" placeholder="Enter age" required>
+                                    <input type="text"  minlength="2" maxlength="2" class="form-control notext" name="age" id="age" value="<?php  if(isset($profile_list[0]->age)){ echo $profile_list[0]->age; } ?>" placeholder="Enter age" required>
                                   </div>
 
                                   <div class="form-group col-md-6">
                                      <label>Email Address</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
+                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php  if(isset($profile_list[0]->emailid)){ echo $profile_list[0]->emailid; } ?>" placeholder="Enter Email Address" required>
                                   </div>
 
                                    <div class="form-group col-md-3">
@@ -239,14 +280,14 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                  
                                   <div class="form-group col-md-12">
                                      <label>School/College Name</label>
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
+                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php  if(isset($profile_list[0]->schoolcollegename)){ echo $profile_list[0]->schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
                                   </div>
                              
                                   
                                   
                                   <div class="form-group col-md-9">
                                      <label>Address</label>
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php if(isset($address)){ echo $address; } ?></textarea>
+                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php  if(isset($profile_list[0]->address)){ echo $profile_list[0]->address; } ?></textarea>
                                   </div>
                                     <div class="form-group col-md-3">
 
@@ -256,7 +297,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
                                         <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="text" minlength="6" maxlength="6" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" required>
+                                         <input type="text" minlength="6" maxlength="6" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" readonly>
 
                                     <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>
@@ -270,6 +311,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                   </div>
                                  
                                 </div>
+                      
                                 <!-- /.card-body -->
                              
                             </div>
@@ -280,11 +322,11 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                      <?php if(isset($update)){ ?>
                                         <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                                       <?php } else{ ?>
-                                        <div class="button11" id="button-6">
-                                          <div id="spin"></div>
-                                          <a href="#" id="btn_save" type="submit" >Participate</a>
-                                        </div>
-                                      <!--   <button   class="btn btn-primary px-4">Participate</button> -->
+                                     <!--    <div class="button11" >
+                                          <div  class="spin"></div>
+                                          <button id="btn_save" type="submit" >Participate</button>
+                                        </div> -->
+                                        <button class="btn btn-primary px-4" id="btn_save" type="submit">Participate</button>
                                       <?php } ?>
                                       <a href="" class="btn btn-light ml-4" data-dismiss="modal" onclick="myFunction()">Cancel</a>
                              </div>

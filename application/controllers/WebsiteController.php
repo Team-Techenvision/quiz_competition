@@ -71,29 +71,32 @@ class WebsiteController extends CI_Controller{
       $mobile = $this->input->post('mobile');
       $password = $this->input->post('password');
 
-      // $login = $this->Website_Model->check_login($mobile,$password);
-      $loginM = $this->Website_Model->check_loginM($mobile);
-      $loginP = $this->Website_Model->check_loginP($password);
+      $login = $this->Website_Model->check_login($mobile,$password);
+      // $loginM = $this->Website_Model->check_loginM($mobile);
+      // $loginP = $this->Website_Model->check_loginP($password);
   
-     $login =$loginM;
-     $login =$loginP;
+     // $login =$loginM;
+     // $login =$loginP;
       // print_r($login);
 
-     if($loginM == null && $loginP == null){
+     if($login == null ){
        // alert("login_error");
-         echo "Invalid Mobile Number and Password";
+         echo "Invalid Credentials";
 
 
-      }elseif ($loginP == null) {
+      }
+      // elseif ($loginP == null) {
 
-        echo "Invalid Password";
+      //   echo "Invalid Password";
 
-      }elseif ( $loginM == null) {
+      // }
+      // elseif ( $loginM == null) {
 
-       echo "Invalid Mobile Number";
+      //  echo "Invalid Mobile Number";
        
 
-      } else{
+      // }
+       else{
        // print_r($login); die();
       
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id'] );
@@ -285,26 +288,56 @@ class WebsiteController extends CI_Controller{
         'roll_id' => 3,
       );
 
-      $mobile = $this->input->post('user_mobile');
+    //   $mobile = $this->input->post('user_mobile');
    
-      $mob = $this->Website_Model->check_reg($mobile);
+    //   $mob = $this->Website_Model->check_reg($mobile);
    
-      if($mob == null){
+    //   if($mob == null){
     
 
-      echo "Sign Up Successfully";
-       $this->Website_Model->save_data('user',$save_data);
-       // $this->session->set_flashdata('register_success','success');
-       // header('location:'.base_url().'WebsiteController');
+    //   echo "Sign Up Successfully";
+    //    $this->Website_Model->save_data('user',$save_data);
+    //    // $this->session->set_flashdata('register_success','success');
+    //    // header('location:'.base_url().'WebsiteController');
 
-    }else{
-      // print_r($mob);
-      echo "Mobile Number is Already Exists";
-    }
+    // }else{
+    //   // print_r($mob);
+    //   echo "Mobile Number is Already Exists";
+    // }
+
+      $this->Website_Model->save_data('user',$save_data);
+
+      //*********************   remove this code after demo   *********************
+      $mobile = $this->input->post('user_mobile');
+      $password = $this->input->post('user_password');
+
+      $login = $this->Website_Model->check_login($mobile,$password);
+
+      // print_r($login);die();
+      if($login == null){
+        // alert("login_error");
+        $this->session->set_flashdata('msg','login_error');
+         $this->session->set_flashdata('login_ermsg','error');
+        header('location:'.base_url().'WebsiteController');
+
+      } else{
+       // print_r($login); die();
+        echo 'null not';
+        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+        // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
+        $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
+        $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+        // $mob = $this->Website_Model->check_reg($mobile);
+      // print_r($mobile); 
+
+        $this->session->set_flashdata('login_success','success');
+        header('location:'.base_url().'WebsiteController');
+
+      
 
     } 
 
-   // }
+   }
   }
 
   // User List....

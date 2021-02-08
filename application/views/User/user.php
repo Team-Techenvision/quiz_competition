@@ -47,7 +47,7 @@
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                     <label>Name<span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name of User" required>
+                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name of User" required="required">
                   </div>
                    <div class="form-group col-md-12">
                     <label>Address<span style="color: red;">*</span></label>

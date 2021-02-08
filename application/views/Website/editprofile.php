@@ -35,7 +35,7 @@
             <div class="card-body">
                <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data"> 
                  <div class="row" >   
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-3">
                   <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
                   <img id="blah" class="rounded-circle " src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
 
@@ -51,7 +51,7 @@
                    
                       <!--  <img id="blah"  class="rounded-circle" src="<?php  echo base_url();?>assets/images/profile1.jpg" alt="" height="150px" width="150px" /> -->
                    </div> 
-                   <div class="form-group col-md-8">
+                   <div class="form-group col-md-9">
                       <div class="row" >
                            <div class="form-group col-md-12">
                             <div class="row">

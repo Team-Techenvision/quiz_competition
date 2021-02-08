@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2021 at 01:41 PM
+-- Generation Time: Feb 08, 2021 at 02:36 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -228,6 +228,7 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (3, 1, 0, 1, 5, 7, '2021-01-21', 'Geography', 'Register to see competition topic', '', 'Nursery - Class 1', 1, 'photo_1610351921.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2020-12-30 11:44:26'),
 (4, 1, 1, 1, 8, 11, '2021-01-27', 'Personality Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_4_1611751248.jpg', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 'Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.\r\nSubmissions that are not according to the topic and format will be disqualified.\r\nNew topics will be updated on the 1st of', 0, 0, '', 0, '0', '2021-01-27 12:40:48'),
 (5, 1, 1, 1, 8, 11, '2021-01-27', 'True/False Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_5_1611751122.jpg', 'sad\r\n', 'assssssss', 0, 0, '', 0, '0', '2021-01-27 12:38:42'),
+(6, 1, 1, 1, 12, 15, '2021-01-28', 'Assessment Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_6_1611751903.jpg', 'xxxx', 'xx', 0, 0, '', 0, '0', '2021-01-27 12:51:43'),
 (7, 1, 1, 1, 12, 15, '2021-03-10', 'Matching Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_7_1611982112.jpg', 'xxxx', 'xx', 1, 0, '', 0, '0', '2021-02-04 11:53:51'),
 (9, 1, 1, 1, 12, 15, '2021-01-28', 'IT Quiz', 'Register to see competition topic', '', 'class 6 - class 9', 3, 'photo_9_1611752081.jpg', 'aaaaaaaa', 'aaaaaaaaaa', 0, 0, '', 0, '0', '2021-01-27 12:54:41'),
 (11, 1, 0, 2, 18, 25, '2020-12-29', 'second package', 'Register to see competition topic', '', 'Male(18+)', 4, 'photo_1610696124.jpg', 'aass', 'ddd', 0, 0, '', 0, '0', '2020-12-30 11:48:21'),
@@ -259,7 +260,8 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (51, 1, 1, 2, 18, 25, '2021-01-17', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, '', 'hfgfg', '<p>gh</p><p>fdh</p>', 0, 0, '', 0, '', '2021-01-15 07:26:25'),
 (52, 1, 1, 2, 18, 25, '2021-01-17', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Females(18+)', 5, '', 'hfgfg', '<p>gh</p><p>fdh</p>', 0, 0, '', 0, '', '2021-01-15 07:27:18'),
 (53, 1, 1, 1, 8, 10, '2021-02-10', 'Current Affairs Quiz', 'Register to see competition topic', '', 'Class 2 - Class 5', 2, 'photo_53_1611981866.jpg', 'klk', '<p>kll;</p>', 0, 0, '', 0, '', '2021-01-30 04:44:26'),
-(59, 2, 1, 2, 18, 25, '2021-03-10', 'Classical Singing', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_59_1612328773.jpg', '<ul><li>Participants should send their submissions based on the given topics. Submission should be in the desired format i.e video/ image.&nbsp;</li><li>Participants should send their submissions based on the given topics. Submission should be in the desir', '<ul><li>Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.</li><li>Participants should send their submissions based on the given topics. Submission should be in the desired fo', 1, 0, '', 0, '', '2021-02-03 05:06:13');
+(59, 2, 1, 2, 18, 25, '2021-03-10', 'Classical Singing', 'Register to see competition topic', '', 'Females(18+)', 5, 'photo_59_1612328773.jpg', '<ul><li>Participants should send their submissions based on the given topics. Submission should be in the desired format i.e video/ image.&nbsp;</li><li>Participants should send their submissions based on the given topics. Submission should be in the desir', '<ul><li>Participants should send their submissions based on the given topics.\r\nSubmission should be in the desired format i.e video/ image.</li><li>Participants should send their submissions based on the given topics. Submission should be in the desired fo', 1, 0, '', 0, '', '2021-02-03 05:06:13'),
+(60, 4, 1, 1, 12, 15, '2021-02-10', 'Easy Writing', 'Register to see competition topic', '<ul><li class=\"TrT0Xe\" style=\"margin: 0px 0px 4px; padding: 0px; list-style-type: disc;\">Should plastic be banned?</li><li class=\"TrT0Xe\" style=\"margin: 0px 0px 4px; padding: 0px; list-style-type: disc;\">Pollution due to Urbanization.</li><li class=\"TrT0X', 'class 6 - class 9', 3, 'photo_60_1612270979.jpg', '<p style=\"margin-top: 1em; margin-bottom: 0px; font-size: 1.125rem; line-height: 1.5; text-align: initial; orphans: 1; hyphens: auto; font-family: \"Times New Roman\", Georgia, \"SBL Greek\", serif;\">An effective set of instruction require', '<ul style=\"padding: 0px; margin: 0.625rem 0px; color: rgb(64, 64, 64); font-family: Arial, Roboto, Helvetica, sans-serif; font-size: 14px;\"><li style=\"line-height: 1.5; list-style-position: inside; margin: 0px; left: 0px; padding: 0px 1.625rem; position: ', 1, 0, '', 0, '', '2021-02-02 13:02:59');
 
 -- --------------------------------------------------------
 
@@ -544,7 +546,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 (29, 'Bhimrao Chavan', '20', 'manishc@gmail.com', '3', 'english model school', 'kolhapur', 416012, 53, 92, '', '2021-02-02'),
 (30, 'Ganesh Chavan', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, 53, 93, '', '2021-02-02'),
 (31, 'xyz', '45', 'xyz@gmail.com', '', 'ppgh', 'kolhapur', 416012, 26, 94, '', '2021-02-03'),
-(33, 'manish patil', '22', 'rrr@gmail.com', '3', '', 'kkk', 410, 26, 123, '', '2021-02-06');
+(32, 'Rangrao', '12', 'manish@gmail.com', '4', 'jkllk', 'kkk', 416012, 60, 123, '', '2021-02-08'),
+(33, 'Manish Patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 1, 7, 1, '', '2021-02-08');
 
 -- --------------------------------------------------------
 
@@ -662,7 +665,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`, `user_address`, `user_pincode`, `user_city`, `user_email`, `user_mobile`, `user_password`, `user_otp`, `user_status`, `user_addedby`, `user_date`, `is_admin`) VALUES
 (1, 1, '', 1, 'Admin', '', 1, 'Kolhapur', 'demo@email.com', '9876543210', '12345678', NULL, 'active', 'Admin', '2021-02-05 05:00:50', 0),
 (6, 1, '', 2, 'Datta Mane', 'kop\r\n', 416012, 'Kop', 'datta@mail.com', '9673454383', '12345689', NULL, 'active', '0', '2021-02-05 05:01:37', 0),
-(11, 1, '', 2, 'rohan wordpress', 'kop', 2, 'kolhapur', 'rohan@gm.com', '897456210', '1234', NULL, 'active', '0', '2021-02-04 06:56:13', 0),
+(11, 1, '', 2, 'rohan wordpress', 'kop', 2, 'kolhapur', 'rohan@gm.com', '8974562101', '1234', NULL, 'active', '0', '2021-02-08 12:37:48', 0),
 (12, 1, '', 2, 'techenvision', 'rajarampuri', 2, 'kop', 'techenvision@gmail.com', '8421751394', 'tech', '11', 'active', '0', '2021-01-21 06:08:05', 0),
 (16, 0, '', 2, 'techenvision', '', 416012, '', '', '9999999999', '', '123654', 'active', '1', '2020-12-15 01:18:59', 1),
 (17, 0, '', 2, 'tech', '', 416012, '', '', '7777777777', '', '30', 'active', '1', '2020-12-15 01:19:03', 1),
@@ -749,7 +752,16 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (120, 0, '', 3, 'xyz', '', 416012, '', '', '9822114879', 'Sp@99663', NULL, 'active', '', '2021-02-03 12:24:39', 3),
 (121, 0, '', 3, 'yash', '', 416012, '', '', '7507877187', 'Sp@7507877187', NULL, 'active', '', '2021-02-04 06:17:39', 3),
 (122, 0, '', 3, 'Tushar', '', 416012, '', '', '9696965454', 'Tushar@123456', NULL, 'active', '', '2021-02-04 10:07:58', 3),
-(123, 0, '', 3, 'Rohan', '', 5555, '', '', '1234567890', '555555oE@', NULL, 'active', '', '2021-02-06 11:26:53', 3);
+(123, 0, '', 3, 'Rohini Patil', '', 416012, '', '', '8585855252', 'Rohini@1', NULL, 'active', '', '2021-02-08 06:48:08', 3),
+(124, 0, '', 3, 'Mohini Rane', '', 416012, '', '', '7474744141', 'Mohini@123', NULL, 'active', '', '2021-02-08 12:46:50', 3),
+(125, 0, '', 3, 'Ram', '', 416012, '', '', '4545454512', 'Ram@1234', NULL, 'active', '', '2021-02-08 12:54:24', 3),
+(126, 0, '', 3, 'sssssssss', '', 333333, '', '', '6666666667', 'Aa@654321', NULL, 'active', '', '2021-02-08 13:06:59', 3),
+(127, 0, '', 3, 'ddddd', '', 223333, '', '', '9999999977', 'Sa#1223344', NULL, 'active', '', '2021-02-08 13:10:36', 3),
+(128, 0, '', 3, 'yhtyyujy', '', 655555, '', '', '3333333344', 'Ad@1234567', NULL, 'active', '', '2021-02-08 13:12:16', 3),
+(129, 0, '', 3, 'dddddds', '', 333333, '', '', '5555555554', 'Asdf@1234', NULL, 'active', '', '2021-02-08 13:20:09', 3),
+(157, 0, '', 3, 'fdsfdf', '', 344555, '', '', '8888888866', 'As#12234454', NULL, 'active', '', '2021-02-08 13:24:03', 3),
+(158, 0, '', 3, 'gjhgjh', '', 416012, '', '', '6363632121', 'Lh@1234567', NULL, 'active', '', '2021-02-08 13:26:13', 3),
+(159, 0, '', 3, 'dfdgf', '', 444444, '', '', '6565656363', 'Ki@12345667', NULL, 'active', '', '2021-02-08 13:31:20', 3);
 
 -- --------------------------------------------------------
 
@@ -1040,7 +1052,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
