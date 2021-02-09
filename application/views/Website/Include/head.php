@@ -13,6 +13,11 @@
 // print_r($profile_list);die();
 
 ?>
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -216,7 +221,7 @@
       <div class="modal-body con ">
 
        
-          <form class="signUp form"  id="signupForm" role="form" autocomplete='off'>
+          <form class="signUp form"  id="signupForm" name="SignUp" role="form" autocomplete='off'>
 
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -260,7 +265,7 @@
               <button class="form-btn button dx" type="submit">Sign Up</button>
           </form>
          <!-- <?php if(isset($error_msg)){ echo $error_msg; } ?> -->
-         <form class="signIn form" id="signInForm" role="form" autocomplete='off'>
+         <form class="signIn form" id="signInForm" name="SignIn" role="form" autocomplete='off'>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -269,11 +274,12 @@
             <!-- <p class="p">- or -</p> -->
             
             <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
-            <span class="text-red"> <?php echo form_error('mobile'); ?></span>
+          <!--   <span class="text-red"> < ?php echo form_error('mobile'); ?></span> -->
+            <!-- <div id="infoMessage">< ?php echo form_error('mobile'); ?></div> -->
 
              <input type="password" class="input" name="password" id="password" placeholder="Password" required=""><span toggle="#password-field" style="margin-left: -30px;" class="fa fa-fw fa-eye field_icon toggle-password"></span>
           
-            <span class="text-red"> <?php echo form_error('password'); ?> </span>
+           <!--  <span class="text-red"> < ?php echo form_error('password'); ?> </span> -->
 
             <h6 class="alert alert-success successresponse"></h6>
             <h6 class="alert alert-danger errorresponse"></h6>
@@ -395,6 +401,8 @@ var user_mobile21 = $('#user_mobile').val();
 
   $('#signInForm').submit(function(e) {
 
+
+
      var mobile = $('#mobile').val();
       var password = $('#password').val();
       // alert(mobile);
@@ -405,9 +413,11 @@ var user_mobile21 = $('#user_mobile').val();
            data:{mobile:mobile,password:password},
            success:function(data)
             {
+              
                // alert(data);
                // console.log(data);
                if(data=='Sign In Successful'){
+
                 $('.alert-success').html(data);
                 $('.successresponse').show().delay(3000).fadeOut();
                 $('.errorresponse').hide();
@@ -454,11 +464,12 @@ var user_mobile21 = $('#user_mobile').val();
                // console.log(data);
                  if(data=='Sign Up Successfully'){
 
-                  window.location.reload();
                   
-                // $('.alert-success').html(data);
-                // $('.mobileerror').hide();
-                // $('.mobilesuccess').show().delay(1000).fadeOut();
+                $('.alert-success').html(data);
+                $('.mobileerror').hide();
+                $('.mobilesuccess').show().delay(1000).fadeOut();
+                  window.location.reload();
+
 
                 //  document.getElementById("signupForm").reset();
 
@@ -480,11 +491,13 @@ var user_mobile21 = $('#user_mobile').val();
                 document.getElementById("signupForm").reset();
                }
                
+              window.location.reload();
 
             }
 
 
             });
+
             e.preventDefault();
   });
 </script>

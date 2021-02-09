@@ -59,53 +59,37 @@ class WebsiteController extends CI_Controller{
   
   public function login1()
   {
-    // echo "string";
+   
 
-    // print_r($_POST);
+    
     $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
+    // $this->form_validation->set_message('mobile', 'required','Enter Mobile Number');
     $this->form_validation->set_rules('password', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
  
+
     } else{
+
+
     
       $mobile = $this->input->post('mobile');
       $password = $this->input->post('password');
 
       $login = $this->Website_Model->check_login($mobile,$password);
-      // $loginM = $this->Website_Model->check_loginM($mobile);
-      // $loginP = $this->Website_Model->check_loginP($password);
-  
-     // $login =$loginM;
-     // $login =$loginP;
-      // print_r($login);
-
+   
      if($login == null ){
-       // alert("login_error");
+     
          echo "Invalid Credentials";
 
 
-      }
-      // elseif ($loginP == null) {
-
-      //   echo "Invalid Password";
-
-      // }
-      // elseif ( $loginM == null) {
-
-      //  echo "Invalid Mobile Number";
-       
-
-      // }
-       else{
-       // print_r($login); die();
+      }else{
+      
       
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id'] );
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
         echo 'Sign In Successful';
-        // $this->session->set_flashdata('login_success','success');
-        // header('location:'.base_url().'WebsiteController');
-       
+      
       }
     }
 
@@ -288,26 +272,18 @@ class WebsiteController extends CI_Controller{
         'roll_id' => 3,
       );
 
-    //   $mobile = $this->input->post('user_mobile');
+      $mobile = $this->input->post('user_mobile');
    
-    //   $mob = $this->Website_Model->check_reg($mobile);
+      $mob = $this->Website_Model->check_reg($mobile);
    
-    //   if($mob == null){
+      if($mob == null){
     
 
-    //   echo "Sign Up Successfully";
-    //    $this->Website_Model->save_data('user',$save_data);
-    //    // $this->session->set_flashdata('register_success','success');
-    //    // header('location:'.base_url().'WebsiteController');
-
-    // }else{
-    //   // print_r($mob);
-    //   echo "Mobile Number is Already Exists";
-    // }
+      echo "Sign Up Successfully";
 
       $this->Website_Model->save_data('user',$save_data);
-
-      //*********************   remove this code after demo   *********************
+       // $this->session->set_flashdata('register_success','success');
+       // header('location:'.base_url().'WebsiteController');
       $mobile = $this->input->post('user_mobile');
       $password = $this->input->post('user_password');
 
@@ -316,13 +292,13 @@ class WebsiteController extends CI_Controller{
       // print_r($login);die();
       if($login == null){
         // alert("login_error");
-        $this->session->set_flashdata('msg','login_error');
-         $this->session->set_flashdata('login_ermsg','error');
+        // $this->session->set_flashdata('msg','login_error');
+        $this->session->set_flashdata('login_ermsg','error');
         header('location:'.base_url().'WebsiteController');
 
       } else{
        // print_r($login); die();
-        echo 'null not';
+        // echo 'null not';
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
         // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
@@ -332,10 +308,21 @@ class WebsiteController extends CI_Controller{
 
         $this->session->set_flashdata('login_success','success');
         header('location:'.base_url().'WebsiteController');
+        // redirect('WebsiteController');
 
       
 
     } 
+
+    }else{
+      // print_r($mob);
+      echo "Mobile Number is Already Exists";
+    }
+
+      // $this->Website_Model->save_data('user',$save_data);
+
+      //*********************   remove this code after demo   *********************
+  
 
    }
   }

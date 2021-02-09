@@ -130,31 +130,31 @@
 $(function() {
   // Initialize form validation on the registration form.
   // It has the name attribute "registration"
-  $("form[name='user_name']").validate({
+  $("form[name='SignIn']").validate({
     // Specify validation rules
     rules: {
       // The key name on the left side is the name attribute
       // of an input field. Validation rules are defined
       // on the right side
-      name: "required",
-      phone: "required",
-      address: "required",
-      pin_code: "required",
-      email: {
-        required: true,
-        // Specify that email should be validated
-        // by the built-in "email" rule
-        email: true
-      },
+      // user_name: "required",
+      // user_pincode: "required",
+      mobile: "required",
+      password: "required",
+      // email: {
+      //   required: true,
+      //   // Specify that email should be validated
+      //   // by the built-in "email" rule
+      //   email: true
+      // },
       
     },
     // Specify validation error messages
     messages: {
-      name: "Please enter your name",
-      phone: "Please enter your phone",
-      email: "Please enter a valid email address",
-      pin_code: "Please enter a valid pincode",
-      address: "Please enter Street Address"
+      // user_name: "Please enter your name",
+      mobile: "Please enter your mobile number",
+      password: "Please enter a valid password",
+      // user_pincode: "Please enter a valid pincode",
+      // address: "Please enter Street Address"
     },
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
@@ -162,6 +162,7 @@ $(function() {
       form.submit();
     }
   });
+ 
 });
  </script>
  <!-- only text no number  -->
