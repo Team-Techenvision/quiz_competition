@@ -124,7 +124,7 @@
     </script>
 
        <!-- email validation  -->
- <script type="text/javascript">
+ <!-- <script type="text/javascript">
  
   // Wait for the DOM to be ready
 $(function() {
@@ -164,7 +164,7 @@ $(function() {
   });
  
 });
- </script>
+ </script> -->
  <!-- only text no number  -->
  <script>
  $( document ).ready(function() {

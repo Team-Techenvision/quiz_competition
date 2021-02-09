@@ -1,11 +1,16 @@
-
-
+<!--  -->
+<style type="text/css">
+  input[type=file]{
+    width:120px;
+    color:transparent;
+}
+</style>
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper" style="background-image:url('<?php echo base_url(); ?>/assets/images/backprofile.jpg');">
+<div class="wrapper" >
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper profilewrapper">
+  <div class=" profilewrapper" style="background-image:url('<?php echo base_url(); ?>/assets/images/20252.jpg');" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -33,7 +38,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-               <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data"> 
+               <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data" autocomplete="off"> 
                  <div class="row" >   
                   <div class="form-group col-md-3">
                   <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
@@ -44,7 +49,8 @@
                 <?php  }?>
                 <br>
 
-                   <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" />
+                   <!-- <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
+                   <div><input type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" ><label id="fileLabel">Choose file</label></div>
 
                   <!-- 
                   src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
@@ -53,6 +59,18 @@
                    </div> 
                    <div class="form-group col-md-9">
                       <div class="row" >
+                        <?php foreach ($user_list as $value) { ?>
+                        <div class="form-group col-md-12">
+                             <div class="row">
+                              <div class="col-md-4"><label for="inputName" class="form-label">Full Name</label>&nbsp;<label style="color:red;">*</label></div>
+                        
+                                 <div class="col-md-8">
+                                  <input type="text" class="form-control txtOnly"  name="fullname" id="fullname" value="<?php echo $value->user_name;  ?>"placeholder="Enter Full Name" required>
+
+                                </div>
+                               </div>
+                          </div>
+                         
                            <div class="form-group col-md-12">
                             <div class="row">
                               <div class="col-md-4"><label>Parent Name</label>&nbsp;<label style="color:red;">*</label></div>
@@ -63,16 +81,45 @@
                   
                       </div>
                     
-                        <div class="form-group col-md-12">
+                          <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">Participant Age</label>&nbsp;<label style="color:red;">*</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">BirthDate</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                  <input type="text" class="form-control notext"  name="age" id="age" value="<?php if(isset($age)){ echo $age; } ?>" minlength="2" maxlength="2"placeholder="Enter age" required>
+                                  <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" required>
 
                                 </div>
-                                  </div>
-                                  </div>
+                               </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                             <div class="row">
+                              <div class="col-md-4"><label for="inputName" class="form-label">Gender</label></div>
+                        
+                                 <div class="col-md-8">
+                                 <!--   <?php
+                                      if(isset($grade)){?>
+
+                                      <input type="text" class="form-control title-case " name="grade" id="grade" value="<?php if(isset($grade)){ echo $grade; } ?>" disabled="">
+                                    <?php }?>   -->
+                                  <select name="gender" id="gender"class="form-control" >
+                                    <option value="">Select Gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                  </select>
+                                 </div>
+                                </div>
+                                
+                              </div>
+                              <div class="form-group col-md-12">
+                             <div class="row">
+                              <div class="col-md-4"><label for="inputName" class="form-label">Alternate Mobile No.</label>&nbsp;<label style="color:red;">*</label></div>
+                        
+                                 <div class="col-md-8">
+                                  <input type="text" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
+
+                                </div>
+                               </div>
+                            </div>
 
                                    <div class="form-group col-md-12">
                              <div class="row">
@@ -96,7 +143,7 @@
 
                              <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">Grade</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Standard</label></div>
                         
                                  <div class="col-md-8">
                                  <!--   <?php
@@ -104,16 +151,73 @@
 
                                       <input type="text" class="form-control title-case " name="grade" id="grade" value="<?php if(isset($grade)){ echo $grade; } ?>" disabled="">
                                     <?php }?>   -->
-                                  <select name="grade" id="grade"class="form-control" >
-                                  <option value="">Select Grade</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
+                                  <select name="standard" id="standard"class="form-control" >
+                                  <option value="">Select Standard</option>
+                                  <option value="1">1st</option>
+                                  <option value="2">2nd</option>
+                                  <option value="3">3rd</option>
+                                  <option value="4">4th</option>
+                                  <option value="5">5th</option>
+                                  <option value="6">6th</option>
+                                  <option value="7">7th</option>
+                                  <option value="8">8th</option>
+                                  <option value="9">9th</option>
+                                  <option value="10">10th</option>
+                                  <option value="11">11th</option>
+                                  <option value="12">12th</option>
+                                  <option value="13">Male(18+)</option>
+                                  <option value="14">Female(18+)</option>
                                 </select>
                                  </div>
                                 </div>
+                                
+                              </div>
+                             <div class="form-group col-md-12">
+                             <div class="row">
+                              <div class="col-md-4"><label for="inputName" class="form-label">State</label></div>
+                        
+                                 <div class="col-md-8">
+                                
+                                  <select name="stateid" id="stateid"class="form-control" >
+                                  <option value="">Select State</option>
+                                    <?php foreach($state as $state)
+                                     {
+                                          echo '<option value="'. $state->stateid.'" '.$selected.'>'. $state->statename.'</option>';
+
+                                               
+                                      }
+                                     ?>   
+                                </select>
+                                 </div>
+                                </div>
+                                
+                              </div>
+                              <div class="form-group col-md-12">
+                               <div class="row">
+                                <div class="col-md-4"><label for="inputName" class="form-label">City</label></div>
+                          
+                                   <div class="col-md-8">
+                                  
+                                    <select name="cityid" id="cityid"class="form-control" >
+                                    <option value="">Select City</option>
+                                   
+                                  </select>
+                                   </div>
+                                  </div>
+                                
+                              </div>
+                              <div class="form-group col-md-12">
+                               <div class="row">
+                                <div class="col-md-4"><label for="inputName" class="form-label">District</label></div>
+                          
+                                   <div class="col-md-8">
+                                  
+                                    <select name="districtid" id="districtid"class="form-control" >
+                                    <option value="">Select District</option>
+                                   
+                                  </select>
+                                   </div>
+                                  </div>
                                 
                               </div>
                                   
@@ -131,16 +235,18 @@
                              <div class="row">
                               <div class="col-md-4"><label for="inputName" class="form-label">Pincode</label>&nbsp;<label style="color:red;">*</label></div>
                         
-                                 <div class="col-md-4">
+                                 <div class="col-md-8">
                                  <!--  <?php
                                       if(isset($pincode)){?>
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="text" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter pincode" required>
+                                     <input type="text" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" required>
                                     </div></div>
                                   </div>
-                                    </div>
+                            <?php } ?>
+
+                        </div>
 
                       </div>
 
@@ -148,11 +254,11 @@
                     <div class="row " >   
                    <div class="form-group col-md-5"></div>
                    <div class="form-group col-md-2">
-                     <center><div class="button11" id="button-6">
+                     <!-- <center><div class="button11" id="button-6">
                        <div id="spin"></div>
                        <a href="#" id="btn_update" type="submit" >Update</a>
-                      </div></center>
-                  <!--  <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary">Edit </button> -->
+                      </div></center> -->
+                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary">Edit </button>
                  </div>
                </div>
               
@@ -194,7 +300,17 @@
    });
    
     function readURL(input) {
-              if (input.files && input.files[0]) {
+                var a = document.getElementById('profile_image');
+              if(a.value == "")
+              {
+                  fileLabel.innerHTML = "Choose file";
+              }
+              else
+              {
+                  var theSplit = a.value.split('\\');
+                  fileLabel.innerHTML = theSplit[theSplit.length-1];
+              }
+                if (input.files && input.files[0]) {
                   var reader = new FileReader();
 
                   reader.onload = function (e) {
@@ -206,6 +322,75 @@
               }
           }
   </script>
+   <script>
+$(document).ready(function(){
+ 
+ $('#stateid').change(function(){
+  // alert('hii');
+
+  var stateid = $('#stateid').val();
+
+  if(stateid != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>WebsiteController/fetch_city",
+    method:"POST",
+    data:{stateid:stateid},
+    success:function(data)
+    {
+     $('#cityid').html(data);
+     $('#districtid').html('<option value="">Select District</option>');
+
+    }
+   });
+  }
+  else
+  {
+   $('#cityid').html('<option value="">Select City</option>');
+     $('#districtid').html('<option value="">Select District</option>');
+
+  }
+ });
+
+  $('#cityid').change(function(){
+  var cityid = $('#cityid').val();
+  if(cityid != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>WebsiteController/fetch_district",
+    method:"POST",
+    data:{cityid:cityid},
+    success:function(data)
+    {
+     $('#districtid').html(data);
+     
+    }
+   });
+  }
+  else
+  {
+   $('#districtid').html('<option value="">Select District</option>');
+   
+
+  }
+ });
+ 
+});
+</script>
+<!-- <script type="text/javascript">
+  window.pressed = function(){
+    var a = document.getElementById('profile_image');
+    if(a.value == "")
+    {
+        fileLabel.innerHTML = "Choose file";
+    }
+    else
+    {
+        var theSplit = a.value.split('\\');
+        fileLabel.innerHTML = theSplit[theSplit.length-1];
+    }
+};
+</script> -->
  
 </body>
 </html>

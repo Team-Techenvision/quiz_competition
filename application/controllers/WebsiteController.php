@@ -147,7 +147,7 @@ class WebsiteController extends CI_Controller{
 
     // print_r($data['user_list']);
     $data['company_list'] = $this->Website_Model->get_list_by_id('company_id','4','','','','','company');
-    $data['country'] = $this->Website_Model->fetch_country();
+    // $data['country'] = $this->Website_Model->fetch_country();
     // $data['pincode'] = $this->Website_Model->fetch_pincodelist();
     // $data['pin'] = $this->Website_Model->fetch_pincodelist();
     // $data['userid'] = $this->Website_Model->fetch_userid();
@@ -397,9 +397,9 @@ public function insert_profiledata(){
       $save_data = array(
        
         'parentname' => $this->input->post('parentname'),
-        'age' => $this->input->post('age'),
+        'birthdate' => $this->input->post('birthdate'),
         'emailid' => $this->input->post('emailid'),
-        'grade' => $this->input->post('grade'),
+        'standard' => $this->input->post('standard'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
@@ -472,7 +472,20 @@ public function insert_profiledata(){
   // Edit Profile....
 
    
-     
+function fetch_city()
+ {
+  if($this->input->post('stateid'))
+  {
+   echo $this->Website_Model->fetch_city($this->input->post('stateid'));
+  }
+ }   
+ function fetch_district()
+ {
+  if($this->input->post('cityid'))
+  {
+   echo $this->Website_Model->fetch_district($this->input->post('cityid'));
+  }
+ }  
   public function edit_profile(){
     // print_r($_POST);
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
@@ -486,15 +499,21 @@ public function insert_profiledata(){
 
       $update_data = array(
         'parentname' => $this->input->post('parentname'),
-        'age' => $this->input->post('age'),
+        'fullname' => $this->input->post('fullname'),
+        'birthdate' => $this->input->post('birthdate'),
         'emailid' => $this->input->post('emailid'),
-        'grade' => $this->input->post('grade'),
+        'standard' => $this->input->post('standard'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
         'competitionid' => $this->input->post('competition_id'),
         'profile_image' => $this->input->post('profile_image'),
-        // 'user_addedby' => $quizweb_user_id,
+        'alternatemobno' => $this->input->post('alternatemobno'),
+        'gender' => $this->input->post('gender'),
+        'cityid' => $this->input->post('cityid'),
+        'districtid' => $this->input->post('districtid'),
+        'stateid' => $this->input->post('stateid'),
+        'user_id' => $quizweb_user_id,
       );
       $this->Website_Model->update_info('user_id', $quizweb_user_id, 'profile', $update_data);
 
@@ -544,17 +563,23 @@ public function insert_profiledata(){
     foreach($profile_info as $info){
       $data['update'] = 'update';
       $data['parentname'] = $info->parentname;
-      $data['age'] = $info->age;
+      $data['birthdate'] = $info->birthdate;
       $data['emailid'] = $info->emailid;
-      $data['grade'] = $info->grade;
+      $data['standard'] = $info->standard;
       $data['schoolcollegename'] = $info->schoolcollegename;
       $data['address'] = $info->address;
       $data['pincode'] = $info->pincode;
+      $data['fullname'] = $info->fullname;
+      $data['alternatemobno'] = $info->alternatemobno;
+      $data['gender'] = $info->gender;
+      $data['cityid'] = $info->cityid;
+      $data['districtid'] = $info->districtid;
+      $data['stateid'] = $info->stateid;
       $data['competitionid'] = $info->competitionid;
       $data['profile_image'] = $info->profile_image;
     }
-  $data['pin'] = $this->Website_Model->fetch_pincodelist();
-  $profile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','profile'); 
+  $data['state'] = $this->Website_Model->fetch_state();
+  $data['user_list'] = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','user'); 
 
   
 

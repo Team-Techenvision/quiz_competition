@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2021 at 02:36 PM
+-- Generation Time: Feb 09, 2021 at 02:39 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -125,7 +125,6 @@ INSERT INTO `banner` (`bannerid`, `title`, `subtitle`, `profile_image`, `slider_
 CREATE TABLE `city` (
   `cityid` bigint(50) NOT NULL,
   `cityname` varchar(255) NOT NULL,
-  `countryid` bigint(50) NOT NULL,
   `stateid` bigint(50) NOT NULL,
   `ceated_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -134,10 +133,10 @@ CREATE TABLE `city` (
 -- Dumping data for table `city`
 --
 
-INSERT INTO `city` (`cityid`, `cityname`, `countryid`, `stateid`, `ceated_date`) VALUES
-(1, 'kolhapur', 1, 1, '2020-12-05 00:00:00'),
-(2, 'sangali', 1, 1, '2020-12-05 00:00:00'),
-(3, 'satara', 1, 1, '2020-12-05 00:00:00');
+INSERT INTO `city` (`cityid`, `cityname`, `stateid`, `ceated_date`) VALUES
+(1, 'kolhapur', 22, '2020-12-05 00:00:00'),
+(2, 'sangali', 22, '2020-12-05 00:00:00'),
+(3, 'satara', 22, '2020-12-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -499,12 +498,18 @@ INSERT INTO `prizemaster` (`prizeid`, `competitionid`, `levelid`, `winnerpositio
 CREATE TABLE `profile` (
   `profileid` bigint(50) NOT NULL,
   `parentname` varchar(255) NOT NULL,
-  `age` varchar(50) NOT NULL,
+  `birthdate` date NOT NULL,
   `emailid` varchar(255) NOT NULL,
-  `grade` varchar(255) NOT NULL,
+  `standard` varchar(255) NOT NULL,
   `schoolcollegename` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `pincode` bigint(10) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `alternatemobno` varchar(10) NOT NULL,
+  `gender` int(11) NOT NULL,
+  `cityid` int(11) NOT NULL,
+  `districtid` int(11) NOT NULL,
+  `stateid` int(11) NOT NULL,
   `competitionid` bigint(50) NOT NULL,
   `user_id` int(50) NOT NULL,
   `profile_image` varchar(255) NOT NULL,
@@ -515,39 +520,39 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `schoolcollegename`, `address`, `pincode`, `competitionid`, `user_id`, `profile_image`, `created_date`) VALUES
-(1, 'Manish Patil', '10', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, 19, 62, '', '2021-01-15'),
-(2, 'techenvision', '10', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, 1, 50, '', '0000-00-00'),
-(3, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 5, 36, 'profile_image_1_1609322335.PNG', '0000-00-00'),
-(4, 'mohan patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 34, 12, '', '0000-00-00'),
-(6, 'manish patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 26, 53, 'profile1.jpg', '2020-12-29'),
-(7, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 29, '', '2020-12-25'),
-(8, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 36, 30, '', '2020-12-25'),
-(9, 'Rohan Wordpress', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 5, 33, '', '2020-12-25'),
-(10, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 34, '', '2020-12-25'),
-(11, 'Manish Patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 1, 'profile_image_1_1609322335.PNG', '2020-12-25'),
-(12, 'manisha Pawar', '20', 'manish@gmail.com', '', 'english model school', 'kkk', 2, 7, 6, 'profile_image_6_1609303697.gif', '2020-12-25'),
-(13, 'manish patil', '10', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, 6, 18, '', '2020-12-25'),
-(14, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 5, 16, '', '2020-12-25'),
-(15, 'Komal kadam', '10', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, 7, 17, '', '2020-12-25'),
-(16, 'kiran kadam', '10', 'kiran@gmail.com', '3', 'english model school', 'kkk', 1, 10, 55, '', '2020-12-25'),
-(17, 'prathamesh chavan', '22', 'pppp@gmail.com', '3', 'english model school', 'kkk', 1, 10, 56, '', '2020-12-25'),
-(18, 'manish patil', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 11, 20, '', '2020-12-31'),
-(19, 'Manish Patil', '10', 'manish@gmail.com', '1', 'english model school', 'kkk', 2, 2, 21, '', '2020-12-31'),
-(20, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 2, 23, '', '2020-12-31'),
-(21, 'Rohan Wordpress', '10', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, 1, 57, '', '2021-01-01'),
-(22, 'Kamini patil', '13', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, 7, 62, '', '2021-01-15'),
-(23, 'monika desai', '15', 'monika@gmail.com', '5', 'english model school', 'kkk', 1, 14, 35, '', '2021-01-01'),
-(24, 'Prakash', '15', 'prakash@gmail.com', '2', 'english model school', 'kkk', 2, 6, 58, 'profile_image_58_1609503496.jpg', '2021-01-01'),
-(25, 'Rohan Wordpress', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 2, 59, '', '2021-01-02'),
-(26, 'Manish Mane', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, 53, 62, '', '2021-01-15'),
-(27, 'Suresh Gavali', '23', 'sayali@gamil.com', '1', 'dot', 'Kolhapur', 1, 59, 63, '', '2021-01-20'),
-(28, 'manish patil', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, 53, 65, 'profile_image_65_1612357338.jpg', '2021-02-02'),
-(29, 'Bhimrao Chavan', '20', 'manishc@gmail.com', '3', 'english model school', 'kolhapur', 416012, 53, 92, '', '2021-02-02'),
-(30, 'Ganesh Chavan', '12', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, 53, 93, '', '2021-02-02'),
-(31, 'xyz', '45', 'xyz@gmail.com', '', 'ppgh', 'kolhapur', 416012, 26, 94, '', '2021-02-03'),
-(32, 'Rangrao', '12', 'manish@gmail.com', '4', 'jkllk', 'kkk', 416012, 60, 123, '', '2021-02-08'),
-(33, 'Manish Patil', '10', 'manish@gmail.com', '', 'english model school', 'kkk', 1, 7, 1, '', '2021-02-08');
+INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `standard`, `schoolcollegename`, `address`, `pincode`, `fullname`, `alternatemobno`, `gender`, `cityid`, `districtid`, `stateid`, `competitionid`, `user_id`, `profile_image`, `created_date`) VALUES
+(1, 'Manish Patil', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'Kolhapur', 1, '', '', 0, 0, 0, 0, 19, 62, '', '2021-01-15'),
+(2, 'techenvision', '0000-00-00', 'tech@gmail.com', '3', 'english model school', 'kolhapur', 1, '', '', 0, 0, 0, 0, 1, 50, '', '0000-00-00'),
+(3, 'Manish Patil', '0000-00-00', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 5, 36, 'profile_image_1_1609322335.PNG', '0000-00-00'),
+(4, 'mohan patil', '0000-00-00', 'manish@gmail.com', '', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 34, 12, '', '0000-00-00'),
+(6, 'manish patil', '0000-00-00', 'manish@gmail.com', '', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 26, 53, 'profile1.jpg', '2020-12-29'),
+(7, 'manish patil', '0000-00-00', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 7, 29, '', '2020-12-25'),
+(8, 'manish patil', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 36, 30, '', '2020-12-25'),
+(9, 'Rohan Wordpress', '0000-00-00', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 5, 33, '', '2020-12-25'),
+(10, 'manish patil', '0000-00-00', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 7, 34, '', '2020-12-25'),
+(11, 'Manish Patil', '0000-00-00', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 6, 1, 'profile_image_1_1609322335.PNG', '2020-12-25'),
+(12, 'Mahesh Mane', '2004-06-16', 'mahesh@gmail.com', '13', 'Gopal Krishna Gokhale College Kolhapur', 'kolhapur', 416012, 'Datta Mane', '7854125487', 1, 1, 1, 22, 0, 6, 'profile_image_6_1612877802.jpg', '2020-12-25'),
+(13, 'manish patil', '0000-00-00', 'manish@gmail.com', '3', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 6, 18, '', '2020-12-25'),
+(14, 'Rohan Wordpress', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 5, 16, '', '2020-12-25'),
+(15, 'Komal kadam', '0000-00-00', 'manish@gmail.com', '4', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 7, 17, '', '2020-12-25'),
+(16, 'kiran kadam', '0000-00-00', 'kiran@gmail.com', '3', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 10, 55, '', '2020-12-25'),
+(17, 'prathamesh chavan', '0000-00-00', 'pppp@gmail.com', '3', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 10, 56, '', '2020-12-25'),
+(18, 'manish patil', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 11, 20, '', '2020-12-31'),
+(19, 'Manish Patil', '0000-00-00', 'manish@gmail.com', '1', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 2, 21, '', '2020-12-31'),
+(20, 'Rohan Wordpress', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 2, 23, '', '2020-12-31'),
+(21, 'Rohan Wordpress', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 1, 57, '', '2021-01-01'),
+(22, 'Kamini patil', '0000-00-00', 'manish@gmail.com', '3', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 7, 62, '', '2021-01-15'),
+(23, 'monika desai', '0000-00-00', 'monika@gmail.com', '5', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 14, 35, '', '2021-01-01'),
+(24, 'Prakash', '0000-00-00', 'prakash@gmail.com', '2', 'english model school', 'kkk', 2, '', '', 0, 0, 0, 0, 6, 58, 'profile_image_58_1609503496.jpg', '2021-01-01'),
+(25, 'Rohan Wordpress', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 2, 59, '', '2021-01-02'),
+(26, 'Manish Mane', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 53, 62, '', '2021-01-15'),
+(27, 'Suresh Gavali', '0000-00-00', 'sayali@gamil.com', '1', 'dot', 'Kolhapur', 1, '', '', 0, 0, 0, 0, 59, 63, '', '2021-01-20'),
+(28, 'manish patil', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, '', '', 0, 0, 0, 0, 53, 65, 'profile_image_65_1612357338.jpg', '2021-02-02'),
+(29, 'Bhimrao Chavan', '0000-00-00', 'manishc@gmail.com', '3', 'english model school', 'kolhapur', 416012, '', '', 0, 0, 0, 0, 53, 92, '', '2021-02-02'),
+(30, 'Ganesh Chavan', '0000-00-00', 'manish@gmail.com', '2', 'english model school', 'kkk', 416012, '', '', 0, 0, 0, 0, 53, 93, '', '2021-02-02'),
+(31, 'xyz', '0000-00-00', 'xyz@gmail.com', '', 'ppgh', 'kolhapur', 416012, '', '', 0, 0, 0, 0, 26, 94, '', '2021-02-03'),
+(32, 'Rangrao', '0000-00-00', 'manish@gmail.com', '4', 'jkllk', 'kkk', 416012, '', '', 0, 0, 0, 0, 60, 123, '', '2021-02-08'),
+(33, 'Manish Patil', '0000-00-00', 'manish@gmail.com', '', 'english model school', 'kkk', 1, '', '', 0, 0, 0, 0, 7, 1, '', '2021-02-08');
 
 -- --------------------------------------------------------
 
@@ -558,7 +563,6 @@ INSERT INTO `profile` (`profileid`, `parentname`, `age`, `emailid`, `grade`, `sc
 CREATE TABLE `state` (
   `stateid` bigint(50) NOT NULL,
   `statename` varchar(255) NOT NULL,
-  `countryid` bigint(50) NOT NULL DEFAULT '1',
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -566,49 +570,49 @@ CREATE TABLE `state` (
 -- Dumping data for table `state`
 --
 
-INSERT INTO `state` (`stateid`, `statename`, `countryid`, `created_date`) VALUES
-(1, 'Andaman and Nicobar Islands', 1, '0000-00-00 00:00:00'),
-(2, 'Andhra Pradesh', 1, '0000-00-00 00:00:00'),
-(3, 'Arunachal Pradesh', 1, '0000-00-00 00:00:00'),
-(4, 'Assam', 1, '0000-00-00 00:00:00'),
-(5, 'Bihar', 1, '0000-00-00 00:00:00'),
-(6, 'Chandigarh', 1, '0000-00-00 00:00:00'),
-(7, 'Chhattisgarh', 1, '0000-00-00 00:00:00'),
-(8, 'Dadra and Nagar Haveli', 1, '0000-00-00 00:00:00'),
-(9, 'Daman and Diu', 1, '0000-00-00 00:00:00'),
-(10, 'Delhi-NCR', 1, '0000-00-00 00:00:00'),
-(11, 'Goa', 1, '0000-00-00 00:00:00'),
-(12, 'Gujarat', 1, '0000-00-00 00:00:00'),
-(13, 'Haryana', 1, '0000-00-00 00:00:00'),
-(14, 'Himachal Pradesh', 1, '0000-00-00 00:00:00'),
-(15, 'Jammu and Kashmir', 1, '0000-00-00 00:00:00'),
-(16, 'Jharkhand', 1, '0000-00-00 00:00:00'),
-(17, 'Karnataka', 1, '0000-00-00 00:00:00'),
-(18, 'Kenmore', 1, '0000-00-00 00:00:00'),
-(19, 'Kerala', 1, '0000-00-00 00:00:00'),
-(20, 'Lakshadweep', 1, '0000-00-00 00:00:00'),
-(21, 'Madhya Pradesh', 1, '0000-00-00 00:00:00'),
-(22, 'Maharashtra', 1, '0000-00-00 00:00:00'),
-(23, 'Manipur', 1, '0000-00-00 00:00:00'),
-(24, 'Meghalaya', 1, '0000-00-00 00:00:00'),
-(25, 'Mizoram', 1, '0000-00-00 00:00:00'),
-(26, 'Nagaland', 1, '0000-00-00 00:00:00'),
-(27, 'Narora', 1, '0000-00-00 00:00:00'),
-(28, 'Natwar', 1, '0000-00-00 00:00:00'),
-(29, 'Odisha', 1, '0000-00-00 00:00:00'),
-(30, 'Paschim Medinipur', 1, '0000-00-00 00:00:00'),
-(31, 'Pondicherry', 1, '0000-00-00 00:00:00'),
-(32, 'Punjab', 1, '0000-00-00 00:00:00'),
-(33, 'Rajasthan', 1, '0000-00-00 00:00:00'),
-(34, 'Sikkim', 1, '0000-00-00 00:00:00'),
-(35, 'Tamil Nadu', 1, '0000-00-00 00:00:00'),
-(36, 'Telangana', 1, '0000-00-00 00:00:00'),
-(37, 'Tripura', 1, '0000-00-00 00:00:00'),
-(38, 'TEST', 1, '0000-00-00 00:00:00'),
-(39, 'UP-1', 1, '0000-00-00 00:00:00'),
-(40, 'xxxxxx', 1, '0000-00-00 00:00:00'),
-(41, 'West Bengal', 1, '0000-00-00 00:00:00'),
-(42, 'UP-2', 1, '0000-00-00 00:00:00');
+INSERT INTO `state` (`stateid`, `statename`, `created_date`) VALUES
+(1, 'Andaman and Nicobar Islands', '0000-00-00 00:00:00'),
+(2, 'Andhra Pradesh', '0000-00-00 00:00:00'),
+(3, 'Arunachal Pradesh', '0000-00-00 00:00:00'),
+(4, 'Assam', '0000-00-00 00:00:00'),
+(5, 'Bihar', '0000-00-00 00:00:00'),
+(6, 'Chandigarh', '0000-00-00 00:00:00'),
+(7, 'Chhattisgarh', '0000-00-00 00:00:00'),
+(8, 'Dadra and Nagar Haveli', '0000-00-00 00:00:00'),
+(9, 'Daman and Diu', '0000-00-00 00:00:00'),
+(10, 'Delhi-NCR', '0000-00-00 00:00:00'),
+(11, 'Goa', '0000-00-00 00:00:00'),
+(12, 'Gujarat', '0000-00-00 00:00:00'),
+(13, 'Haryana', '0000-00-00 00:00:00'),
+(14, 'Himachal Pradesh', '0000-00-00 00:00:00'),
+(15, 'Jammu and Kashmir', '0000-00-00 00:00:00'),
+(16, 'Jharkhand', '0000-00-00 00:00:00'),
+(17, 'Karnataka', '0000-00-00 00:00:00'),
+(18, 'Kenmore', '0000-00-00 00:00:00'),
+(19, 'Kerala', '0000-00-00 00:00:00'),
+(20, 'Lakshadweep', '0000-00-00 00:00:00'),
+(21, 'Madhya Pradesh', '0000-00-00 00:00:00'),
+(22, 'Maharashtra', '0000-00-00 00:00:00'),
+(23, 'Manipur', '0000-00-00 00:00:00'),
+(24, 'Meghalaya', '0000-00-00 00:00:00'),
+(25, 'Mizoram', '0000-00-00 00:00:00'),
+(26, 'Nagaland', '0000-00-00 00:00:00'),
+(27, 'Narora', '0000-00-00 00:00:00'),
+(28, 'Natwar', '0000-00-00 00:00:00'),
+(29, 'Odisha', '0000-00-00 00:00:00'),
+(30, 'Paschim Medinipur', '0000-00-00 00:00:00'),
+(31, 'Pondicherry', '0000-00-00 00:00:00'),
+(32, 'Punjab', '0000-00-00 00:00:00'),
+(33, 'Rajasthan', '0000-00-00 00:00:00'),
+(34, 'Sikkim', '0000-00-00 00:00:00'),
+(35, 'Tamil Nadu', '0000-00-00 00:00:00'),
+(36, 'Telangana', '0000-00-00 00:00:00'),
+(37, 'Tripura', '0000-00-00 00:00:00'),
+(38, 'TEST', '0000-00-00 00:00:00'),
+(39, 'UP-1', '0000-00-00 00:00:00'),
+(40, 'xxxxxx', '0000-00-00 00:00:00'),
+(41, 'West Bengal', '0000-00-00 00:00:00'),
+(42, 'UP-2', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -761,7 +765,16 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (129, 0, '', 3, 'dddddds', '', 333333, '', '', '5555555554', 'Asdf@1234', NULL, 'active', '', '2021-02-08 13:20:09', 3),
 (157, 0, '', 3, 'fdsfdf', '', 344555, '', '', '8888888866', 'As#12234454', NULL, 'active', '', '2021-02-08 13:24:03', 3),
 (158, 0, '', 3, 'gjhgjh', '', 416012, '', '', '6363632121', 'Lh@1234567', NULL, 'active', '', '2021-02-08 13:26:13', 3),
-(159, 0, '', 3, 'dfdgf', '', 444444, '', '', '6565656363', 'Ki@12345667', NULL, 'active', '', '2021-02-08 13:31:20', 3);
+(159, 0, '', 3, 'dfdgf', '', 444444, '', '', '6565656363', 'Ki@12345667', NULL, 'active', '', '2021-02-08 13:31:20', 3),
+(183, 0, '', 3, 'xdfss', '', 234565, '', '', '6969696969', 'Kj@12345', NULL, 'active', '', '2021-02-09 04:47:15', 3),
+(184, 0, '', 3, 'dfdfdff', '', 222222, '', '', '6363636363', 'Lu#1234556', NULL, 'active', '', '2021-02-09 04:48:53', 3),
+(185, 0, '', 3, 'SHWETA', '', 123456, '', '', '7057088404', 'Sp@7057088404', NULL, 'active', '', '2021-02-09 04:55:09', 3),
+(186, 0, '', 3, 'ffffff', '', 233333, '', '', '5666666666', 'tyA@1233444545', NULL, 'active', '', '2021-02-09 06:23:43', 3),
+(187, 0, '', 3, 'ereeeeee', '', 444444, '', '', '5555555555', 'As@123456778', NULL, 'active', '', '2021-02-09 06:30:17', 3),
+(188, 0, '', 3, 'hyyyygjghj', '', 677777, '', '', '4555555555', 'Sw@133456777', NULL, 'active', '', '2021-02-09 06:33:14', 3),
+(189, 0, '', 3, 'wwwwwwwww', '', 333333, '', '', '4444443333', 'Sa@121243567', NULL, 'active', '', '2021-02-09 06:36:09', 3),
+(190, 0, '', 3, 'rrrrreeeee', '', 444444, '', '', '5555555444', 'Ds$1234567', NULL, 'active', '', '2021-02-09 06:37:22', 3),
+(191, 0, '', 3, 'tttt', '', 888888, '', '', '7777777778', 'tttttttttttS@2334567', NULL, 'active', '', '2021-02-09 06:41:29', 3);
 
 -- --------------------------------------------------------
 
@@ -1034,7 +1047,7 @@ ALTER TABLE `prizemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1052,7 +1065,7 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`

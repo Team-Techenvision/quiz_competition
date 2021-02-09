@@ -231,10 +231,37 @@ function fetch_userid()
   return $query->result();
   // print_r($query);
  }
-
-  
-
- 
+   function fetch_state()
+ {
+  $this->db->order_by("statename", "ASC");
+  $query = $this->db->get("state");
+  return $query->result();
+  // print_r($query);
+ }
+  function fetch_city($stateid)
+ {
+  $this->db->where('stateid', $stateid);
+  $this->db->order_by('cityname', 'ASC');
+  $query = $this->db->get('city');
+  $output = '<option value="">Select City</option>';
+  foreach($query->result() as $row)
+  {
+   $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
+  }
+  return $output;
+ }
+  function fetch_district($cityid)
+   {
+    $this->db->where('cityid', $cityid);
+    $this->db->order_by('districtname ', 'ASC');
+    $query = $this->db->get('district');
+    $output = '<option value="">Select District</option>';
+    foreach($query->result() as $row)
+    {
+     $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
+    }
+    return $output;
+   }
   public function get_list2($id,$order,$tbl_name){
     $this->db->select('*');
     $this->db->order_by($id, $order);

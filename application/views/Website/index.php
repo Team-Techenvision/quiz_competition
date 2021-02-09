@@ -413,16 +413,16 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
   <?php } ?>
 </script>
 <script type="text/javascript">
-  $('#btn_save').click(function(){
+  // $('#btn_save').click(function(){
     // alert('hii');
 
-   if($.trim($('#emailid').val()) == ''||$.trim($('#parentname').val()) == ''||$.trim($('#age').val()) == ''||$.trim($('#pincode').val()) == ''){
-      alert('Fill all the necessary fields');
-   }
-   else{
-    return confirm('Are you sure you want to participate?')
-   }
-});
+   // if($.trim($('#emailid').val()) == ''||$.trim($('#parentname').val()) == ''||$.trim($('#age').val()) == ''||$.trim($('#pincode').val()) == ''){
+   //    alert('Fill all the necessary fields');
+   // }
+   // else{
+   //  return confirm('Are you sure you want to participate?')
+   // }
+// });
 
 function myFunction() {
             document.getElementById("myForm").reset();
