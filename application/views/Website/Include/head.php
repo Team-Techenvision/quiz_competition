@@ -16,7 +16,23 @@
 <style type="text/css">
   .error{
     color: red;
+    font-size: 14px;
+    line-height: 1.5;
+
   }
+  .maxheight{
+    max-height: 250px;
+    overflow-y: scroll;
+  }
+  .labelerror  {
+    position: relative;
+    
+}
+  .labelerror #remember-error {
+    position: absolute;
+    top: 35px;
+}
+ 
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -180,9 +196,7 @@
       Welcome <?php echo $user_list[0]->user_name;?>
     </button>
     <div class="dropdown-menu">
-      <?php if(isset($profile_list[0]->user_id)) { 
-        // print_r($profile_list[0]->user_id);
-        ?> 
+    
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/edit_profile" >My Profile</a>
   
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/competition_list">My Competition</a>
@@ -191,7 +205,7 @@
         // print_r($winner_list[0]->user_id);
         ?> 
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/winner_list">Result</a>
-        <?php } }?>
+        <?php  }?>
       <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/logout">Logout</a>
      
     </div>
@@ -229,19 +243,25 @@
               <h4 class="h3">Create Your Account</h4>
               <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
-              <div class="row">
-                <div class="col-md-12">
+              <div class="row maxheight">
+                <div class="form-group col-md-12">
                    <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" /> 
                 </div>
-                <div class="col-md-12">
+                <div class="form-group col-md-12">
                    <input class="input" type="text" name="user_pincode" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
                 </div>
-                <div class="col-md-12">
+                <div class="form-group col-md-12">
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
                 </div>
-                <div class="col-md-12">
-                   <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> <span style="margin-left: -30px;" toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+                <div class="form-group col-md-12">
+                  <span toggle="#password-field"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+                   <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
                 </div>
+                <div class="form-group labelerror">
+                   <label class="form-check-label " style="margin-left: 55px;">
+                    <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
+                   </label>
+                  </div>
               </div>
             
              
@@ -253,9 +273,7 @@
                    
                    
 
-                  <label class="form-check-label " style="margin-left: 20px;">
-                    <input class="form-check-input title-case " style ="margin-top: 10px;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
-                  </label>
+                  
              
                  <h6 class="alert alert-danger mobileerror"></h6>
                  <h6 class="alert alert-success mobilesuccess"></h6>
@@ -272,12 +290,15 @@
             <h4 class="h3">Welcome Back !</h4>
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
-            
-            <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+            <div class="form-group">
+            <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10"  />
+            </div>
           <!--   <span class="text-red"> < ?php echo form_error('mobile'); ?></span> -->
             <!-- <div id="infoMessage">< ?php echo form_error('mobile'); ?></div> -->
-
-             <input type="password" class="input" name="password" id="password" placeholder="Password" required=""><span toggle="#password-field" style="margin-left: -30px;" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+             <div class="form-group">
+             <span style="position: absolute; right: 20px;" toggle="#password-field"  class="fa fa-fw fa-eye field_icon toggle-password"></span>
+             <input type="password" class="input" name="password" id="password" placeholder="Password" >
+           </div>
           
            <!--  <span class="text-red"> < ?php echo form_error('password'); ?> </span> -->
 
@@ -397,7 +418,7 @@ var user_mobile21 = $('#user_mobile').val();
          
   
 </script>
- <script>
+ <!-- <script>
 
   $('#signInForm').submit(function(e) {
 
@@ -438,8 +459,8 @@ var user_mobile21 = $('#user_mobile').val();
             });
             e.preventDefault();
   });
-</script>
-<script>
+</script> -->
+<!--  <script>
 
   $('#signupForm').submit(function(e) {
 
@@ -468,7 +489,7 @@ var user_mobile21 = $('#user_mobile').val();
                 $('.alert-success').html(data);
                 $('.mobileerror').hide();
                 $('.mobilesuccess').show().delay(1000).fadeOut();
-                  window.location.reload();
+                  // window.location.reload();
 
 
                 //  document.getElementById("signupForm").reset();
@@ -480,9 +501,6 @@ var user_mobile21 = $('#user_mobile').val();
                  //  $(".signIn").addClass("active-sx");
                  //  $(".signIn").removeClass("inactive-sx");
                  //  $(".signUp").removeClass("active-dx");  
-
-               
-
                }
                else{
                 $('.alert-danger').html(data);
@@ -491,7 +509,7 @@ var user_mobile21 = $('#user_mobile').val();
                 document.getElementById("signupForm").reset();
                }
                
-              window.location.reload();
+              // window.location.reload();
 
             }
 
@@ -500,7 +518,93 @@ var user_mobile21 = $('#user_mobile').val();
 
             e.preventDefault();
   });
-</script>
+</script> -->
+<script type="text/javascript">
+ 
+  // Wait for the DOM to be ready
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='SignUp']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      user_name: "required",
+      user_pincode: "required",
+      user_mobile: "required",
+      user_password: "required",
+      remember:"required",
+      // email: {
+      //   required: true,
+      //   // Specify that email should be validated
+      //   // by the built-in "email" rule
+      //   email: true
+      // },
+      
+    },
+    // Specify validation error messages
+    messages: {
+      user_name: "Please enter your name.",
+      user_mobile: "Please enter your mobile number.",
+      user_password: "Please enter a valid password.",
+      user_pincode: "Please enter a valid pincode.",
+      remember: "Please check this box if you want to proceed."
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      // form.submit();
+
+      var mobile = $('#user_mobile').val();
+     var pincode = $('#user_pincode').val();
+     var name = $('#user_name').val();
+     var password = $('#user_password').val();
+    
+      // alert(mobile);
+      // alert(pincode);
+      // alert(name);
+      // alert(password);
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/add_registration",
+           method:"POST",
+           data:{user_mobile:mobile,user_pincode:pincode,user_name:name,user_password:password},
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data=='Sign Up Successfully'){
+
+                  
+                $('.alert-success').html(data);
+                $('.mobileerror').hide();
+                $('.mobilesuccess').show().delay(1000).fadeOut();
+
+                document.getElementById("signupForm").reset();
+
+                  window.location.reload();
+               }
+               else{
+                $('.alert-danger').html(data);
+                $('.mobileerror').show().delay(3000).fadeOut();
+                $('.mobilesuccess').hide();  
+                document.getElementById("signupForm").reset();
+               }
+               
+
+            }
+
+
+            });
+
+    }
+  });
+ 
+});
+ </script> 
 <script type="text/javascript">
   $(document).on('click', '.toggle-password', function() {
 

@@ -223,7 +223,7 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
     <?php }?>
 
           <!-- particepation model  -->
-        <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!-- <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                          
                           <div class="modal-content">
@@ -296,8 +296,8 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
 
                                       <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        < ?php }?>   -->
-                                        <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="text" minlength="6" maxlength="6" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" readonly>
+                                       <!--  <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
+                                         <input type="text" minlength="6" maxlength="6" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" readonly> -->
 
                                     <!--   <select name="pincode" id="pincode"class="form-control" required="">
                                     <option value="">Select Pincode</option>
@@ -308,33 +308,33 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
                                      ?>   
                                     
                                   </select> -->
-                                  </div>
+                                 <!--  </div>
                                  
                                 </div>
-                      
+                       -->
                                 <!-- /.card-body -->
                              
-                            </div>
+                            <!-- </div> -->
 
                         
-                            <div class="modal-footer">
+                         <!--    <div class="modal-footer"> -->
                             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
-                                     <?php if(isset($update)){ ?>
+                                 <!--     <?php if(isset($update)){ ?>
                                         <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                                      <?php } else{ ?>
+                                      <?php } else{ ?> -->
                                      <!--    <div class="button11" >
                                           <div  class="spin"></div>
                                           <button id="btn_save" type="submit" >Participate</button>
                                         </div> -->
-                                        <button class="btn btn-primary px-4" id="btn_save" type="submit">Participate</button>
+                                     <!--    <button class="btn btn-primary px-4" id="btn_save" type="submit">Participate</button>
                                       <?php } ?>
                                       <a href="" class="btn btn-light ml-4" data-dismiss="modal" onclick="myFunction()">Cancel</a>
                              </div>
-                           </form>
-                              <?php } ?>
+                           </form> -->
+                             <!--  <?php } ?>
                           </div>
-                        </div>
-                      </div>  <!--Prticepation Modal Ends -->
+                        </div> -->
+                      <!-- </div>  -->  <!--Prticepation Modal Ends -->
 
 
                          <!--instrruction  Modal -->

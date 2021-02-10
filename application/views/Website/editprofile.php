@@ -44,13 +44,15 @@
                   <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
                   <img id="blah" class="rounded-circle " src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
 
+                     <input type="hidden" name="old_image" value="<?php if(isset($profile_image)){ echo $profile_image; } ?>">
+
                   <?php }else{ ?>
                   <img id="blah" class="rounded-circle " src="<?php echo base_url();?>assets/images/profile/profile1.jpg" alt="" height="150px" width="150px" />
                 <?php  }?>
                 <br>
 
                    <!-- <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
-                   <div><input type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" ><label id="fileLabel">Choose file</label></div>
+                   <div><input type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" ><label id="fileLabel">No Choosen file</label></div>
 
                   <!-- 
                   src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
@@ -77,8 +79,8 @@
                         
                          <div class="col-md-8"><input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required></div>
                        </div>
-                        <input type="hidden" name="competition_id" id="competition_model_id" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>">
-                  
+                      <!--   <input type="hidden" name="competition_id" id="competition_model_id" value="< ?php if(isset($competitionid)){ echo $competitionid; } ?>">
+                   -->
                       </div>
                     
                           <div class="form-group col-md-12">
@@ -93,15 +95,15 @@
                             </div>
                             <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">Gender</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Gender</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                 <!--   <?php
-                                      if(isset($grade)){?>
+                                  <?php
+                                      if(isset($gender)){?>
 
-                                      <input type="text" class="form-control title-case " name="grade" id="grade" value="<?php if(isset($grade)){ echo $grade; } ?>" disabled="">
-                                    <?php }?>   -->
-                                  <select name="gender" id="gender"class="form-control" >
+                                      <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
+                                    <?php }?>  
+                                  <select name="gender" id="gender"class="form-control" required="" >
                                     <option value="">Select Gender</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
@@ -134,24 +136,24 @@
                                  
                                   <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">School/College Name</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">School/College Name</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  ></div>
+                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name"  required=""></div>
                                 </div>
                                   </div>
 
                              <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">Standard</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Standard</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                 <!--   <?php
-                                      if(isset($grade)){?>
+                                   <?php
+                                      if(isset($standard)){?>
 
-                                      <input type="text" class="form-control title-case " name="grade" id="grade" value="<?php if(isset($grade)){ echo $grade; } ?>" disabled="">
-                                    <?php }?>   -->
-                                  <select name="standard" id="standard"class="form-control" >
+                                      <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
+                                    <?php }?>  
+                                  <select name="standard" id="standard"class="form-control" required="" >
                                   <option value="">Select Standard</option>
                                   <option value="1">1st</option>
                                   <option value="2">2nd</option>
@@ -174,11 +176,16 @@
                               </div>
                              <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">State</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">State</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
+                                    <?php
+                                      if(isset($stateid)){?>
+
+                                      <input type="hidden" class="form-control title-case " name="" id="StateId" value="<?php if(isset($stateid)){ echo $stateid; } ?>" disabled="">
+                                       <?php }?>  
                                 
-                                  <select name="stateid" id="stateid"class="form-control" >
+                                  <select name="stateid" id="stateid"class="form-control" required="" >
                                   <option value="">Select State</option>
                                     <?php foreach($state as $state)
                                      {
@@ -194,13 +201,27 @@
                               </div>
                               <div class="form-group col-md-12">
                                <div class="row">
-                                <div class="col-md-4"><label for="inputName" class="form-label">City</label></div>
+                                <div class="col-md-4"><label for="inputName" class="form-label">City</label>&nbsp;<label style="color:red;">*</label></div>
                           
                                    <div class="col-md-8">
+                                       <?php
+                                      if(isset($cityid)){?>
+
+                                      <input type="hidden" class="form-control title-case " name="" id="CityId" value="<?php if(isset($cityid)){ echo $cityid; } ?>" disabled="">
+                                       <?php }?> 
+
+                                
+                                    <select name="cityid" id="cityid"class="form-control" required="" >
+                                    <option value="">select</option>
+                                
+                                     <?php foreach($city as $city)
+                                     {
+                                          echo '<option value="'. $city->cityid.'" '.$selected.'>'. $city->cityname.'</option>';
+
+                                               
+                                      }
+                                     ?> 
                                   
-                                    <select name="cityid" id="cityid"class="form-control" >
-                                    <option value="">Select City</option>
-                                   
                                   </select>
                                    </div>
                                   </div>
@@ -208,13 +229,23 @@
                               </div>
                               <div class="form-group col-md-12">
                                <div class="row">
-                                <div class="col-md-4"><label for="inputName" class="form-label">District</label></div>
+                                <div class="col-md-4"><label for="inputName" class="form-label">District</label>&nbsp;<label style="color:red;">*</label></div>
                           
                                    <div class="col-md-8">
-                                  
-                                    <select name="districtid" id="districtid"class="form-control" >
-                                    <option value="">Select District</option>
-                                   
+                                     <?php
+                                      if(isset($districtid)){?>
+
+                                      <input type="hidden" class="form-control title-case " name="" id="DistrictId" value="<?php if(isset($districtid)){ echo $districtid; } ?>" disabled="">
+                                       <?php }?> 
+                                    <select name="districtid" id="districtid"class="form-control" required="" >
+                                    <option value="">District</option>
+                                     <?php foreach($district as $district)
+                                     {
+                                          echo '<option value="'. $district->districtid.'" '.$selected.'>'. $district->districtname.'</option>';
+
+                                               
+                                      }
+                                     ?>                                    
                                   </select>
                                    </div>
                                   </div>
@@ -224,10 +255,10 @@
                                   
                                <div class="form-group col-md-12">
                              <div class="row">
-                              <div class="col-md-4"><label for="inputName" class="form-label">Address</label></div>
+                              <div class="col-md-4"><label for="inputName" class="form-label">Address</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php if(isset($address)){ echo $address; } ?></textarea>
+                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" required="" ><?php if(isset($address)){ echo $address; } ?></textarea>
                                   </div></div>
                                   </div>
                                   
@@ -298,7 +329,10 @@
    $('.pis').bind("click" , function () {
           $('#profile_image').click();
    });
+
+
    
+
     function readURL(input) {
                 var a = document.getElementById('profile_image');
               if(a.value == "")
@@ -321,14 +355,32 @@
                   reader.readAsDataURL(input.files[0]);
               }
           }
+   
   </script>
    <script>
 $(document).ready(function(){
+
+
+ var gender = $('#Gender').val();
+ $("#gender option[value='"+gender+"']").attr("selected","selected");
+
+ var standard = $('#Standard').val();
+ $("#standard option[value='"+standard+"']").attr("selected","selected");
+
+ var state = $('#StateId').val();
+ $("#stateid option[value='"+state+"']").attr("selected","selected");
+
+ var city = $('#CityId').val();
+ $("#cityid option[value='"+city+"']").attr("selected","selected");
+
+ var district = $('#DistrictId').val();
+ $("#districtid option[value='"+district+"']").attr("selected","selected");
  
  $('#stateid').change(function(){
   // alert('hii');
 
   var stateid = $('#stateid').val();
+  // alert(stateid);
 
   if(stateid != '')
   {

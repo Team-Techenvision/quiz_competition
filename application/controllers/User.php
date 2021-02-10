@@ -930,20 +930,20 @@ class User extends CI_Controller{
       // echo "hii"; die();
       // print_r($array);
 
-
+      $this->User_Model->save_data('competition',$save_data);
       
-      $id = $this->User_Model->save_data('competition',$save_data);
+      // $id = $this->User_Model->save_data('competition',$save_data);
      // print_r($save_data); die();
       $this->session->set_flashdata('save_success','success');
        $comptype = $save_data['competitiontypeid'];
       
-        $data_view = array(
-            'competitionid' => $id,
-            'quizsubject' => $this->input->post('quizsubject'),
-        );
+        // $data_view = array(
+        //     'competitionid' => $id,
+        //     'quizsubject' => $this->input->post('quizsubject'),
+        // );
 
-        $this->User_Model->save_data('competitionquizsubject',$data_view);
-        $this->session->set_flashdata('save_success','success');
+        // $this->User_Model->save_data('competitionquizsubject',$data_view);
+        // $this->session->set_flashdata('save_success','success');
 
         if($comptype=="1"){
           header('location:'.base_url().'User/dynamiccompetition');
@@ -1006,6 +1006,7 @@ class User extends CI_Controller{
             
     }
       $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
+      $data['class'] = $this->User_Model->fetch_class();
       $data['level'] = $this->User_Model->fetch_level();
       $data['competitiontype'] = $this->User_Model->fetch_competitiontype();
 
@@ -1191,18 +1192,18 @@ class User extends CI_Controller{
      $this->User_Model->update_info('competitionid', $competitionid, 'competition', $update_data);
   
 
-      $updateid = $competitionid;
+      // $updateid = $competitionid;
   // print_r($updateid); die();
       // $competitionid = $this->input->post('competitionid');
       
-        $update_view = array(
-            'competitionid' => $updateid,
-            'quizsubject' => $this->input->post('quizsubject'),
-        );
+        // $update_view = array(
+        //     'competitionid' => $updateid,
+        //     'quizsubject' => $this->input->post('quizsubject'),
+        // );
 
         // print_r($update_view); die();
 
-       $this->User_Model->update_info('competitionid', $updateid, 'competitionquizsubject', $update_view);
+       // $this->User_Model->update_info('competitionid', $updateid, 'competitionquizsubject', $update_view);
 
 
       if($_FILES['photo']['name']){
@@ -1246,11 +1247,11 @@ class User extends CI_Controller{
 
 
     $competition_info= $this->User_Model->get_info('competitionid', $competitionid, 'competition');
-    $compquizsubject_info= $this->User_Model->get_info('competitionid', $competitionid, 'competitionquizsubject');
+    // $compquizsubject_info= $this->User_Model->get_info('competitionid', $competitionid, 'competitionquizsubject');
     
     // print_r($compquizsubject_info); die();
 
-    if($competition_info == '' && $compquizsubject_info == ''  ){ header('location:'.base_url().'User/competition_list'); }
+    if($competition_info == '' ){ header('location:'.base_url().'User/competition_list'); }
     foreach($competition_info as $info){
       $data['update'] = 'update';
       $data['title'] = $info->title;
@@ -1273,15 +1274,16 @@ class User extends CI_Controller{
       $data['whatsappnumber'] = $info->whatsappnumber;
       $data['competitiontypeid'] = $info->competitiontypeid;
     }
-     foreach($compquizsubject_info as $info){
-      $data['update'] = 'update';
-      $data['competitionid'] = $info->competitionid;
-      $data['quizsubject'] = $info->quizsubject;
+    //  foreach($compquizsubject_info as $info){
+    //   $data['update'] = 'update';
+    //   $data['competitionid'] = $info->competitionid;
+    //   $data['quizsubject'] = $info->quizsubject;
      
-    }
+    // }
     // print_r($data); die();
 
     $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
+    $data['class'] = $this->User_Model->fetch_class();
     $data['level'] = $this->User_Model->fetch_level();
     $data['competition_list'] = $this->User_Model->competition_list('competitionid');
     $data['competitiontype'] = $this->User_Model->fetch_competitiontype();

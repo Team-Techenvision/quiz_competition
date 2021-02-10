@@ -57,10 +57,10 @@
                          
                       </select>
                   </div> 
-                    <div class="form-group col-md-12" id="quiz">
+                   <!--  <div class="form-group col-md-12" id="quiz">
                       <label>Quiz Subject </label>
-                    <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="<?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" >
-                  </div>
+                    <input type="text" class="form-control required title-case text txtOnly" name="quizsubject" id="quizsubject" value="< ?php if(isset($quizsubject)){ echo $quizsubject; } ?>" placeholder="Enter Quiz Subject" >
+                  </div> -->
                   <div class="form-group col-md-12">
                     <label>Competition Title <span style="color: red;">*</span></label>
                     <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required="" >
@@ -81,7 +81,28 @@
                    <div class="form-group col-md-6">
                     <label>Class <span style="color: red;">*</span></label>
 
-                    <input type="text" class="form-control required title-case text " name="class" id="class" value="<?php if(isset($class)){ echo $class; } ?>" placeholder="Enter From Class - To Class" required="">
+                       <?php
+                      if(isset($Class)){?>
+
+                       <input type="text" class="form-control required title-case text" name="" id="Class" value="<?php if(isset($class)){ echo $class; } ?>" disabled="">
+                       <?php }?>
+
+
+
+                      <select name="class" id="class" class="form-control" required="">
+                        <option value="">Select From Class-To Class</option>
+
+
+                    <?php foreach($class as $class)
+                        {
+
+                        echo '<option value="'. $class->tabinputtextid.'" '.$selected.'>'. $class->tabinputtext.'</option>';
+                                        
+                         }
+                        ?>  
+
+                         
+                      </select>
                   </div>
                   <div class="form-group col-md-3">
                     <label> End Date <span style="color: red;">*</span></label>
@@ -143,12 +164,12 @@
                    <div class="form-group col-md-3">
                     <label>From Age <span style="color: red;">*</span></label>
 
-                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required="">
+                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required="">
                   </div>
                    <div class="form-group col-md-3">
                     <label>To Age <span style="color: red;">*</span></label>
 
-                    <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case text notext" name="toage" minlength="2" maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required="">
+                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext numinput" name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required="">
                   </div>
                   <div class="form-group col-md-6">
                     <label>Competition User Type</label>
@@ -182,9 +203,7 @@
 
 
                   </div>
-                <!--  <div class="form-group col-md-12">
-                    <textarea type="text" class="form-control required title-case text " name="termsandconditions" id="termsandconditions" value="" placeholder="Enter Terms and Conditions" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
-                  </div> -->
+               
                    <div class="form-group col-md-12">
                     <label>Terms and Comditions <span style="color: red;">*</span></label>
 
@@ -274,7 +293,7 @@
 
        
   </script>
- <script type="text/javascript">
+<!--  <script type="text/javascript">
   $(document).ready(function(){
 
     $("#quiz").hide();
@@ -290,7 +309,12 @@
       }
     });
 });
-</script> 
+</script>  -->
+<script type="text/javascript">
+  $('.numinput').on('input', function() {
+      this.value = this.value.replace(/(?!^-)[^0-9.]/g, "").replace(/(\..*)\./g, '$1'); 
+});
+</script>
 
 
 </body>

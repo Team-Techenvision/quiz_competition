@@ -123,8 +123,8 @@
       AOS.init();
     </script>
 
-       <!-- email validation  -->
- <!-- <script type="text/javascript">
+       <!-- SignIn validation  -->
+ <script type="text/javascript">
  
   // Wait for the DOM to be ready
 $(function() {
@@ -151,20 +151,49 @@ $(function() {
     // Specify validation error messages
     messages: {
       // user_name: "Please enter your name",
-      mobile: "Please enter your mobile number",
-      password: "Please enter a valid password",
+      mobile: "Please enter your mobile number.",
+      password: "Please enter a valid password.",
       // user_pincode: "Please enter a valid pincode",
       // address: "Please enter Street Address"
     },
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
-      form.submit();
+      // form.submit();
+        $.ajax({
+                 type: "POST",
+                 url: "<?php echo base_url(); ?>WebsiteController/login1",
+                 data: $(form).serialize(),
+                 success: function(data) {
+
+                  // alert(data);
+ 
+                   if(data=='Sign In Successful'){
+
+                      $('.alert-success').html(data);
+                      $('.successresponse').show().delay(3000).fadeOut();
+                      $('.errorresponse').hide();
+
+
+                      window.location.reload();
+                     }
+                     else{
+                      $('.alert-danger').html(data);
+                      $('.errorresponse').show().delay(3000).fadeOut();
+                      $('.successresponse').hide();
+                      
+                      document.getElementById("signInForm").reset();
+                     }
+                         
+                 }
+             });
     }
   });
  
 });
- </script> -->
+ </script> 
+   <!-- SignUp validation  -->
+ 
  <!-- only text no number  -->
  <script>
  $( document ).ready(function() {

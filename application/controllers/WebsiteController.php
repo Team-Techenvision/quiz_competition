@@ -60,18 +60,13 @@ class WebsiteController extends CI_Controller{
   public function login1()
   {
    
-
-    
     $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
     // $this->form_validation->set_message('mobile', 'required','Enter Mobile Number');
     $this->form_validation->set_rules('password', 'password', 'trim|required');
     if ($this->form_validation->run() == FALSE) {
- 
 
     } else{
 
-
-    
       $mobile = $this->input->post('mobile');
       $password = $this->input->post('password');
 
@@ -276,11 +271,8 @@ class WebsiteController extends CI_Controller{
    
       $mob = $this->Website_Model->check_reg($mobile);
    
-      if($mob == null){
+      if(empty($mob) || $mob==""){
     
-
-      echo "Sign Up Successfully";
-
       $this->Website_Model->save_data('user',$save_data);
        // $this->session->set_flashdata('register_success','success');
        // header('location:'.base_url().'WebsiteController');
@@ -293,8 +285,8 @@ class WebsiteController extends CI_Controller{
       if($login == null){
         // alert("login_error");
         // $this->session->set_flashdata('msg','login_error');
-        $this->session->set_flashdata('login_ermsg','error');
-        header('location:'.base_url().'WebsiteController');
+        // $this->session->set_flashdata('login_ermsg','error');
+        // header('location:'.base_url().'WebsiteController');
 
       } else{
        // print_r($login); die();
@@ -306,8 +298,9 @@ class WebsiteController extends CI_Controller{
         // $mob = $this->Website_Model->check_reg($mobile);
       // print_r($mobile); 
 
-        $this->session->set_flashdata('login_success','success');
-        header('location:'.base_url().'WebsiteController');
+        // $this->session->set_flashdata('login_success','success');
+        echo "Sign Up Successfully";
+        // header('location:'.base_url().'WebsiteController');
         // redirect('WebsiteController');
 
       
@@ -497,7 +490,28 @@ function fetch_city()
 
         $update_data = $_POST; 
 
+
+       if($old_image=$this->input->post('old_image')){
       $update_data = array(
+        'parentname' => $this->input->post('parentname'),
+        'fullname' => $this->input->post('fullname'),
+        'birthdate' => $this->input->post('birthdate'),
+        'emailid' => $this->input->post('emailid'),
+        'standard' => $this->input->post('standard'),
+        'schoolcollegename' => $this->input->post('schoolcollegename'),
+        'address' => $this->input->post('address'),
+        'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competition_id'),
+        // 'profile_image' => $this->input->post('profile_image'),
+        'alternatemobno' => $this->input->post('alternatemobno'),
+        'gender' => $this->input->post('gender'),
+        'cityid' => $this->input->post('cityid'),
+        'districtid' => $this->input->post('districtid'),
+        'stateid' => $this->input->post('stateid'),
+        'user_id' => $quizweb_user_id,
+      );
+    }else{
+       $update_data = array(
         'parentname' => $this->input->post('parentname'),
         'fullname' => $this->input->post('fullname'),
         'birthdate' => $this->input->post('birthdate'),
@@ -515,6 +529,7 @@ function fetch_city()
         'stateid' => $this->input->post('stateid'),
         'user_id' => $quizweb_user_id,
       );
+    }
       $this->Website_Model->update_info('user_id', $quizweb_user_id, 'profile', $update_data);
 
    
@@ -578,7 +593,12 @@ function fetch_city()
       $data['competitionid'] = $info->competitionid;
       $data['profile_image'] = $info->profile_image;
     }
+    $state=$data['stateid'];
+    $district=$data['districtid'];
+    // print_r($state); 
   $data['state'] = $this->Website_Model->fetch_state();
+  $data['city'] = $this->Website_Model->fetch_city1($state);
+  $data['district'] = $this->Website_Model->fetch_district1($district);
   $data['user_list'] = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','user'); 
 
   

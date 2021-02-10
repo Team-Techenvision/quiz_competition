@@ -38,15 +38,15 @@ function check_login($mobile,$password){
     // print_r($result);
     return $result;
   }
-   function check_regP($password){
-    $query = $this->db->select('*')
-      ->where('user_password', $password)
-      ->from('user')
-      ->get();
-    $result = $query->result_array();
-    // print_r($result);
-    return $result;
-  }
+  //  function check_regP($password){
+  //   $query = $this->db->select('*')
+  //     ->where('user_password', $password)
+  //     ->from('user')
+  //     ->get();
+  //   $result = $query->result_array();
+  //   // print_r($result);
+  //   return $result;
+  // }
   // function check_competition($competitionid){
   //   $query = $this->db->select('*')
   //     ->where('competitionid', $competitionid)
@@ -235,6 +235,24 @@ function fetch_userid()
  {
   $this->db->order_by("statename", "ASC");
   $query = $this->db->get("state");
+  return $query->result();
+  // print_r($query);
+ }
+   function fetch_city1($stateid)
+ {
+  $this->db->select('*');
+  $this->db->order_by("cityname", "ASC");
+  $this->db->where('city.stateid', $stateid);
+  $query = $this->db->get("city");
+  return $query->result();
+  // print_r($query);
+ }
+   function fetch_district1($cityid)
+ {
+  $this->db->select('*');
+  $this->db->order_by("districtname", "ASC");
+  $this->db->where('district.cityid', $cityid);
+  $query = $this->db->get("district");
   return $query->result();
   // print_r($query);
  }

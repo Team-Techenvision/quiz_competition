@@ -449,6 +449,13 @@ function fetch_country1()
   return $query->result();
   // print_r($query);
  }
+   function fetch_class()
+ {
+  $this->db->order_by("tabinputtextid", "ASC");
+  $query = $this->db->get("tabcompetition");
+  return $query->result();
+  // print_r($query);
+ }
 
 
    
