@@ -7,11 +7,13 @@ $tab_list = $this->Website_Model->tab_list('tabinputtextid');
 $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
 $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','profile');
 
+$userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','userprofile_master');
+
 // $competitionid = $this->input->post('53');
 // $profile_list = $this->Website_Model->check_competition($quizweb_user_id);
 
 
-// print_r($profile_list);die();
+// print_r($userprofile_list);die();
 
 ?>
 <!-- <style type="text/css">
@@ -162,7 +164,7 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
         <div class="container">
         <div class="row featuredrow">   
         <div class="col-md-12" align="center">
-            <button class="theme-btn " data-filter="all">All</button>
+            <!-- <button class="theme-btn " data-filter="all">All</button> -->
 
             <!-- Tab button fetch dyanamic start  -->
                 <?php $i = 0;
@@ -208,11 +210,16 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
                   <div class="text">
                       <a class="text-white" href="<?php echo base_url(); ?>WebsiteController/competition_singlepage/<?php echo "$list->competitionid"; ?>" ><h5 > <?php echo $list->title;?>  </h5></a>
                     <h6> <?php echo $list->subtitle;?> </h6>
-                   
-                    <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn pb-4" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
+
+                   <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post" >
+
+                     <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
+
+                     <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn pb-4" type="submit" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p>
+
+                   </form>
+                    
                  
-                  <!--   <p><button href="" data-toggle="modal" data-target="#instructions_text"  class="competition_btn" value="<?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</button></p> -->
-                   <!--  <p href="" data-toggle="modal" data-target="#instructions_text" value="< ?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Instruction</p> -->
                   </div>
                 </div>
               <div class="tag_inherit a" > <?php echo $list->tabinputtext;?>  </div>
@@ -220,150 +227,9 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
           </div>
 
         </div>
-    <?php }?>
+   
 
-          <!-- particepation model  -->
-        <!-- <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                         
-                          <div class="modal-content">
-                            <?php if(!isset($quizweb_user_id)){  ?>
-
-                              <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Please Login To Participate </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                             
-                            </div>
-
-                            <?php }else{  ?>
-
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Add Participate </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                           <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post" autocomplete="off">
-                            <div class="modal-body ">
-                 
-                          
-                                <div class="card-body row" style="padding-bottom: 0px;">
-                                 <input type="hidden" name="competition_id" id="competition_model_id" value="echo $list->competitionid;?>">
-
-                                  <div class="form-group col-md-12">
-                                    <label>Parent Name</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php  if(isset($profile_list[0]->parentname)){ echo $profile_list[0]->parentname; } ?>" placeholder="Enter Parent Name" required>
-                                  </div>
-                                   <div class="form-group col-md-3">
-                                    <label>Participant Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text"  minlength="2" maxlength="2" class="form-control notext" name="age" id="age" value="<?php  if(isset($profile_list[0]->age)){ echo $profile_list[0]->age; } ?>" placeholder="Enter age" required>
-                                  </div>
-
-                                  <div class="form-group col-md-6">
-                                     <label>Email Address</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php  if(isset($profile_list[0]->emailid)){ echo $profile_list[0]->emailid; } ?>" placeholder="Enter Email Address" required>
-                                  </div>
-
-                                   <div class="form-group col-md-3">
-                                     <label>Grade</label>
-                                      <select name="grade" id="grade"class="form-control" >
-                                    <option value="">Select Grade</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                  </select>
-                                  </div>
-                                 
-                                  <div class="form-group col-md-12">
-                                     <label>School/College Name</label>
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php  if(isset($profile_list[0]->schoolcollegename)){ echo $profile_list[0]->schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
-                                  </div>
-                             
-                                  
-                                  
-                                  <div class="form-group col-md-9">
-                                     <label>Address</label>
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php  if(isset($profile_list[0]->address)){ echo $profile_list[0]->address; } ?></textarea>
-                                  </div>
-                                    <div class="form-group col-md-3">
-
-                                 <!--  < ?php
-                                      if($user_list->user_pincode)){?>
-
-                                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
-                                       < ?php }?>   -->
-                                       <!--  <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="text" minlength="6" maxlength="6" class="form-control notext" name="pincode" id="pincode" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" readonly> -->
-
-                                    <!--   <select name="pincode" id="pincode"class="form-control" required="">
-                                    <option value="">Select Pincode</option>
-                                   < ?php foreach($pin as $pin)
-                                     {
-                                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
-                                              }
-                                     ?>   
-                                    
-                                  </select> -->
-                                 <!--  </div>
-                                 
-                                </div>
-                       -->
-                                <!-- /.card-body -->
-                             
-                            <!-- </div> -->
-
-                        
-                         <!--    <div class="modal-footer"> -->
-                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
-                                 <!--     <?php if(isset($update)){ ?>
-                                        <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                                      <?php } else{ ?> -->
-                                     <!--    <div class="button11" >
-                                          <div  class="spin"></div>
-                                          <button id="btn_save" type="submit" >Participate</button>
-                                        </div> -->
-                                     <!--    <button class="btn btn-primary px-4" id="btn_save" type="submit">Participate</button>
-                                      <?php } ?>
-                                      <a href="" class="btn btn-light ml-4" data-dismiss="modal" onclick="myFunction()">Cancel</a>
-                             </div>
-                           </form> -->
-                             <!--  <?php } ?>
-                          </div>
-                        </div> -->
-                      <!-- </div>  -->  <!--Prticepation Modal Ends -->
-
-
-                         <!--instrruction  Modal -->
-                    <!--   <div class="modal fade" id="instructions_text" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Instructions for Participants
-                      </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                           
-                            <div class="modal-body">
-                             < !--  Each team will be asked 2 questions of 10 marks each. They will be given 30 seconds for each question. If the allotted team is unable to answer the question then the question will passed on to the subsequent teams. Subsequent teams will be given 15 seconds to answer & will be awarded 5 marks for each correct answer. -->
-                          
-                            <!--  <input type="text" name="competition_id" id="instruction_model_id" value="<?php echo $list->competitionid;?>">
-
-                          <?php echo $list->instruction;?>  -->
-                              <!-- < ?php echo $company_list[0]->company_address;?> -->
-                         <!--    </div>
-                            
-                          </div>
-                        </div>
-                      </div>   - -->
-
-
-        <?php   }  }  ?>  
+        <?php   }  } } ?>  
 
          <!-- cart fetch dyanamic Ends  -->
         </div>  <!-- main row Ends  -->
@@ -409,6 +275,21 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
   <?php if($this->session->flashdata('login_success')){ ?>
     $(document).ready(function(){
       toastr.success('Login Successfully');
+    });
+  <?php } ?>
+</script>
+
+<script type="text/javascript">
+  <?php if($this->session->flashdata('profile_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('participate to profile ');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('class_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Class group not valid ');
     });
   <?php } ?>
 </script>

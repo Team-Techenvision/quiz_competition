@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>PARTICIPATION PROFILE INFORMATION</h4>
+            <h4>CLASS GROUP INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -22,41 +22,39 @@
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card">
-            <div class="card-header ">
-            
-              <h5 class="card-title "><i class="fa fa-list"></i> List Participation Profile Information</h5>
-              <div class="card-tools col-md-2 " >
-                <a href="add_participate" class="btn btn-sm btn-block btn-primary "  >Add Participation</a>
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa fa-list"></i> List Class Group Information</h3>
+              <div class="card-tools">
+                <a href="add_class" class="btn btn-sm btn-block btn-primary">Add Class Group</a>
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped ">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>Full Name</th>
-                  <th>BirthDate</th>
-                  <th>Pincode</th>
-                  <th>Competition</th>
+                  <th>Class Group</th>
+                  <th>From Class</th>
+                  <th>To Class</th>
+                 
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php $i = 0;
-                  foreach ($participate_list as $list) {
+                  foreach ($class_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->fullname ?></td>
-                    <td><?php echo $list->birthdate ?></td>
-                    <td><?php echo $list->pincode ?></td>
-                    <td><?php echo $list->title ?></td>
-                    
+                    <td><?php echo $list->tabinputtext ?></td>
+                    <td><?php echo $list->fromstand ?></td>
+                    <td><?php echo $list->tostand ?></td>
+                  
                    
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_participate/<?php echo $list->profileid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_participate/<?php echo $list->profileid; ?>" onclick="return confirm('Do you want to delete this participant?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_class/<?php echo $list->tabinputtextid; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_class/<?php echo $list->tabinputtextid; ?>" onclick="return confirm('Do you want to delete this class group?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>
@@ -78,17 +76,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Participant Saved Successfully');
+      toastr.success('Class Group Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Participant Updated Successfully');
+      toastr.success('Class Group Updated Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Participant Deleted Successfully');
+      toastr.error('Class Group Deleted Successfully');
     });
   <?php } ?>
 

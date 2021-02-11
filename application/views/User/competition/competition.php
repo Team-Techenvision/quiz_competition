@@ -169,7 +169,32 @@
                    <div class="form-group col-md-3">
                     <label>To Age <span style="color: red;">*</span></label>
 
-                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext numinput" name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required="">
+                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext " name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required="">
+                  </div>
+                  <div class="col-md-12">
+                    <label>Participant Type</label>
+                  <div class="form-group row"> 
+                      <?php  if(empty($gender)){$gender="";} ?>
+                  <div class="radio col-md-2">
+                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?>> All</label>
+                  </div>
+                  <div class="radio col-md-2">
+                    <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?>> Male</label>
+                  </div>
+                  <div class="radio col-md-2">
+                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> > Female</label>
+                  </div>
+                  </div>
+                  </div>
+                    <div class="form-group col-md-6">
+                    <label>Points <span style="color: red;">*</span></label>
+
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points" id="points" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required="">
+                  </div>
+                   <div class="form-group col-md-6">
+                    <label>Conversion Points <span style="color: red;">*</span></label>
+
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints" id="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required="">
                   </div>
                   <div class="form-group col-md-6">
                     <label>Competition User Type</label>
@@ -310,12 +335,12 @@
     });
 });
 </script>  -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $('.numinput').on('input', function() {
       this.value = this.value.replace(/(?!^-)[^0-9.]/g, "").replace(/(\..*)\./g, '$1'); 
 });
 </script>
-
+ -->
 
 </body>
 </html>

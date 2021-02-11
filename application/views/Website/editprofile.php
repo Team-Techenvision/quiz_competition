@@ -51,8 +51,8 @@
                 <?php  }?>
                 <br>
 
-                   <!-- <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
-                   <div><input type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" ><label id="fileLabel">No Choosen file</label></div>
+                  <!--  <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
+                   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" ><label id="fileLabel">No Choosen file</label></div>
 
                   <!-- 
                   src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
@@ -117,7 +117,7 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">Alternate Mobile No.</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                  <input type="text" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
+                                  <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
 
                                 </div>
                                </div>
@@ -187,6 +187,7 @@
                                 
                                   <select name="stateid" id="stateid"class="form-control" required="" >
                                   <option value="">Select State</option>
+
                                     <?php foreach($state as $state)
                                      {
                                           echo '<option value="'. $state->stateid.'" '.$selected.'>'. $state->statename.'</option>';
@@ -212,7 +213,7 @@
 
                                 
                                     <select name="cityid" id="cityid"class="form-control" required="" >
-                                    <option value="">select</option>
+                                    <option value="">select city</option>
                                 
                                      <?php foreach($city as $city)
                                      {
@@ -238,7 +239,7 @@
                                       <input type="hidden" class="form-control title-case " name="" id="DistrictId" value="<?php if(isset($districtid)){ echo $districtid; } ?>" disabled="">
                                        <?php }?> 
                                     <select name="districtid" id="districtid"class="form-control" required="" >
-                                    <option value="">District</option>
+                                    <option value="">select District</option>
                                      <?php foreach($district as $district)
                                      {
                                           echo '<option value="'. $district->districtid.'" '.$selected.'>'. $district->districtname.'</option>';
@@ -272,7 +273,7 @@
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="text" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" required>
+                                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" required>
                                     </div></div>
                                   </div>
                             <?php } ?>

@@ -585,7 +585,7 @@ $(function() {
 
                 document.getElementById("signupForm").reset();
 
-                  window.location.reload();
+                  window.location = "<?php echo base_url(); ?>WebsiteController/edit_profile";
                }
                else{
                 $('.alert-danger').html(data);

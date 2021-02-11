@@ -215,6 +215,17 @@ function fetch_userid()
 //     $result = $query->result();
 //     return $result;
 //   }
+  public function getcompetition_info($competitionid){
+    $this->db->select('competition.*,tabcompetition.*');
+
+    $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'left');
+
+    $this->db->where('competitionid', $competitionid);
+    $this->db->from('competition');
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+  }
    function fetch_pincodelist()
  {
   

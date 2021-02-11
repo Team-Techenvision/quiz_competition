@@ -485,12 +485,26 @@ class User extends CI_Controller{
         'user_city' => $this->input->post('user_city'),
         'user_email' => $this->input->post('user_email'),
         'user_password' => $this->input->post('user_password'),
+        'user_pincode' => $this->input->post('user_pincode'),
         'user_addedby' => $quizweb_user_id,
         'is_admin' => 1,
         'roll_id' => 2,
       );
-      $this->User_Model->save_data('user', $save_data);
+      $id = $this->User_Model->save_data('user', $save_data);
+      // $this->session->set_flashdata('save_success','success');
+
+      $data_view = array(
+            'user_id' => $id,
+            'user_name' => $this->input->post('user_name'),
+            'user_mobile' => $this->input->post('user_mobile'),
+            'user_password' => $this->input->post('user_password'),
+            'user_pincode' => $this->input->post('user_pincode'), 
+            'profile_submitted' =>0,          
+        );
+
+      $this->User_Model->save_data('userprofile_master',$data_view);
       $this->session->set_flashdata('save_success','success');
+
       header('location:'.base_url().'User/user_list');
     }
     $this->load->view('Include/head');
@@ -514,6 +528,9 @@ class User extends CI_Controller{
 
   // Edit User....
   public function edit_user($user_id){
+     $userId = $this->uri->segment(3);
+     // print_r($user_id); die();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -530,6 +547,21 @@ class User extends CI_Controller{
         'user_addedby' => $quizweb_user_id,
       );
       $this->User_Model->update_info('user_id', $user_id, 'user', $update_data);
+
+      // $updateid=$user_id;
+
+       $update_view = array(
+            'user_id' => $userId,
+            'user_name' => $this->input->post('user_name'),
+            'user_mobile' => $this->input->post('user_mobile'),
+            'user_password' => $this->input->post('user_password'),
+            'user_pincode' => $this->input->post('user_pincode'), 
+         
+        );
+
+      $this->User_Model->update_info('user_id', $user_id, 'userprofile_master', $update_view);
+
+
       $this->session->set_flashdata('update_success','success');
       header('location:'.base_url().'User/user_list');
     }
@@ -544,6 +576,7 @@ class User extends CI_Controller{
       $data['user_email'] = $info->user_email;
       $data['user_city'] = $info->user_city;
       $data['user_password'] = $info->user_password;
+      $data['user_pincode'] = $info->user_pincode;
     }
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -558,6 +591,7 @@ class User extends CI_Controller{
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('user_id', $user_id, 'user');
+    $this->User_Model->delete_info('user_id', $user_id, 'userprofile_master');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'User/user_list');
   }
@@ -922,7 +956,10 @@ class User extends CI_Controller{
         'emailaddress'=>  $this->input->post('emailaddress'),
         'whatsapp'=>  $data['whatsapp'],
         'whatsappnumber'=>  $this->input->post('whatsappnumber'),
+        'points'=>  $this->input->post('points'),
         'competitiontypeid'=>  $this->input->post('competitiontypeid'),
+        'conversionpoints'=>  $this->input->post('conversionpoints'),
+        'gender'=>  $this->input->post('gender'),
         'created_date' => date('Y-m-d H:i:s'),
  
       );
@@ -1152,6 +1189,10 @@ class User extends CI_Controller{
         'whatsapp'=>  $data['whatsapp'],
         'whatsappnumber'=>  $this->input->post('whatsappnumber'),
         'competitiontypeid'=>  $this->input->post('competitiontypeid'),
+        'points'=>  $this->input->post('points'),
+        'conversionpoints'=>  $this->input->post('conversionpoints'),
+        'gender'=>  $this->input->post('gender'),
+
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -1180,6 +1221,10 @@ class User extends CI_Controller{
         'whatsapp'=>  $data['whatsapp'],
         'whatsappnumber'=>  $this->input->post('whatsappnumber'),
         'competitiontypeid'=>  $this->input->post('competitiontypeid'),
+        'points'=>  $this->input->post('points'),
+        'conversionpoints'=>  $this->input->post('conversionpoints'),
+        'gender'=>  $this->input->post('gender'),
+
         'created_date' => date('Y-m-d H:i:s'),
        
 
@@ -1273,6 +1318,10 @@ class User extends CI_Controller{
       $data['whatsapp'] = $info->whatsapp;
       $data['whatsappnumber'] = $info->whatsappnumber;
       $data['competitiontypeid'] = $info->competitiontypeid;
+      $data['points'] = $info->points;
+      $data['conversionpoints'] = $info->conversionpoints;
+      $data['gender'] = $info->gender;
+
     }
     //  foreach($compquizsubject_info as $info){
     //   $data['update'] = 'update';
@@ -1304,11 +1353,15 @@ class User extends CI_Controller{
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'User/competition_list');
   }
+
 /*******************************    Participate Information     **************************/
 
 
  // Add New Profile....
   public function add_participate(){
+
+    // $user_id = $this->uri->segment(3);
+    // print_r($user_id);die();
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
@@ -1317,21 +1370,49 @@ class User extends CI_Controller{
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
-       
         'parentname' => $this->input->post('parentname'),
-        'age' => $this->input->post('age'),
+        'fullname' => $this->input->post('fullname'),
+        'birthdate' => $this->input->post('birthdate'),
         'emailid' => $this->input->post('emailid'),
-        'grade' => $this->input->post('grade'),
+        'standard' => $this->input->post('standard'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-         'competitionid' => $this->input->post('competitionid'),
-        'user_id' => $quizweb_user_id,
+        'competitionid' => $this->input->post('competition_id'),
+        // 'profile_image' => $this->input->post('profile_image'),
+        'alternatemobno' => $this->input->post('alternatemobno'),
+        'gender' => $this->input->post('gender'),
+        'cityid' => $this->input->post('cityid'),
+        'districtid' => $this->input->post('districtid'),
+        'stateid' => $this->input->post('stateid'),
+        // 'user_id' => $quizweb_user_id,
         'created_date' => date('Y-m-d H:i:s'),
         // 'user_addedby' => $quizweb_user_id,
       );
       // print_r($save_data);
-      $this->User_Model->save_data('profile',$save_data);
+      $id = $this->User_Model->save_data('profile',$save_data);
+
+      $save_data = array(
+        'parentname' => $this->input->post('parentname'),
+        'fullname' => $this->input->post('fullname'),
+        'birthdate' => $this->input->post('birthdate'),
+        'emailid' => $this->input->post('emailid'),
+        'standard' => $this->input->post('standard'),
+        'schoolcollegename' => $this->input->post('schoolcollegename'),
+        'address' => $this->input->post('address'),
+        'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competition_id'),
+        // 'profile_image' => $this->input->post('profile_image'),
+        'alternatemobno' => $this->input->post('alternatemobno'),
+        'gender' => $this->input->post('gender'),
+        'cityid' => $this->input->post('cityid'),
+        'districtid' => $this->input->post('districtid'),
+        'stateid' => $this->input->post('stateid'),
+        'user_id' => $id,
+        'created_date' => date('Y-m-d H:i:s'),
+        // 'user_addedby' => $quizweb_user_id,
+      ); 
+      $this->User_Model->save_data('userprofile_master',$save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/participate_list');
     }
@@ -1339,12 +1420,29 @@ class User extends CI_Controller{
  
     $data['pin'] = $this->User_Model->fetch_pincode();
     $data['competition'] = $this->User_Model->fetch_competition();
-     
+    $data['userprofile'] = $this->User_Model->fetch_userprofile();
+    // $data['user_list'] = $this->User_Model->fetch_user();
+    // $data['user_list'] = $this->User_Model->get_list_by_id('user_id',$user_id,'','','','','user');
+
+    // print_r($data['user_list']);die();
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('User/participate',$data);
     $this->load->view('Include/footer',$data);
+  }
+  public function search_participateinfo(){
+
+   $data['user_list'] = $this->User_Model->get_list_by_id('user_id',$user_id,'','','','','user');
+
+    print_r($data['user_list']);die();
+
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/participate',$data);
+    $this->load->view('Include/footer',$data);
+
+
   }
 
    // Profile List....
@@ -1519,20 +1617,20 @@ class User extends CI_Controller{
 
       }
 
-      ?>
-              <script type="text/javascript">
-              $(document).ready(function(){
-              $('.btnaddcomp').click(function(){
-                var user_id=$(this).val();
-
-                alert(user_id);
-                });
-               });
-              </script>
-       <?php
+     
     }
 
 
+      //         <script type="text/javascript">
+      //         $(document).ready(function(){
+      //         $('.btnaddcomp').click(function(){
+      //           var user_id=$(this).val();
+
+      //           alert(user_id);
+      //           });
+      //          });
+      //         </script>
+      //  <?php
 /******************************* Assign Winner Information ****************************/
 
 
@@ -1827,6 +1925,115 @@ function fetch_profile()
     header('location:'.base_url().'User/prize_list');
   }
 
+/*******************************    Class Information      ****************************/
+
+  // Add New Class....
+  public function add_class(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('tabinputtext', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      
+      if($this->input->post('alluser')==1){
+         
+               $fromstand =0;
+               $tostand =100;
+
+      }else{
+               $fromstand = $this->input->post('fromstand');
+               $tostand = $this->input->post('tostand');
+      }
+
+      $save_data = array(
+       
+                'tabinputtext' => $this->input->post('tabinputtext'),
+                'tabid' => $this->input->post('tabid'),
+                'fromstand' => $fromstand,
+                'tostand' => $tostand,
+                'alluser' => $this->input->post('alluser'),
+             
+      );
+      $this->User_Model->save_data('tabcompetition', $save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'User/class_list');
+    }
+
+    // $data['competition'] = $this->User_Model->fetch_competition();
+    // $data['level'] = $this->User_Model->fetch_level();
+
+
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/class');
+    $this->load->view('Include/footer');
+  }
+
+  // User List....
+  public function class_list(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['class_list'] = $this->User_Model->class_list('tabinputtextid');
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/class_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Edit User....
+  public function edit_class($tabinputtextid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('tabinputtext', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $update_data = array(
+               
+                'tabinputtext' => $this->input->post('tabinputtext'),
+                'tabid' => $this->input->post('tabid'),
+                'fromstand' => $this->input->post('fromstand'),
+                'tostand' => $this->input->post('tostand'),
+                'alluser' => $this->input->post('alluser'),
+               
+               
+      );
+      $this->User_Model->update_info('tabinputtextid', $tabinputtextid, 'tabcompetition', $update_data);
+      $this->session->set_flashdata('update_success','success');
+      header('location:'.base_url().'User/class_list');
+    }
+
+    $level_info = $this->User_Model->get_info('tabinputtextid', $tabinputtextid, 'tabcompetition');
+    if($level_info == ''){ header('location:'.base_url().'User/class_list'); }
+    foreach($level_info as $info){
+      $data['update'] = 'update';
+      $data['tabinputtext'] = $info->tabinputtext;
+      $data['tabid'] = $info->tabid;
+      $data['fromstand'] = $info->fromstand;
+      $data['alluser'] = $info->alluser;
+      $data['tostand'] = $info->tostand;
+     
+    }
+    
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/class',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  // Delete User....
+  public function delete_class($tabinputtextid){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->User_Model->delete_info('tabinputtextid', $tabinputtextid, 'tabcompetition');
+    $this->session->set_flashdata('delete_success','success');
+    header('location:'.base_url().'User/class_list');
+  }
 
 /*******************************  Check Duplication  ****************************/
   public function check_duplication(){

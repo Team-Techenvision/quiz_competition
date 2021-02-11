@@ -151,7 +151,7 @@
                                           <th class="wt_50">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody class="" id="competitor">
+                                        <tbody class="comp" id="competitor">
                                           <form action="<?php echo base_url(); ?>User/add_assigncompetition">
                         
                                           </form>
@@ -243,22 +243,18 @@ $(document).ready(function(){
    
   });
 
- $(".btnaddcomp").click(function() {
-  alert("hiii");
-         document.location = '@Url.Action("add_assigncompetition","User")';
-    });
 
 });
 
  
 
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
-  $('.btnaddcomp').click(function(){
+  $('#competitor .btnaddcomp').click(function(){
   alert('hello');
   });
 });
-</script> -->
+</script>
 </body>
 </html>

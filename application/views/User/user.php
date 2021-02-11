@@ -56,7 +56,7 @@
                   </div>
                      <div class="form-group col-md-12">
                     <label>Pincode<span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " minlength="6" maxlength="6" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
+                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " minlength="6" maxlength="6" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
                   </div>
                   <div class="form-group col-md-12">
                     <label>City<span style="color: red;">*</span></label>

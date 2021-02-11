@@ -31,6 +31,17 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
+   public function class_list($tabinputtextid){
+    $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('tabcompetition');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
     public function competitiontype_list($competitiontypeid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -212,6 +223,24 @@ class User_Model extends CI_Model{
   //   $result = $query->result();
   //    return $result;
   // }
+  function fetch_userprofile($user_mobile)
+ {
+  
+  $this->db->order_by("user_mobile", "");
+  $this->db->where('user_mobile', $user_mobile);
+  $query = $this->db->get("userprofile_master");
+  return $query->result();
+  // print_r($query);
+ }
+ //  function fetch_user()
+ // {
+  
+ //  $this->db->order_by("user_id", "");
+ //  // $this->db->where('user_id', $user_id);
+ //  $query = $this->db->get("user");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
     function fetch_competition()
  {
   $this->db->order_by("competitionid", "ASC");
@@ -230,6 +259,7 @@ class User_Model extends CI_Model{
   return $query->result();
   // print_r($query);
  }
+
  public function assigncompetition_list($competitionid,$pincode){
      // $this->db->select('*');
     $this->db->select('profile.*,user.*');
