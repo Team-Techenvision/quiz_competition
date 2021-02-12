@@ -392,27 +392,39 @@ class WebsiteController extends CI_Controller{
 
 public function insert_profiledata(){
 
-    $competitionid = $this->input->post('competition_id');
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+    
+    if(empty($quizweb_user_id) && $quizweb_company_id == '' && $quizweb_roll_id ==''){ 
+      $this->session->set_flashdata('Login_error','error');
+      header('location:'.base_url()); }else{
+
+     $competitionid = $this->input->post('competition_id');
+
    // print_r($quizweb_user_id);die();
 
      $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');
+
      $competition_info = $this->Website_Model->getcompetition_info($competitionid);
      // $competitionClass_info = $this->Website_Model->tab_list('tabinputtextid');
      // print_r($competition_info); die();
+     $check_allready_participate = $this->Website_Model->check_participate($quizweb_user_id,$competitionid);
 
+     $userparticipatetype="";
      foreach ($competition_info as $value) {
+
        $fromstand = $value->fromstand;
        $tostand = $value->tostand;
        $alluser = $value->alluser;
 
-     }
+       $userparticipatetype = $value->gender; //all[3],male[1],female[2]
+       $fromage = $value->fromage;
+       $toage = $value->toage;
+       // print_r($userparticipatetype);die();
 
-     if($profile_info !=null){
+     }
 
      foreach ($profile_info as  $value) {
        
@@ -426,20 +438,38 @@ public function insert_profiledata(){
        $pincode = $value->pincode;
        $profile_image = $value->profile_image;
        $alternatemobno = $value->alternatemobno;
-       $gender = $value->gender;
+       $gender = $value->gender; // male[1],female[2]
        $cityid = $value->cityid;
        $districtid = $value->districtid;
        $stateid = $value->stateid;
+       $profile_submitted = $value->profile_submitted;
        $userprofileid = $value->userprofileid;
 
-       // print_r($standard);
+       // print_r($gender); die();
+
+       //  $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
+       //  $query = $this->db->query($sql);
+       //  $result = $query->result_array();
+
+       //  // print_r($result); die();
+       // $a="";
+       //  foreach ($result as $value) {
+       //    // print_r(expression) $value;
+       //    // $age;
+          
+       //  }
+
+        // die();
+    
       
      }
 
+    if($profile_submitted == 1){
      // print_r($profile_info); die();
     if($standard >= $fromstand && $standard <= $tostand ){
 
-  
+    if(empty($check_allready_participate)){
+      
 
     $this->form_validation->set_rules('competition_id', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
@@ -473,18 +503,26 @@ public function insert_profiledata(){
     }
 
     }else{
+      // echo "Allready Participate";
+      $this->session->set_flashdata('profileAlready_error','error');
+      header('location:'.base_url().'WebsiteController');
+      }
+    }else{
 
      // echo "msg standard Participate";
-      $this->session->set_flashdata('class_error','eorrer');
+      $this->session->set_flashdata('class_error','error');
       header('location:'.base_url().'WebsiteController');
 
     }
+
   }else{
     // echo "Profile is not submitted";
-      $this->session->set_flashdata('profile_error','eorrer');
+      $this->session->set_flashdata('profile_error','error');
       header('location:'.base_url().'WebsiteController');
   }
 
+  
+}
    // print_r($data);
 
 
@@ -876,7 +914,44 @@ function fetch_city()
     $this->load->view('Website/Include/footer',$data);
   }
 
-     //------------------------  start quiz competition ------------------------------------/        
+     //------------------------  start quiz competition ------------------------------------/  
+
+      public function submit_quizs()
+    { 
+      // echo $this->session->userdata('quizweb_user_id');
+      // echo "<br>";
+      // echo $this->session->userdata('quiz_id'); 
+      // echo "<br>";
+
+      $competition_id = $this->session->userdata('quizweb_user_id');  
+      $user_id = $this->session->userdata('quiz_id');
+ 
+
+      foreach($_POST as $key => $value)
+      {  
+          $question_id =  $key;
+        
+      // echo $question;
+        //echo "<br>";
+
+          foreach ($value as $answer) 
+             {      
+              // echo $question_id; // echo "<br>";
+              //  echo $answer;    // echo "<br>";
+
+              $this->Website_Model->submit_quize_answer($user_id,$competition_id,$question_id,$answer);     
+
+           } 
+      }
+          
+      $this->session->set_flashdata('quizsubmit_success','success');
+      $this->session->unset_userdata('quiz_id');
+
+      header('location:'.base_url().'WebsiteController/competition_list');
+
+
+    }
+      
 
   public function star_competion()
   { 
@@ -885,18 +960,19 @@ function fetch_city()
    //    $arr = $_POST['quiz_id1'];
    // $chk_value = implode(",",$arr);
    // print_r($chk_value); die();
-   foreach ($_POST as $row)
-    {
+   // foreach ($_POST as $row)
+   //  {
       
-        // print_r($row);
+   //      // print_r($row);
 
-     }
+   //   }
     // echo '<pre>';
 // print_r($result);
 // echo '</pre>';
     // die();
 
     $quiz_id = $this->uri->segment(3);
+    $this->session->set_userdata('quiz_id',  $quiz_id);
     // echo $quiz_id;   die();
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
@@ -936,7 +1012,7 @@ function fetch_city()
       );
       // print_r($save_data);
       $this->Website_Model->save_data('userquizsubmit',$save_data);
-      $this->session->set_flashdata('save_success','success');
+      // $this->session->set_flashdata('save_success','success');
       // header('location:'.base_url().'WebsiteController/profile_list');
     }
 

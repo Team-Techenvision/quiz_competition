@@ -175,8 +175,16 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
       </div><!-- /.container-fluid -->
     </section>
   </div>
-   <!-- <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script> -->
-  <!-- <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> -->
+   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+
+  <script type="text/javascript">
+  <?php if($this->session->flashdata('quizsubmit_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Quiz Submitted Successfully');
+    });
+  <?php } ?>
+</script>
  <script type="text/javascript">
   $('#btn_save').click(function(){
     // alert('hii');

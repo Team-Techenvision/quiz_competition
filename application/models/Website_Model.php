@@ -215,6 +215,7 @@ function fetch_userid()
 //     $result = $query->result();
 //     return $result;
 //   }
+ 
   public function getcompetition_info($competitionid){
     $this->db->select('competition.*,tabcompetition.*');
 
@@ -226,6 +227,15 @@ function fetch_userid()
     $result = $query->result();
     return $result;
   }
+public function check_participate($quizweb_user_id,$competition_id){
+$this->db->select('*');
+$this->db->where('competitionid',$competition_id);
+$this->db->where('user_id',$quizweb_user_id);
+$this->db->from('profile');
+$query = $this->db->get();
+$result = $query->num_rows();
+return $result;
+}
    function fetch_pincodelist()
  {
   
@@ -469,6 +479,16 @@ function fetch_userid()
     $result = $this->db->get('competition');
     //print_r($result->result_array());die();
     return $result->result_array();
+  }
+  public function submit_quize_answer($user_id,$competition_id,$question_id,$answer_text)
+  {
+      $data = array(
+          'user_id' => $user_id,
+          'dynamiccompetitionid' => $competition_id,
+          'question' => $question_id,
+          'selectanswertext' => $answer_text  
+            );
+           $this->db->insert('userquizsubmit',$data);
   }
 
 }

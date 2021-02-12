@@ -223,11 +223,11 @@ class User_Model extends CI_Model{
   //   $result = $query->result();
   //    return $result;
   // }
-  function fetch_userprofile($user_mobile)
+  function fetch_userprofile()
  {
   
   $this->db->order_by("user_mobile", "");
-  $this->db->where('user_mobile', $user_mobile);
+  // $this->db->where('user_mobile', $user_mobile);
   $query = $this->db->get("userprofile_master");
   return $query->result();
   // print_r($query);
@@ -241,6 +241,22 @@ class User_Model extends CI_Model{
  //  return $query->result();
  //  // print_r($query);
  // }
+ public function search_participateinfo($user_mobile){
+     $this->db->select('*');
+    // $this->db->select('userprofile_master.*,user.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'userprofile_master.user_mobile = user.user_mobile', 'inner');
+    // $this->db->where('competitionid', $competitionid);
+    $this->db->where('userprofile_master.user_mobile', $user_mobile);
+
+    $this->db->from('userprofile_master');
+ 
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+   }
     function fetch_competition()
  {
   $this->db->order_by("competitionid", "ASC");
@@ -364,6 +380,24 @@ class User_Model extends CI_Model{
  //  return $query->result();
  //  // print_r($query);
  // }
+   function fetch_userid($userprofileid)
+   {  
+     $userpro="";
+
+      $this->db->select('userprofileid');
+      $this->db->where('user_id', $userprofileid);
+      $this->db->from('userprofile_master');
+      $query = $this->db->get();
+      $result = $query->result_array();
+   
+     foreach ($result as  $value) {
+       $userpro = $value['userprofileid'];
+
+     }
+     // echo $userpro; die();
+     return $userpro;
+
+   }
   function fetch_profile($competitionid)
  {
   $this->db->where('competitionid', $competitionid);
@@ -380,13 +414,13 @@ class User_Model extends CI_Model{
  }
 
  //for winner fetch city
- function fetch_city()
- {
-  $this->db->order_by("cityname", "ASC");
-  $query = $this->db->get("city");
-  return $query->result();
-  // print_r($query);
- }
+ // function fetch_city()
+ // {
+ //  $this->db->order_by("cityname", "ASC");
+ //  $query = $this->db->get("city");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
    public function participate_list($profileid){
     // $this->db->select('*');
      $this->db->select('profile.*,competition.*');
@@ -400,40 +434,34 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
+//for Participate form 
 
-
-  //for pincode form fetch state
-  function fetch_state()
-   {
-      $this->db->order_by("statename", "ASC");
-      $query = $this->db->get("state");
-      return $query->result();
-      // print_r($query);
-    }
-
-function fetch_country1()
+    function fetch_state()
  {
-  $this->db->order_by("countryname", "ASC");
-  $query = $this->db->get("country");
+  $this->db->order_by("statename", "ASC");
+  $query = $this->db->get("state");
   return $query->result();
   // print_r($query);
  }
-
-  
- function fetch_state1($countryid)
+   function fetch_city1($stateid)
  {
-  $this->db->where('countryid', $countryid);
-  $this->db->order_by('statename', 'ASC');
-  $query = $this->db->get('state');
-  $output = '<option value="">Select State</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->stateid.'">'.$row->statename.'</option>';
-  }
-  return $output;
+  $this->db->select('*');
+  $this->db->order_by("cityname", "ASC");
+  $this->db->where('city.stateid', $stateid);
+  $query = $this->db->get("city");
+  return $query->result();
+  // print_r($query);
  }
-
- function fetch_city1($stateid)
+   function fetch_district1($cityid)
+ {
+  $this->db->select('*');
+  $this->db->order_by("districtname", "ASC");
+  $this->db->where('district.cityid', $cityid);
+  $query = $this->db->get("district");
+  return $query->result();
+  // print_r($query);
+ }
+  function fetch_city($stateid)
  {
   $this->db->where('stateid', $stateid);
   $this->db->order_by('cityname', 'ASC');
@@ -445,18 +473,74 @@ function fetch_country1()
   }
   return $output;
  }
- function fetch_district1($cityid)
- {
-  $this->db->where('cityid', $cityid);
-  $this->db->order_by('districtname ', 'ASC');
-  $query = $this->db->get('district');
-  $output = '<option value="">Select District</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
-  }
-  return $output;
- }
+  function fetch_district($cityid)
+   {
+    $this->db->where('cityid', $cityid);
+    $this->db->order_by('districtname ', 'ASC');
+    $query = $this->db->get('district');
+    $output = '<option value="">Select District</option>';
+    foreach($query->result() as $row)
+    {
+     $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
+    }
+    return $output;
+   }
+
+  //for pincode form fetch state
+//   function fetch_state()
+//    {
+//       $this->db->order_by("statename", "ASC");
+//       $query = $this->db->get("state");
+//       return $query->result();
+//       // print_r($query);
+//     }
+
+// function fetch_country1()
+//  {
+//   $this->db->order_by("countryname", "ASC");
+//   $query = $this->db->get("country");
+//   return $query->result();
+//   // print_r($query);
+//  }
+
+  
+//  function fetch_state1($countryid)
+//  {
+//   $this->db->where('countryid', $countryid);
+//   $this->db->order_by('statename', 'ASC');
+//   $query = $this->db->get('state');
+//   $output = '<option value="">Select State</option>';
+//   foreach($query->result() as $row)
+//   {
+//    $output .= '<option value="'.$row->stateid.'">'.$row->statename.'</option>';
+//   }
+//   return $output;
+//  }
+
+//  function fetch_city1($stateid)
+//  {
+//   $this->db->where('stateid', $stateid);
+//   $this->db->order_by('cityname', 'ASC');
+//   $query = $this->db->get('city');
+//   $output = '<option value="">Select City</option>';
+//   foreach($query->result() as $row)
+//   {
+//    $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
+//   }
+//   return $output;
+//  }
+//  function fetch_district1($cityid)
+//  {
+//   $this->db->where('cityid', $cityid);
+//   $this->db->order_by('districtname ', 'ASC');
+//   $query = $this->db->get('district');
+//   $output = '<option value="">Select District</option>';
+//   foreach($query->result() as $row)
+//   {
+//    $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
+//   }
+//   return $output;
+//  }
 
   public function competition_list($competitionid){
      // $today = date('Y-m-d');

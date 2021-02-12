@@ -32,6 +32,12 @@
     position: absolute;
     top: 35px;
 }
+.userLabel{
+  color: red;
+  font-size: 11px;
+  margin-top: -30px;
+  /*position: relative;*/
+}
  
 </style>
 <!DOCTYPE html>
@@ -248,14 +254,18 @@
                    <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" /> 
                 </div>
                 <div class="form-group col-md-12">
-                   <input class="input" type="text" name="user_pincode" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
+                   <input class="input" type="text" name="user_pincode"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
+
                 </div>
                 <div class="form-group col-md-12">
+                   <!-- <label class="userLabel">*Entered mobile no. will be used as user name</label> -->
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+                  
                 </div>
                 <div class="form-group col-md-12">
                   <span toggle="#password-field"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password"></span>
-                   <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
+                   <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8"  value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
+
                 </div>
                 <div class="form-group labelerror">
                    <label class="form-check-label " style="margin-left: 55px;">
@@ -291,7 +301,7 @@
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
             <div class="form-group">
-            <input type="text" id="mobile" name="mobile" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10"  />
+            <input type="text" id="mobile"  name="mobile" class="input notext"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Mobile No." minlength="10" maxlength="10"  />
             </div>
           <!--   <span class="text-red"> < ?php echo form_error('mobile'); ?></span> -->
             <!-- <div id="infoMessage">< ?php echo form_error('mobile'); ?></div> -->

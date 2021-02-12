@@ -1356,20 +1356,41 @@ class User extends CI_Controller{
 
 /*******************************    Participate Information     **************************/
 
-
+function fetch_city()
+ {
+  if($this->input->post('stateid'))
+  {
+   echo $this->User_Model->fetch_city($this->input->post('stateid'));
+  }
+ }   
+ function fetch_district()
+ {
+  if($this->input->post('cityid'))
+  {
+   echo $this->User_Model->fetch_district($this->input->post('cityid'));
+  }
+ }  
  // Add New Profile....
   public function add_participate(){
 
     // $user_id = $this->uri->segment(3);
     // print_r($user_id);die();
 
+    $user_id = $this->session->userdata('user_id');
+
+   // echo $user_id; die();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+
+
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-      $save_data = array(
+      
+    
+      $updateuser_data = array(
         'parentname' => $this->input->post('parentname'),
         'fullname' => $this->input->post('fullname'),
         'birthdate' => $this->input->post('birthdate'),
@@ -1378,19 +1399,23 @@ class User extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-        'competitionid' => $this->input->post('competition_id'),
+        // 'competitionid' => $this->input->post('competition_id'),
         // 'profile_image' => $this->input->post('profile_image'),
         'alternatemobno' => $this->input->post('alternatemobno'),
         'gender' => $this->input->post('gender'),
         'cityid' => $this->input->post('cityid'),
         'districtid' => $this->input->post('districtid'),
         'stateid' => $this->input->post('stateid'),
-        // 'user_id' => $quizweb_user_id,
+        'user_id' => $user_id,
         'created_date' => date('Y-m-d H:i:s'),
-        // 'user_addedby' => $quizweb_user_id,
-      );
-      // print_r($save_data);
-      $id = $this->User_Model->save_data('profile',$save_data);
+        'profile_submitted' => 1,
+      ); 
+      // $this->User_Model->save_data('userprofile_master',$save_data);
+        $this->User_Model->update_info('user_id', $user_id, 'userprofile_master', $updateuser_data);
+        $last_updated_id = $this->User_Model->fetch_userid($user_id);
+
+        // $lastid = $this->db->insert_id();
+      // echo $last_updated_id; die();
 
       $save_data = array(
         'parentname' => $this->input->post('parentname'),
@@ -1401,19 +1426,22 @@ class User extends CI_Controller{
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-        'competitionid' => $this->input->post('competition_id'),
+        'competitionid' => $this->input->post('competitionid'),
         // 'profile_image' => $this->input->post('profile_image'),
         'alternatemobno' => $this->input->post('alternatemobno'),
         'gender' => $this->input->post('gender'),
         'cityid' => $this->input->post('cityid'),
         'districtid' => $this->input->post('districtid'),
         'stateid' => $this->input->post('stateid'),
-        'user_id' => $id,
+        'user_id' => $user_id,
+        'userprofileid' => $last_updated_id,
         'created_date' => date('Y-m-d H:i:s'),
         // 'user_addedby' => $quizweb_user_id,
-      ); 
-      $this->User_Model->save_data('userprofile_master',$save_data);
+      );
+      // print_r($save_data);
+      $this->User_Model->save_data('profile',$save_data);
       $this->session->set_flashdata('save_success','success');
+      $this->session->unset_userdata('user_id');
       header('location:'.base_url().'User/participate_list');
     }
 
@@ -1421,6 +1449,7 @@ class User extends CI_Controller{
     $data['pin'] = $this->User_Model->fetch_pincode();
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['userprofile'] = $this->User_Model->fetch_userprofile();
+    $data['state'] = $this->User_Model->fetch_state();
     // $data['user_list'] = $this->User_Model->fetch_user();
     // $data['user_list'] = $this->User_Model->get_list_by_id('user_id',$user_id,'','','','','user');
 
@@ -1431,11 +1460,30 @@ class User extends CI_Controller{
     $this->load->view('User/participate',$data);
     $this->load->view('Include/footer',$data);
   }
-  public function search_participateinfo(){
+   public function search_participateinfo(){
 
-   $data['user_list'] = $this->User_Model->get_list_by_id('user_id',$user_id,'','','','','user');
+    $user_mobile = $this->input->post('user_mobile');
+    // $this->session->set_userdata('user_mobile',  $user_mobile);
 
-    print_r($data['user_list']);die();
+
+    $data['search_participateinfo'] = $this->User_Model->search_participateinfo($user_mobile);
+
+    foreach ($data['search_participateinfo'] as $value) {
+      $user_id = $value->user_id;
+      $this->session->set_userdata('user_id',  $user_id);
+
+      // echo  $this->session->userdata('user_id'); die();
+      
+    
+    }
+
+    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['state'] = $this->User_Model->fetch_state();
+    // $data['city'] = $this->User_Model->fetch_city1($data['stateid']);
+    // $data['district'] = $this->User_Model->fetch_district1($data['districtid']);
+
+
+    // print_r($data['search_participateinfo']);die();
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -1520,6 +1568,7 @@ class User extends CI_Controller{
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('profileid', $profileid, 'profile');
+    // $this->User_Model->delete_info('profileid', $profileid, 'profile');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'User/participate_list');
   }

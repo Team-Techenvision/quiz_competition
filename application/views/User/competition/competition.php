@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
+              <form id="form_action" name="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                     <label>Competition Type <span style="color: red;">*</span></label>
@@ -176,13 +176,13 @@
                   <div class="form-group row"> 
                       <?php  if(empty($gender)){$gender="";} ?>
                   <div class="radio col-md-2">
-                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?>> All</label>
+                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?>> All</label>
                   </div>
                   <div class="radio col-md-2">
-                    <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?>> Male</label>
+                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?>> Male</label>
                   </div>
                   <div class="radio col-md-2">
-                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> > Female</label>
+                    <label><input type="radio" name="gender" value="2" <?php if($gender=="3") { echo "checked";} ?> > Female</label>
                   </div>
                   </div>
                   </div>
@@ -318,6 +318,69 @@
 
        
   </script>
+ <!--  <script type="text/javascript">
+
+
+// Wait for the DOM to be ready
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+
+
+
+  jQuery.validator.addMethod("greaterThanZero", function(value, element) {
+    return (parseFloat(value) > 0);
+}, "* Points must be greater than zero");
+
+ jQuery.validator.addMethod("lessThanFirst", function(value, element) {
+value = $("#points").val();
+  value1 = $("#conversionpoints").val();
+    return (value1 > value);
+}, "* Conversion Points must be less than Points");
+
+  $("form[name='form_action']").validate({
+
+
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      // firstname: "required",
+      // lastname: "required",
+      points : { greaterThanZero : true },
+      conversionpoints : { lessThanFirst : true },
+      // email: {
+      //   required: true,
+      //   // Specify that email should be validated
+      //   // by the built-in "email" rule
+      //   email: true
+      // },
+      // password: {
+      //   required: true,
+      //   minlength: 5
+      // }
+    },
+    // Specify validation error messages
+    messages: {
+      // firstname: "Please enter your firstname",
+      // lastname: "Please enter your lastname",
+      // password: {
+      //   required: "Please provide a password",
+      //   minlength: "Your password must be at least 5 characters long"
+      // },
+      // email: "Please enter a valid email address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+
+
+</script> -->
 <!--  <script type="text/javascript">
   $(document).ready(function(){
 

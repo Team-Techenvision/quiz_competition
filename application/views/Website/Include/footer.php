@@ -151,7 +151,7 @@ $(function() {
     // Specify validation error messages
     messages: {
       // user_name: "Please enter your name",
-      mobile: "Please enter your mobile number.",
+      mobile: "Please enter valid mobile number.",
       password: "Please enter a valid password.",
       // user_pincode: "Please enter a valid pincode",
       // address: "Please enter Street Address"

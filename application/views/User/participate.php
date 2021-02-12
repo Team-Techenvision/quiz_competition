@@ -37,7 +37,7 @@
                 
                  <div class="form-group col-md-4">
                       <label>Mobile No <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control txtOnly" name="user_mobile" id="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No" >
+                      <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control " name="user_mobile" id="user_mobile" maxlength="10" minlength="10" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" placeholder="Enter Mobile No" >
                   </div>
                   <div class="form-group col-md-2">
                   <button id="btn_serach" type="search" style="margin-top: 32px;" class="btn btn-primary">Search </button>
@@ -45,8 +45,16 @@
                
                 </div>  
               </form>
-              <form id="form_action" role="form" action="" method="post">
+              <form id="form_action" role="form" action="<?php echo base_url(); ?>User/add_participate" method="post">
                <div class="card-body row" style="margin-top: -50px;">
+
+                <?php 
+                if(!empty($search_participateinfo)){
+
+
+                foreach ($search_participateinfo as $value) {
+                 // print_r($search_participateinfo);?>
+                
                
                 
                  <?php if(isset($profile_image)) {  ?>
@@ -66,21 +74,21 @@
                    <div class="form-group col-md-12">
                     
                     <label>Full Name <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control txtOnly" name="fullname" id="fullname" value="<?php  echo $user_list->user_name;  ?>" placeholder="Enter Full Name" required="">
+                    <input type="text" class="form-control txtOnly" name="fullname" id="fullname" value="<?php  echo $value->user_name;  ?>" placeholder="Enter Full Name" required="">
               
                   </div>
                
                   <div class="form-group col-md-12">
                     <label>Parent Name <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required="">
+                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php  echo $value->parentname;  ?>" placeholder="Enter Parent Name" required="">
                   </div>
                    <div class="form-group col-md-12">
                     <label>Email Address <span style="color: red;">*</span></label>
-                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required="">
+                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php  echo $value->emailid;  ?>" placeholder="Enter Email Address" required="">
                   </div>
                    <div class="form-group col-md-4">
                     <label>BirthDate <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control notext" minlength="2" maxlength="2" name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" required="">
+                    <input type="date" class="form-control notext" name="birthdate" id="birthdate" value="<?php  echo $value->birthdate;  ?>" placeholder="Enter Birthdate" required="">
                   </div>
 
                     <div class="form-group col-md-4">
@@ -88,7 +96,7 @@
                                      <?php
                                       if(isset($gender)){?>
 
-                                      <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
+                                      <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php  echo $value->gender;  ?>" disabled="">
                                     <?php }?>  
                                   <select name="gender" id="gender"class="form-control" required="" >
                                     <option value="">Select Gender</option>
@@ -98,7 +106,7 @@
                      </div>
                      <div class="form-group col-md-4">
                     <label>Alternative Mobile No. <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
+                      <input type="text" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php  echo $value->alternatemobno;  ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
                   </div>
                  
                    <div class="form-group col-md-6">
@@ -127,7 +135,7 @@
                      <?php
                                       if(isset($standard)){?>
 
-                                      <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
+                                      <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php  echo $value->Standard;  ?>" disabled="">
                                     <?php }?>  
                                   <select name="standard" id="standard"class="form-control" required="" >
                                   <option value="">Select Standard</option>
@@ -149,20 +157,20 @@
                   </div>
                   <div class="form-group col-md-12">
                     <label>School/College Name <span style="color: red;">*</span></label>
-                  <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php if(isset($schoolcollegename)){ echo $schoolcollegename; } ?>" placeholder="Enter School/college Name" required >
+                  <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php  echo $value->schoolcollegename;  ?>" placeholder="Enter School/college Name" required >
                   </div>
                   
                   
                   <div class="form-group col-md-12">
                     <label>Address <span style="color: red;">*</span></label>
-                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required=""><?php if(isset($address)){ echo $address; } ?></textarea>
+                    <textarea type="text" class="form-control required title-case text" name="address" id="address" value="" placeholder="Enter Address" required=""><?php  echo $value->address;  ?></textarea>
                   </div>
                   <div class="form-group col-md-6">
                     <label>State <span style="color: red;">*</span></label>
                      <?php
                                       if(isset($stateid)){?>
 
-                                      <input type="hidden" class="form-control title-case " name="" id="StateId" value="<?php if(isset($stateid)){ echo $stateid; } ?>" disabled="">
+                                      <input type="hidden" class="form-control title-case " name="" id="StateId" value="<?php  echo $value->stateid;  ?>" disabled="">
                                        <?php }?>  
                                 
                                   <select name="stateid" id="stateid"class="form-control" required="" >
@@ -181,7 +189,7 @@
                           <?php
                                       if(isset($cityid)){?>
 
-                                      <input type="hidden" class="form-control title-case " name="" id="CityId" value="<?php if(isset($cityid)){ echo $cityid; } ?>" disabled="">
+                                      <input type="hidden" class="form-control title-case " name="" id="CityId" value="<?php  echo $value->cityid;  ?>" disabled="">
                                        <?php }?> 
 
                                 
@@ -203,7 +211,7 @@
                           <?php
                                       if(isset($districtid)){?>
 
-                                      <input type="hidden" class="form-control title-case " name="" id="DistrictId" value="<?php if(isset($districtid)){ echo $districtid; } ?>" disabled="">
+                                      <input type="hidden" class="form-control title-case " name="" id="DistrictId" value="<?php  echo $value->districtid;  ?>" disabled="">
                                        <?php }?> 
                                     <select name="districtid" id="districtid"class="form-control" required="" >
                                     <option value="">District</option>
@@ -220,10 +228,10 @@
                     <div class="form-group col-md-6">
                        
                       <label>Pincode <span style="color: red;">*</span></label>
-                       <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $user_list->user_pincode; ?>" placeholder="Enter pincode" required>
+                       <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode; ?>" placeholder="Enter pincode" required>
                       
                   </div>
-               
+               <?php } } ?>
                  
                 </div>
                 <!-- /.card-body -->
@@ -277,6 +285,78 @@
           }
    
   </script>
+    <script>
+$(document).ready(function(){
+
+
+ var gender = $('#Gender').val();
+ $("#gender option[value='"+gender+"']").attr("selected","selected");
+
+ var standard = $('#Standard').val();
+ $("#standard option[value='"+standard+"']").attr("selected","selected");
+
+ var state = $('#StateId').val();
+ $("#stateid option[value='"+state+"']").attr("selected","selected");
+
+ var city = $('#CityId').val();
+ $("#cityid option[value='"+city+"']").attr("selected","selected");
+
+ var district = $('#DistrictId').val();
+ $("#districtid option[value='"+district+"']").attr("selected","selected");
+ 
+ $('#stateid').change(function(){
+  // alert('hii');
+
+  var stateid = $('#stateid').val();
+  // alert(stateid);
+
+  if(stateid != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>WebsiteController/fetch_city",
+    method:"POST",
+    data:{stateid:stateid},
+    success:function(data)
+    {
+     $('#cityid').html(data);
+     $('#districtid').html('<option value="">Select District</option>');
+
+    }
+   });
+  }
+  else
+  {
+   $('#cityid').html('<option value="">Select City</option>');
+     $('#districtid').html('<option value="">Select District</option>');
+
+  }
+ });
+
+  $('#cityid').change(function(){
+  var cityid = $('#cityid').val();
+  if(cityid != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>WebsiteController/fetch_district",
+    method:"POST",
+    data:{cityid:cityid},
+    success:function(data)
+    {
+     $('#districtid').html(data);
+     
+    }
+   });
+  }
+  else
+  {
+   $('#districtid').html('<option value="">Select District</option>');
+   
+
+  }
+ });
+ 
+});
+</script>
 
 </body>
 </html>

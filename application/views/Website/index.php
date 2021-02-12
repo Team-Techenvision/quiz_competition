@@ -282,17 +282,32 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 <script type="text/javascript">
   <?php if($this->session->flashdata('profile_error')){ ?>
     $(document).ready(function(){
-      toastr.error('participate to profile ');
+      toastr.error('Please Fill Up Profile Details');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('Login_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Please Register to Participate');
     });
   <?php } ?>
 </script>
 <script type="text/javascript">
   <?php if($this->session->flashdata('class_error')){ ?>
     $(document).ready(function(){
-      toastr.error('Class group not valid ');
+      toastr.error('User Can not Participate ');
     });
   <?php } ?>
 </script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('profileAlready_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Already Participated ');
+    });
+  <?php } ?>
+</script>
+
 <script type="text/javascript">
   // $('#btn_save').click(function(){
     // alert('hii');
