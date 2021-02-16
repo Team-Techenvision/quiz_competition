@@ -37,7 +37,7 @@
                       <?php
                       if(isset($competitiontypeid)){?>
 
-                       <input type="text" class="form-control required title-case text" name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
                        <?php }?>
 
                 
@@ -50,7 +50,7 @@
                         {
 
                         echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
-                                        
+                                       
                          }
                         ?>  
 
@@ -81,22 +81,20 @@
                    <div class="form-group col-md-6">
                     <label>Class <span style="color: red;">*</span></label>
 
-                       <?php
-                      if(isset($Class)){?>
+                      <?php
+                      if(isset($standard)){?>
 
-                       <input type="text" class="form-control required title-case text" name="" id="Class" value="<?php if(isset($class)){ echo $class; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="classname" id="classname" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                        <?php }?>
 
-
-
-                      <select name="class" id="class" class="form-control" required="">
+                      <select name="standard" id="standard" class="form-control" required="">
                         <option value="">Select From Class-To Class</option>
 
 
-                    <?php foreach($class as $class)
+                    <?php foreach($class as $classname)
                         {
 
-                        echo '<option value="'. $class->tabinputtextid.'" '.$selected.'>'. $class->tabinputtext.'</option>';
+                        echo '<option value="'. $classname->tabinputtextid.'" '.$selected.'>'. $classname->tabinputtext.'</option>';
                                         
                          }
                         ?>  
@@ -116,7 +114,7 @@
                       <?php
                       if(isset($tabinputtextid)){?>
 
-                       <input type="text" class="form-control required title-case text" name="tabinputtextid" id="tabinputtextid" value="<?php if(isset($tabinputtextid)){ echo $tabinputtextid; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="tabinputtextid" id="tabinputtext" value="<?php if(isset($tabinputtextid)){ echo $tabinputtextid; } ?>" disabled="">
                        <?php }?>
 
 
@@ -142,7 +140,7 @@
                       <?php
                       if(isset($levelid)){?>
 
-                       <input type="text" class="form-control required title-case " name="levelid" id="levelid" value="<?php if(isset($levelid)){ echo $levelid; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case " name="levelid" id="level" value="<?php if(isset($levelid)){ echo $levelid; } ?>" disabled="">
                        <?php }?>
 
 
@@ -202,7 +200,7 @@
                     <?php
                       if(isset($competitionusertype)){?>
 
-                       <input type="text" class="form-control required title-case text" name="competitionusertype" id="competitionusertype" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="competitionusertype" id="competitionuser" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
                        <?php }?>
                     <select name="competitionusertype" id="competitionusertype"class="form-control" >
                     <option value="">Competition User Type</option>
@@ -230,13 +228,13 @@
                   </div>
                
                    <div class="form-group col-md-12">
-                    <label>Terms and Comditions <span style="color: red;">*</span></label>
+                    <label>Terms and Conditions <span style="color: red;">*</span></label>
 
                     <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required=""><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                    </div>
                  
                     <div class="form-group col-md-12">
-                    <label>Instruction <span style="color: red;">*</span></label>
+                    <label>Instructions <span style="color: red;">*</span></label>
 
                     <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required=""><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                    </div>
@@ -313,70 +311,49 @@
 
                   reader.readAsDataURL(input.files[0]);
               }
-          }
 
+</script>
+  <script>
+$(document).ready(function(){
 
-       
-  </script>
- <!--  <script type="text/javascript">
+  var competitiontype = $('#competitiontype').val();
+ $("#competitiontypeid option[value='"+competitiontype+"']").attr("selected","selected");
 
+ var classname = $('#classname').val();
+ $("#standard option[value='"+classname+"']").attr("selected","selected");
 
-// Wait for the DOM to be ready
-$(function() {
-  // Initialize form validation on the registration form.
-  // It has the name attribute "registration"
+ var tabinputtext = $('#tabinputtext').val();
+ $("#tabinputtextid option[value='"+tabinputtext+"']").attr("selected","selected");
 
+ var levelid = $('#level').val();
+ $("#levelid option[value='"+levelid+"']").attr("selected","selected");
 
+ var competitionusertype = $('#competitionuser').val();
+ $("#competitionusertype option[value='"+competitionusertype+"']").attr("selected","selected");
 
-  jQuery.validator.addMethod("greaterThanZero", function(value, element) {
-    return (parseFloat(value) > 0);
-}, "* Points must be greater than zero");
+ // var district = $('#DistrictId').val();
+ // $("#districtid option[value='"+district+"']").attr("selected","selected");
 
- jQuery.validator.addMethod("lessThanFirst", function(value, element) {
-value = $("#points").val();
-  value1 = $("#conversionpoints").val();
-    return (value1 > value);
-}, "* Conversion Points must be less than Points");
+}); 
+</script>
 
-  $("form[name='form_action']").validate({
+<!--  <script type="text/javascript">
+  
+$.validator.addMethod('le', function(value, element, param) {
+      return this.optional(element) || value <= $(param).val();
+}, 'Invalid value');
 
-
-    // Specify validation rules
-    rules: {
-      // The key name on the left side is the name attribute
-      // of an input field. Validation rules are defined
-      // on the right side
-      // firstname: "required",
-      // lastname: "required",
-      points : { greaterThanZero : true },
-      conversionpoints : { lessThanFirst : true },
-      // email: {
-      //   required: true,
-      //   // Specify that email should be validated
-      //   // by the built-in "email" rule
-      //   email: true
-      // },
-      // password: {
-      //   required: true,
-      //   minlength: 5
-      // }
-    },
-    // Specify validation error messages
-    messages: {
-      // firstname: "Please enter your firstname",
-      // lastname: "Please enter your lastname",
-      // password: {
-      //   required: "Please provide a password",
-      //   minlength: "Your password must be at least 5 characters long"
-      // },
-      // email: "Please enter a valid email address"
-    },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
+$('form').validate({
+  rules: {
+            points: {le: '#conversionpoints'},
+            // fieldName2: {ge: '#fieldID1'},
+             // ...
+      },
+      messages: {
+            points: {le: 'Must be less than or equal to conversionpoints'},
+            // fieldName2: {ge: 'Must be greater than or equal to field 1'},
+            // ...
+      }
 });
 
 

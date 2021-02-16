@@ -282,7 +282,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 <script type="text/javascript">
   <?php if($this->session->flashdata('profile_error')){ ?>
     $(document).ready(function(){
-      toastr.error('Please Fill Up Profile Details');
+      toastr.error('Please complete your profile before participating the competition');
     });
   <?php } ?>
 </script>
@@ -307,7 +307,12 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
     });
   <?php } ?>
 </script>
-
+<!-- <script type="text/javascript">
+  $( "#success-btn" ).click(function() {
+  $( "div.success" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+});
+</script>
+ -->
 <script type="text/javascript">
   // $('#btn_save').click(function(){
     // alert('hii');

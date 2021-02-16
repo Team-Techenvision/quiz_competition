@@ -10,7 +10,7 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/17973908.jpg');background-blend-mode: overlay;
+  <div class="competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/17973908.jpg');background-blend-mode: overlay;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ecf1eabf;">
@@ -61,12 +61,16 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
                           <?php echo $value->competitiontype; ?>
                      </div>
                       <div class="col ml-4" >
+                          <label class="text-dark labelSC">Competition Subject : </label>
+                          <?php echo $value->subjectstextarea; ?>
+                     </div>
+                      <div class="col ml-4" >
                          <label class="text-dark labelSC">Competition Level : </label>
                          <?php echo $value->levelname; ?>
                      </div>
                       <div class="col ml-4" >
                          <label class="text-dark labelSC">Class : </label>
-                         <?php echo $value->class; ?>
+                         <?php echo $value->tabinputtext; ?>
                      </div>
                        <div class="col ml-4" >
                          <label class="text-dark labelSC">End Date : </label>
@@ -96,128 +100,24 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
                  </div>
                    <div class="row mb-4">
                     <div class="col-md-12 ml-4" >
-                       <center><!-- <button  data-toggle="modal"  data-target="#participate"  class="btn-primary" value="<?php echo $value->competitionid;?>">Participate</button> -->
+                       <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post" >
 
-                        <div class="button11" id="button-6">
+                     <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $value->competitionid;?>">
+                      <center><button  data-toggle="modal"  data-target="#participate"  class="btn btn-primary" value="<?php echo $value->competitionid;?>">Participate</button> </center>
+                          <!-- <div class="button11" id="button-6">
                           <div id="spin"></div>
-                          <a href="#" data-toggle="modal"  data-target="#participate" value="<?php echo $value->competitionid;?>">Participate</a>
-                        </div>
-                       </center>
+                          <a href="#" data-toggle="modal"  data-target="#participate" type="submit" value="< ?php echo $value->competitionid;?>">Participate</a>
+                        </div> -->
+
+                     <!-- <p><button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn pb-4" type="submit" value="< ?php echo $list->competitionid;?>"><i class="fa fa-plus" aria-hidden="true"></i> Participate</button></p> -->
+
+                   </form>
                      </div>
+                      
+                    
 
 
-                       <!-- particepation model  -->
-        <div  class="modal fade bd-example-modal-lg" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                          <div class="modal-content">
-                            <?php 
-                            
-                             if(!isset($quizweb_user_id)){ 
-                          // print_r($user_list->user_id);
-                              ?>
-                             
-                              <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Please Login To Participate </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                             
-                            </div>
-
-                            <?php }else{  ?>
-
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Add Participate </h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div><!-- action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" -->
-                           <form id="myForm" role="form"    method="post" autocomplete="off">
-                            <div class="modal-body ">
-                          
-                                <div class="card-body row" style="padding-bottom: 0px;">
-                                 <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $value->competitionid;?>">
-
-                                  <div class="form-group col-md-12">
-                                    <label>Parent Name</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php  if(isset($profile_list[0]->parentname)){ echo $profile_list[0]->parentname; } ?>" placeholder="Enter Parent Name" required>
-                                  </div>
-                                   <div class="form-group col-md-3">
-                                    <label>Participant Age</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="text"  class="form-control" name="age" id="age" minlength="2" maxlength="2" value="<?php  if(isset($profile_list[0]->age)){ echo $profile_list[0]->age; } ?>" placeholder="Enter age" required>
-                                  </div>
-
-                                  <div class="form-group col-md-6">
-                                     <label>Email Address</label>&nbsp;<label style="color:red;">*</label>
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php  if(isset($profile_list[0]->emailid)){ echo $profile_list[0]->emailid; } ?>" placeholder="Enter Email Address" required>
-                                  </div>
-
-                                   <div class="form-group col-md-3">
-                                     <label>Grade</label>
-                                      <select name="grade" id="grade"class="form-control" >
-                                    <option value="">Select Grade</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                  </select>
-                                  </div>
-                                 
-                                  <div class="form-group col-md-12">
-                                     <label>School/College Name</label>
-                                  <input type="text" class="form-control required title-case txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php  if(isset($profile_list[0]->schoolcollegename)){ echo $profile_list[0]->schoolcollegename; } ?>" placeholder="Enter School/college Name"  >
-                                  </div>
-                             
-                                  
-                                  
-                                  <div class="form-group col-md-9">
-                                     <label>Address</label>
-                                    <textarea type="text" class="form-control required title-case" name="address" id="address" value="" placeholder="Enter Address" ><?php  if(isset($profile_list[0]->address)){ echo $profile_list[0]->address; } ?></textarea>
-                                  </div>
-                                    <div class="form-group col-md-3">
-
-                                 <!--  < ?php
-                                      if($user_list->user_pincode)){?>
-
-                                      <input type="text" class="form-control required title-case text" name="pincode" id="pincode" value="< ?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
-                                       < ?php }?>   -->
-                                        <label>Pincode</label>&nbsp;<label style="color:red;">*</label>
-                                         <input type="text" class="form-control" name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php echo $user_list[0]->user_pincode; ?>" placeholder="Enter pincode" readonly>
-
-                                    <!--   <select name="pincode" id="pincode"class="form-control" required="">
-                                    <option value="">Select Pincode</option>
-                                   < ?php foreach($pin as $pin)
-                                     {
-                                          echo '<option value="'. $pin->pincodeid.'" '.$selected.'>'. $pin->pincode.'</option>';
-                                              }
-                                     ?>   
-                                    
-                                  </select> -->
-                                  </div>
-                                 
-                                </div>
-                                <!-- /.card-body -->
-                             
-                            </div>
-
-                        
-                            <div class="modal-footer">
-                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> data-dismiss="modal"-->
-                                     <?php if(isset($update)){ ?>
-                                        <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                                      <?php } else{ ?>
-                                        <button id="btn_save"  style="margin-left: 20px;" type="submit" class="btn btn-primary px-4">Participate</button>
-                                      <?php } ?>
-                                      <a href="" class="btn btn-light ml-4" data-dismiss="modal" onclick="myFunction()">Cancel</a>
-                             </div>
-                           </form>
-                              <?php } ?>
-
-
-                          </div>
-                        </div>
-                      </div>  <!--Prticepation Modal Ends -->
+             
                  </div>
                <?php } ?>
              
@@ -231,9 +131,9 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
       </div><!-- /.container-fluid -->
     </section>
   </div>
-   <!-- <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script> -->
-  <!-- <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> -->
- <script type="text/javascript">
+   <!-- <script src="< ?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script> -->
+  <!-- <script src="< ?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> -->
+<!--  <script type="text/javascript">
   $('#btn_save').click(function(){
     // alert('hii');
 
@@ -249,7 +149,7 @@ function myFunction() {
             document.getElementById("myForm").reset();
         }
 
-</script>
+</script> -->
  
 </body>
 </html>

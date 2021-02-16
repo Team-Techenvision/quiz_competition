@@ -31,7 +31,7 @@
             <div class="card" style="border-radius: 2.25rem!important; border:none!important;">
             <div class="card-header ">
             
-              <h4 class="card-title text-center" style="color: #e22d2d;"><!-- <i class="fa fa-list"></i>  -->Profile Information</h4>
+              <h4 class="card-title text-center" style="color: #3156bd;"><!-- <i class="fa fa-list"></i>  -->Profile Information</h4>
              <!--  <div class="card-tools col-md-2 " >
                 <a href="add_profile" class="btn btn-sm btn-block btn-primary "  >Add Participation</a>
               </div> -->
@@ -52,7 +52,7 @@
                 <br>
 
                   <!--  <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
-                   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" ><label id="fileLabel">No Choosen file</label></div>
+                   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);"  ><label id="fileLabel">No Choosen file</label></div>
 
                   <!-- 
                   src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
@@ -119,6 +119,8 @@
                                  <div class="col-md-8">
                                   <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
 
+                                    <h6 class="alert alert-danger errorresponse"></h6>
+
                                 </div>
                                </div>
                             </div>
@@ -128,7 +130,7 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">Email Address</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                    <input type="email" class="form-control" name="emailid" id="emailid" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
+                                    <input type="email" class="form-control" name="emailid" id="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
                                   </div></div>
                                   </div>
 
@@ -202,20 +204,42 @@
                               </div>
                               <div class="form-group col-md-12">
                                <div class="row">
+                                <div class="col-md-4"><label for="inputName" class="form-label">District</label>&nbsp;<label style="color:red;">*</label></div>
+                          
+                                   <div class="col-md-8">
+                                    
+
+                                      <input type="text" class="form-control title-case " name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" placeholder="Enter District">
+                                    
+                                   <!--  <select name="districtid" id="districtid"class="form-control" required="" >
+                                    <option value="">select District</option>
+                                     < ?php foreach($district as $district)
+                                     {
+                                          echo '<option value="'. $district->districtid.'" '.$selected.'>'. $district->districtname.'</option>';
+
+                                               
+                                      }
+                                     ?>                                    
+                                  </select> -->
+                                   </div>
+                                  </div>
+                                
+                              </div>
+                              <div class="form-group col-md-12">
+                               <div class="row">
                                 <div class="col-md-4"><label for="inputName" class="form-label">City</label>&nbsp;<label style="color:red;">*</label></div>
                           
                                    <div class="col-md-8">
-                                       <?php
-                                      if(isset($cityid)){?>
+                                     
 
-                                      <input type="hidden" class="form-control title-case " name="" id="CityId" value="<?php if(isset($cityid)){ echo $cityid; } ?>" disabled="">
-                                       <?php }?> 
+                                      <input type="text" class="form-control title-case " name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" placeholder="Enter City">
+                                     
 
                                 
-                                    <select name="cityid" id="cityid"class="form-control" required="" >
+                                    <!-- <select name="cityid" id="cityid"class="form-control" required="" >
                                     <option value="">select city</option>
                                 
-                                     <?php foreach($city as $city)
+                                     < ?php foreach($city as $city)
                                      {
                                           echo '<option value="'. $city->cityid.'" '.$selected.'>'. $city->cityname.'</option>';
 
@@ -223,35 +247,12 @@
                                       }
                                      ?> 
                                   
-                                  </select>
+                                  </select> -->
                                    </div>
                                   </div>
                                 
                               </div>
-                              <div class="form-group col-md-12">
-                               <div class="row">
-                                <div class="col-md-4"><label for="inputName" class="form-label">District</label>&nbsp;<label style="color:red;">*</label></div>
-                          
-                                   <div class="col-md-8">
-                                     <?php
-                                      if(isset($districtid)){?>
-
-                                      <input type="hidden" class="form-control title-case " name="" id="DistrictId" value="<?php if(isset($districtid)){ echo $districtid; } ?>" disabled="">
-                                       <?php }?> 
-                                    <select name="districtid" id="districtid"class="form-control" required="" >
-                                    <option value="">select District</option>
-                                     <?php foreach($district as $district)
-                                     {
-                                          echo '<option value="'. $district->districtid.'" '.$selected.'>'. $district->districtname.'</option>';
-
-                                               
-                                      }
-                                     ?>                                    
-                                  </select>
-                                   </div>
-                                  </div>
-                                
-                              </div>
+                              
                                   
                                   
                                <div class="form-group col-md-12">
@@ -273,7 +274,7 @@
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" required>
+                                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" disabled >
                                     </div></div>
                                   </div>
                             <?php } ?>
@@ -318,9 +319,9 @@
       toastr.success('Updated successfully');
     });
   <?php } ?>
-  <?php if($this->session->flashdata('delete_success')){ ?>
+  <?php if($this->session->flashdata('mobile_error')){ ?>
     $(document).ready(function(){
-      toastr.error('Deleted successfully');
+      toastr.error('Mobile Number is Already Exists');
     });
   <?php } ?>
 
@@ -371,62 +372,62 @@ $(document).ready(function(){
  var state = $('#StateId').val();
  $("#stateid option[value='"+state+"']").attr("selected","selected");
 
- var city = $('#CityId').val();
- $("#cityid option[value='"+city+"']").attr("selected","selected");
+ // var city = $('#CityId').val();
+ // $("#cityid option[value='"+city+"']").attr("selected","selected");
 
- var district = $('#DistrictId').val();
- $("#districtid option[value='"+district+"']").attr("selected","selected");
+ // var district = $('#DistrictId').val();
+ // $("#districtid option[value='"+district+"']").attr("selected","selected");
  
- $('#stateid').change(function(){
-  // alert('hii');
+ // $('#stateid').change(function(){
+ //  // alert('hii');
 
-  var stateid = $('#stateid').val();
-  // alert(stateid);
+ //  var stateid = $('#stateid').val();
+ //  // alert(stateid);
 
-  if(stateid != '')
-  {
-   $.ajax({
-    url:"<?php echo base_url(); ?>WebsiteController/fetch_city",
-    method:"POST",
-    data:{stateid:stateid},
-    success:function(data)
-    {
-     $('#cityid').html(data);
-     $('#districtid').html('<option value="">Select District</option>');
+ //  if(stateid != '')
+ //  {
+ //   $.ajax({
+ //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_city",
+ //    method:"POST",
+ //    data:{stateid:stateid},
+ //    success:function(data)
+ //    {
+ //     $('#cityid').html(data);
+ //     $('#districtid').html('<option value="">Select District</option>');
 
-    }
-   });
-  }
-  else
-  {
-   $('#cityid').html('<option value="">Select City</option>');
-     $('#districtid').html('<option value="">Select District</option>');
+ //    }
+ //   });
+ //  }
+ //  else
+ //  {
+ //   $('#cityid').html('<option value="">Select City</option>');
+ //     $('#districtid').html('<option value="">Select District</option>');
 
-  }
- });
+ //  }
+ // });
 
-  $('#cityid').change(function(){
-  var cityid = $('#cityid').val();
-  if(cityid != '')
-  {
-   $.ajax({
-    url:"<?php echo base_url(); ?>WebsiteController/fetch_district",
-    method:"POST",
-    data:{cityid:cityid},
-    success:function(data)
-    {
-     $('#districtid').html(data);
+ //  $('#cityid').change(function(){
+ //  var cityid = $('#cityid').val();
+ //  if(cityid != '')
+ //  {
+ //   $.ajax({
+ //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_district",
+ //    method:"POST",
+ //    data:{cityid:cityid},
+ //    success:function(data)
+ //    {
+ //     $('#districtid').html(data);
      
-    }
-   });
-  }
-  else
-  {
-   $('#districtid').html('<option value="">Select District</option>');
+ //    }
+ //   });
+ //  }
+ //  else
+ //  {
+ //   $('#districtid').html('<option value="">Select District</option>');
    
 
-  }
- });
+ //  }
+ // });
  
 });
 </script>
@@ -444,6 +445,122 @@ $(document).ready(function(){
     }
 };
 </script> -->
- 
+<script type="text/javascript">
+  $(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+    // alert(maxDate);
+    $('#birthdate').attr('max', maxDate);
+});
+</script> 
+ <!--  <script>
+var user_mobile21 = $('#alternatemobno').val();
+  $('#alternatemobno').on('change',function(){
+    alert('hii');
+    // var user_mobile = $(this).val();
+    // $.ajax({
+    //   url:'< ?php echo base_url(); ?>WebsiteController/check_duplication',
+    //   type: 'POST',
+    //   data: {"column_name":"user_mobile",
+    //          "column_val":user_mobile,
+    //          "table_name":"user"},
+    //   context: this,
+    //   success: function(result){
+    //     // alert(result);
+    //     if(result > 0){
+    //       $('#alternatemobno').val(user_mobile21);
+    //       // toastr.error(user_mobile2+' Mobile No Exist.');
+    //       alert(alternatemobno+' Mobile Number Exist.');
+    //     }
+    //   }
+    // });
+  });
+
+</script> -->
+
+
+<!-- For mobile no validation if enter alternate number is user registration mobile no -->
+<!--  <script>
+
+  var user_mobile21 = $('#alternatemobno').val();
+  $('#alternatemobno').on('change',function(){
+    alert("hii");
+
+     var mobile = $('#alternatemobno').val();
+     var parentname = $('#parentname').val();
+     var fullname = $('#fullname').val();
+     var birthdate = $('#birthdate').val();
+     var emailid = $('#emailid').val();
+     var standard = $('#standard').val();
+     var schoolcollegename = $('#schoolcollegename').val();
+     var address = $('#address').val();
+     var pincode = $('#pincode').val();
+     var profile_image = $('#profile_image').val();
+     var gender = $('#gender').val();
+     var cityid = $('#cityid').val();
+     var districtid = $('#districtid').val();
+     var stateid = $('#stateid').val();
+     // var user_id = $('#user_id').val ();
+    
+      alert(mobile);
+      // alert(pincode);
+      // alert(name);
+      // alert(password);
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/edit_profile",
+           method:"POST",
+           data:{alternatemobno:mobile,parentname:parentname,fullname:fullname,birthdate:birthdate,emailid:emailid,standard,standard,schoolcollegename:schoolcollegename,address:address,pincode:pincode,profile_image:profile_image,gender:gender,cityid:cityid,districtid:districtid,stateid:stateid},
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data=='profile submitted'){
+
+                  // alert(data);
+                // $('.alert-success').html(data);
+                // $('.mobileerror').hide();
+                // $('.mobilesuccess').show().delay(1000).fadeOut();
+                  // window.location.reload();
+
+
+                //  document.getElementById("signupForm").reset();
+
+                // $('.mobilesuccess').hide();
+
+
+                 // $(".signUp").addClass("inactive-dx");
+                 //  $(".signIn").addClass("active-sx");
+                 //  $(".signIn").removeClass("inactive-sx");
+                 //  $(".signUp").removeClass("active-dx");  
+               }
+               else{
+                alert(data);
+                $('.alert-danger').html(data);
+                $('.errorresponse').show().delay(3000).fadeOut();
+                // $('.mobilesuccess').hide();  
+                // document.getElementById("signupForm").reset();
+               }
+               
+              // window.location.reload();
+
+            }
+
+
+            });
+
+       
+  });
+</script> -->
 </body>
 </html>

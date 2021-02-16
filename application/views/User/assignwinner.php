@@ -122,6 +122,8 @@
 
                 </tbody>
               </table> 
+               
+
              <?php }else{?>
 
                  <table id="type1" class="table table-bordered table-striped">
@@ -134,7 +136,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                
+             
                   <tr>
                     <td style="padding-left: 30px;"><input class="form-check-input" type="checkbox" value="<?php echo $list->user_id1 ?>" id="flexCheckDefault" name="user_id"><?php echo $i; ?></td> 
                     <td> <?php echo $list->user_id1 ?></td> 
@@ -149,10 +151,11 @@
                  
                   </tr>
                  
-
+                <?php } }?>
                 </tbody>
               </table> 
-                <?php } }?>
+               
+                
                  </div>
                  
 

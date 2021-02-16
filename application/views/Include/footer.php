@@ -119,6 +119,7 @@ $(function() {
  <!-- only text no number  -->
  <script>
  $( document ).ready(function() {
+
                 $( ".txtOnly" ).keypress(function(e) {
                     var key = e.keyCode;
                     if (key >= 48 && key <= 57) {
@@ -199,3 +200,4 @@ $(function() {
     });
   });
 </script>
+

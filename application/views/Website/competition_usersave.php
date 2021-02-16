@@ -9,7 +9,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/17973908.jpg');background-blend-mode: overlay;
+  <div class="competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/17973908.jpg');background-blend-mode: overlay;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ecf1eabf;">
@@ -29,7 +29,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
       <div class="container-fluid">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-12 " >
+          <div class="col-md-12 text-black" style="font-size: 16px; font-weight: 400;">
             <!-- general form elements -->
            <div class="">
 <!--             <div class="card-header "> -->
@@ -56,14 +56,53 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                     <div class="col-md-3 m-4" >
                     <img src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="350px" width="300px"/>
                    </div>
-                   <div class="col-md-7 m-4">
-                      <div class="col ml-4 userSTitle" style="font-size: 30px;font-weight: 600;color: #225dca;" >
+                   <div class="col-md-7 m-4 ">
+                      <div class="col ml-4 mb-4 userSTitle" style="font-size: 30px;font-weight: 600;color: #225dca;" >
                          <?php echo $value->title; ?>
                          
                      </div>
-                      <div class="col ml-4 userSSubtitle" >
-                      <?php echo $value->subtitle; ?>
+                     <div class="col ml-4" >
+                          <label class="text-dark labelSC">Competition Type : </label>
+                          <?php echo $value->competitiontype; ?>
                      </div>
+                      <div class="col ml-4" >
+                          <label class="text-dark labelSC">Competition Subject : </label>
+                          <?php echo $value->subjectstextarea; ?>
+                     </div>
+                      <div class="col ml-4" >
+                         <label class="text-dark labelSC">Competition Level : </label>
+                         <?php echo $value->levelname; ?>
+                     </div>
+                      <div class="col ml-4" >
+                         <label class="text-dark labelSC">Class : </label>
+                         <?php echo $value->tabinputtext; ?>
+                     </div>
+                       <div class="col ml-4" >
+                         <label class="text-dark labelSC">End Date : </label>
+                         <?php echo $value->enddate; ?>
+                     </div>
+                       <div class="col ml-4" >
+                         <label class="text-dark labelSC">Age : </label>
+                          <label>From </label>
+                         <?php echo $value->fromage; ?>
+                          <label>To </label>
+                         <?php echo $value->toage; ?>
+                     </div>
+
+                   </div>
+                 </div>
+                 <div class="row mb-4">
+                    <div class="col-md-12 ml-4 " >
+                         <label class="labelS">Terms and Conditions </label><br>
+                         <?php echo $value->termsandconditions; ?>
+                     </div>
+                 </div>
+                  <div class="row mb-4">
+                    <div class="col-md-12 ml-4" >
+                         <label class="labelS">Instructions</label><br>
+                         <?php echo $value->instruction; ?>
+                     </div>
+                 </div>
                      <div class="col-ml-4" style="margin-left: 40px;margin-top: 20px;">
                      <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                            <?php if($comptype=='2'){ ?>
@@ -178,13 +217,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-  <script type="text/javascript">
-  <?php if($this->session->flashdata('quizsubmit_success')){ ?>
-    $(document).ready(function(){
-      toastr.success('Quiz Submitted Successfully');
-    });
-  <?php } ?>
-</script>
+ 
  <script type="text/javascript">
   $('#btn_save').click(function(){
     // alert('hii');

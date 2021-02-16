@@ -88,9 +88,10 @@ function check_login($mobile,$password){
   }
   public function get_competitionlist_by_id($competition){
     // $this->db->select('*');
-    $this->db->select('competition.*,competitiontype.*,levelmaster.*');
+    $this->db->select('competition.*,competitiontype.*,levelmaster.*,tabcompetition.*');
     $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'left');
     $this->db->join('levelmaster', 'competition.levelid = levelmaster.levelid', 'left');
+    $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'left');
     
     $this->db->where('competitionid', $competition);
     $this->db->from('competition');
@@ -121,6 +122,9 @@ function check_login($mobile,$password){
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
     // }
+
+   $this->db->order_by("enddate", "DESC");
+
     $this->db->where('profile.user_id', $user_id);
     // $this->db->where('profile.user_id', $quizweb_user_id);
     $this->db->from('profile');
@@ -236,6 +240,18 @@ $query = $this->db->get();
 $result = $query->num_rows();
 return $result;
 }
+public function check_usermobile($quizweb_user_id,$user_mobile){
+// $this->db->select('*');
+  // print_r($user_mobile); die();
+$this->db->where('user_id',$quizweb_user_id);
+$this->db->where('user_mobile',$user_mobile);
+
+$this->db->from('user');
+$query = $this->db->get();
+$result = $query->num_rows();
+// print_r($result); die();
+return $result;
+}
    function fetch_pincodelist()
  {
   
@@ -259,48 +275,48 @@ return $result;
   return $query->result();
   // print_r($query);
  }
-   function fetch_city1($stateid)
- {
-  $this->db->select('*');
-  $this->db->order_by("cityname", "ASC");
-  $this->db->where('city.stateid', $stateid);
-  $query = $this->db->get("city");
-  return $query->result();
-  // print_r($query);
- }
-   function fetch_district1($cityid)
- {
-  $this->db->select('*');
-  $this->db->order_by("districtname", "ASC");
-  $this->db->where('district.cityid', $cityid);
-  $query = $this->db->get("district");
-  return $query->result();
-  // print_r($query);
- }
-  function fetch_city($stateid)
- {
-  $this->db->where('stateid', $stateid);
-  $this->db->order_by('cityname', 'ASC');
-  $query = $this->db->get('city');
-  $output = '<option value="">Select City</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
-  }
-  return $output;
- }
-  function fetch_district($cityid)
-   {
-    $this->db->where('cityid', $cityid);
-    $this->db->order_by('districtname ', 'ASC');
-    $query = $this->db->get('district');
-    $output = '<option value="">Select District</option>';
-    foreach($query->result() as $row)
-    {
-     $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
-    }
-    return $output;
-   }
+ //   function fetch_city1($stateid)
+ // {
+ //  $this->db->select('*');
+ //  $this->db->order_by("cityname", "ASC");
+ //  $this->db->where('city.stateid', $stateid);
+ //  $query = $this->db->get("city");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
+ //   function fetch_district1($cityid)
+ // {
+ //  $this->db->select('*');
+ //  $this->db->order_by("districtname", "ASC");
+ //  $this->db->where('district.cityid', $cityid);
+ //  $query = $this->db->get("district");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
+ //  function fetch_city($stateid)
+ // {
+ //  $this->db->where('stateid', $stateid);
+ //  $this->db->order_by('cityname', 'ASC');
+ //  $query = $this->db->get('city');
+ //  $output = '<option value="">Select City</option>';
+ //  foreach($query->result() as $row)
+ //  {
+ //   $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
+ //  }
+ //  return $output;
+ // }
+ //  function fetch_district($cityid)
+ //   {
+ //    $this->db->where('cityid', $cityid);
+ //    $this->db->order_by('districtname ', 'ASC');
+ //    $query = $this->db->get('district');
+ //    $output = '<option value="">Select District</option>';
+ //    foreach($query->result() as $row)
+ //    {
+ //     $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
+ //    }
+ //    return $output;
+ //   }
   public function get_list2($id,$order,$tbl_name){
     $this->db->select('*');
     $this->db->order_by($id, $order);

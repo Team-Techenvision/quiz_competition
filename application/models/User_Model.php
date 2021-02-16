@@ -443,48 +443,48 @@ class User_Model extends CI_Model{
   return $query->result();
   // print_r($query);
  }
-   function fetch_city1($stateid)
- {
-  $this->db->select('*');
-  $this->db->order_by("cityname", "ASC");
-  $this->db->where('city.stateid', $stateid);
-  $query = $this->db->get("city");
-  return $query->result();
-  // print_r($query);
- }
-   function fetch_district1($cityid)
- {
-  $this->db->select('*');
-  $this->db->order_by("districtname", "ASC");
-  $this->db->where('district.cityid', $cityid);
-  $query = $this->db->get("district");
-  return $query->result();
-  // print_r($query);
- }
-  function fetch_city($stateid)
- {
-  $this->db->where('stateid', $stateid);
-  $this->db->order_by('cityname', 'ASC');
-  $query = $this->db->get('city');
-  $output = '<option value="">Select City</option>';
-  foreach($query->result() as $row)
-  {
-   $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
-  }
-  return $output;
- }
-  function fetch_district($cityid)
-   {
-    $this->db->where('cityid', $cityid);
-    $this->db->order_by('districtname ', 'ASC');
-    $query = $this->db->get('district');
-    $output = '<option value="">Select District</option>';
-    foreach($query->result() as $row)
-    {
-     $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
-    }
-    return $output;
-   }
+ //   function fetch_city1($stateid)
+ // {
+ //  $this->db->select('*');
+ //  $this->db->order_by("cityname", "ASC");
+ //  $this->db->where('city.stateid', $stateid);
+ //  $query = $this->db->get("city");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
+ //   function fetch_district1($cityid)
+ // {
+ //  $this->db->select('*');
+ //  $this->db->order_by("districtname", "ASC");
+ //  $this->db->where('district.cityid', $cityid);
+ //  $query = $this->db->get("district");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
+ //  function fetch_city($stateid)
+ // {
+ //  $this->db->where('stateid', $stateid);
+ //  $this->db->order_by('cityname', 'ASC');
+ //  $query = $this->db->get('city');
+ //  $output = '<option value="">Select City</option>';
+ //  foreach($query->result() as $row)
+ //  {
+ //   $output .= '<option value="'.$row->cityid.'">'.$row->cityname.'</option>';
+ //  }
+ //  return $output;
+ // }
+ //  function fetch_district($cityid)
+ //   {
+ //    $this->db->where('cityid', $cityid);
+ //    $this->db->order_by('districtname ', 'ASC');
+ //    $query = $this->db->get('district');
+ //    $output = '<option value="">Select District</option>';
+ //    foreach($query->result() as $row)
+ //    {
+ //     $output .= '<option value="'.$row->districtid.'">'.$row->districtname  .'</option>';
+ //    }
+ //    return $output;
+ //   }
 
   //for pincode form fetch state
 //   function fetch_state()
@@ -635,7 +635,6 @@ class User_Model extends CI_Model{
     $result = $query->result();
     return $result;
   }
-
 
   public function get_info_arr($id_type, $id, $tbl_name){
     $this->db->select('*');

@@ -51,7 +51,7 @@
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->competitiontype ?></td>
                     <td><?php echo $list->title ?></td>
-                    <td><?php echo $list->class ?></td>
+                    <td><?php echo $list->tabinputtext ?></td>
                     <td><?php echo $list->enddate ?></td>
                     <td>
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">

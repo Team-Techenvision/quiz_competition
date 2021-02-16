@@ -72,7 +72,7 @@
                   <div class="form-group col-md-12">
                     <label>Email Address<span style="color: red;">*</span></label>
 
-                    <input type="email" class="form-control" name="user_email" id="user_email" value="<?php if(isset($user_email)){ echo $user_email; } ?>" placeholder="Enter Email Address" required>
+                    <input type="email" class="form-control" name="user_email" id="user_email" value="<?php if(isset($user_email)){ echo $user_email; } ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email Address" required>
                   </div>
                   <div class="form-group col-md-12">
                     <label>Password<span style="color: red;">*</span></label>

@@ -1345,13 +1345,20 @@ label {
 
   }
    .userSTitle{
-    font-size: 30px;font-weight: 600;color: #225dca;
+    font-size: 30px;
+    font-weight: 600;
+    color: #225dca;
   }
   .userSSubtitle{
     color: black;
     font-size: 20px;
     padding-top: 15px;
     font-weight: 400;
+  }
+  .complabal{
+    color:#3156bd;
+    font-weight: 600;
+    font-size: 1.75rem;
   }
 
 /*  my competition end */

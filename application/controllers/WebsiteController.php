@@ -585,36 +585,50 @@ public function insert_profiledata(){
   // Edit Profile....
 
    
-function fetch_city()
- {
-  if($this->input->post('stateid'))
-  {
-   echo $this->Website_Model->fetch_city($this->input->post('stateid'));
-  }
- }   
- function fetch_district()
- {
-  if($this->input->post('cityid'))
-  {
-   echo $this->Website_Model->fetch_district($this->input->post('cityid'));
-  }
- }  
+// function fetch_city()
+//  {
+//   if($this->input->post('stateid'))
+//   {
+//    echo $this->Website_Model->fetch_city($this->input->post('stateid'));
+//   }
+//  }   
+//  function fetch_district()
+//  {
+//   if($this->input->post('cityid'))
+//   {
+//    echo $this->Website_Model->fetch_district($this->input->post('cityid'));
+//   }
+//  }
+ 
   public function edit_profile(){
 
-    // print_r($_POST);
+    // print_r($_POST); die();
 
 
-    $data['stateid'] = "";
-    $data['districtid'] = "";
+    // $data['stateid'] = "";
+    // $data['districtid'] = "";
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    // print_r($quizweb_user_id); die();
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
      if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-
+ 
         $update_data = $_POST; 
+
+        $alternatemobno = $this->input->post('alternatemobno');
+
+        // print_r($alternatemobno); die();
+
+
+        $check_user_mobile = $this->Website_Model->check_usermobile($quizweb_user_id,$alternatemobno); 
+
+        // print_r($check_user_mobile); die();
+ 
+
+       if($check_user_mobile == 0) {
 
 
        if($old_image=$this->input->post('old_image')){
@@ -629,7 +643,7 @@ function fetch_city()
         'pincode' => $this->input->post('pincode'),
         // 'competitionid' => $this->input->post('competition_id'),
         // 'profile_image' => $this->input->post('profile_image'),
-        'alternatemobno' => $this->input->post('alternatemobno'),
+        'alternatemobno' => $alternatemobno,
         'gender' => $this->input->post('gender'),
         'cityid' => $this->input->post('cityid'),
         'districtid' => $this->input->post('districtid'),
@@ -650,7 +664,7 @@ function fetch_city()
         'pincode' => $this->input->post('pincode'),
         // 'competitionid' => $this->input->post('competition_id'),
         'profile_image' => $this->input->post('profile_image'),
-        'alternatemobno' => $this->input->post('alternatemobno'),
+        'alternatemobno' => $alternatemobno,
         'gender' => $this->input->post('gender'),
         'cityid' => $this->input->post('cityid'),
         'districtid' => $this->input->post('districtid'),
@@ -660,28 +674,18 @@ function fetch_city()
 
       );
     }
+  
       $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $update_data);
-     
-      //  $update_data = array(
-      //   'parentname' => $this->input->post('parentname'),
-      //   'fullname' => $this->input->post('fullname'),
-      //   'birthdate' => $this->input->post('birthdate'),
-      //   'emailid' => $this->input->post('emailid'),
-      //   'standard' => $this->input->post('standard'),
-      //   'schoolcollegename' => $this->input->post('schoolcollegename'),
-      //   'address' => $this->input->post('address'),
-      //   'pincode' => $this->input->post('pincode'),
-      //   // 'competitionid' => $this->input->post('competition_id'),
-      //   'profile_image' => $this->input->post('profile_image'),
-      //   'alternatemobno' => $this->input->post('alternatemobno'),
-      //   'gender' => $this->input->post('gender'),
-      //   'cityid' => $this->input->post('cityid'),
-      //   'districtid' => $this->input->post('districtid'),
-      //   'stateid' => $this->input->post('stateid'),
-      //   'user_id' => $quizweb_user_id,
-      // );
 
-      // $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $update_data);
+
+     
+      $update_username = array(
+
+        'user_name' => $this->input->post('fullname'),
+
+       );
+
+    $this->Website_Model->update_info('user_id', $quizweb_user_id, 'user', $update_username);
 
    
 
@@ -721,9 +725,18 @@ function fetch_city()
      }
 
       $this->session->set_flashdata('updateProfile_success','success');
-      header('location:'.base_url().'WebsiteController');
-    }
+        // echo "profile submitted";
 
+      header('location:'.base_url().'WebsiteController');
+
+    }else{
+        $this->session->set_flashdata('mobile_error','error');
+        // echo "Mobile Number is Already Exists";
+
+  }
+
+  
+}
     $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');
     // if($profile_info == ''){ header('location:'.base_url().'WebsiteController/edit_profile'); }
     foreach($profile_info as $info){
@@ -748,8 +761,8 @@ function fetch_city()
     // $district=$data['districtid'];
     // print_r($state); 
   $data['state'] = $this->Website_Model->fetch_state();
-  $data['city'] = $this->Website_Model->fetch_city1($data['stateid']);
-  $data['district'] = $this->Website_Model->fetch_district1($data['districtid']);
+  // $data['city'] = $this->Website_Model->fetch_city1($data['stateid']);
+  // $data['district'] = $this->Website_Model->fetch_district1($data['districtid']);
   $data['user_list'] = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','user'); 
 
   

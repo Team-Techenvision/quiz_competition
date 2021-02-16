@@ -941,7 +941,7 @@ class User extends CI_Controller{
        
         'title' => $this->input->post('title'),
         'subtitle' => $this->input->post('subtitle'),
-        'class' => $this->input->post('class'),
+        'standard' => $this->input->post('standard'),
         'tabinputtextid' => $this->input->post('tabinputtextid'),
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
@@ -1090,7 +1090,7 @@ class User extends CI_Controller{
           </div>
             <div class="">
           <label for="recipient-name"  class="col-form-label">Competition Class :</label>
-          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['class']; ?></label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['standard']; ?></label>
           </div>
            <div class="">
           <label for="recipient-name"  class="col-form-label">Terms and Conditions :</label>
@@ -1172,7 +1172,7 @@ class User extends CI_Controller{
       $update_data = array(
         'title' => $this->input->post('title'),
         'subtitle' => $this->input->post('subtitle'),
-        'class' => $this->input->post('class'),
+        'standard' => $this->input->post('standard'),
         // 'photo' => $this->input->post('photo'),
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
@@ -1204,7 +1204,7 @@ class User extends CI_Controller{
       $update_data = array(
         'title' => $this->input->post('title'),
         'subtitle' => $this->input->post('subtitle'),
-        'class' => $this->input->post('class'),
+        'standard' => $this->input->post('standard'),
         'photo' => $this->input->post('photo'),
         'termsandconditions' => $this->input->post('termsandconditions'),
         'instruction' => $this->input->post('instruction'),
@@ -1301,7 +1301,7 @@ class User extends CI_Controller{
       $data['update'] = 'update';
       $data['title'] = $info->title;
       $data['subtitle'] = $info->subtitle;
-      $data['class'] = $info->class;
+      $data['standard'] = $info->standard;
       $data['photo'] = $info->photo;
       $data['termsandconditions'] = $info->termsandconditions;
       $data['instruction'] = $info->instruction;
@@ -1330,13 +1330,13 @@ class User extends CI_Controller{
      
     // }
     // print_r($data); die();
-
-    $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
-    $data['class'] = $this->User_Model->fetch_class();
-    $data['level'] = $this->User_Model->fetch_level();
-    $data['competition_list'] = $this->User_Model->competition_list('competitionid');
-    $data['competitiontype'] = $this->User_Model->fetch_competitiontype();
-
+      $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
+      $data['class'] = $this->User_Model->fetch_class();
+      $data['level'] = $this->User_Model->fetch_level();
+      $data['competitiontype'] = $this->User_Model->fetch_competitiontype();
+      $data['competition_list'] = $this->User_Model->competition_list('competitionid');
+  
+// print_r($data['class']); die();
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('User/competition/competition',$data);
@@ -1356,20 +1356,20 @@ class User extends CI_Controller{
 
 /*******************************    Participate Information     **************************/
 
-function fetch_city()
- {
-  if($this->input->post('stateid'))
-  {
-   echo $this->User_Model->fetch_city($this->input->post('stateid'));
-  }
- }   
- function fetch_district()
- {
-  if($this->input->post('cityid'))
-  {
-   echo $this->User_Model->fetch_district($this->input->post('cityid'));
-  }
- }  
+// function fetch_city()
+//  {
+//   if($this->input->post('stateid'))
+//   {
+//    echo $this->User_Model->fetch_city($this->input->post('stateid'));
+//   }
+//  }   
+//  function fetch_district()
+//  {
+//   if($this->input->post('cityid'))
+//   {
+//    echo $this->User_Model->fetch_district($this->input->post('cityid'));
+//   }
+//  }  
  // Add New Profile....
   public function add_participate(){
 
@@ -1377,6 +1377,7 @@ function fetch_city()
     // print_r($user_id);die();
 
     $user_id = $this->session->userdata('user_id');
+
 
    // echo $user_id; die();
 
@@ -1388,7 +1389,8 @@ function fetch_city()
 
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-      
+
+
     
       $updateuser_data = array(
         'parentname' => $this->input->post('parentname'),
@@ -1450,6 +1452,8 @@ function fetch_city()
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['userprofile'] = $this->User_Model->fetch_userprofile();
     $data['state'] = $this->User_Model->fetch_state();
+    // $data['city'] = $this->User_Model->fetch_city1($data['stateid']);
+    // $data['district'] = $this->User_Model->fetch_district1($data['districtid']);
     // $data['user_list'] = $this->User_Model->fetch_user();
     // $data['user_list'] = $this->User_Model->get_list_by_id('user_id',$user_id,'','','','','user');
 
@@ -1463,6 +1467,8 @@ function fetch_city()
    public function search_participateinfo(){
 
     $user_mobile = $this->input->post('user_mobile');
+    // $stateid = $this->input->post('stateid');
+    // $districtid = $this->input->post('districtid');
     // $this->session->set_userdata('user_mobile',  $user_mobile);
 
 
@@ -1472,15 +1478,22 @@ function fetch_city()
       $user_id = $value->user_id;
       $this->session->set_userdata('user_id',  $user_id);
 
-      // echo  $this->session->userdata('user_id'); die();
-      
-    
+      // echo  $this->session->userdata('user_id'); die();   
     }
+    $data['user_mobile'] = $user_mobile;
 
+    // print_r($data['user_mobile']); die();
+   // $userprofile_info = $this->User_Model->get_info('user_id', $user_id, 'userprofile_master');
+   // foreach ($userprofile_info as $value) {
+   //    // $user_mobile = $value->user_mobile;
+   //    $stateid = $value->stateid;
+   //    $districtid = $value->districtid;
+   //  }
+      // print_r($userprofile_info); die();
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['state'] = $this->User_Model->fetch_state();
-    // $data['city'] = $this->User_Model->fetch_city1($data['stateid']);
-    // $data['district'] = $this->User_Model->fetch_district1($data['districtid']);
+    // $data['city'] = $this->User_Model->fetch_city1($stateid);
+    // $data['district'] = $this->User_Model->fetch_district1($districtid);
 
 
     // print_r($data['search_participateinfo']);die();
@@ -1510,54 +1523,115 @@ function fetch_city()
 
   // Edit Profile....
   public function edit_participate($profileid){
+    
+    // $user_id = $this->input->post('user_id');
+
+   // echo $user_id; die();
+    // $data['stateid'] = "";
+    // $data['districtid'] = "";
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+
+
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-    $update_data = array(
+      
+     $user_id = $this->input->post('user_id');
+
+     // print_r($user_id); die();
+
+      $updateuser_data = array(
         'parentname' => $this->input->post('parentname'),
-        'age' => $this->input->post('age'),
+        'fullname' => $this->input->post('fullname'),
+        'birthdate' => $this->input->post('birthdate'),
         'emailid' => $this->input->post('emailid'),
-        'grade' => $this->input->post('grade'),
+        'standard' => $this->input->post('standard'),
         'schoolcollegename' => $this->input->post('schoolcollegename'),
         'address' => $this->input->post('address'),
         'pincode' => $this->input->post('pincode'),
-         'competitionid' => $this->input->post('competitionid'),
-        'user_id' => $quizweb_user_id,
+        // 'competitionid' => $this->input->post('competition_id'),
+        // 'profile_image' => $this->input->post('profile_image'),
+        'alternatemobno' => $this->input->post('alternatemobno'),
+        'gender' => $this->input->post('gender'),
+        'cityid' => $this->input->post('cityid'),
+        'districtid' => $this->input->post('districtid'),
+        'stateid' => $this->input->post('stateid'),
+        // 'user_id' => $user_id,
+        'created_date' => date('Y-m-d H:i:s'),
+        'profile_submitted' => 1,
+      ); 
+      $this->User_Model->update_info('user_id', $user_id, 'userprofile_master', $updateuser_data);
+       
+
+      $update_data = array(
+        'parentname' => $this->input->post('parentname'),
+        'fullname' => $this->input->post('fullname'),
+        'birthdate' => $this->input->post('birthdate'),
+        'emailid' => $this->input->post('emailid'),
+        'standard' => $this->input->post('standard'),
+        'schoolcollegename' => $this->input->post('schoolcollegename'),
+        'address' => $this->input->post('address'),
+        'pincode' => $this->input->post('pincode'),
+        'competitionid' => $this->input->post('competitionid'),
+        // 'profile_image' => $this->input->post('profile_image'),
+        'alternatemobno' => $this->input->post('alternatemobno'),
+        'gender' => $this->input->post('gender'),
+        'cityid' => $this->input->post('cityid'),
+        'districtid' => $this->input->post('districtid'),
+        'stateid' => $this->input->post('stateid'),
+        'user_id' => $user_id,
+        'userprofileid' => $this->input->post('userprofileid'),
         'created_date' => date('Y-m-d H:i:s'),
         // 'user_addedby' => $quizweb_user_id,
       );
+     
       $this->User_Model->update_info('profileid', $profileid, 'profile', $update_data);
       $this->session->set_flashdata('update_success','success');
       header('location:'.base_url().'User/participate_list');
     }
-
     $profile_info = $this->User_Model->get_info('profileid', $profileid, 'profile');
+  
     if($profile_info == ''){ header('location:'.base_url().'User/participate_list'); }
     foreach($profile_info as $info){
       $data['update'] = 'update';
       $data['parentname'] = $info->parentname;
-      $data['age'] = $info->age;
+      $data['birthdate'] = $info->birthdate;
       $data['emailid'] = $info->emailid;
-      $data['grade'] = $info->grade;
+      $data['standard'] = $info->standard;
       $data['schoolcollegename'] = $info->schoolcollegename;
       $data['address'] = $info->address;
       $data['pincode'] = $info->pincode;
       $data['competitionid'] = $info->competitionid;
+      $data['fullname'] = $info->fullname;
+      $data['alternatemobno'] = $info->alternatemobno;
+      $data['gender'] = $info->gender;
+      $data['cityid'] = $info->cityid;
+      $data['cityid'] = $info->cityid;
+      $data['stateid'] = $info->stateid;
+      $data['districtid'] = $info->districtid;
+      $data['user_id'] = $info->user_id;
+      $data['userprofileid'] = $info->userprofileid;
+      
     }
 
+    
+     $data['participate_list'] = $this->User_Model->participate_list('profileid');
      $data['pin'] = $this->User_Model->fetch_pincode();
      $data['competition'] = $this->User_Model->fetch_competition();
-     $data['participate_list'] = $this->User_Model->participate_list('profileid');
-
+     $data['userprofile'] = $this->User_Model->fetch_userprofile();
+     $data['state'] = $this->User_Model->fetch_state();
+     // $data['city'] = $this->User_Model->fetch_city1($data['stateid']);
+     // $data['district'] = $this->User_Model->fetch_district1($data['districtid']);
+     $data['user_list'] = $this->User_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','user'); 
     
   
     
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
-    $this->load->view('User/participate',$data);
+    $this->load->view('User/participate_edit',$data);
     $this->load->view('Include/footer',$data);
   }
 
@@ -1568,7 +1642,7 @@ function fetch_city()
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('profileid', $profileid, 'profile');
-    // $this->User_Model->delete_info('profileid', $profileid, 'profile');
+    // $this->User_Model->delete_info('user_id', $user_id, 'userprofile_master');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'User/participate_list');
   }

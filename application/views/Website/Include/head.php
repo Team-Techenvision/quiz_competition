@@ -33,12 +33,30 @@
     top: 35px;
 }
 .userLabel{
-  color: red;
-  font-size: 11px;
-  margin-top: -30px;
-  /*position: relative;*/
+  color: #0e0e0e;
+    font-size: 11px;
+    margin-top: -30px;
+    position: relative;
+    bottom: -57px;
 }
- 
+.user{
+  font-size: 11px;
+  color: #0e0e0e;
+   position: relative;
+    bottom:-57px;
+
+
+}
+.passwordlabel{
+  font-size: 11px;
+  color: #0e0e0e;
+   position: relative;
+   line-height: 1;
+    bottom:-57px;
+}
+label#user_password-error {
+    margin-top: 15px;
+} 
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -258,13 +276,16 @@
 
                 </div>
                 <div class="form-group col-md-12">
-                   <!-- <label class="userLabel">*Entered mobile no. will be used as user name</label> -->
+                  <label class="userLabel">Note: Entered mobile no. will be used as user name</label>
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+
                   
                 </div>
                 <div class="form-group col-md-12">
-                  <span toggle="#password-field"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password"></span>
-                   <input type="password" id="user_password" name="user_password" class="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8"  value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
+                     <label class="passwordlabel">Note: Password contain uppercase, lowercase letters and number with minimum 8 characters</label>
+                  <span toggle="#password-field1"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password1"></span>
+                   <input type="password" id="user_password" name="user_password" minlength="8" class="input" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
+
 
                 </div>
                 <div class="form-group labelerror">
@@ -301,6 +322,7 @@
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
             <div class="form-group">
+              <label class="user">Note: Entered mobile no. will be used as user name</label>
             <input type="text" id="mobile"  name="mobile" class="input notext"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Mobile No." minlength="10" maxlength="10"  />
             </div>
           <!--   <span class="text-red"> < ?php echo form_error('mobile'); ?></span> -->
@@ -533,9 +555,19 @@ var user_mobile21 = $('#user_mobile').val();
  
   // Wait for the DOM to be ready
 $(function() {
+
+   
+$.validator.addMethod("pwcheck", function(value) {
+   return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+       && /[a-z]/.test(value) // has a lowercase letter
+       && /\d/.test(value) // has a digit
+});
+  
   // Initialize form validation on the registration form.
   // It has the name attribute "registration"
   $("form[name='SignUp']").validate({
+
+
     // Specify validation rules
     rules: {
       // The key name on the left side is the name attribute
@@ -544,21 +576,23 @@ $(function() {
       user_name: "required",
       user_pincode: "required",
       user_mobile: "required",
-      user_password: "required",
+      // user_password: "required",
       remember:"required",
-      // email: {
-      //   required: true,
-      //   // Specify that email should be validated
-      //   // by the built-in "email" rule
-      //   email: true
-      // },
+      user_password: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        pwcheck: true
+      },
       
     },
     // Specify validation error messages
     messages: {
       user_name: "Please enter your name.",
-      user_mobile: "Please enter your mobile number.",
-      user_password: "Please enter a valid password.",
+      user_mobile: "Please enter valid mobile number.",
+      user_password: "Please enter valid password.",
+      // user_password: "Password contain uppercase, lowercase letters and number with minimum 8 characters.",
+
       user_pincode: "Please enter a valid pincode.",
       remember: "Please check this box if you want to proceed."
     },
@@ -566,6 +600,7 @@ $(function() {
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
       // form.submit();
+      
 
       var mobile = $('#user_mobile').val();
      var pincode = $('#user_pincode').val();
@@ -614,9 +649,12 @@ $(function() {
   });
  
 });
+
+
+
  </script> 
 <script type="text/javascript">
-  $(document).on('click', '.toggle-password', function() {
+  $(document).on('click', '.toggle-password1', function() {
 
     $(this).toggleClass("fa-eye fa-eye-slash");
     

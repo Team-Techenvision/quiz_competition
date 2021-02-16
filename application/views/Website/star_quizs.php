@@ -26,7 +26,7 @@
                   <div class="card">
                     <div class="card-header ">
                       
-                      <h5 class="card-title text-center h4" style="color: crimson;"><!-- <i class="fa fa-list"></i>  -->
+                      <h5 class="card-title text-center h4" style="color: #3156bd;"><!-- <i class="fa fa-list"></i>  -->
                       <?php $q_id="0"; foreach ($result as $value) { $q_id = $value['competitionid'];} ?>
                       <?php foreach ($this->Website_Model->view_ques($q_id) as $value)
                       {
