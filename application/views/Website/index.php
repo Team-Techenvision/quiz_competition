@@ -55,6 +55,22 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 }
 
 </style> -->
+<style type="text/css">
+  #toast-container{
+  
+  }
+  .toast-top-right{
+
+    top:50%;
+    right: 40%;
+  }
+  .toast {
+    width: 100% !important;
+  
+    font-size: 22px!important;
+   
+   }
+</style>
 
 <!-- <style type="text/css">
     .a{
@@ -242,15 +258,22 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
 <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
-    $(document).ready(function(){
+    // $(document).ready(function(){
+
       toastr.success('Participated Successfully');
-    });
+     
+    // });
   <?php } ?>
+
 </script>
+
 <script type="text/javascript">
   <?php if($this->session->flashdata('updateProfile_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Profile Updated Successfully');
+     
+        toastr.success('Profile Updated Successfully'); 
+   
+     
     });
   <?php } ?>
 </script>
@@ -288,9 +311,9 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 </script>
 <script type="text/javascript">
   <?php if($this->session->flashdata('Login_error')){ ?>
-    $(document).ready(function(){
+   $(document).ready(function(){
       toastr.error('Please Register to Participate');
-    });
+   });
   <?php } ?>
 </script>
 <script type="text/javascript">

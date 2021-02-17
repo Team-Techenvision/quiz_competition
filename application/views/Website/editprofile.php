@@ -52,7 +52,7 @@
                 <br>
 
                   <!--  <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
-                   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);"  ><label id="fileLabel">No Choosen file</label></div>
+                   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px; margin-left: 20px;" onchange="readURL(this);"  ><label id="fileLabel" class="col text-left">No Choosen file</label></div>
 
                   <!-- 
                   src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
@@ -119,7 +119,7 @@
                                  <div class="col-md-8">
                                   <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
 
-                                    <h6 class="alert alert-danger errorresponse"></h6>
+                                    <p class="mobileval mb-0" id="mobileval" style="font-size:14px;  color: red;"></p>
 
                                 </div>
                                </div>
@@ -319,11 +319,11 @@
       toastr.success('Updated successfully');
     });
   <?php } ?>
-  <?php if($this->session->flashdata('mobile_error')){ ?>
-    $(document).ready(function(){
-      toastr.error('Mobile Number is Already Exists');
-    });
-  <?php } ?>
+  // <?php if($this->session->flashdata('mobile_error')){ ?>
+  //   $(document).ready(function(){
+  //     toastr.error('Mobile Number is Already Exists');
+  //   });
+  // <?php } ?>
 
   </script>
   <script>
@@ -447,11 +447,18 @@ $(document).ready(function(){
 </script> -->
 <script type="text/javascript">
   $(function(){
+
+    // var t = new Date(currentdate.setMonth(currentdate.getMonth()-3));
+
     var dtToday = new Date();
+
+    // alert(t);
     
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
+    var year = dtToday.getFullYear() - 3;
+
+
     if(month < 10)
         month = '0' + month.toString();
     if(day < 10)
@@ -462,6 +469,7 @@ $(document).ready(function(){
     $('#birthdate').attr('max', maxDate);
 });
 </script> 
+ 
  <!--  <script>
 var user_mobile21 = $('#alternatemobno').val();
   $('#alternatemobno').on('change',function(){
@@ -489,78 +497,110 @@ var user_mobile21 = $('#alternatemobno').val();
 
 
 <!-- For mobile no validation if enter alternate number is user registration mobile no -->
-<!--  <script>
+ <script>
+   
 
-  var user_mobile21 = $('#alternatemobno').val();
   $('#alternatemobno').on('change',function(){
-    alert("hii");
+    // alert("hii");
 
      var mobile = $('#alternatemobno').val();
-     var parentname = $('#parentname').val();
-     var fullname = $('#fullname').val();
-     var birthdate = $('#birthdate').val();
-     var emailid = $('#emailid').val();
-     var standard = $('#standard').val();
-     var schoolcollegename = $('#schoolcollegename').val();
-     var address = $('#address').val();
-     var pincode = $('#pincode').val();
-     var profile_image = $('#profile_image').val();
-     var gender = $('#gender').val();
-     var cityid = $('#cityid').val();
-     var districtid = $('#districtid').val();
-     var stateid = $('#stateid').val();
-     // var user_id = $('#user_id').val ();
+     // alert(mobile);
     
-      alert(mobile);
-      // alert(pincode);
-      // alert(name);
-      // alert(password);
    
       $.ajax({
-           url:"<?php echo base_url(); ?>WebsiteController/edit_profile",
+           url:"<?php echo base_url(); ?>WebsiteController/check_user_mobile",
            method:"POST",
-           data:{alternatemobno:mobile,parentname:parentname,fullname:fullname,birthdate:birthdate,emailid:emailid,standard,standard,schoolcollegename:schoolcollegename,address:address,pincode:pincode,profile_image:profile_image,gender:gender,cityid:cityid,districtid:districtid,stateid:stateid},
+           data:{alternatemobno:mobile},
+
            success:function(data)
             {   
 
                // alert(data);
                // console.log(data);
-                 if(data=='profile submitted'){
-
-                  // alert(data);
-                // $('.alert-success').html(data);
-                // $('.mobileerror').hide();
-                // $('.mobilesuccess').show().delay(1000).fadeOut();
-                  // window.location.reload();
+                 if(data == "true"){
 
 
-                //  document.getElementById("signupForm").reset();
+                   $('.mobileval').hide();
 
-                // $('.mobilesuccess').hide();
+                 }else{
+                // alert(data);
+                 $('.mobileval').html(data);
 
-
-                 // $(".signUp").addClass("inactive-dx");
-                 //  $(".signIn").addClass("active-sx");
-                 //  $(".signIn").removeClass("inactive-sx");
-                 //  $(".signUp").removeClass("active-dx");  
-               }
-               else{
-                alert(data);
-                $('.alert-danger').html(data);
-                $('.errorresponse').show().delay(3000).fadeOut();
-                // $('.mobilesuccess').hide();  
-                // document.getElementById("signupForm").reset();
-               }
+                }
                
-              // window.location.reload();
-
-            }
+           }
 
 
             });
-
-       
+       // e.preventdefault();
   });
+
+</script>
+<!-- <script>
+   
+
+  $('#btn_update').on('click',function(e){
+    // alert("hii");
+
+     var mobile = $('#alternatemobno').val();
+     // alert(mobile);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/check_user_mobile",
+           method:"POST",
+           data:{alternatemobno:mobile},
+
+           success:function(data)
+            {   
+
+               alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+
+                   $('.mobileval').hide();
+
+                 }else{
+                // alert(data);
+                 $('.mobileval').html(data);
+
+                }
+               
+           }
+
+
+            });
+       e.preventdefault();
+  });
+
 </script> -->
 </body>
 </html>
+<!-- <script type="text/javascript">
+  $( "#alternatemobno" ).validate({
+  
+  rules: {
+    cat_name: {
+      required: true,
+      remote: {
+        url:"ws/cat_duplicate.php",
+        type: "post",
+        async: false,
+        data: {
+          cat_name: function() {
+            return $( "#cat_name" ).val();
+          }
+        }
+      }
+    }
+  },
+  messages: {
+            cat_name: { 
+                            required:"Please provide Category Name here",
+                            remote:"This Category alredy exist"
+                       },
+        } 
+  
+});
+</script> -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2021 at 02:36 PM
+-- Generation Time: Feb 17, 2021 at 02:37 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -851,7 +851,11 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (243, 1, '', 2, 'shweta E', 'Padmini apartment,sHAHUPUIRI', 416018, 'KOLHAPUR', 'sve@gmail.com', '9822114889', 'Sp@12345', NULL, 'active', '1', '2021-02-15 05:52:19', 1),
 (244, 0, '', 3, 'aaa', '', 422333, '', '', '8765433222', 'Ki@hsdjsj444', NULL, 'active', '', '2021-02-16 05:08:04', 3),
 (245, 0, '', 3, 'fff', '', 417667, '', '', '9867645556', 'sssA@122', NULL, 'active', '', '2021-02-16 10:02:49', 3),
-(246, 0, '', 3, 'Gayatri', '', 416012, '', '', '9822114880', 'Sp@12345', NULL, 'active', '', '2021-02-16 12:12:52', 3);
+(246, 0, '', 3, 'Gayatri', '', 416012, '', '', '9822114880', 'Sp@12345', NULL, 'active', '', '2021-02-16 12:12:52', 3),
+(247, 0, '', 3, 'Druv Shinde', '', 416012, '', '', '8484888987', 'Ki@1234556', NULL, 'active', '', '2021-02-17 12:43:34', 3),
+(248, 0, '', 3, 'sdfsd', '', 343442, '', '', '2344342343', 'gdf34324534', NULL, 'active', '', '2021-02-17 12:56:33', 3),
+(249, 0, '', 3, 'gsdgsd', '', 676767, '', '', '5675345455', 'Kiggg@1234545', NULL, 'active', '', '2021-02-17 13:07:44', 3),
+(250, 0, '', 3, 'hsgak', '', 356565, '', '', '7346127834', 'jh325613143', NULL, 'active', '', '2021-02-17 13:15:31', 3);
 
 -- --------------------------------------------------------
 
@@ -889,7 +893,7 @@ CREATE TABLE `userprofile_master` (
 --
 
 INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted`, `user_name`, `user_pincode`, `user_mobile`, `user_password`, `parentname`, `birthdate`, `emailid`, `standard`, `schoolcollegename`, `address`, `pincode`, `fullname`, `alternatemobno`, `gender`, `cityid`, `districtid`, `stateid`, `profile_image`, `created_date`) VALUES
-(2, 220, 1, 'Rohan Velhal', '416012', '8484888489', 'Ki@1234556', 'bbbb', '2015-11-11', 'demo@gmail.com', 5, 'hhh', 'kkk', '416012', 'Rohan Velhal', '9874562144', 1, 'Kolhapur', 'Kolhapur', 22, '', '2021-02-16 04:24:46'),
+(2, 220, 1, 'Rohan Velhal', '416012', '8484888489', 'Ki@1234556', 'Mohan', '2015-11-11', 'demo@gmail.com', 5, 'SM Lohiya', 'Kolhapur', '', 'Rohan Velhal', '8484888487', 1, 'Kolhapur', 'Kolhapur', 22, 'profile_image_220_1613565686.png', '2021-02-16 04:24:46'),
 (4, 222, 1, 'sadfs', '444444', '6655534444', 'Ss@12344556', 'sghdad', '2010-02-02', 'dsaf@gmail.com', 4, 'gkg', 'ghfhdf, kolhapur', '444444', 'sadfs', '7896541236', 1, '1', '1', 22, '', '2021-02-11 08:23:55'),
 (5, 223, 1, 'dfgdf', '555565', '6454434545', 'Ki@445623547', 'sdfg', '2017-05-30', 'manish@gmail.com', 5, 'kkk', 'kkk', '555565', 'dfgdf', '4343545666', 1, '1', '1', 22, 'profile_image_223_1613036680.jpg', '2021-02-11 08:40:52'),
 (6, 224, 0, 'Komal Kadam', '416012', '9876789877', 'Ko@123454566', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '0', '0', 0, '', '2021-02-11 10:39:57'),
@@ -914,7 +918,11 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (25, 243, 1, 'shweta E', '416018', '9822114889', 'Sp@12345', 'Vilas', '2021-02-15', 'Yash@gmail.com', 3, 'Kolhapur Highschool Kolhapur', 'Rajarampuri', '416018', 'shweta E', '9822114888', 1, '1', '1', 22, '', '2021-02-15 00:27:31'),
 (26, 244, 0, 'aaa', '422333', '8765433222', 'Ki@hsdjsj444', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '0', '0', 0, '', '2021-02-16 05:08:04'),
 (27, 245, 1, 'fff', '417667', '9867645556', 'sssA@122', 'dfdf', '2021-02-02', 'manish@gmail.com', 3, 'fff', 'kkk', '', 'fff', '8698066956', 1, 'kolhapur', 'Kolhapur', 22, 'profile_image_245_1613470431.png', '2021-02-16 10:02:49'),
-(28, 246, 1, 'Gayatri', '416012', '9822114880', 'Sp@12345', 'ddd', '2021-01-01', '', 0, '', '', '416012', 'Gayatri', '9822114884', 0, '', '', 0, '', '2021-02-16 12:12:53');
+(28, 246, 1, 'Gayatri', '416012', '9822114880', 'Sp@12345', 'ddd', '2021-01-01', '', 0, '', '', '416012', 'Gayatri', '9822114884', 0, '', '', 0, '', '2021-02-16 12:12:53'),
+(29, 247, 1, 'Druv Shinde', '416012', '8484888987', 'Ki@1234556', 'Vasant', '2017-12-12', 'kiran@gmail.com', 1, 'nursary', 'Kolhapur', '', 'Druv Shinde', '8975645246', 1, 'kolhapur', 'Kolhapur', 22, 'profile_image_247_1613565978.jpg', '2021-02-17 12:43:34'),
+(30, 248, 1, 'sdfsd', '343442', '2344342343', 'gdf34324534', 'dfgd', '2018-01-31', 'manish@gmail.com', 1, 'dffd', 'kkk', '', 'sdfsd', '2344342343', 2, 'kolhapur', 'cvxc', 2, '', '2021-02-17 12:56:33'),
+(31, 249, 1, 'gsdgsd', '676767', '5675345455', 'Kiggg@1234545', 'hjkl', '2018-02-06', 'manish@gmail.com', 3, 'dfsd', 'kolhapur', '', 'gsdgsd', '4563245554', 2, 'kolhapur', 'Kolhapur', 22, '', '2021-02-17 13:07:44'),
+(32, 250, 0, 'hsgak', '356565', '7346127834', 'jh325613143', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-02-17 13:15:31');
 
 -- --------------------------------------------------------
 
@@ -1130,7 +1138,7 @@ ALTER TABLE `assigncompetition`
 -- AUTO_INCREMENT for table `assignwinner`
 --
 ALTER TABLE `assignwinner`
-  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `banner`
@@ -1232,13 +1240,13 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`

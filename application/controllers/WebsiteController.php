@@ -499,7 +499,7 @@ public function insert_profiledata(){
       // print_r($save_data);
       $this->Website_Model->save_data('profile',$save_data);
       $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'WebsiteController');
+      // header('location:'.base_url().'WebsiteController');
     }
 
     }else{
@@ -599,9 +599,176 @@ public function insert_profiledata(){
 //    echo $this->Website_Model->fetch_district($this->input->post('cityid'));
 //   }
 //  }
+
+  public function check_user_mobile(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+    $alternatemobno = $this->input->post('alternatemobno');
+
+    $checkusermobile = $this->Website_Model->check_usermobile($quizweb_user_id,$alternatemobno); 
+
+
+
+    // echo $check_user_mobile;
+        if($checkusermobile > 0){
+
+         echo "This mobile number is already registered." ; 
+
+        }else{
+
+          echo "true";
+//           $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+//     if ($this->form_validation->run() != FALSE) {
+//     $update_data = $_POST; 
+
+//         $alternatemobno = $this->input->post('alternatemobno');
+
+     
+//             if($old_image=$this->input->post('old_image')){
+//       $update_data = array(
+//         'parentname' => $this->input->post('parentname'),
+//         'fullname' => $this->input->post('fullname'),
+//         'birthdate' => $this->input->post('birthdate'),
+//         'emailid' => $this->input->post('emailid'),
+//         'standard' => $this->input->post('standard'),
+//         'schoolcollegename' => $this->input->post('schoolcollegename'),
+//         'address' => $this->input->post('address'),
+//         'pincode' => $this->input->post('pincode'),
+//         // 'competitionid' => $this->input->post('competition_id'),
+//         // 'profile_image' => $this->input->post('profile_image'),
+//         'alternatemobno' => $alternatemobno,
+//         'gender' => $this->input->post('gender'),
+//         'cityid' => $this->input->post('cityid'),
+//         'districtid' => $this->input->post('districtid'),
+//         'stateid' => $this->input->post('stateid'),
+//         'user_id' => $quizweb_user_id,
+//         'profile_submitted' =>1,
+
+//       );
+//     }else{
+//        $update_data = array(
+//         'parentname' => $this->input->post('parentname'),
+//         'fullname' => $this->input->post('fullname'),
+//         'birthdate' => $this->input->post('birthdate'),
+//         'emailid' => $this->input->post('emailid'),
+//         'standard' => $this->input->post('standard'),
+//         'schoolcollegename' => $this->input->post('schoolcollegename'),
+//         'address' => $this->input->post('address'),
+//         'pincode' => $this->input->post('pincode'),
+//         // 'competitionid' => $this->input->post('competition_id'),
+//         'profile_image' => $this->input->post('profile_image'),
+//         'alternatemobno' => $alternatemobno,
+//         'gender' => $this->input->post('gender'),
+//         'cityid' => $this->input->post('cityid'),
+//         'districtid' => $this->input->post('districtid'),
+//         'stateid' => $this->input->post('stateid'),
+//         'user_id' => $quizweb_user_id,
+//         'profile_submitted' =>1,
+
+//       );
+//     }
+
+//     $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $update_data);
+
+
+
+
+     
+//       $update_username = array(
+
+//         'user_name' => $this->input->post('fullname'),
+
+//        );
+
+//     $this->Website_Model->update_info('user_id', $quizweb_user_id, 'user', $update_username);
+
+//      if($_FILES['profile_image']['name']){
+//               $time = time();
+//               // $image_name = 'profile_image_'.$time;
+//               $image_name = 'profile_image_'.$quizweb_user_id.'_'.$time;
+
+//               $config['upload_path'] = 'assets/images/profile/';
+//               $config['allowed_types'] = 'jpg|jpeg|png|gif';
+//               $config['file_name'] = $image_name;
+//               $filename = $_FILES['profile_image']['name'];
+//               $ext = pathinfo($filename, PATHINFO_EXTENSION);
+//               $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+//                     // print_r($_POST);
+                     
+
+//               if ($this->upload->do_upload('profile_image') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+//                    // print_r($insert_id);
+
+//                   $image['profile_image'] = $image_name.'.'.$ext;
+//                   // print_r($profile_image);
+//                   $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $image);
+//                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+//                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+//         } 
+//         else 
+//         {
+//            $error = $this->upload->display_errors();
+//             $this->session->set_flashdata('upload_error',$error);
+//         }
+//       }
+       
+//        // echo "true";
+//        $this->session->set_flashdata('updateProfile_success','success');
+    
+//       header('location:'.base_url().'WebsiteController');
+       
+// }
+//   $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');
+//     // if($profile_info == ''){ header('location:'.base_url().'WebsiteController/edit_profile'); }
+//     foreach($profile_info as $info){
+//       $data['update'] = 'update';
+//       $data['parentname'] = $info->parentname;
+//       $data['birthdate'] = $info->birthdate;
+//       $data['emailid'] = $info->emailid;
+//       $data['standard'] = $info->standard;
+//       $data['schoolcollegename'] = $info->schoolcollegename;
+//       $data['address'] = $info->address;
+//       $data['pincode'] = $info->pincode;
+//       $data['fullname'] = $info->fullname;
+//       $data['alternatemobno'] = $info->alternatemobno;
+//       $data['gender'] = $info->gender;
+//       $data['cityid'] = $info->cityid;
+//       $data['districtid'] = $info->districtid;
+//       $data['stateid'] = $info->stateid;
+//       // $data['competitionid'] = $info->competitionid;
+//       $data['profile_image'] = $info->profile_image;
+//     }
+//     // $data ['state']=$data['stateid'];
+//     // $district=$data['districtid'];
+//     // print_r($state); 
+//   $data['state'] = $this->Website_Model->fetch_state();
+//   // $data['city'] = $this->Website_Model->fetch_city1($data['stateid']);
+//   // $data['district'] = $this->Website_Model->fetch_district1($data['districtid']);
+//   $data['user_list'] = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','user'); 
+
+  
+
+//     $this->load->view('Website/Include/head',$data);
+//     $this->load->view('Website/editprofile',$data);
+//     $this->load->view('Website/Include/footer',$data);
+
+ }
+
+    
+  }
  
   public function edit_profile(){
 
+    // echo "string";
     // print_r($_POST); die();
 
 
@@ -609,29 +776,18 @@ public function insert_profiledata(){
     // $data['districtid'] = "";
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    // print_r($quizweb_user_id); die();
+    // // print_r($quizweb_user_id); die();
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
      if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
- 
-        $update_data = $_POST; 
+    $update_data = $_POST; 
 
         $alternatemobno = $this->input->post('alternatemobno');
 
-        // print_r($alternatemobno); die();
-
-
-        $check_user_mobile = $this->Website_Model->check_usermobile($quizweb_user_id,$alternatemobno); 
-
-        // print_r($check_user_mobile); die();
- 
-
-       if($check_user_mobile == 0) {
-
-
-       if($old_image=$this->input->post('old_image')){
+     
+            if($old_image=$this->input->post('old_image')){
       $update_data = array(
         'parentname' => $this->input->post('parentname'),
         'fullname' => $this->input->post('fullname'),
@@ -674,8 +830,10 @@ public function insert_profiledata(){
 
       );
     }
-  
-      $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $update_data);
+
+    $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $update_data);
+
+
 
 
      
@@ -687,9 +845,7 @@ public function insert_profiledata(){
 
     $this->Website_Model->update_info('user_id', $quizweb_user_id, 'user', $update_username);
 
-   
-
-      if($_FILES['profile_image']['name']){
+     if($_FILES['profile_image']['name']){
               $time = time();
               // $image_name = 'profile_image_'.$time;
               $image_name = 'profile_image_'.$quizweb_user_id.'_'.$time;
@@ -722,20 +878,13 @@ public function insert_profiledata(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
-     }
-
-      $this->session->set_flashdata('updateProfile_success','success');
-        // echo "profile submitted";
-
+      }
+       
+       // echo "true";
+       $this->session->set_flashdata('updateProfile_success','success');
+    
       header('location:'.base_url().'WebsiteController');
-
-    }else{
-        $this->session->set_flashdata('mobile_error','error');
-        // echo "Mobile Number is Already Exists";
-
-  }
-
-  
+       
 }
     $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');
     // if($profile_info == ''){ header('location:'.base_url().'WebsiteController/edit_profile'); }
