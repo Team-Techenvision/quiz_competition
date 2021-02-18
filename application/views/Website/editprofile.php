@@ -209,7 +209,7 @@
                                    <div class="col-md-8">
                                     
 
-                                      <input type="text" class="form-control title-case " name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" placeholder="Enter District">
+                                      <input type="text" class="form-control title-case txtOnly" name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" placeholder="Enter District">
                                     
                                    <!--  <select name="districtid" id="districtid"class="form-control" required="" >
                                     <option value="">select District</option>
@@ -232,7 +232,7 @@
                                    <div class="col-md-8">
                                      
 
-                                      <input type="text" class="form-control title-case " name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" placeholder="Enter City">
+                                      <input type="text" class="form-control title-case txtOnly" name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" placeholder="Enter City">
                                      
 
                                 
@@ -372,79 +372,10 @@ $(document).ready(function(){
  var state = $('#StateId').val();
  $("#stateid option[value='"+state+"']").attr("selected","selected");
 
- // var city = $('#CityId').val();
- // $("#cityid option[value='"+city+"']").attr("selected","selected");
-
- // var district = $('#DistrictId').val();
- // $("#districtid option[value='"+district+"']").attr("selected","selected");
- 
- // $('#stateid').change(function(){
- //  // alert('hii');
-
- //  var stateid = $('#stateid').val();
- //  // alert(stateid);
-
- //  if(stateid != '')
- //  {
- //   $.ajax({
- //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_city",
- //    method:"POST",
- //    data:{stateid:stateid},
- //    success:function(data)
- //    {
- //     $('#cityid').html(data);
- //     $('#districtid').html('<option value="">Select District</option>');
-
- //    }
- //   });
- //  }
- //  else
- //  {
- //   $('#cityid').html('<option value="">Select City</option>');
- //     $('#districtid').html('<option value="">Select District</option>');
-
- //  }
- // });
-
- //  $('#cityid').change(function(){
- //  var cityid = $('#cityid').val();
- //  if(cityid != '')
- //  {
- //   $.ajax({
- //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_district",
- //    method:"POST",
- //    data:{cityid:cityid},
- //    success:function(data)
- //    {
- //     $('#districtid').html(data);
-     
- //    }
- //   });
- //  }
- //  else
- //  {
- //   $('#districtid').html('<option value="">Select District</option>');
-   
-
- //  }
- // });
  
 });
 </script>
-<!-- <script type="text/javascript">
-  window.pressed = function(){
-    var a = document.getElementById('profile_image');
-    if(a.value == "")
-    {
-        fileLabel.innerHTML = "Choose file";
-    }
-    else
-    {
-        var theSplit = a.value.split('\\');
-        fileLabel.innerHTML = theSplit[theSplit.length-1];
-    }
-};
-</script> -->
+
 <script type="text/javascript">
   $(function(){
 
@@ -470,32 +401,6 @@ $(document).ready(function(){
 });
 </script> 
  
- <!--  <script>
-var user_mobile21 = $('#alternatemobno').val();
-  $('#alternatemobno').on('change',function(){
-    alert('hii');
-    // var user_mobile = $(this).val();
-    // $.ajax({
-    //   url:'< ?php echo base_url(); ?>WebsiteController/check_duplication',
-    //   type: 'POST',
-    //   data: {"column_name":"user_mobile",
-    //          "column_val":user_mobile,
-    //          "table_name":"user"},
-    //   context: this,
-    //   success: function(result){
-    //     // alert(result);
-    //     if(result > 0){
-    //       $('#alternatemobno').val(user_mobile21);
-    //       // toastr.error(user_mobile2+' Mobile No Exist.');
-    //       alert(alternatemobno+' Mobile Number Exist.');
-    //     }
-    //   }
-    // });
-  });
-
-</script> -->
-
-
 <!-- For mobile no validation if enter alternate number is user registration mobile no -->
  <script>
    
@@ -519,88 +424,19 @@ var user_mobile21 = $('#alternatemobno').val();
                // console.log(data);
                  if(data == "true"){
 
-
                    $('.mobileval').hide();
 
                  }else{
                 // alert(data);
                  $('.mobileval').html(data);
-
-                }
-               
+                 $('#alternatemobno').val('');
+                }               
            }
-
-
-            });
+         });
        // e.preventdefault();
   });
 
 </script>
-<!-- <script>
-   
 
-  $('#btn_update').on('click',function(e){
-    // alert("hii");
-
-     var mobile = $('#alternatemobno').val();
-     // alert(mobile);
-    
-   
-      $.ajax({
-           url:"<?php echo base_url(); ?>WebsiteController/check_user_mobile",
-           method:"POST",
-           data:{alternatemobno:mobile},
-
-           success:function(data)
-            {   
-
-               alert(data);
-               // console.log(data);
-                 if(data == "true"){
-
-
-                   $('.mobileval').hide();
-
-                 }else{
-                // alert(data);
-                 $('.mobileval').html(data);
-
-                }
-               
-           }
-
-
-            });
-       e.preventdefault();
-  });
-
-</script> -->
 </body>
 </html>
-<!-- <script type="text/javascript">
-  $( "#alternatemobno" ).validate({
-  
-  rules: {
-    cat_name: {
-      required: true,
-      remote: {
-        url:"ws/cat_duplicate.php",
-        type: "post",
-        async: false,
-        data: {
-          cat_name: function() {
-            return $( "#cat_name" ).val();
-          }
-        }
-      }
-    }
-  },
-  messages: {
-            cat_name: { 
-                            required:"Please provide Category Name here",
-                            remote:"This Category alredy exist"
-                       },
-        } 
-  
-});
-</script> -->

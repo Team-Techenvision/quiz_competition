@@ -240,6 +240,15 @@ $query = $this->db->get();
 $result = $query->num_rows();
 return $result;
 }
+public function check_quiz_submit($quizweb_user_id,$competition_id){
+$this->db->select('*');
+$this->db->where('dynamiccompetitionid',$competition_id);
+$this->db->where('user_id',$quizweb_user_id);
+$this->db->from('userquizsubmit');
+$query = $this->db->get();
+$result = $query->result();
+return $result;
+}
 public function check_usermobile($quizweb_user_id,$user_mobile){
 // $this->db->select('*');
   // print_r($user_mobile); die();

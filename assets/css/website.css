@@ -788,14 +788,21 @@ to{
   width: auto;
   height:auto;
   top: calc(50% - 240px);
-  /*left: calc(50% - 160px);*/
-  right: calc(50% - 125px);
+  left: calc(50% - 2px);
+  /*right: calc(50% - 125px);*/
+}
+.conSU{
+  position:absolute;
+  width: auto;
+  height:auto;
+  top: calc(50% - 240px);
+  left: calc(50% - 25px);
+  /*right: calc(50% - 125px);*/
 }
         .form {
   position: absolute;
   text-align: center;
   background: #fff;
-  width: 310px;
   height: 460px;
   border-radius: 5px;
   padding: 30px 20px 0 20px;
@@ -936,10 +943,13 @@ to{
     z-index: 1;
     transform: perspective(100px) translate3d(100px, 0px, -30px);
     opacity: 0.5;
+    width: 400px;
+
 }
 
 .signUp {
   z-index: 2;
+  width: 600px;
 }
 
 .active-sx{

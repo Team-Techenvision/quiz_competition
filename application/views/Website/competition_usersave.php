@@ -104,41 +104,19 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                      </div>
                  </div>
                      <div class="col-ml-4" style="margin-left: 40px;margin-top: 20px;">
-                     <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
-                           <?php if($comptype=='2'){ ?>
+                     <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/competition_uploadfile" method="post" enctype="multipart/form-data">
+
+                           <?php if($comptype=='1'){ ?>
                              
-                              <div class="row text-left">
-                                
-                                <?php if($whatsapp=='1') {?>
-                                   <div class="form-group col-md-2">
-                                    <a href="https://wa.me/91<?php echo $value->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
-                                  </div>
-                                <?php }?>
-                                 <?php if($email=='1') {?>
-                                   <div class="form-group col-md-2">
-                                  <a href = "mailto: abc@example.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="45px" width="45px"/></a>
-                                  </div>
-                                <?php }?>
-                                 <?php if($upload=='1') {?>
-                                    <div class="form-group col-md-12">
-                                   <input type="file" id="photo" name="photo" onchange="readURL(this);" />
-
-                                  <!--  <?php if(isset($photo)){?> -->
-                                    <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
-
-                                  <!--   <?php }?> -->
-
-                                  <div class="button11" id="button-6">
+                           <?php  if(empty($check_quiz_submit)) { 
+                                // print_r($check_quiz_submit)
+                                ?>
+                              
+                               <div class="button11" id="button-6">
                                      <div id="spin"></div>
-                                     <a href="#" id="btn_save" type="submit" >Submit</a>
-                                  </div>
-
-                                   <!--  <button id="btn_save"  type="submit" class="btn btn-success px-4">Submit</button> -->
-
-
-                                    </div>
-                                <?php  } ?>
-                                  </div>
+                                     <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>"  >Start</a>
+                                </div>
+                             <?php  } ?>                      
 
                                  
 
@@ -146,50 +124,48 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                               <!--  href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>" -->
 
 
-                             <?php }elseif ($comptype=='3') { ?>
-                             
-
+                          
+                                 
+                             <?php }else {?>
                               <div class="row text-left">
                                 
-                              <?php if($whatsapp=='1') {?>
-                                   <div class="form-group col-md-2">
+                                <?php if($whatsapp=='1') {?>
+                                   <div class="form-group col-md-1">
                                     <a href="https://wa.me/91<?php echo $value->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
                                   </div>
                                 <?php }?>
                                  <?php if($email=='1') {?>
-                                   <div class="form-group col-md-2">
-                                  <a href="mailto:priyanka.techenvision@gmail.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="45px" width="45px"/></a>
+                                   <div class="form-group col-md-1">
+                                  <a href = "mailto: abc@example.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="45px" width="45px"/></a>
                                   </div>
                                 <?php }?>
                                  <?php if($upload=='1') {?>
-                                    <div class="form-group col-md-12">
-                                   <input type="file" id="photo" name="photo" onchange="readURL(this);" />
+                                   <!-- <form id="form_action" name="form_action" role="form" action="WebsiteController/competition_uploadfile" method="post" enctype="multipart/form-data"> -->
+                                    <div class="form-group col-md-10">
 
-                                  <!--  <?php if(isset($photo)){?> -->
-                                    <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
+                                   <input type="hidden" id="competitionid" name="competitionid" value="<?php echo $value->competitionid; ?>"  />
 
-                                  <!--   <?php }?> -->
+                                   <input type="file" id="uploadfile" name="uploadfile"   />
 
-                                  <div class="button11" id="button-6">
+                         
+                                    <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->
+
+                          
+
+                                 <!--  <div class="button11" id="button-6">
                                      <div id="spin"></div>
                                      <a href="#" id="btn_save" type="submit" >Submit</a>
-                                  </div>
+                                  </div> -->
 
-                                   <!--  <button id="btn_save"  type="submit" class="btn btn-success px-4">Submit</button> -->
+                                    <button id="btn_save"  type="submit" class="btn btn-primary px-4">Submit</button>
 
 
                                     </div>
+                                  <!-- </form> -->
                                 <?php  } ?>
                                   </div>
 
-                                 
-                             <?php }else {?>
-
-                               <div class="button11" id="button-6">
-                                     <div id="spin"></div>
-                                     <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>"  >Start</a>
-                                </div>
-                            
+                             
                              <!--   <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>" class="btn btn-info">Start</a> -->
                             <?php } ?>
 
@@ -216,25 +192,24 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
   </div>
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+ <!--  <script>
+   
+   $('.pis').bind("click" , function () {
+          $('#uploadfile').click();
+   });
+   
+    function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
 
- 
- <script type="text/javascript">
-  $('#btn_save').click(function(){
-    // alert('hii');
+                  reader.onload = function (e) {
+                      $('#blah')
+                          .attr('src', e.target.result);
+                  };
 
-   if($.trim($('#emailid').val()) == ''||$.trim($('#parentname').val()) == ''||$.trim($('#age').val()) == ''||$.trim($('#pincode').val()) == ''){
-      alert('Fill all the necessary fields');
-   }
-   else{
-    return confirm('Are you sure you want to participate?')
-   }
-});
+                  reader.readAsDataURL(input.files[0]);
+              }
 
-function myFunction() {
-            document.getElementById("myForm").reset();
-        }
-
-</script>
- 
-</body>
+</script> -->
+ </body>
 </html>

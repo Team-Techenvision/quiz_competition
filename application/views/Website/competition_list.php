@@ -26,23 +26,31 @@
        <?php 
        if($mycompetition_list== null){ 
         ?>
-        <label class=" mb-4" style="color: #0a0a0a; font-weight: 500; font-size: 1.25rem;">You have not participated yet in any competition</label>
+        <br>
+        <label class=" mb-4" style="color: #0a0a0a; font-weight: 500; font-size: 1.50rem;">To Participate in Competition Please Fill Up the Profile Details. <br><br> You have not Participated Yet in any Competition.</label><br><br>
+
+        <div class="button11" id="button-6">
+         <div id="spin"></div>
+         <a href="<?php echo base_url(); ?>/WebsiteController" >go to home</a>
+        </div>
 
  
           <?php }else{ 
 
            foreach ($mycompetition_list as $list) { 
-// print_r($list);
+
             $enddate = $list->enddate;
                 $today = date('Y-m-d'); 
-            // print_r($enddate); 
+           
             }
-              ?>
-    
-            
-        <?php  if($enddate >= $today){ ?> 
+         ?>
+        <?php  if($enddate >= $today ){ 
+
+          ?> 
+
           <label class="complabal mb-4">Current Competition</label>
          <?php } ?> 
+
         <div class="row ">
           
           <?php   foreach ($mycompetition_list as $list) { 
@@ -68,9 +76,9 @@
          <!-- /.row -->
           <br><br>
        <!-- Past competition -->
-         <?php   if($enddate <= $today){ ?> 
+        <?php   if($enddate <= $today){ ?>  
           <label class="complabal mb-4">Past Competition</label>
-           <?php }  ?> 
+           <?php }  ?>  
          <div class="row">
           
           <?php   foreach ($mycompetition_list as $list) { 

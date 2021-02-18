@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2021 at 02:37 PM
+-- Generation Time: Feb 18, 2021 at 02:32 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -327,6 +327,28 @@ INSERT INTO `competitiontype` (`competitiontypeid`, `competitiontype`, `created_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `competition_uploadfile_submit`
+--
+
+CREATE TABLE `competition_uploadfile_submit` (
+  `uploadfileid` int(11) NOT NULL,
+  `competitionid` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `uploadfile` varchar(256) NOT NULL,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `competition_uploadfile_submit`
+--
+
+INSERT INTO `competition_uploadfile_submit` (`uploadfileid`, `competitionid`, `user_id`, `uploadfile`, `created_date`) VALUES
+(1, 26, 0, '', '2021-02-18 12:15:37'),
+(2, 26, 251, 'uploadfile_251_1613650706.jpg', '2021-02-18 12:18:26');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `country`
 --
 
@@ -577,7 +599,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (60, 'Vilas', '2021-02-15', 'Yash@gmail.com', '3', 'Kolhapur Highschool Kolhapur', 'Rajarampuri', 416018, 'shweta E', '9822114888', 1, '1', '1', 22, 71, 243, 25, '', '2021-02-15'),
 (61, 'bbbb', '2015-11-11', 'demo@gmail.com', '5', 'hhh', 'kkk', 416012, 'Rohan Velhal', '9874562144', 1, 'Kolhapur', 'Kolhapur', 22, 12, 220, 2, '', '2021-02-16'),
 (62, 'dfdf', '2021-02-02', 'manish@gmail.com', '3', 'fff', 'kkk', 0, 'fff', '8698066956', 1, 'kolhapur', 'Kolhapur', 22, 53, 245, 27, 'profile_image_245_1613470431.png', '2021-02-16'),
-(63, 'ddd', '2021-01-01', 'sss@abc.abc', '2', 'sss', 'kkk', 0, 'Gayatri', '4343545666', 2, 'kolhapur', 'Kolhapur', 22, 53, 246, 28, '', '2021-02-16');
+(63, 'ddd', '2021-01-01', 'sss@abc.abc', '2', 'sss', 'kkk', 0, 'Gayatri', '4343545666', 2, 'kolhapur', 'Kolhapur', 22, 53, 246, 28, '', '2021-02-16'),
+(67, 'vilas', '2018-02-18', 'xyz@gmail.com', '1', 'ppgh', 'yash plaza', 0, 'xyz', '9822114889', 1, '123', 'kolhapur12333', 22, 26, 251, 33, '', '2021-02-18');
 
 -- --------------------------------------------------------
 
@@ -635,9 +658,8 @@ INSERT INTO `state` (`stateid`, `statename`, `created_date`) VALUES
 (37, 'Tripura', '0000-00-00 00:00:00'),
 (38, 'TEST', '0000-00-00 00:00:00'),
 (39, 'UP-1', '0000-00-00 00:00:00'),
-(40, 'xxxxxx', '0000-00-00 00:00:00'),
-(41, 'West Bengal', '0000-00-00 00:00:00'),
-(42, 'UP-2', '0000-00-00 00:00:00');
+(40, 'West Bengal', '0000-00-00 00:00:00'),
+(41, 'UP-2', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -855,7 +877,8 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (247, 0, '', 3, 'Druv Shinde', '', 416012, '', '', '8484888987', 'Ki@1234556', NULL, 'active', '', '2021-02-17 12:43:34', 3),
 (248, 0, '', 3, 'sdfsd', '', 343442, '', '', '2344342343', 'gdf34324534', NULL, 'active', '', '2021-02-17 12:56:33', 3),
 (249, 0, '', 3, 'gsdgsd', '', 676767, '', '', '5675345455', 'Kiggg@1234545', NULL, 'active', '', '2021-02-17 13:07:44', 3),
-(250, 0, '', 3, 'hsgak', '', 356565, '', '', '7346127834', 'jh325613143', NULL, 'active', '', '2021-02-17 13:15:31', 3);
+(250, 0, '', 3, 'hsgak', '', 356565, '', '', '7346127834', 'jh325613143', NULL, 'active', '', '2021-02-17 13:15:31', 3),
+(251, 0, '', 3, 'xyz', '', 416012, '', '', '9822114899', 'xyz@1234', NULL, 'active', '', '2021-02-18 10:15:58', 3);
 
 -- --------------------------------------------------------
 
@@ -893,7 +916,7 @@ CREATE TABLE `userprofile_master` (
 --
 
 INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted`, `user_name`, `user_pincode`, `user_mobile`, `user_password`, `parentname`, `birthdate`, `emailid`, `standard`, `schoolcollegename`, `address`, `pincode`, `fullname`, `alternatemobno`, `gender`, `cityid`, `districtid`, `stateid`, `profile_image`, `created_date`) VALUES
-(2, 220, 1, 'Rohan Velhal', '416012', '8484888489', 'Ki@1234556', 'Mohan', '2015-11-11', 'demo@gmail.com', 5, 'SM Lohiya', 'Kolhapur', '', 'Rohan Velhal', '8484888487', 1, 'Kolhapur', 'Kolhapur', 22, 'profile_image_220_1613565686.png', '2021-02-16 04:24:46'),
+(2, 220, 1, 'Rohan Velhal', '416012', '8484888489', 'Ki@1234556', 'Mohan', '2015-11-11', 'demo@gmail.com', 5, 'SM Lohiya', 'Kolhapur', '', 'Rohan Velhal', '8745965412', 1, 'Kolhapur', 'Kolhapur', 22, 'profile_image_220_1613565686.png', '2021-02-16 04:24:46'),
 (4, 222, 1, 'sadfs', '444444', '6655534444', 'Ss@12344556', 'sghdad', '2010-02-02', 'dsaf@gmail.com', 4, 'gkg', 'ghfhdf, kolhapur', '444444', 'sadfs', '7896541236', 1, '1', '1', 22, '', '2021-02-11 08:23:55'),
 (5, 223, 1, 'dfgdf', '555565', '6454434545', 'Ki@445623547', 'sdfg', '2017-05-30', 'manish@gmail.com', 5, 'kkk', 'kkk', '555565', 'dfgdf', '4343545666', 1, '1', '1', 22, 'profile_image_223_1613036680.jpg', '2021-02-11 08:40:52'),
 (6, 224, 0, 'Komal Kadam', '416012', '9876789877', 'Ko@123454566', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '0', '0', 0, '', '2021-02-11 10:39:57'),
@@ -922,7 +945,8 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (29, 247, 1, 'Druv Shinde', '416012', '8484888987', 'Ki@1234556', 'Vasant', '2017-12-12', 'kiran@gmail.com', 1, 'nursary', 'Kolhapur', '', 'Druv Shinde', '8975645246', 1, 'kolhapur', 'Kolhapur', 22, 'profile_image_247_1613565978.jpg', '2021-02-17 12:43:34'),
 (30, 248, 1, 'sdfsd', '343442', '2344342343', 'gdf34324534', 'dfgd', '2018-01-31', 'manish@gmail.com', 1, 'dffd', 'kkk', '', 'sdfsd', '2344342343', 2, 'kolhapur', 'cvxc', 2, '', '2021-02-17 12:56:33'),
 (31, 249, 1, 'gsdgsd', '676767', '5675345455', 'Kiggg@1234545', 'hjkl', '2018-02-06', 'manish@gmail.com', 3, 'dfsd', 'kolhapur', '', 'gsdgsd', '4563245554', 2, 'kolhapur', 'Kolhapur', 22, '', '2021-02-17 13:07:44'),
-(32, 250, 0, 'hsgak', '356565', '7346127834', 'jh325613143', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-02-17 13:15:31');
+(32, 250, 0, 'hsgak', '356565', '7346127834', 'jh325613143', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-02-17 13:15:31'),
+(33, 251, 1, 'xyz', '416012', '9822114899', 'xyz@1234', 'vilas', '2018-02-18', 'xyz@gmail.com', 1, 'ppgh', 'yash plaza', '', 'xyz', '9822114889', 1, '123', 'kolhapur12333', 22, '', '2021-02-18 10:15:58');
 
 -- --------------------------------------------------------
 
@@ -1038,6 +1062,12 @@ ALTER TABLE `competitionquizsubject`
 --
 ALTER TABLE `competitiontype`
   ADD PRIMARY KEY (`competitiontypeid`);
+
+--
+-- Indexes for table `competition_uploadfile_submit`
+--
+ALTER TABLE `competition_uploadfile_submit`
+  ADD PRIMARY KEY (`uploadfileid`);
 
 --
 -- Indexes for table `country`
@@ -1183,6 +1213,12 @@ ALTER TABLE `competitiontype`
   MODIFY `competitiontypeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `competition_uploadfile_submit`
+--
+ALTER TABLE `competition_uploadfile_submit`
+  MODIFY `uploadfileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
@@ -1222,7 +1258,7 @@ ALTER TABLE `prizemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1240,19 +1276,19 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `winner`

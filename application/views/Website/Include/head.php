@@ -20,10 +20,10 @@
     line-height: 1.5;
 
   }
-  .maxheight{
+ /* .maxheight{
     max-height: 250px;
     overflow-y: scroll;
-  }
+  }*/
   .labelerror  {
     position: relative;
     
@@ -256,10 +256,10 @@ label#user_password-error {
     <div class="modal-content logincontent">
      
 
-      <div class="modal-body con ">
+      <div class="modal-body  ">
 
        
-          <form class="signUp form"  id="signupForm" name="SignUp" role="form" autocomplete='off'>
+          <form class="signUp form conSU" width="1000" id="signupForm" name="SignUp" role="form" autocomplete='off'>
 
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -268,28 +268,28 @@ label#user_password-error {
               <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
               <div class="row maxheight">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                    <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" /> 
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                    <input class="input" type="text" name="user_pincode"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
 
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                   <label class="userLabel">Note: Entered mobile no. will be used as user name</label>
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 
                   
                 </div>
-                <div class="form-group col-md-12">
-                     <label class="passwordlabel">Note: Password contain uppercase, lowercase letters and number with minimum 8 characters</label>
+                <div class="form-group col-md-6" style="margin-top: -18px;">
+                     <label class="passwordlabel">Note: Password must contain uppercase, lowercase letters and number with minimum 8 characters</label>
                   <span toggle="#password-field1"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password1"></span>
                    <input type="password" id="user_password" name="user_password" minlength="8" class="input" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
 
 
                 </div>
-                <div class="form-group labelerror">
-                   <label class="form-check-label " style="margin-left: 55px;">
+                <div class="form-group col-md-12 labelerror" style="margin-top: 20px;">
+                   <label class="form-check-label " style="margin-left: 50px;">
                     <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
                    </label>
                   </div>
@@ -314,7 +314,7 @@ label#user_password-error {
               <button class="form-btn button dx" type="submit">Sign Up</button>
           </form>
          <!-- <?php if(isset($error_msg)){ echo $error_msg; } ?> -->
-         <form class="signIn form" id="signInForm" name="SignIn" role="form" autocomplete='off'>
+         <form class="signIn form con" id="signInForm" name="SignIn" role="form" autocomplete='off'>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
