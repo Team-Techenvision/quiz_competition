@@ -238,18 +238,54 @@
 
                     <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required=""><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                    </div>
+                     <div class="form-group col-md-12">
+                    <label>File Format</label>
+
+                    <?php
+                      if(isset($file_format)){?>
+
+                       <input type="hidden" class="form-control required title-case text" name="file_format" id="fileformat" value="<?php if(isset($file_format)){ echo $file_format; } ?>" disabled="">
+                       <?php }?>
+                    <select name="file_format" id="file_format"class="form-control" >
+                   
+                    <option value="1">Document File / PowerPoint file</option>
+                    <option value="2">Audio File</option>
+                    <option value="3">Video File</option>
+                    <option value="4">Image File</option>
+                   
+                  </select>
+                  </div>
                   <div class="form-group col-md-12">
                     <label>Options</label>
 
                     <div class="form-check">
-              
-                       <div class="row">
+
+                       <div class="row uploadfile">
                         <div class="col-md-4">
                           <?php  if(empty($uploadfile)){$uploadfile="";} ?>
                         <input type="checkbox" id="uploadfile" name="uploadfile" value="1" <?php if($uploadfile=="1") { echo "checked";} ?> > Upload File
                         </div>
-                        </div> <br> 
-                        <div class="row">
+                        </div> 
+                         <div class="row upload_audio">
+                        <div class="col-md-4">
+                          <?php  if(empty($upload_audio)){$upload_audio="";} ?>
+                        <input type="checkbox" id="upload_audio" name="upload_audio" value="1" <?php if($upload_audio=="1") { echo "checked";} ?> > Upload Audio
+                        </div>
+                        </div> 
+                         <div class="row upload_vedio">
+                        <div class="col-md-4">
+                          <?php  if(empty($upload_vedio)){$upload_vedio="";} ?>
+                        <input type="checkbox" id="upload_vedio" name="upload_vedio" value="1" <?php if($upload_vedio=="1") { echo "checked";} ?> > Upload Video
+                        </div>
+                        </div> 
+              
+                       <div class="row upload_image">
+                        <div class="col-md-4">
+                          <?php  if(empty($upload_image)){$upload_image="";} ?>
+                        <input type="checkbox" id="upload_image" name="upload_image" value="1" <?php if($upload_image=="1") { echo "checked";} ?> > Upload Image
+                        </div>
+                        </div><br>
+                        <div class="row" >
                           <div class="col-md-2">
                              <?php  if(empty($email)){$email="";} ?>
                         <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control required title-case text " name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" placeholder=" Enter E-mail Address" ></div>
@@ -358,23 +394,42 @@ $('form').validate({
 
 
 </script> -->
-<!--  <script type="text/javascript">
+ <script type="text/javascript">
   $(document).ready(function(){
 
-    $("#quiz").hide();
+    $(".uploadfile").show();
+    $(".upload_audio").hide();
+    $(".upload_image").hide();
+    $(".upload_vedio").hide();
 
-    $('#competitiontypeid').on('change', function() {
-      if ( this.value == '1')
+    $('#file_format').on('change', function() {
+      if ( this.value == '2')
       {
-        $("#quiz").show();
+        $(".uploadfile").hide();
+        $(".upload_audio").show();
+        $(".upload_image").hide();
+        $(".upload_vedio").hide();
       }
-      else
+      else if(this.value == '3'){
+        $(".uploadfile").hide();
+        $(".upload_audio").hide();
+        $(".upload_image").hide();
+        $(".upload_vedio").show();
+      }else if(this.value == '4'){
+        $(".uploadfile").hide();
+        $(".upload_audio").hide();
+        $(".upload_image").show();
+        $(".upload_vedio").hide();
+      }else
       {
-        $("#quiz").hide();
+        $(".uploadfile").show();
+        $(".upload_audio").hide();
+        $(".upload_image").hide();
+        $(".upload_vedio").hide();
       }
     });
 });
-</script>  -->
+</script> 
 <!-- <script type="text/javascript">
   $('.numinput').on('input', function() {
       this.value = this.value.replace(/(?!^-)[^0-9.]/g, "").replace(/(\..*)\./g, '$1'); 

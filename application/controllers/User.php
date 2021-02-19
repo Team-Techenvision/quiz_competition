@@ -108,8 +108,9 @@ class User extends CI_Controller{
      // print_r($data['lastid']); die();
 
     $data['competition'] = $this->User_Model->fetch_competition();
+    
     $data['data'] = $que_id;
-    // print_r($data);  
+    // print_r($data['competition']);  
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -920,6 +921,35 @@ class User extends CI_Controller{
 
       }
 
+         $data['upload_audio'] = $this->input->post('upload_audio');
+      if (isset($data['upload_audio'])) {
+        echo $data['upload_audio'] = 1; 
+      }
+      else {
+       echo $data['upload_audio'] = 0;
+
+      }
+
+
+         $data['upload_vedio'] = $this->input->post('upload_vedio');
+      if (isset($data['upload_vedio'])) {
+        echo $data['upload_vedio'] = 1; 
+      }
+      else {
+       echo $data['upload_vedio'] = 0;
+
+      }
+
+
+         $data['upload_image'] = $this->input->post('upload_image');
+      if (isset($data['upload_image'])) {
+        echo $data['upload_image'] = 1; 
+      }
+      else {
+       echo $data['upload_image'] = 0;
+
+      }
+
       $data['email'] = $this->input->post('email');
       if(isset($data['email'])){
          echo $data['email'] = 1;
@@ -951,7 +981,11 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
+        'file_format' => $this->input->post('file_format'),
         'uploadfile'=>   $data['uploadfile'],
+        'upload_audio'=>   $data['upload_audio'],
+        'upload_image'=>   $data['upload_image'],
+        'upload_vedio'=>   $data['upload_vedio'],
         'email'=>  $data['email'],
         'emailaddress'=>  $this->input->post('emailaddress'),
         'whatsapp'=>  $data['whatsapp'],
@@ -1150,6 +1184,36 @@ class User extends CI_Controller{
 
       }
 
+         $data['upload_audio'] = $this->input->post('upload_audio');
+      if (isset($data['upload_audio'])) {
+        echo $data['upload_audio'] = 1; 
+      }
+      else {
+       echo $data['upload_audio'] = 0;
+
+      }
+
+
+         $data['upload_vedio'] = $this->input->post('upload_vedio');
+      if (isset($data['upload_vedio'])) {
+        echo $data['upload_vedio'] = 1; 
+      }
+      else {
+       echo $data['upload_vedio'] = 0;
+
+      }
+
+      
+         $data['upload_image'] = $this->input->post('upload_image');
+      if (isset($data['upload_image'])) {
+        echo $data['upload_image'] = 1; 
+      }
+      else {
+       echo $data['upload_image'] = 0;
+
+      }
+
+
       $data['email'] = $this->input->post('email');
       if(isset($data['email'])){
          echo $data['email'] = 1;
@@ -1183,7 +1247,11 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
+        'file_format' => $this->input->post('file_format'),
         'uploadfile'=>   $data['uploadfile'],
+        'upload_audio'=>   $data['upload_audio'],
+        'upload_image'=>   $data['upload_image'],
+        'upload_vedio'=>   $data['upload_vedio'],
         'email'=>  $data['email'],
         'emailaddress'=>  $this->input->post('emailaddress'),
         'whatsapp'=>  $data['whatsapp'],
@@ -1215,7 +1283,11 @@ class User extends CI_Controller{
         'toage' => $this->input->post('toage'),
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
+        'file_format' => $this->input->post('file_format'),
         'uploadfile'=>   $data['uploadfile'],
+        'upload_audio'=>   $data['upload_audio'],
+        'upload_image'=>   $data['upload_image'],
+        'upload_vedio'=>   $data['upload_vedio'],
         'email'=>  $data['email'],
         'emailaddress'=>  $this->input->post('emailaddress'),
         'whatsapp'=>  $data['whatsapp'],
@@ -1312,7 +1384,11 @@ class User extends CI_Controller{
       $data['toage'] = $info->toage;
       $data['enddate'] = $info->enddate;
       $data['subjectstextarea'] = $info->subjectstextarea;
+      $data['file_format'] = $info->file_format;
       $data['uploadfile'] = $info->uploadfile;
+      $data['upload_audio'] = $info->upload_audio;
+      $data['upload_image'] = $info->upload_image;
+      $data['upload_vedio'] = $info->upload_vedio;
       $data['email'] = $info->email;
       $data['emailaddress'] = $info->emailaddress;
       $data['whatsapp'] = $info->whatsapp;

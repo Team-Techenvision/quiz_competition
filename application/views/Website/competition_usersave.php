@@ -2,8 +2,15 @@
 $quizweb_user_id = $this->session->userdata('quizweb_user_id');
 $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'','','','','user');
 ?>
-
-
+<style type="text/css">
+  /*label .subject{
+    margin-top: 0px!important; 
+    margin-bottom: -20px!important;
+  }*/
+  label .subject {
+    margin-bottom: -20px!important;
+}
+</style>
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -49,6 +56,15 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                     $upload = $value->uploadfile;
                     $email = $value->email;
                     $whatsapp = $value->whatsapp;
+                    $file_format = $value->file_format;
+                    $upload_audio = $value->upload_audio;
+                    $upload_vedio = $value->upload_vedio;
+                    $upload_image = $value->upload_image;
+
+// print_r($file_format);
+// print_r($upload_audio);
+// print_r($upload_vedio);
+// print_r($upload_image);
 
                   ?>
               
@@ -65,9 +81,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                           <label class="text-dark labelSC">Competition Type : </label>
                           <?php echo $value->competitiontype; ?>
                      </div>
-                      <div class="col ml-4" >
+                      <div class="col ml-4 mb-0" >
                           <label class="text-dark labelSC">Competition Subject : </label>
-                          <?php echo $value->subjectstextarea; ?>
+                           <label class="subject" style="margin-bottom: -20px!important;"><?php echo $value->subjectstextarea; ?></label>
                      </div>
                       <div class="col ml-4" >
                          <label class="text-dark labelSC">Competition Level : </label>
@@ -139,30 +155,51 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                   <a href = "mailto: abc@example.com"><img src="<?php echo base_url();?>assets/images/email.jpg" height="45px" width="45px"/></a>
                                   </div>
                                 <?php }?>
-                                 <?php if($upload=='1') {?>
-                                   <!-- <form id="form_action" name="form_action" role="form" action="WebsiteController/competition_uploadfile" method="post" enctype="multipart/form-data"> -->
-                                    <div class="form-group col-md-10">
+                                  <div class="form-group col-md-10">
+                                      <input type="hidden" id="competitionid" name="competitionid" value="<?php echo $value->competitionid; ?>"  />
 
-                                   <input type="hidden" id="competitionid" name="competitionid" value="<?php echo $value->competitionid; ?>"  />
+                               
 
-                                   <input type="file" id="uploadfile" name="uploadfile"   />
+                                <?php 
+                                  
+                                  if($file_format=='2'){ 
 
-                         
+                                 if($upload_audio=='1') {?>
+
+                                  <!--   <div class="form-group"> -->
+                                     <input type="file" id="upload_audio" name="upload_audio" accept="audio/*" />
+                                    <!-- </div> -->
+                                
+                                <?php  } }else if($file_format=='3'){?>
+                                 <?php if($upload_vedio=='1') {?>
+
+                                    <!-- <div class="form-group "> -->
+                                     <input type="file" id="upload_vedio" name="upload_vedio"  accept="video/*"/>
+                                    <!-- </div> -->
+                                
+                                <?php  } }else if($file_format=='4'){?>
+
+                                <?php if($upload_image=='1') {?>
+
+                                    <!-- <div class="form-group"> -->
+                                     <input type="file" id="upload_image" name="upload_image" accept="image/*"  />
+                                    <!-- </div> -->
+                                
+                                <?php  } }else{?>
+                                    <?php if($upload=='1') {?>
+
+                                    <!-- <div class="form-group "> -->
+                                     <input type="file" id="uploadfile" name="uploadfile"  />
+                                    <!-- </div> -->
+                                
+                                <?php  } }?>
                                     <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->
-
-                          
-
-                                 <!--  <div class="button11" id="button-6">
-                                     <div id="spin"></div>
-                                     <a href="#" id="btn_save" type="submit" >Submit</a>
-                                  </div> -->
-
+                                    <!-- <div class="form-group"> -->
                                     <button id="btn_save"  type="submit" class="btn btn-primary px-4">Submit</button>
+                                  <!-- </div> -->
 
 
-                                    </div>
-                                  <!-- </form> -->
-                                <?php  } ?>
+                                   
                                   </div>
 
                              

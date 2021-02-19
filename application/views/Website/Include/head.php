@@ -66,9 +66,9 @@ label#user_password-error {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quiz Competition </title>
-    <link rel="apple-touch-icon" sizes="180x180" href="C:/xampp/htdocs/website/files/assets/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>assets/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="C:/xampp/htdocs/website/files/assets/images/favicons/favi180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>assets/images/favicons/favi32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicons/favi16x16.png">
     <link rel="manifest" href="<?php echo base_url(); ?>assets/images/favicons/site.webmanifest">
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
@@ -626,7 +626,7 @@ $.validator.addMethod("pwcheck", function(value) {
                   
                 $('.alert-success').html(data);
                 $('.mobileerror').hide();
-                $('.mobilesuccess').show().delay(1000).fadeOut();
+                $('.mobilesuccess').show().delay(5000).fadeOut();
 
                 document.getElementById("signupForm").reset();
 
@@ -634,7 +634,7 @@ $.validator.addMethod("pwcheck", function(value) {
                }
                else{
                 $('.alert-danger').html(data);
-                $('.mobileerror').show().delay(3000).fadeOut();
+                $('.mobileerror').show().delay(5000).fadeOut();
                 $('.mobilesuccess').hide();  
                 document.getElementById("signupForm").reset();
                }

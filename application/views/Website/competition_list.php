@@ -44,9 +44,7 @@
            
             }
          ?>
-        <?php  if($enddate >= $today ){ 
-
-          ?> 
+        <?php  if($enddate >= $today ){ ?> 
 
           <label class="complabal mb-4">Current Competition</label>
          <?php } ?> 

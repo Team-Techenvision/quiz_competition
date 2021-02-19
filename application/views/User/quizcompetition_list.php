@@ -71,17 +71,17 @@
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Saved successfully');
+      toastr.success('Saved Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Quiz Updated successfully');
+      toastr.success('Question Updated Successfully');
     });
   <?php } ?>
   <?php if($this->session->flashdata('delete_success')){ ?>
     $(document).ready(function(){
-      toastr.error('Quiz Deleted successfully');
+      toastr.error('Question Deleted Successfully');
     });
   <?php } ?>
 

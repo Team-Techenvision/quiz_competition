@@ -239,7 +239,6 @@ class WebsiteController extends CI_Controller{
 
     
    
-    // print_r($check_quiz_submit); die();
 
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/competition_usersave',$data);
@@ -249,7 +248,7 @@ public function competition_uploadfile(){
 
   // print_r($_POST); die();
 
-  // $uploadfile = $this->input->post('uploadfile');
+  // $uploadfile = $this->input->post('upload_audio');
 
     // $competitionid = $this->uri->segment(3);
 
@@ -264,13 +263,23 @@ public function competition_uploadfile(){
 
     $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-      // print_r($quizweb_user_id); die();
+    
+  
+    $data['competition'] = $this->Website_Model->fetch_competition();
+
+    foreach ($data['competition'] as  $value) {
+      $fileformat = $value->file_format;
+
+      // print_r($fileformat); 
+    }
+  // die();
+   // print_r($data['competition']); die();
 
 
       $save_data = array(
        
         'competitionid' => $this->input->post('competitionid'),
-        // 'uploadfile' => $this->input->post('uploadfile'),
+        // 'file_format' => $fileformat,
         'user_id' => $quizweb_user_id,
       
       );
@@ -279,30 +288,36 @@ public function competition_uploadfile(){
       
       $this->Website_Model->save_data('competition_uploadfile_submit',$save_data);
 
+      // if($fileformat=='4'){
 
-      if($_FILES['uploadfile']['name']){
+         if($_FILES['upload_image']['name']){
               $time = time();
               // $image_name = 'profile_image_'.$time;
-              $image_name = 'uploadfile_'.$quizweb_user_id.'_'.$time;
+              $image_name = 'upload_image_'.$quizweb_user_id.'_'.$time;
+
 
               $config['upload_path'] = 'assets/images/competition_images/';
-              $config['allowed_types'] = 'jpg|jpeg|png|gif';
+
+              $config['allowed_types'] = 'jpg|jpeg|png|gif|mp3';
               $config['file_name'] = $image_name;
-              $filename = $_FILES['uploadfile']['name'];
+
+              $filename = $_FILES['upload_image']['name'];
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
 
 
-                    // print_r($_POST);
                      
 
-              if ($this->upload->do_upload('uploadfile') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_image') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+                    // print_r($image_name); 
+
 
                    // print_r($insert_id);
 
-                  $image['uploadfile'] = $image_name.'.'.$ext;
-                  // print_r($profile_image);
+                  $image['upload_image'] = $image_name.'.'.$ext;
+                  // print_r($image['upload_audio']); die();
                   $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
@@ -310,10 +325,54 @@ public function competition_uploadfile(){
         } 
         else 
         {
+                    // print_r($image_name); 
+
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
       }
+      // die();
+      // }else{
+
+      //    if($_FILES['uploadfile']['name']){
+      //         $time = time();
+      //         // $image_name = 'profile_image_'.$time;
+      //         $image_name = 'uploadfile_'.$quizweb_user_id.'_'.$time;
+
+      //         $config['upload_path'] = 'assets/images/competition_images/';
+      //         $config['allowed_types'] = 'doc|docx|ppt|pdf|pptx';
+      // jpg|jpeg|png|gif
+      //         $config['file_name'] = $image_name;
+      //         $filename = $_FILES['uploadfile']['name'];
+      //         $ext = pathinfo($filename, PATHINFO_EXTENSION);
+      //         $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+      //               // print_r($_POST);
+                     
+
+      //         if ($this->upload->do_upload('uploadfile') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+      //              // print_r($insert_id);
+
+      //             $image['uploadfile'] = $image_name.'.'.$ext;
+      //             // print_r($profile_image);
+      //             $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+      //              // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+      //             $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+      //   } 
+      //   else 
+      //   {
+      //      $error = $this->upload->display_errors();
+      //       $this->session->set_flashdata('upload_error',$error);
+      //   }
+      // }
+      // }
+
+
+     
        
             
       $this->session->set_flashdata('save_success','success');
@@ -323,7 +382,8 @@ public function competition_uploadfile(){
 
     // $data['result'] = $this->Website_Model->quize_get($competition_id);
     // print_r($data['result']); die();
-    // $this->load->view('Website/Include/head');
+     
+    // $this->load->view('Website/Include/head',$data);
     // $this->load->view('Website/competition_usersave');
     // $this->load->view('Website/Include/footer');
    
@@ -731,8 +791,18 @@ public function insert_profiledata(){
     $update_data = $_POST; 
 
         $alternatemobno = $this->input->post('alternatemobno');
+       $checkusermobile = $this->Website_Model->check_usermobile($quizweb_user_id,$alternatemobno); 
+    if($checkusermobile > 0){
 
-     
+         // echo "This mobile number is already registered." ;
+         $this->session->set_flashdata('mobile_error','error'); 
+         // return false;
+
+
+        }else{
+
+          echo "true";
+
             if($old_image=$this->input->post('old_image')){
       $update_data = array(
         'parentname' => $this->input->post('parentname'),
@@ -830,6 +900,15 @@ public function insert_profiledata(){
        $this->session->set_flashdata('updateProfile_success','success');
     
       header('location:'.base_url().'WebsiteController');
+
+        }
+     
+
+    // }else{
+
+    //    $this->session->set_flashdata('mobile_error','error');
+      
+    // }
        
 }
     $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');

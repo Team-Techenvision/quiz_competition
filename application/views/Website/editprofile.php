@@ -319,11 +319,11 @@
       toastr.success('Updated successfully');
     });
   <?php } ?>
-  // <?php if($this->session->flashdata('mobile_error')){ ?>
-  //   $(document).ready(function(){
-  //     toastr.error('Mobile Number is Already Exists');
-  //   });
-  // <?php } ?>
+  <?php if($this->session->flashdata('mobile_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Mobile Number is Already Exists');
+    });
+  <?php } ?>
 
   </script>
   <script>
@@ -414,6 +414,42 @@ $(document).ready(function(){
    
       $.ajax({
            url:"<?php echo base_url(); ?>WebsiteController/check_user_mobile",
+           method:"POST",
+           data:{alternatemobno:mobile},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+                   $('.mobileval').hide();
+
+                 }else{
+                // alert(data);
+                 $('.mobileval').html(data);
+                 $('#alternatemobno').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+
+</script>
+
+ <script>
+   
+
+  $('#btn_update').on('change',function(){
+    // alert("hii");
+
+     var mobile = $('#alternatemobno').val();
+     // alert(mobile);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/edit_profile",
            method:"POST",
            data:{alternatemobno:mobile},
 

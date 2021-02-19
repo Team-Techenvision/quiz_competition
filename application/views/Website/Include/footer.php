@@ -176,7 +176,7 @@ $(function() {
                    if(data=='Sign In Successful'){
 
                       $('.alert-success').html(data);
-                      $('.successresponse').show().delay(3000).fadeOut();
+                      $('.successresponse').show().delay(5000).fadeOut();
                       $('.errorresponse').hide();
 
 
@@ -184,7 +184,7 @@ $(function() {
                      }
                      else{
                       $('.alert-danger').html(data);
-                      $('.errorresponse').show().delay(3000).fadeOut();
+                      $('.errorresponse').show().delay(5000).fadeOut();
                       $('.successresponse').hide();
                       
                       document.getElementById("signInForm").reset();

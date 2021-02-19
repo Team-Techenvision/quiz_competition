@@ -57,7 +57,15 @@ function check_login($mobile,$password){
   //   // print_r($result);
   //   return $result;
   // }
-
+   function fetch_competition()
+ {
+  $this->db->order_by("competitionid", "ASC");
+  $c_date = date('Y-m-d');   
+  $this->db->where('enddate >=', $c_date);
+  $query = $this->db->get("competition");
+  return $query->result();
+  // print_r($query);
+ }
   public function save_data($tbl_name, $data){
     $this->db->insert($tbl_name, $data);
     $insert_id = $this->db->insert_id();

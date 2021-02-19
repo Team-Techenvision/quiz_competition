@@ -35,8 +35,20 @@
                 <div class="card-body">
                 <div class="row">
 	               <div class="form-group col-md-6">
+                <!--   < ?php foreach ($competition as $value) {
+                    // print_r($competition);
+
+                    $competitiontype = $value->competitiontypeid;
+
+
+                    // print_r($competitiontype==1);
+                  } ?> -->
                   <label>Competition Title <span style="color: red;">*</span></label>
 			                 <?php
+
+                        
+    
+                         
 		                      if(isset($competitionid)){?>
 
 		                       <input type="text" class="form-control required title-case text" name="competitionid" id="competitionid" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
@@ -45,16 +57,20 @@
 			                 <select name="competitionid" id="competitionid"class="form-control" required="">
 			                    <option value="">Select Competition</option>
 			         
-			                    <?php foreach($competition as $competition)
+			                    <?php 
+                          
+                          foreach($competition as $competition)
 			                    {
-
+                           
 			                    echo '<option value="'. $competition->competitionid.'" '.$selected.'>'. $competition->title.'</option>';
-			                                    
-			                     }
+			                     }              
+			                     
 			                    ?>  
 
 			                     
 			                 </select>
+
+            
 	                  </div> 
 	                  <div class="form-group col-md-12">
 	                  	<label>Question <span style="color: red;">*</span></label>
