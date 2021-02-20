@@ -3,7 +3,7 @@
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/93128-OJM4KV-79.jpg');background-blend-mode: overlay;
+      <div class="competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/93128-OJM4KV-79.jpg');background-blend-mode: overlay;
         background-repeat: no-repeat;
         background-size: cover;
         background-color: #14230f87;">
@@ -45,28 +45,33 @@
 
                         <form id="form_action" name="quiz_form" role="form" action="<?php echo base_url();?>WebsiteController/submit_quizs" method="post"  class="m-3">
                           
-                          <?php $q = 1; foreach ($result as $value) { ?>
+                          <?php 
+                          // print_r($result); die();
+                          $q = 1; foreach ($result as $value) { 
+                            ?>
                           <div class="mb-3 p-2 border border-success">                           
                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                            
                             <?php if($value['answertype']=="1"){ ?>                           
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
+                            $i=1;
                             foreach($myArray as $my_Array)
                             { ?>                            
                             <div class="radio">
-                              <label><input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $my_Array ;?>" required> <?php echo $my_Array ;?></label>
+                              <label><input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $i ;?>" required> <?php echo $my_Array ;?></label>
                             </div>
-                            <?php } ?>                            
+                            <?php $i++; } ?>                            
                             <?php } elseif ($value['answertype']=="2")
                             {?>                           
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
+                            $j=1;
                             foreach($myArray as $my_Array)
                             { ?>
                             <div class="checkbox">
-                              <label><input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $my_Array ;?>" > <?php echo $my_Array ;?></label>
+                              <label><input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $j; ?>" > <?php echo $my_Array ;?></label>
                             </div>
-                            <?php } ?>                            
+                            <?php $j++; } ?>                            
                             <?php } elseif ($value['answertype']=="3") { ?>                            
                             <input type="text" name="<?php echo $value['dynamiccompetitionid'];?>[]" class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" required>
                             <?php  } elseif ($value['answertype']=="4") { ?>                            
@@ -75,10 +80,11 @@
                             <select name="<?php echo $value['dynamiccompetitionid'];?>[]" id="ansoption" class="form-control w-25" required>
                               <?php $myString = $value['optionvalues'];
                               $myArray = explode(',', $myString);
+                              $k=1;
                               foreach($myArray as $my_Array)
                               { ?>
-                              <option value="<?php echo $my_Array ;?>"> <?php echo $my_Array ;?></option>
-                              <?php } ?>
+                              <option value="<?php echo $k ;?>"> <?php echo $my_Array ;?></option>
+                              <?php $k++; } ?>
                             </select>
                             <?php } ?>
                           </div>

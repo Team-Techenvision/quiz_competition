@@ -286,7 +286,7 @@ $(document).ready(function(){
   // alert('hii');
 
  var gender = $('#Gender').val();
- console.log(gender);
+ // console.log(gender);
  $("#gender option[value='"+gender+"']").attr("selected","selected");
 
  var standard = $('#Standard').val();

@@ -1105,6 +1105,8 @@ public function insert_profiledata(){
 
       public function submit_quizs()
     { 
+
+      // print_r($_POST); die();
       // echo $this->session->userdata('quizweb_user_id');
       // echo "<br>";
       // echo $this->session->userdata('quiz_id'); 
@@ -1161,7 +1163,7 @@ public function insert_profiledata(){
       $save_data = array(
        
         'dynamiccompetitionid' => $dynamiccompetitionid,
-        'question' => $this->input->post('question'),
+        'question_id' => $this->input->post('question'),
         'selectanswertext' => $this->input->post('selectanswertext'),
         'user_id' => $quizweb_user_id,
       

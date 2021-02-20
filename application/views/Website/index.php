@@ -62,10 +62,11 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
   .toast-top-right{
 
     top:50%;
-    right: 40%;
+    right: 30%;
   }
   .toast {
     width: 100% !important;
+    max-width: 600px!important;
   
     font-size: 22px!important;
    
@@ -260,7 +261,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
   <?php if($this->session->flashdata('save_success')){ ?>
     // $(document).ready(function(){
 
-      toastr.success('Participated Successfully');
+      toastr.success('User has Participated Successfully');
      
     // });
   <?php } ?>
@@ -319,14 +320,14 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 <script type="text/javascript">
   <?php if($this->session->flashdata('class_error')){ ?>
     $(document).ready(function(){
-      toastr.error('User Can not Participate ');
+      toastr.error('User Can not Participate in this Competition');
     });
   <?php } ?>
 </script>
 <script type="text/javascript">
   <?php if($this->session->flashdata('profileAlready_error')){ ?>
     $(document).ready(function(){
-      toastr.error('Already Participated ');
+      toastr.error('User is Already Participated in this Competition ');
     });
   <?php } ?>
 </script>

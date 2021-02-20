@@ -518,7 +518,7 @@ return $result;
       $data = array(
           'user_id' => $user_id,
           'dynamiccompetitionid' => $competition_id,
-          'question' => $question_id,
+          'question_id' => $question_id,
           'selectanswertext' => $answer_text  
             );
            $this->db->insert('userquizsubmit',$data);

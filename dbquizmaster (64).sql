@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2021 at 02:48 PM
+-- Generation Time: Feb 20, 2021 at 02:44 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -452,7 +452,7 @@ INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `ques
 (61, 6, 'How many Lok Sabha seats belong to Rajasthan?', '1', 'dsf,a,h,hgj', '2', '2021-01-15'),
 (62, 9, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '1', 'iiim,iimm,iimn,iidn', '3', '2021-01-27'),
 (63, 59, 'Q.1: Use Euclid’s division lemma to show that the square of any positive integer is either of the form 3m or 3m + 1 for some integer m.', '2', '5,50,20,60', '', '2021-02-19'),
-(64, 53, 'Q.2: Express each number as a product of its prime factors:', '1', '5,6,8,9', '', '2021-02-03'),
+(64, 53, 'Q.2: Express each number as a product of its prime factors:', '1', '5,6,8,9', '2', '2021-02-20'),
 (65, 12, 'Q.2: Express each number as a product of its prime factors:', '2', '5,8,9,12', '2', '2021-02-03'),
 (66, 12, 'Q.2: Express each number as a product of its prime factors:', '1', '5,6,8,20', '3', '2021-02-03'),
 (67, 7, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', '1', '41,4,14,17', '2', '2021-02-04'),
@@ -610,7 +610,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (62, 'dfdf', '2021-02-02', 'manish@gmail.com', '3', 'fff', 'kkk', 0, 'fff', '8698066956', 1, 'kolhapur', 'Kolhapur', 22, 53, 245, 27, 'profile_image_245_1613470431.png', '2021-02-16'),
 (63, 'ddd', '2021-01-01', 'sss@abc.abc', '2', 'sss', 'kkk', 0, 'Gayatri', '4343545666', 2, 'kolhapur', 'Kolhapur', 22, 53, 246, 28, '', '2021-02-16'),
 (67, 'vilas', '2018-02-18', 'xyz@gmail.com', '1', 'ppgh', 'yash plaza', 0, 'xyz', '9822114889', 1, '123', 'kolhapur12333', 22, 26, 251, 33, '', '2021-02-18'),
-(68, 'Kiran Kulkarni', '2015-07-09', 'manish@gmail.com', '7', 'ppg', 'Kolhapur', 0, 'Manisha Kulkarni', '9874563210', 2, 'kolhapur', 'kolhapur', 22, 59, 255, 37, 'profile_image_255_1613728321.png', '2021-02-19');
+(68, 'Kiran Kulkarni', '2015-07-09', 'manish@gmail.com', '7', 'ppg', 'Kolhapur', 0, 'Manisha Kulkarni', '9874563210', 2, 'kolhapur', 'kolhapur', 22, 59, 255, 37, 'profile_image_255_1613728321.png', '2021-02-19'),
+(69, 'Sandip Kore', '2014-07-09', 'manish@gmail.com', '6', 'Maharashtra Highschool', 'Kolhapur', 0, 'Ramesh Kore', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 7, 256, 38, 'profile_image_256_1613820293.png', '2021-02-20');
 
 -- --------------------------------------------------------
 
@@ -892,7 +893,9 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (252, 0, '', 3, 'hsdakjfhasdjkl', '', 343245, '', '', '9867543545', 'P@asdf1234', NULL, 'active', '', '2021-02-19 07:42:59', 3),
 (253, 0, '', 3, 'ssd', '', 545454, '', '', '5464564666', 'gghgh343443', NULL, 'active', '', '2021-02-19 07:52:33', 3),
 (254, 0, '', 3, 'sdfds', '', 343423, '', '', '3243423423', 'fgffg23423', NULL, 'active', '', '2021-02-19 08:12:13', 3),
-(255, 0, '', 3, 'Manisha Kulkarni', '', 416012, '', '', '7798025825', 'Manisha@123', NULL, 'active', '', '2021-02-19 09:49:20', 3);
+(255, 0, '', 3, 'Manisha Kulkarni', '', 416012, '', '', '7798025825', 'Manisha@123', NULL, 'active', '', '2021-02-19 09:49:20', 3),
+(256, 0, '', 3, 'Ramesh Kore', '', 416012, '', '', '8421751396', 'Ramesh@123', NULL, 'active', '', '2021-02-20 11:22:54', 3),
+(257, 0, '', 3, 'asdsdsd', '', 344324, '', '', '3423423434', 'fdgfd34534', NULL, 'active', '', '2021-02-20 13:38:04', 3);
 
 -- --------------------------------------------------------
 
@@ -964,7 +967,9 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (34, 252, 1, 'hsdakjfhasdjkl', '343245', '9867543545', 'P@asdf1234', 'dsf', '2018-02-07', 'manish@gmail.com', 12, 'xdsdff', 'kkk', '', 'hsdakjfhasdjkl', '7856411232', 2, 'kolhapur', 'kolhapur', 18, '', '2021-02-19 07:42:59'),
 (35, 253, 1, 'ssd', '545454', '5464564666', 'gghgh343443', 'df', '2018-02-07', 'manish@gmail.com', 2, 'fgdf', 'kkk', '', 'ssd', '7898654411', 1, 'kolhapur', 'kolhapur', 22, '', '2021-02-19 07:52:33'),
 (36, 254, 1, 'sdfds', '343423', '3243423423', 'fgffg23423', 'fdf', '2018-02-09', 'manish@gmail.com', 11, 'sdgsd', 'kkk', '', 'sdfds', '7896541233', 1, 'kolhapur', 'kolhapur', 15, '', '2021-02-19 08:12:13'),
-(37, 255, 1, 'Manisha Kulkarni', '416012', '7798025825', 'Manisha@123', 'Kiran Kulkarni', '2015-07-09', 'manish@gmail.com', 7, 'ppg', 'Kolhapur', '', 'Manisha Kulkarni', '9874563210', 2, 'kolhapur', 'kolhapur', 22, 'profile_image_255_1613728321.png', '2021-02-19 09:49:20');
+(37, 255, 1, 'Manisha Kulkarni', '416012', '7798025825', 'Manisha@123', 'Kiran Kulkarni', '2015-07-09', 'manish@gmail.com', 7, 'ppg', 'Kolhapur', '', 'Manisha Kulkarni', '9874563210', 2, 'kolhapur', 'kolhapur', 22, 'profile_image_255_1613728321.png', '2021-02-19 09:49:20'),
+(38, 256, 1, 'Ramesh Kore', '416012', '8421751396', 'Ramesh@123', 'Sandip Kore', '2014-07-09', 'manish@gmail.com', 6, 'Maharashtra Highschool', 'Kolhapur', '', 'Ramesh Kore', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_256_1613820293.png', '2021-02-20 11:22:54'),
+(39, 257, 0, 'asdsdsd', '344324', '3423423434', 'fdgfd34534', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-02-20 13:38:04');
 
 -- --------------------------------------------------------
 
@@ -976,7 +981,7 @@ CREATE TABLE `userquizsubmit` (
   `userquizsubmitid` bigint(50) NOT NULL,
   `user_id` bigint(50) NOT NULL,
   `dynamiccompetitionid` bigint(50) NOT NULL,
-  `question` varchar(255) NOT NULL,
+  `question_id` varchar(255) NOT NULL,
   `selectanswertext` varchar(255) NOT NULL,
   `ceated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -985,22 +990,18 @@ CREATE TABLE `userquizsubmit` (
 -- Dumping data for table `userquizsubmit`
 --
 
-INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetitionid`, `question`, `selectanswertext`, `ceated_date`) VALUES
-(1, 7, 225, '36', ' Sir Syed Ahmed', '2021-02-12 07:40:50'),
-(2, 7, 225, '37', '32', '2021-02-12 07:40:50'),
-(3, 7, 225, '38', 'International Civil Aviation Organization', '2021-02-12 07:40:51'),
-(4, 7, 225, '38', 'Indian Corporation of Agriculture Organization', '2021-02-12 07:40:51'),
-(5, 7, 225, '39', 'aa', '2021-02-12 07:40:51'),
-(6, 7, 225, '40', 'aa', '2021-02-12 07:40:51'),
-(7, 7, 225, '67', '4', '2021-02-12 07:40:51'),
-(8, 7, 236, '36', ' Sir Syed Ahmed', '2021-02-13 15:28:08'),
-(9, 7, 236, '37', '32', '2021-02-13 15:28:08'),
-(10, 7, 236, '38', 'International Civil Aviation Organization', '2021-02-13 15:28:08'),
-(11, 7, 236, '38', 'Indian Corporation of Agriculture Organization', '2021-02-13 15:28:08'),
-(12, 7, 236, '39', 'aaa', '2021-02-13 15:28:08'),
-(13, 7, 236, '40', 'aaa', '2021-02-13 15:28:08'),
-(14, 7, 236, '67', '41', '2021-02-13 15:28:08'),
-(15, 53, 241, '64', '6', '2021-02-14 12:29:59');
+INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetitionid`, `question_id`, `selectanswertext`, `ceated_date`) VALUES
+(16, 220, 53, '64', '6', '2021-02-20 05:39:00'),
+(17, 220, 12, '65', '8', '2021-02-20 05:39:58'),
+(18, 220, 12, '66', '5', '2021-02-20 05:39:58'),
+(19, 220, 12, '68', '20', '2021-02-20 05:39:58'),
+(26, 256, 7, '36', '3', '2021-02-20 12:45:07'),
+(27, 256, 7, '37', '2', '2021-02-20 12:45:07'),
+(28, 256, 7, '38', '1', '2021-02-20 12:45:07'),
+(29, 256, 7, '38', '2', '2021-02-20 12:45:07'),
+(30, 256, 7, '39', 'On the afternoon of August 3, 1914, two days after declaring war on Russia, Germany declares war on France, moving ahead with a long-held strategy, conceived by the former chief of staff of the German army, Alfred von Schlieffen, for a two-front war again', '2021-02-20 12:45:07'),
+(31, 256, 7, '40', 'Two of the planes, American Airlines Flight 11 and United Airlines Flight 175, crashed into the North and South towers, respectively, of the World Trade Center complex in Lower Manhattan. Within an hour and 42 minutes, both 110-story towers collapsed.', '2021-02-20 12:45:07'),
+(32, 256, 7, '67', '1', '2021-02-20 12:45:07');
 
 -- --------------------------------------------------------
 
@@ -1276,7 +1277,7 @@ ALTER TABLE `prizemaster`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1294,19 +1295,19 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `winner`

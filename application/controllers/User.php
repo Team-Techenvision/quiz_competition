@@ -118,6 +118,105 @@ class User extends CI_Controller{
     $this->load->view('Include/footer',$data);
   }
 
+  /************************ quiz display **************************/
+
+  //quiz_display
+ // function fetch_user()
+ // {
+ //  if($this->input->post('competitionid'))
+ //  {
+ //   echo $this->User_Model->fetch_user($this->input->post('competitionid'));
+ //  }
+ // }  
+  public function quiz_user_list(){
+
+    // print_r($_POST); die();
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }      
+          // print_r($_POST);
+    $competitionid =$this->input->post('competitionid');
+    // $pincode = $this->input->post('pincode');
+    // $user_id = $this->input->post('user_id');
+     
+     // print_r($user_id);   
+    $data['competition'] = $this->User_Model->fetch_competition();
+    // $data['competitiontype'] = $this->User_Model->competition_list($competitionid);
+     
+    $data['user_list'] = $this->User_Model->fetch_userlist($competitionid);
+
+    // print_r($data['user_list']);
+
+    $data['competitionid'] =  $competitionid;
+    // $data['pincodeid'] =  $pincode;
+    // $data['user_id'] =  $user_id;
+
+      $this->load->view('Include/head',$data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/quiz_user_list',$data);
+      $this->load->view('Include/footer',$data);
+    }
+
+   public function quiz_display(){
+
+     $competitionid = $this->uri->segment(3);
+  
+     $user_id = $this->uri->segment(4);
+
+   // print_r($user_id); die();
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    // $this->form_validation->set_rules('countryid', 'First Name', 'trim|required');
+    // if ($this->form_validation->run() != FALSE) {
+    //   $save_data = array(
+    //     // 'company_id' => $quizweb_company_id,
+    //     'countryid' => $this->input->post('countryid'),
+    //     'stateid' => $this->input->post('stateid'),
+    //     'district' => $this->input->post('district'),
+    //     'city' => $this->input->post('city'),
+    //     'pincode' => $this->input->post('pincode'),
+        
+    //   );
+    //   $this->User_Model->save_data('pincodemaster', $save_data);
+    //   $this->session->set_flashdata('save_success','success');
+    //   header('location:'.base_url().'User/pincode_list');
+    // }
+
+    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['result'] = $this->User_Model->quize_get($competitionid);
+
+      foreach ($data['result'] as  $value) {
+       $correctans = $value['correctans'];
+       $selectanswertext = $value['selectanswertext'];
+       // print_r($correctans); 
+       // print_r($selectanswertext); 
+
+      }
+      // if($correctans == $selectanswertext){
+
+      //  echo correct;
+
+      // }else{
+      //   echo false;
+      // }
+
+
+    $data['users'] = $this->User_Model->fetch_user_name($user_id);
+    // $data['quiz'] = $this->User_Model->check_userquiz_answer($user_id);
+
+
+   // print_r($data['result']); die();
+   
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/quiz_display',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
   /**************************      Quiz answer      ********************************/
 
 

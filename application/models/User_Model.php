@@ -262,6 +262,7 @@ class User_Model extends CI_Model{
   $this->db->order_by("competitionid", "ASC");
   $c_date = date('Y-m-d');   
   $this->db->where('enddate >=', $c_date);
+  // $this->db->where('competitiontypeid');
   $query = $this->db->get("competition");
   return $query->result();
   // print_r($query);
@@ -275,6 +276,102 @@ class User_Model extends CI_Model{
   return $query->result();
   // print_r($query);
  }
+ //quiz_display userlist fetch
+ public function fetch_userlist($competitionid){
+     // $this->db->select('*');
+    $this->db->select('profile.*,user.*,competition.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+    $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
+    $this->db->where('profile.competitionid', $competitionid);
+    // $this->db->where('userquizsubmit.user_id', $user_id);
+
+    $this->db->from('profile');
+ 
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+   }
+   public function fetch_user_name($user_id){
+     // $this->db->select('*');
+    // $this->db->select('user.*,competition.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+    // $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    // $this->db->join('user', 'userquizsubmit.user_id = user.user_id', 'inner');
+    // $this->db->where('profile.competitionid', $competitionid);
+    $this->db->where('user.user_id', $user_id);
+
+    $this->db->from('user');
+ 
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+   }
+//    public function check_userquiz_answer($user_id){
+//      // $this->db->select('*');
+//     // $this->db->select('user.*,competition.*');
+// //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+//     // $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+//     // $this->db->join('user', 'userquizsubmit.user_id = user.user_id', 'inner');
+//     // $this->db->where('profile.competitionid', $competitionid);
+//     $this->db->where('userquizsubmit.user_id', $user_id);
+
+//     $this->db->from('userquizsubmit');
+ 
+//     $query = $this->db->get();
+//     $result = $query->result();
+//     // print_r($result);die();
+//     return $result;
+//    }
+    public function quize_get($quiz_id)
+  {
+    $this->db->select('dynamiccompetition.*,userquizsubmit.*');
+    $this->db->join('userquizsubmit', 'dynamiccompetition.dynamiccompetitionid = userquizsubmit.question_id', 'inner');
+
+    $this->db->where('competitionid',$quiz_id);
+    $result = $this->db->get('dynamiccompetition');
+    //$result = $this->db->query($cmd);
+    //print_r($result->result_array());die();
+   
+    return $result->result_array();
+  }
+  public function view_ques($q_id)
+  {
+    $this->db->select('title');
+    $this->db->where('competitionid',$q_id);
+    $result = $this->db->get('competition');
+    //print_r($result->result_array());die();
+    return $result->result_array();
+  }
+// //for dependancy fetch user by competition
+//     function fetch_user($competitionid)
+//  {
+//  // $this->db->join('user', 'userquizsubmit.user_id = user.user_id', 'inner');
+
+//   $this->db->where('dynamiccompetitionid', $competitionid);
+//   $this->db->group_by('user_id');
+//   $this->db->order_by('user_id', 'ASC');
+//   $query = $this->db->get('userquizsubmit');
+//   // print_r($query); die();
+//   $output = '<option value="">Select User</option>';
+//   foreach($query->result() as $row)
+//   {
+//    // $output .= '<option value="'.$row->user_id.'">'.$row->user_name.'</option>';
+//    $output .= '<option value="'.$row->user_id.'">'.$row->user_id.'</option>';
+//   }
+//   return $output;
+//  }
+ // function fetch_pincode()
+ // {
+  
+ //  $this->db->order_by("user_id", "");
+ //  $this->db->where('is_admin', 1);
+ //  $query = $this->db->get("userquizsubmit");
+ //  return $query->result();
+ //  // print_r($query);
+ // }
 
  public function assigncompetition_list($competitionid,$pincode){
      // $this->db->select('*');
