@@ -126,18 +126,18 @@
                 <p>Dynamic Quiz Competition</p>
               </a>
             </li> 
-           <!--   <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/pincode_list" class="nav-link">
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/quiz_user_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Area Information</p>
+                <p>Competition Participated User List</p>
               </a>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/quizanswer" class="nav-link">
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/quiz_display" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Quiz Answer</p>
+                <p>Quiz Display</p>
               </a>
-            </li> -->   
+            </li>   
 
           </ul>
         </li>

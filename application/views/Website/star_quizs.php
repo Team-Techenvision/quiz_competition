@@ -17,7 +17,7 @@
             </div>
             </div><!-- /.container-fluid -->
           </section>
-          <section class="content">
+          <section class="content" id="content">
             <div class="container-fluid">
               <div class="row">
                 <!-- left column -->
@@ -78,6 +78,8 @@
                             <textarea name="<?php echo $value['dynamiccompetitionid'];?>[]" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" required></textarea>
                             <?php } else { ?>                            
                             <select name="<?php echo $value['dynamiccompetitionid'];?>[]" id="ansoption" class="form-control w-25" required>
+                                <!-- <option value=" ">select answer</option> -->
+
                               <?php $myString = $value['optionvalues'];
                               $myArray = explode(',', $myString);
                               $k=1;
@@ -122,6 +124,35 @@
             toastr.error('Deleted successfully');
             });
             <?php } ?>
+            </script>
+            <script type="text/javascript">
+              //right click disable
+              // document.addEventListener('contextmenu', event => event.preventDefault());
+
+              //header pointerevent close
+              document.getElementById('logo').style.pointerEvents = 'none';
+              document.getElementById('home').style.pointerEvents = 'none';
+              document.getElementById('aboutus').style.pointerEvents = 'none';
+              document.getElementById('contact').style.pointerEvents = 'none';
+              document.getElementById('username').style.pointerEvents = 'none';
+
+              //footer
+              document.getElementById('About').style.pointerEvents = 'none';
+              document.getElementById('overview').style.pointerEvents = 'none';
+              document.getElementById('teachers').style.pointerEvents = 'none';
+              document.getElementById('pp').style.pointerEvents = 'none';
+              document.getElementById('tandc').style.pointerEvents = 'none';
+              document.getElementById('faq').style.pointerEvents = 'none';
+              document.getElementById('contactus').style.pointerEvents = 'none';
+              document.getElementById('register').style.pointerEvents = 'none';
+              document.getElementById('twit').style.pointerEvents = 'none';
+              document.getElementById('face').style.pointerEvents = 'none';
+              document.getElementById('pint').style.pointerEvents = 'none';
+              document.getElementById('insta').style.pointerEvents = 'none';
+
+              //keys close
+               // document.getElementById('content').onkeypress=function(){return false;}//not worked
+
             </script>
             
           </body>

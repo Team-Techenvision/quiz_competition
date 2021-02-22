@@ -59,12 +59,17 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
   #toast-container{
   
   }
+  /*.profileerr .toast-top-right{
+
+    top:50%;
+    right: 22%;
+  }*/
   .toast-top-right{
 
     top:50%;
     right: 30%;
   }
-  .toast {
+    .toast {
     width: 100% !important;
     max-width: 600px!important;
   
@@ -306,7 +311,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 <script type="text/javascript">
   <?php if($this->session->flashdata('profile_error')){ ?>
     $(document).ready(function(){
-      toastr.error('Please complete your profile before participating the competition');
+      toastr.error("Please complete your profile before participating in the competition");
     });
   <?php } ?>
 </script>

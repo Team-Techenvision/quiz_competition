@@ -50,6 +50,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
             <!-- </div> -->
             <!-- /.cardd-header -->
               <div class="">
+               
+                 
                 <?php foreach ($competition_list as $value) { 
                     
                     $comptype = $value->competitiontypeid;
@@ -166,14 +168,23 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                  if($upload_audio=='1') {?>
 
+                                  <input type="hidden" id="upload_audio1" name="file_format" value="<?php echo $file_format; ?>" />
+
                                   <!--   <div class="form-group"> -->
+                                      <!-- < ?php if(empty(var)) { 
+
+                                          // print_r($uploadaudio);
+                                       ?> -->
                                      <input type="file" id="upload_audio" name="upload_audio" accept="audio/*" />
-                                    <!-- </div> -->
-                                
+                                   <!-- <  ?php } ?> -->
+
+                                                
                                 <?php  } }else if($file_format=='3'){?>
                                  <?php if($upload_vedio=='1') {?>
 
                                     <!-- <div class="form-group "> -->
+                                       <input type="hidden" id="upload_vedio1" name="file_format" value="<?php echo $file_format; ?>" />
+
                                      <input type="file" id="upload_vedio" name="upload_vedio"  accept="video/*"/>
                                     <!-- </div> -->
                                 
@@ -182,6 +193,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                 <?php if($upload_image=='1') {?>
 
                                     <!-- <div class="form-group"> -->
+                                      <input type="hidden" id="upload_image1" name="file_format" value="<?php echo $file_format; ?>" />
+
                                      <input type="file" id="upload_image" name="upload_image" accept="image/*"  />
                                     <!-- </div> -->
                                 
@@ -189,18 +202,85 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <?php if($upload=='1') {?>
 
                                     <!-- <div class="form-group "> -->
+                                       <input type="hidden" id="uploadfile1" name="file_format" value="<?php echo $file_format; ?>" />
+
                                      <input type="file" id="uploadfile" name="uploadfile"  />
                                     <!-- </div> -->
                                 
                                 <?php  } }?>
                                     <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->
                                     <!-- <div class="form-group"> -->
-                                    <button id="btn_save"  type="submit" class="btn btn-primary px-4">Submit</button>
+                                       <?php if(isset($update)){ ?>
+                                        <button id="btn_update" type="submit" class="btn btn-primary">Submit </button>
+                                      <?php } else{ ?>
+                                        <button id="btn_save" type="submit" class="btn btn-primary px-4">Submit</button>
+                                      <?php } ?>
+                                   <!--  <button id="btn_save"  type="submit" class="btn btn-primary px-4">Submit</button> -->
                                   <!-- </div> -->
 
 
                                    
                                   </div>
+                                  <div class="col-md-12">
+
+                                     <?php 
+                                      if($file_format=='1'){
+                                 
+                                    if(empty($uploadfile)) { 
+                                    }else{
+
+                                          // print_r($uploadaudio);
+                                       ?>
+                                         <!-- <input type="" name="" value="<?php echo $uploadvedio; ?>"> -->
+
+                                        <iframe src="<?php echo base_url(); ?>/assets/images/competition_files/<?php echo $uploadfile; ?>" style="width:100%;height:700px;"></iframe> 
+
+                                        <!--  <iframe src="<?php echo base_url(); ?>/assets/images/competition_files/<?php echo $uploadfile; ?>" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+   
+                                    
+                                    <?php } } ?>
+
+                                    <?php 
+                                    if($file_format=='2'){
+                                    if(empty($uploadaudio)) {
+                                    }else{ 
+
+                                          // print_r($uploadaudio);
+                                       ?>
+                                       <!-- <input type="" name="" value="<?php echo $uploadaudio; ?>"> -->
+                                     <audio src="<?php echo base_url(); ?>/assets/images/competition_audio/<?php echo $uploadaudio; ?>" controls></audio>
+                                     <?php } } ?>
+
+                                     <?php 
+                                      if($file_format=='3'){
+                                 
+                                    if(empty($uploadvedio)) { 
+                                    }else{
+
+                                          // print_r($uploadaudio);
+                                       ?>
+                                         <!-- <input type="" name="" value="<?php echo $uploadvedio; ?>"> -->
+                                         <video width="320" height="240" controls>
+                                           <source src="<?php echo base_url(); ?>/assets/images/competition_video/<?php echo $uploadvedio; ?>" > 
+                                          
+                                        </video>
+
+                                    
+                                    <?php } } ?>
+
+                                      <?php 
+                                      if($file_format=='4'){
+                                 
+                                    if(empty($uploadimage)) { 
+                                    }else{
+
+                                          // print_r($uploadaudio);
+                                       ?>
+                                    
+                                          <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadfile; ?>" alt="" width="320" height="240" />
+
+                                    <?php } } ?>
+                                     </div>
 
                              
                              <!--   <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>" class="btn btn-info">Start</a> -->
@@ -229,10 +309,10 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
   </div>
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
- <!--  <script>
+   <script>
    
    $('.pis').bind("click" , function () {
-          $('#uploadfile').click();
+          $('#upload_image').click();
    });
    
     function readURL(input) {
@@ -247,6 +327,21 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                   reader.readAsDataURL(input.files[0]);
               }
 
-</script> -->
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('upload_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('File Uploaded Successfully');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('upload_error')){ ?>
+    $(document).ready(function(){
+      toastr.success('File not Uploaded ');
+    });
+  <?php } ?>
+</script>
+
  </body>
 </html>

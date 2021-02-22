@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-xl-4 col-md-4 col-lg-6 col-sm-12 mr">
                             <div class="footer-widget footer-widget__contact">
-                                <h2 class="footer-widget__title">Contact Us</h2><!-- /.footer-widget__title -->
+                                <h2 class="footer-widget__title" >Contact Us</h2><!-- /.footer-widget__title -->
 
                                 <div class="title">
                                   <i class="fas fa-map-marker-alt fafa"></i>&nbsp;&nbsp;
@@ -32,17 +32,17 @@
                                 <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__link-wrap">
                                     <ul class="list-unstyled footer-widget__link-list">
-                                        <li><a href="<?php echo base_url(); ?>About-Us">About</a></li>
-                                        <li><a href="#">Overview</a></li>
-                                        <li><a href="#">Teachers</a></li>
-                                        <li><a href="<?php echo base_url(); ?>Privacy-Policy">Privacy Policy</a></li>
+                                        <li><a id="About" href="<?php echo base_url(); ?>About-Us">About</a></li>
+                                        <li><a id="overview" href="#">Overview</a></li>
+                                        <li><a id="teachers" href="#">Teachers</a></li>
+                                        <li><a id="pp" href="<?php echo base_url(); ?>Privacy-Policy">Privacy Policy</a></li>
                                        
                                     </ul><!-- /.footer-widget__link-list -->
                                     <ul class="list-unstyled footer-widget__link-list">
-                                         <li><a href="<?php echo base_url(); ?>Terms-and-Condition">Terms and Conditions</a></li>
-                                        <li><a href="<?php echo base_url(); ?>FAQ">FAQ </a></li>
-                                        <li><a href="<?php echo base_url(); ?>Contact-Us">Contact</a></li>
-                                        <li><a href="#">Register Now</a></li>
+                                         <li><a id="tandc" href="<?php echo base_url(); ?>Terms-and-Condition">Terms and Conditions</a></li>
+                                        <li><a id="faq" href="<?php echo base_url(); ?>FAQ">FAQ </a></li>
+                                        <li><a id="contactus" href="<?php echo base_url(); ?>Contact-Us">Contact</a></li>
+                                        <li><a id="register" href="#">Register Now</a></li>
                                     </ul><!-- /.footer-widget__link-list -->
                                 </div><!-- /.footer-widget__link-wrap -->
                             </div><!-- /.footer-widget -->
@@ -51,10 +51,10 @@
                             <div class="footer-widget footer-widget__gallery">
                                 <h2 class="footer-widget__title">Connect With Us</h2><!-- /.footer-widget__title -->
                                 <ul class="site-footer__social bg-website">
-                                     <a href="#"><i class="fab fa-twitter twit"></i></a>
-                                     <a href="#"><i class="fab fa-facebook-square face"></i></a>
-                                     <a href="#"><i class="fab fa-pinterest-p pint"></i></a>
-                                     <a href="#"><i class="fab fa-instagram insta"></i></a>
+                                     <a id="twit" href="#"><i class="fab fa-twitter twit"></i></a>
+                                     <a id="face" href="#"><i class="fab fa-facebook-square face"></i></a>
+                                     <a id="pint" href="#"><i class="fab fa-pinterest-p pint"></i></a>
+                                     <a id="insta" href="#"><i class="fab fa-instagram insta"></i></a>
                                 </ul><!-- /.footer-widget__gallery -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->

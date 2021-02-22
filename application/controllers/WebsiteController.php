@@ -237,8 +237,26 @@ class WebsiteController extends CI_Controller{
      $data['competition_list'] = $this->Website_Model->get_competitionlist_by_id($competitionid);
      $data['check_quiz_submit'] = $this->Website_Model->check_quiz_submit($quizweb_user_id,$competitionid);
 
-    
-   
+    $data['uploadfile_list'] = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','competition_uploadfile_submit');
+
+    foreach ($data['uploadfile_list'] as $value) { 
+
+      $upload_audio1 = $value->upload_audio;
+      $upload_vedio1 = $value->upload_vedio;
+      $upload_image1 = $value->upload_image;
+      $uploadfile1 = $value->uploadfile;
+
+      $data['uploadaudio'] = $upload_audio1; 
+      $data['uploadvedio'] = $upload_vedio1; 
+      $data['uploadimage'] = $upload_image1; 
+      $data['uploadfile']  = $uploadfile1; 
+
+                                       
+     }
+
+        // print_r($data['uploadvedio']);
+
+    // print_r($data['uploadaudio']); die();
 
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/competition_usersave',$data);
@@ -265,21 +283,27 @@ public function competition_uploadfile(){
     if ($this->form_validation->run() != FALSE) {
     
   
-    $data['competition'] = $this->Website_Model->fetch_competition();
+    // $data['competition'] = $this->Website_Model->fetch_competition();
 
-    foreach ($data['competition'] as  $value) {
-      $fileformat = $value->file_format;
+    // foreach ($data['competition'] as  $value) {
+    //   $fileformat = $value->file_format;
 
-      // print_r($fileformat); 
-    }
+    //   // print_r($fileformat); 
+    // }
   // die();
    // print_r($data['competition']); die();
 
+        $fileformat = $this->input->post('file_format');
+
+        // print_r($fileformat); die();
+   // if($quizweb_user_id== "" && $quizweb_user_id != "" ){
+
+    // print_r($quizweb_user_id); die();
 
       $save_data = array(
        
         'competitionid' => $this->input->post('competitionid'),
-        // 'file_format' => $fileformat,
+        'file_format' => $fileformat,
         'user_id' => $quizweb_user_id,
       
       );
@@ -288,7 +312,182 @@ public function competition_uploadfile(){
       
       $this->Website_Model->save_data('competition_uploadfile_submit',$save_data);
 
-      // if($fileformat=='4'){
+      // }else{
+//update code
+      //  $update_data = array(
+      //   'competitionid' => $this->input->post('competitionid'),
+      //   'file_format' => $fileformat,
+      //   'user_id' => $quizweb_user_id,
+      //   'uploadfile' => $this->input->post('uploadfile'),
+      //   'upload_image' => $this->input->post('upload_image'),
+      //   'upload_vedio' => $this->input->post('upload_vedio'),
+      //   'upload_audio' => $this->input->post('upload_audio'),
+      //   // 'competitionid' => $this->input->post('competition_id'),
+      //   // 'profile_image' => $this->input->post('profile_image'),
+      //   // 'user_addedby' => $quizweb_user_id,
+      // );
+      // // print_r($update_data); die();
+
+      // $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $update_data);
+      // }
+       //file upload
+
+      if($fileformat=='1'){
+        // print_r($fileformat); 
+        if($_FILES['uploadfile']['name']){
+              $time = time();
+              // $image_name = 'profile_image_'.$time;
+              $image_name = 'uploadfile_'.$quizweb_user_id.'_'.$time;
+
+
+              $config['upload_path'] = 'assets/images/competition_files/';
+
+              $config['allowed_types'] = 'doc|docx|pdf|ppt|pptx|pptm|txt';
+              $config['file_name'] = $image_name;
+
+              $filename = $_FILES['uploadfile']['name'];
+              $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+                     
+
+              if ($this->upload->do_upload('uploadfile') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+                    // print_r($image_name); 
+
+
+                   // print_r($insert_id);
+
+                  $image['uploadfile'] = $image_name.'.'.$ext;
+                  // print_r($image['upload_audio']); die();
+                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                   // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+                  $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+        } 
+        else 
+        {
+                    // print_r($image_name); 
+
+           $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_error',$error);
+        }
+      }
+      }
+
+      //audio upload
+
+      if($fileformat=='2'){
+        // print_r($fileformat); 
+        if($_FILES['upload_audio']['name']){
+
+//           $configVideo['upload_path'] = 'assets/gallery/images'; # check path is correct
+// $configVideo['max_size'] = '102400';
+// $configVideo['allowed_types'] = 'mp4'; # add video extenstion on here
+// $configVideo['overwrite'] = FALSE;
+// $configVideo['remove_spaces'] = TRUE;
+// $video_name = random_string('numeric', 5);
+// $configVideo['file_name'] = $video_name;
+
+// $this->load->library('upload', $configVideo);
+// $this->upload->initialize($configVideo);
+              $time = time();
+              // $image_name = 'profile_image_'.$time;
+              $image_name = 'upload_audio_'.$quizweb_user_id.'_'.$time;
+
+
+              $config['upload_path'] = 'assets/images/competition_audio/';
+              $config['max_size'] = '104857600000';
+              $config['allowed_types'] = 'mp3|webm|ogg';
+              $config['overwrite'] = FALSE;
+              $config['remove_spaces'] = TRUE;
+              $config['file_name'] = $image_name;
+
+              $filename = $_FILES['upload_audio']['name'];
+              $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+                     
+
+              if ($this->upload->do_upload('upload_audio') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+                    // print_r($image_name); 
+
+
+                   // print_r($insert_id);
+
+                  $image['upload_audio'] = $image_name.'.'.$ext;
+                  // print_r($image['upload_audio']); die();
+                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                   // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+                  $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+        } 
+        else 
+        {
+                    // print_r($image_name); 
+
+           $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_error',$error);
+        }
+      }
+      }
+
+      //video upload
+
+      if($fileformat=='3'){
+
+         if($_FILES['upload_vedio']['name']){
+              $time = time();
+              // $image_name = 'profile_image_'.$time;
+              $image_name = 'upload_vedio_'.$quizweb_user_id.'_'.$time;
+
+
+              $config['upload_path'] = 'assets/images/competition_video/';
+              $config['max_size'] = '104857600000';
+              $config['allowed_types'] = 'mp4|3pg|mkv|wmv';
+              $config['overwrite'] = FALSE;
+              $config['remove_spaces'] = TRUE;
+              $config['file_name'] = $image_name;
+
+              $filename = $_FILES['upload_vedio']['name'];
+              $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+                     
+
+              if ($this->upload->do_upload('upload_vedio') && $quizweb_user_id && $image_name && $ext && $filename) {
+
+                    // print_r($image_name); 
+
+
+                   // print_r($insert_id);
+
+                  $image['upload_vedio'] = $image_name.'.'.$ext;
+                  // print_r($image['upload_audio']); die();
+                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                   // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+                  $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+        } 
+        else 
+        {
+                    // print_r($image_name); 
+
+           $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_error',$error);
+        }
+      }
+    }
+      //image upload
+
+      if($fileformat=='4'){
 
          if($_FILES['upload_image']['name']){
               $time = time();
@@ -331,54 +530,35 @@ public function competition_uploadfile(){
             $this->session->set_flashdata('upload_error',$error);
         }
       }
-      // die();
-      // }else{
-
-      //    if($_FILES['uploadfile']['name']){
-      //         $time = time();
-      //         // $image_name = 'profile_image_'.$time;
-      //         $image_name = 'uploadfile_'.$quizweb_user_id.'_'.$time;
-
-      //         $config['upload_path'] = 'assets/images/competition_images/';
-      //         $config['allowed_types'] = 'doc|docx|ppt|pdf|pptx';
-      // jpg|jpeg|png|gif
-      //         $config['file_name'] = $image_name;
-      //         $filename = $_FILES['uploadfile']['name'];
-      //         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-      //         $this->upload->initialize($config); // if upload library autoloaded
-             
-
-
-      //               // print_r($_POST);
-                     
-
-      //         if ($this->upload->do_upload('uploadfile') && $quizweb_user_id && $image_name && $ext && $filename) {
-
-      //              // print_r($insert_id);
-
-      //             $image['uploadfile'] = $image_name.'.'.$ext;
-      //             // print_r($profile_image);
-      //             $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
-      //              // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
-      //             $this->session->set_flashdata('upload_success','File Uploaded Successfully');
-       
-      //   } 
-      //   else 
-      //   {
-      //      $error = $this->upload->display_errors();
-      //       $this->session->set_flashdata('upload_error',$error);
-      //   }
-      // }
-      // }
-
-
-     
-       
-            
+      
+      }
+      
       $this->session->set_flashdata('save_success','success');
+      $this->session->set_flashdata('upload_success','success');
 
       header('location:'.base_url().'WebsiteController/competition_list');
     }
+
+    // $uploadfile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','competition_uploadfile_submit');
+
+     // $uploadfile_list = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit');
+     // foreach($uploadfile_list as $info){
+      
+     //  $data['update'] = 'update';
+     //  $data['competitionid'] = $info->competitionid;
+     //  $data['file_format'] = $info->file_format;
+     //  $data['uploadfile'] = $info->uploadfile;
+     //  $data['upload_image'] = $info->upload_image;
+     //  $data['upload_vedio'] = $info->upload_vedio;
+     //  $data['upload_audio'] = $info->upload_audio;
+     
+    // }
+
+    //  $uploadfile_list = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','competition_uploadfile_submit');
+
+    //  print_r($uploadfile_list); 
+
+    // $this->load->view('Website/Include/head',$data);
 
     // $data['result'] = $this->Website_Model->quize_get($competition_id);
     // print_r($data['result']); die();

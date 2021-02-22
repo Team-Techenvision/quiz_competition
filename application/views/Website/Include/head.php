@@ -133,7 +133,7 @@ label#user_password-error {
 
                     <div class="logo-box clearfix">
 
-                        <a class="navbar-brand" href="<?php echo base_url(); ?>">
+                        <a class="navbar-brand" id="logo" href="<?php echo base_url(); ?>">
                             <img src="<?php echo base_url('assets/images/companylogo/'.$company_list[0]->company_logo); ?>" class="main-logo" width="128" alt="" />
                         </a>
 
@@ -152,7 +152,7 @@ label#user_password-error {
                     <div class="main-navigation ">
                         <ul class=" navigation-box navbox">
                             <li class="current">
-                                <a class="menu text-white" href="<?php echo base_url(); ?>">Home</a>
+                                <a class="menu text-white" id="home" href="<?php echo base_url(); ?>">Home</a>
                                 <ul class="sub-menu">
                                     <!-- <li><a href="index.html">Home 01</a></li>
                                     <li><a href="index-2.html">Home 02</a></li>
@@ -167,7 +167,7 @@ label#user_password-error {
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a class="menu text-white" href="<?php echo base_url(); ?>About-Us">About Us</a>
+                                <a class="menu text-white" id="aboutus" href="<?php echo base_url(); ?>About-Us">About Us</a>
                                 <ul class="sub-menu">
                                     <!-- <li><a href="<?php echo base_url(); ?>About-Us">About Page</a></li>
                                     <li><a href="gallery.html">Gallery</a></li>
@@ -176,7 +176,7 @@ label#user_password-error {
                                 </ul> <!-- /.sub-menu-->
                             </li>
                             <li>
-                                <a class="menu text-white" href="#">Courses</a>
+                                <a class="menu text-white"  href="#">Courses</a>
                                 <ul class="sub-menu">
                                    <!--  <li><a href="courses.html">Courses</a></li>
                                     <li><a href="course-details.html">Course Details</a></li> -->
@@ -198,7 +198,7 @@ label#user_password-error {
                                 </ul> --><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a class="menu text-white" href="<?php echo base_url(); ?>Contact-Us">Contact</a>
+                                <a class="menu text-white" id="contact" href="<?php echo base_url(); ?>Contact-Us">Contact</a>
                             </li>
                         </ul>
 
@@ -216,7 +216,7 @@ label#user_password-error {
               <?php if(isset($user_list[0]->user_name)){ 
                ?>
                  <div class="dropdown ">
-    <button type="button" class="btn btnlogout dropdown-toggle" data-toggle="dropdown">
+    <button type="button" id="username" class="btn btnlogout dropdown-toggle" data-toggle="dropdown">
       Welcome <?php echo $user_list[0]->user_name;?>
     </button>
     <div class="dropdown-menu">
@@ -277,7 +277,7 @@ label#user_password-error {
                 </div>
                 <div class="form-group col-md-6">
                   <label class="userLabel">Note: Entered mobile no. will be used as user name</label>
-                   <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
+                   <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext mobileNo" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 
                   
                 </div>
@@ -633,10 +633,13 @@ $.validator.addMethod("pwcheck", function(value) {
                   window.location = "<?php echo base_url(); ?>WebsiteController/edit_profile";
                }
                else{
+
+                $('#user_mobile').val("");
+
                 $('.alert-danger').html(data);
                 $('.mobileerror').show().delay(5000).fadeOut();
                 $('.mobilesuccess').hide();  
-                document.getElementById("signupForm").reset();
+                // document.getElementById("signupForm").reset();
                }
                
 
