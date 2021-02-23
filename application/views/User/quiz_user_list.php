@@ -102,7 +102,9 @@
                        <a class="btn btn-primary btnviewquiz" name="user_id" id="btnviewquiz <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/quiz_display/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >View Quiz</a>
                      <?php }else{?>
 
-                       <button class="btn btn-primary btndownload" name="user_id" id="btndownload <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Download</button>
+                       <a class="btn btn-primary btndownload" name="user_id" id="btndownload <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/download_user_uploadfiles/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Download</a>
+
+                      <!--  <button class="btn btn-primary btndownload" name="user_id" id="btndownload <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Download</button> -->
                      <?php } ?>
                         </div>
                      </td>

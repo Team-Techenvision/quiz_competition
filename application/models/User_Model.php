@@ -337,6 +337,18 @@ class User_Model extends CI_Model{
    
     return $result->result_array();
   }
+   public function uploadfile_download($quiz_id)
+  {
+    $this->db->select('*');
+    // $this->db->join('userquizsubmit', 'competition_uploadfile_submit.dynamiccompetitionid = userquizsubmit.question_id', 'inner');
+
+    $this->db->where('competitionid',$quiz_id);
+    $result = $this->db->get('competition_uploadfile_submit');
+    //$result = $this->db->query($cmd);
+    //print_r($result->result_array());die();
+   
+    return $result->result_array();
+  }
   public function view_ques($q_id)
   {
     $this->db->select('title');

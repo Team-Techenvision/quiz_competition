@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2021 at 07:32 AM
+-- Generation Time: Feb 23, 2021 at 12:38 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -357,8 +357,9 @@ CREATE TABLE `competition_uploadfile_submit` (
 INSERT INTO `competition_uploadfile_submit` (`uploadfileid`, `competitionid`, `user_id`, `uploadfile`, `file_format`, `upload_audio`, `upload_vedio`, `upload_image`, `created_date`) VALUES
 (67, 59, 258, '', 2, 'upload_audio_258_1613915146.webm', '', '', '2021-02-21 13:45:46'),
 (69, 72, 259, '', 3, '', 'upload_vedio_259_1613980476.mp4', '', '2021-02-22 07:54:36'),
-(70, 73, 261, '', 4, '', '', 'upload_image_261_1613987623.jpg', '2021-02-22 09:53:42'),
-(76, 60, 220, 'uploadfile_220_1613989668.pdf', 1, '', '', '', '2021-02-22 10:27:48');
+(70, 73, 261, '', 4, '', '', 'upload_image_261_1614079094.jpg', '2021-02-22 09:53:42'),
+(76, 60, 220, 'uploadfile_220_1613989668.pdf', 1, '', '', '', '2021-02-22 10:27:48'),
+(77, 59, 255, '', 2, 'upload_audio_255_1614079707.webm', '', '', '2021-02-23 11:19:31');
 
 -- --------------------------------------------------------
 
@@ -1252,7 +1253,7 @@ ALTER TABLE `competitiontype`
 -- AUTO_INCREMENT for table `competition_uploadfile_submit`
 --
 ALTER TABLE `competition_uploadfile_submit`
-  MODIFY `uploadfileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `uploadfileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `country`

@@ -158,8 +158,10 @@ class User extends CI_Controller{
       $this->load->view('Include/footer',$data);
     }
 
+
    public function quiz_display(){
 
+  // echo "string";
      $competitionid = $this->uri->segment(3);
   
      $user_id = $this->uri->segment(4);
@@ -189,32 +191,7 @@ class User extends CI_Controller{
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['result'] = $this->User_Model->quize_get($competitionid);
 
-      foreach ($data['result'] as  $value) {
-       $correctans = $value['correctans'];
-       $selectanswertext = $value['selectanswertext'];
-
-       if($correctans==$selectanswertext)
-       {
-
-        $data['checkgreen'] = $selectanswertext;
-
-        print_r($data['checkgreen']);
-
-        // echo "hii";
-
-       }else{
-        $data['checkred'] = $selectanswertext;
-        print_r($data['checkred']);
-
-        // echo "hello";
-       }
-
-
-
-       // print_r($correctans); 
-       // print_r($selectanswertext); 
-
-      }
+      
       // if($correctans == $selectanswertext){
 
       //  echo correct;
@@ -233,6 +210,46 @@ class User extends CI_Controller{
     $this->load->view('Include/head',$data);
     // $this->load->view('Include/navbar',$data);
     $this->load->view('User/quiz_display',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+  /**************************** download uploaded file **************************/
+
+    public function download_user_uploadfiles(){
+
+  // echo "string";
+     $competitionid = $this->uri->segment(3);
+  
+     $user_id = $this->uri->segment(4);
+
+   // print_r($user_id); die();
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+
+    $data['users'] = $this->User_Model->fetch_user_name($user_id);
+    $data['result'] = $this->User_Model->uploadfile_download($competitionid);
+
+  
+
+      foreach ($data['result'] as  $value) {
+
+       $data['uploadaudio'] = $value['upload_audio'];
+       $data['uploadfile'] = $value['uploadfile'];
+       $data['uploadvedio'] = $value['upload_vedio'];
+       $data['upload_image'] = $value['upload_image'];
+       $data['competitionid'] = $value['competitionid'];
+       $data['file_format'] = $value['file_format'];
+      
+       // print_r($data['uploadimage']);
+
+      }
+    
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/download_user_uploadfiles',$data);
     $this->load->view('Include/footer',$data);
   }
 

@@ -29,9 +29,10 @@
               <!-- /.card-header -->
               <!-- form start -->
               <!-- <form id="form_action" role="form" action="" method="post"> -->
-                 <form id="form_action" name="quiz_form" role="form" action="<?php echo base_url();?>WebsiteController/submit_quizs" method="post"  class="m-3">
+                 <form id="form_action" name="quiz_form" role="form" action="" method="post"  class="m-3">
                 <div class="card-body">
                   <div class="row">
+      
 
              
                         <h5 class="text-center h4" style="color: #3156bd;margin-left: 38%;"><!-- <i class="fa fa-list"></i>  -->
@@ -57,6 +58,8 @@
                             $correct = $value['correctans'];
                             $correctA = explode(',', $correct);
 
+                            $selectanswertext = $value['selectanswertext'];
+
 
 
                             // print_r($correctA);
@@ -72,7 +75,8 @@
                               ?>                            
                             <div class="radio">
                               <label>
-                                <input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" required> <?php echo $my_Array ;?></label>
+                            
+                                <input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" > <?php echo $my_Array ;?></label>
                             </div>
                             <?php } ?>                            
                             <?php } elseif ($value['answertype']=="2")
@@ -86,11 +90,11 @@
                             </div>
                             <?php } ?>                            
                             <?php } elseif ($value['answertype']=="3") { ?>                            
-                            <input type="text" name="<?php echo $value['dynamiccompetitionid'];?>[]" class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" required>
+                            <input type="text" name="<?php echo $value['dynamiccompetitionid'];?>[]" class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" >
                             <?php  } elseif ($value['answertype']=="4") { ?>                            
-                            <textarea name="<?php echo $value['dynamiccompetitionid'];?>[]" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" required></textarea>
+                            <textarea name="<?php echo $value['dynamiccompetitionid'];?>[]" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" ></textarea>
                             <?php } else { ?>                            
-                            <select name="<?php echo $value['dynamiccompetitionid'];?>[]" id="ansoption" class="form-control w-25" required>
+                            <select name="<?php echo $value['dynamiccompetitionid'];?>[]" id="ansoption" class="form-control w-25" >
                               <?php $myString = $value['optionvalues'];
                               $myArray = explode(',', $myString);
                               foreach($myArray as $my_Array)
@@ -102,13 +106,48 @@
                           </div>
                           <div class="col-sm-12 mb-3">
 
-                          <label>Correct Answer : <?php  foreach($correctA as $my_Array)
+                            
+                            
+                           
+
+                      <label>Correct Answer : 
+                        <?php  foreach($correctA as $my_Array)
                             {   echo $my_Array; }?></label>
+                            <input type="text" name="" id="databasecorrect" value="<?php echo $my_Array; ?>">
                             
                           </div>
                           <div class="col-sm-12 mb-3">
                             <label>User Selected Answer :  <?php echo $value['selectanswertext']; ?></label>
+                            <input type="text" name="" id="userselected" value="<?php echo $value['selectanswertext']; ?>">
                           </div>
+
+                          <?php 
+                             if($my_Array==$selectanswertext)
+                             {
+                               $databasecorrect = $my_Array;
+                               $userselected = $selectanswertext;
+                               // print_r($databasecorrect);
+                               // print_r($userselected);
+
+                              echo "hii";   ?>
+
+                            <h5 class="alert alert-danger incorrect">Correct</h5>
+                            <h5 class="alert alert-success correct">Incorrect</h5>
+
+                           <?php }else{
+                             
+                              echo "hello";
+                              $databasecorrect = $my_Array;
+                               $userselected = $selectanswertext; 
+                                // print_r($databasecorrect);
+                               // print_r($userselected); ?>
+
+                            <h5 class="alert alert-danger incorrect">Correct</h5>
+                            <h5 class="alert alert-success correct">Incorrect</h5>
+
+                              
+                            <?php   } ?>
+
 
                       
 
@@ -133,7 +172,7 @@
                   <?php } ?>
                   <a href="<?php echo base_url() ?>User/dynamiccompetition" class="btn btn-default ml-4">Cancel</a>
                 </div> 
-              <!-- </form> -->
+              </form>
             </div>
 
           </div>
@@ -151,10 +190,87 @@
 <script>
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Quetion Saved successfully');
+      toastr.success('Question Saved successfully');
     });
   <?php } ?>
 </script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+   
+     $('.incorrect').hide();  
+     $('.correct').hide(); 
+
+    
+      var databasecorrect = $('#databasecorrect').val();
+      var userselected = $('#userselected').val();
+
+      if($my_Array==$selectanswertext)
+      {
+                               $databasecorrect = $my_Array;
+                               $userselected = $selectanswertext;
+                               alert($databasecorrect);
+                               // print_r($userselected);
+
+                           
+.0
+                            }
+
+       // alert(databasecorrect);
+       // alert(userselected);
+
+       // if(databasecorrect){
+       //   $('.incorrect').hide();  
+       //   $('.correct').hide(); 
+       // }
+
+
+    });
+         
+  
+</script>
+
+<!--  <script>
+
+  $('#form_action').submit(function(e) {
+
+
+
+    
+      // alert(mobile);
+      // alert(password);
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/login1",
+           method:"POST",
+           data:{mobile:mobile,password:password},
+           success:function(data)
+            {
+              
+               // alert(data);
+               // console.log(data);
+               if(data=='Sign In Successful'){
+
+                $('.alert-success').html(data);
+                $('.successresponse').show().delay(3000).fadeOut();
+                $('.errorresponse').hide();
+
+
+                window.location.reload();
+               }
+               else{
+                $('.alert-danger').html(data);
+                $('.errorresponse').show().delay(3000).fadeOut();
+                $('.successresponse').hide();
+                
+                document.getElementById("signInForm").reset();
+               }
+
+            }
+
+            });
+            e.preventDefault();
+  });
+</script>
+ -->
 
 
 

@@ -10,6 +10,8 @@ function check_login($mobile,$password){
     $result = $query->result_array();
     return $result;
   }
+
+
   // function check_loginM($mobile){
   //   $query = $this->db->select('user.user_mobile,user.*')
   //     ->where('user_mobile', $mobile)
@@ -257,6 +259,15 @@ $query = $this->db->get();
 $result = $query->result();
 return $result;
 }
+function check_user_uploadfiles($user_id,$competitionid){
+    // $this->db->select('*');
+    $this->db->where('user_id', $user_id);
+    $this->db->where('competitionid', $competitionid);
+    $this->db->from('competition_uploadfile_submit');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    return $result;
+  }
 public function check_usermobile($quizweb_user_id,$user_mobile){
 // $this->db->select('*');
   // print_r($user_mobile); die();
