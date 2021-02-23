@@ -110,18 +110,21 @@
                             
                            
 
-                      <label>Correct Answer : 
-                        <?php  foreach($correctA as $my_Array)
-                            {   echo $my_Array; }?></label>
-                            <input type="text" name="" id="databasecorrect" value="<?php echo $my_Array; ?>">
+                    <!--   <label>Correct Answer : </label>
+                      
+                            <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>"> -->
                             
-                          </div>
-                          <div class="col-sm-12 mb-3">
-                            <label>User Selected Answer :  <?php echo $value['selectanswertext']; ?></label>
-                            <input type="text" name="" id="userselected" value="<?php echo $value['selectanswertext']; ?>">
-                          </div>
+                      <!--     </div>
+                          <div class="col-sm-12 mb-3"> -->
+                           <!--  <label>User Selected Answer :  < ?php echo $value['selectanswertext']; ?></label> -->
+                           <!--  <input type="hidden" name="" id="userselected" value="< ?php echo $value['selectanswertext']; ?>"> -->
+                       <!--    </div> -->
 
                           <?php 
+                           foreach($correctA as $my_Array)
+                            {   
+                              // echo $my_Array;
+                            }
                              if($my_Array==$selectanswertext)
                              {
                                $databasecorrect = $my_Array;
@@ -129,21 +132,25 @@
                                // print_r($databasecorrect);
                                // print_r($userselected);
 
-                              echo "hii";   ?>
+                              $correct ="hii";   ?>
 
-                            <h5 class="alert alert-danger incorrect">Correct</h5>
-                            <h5 class="alert alert-success correct">Incorrect</h5>
-
+                            <!-- <h5 class="alert alert-danger incorrect">Correct</h5> -->
+                            <?php if(empty($correct)){ }else{?>
+                            <h5 class="alert alert-success correct">Correct</h5>
+                            <?php } ?>
                            <?php }else{
                              
-                              echo "hello";
+                              $wrong = "hello";
                               $databasecorrect = $my_Array;
                                $userselected = $selectanswertext; 
                                 // print_r($databasecorrect);
                                // print_r($userselected); ?>
 
-                            <h5 class="alert alert-danger incorrect">Correct</h5>
-                            <h5 class="alert alert-success correct">Incorrect</h5>
+                            <?php if(empty($wrong)){}else{ ?>
+
+                            <h5 class="alert alert-danger incorrect">Incorrect</h5>
+                              <?php } ?>
+                            <!-- <h5 class="alert alert-success correct">Incorrect</h5> -->
 
                               
                             <?php   } ?>
@@ -194,7 +201,7 @@
     });
   <?php } ?>
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $( document ).ready(function() {
    
      $('.incorrect').hide();  
@@ -204,16 +211,7 @@
       var databasecorrect = $('#databasecorrect').val();
       var userselected = $('#userselected').val();
 
-      if($my_Array==$selectanswertext)
-      {
-                               $databasecorrect = $my_Array;
-                               $userselected = $selectanswertext;
-                               alert($databasecorrect);
-                               // print_r($userselected);
-
-                           
-.0
-                            }
+      
 
        // alert(databasecorrect);
        // alert(userselected);
@@ -227,7 +225,7 @@
     });
          
   
-</script>
+</script> -->
 
 <!--  <script>
 
