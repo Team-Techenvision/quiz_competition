@@ -277,7 +277,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                           // print_r($uploadaudio);
                                        ?>
                                     
-                                          <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadfile; ?>" alt="" width="320" height="240" />
+                                          <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadimage; ?>" alt="" width="320" height="240" />
 
                                     <?php } } ?>
                                      </div>

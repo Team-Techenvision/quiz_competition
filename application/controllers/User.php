@@ -192,6 +192,25 @@ class User extends CI_Controller{
       foreach ($data['result'] as  $value) {
        $correctans = $value['correctans'];
        $selectanswertext = $value['selectanswertext'];
+
+       if($correctans==$selectanswertext)
+       {
+
+        $data['checkgreen'] = $selectanswertext;
+
+        print_r($data['checkgreen']);
+
+        // echo "hii";
+
+       }else{
+        $data['checkred'] = $selectanswertext;
+        print_r($data['checkred']);
+
+        // echo "hello";
+       }
+
+
+
        // print_r($correctans); 
        // print_r($selectanswertext); 
 
@@ -212,7 +231,7 @@ class User extends CI_Controller{
    // print_r($data['result']); die();
    
     $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
+    // $this->load->view('Include/navbar',$data);
     $this->load->view('User/quiz_display',$data);
     $this->load->view('Include/footer',$data);
   }

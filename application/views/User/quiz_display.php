@@ -68,9 +68,11 @@
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
                             foreach($myArray as $my_Array)
-                            { ?>                            
+                            { 
+                              ?>                            
                             <div class="radio">
-                              <label><input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $my_Array ;?>" required> <?php echo $my_Array ;?></label>
+                              <label>
+                                <input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" required> <?php echo $my_Array ;?></label>
                             </div>
                             <?php } ?>                            
                             <?php } elseif ($value['answertype']=="2")
