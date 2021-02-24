@@ -149,88 +149,19 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 <script>
-  <?php if($this->session->flashdata('save_success')){ ?>
+  <?php if($this->session->flashdata('admincheck_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Record Saved Successfully');
+      toastr.success('Quiz Checked and Saved Successfully');
     });
   <?php } ?>
 </script>
 
-  <script>
+<script>
 $(document).ready(function(){
-
- // $('#btn_serach').click(function(){
-  // alert('hii');
-
- // var gender = $('#Gender').val();
- // // console.log(gender);
- // $("#gender option[value='"+gender+"']").attr("selected","selected");
 
  var competition = $('#competition').val();
  $("#competitionid option[value='"+competition+"']").attr("selected","selected");
 
- // var state = $('#StateId').val();
- // $("#stateid option[value='"+state+"']").attr("selected","selected");
-
- // var city = $('#CityId').val();
- // $("#cityid option[value='"+city+"']").attr("selected","selected");
-
- // var district = $('#DistrictId').val();
- // $("#districtid option[value='"+district+"']").attr("selected","selected");
-
-// }); 
-
- // $('#competitionid').change(function(){
- //  alert('hii');
-
- //  var competitionid = $('#competitionid').val();
- //  alert(competitionid);
-
- //  if(competitionid != '')
- //  {
- //   $.ajax({
- //    url:"< ?php echo base_url(); ?>User/fetch_user",
- //    method:"POST",
- //    data:{competitionid:competitionid},
- //    success:function(data)
- //    {
- //     $('#user_id').html(data);
- //     // $('#districtid').html('<option value="">Select District</option>');
-
- //    }
- //   });
- //  }
- //  else
- //  {
- //   $('#user_id').html('<option value="">Select User</option>');
- //     // $('#districtid').html('<option value="">Select District</option>');
-
- //  }
- // });
-
- //  $('#cityid').change(function(){
- //  var cityid = $('#cityid').val();
- //  if(cityid != '')
- //  {
- //   $.ajax({
- //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_district",
- //    method:"POST",
- //    data:{cityid:cityid},
- //    success:function(data)
- //    {
- //     $('#districtid').html(data);
-     
- //    }
- //   });
- //  }
- //  else
- //  {
- //   $('#districtid').html('<option value="">Select District</option>');
-   
-
- //  }
- // });
- 
 });
 </script>
 </body>

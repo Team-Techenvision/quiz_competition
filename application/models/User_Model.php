@@ -67,6 +67,49 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
+  public function admincheck_quiz($user_id,$competition_id,$question_id,$answer_text)
+  {
+     // print_r($_POST); die();
+
+      $data = array(
+          'user_id' => $user_id,
+          'competitionid' => $competition_id,
+          'question_id' => $question_id,
+          'checkanswer' => $answer_text  
+            );
+           $this->db->insert('admincheck_answer',$data);
+  }
+  public function score_admincheck_answer($user_id,$competition_id,$checkanswer){
+  $this->db->select('*');
+  $this->db->where('competitionid',$competition_id);
+  $this->db->where('checkanswer',$checkanswer);
+  $this->db->where('user_id',$user_id);
+  $this->db->from('admincheck_answer');
+  $query = $this->db->get();
+  $result = $query->num_rows();
+  // print_r($result);die();
+  return $result;
+  }
+   public function score_admincheck_question($user_id,$competition_id){
+  $this->db->select('*');
+  $this->db->where('competitionid',$competition_id);
+  // $this->db->where('question_id',$question_id);
+  $this->db->where('user_id',$user_id);
+  $this->db->from('admincheck_answer');
+  $query = $this->db->get();
+  $result = $query->num_rows();
+  // print_r($query->num_rows());die();
+  return $result;
+  }
+// public function check_quiz_submit($quizweb_user_id,$competition_id){
+// $this->db->select('*');
+// $this->db->where('dynamiccompetitionid',$competition_id);
+// $this->db->where('user_id',$quizweb_user_id);
+// $this->db->from('userquizsubmit');
+// $query = $this->db->get();
+// $result = $query->result();
+// return $result;
+// }
   // public function prizelisteditbyid($prizeid){
   //   // $this->db->select('*');
   //   $this->db->select('prizemaster.*,competition.*,levelmaster.*');
@@ -329,6 +372,7 @@ class User_Model extends CI_Model{
   {
     $this->db->select('dynamiccompetition.*,userquizsubmit.*');
     $this->db->join('userquizsubmit', 'dynamiccompetition.dynamiccompetitionid = userquizsubmit.question_id', 'inner');
+    $this->db->group_by('question_id');
 
     $this->db->where('competitionid',$quiz_id);
     $result = $this->db->get('dynamiccompetition');
@@ -349,6 +393,17 @@ class User_Model extends CI_Model{
    
     return $result->result_array();
   }
+    public function download($quiz_id)
+  {
+    $this->db->select('*');
+    $this->db->where('competitionid',$quiz_id);
+    $result = $this->db->get('competition_uploadfile_submit');
+   
+    return $result->result_array();
+
+  
+  }
+
   public function view_ques($q_id)
   {
     $this->db->select('title');

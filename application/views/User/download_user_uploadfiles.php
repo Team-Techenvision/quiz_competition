@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" >
+              <form id="form_action" role="form" action="<?php echo base_url(); ?>User/download/<?php echo $competitionid; ?>" method="post" >
                 <div class="card-body row">
                   
                       <div class="form-group col-sm-12">
@@ -44,7 +44,11 @@
                         <?php if(empty($uploadimage)){ }else{?>
                           <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadimage; ?>" alt="" width="320" height="240" />
 
-                          <button id="" type="" onclick="download()" class="btn btn-primary">Download </button>
+                          <br><br>
+<!-- 
+                          <a class="btn btn-success btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Download</a> -->
+
+                          <button id="" type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span>Download </button>
                         <?php } ?>
 
                          <?php if(empty($uploadaudio)){ }else{?>
@@ -55,6 +59,11 @@
                           <video width="320" height="240" controls>
                           <source src="<?php echo base_url(); ?>/assets/images/competition_video/<?php echo $uploadvedio; ?>" > 
                           </video>
+                        <?php } ?>
+
+                            <?php if(empty($uploadfile)){ }else{?>
+                          <iframe src="<?php echo base_url(); ?>/assets/images/competition_files/<?php echo $uploadfile; ?>" style="width:100%;height:700px;"></iframe> 
+
                         <?php } ?>
                       </div>
                    
@@ -83,7 +92,7 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
- <script> 
+ <!-- <script> 
   function download(){ 
     axios({ 
       url:'https://source.unsplash.com/random/500x500', 
@@ -101,6 +110,6 @@
   }) 
   } 
     
-</script> 
+</script>  -->
 </body>
 </html>

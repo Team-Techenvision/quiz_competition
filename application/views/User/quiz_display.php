@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -29,7 +30,7 @@
               <!-- /.card-header -->
               <!-- form start -->
               <!-- <form id="form_action" role="form" action="" method="post"> -->
-                 <form id="form_action" name="quiz_form" role="form" action="" method="post"  class="m-3">
+                 <form id="form_action" name="quiz_form" role="form" action="<?php echo base_url(); ?>User/admincheck_quiz" method="post"  class="m-3">
                 <div class="card-body">
                   <div class="row">
       
@@ -59,14 +60,16 @@
                             $correctA = explode(',', $correct);
 
                             $selectanswertext = $value['selectanswertext'];
+                            $question_id = $value['question_id'];
 
 
 
-                            // print_r($correctA);
+                            // print_r($question_id);
 
                             ?>
-                          <div class="mb-3 p-2 ">                           
-                            <span class="h6 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                            
+                            <!-- <input type="hidden" name="question_id" value="<?php echo $question_id; ?>"> -->
+                          <div class="mb-3 p-2 col-md-12">                           
+                            <span class="h6 d-flex text-capitalize"><?php echo $q.". ". $value['question']; ?> </span>                            
                             <?php if($value['answertype']=="1"){ ?>                           
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
@@ -76,8 +79,10 @@
                             <div class="radio">
                               <label>
                             
-                                <input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" > <?php echo $my_Array ;?></label>
+                                <input type="radio" name="" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" > <?php echo $my_Array ;?></label>
                             </div>
+
+
                             <?php } ?>                            
                             <?php } elseif ($value['answertype']=="2")
                             {?>                           
@@ -86,15 +91,20 @@
                             foreach($myArray as $my_Array)
                             { ?>
                             <div class="checkbox">
-                              <label><input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $my_Array ;?>" > <?php echo $my_Array ;?></label>
+                              <label><input type="checkbox" name="" value="<?php echo $my_Array ;?>" > <?php echo $my_Array ;?></label>
                             </div>
                             <?php } ?>                            
                             <?php } elseif ($value['answertype']=="3") { ?>                            
-                            <input type="text" name="<?php echo $value['dynamiccompetitionid'];?>[]" class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" >
+                            <input type="text" name=""  class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" >
+                          
+
                             <?php  } elseif ($value['answertype']=="4") { ?>                            
-                            <textarea name="<?php echo $value['dynamiccompetitionid'];?>[]" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" ></textarea>
+                            <textarea name="" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" ></textarea>
+
+
+                          
                             <?php } else { ?>                            
-                            <select name="<?php echo $value['dynamiccompetitionid'];?>[]" id="ansoption" class="form-control w-25" >
+                            <select name="" id="ansoption" class="form-control w-25" >
                               <?php $myString = $value['optionvalues'];
                               $myArray = explode(',', $myString);
                               foreach($myArray as $my_Array)
@@ -106,21 +116,8 @@
                           </div>
                           <div class="col-sm-12 mb-3">
 
-                            
-                            
-                           
-
-                    <!--   <label>Correct Answer : </label>
-                      
-                            <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>"> -->
-                            
-                      <!--     </div>
-                          <div class="col-sm-12 mb-3"> -->
-                           <!--  <label>User Selected Answer :  < ?php echo $value['selectanswertext']; ?></label> -->
-                           <!--  <input type="hidden" name="" id="userselected" value="< ?php echo $value['selectanswertext']; ?>"> -->
-                       <!--    </div> -->
-
-                          <?php 
+                         <?php 
+                         if($value['answertype']!="3" && $value['answertype']!="4"  ){
                            foreach($correctA as $my_Array)
                             {   
                               // echo $my_Array;
@@ -136,6 +133,7 @@
 
                             <!-- <h5 class="alert alert-danger incorrect">Correct</h5> -->
                             <?php if(empty($correct)){ }else{?>
+                            <input type="hidden" name="<?php echo $value['question_id'];?>" id="correctvalue" value="1">  
                             <h5 class="alert alert-success correct">Correct</h5>
                             <?php } ?>
                            <?php }else{
@@ -147,25 +145,45 @@
                                // print_r($userselected); ?>
 
                             <?php if(empty($wrong)){}else{ ?>
-
+                             <input type="hidden" name="<?php echo $value['question_id'];?>" id="incorrectcalue" value="0">
                             <h5 class="alert alert-danger incorrect">Incorrect</h5>
                               <?php } ?>
                             <!-- <h5 class="alert alert-success correct">Incorrect</h5> -->
 
                               
-                            <?php   } ?>
+                            <?php   } } ?>
+                            
+                           
 
-
+             <!--      <label>Correct Answer : <?php echo $my_Array; ?></label>
                       
+                            <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>">  -->
+                            
+                       <!--    </div> -->
+                         <!--  <div class="col-sm-12 mb-3"> -->
+                          <?php 
+                         if($value['answertype']=="3" || $value['answertype']=="4"){ ?>
+                            <label>User Answer :  <?php echo $value['selectanswertext']; ?></label>
+                          <div class="col-md-12">
+                             <div class="form-group row"> 
+                             
+                                    <div class="radio col-md-2">
+                                      <label><input class="correctradio" type="radio" name="<?php echo $value['question_id'];?>" value="1"> Correct</label>
+                                    </div>
+                                    <div class="radio col-md-2">
+                                      <label><input class="incorrectradio" type="radio" name="<?php echo $value['question_id'];?>" value="0" > Incorrect</label>
+                                    </div>
+                              </div>
+                          </div>
+                        
+                          <?php } ?>
+                           <!--  <input type="hidden" name="" id="userselected" value="< ?php echo $value['selectanswertext']; ?>"> -->
+                       </div> 
 
-                         
+                    
 
                           <?php $q++; } ?>
-                        <!--   <div class="d-flex m-5">
-                            <button class="btn btn-primary">Submit</button>                            
-                          </div>  -->
-                        <!-- </form> -->
-               
+              
                     </div>
                 </div>
              
