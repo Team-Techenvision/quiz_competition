@@ -102,6 +102,12 @@
                 <p>Assign Competition</p>
               </a>
             </li> 
+               <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/points_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Point</p>
+              </a>
+            </li>   
               <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/add_assignwinner" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -132,12 +138,7 @@
                 <p>Competition Participated User List</p>
               </a>
             </li>
-          <!--   <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/quiz_display" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Quiz Display</p>
-              </a>
-            </li>    -->
+         
 
           </ul>
         </li>

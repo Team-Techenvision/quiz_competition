@@ -184,16 +184,16 @@
                   </div>
                   </div>
                   </div>
-                    <div class="form-group col-md-6">
+                   <!--  <div class="form-group col-md-6">
                     <label>Points <span style="color: red;">*</span></label>
 
-                    <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points" id="points" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required="">
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points" id="points" value="< ?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required="">
                   </div>
                    <div class="form-group col-md-6">
                     <label>Conversion Points <span style="color: red;">*</span></label>
 
-                    <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints" id="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required="">
-                  </div>
+                    <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints" id="conversionpoints" value="< ?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required="">
+                  </div> -->
                   <div class="form-group col-md-6">
                     <label>Competition User Type</label>
 

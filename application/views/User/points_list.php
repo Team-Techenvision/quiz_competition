@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>PRIZE INFORMATION</h4>
+            <h4>POINTS INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -23,9 +23,9 @@
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Prize Information</h3>
+              <h3 class="card-title"><i class="fa fa-list"></i> List Points Information</h3>
               <div class="card-tools">
-                <a href="add_prize" class="btn btn-sm btn-block btn-primary">Add Prize</a>
+                <a href="add_points" class="btn btn-sm btn-block btn-primary">Add Points</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -35,27 +35,28 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Competition</th>
-                  <th>Level</th>
                   <th>Winner Position</th>
-                  <th>Prize</th>
+                  <th>Points</th>
+                  <th>Conversion Points</th>
                  
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php $i = 0;
-                  foreach ($prize_list as $list) {
+                  foreach ($points_list as $list) {
+                    // print_r($points_list); die();
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->title ?></td>
-                    <td><?php echo $list->levelname ?></td>
                     <td><?php echo $list->winnerposition ?></td>
-                    <td><?php echo $list->prize ?></td>
+                    <td><?php echo $list->points ?></td>
+                    <td><?php echo $list->conversionpoints ?></td>
                    
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_prize/<?php echo $list->prizeid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_prize/<?php echo $list->prizeid; ?>" onclick="return confirm('Do you want to Delete this Prize?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_points/<?php echo $list->pointsid; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_points/<?php echo $list->pointsid; ?>" onclick="return confirm('Do you want to Delete this Points?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>

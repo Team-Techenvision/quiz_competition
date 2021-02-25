@@ -182,7 +182,14 @@
 
                     
 
-                          <?php $q++; } ?>
+                          <?php $q++;
+                           
+
+
+                           }   
+                         ?>
+
+                     <!--     <input type="hidden" name="totalquest" value="<?php echo $q-1; ?>"> -->
               
                     </div>
                 </div>

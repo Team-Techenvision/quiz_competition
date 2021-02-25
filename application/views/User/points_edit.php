@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>Prize Information</h1>
+            <h1>Points Information</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -23,9 +23,9 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title">Add Prize</h3>
+                <h3 class="card-title">Add Points</h3>
                  <div class="card-tools col-md-2 " >
-                <a href="<?php echo base_url(); ?>User/prize_list" class="btn btn-sm btn-block btn-primary "  >Prize List</a>
+                <a href="<?php echo base_url(); ?>User/points_list" class="btn btn-sm btn-block btn-primary "  >Points List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -40,7 +40,7 @@
 
                        ?>
 
-                       <input type="text" class="form-control required title-case text" name="competitionid" id="competitionid" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
 
                        <?php }?>
 
@@ -62,54 +62,25 @@
                   </select>
                   </div>
                    <div class="form-group col-md-6">
-                    <label>Level <span style="color: red;">*</span></label>
-                      <?php
-                      if(isset($levelid)){
-                     
-                       ?>
+                    <label>Winner Position</label>
 
-                       <input type="text" class="form-control required title-case text" name="levelid" id="levelid" value="<?php if(isset($levelid)){ echo $levelid; } ?>" disabled="">
-                       <?php }?>
+                     <input type="text" class="form-control" name="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>">
+                   </div> 
+                     <div class="form-group col-md-6">
+                    <label>Points</label>
 
+                     <input type="text" class="form-control" name="points" value="<?php if(isset($points)){ echo $points; } ?>">
+                   </div> 
+                     <div class="form-group col-md-6">
+                    <label>Conversion Points</label>
 
+                     <input type="text" class="form-control" name="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>">
+                   </div> 
+                  
+                  
 
-                      <select name="levelid" id="levelid"class="form-control" required="">
-                    <option value="">Select Level</option>
-         
-                   <?php foreach($level as $level)
-                    {
-
-                    echo '<option value="'. $level->levelid.'" '.$selected.'>'. $level->levelname.'</option>';
-                                    
-                     }
-                    ?>  
-
-                     
-                  </select>
-                  </div>
-                   <div class="form-group col-md-4">
-                    <label>Winner Position <span style="color: red;">*</span></label>
-                    <?php
-                      if(isset($levelid)){
-                     
-                       ?>
-
-                       <input type="text" class="form-control required title-case text" name="winnerposition" id="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>" disabled="">
-                       <?php  }?>
-
-                    <select name="winnerposition" id="winnerposition" class="form-control" required="">
-                    <option value="">Select Winner Position</option>
-                    <option value="1">1st Position</option>
-                    <option value="2">2nd Position</option>
-                    <option value="3">3rd Position</option>
-                   
-                  </select>
-                   </div>
-                   <div class="form-group col-md-4">
-                    <label>Prize <span style="color: red;">*</span></label>
-                     <input type="number" min="0" step="1" oninput="validity.valid||(value='');" class="form-control required title-case " name="prize" id="prize" value="<?php if(isset($prize)){ echo $prize; } ?>" placeholder="Enter prize " required >
-                   </div>
-                    
+                
+                
                  
                  </div>
                 <!-- /.card-body -->
@@ -135,6 +106,15 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script>
+$(document).ready(function(){
+
+ var competition = $('#competition').val();
+
+ $("#competitionid option[value='"+competition+"']").attr("selected","selected");
+
+});
+</script>
  
 </body>
 </html>

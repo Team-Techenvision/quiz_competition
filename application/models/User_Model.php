@@ -53,20 +53,46 @@ class User_Model extends CI_Model{
     $result = $query->result();
      return $result;
   }
-  public function prize_list($prizeid){
+  public function points_list($pointsid){
     // $this->db->select('*');
-    $this->db->select('prizemaster.*,competition.*,levelmaster.*');
-    $this->db->join('competition', 'prizemaster.competitionid = competition.competitionid', 'left');
-    $this->db->join('levelmaster', 'prizemaster.levelid = levelmaster.levelid', 'left');
+    $this->db->select('points_master.*,competition.*');
+    $this->db->join('competition', 'points_master.competitionid = competition.competitionid', 'left');
+    // $this->db->join('levelmaster', 'prizemaster.levelid = levelmaster.levelid', 'left');
     // $this->db->where('is_admin', 0);
     // if($company_id != ''){
     //   $this->db->where('company_id', $company_id);
     // }
-    $this->db->from('prizemaster');
+    // $this->db->group_by('points_master.competitionid');
+    $this->db->from('points_master');
     $query = $this->db->get();
     $result = $query->result();
      return $result;
   }
+  public function save_points($competition_id,$winner,$points,$conversionpoints)
+  {
+     // print_r($_POST); die();
+
+      $data = array(
+          'competitionid' => $competition_id,
+          'winnerposition' => $winner,
+          'points' => $points,
+          'conversionpoints' => $conversionpoints  
+        );
+        $this->db->insert('points_master',$data);
+  }
+  //  public function update_points($competition_id,$winner,$points,$conversionpoints)
+  // {
+  //    print_r($_POST); die();
+
+  //     $data = array(
+  //         'competitionid' => $competition_id,
+  //         'winnerposition' => $winner,
+  //         'points' => $points,
+  //         'conversionpoints' => $conversionpoints  
+  //       );
+  //       $this->db->update('points_master', $data);
+  //       // $this->User_Model->update_info('pointsid', $pointsid, 'points_master', $update_data);
+  // }
   public function admincheck_quiz($user_id,$competition_id,$question_id,$answer_text)
   {
      // print_r($_POST); die();
@@ -90,10 +116,11 @@ class User_Model extends CI_Model{
   // print_r($result);die();
   return $result;
   }
-   public function score_admincheck_question($user_id,$competition_id){
+   public function score_admincheck_question($user_id,$competition_id,$question_id){
   $this->db->select('*');
   $this->db->where('competitionid',$competition_id);
-  // $this->db->where('question_id',$question_id);
+  $this->db->group_by('question_id');
+  $this->db->group_by('question_id',$question_id);
   $this->db->where('user_id',$user_id);
   $this->db->from('admincheck_answer');
   $query = $this->db->get();
