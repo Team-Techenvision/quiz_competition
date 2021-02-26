@@ -93,6 +93,69 @@ class User_Model extends CI_Model{
   //       $this->db->update('points_master', $data);
   //       // $this->User_Model->update_info('pointsid', $pointsid, 'points_master', $update_data);
   // }
+    public function admincheck_quizList(){
+    $this->db->select('*');
+    // $this->db->where('is_admin', 0);
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
+    $this->db->from('admincheck_answer');
+    // $this->db->group_by('user_id');
+
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
+  //  function check_userscore($competitionid)
+  // {
+  //   $this->db->select('userscore_master.*,user.*,competition.*');
+  //   $this->db->join('user', 'userscore_master.user_id = user.user_id', 'left');
+  //   $this->db->join('competition', 'userscore_master.competitionid = competition.competitionid', 'left');
+  
+  
+  // // $this->db->group_by("userscore_master.user_id");
+  // $this->db->where('userscore_master.competitionid', $competitionid);
+  // $query = $this->db->get("userscore_master");
+  // return $query->result();
+  // // print_r($query);
+  // }
+// public function check_userscore($competition_id){
+// $this->db->select('userscore_master.*,profile.*');
+//  $this->db->join('profile', 'userscore_master.user_id = profile.user_id', 'left');
+
+// $this->db->where('userscore_master.competitionid',$competition_id);
+// // $this->db->where('user_id',$quizweb_user_id);
+// $this->db->from('userscore_master');
+// $query = $this->db->get();
+// $result = $query->result();
+// return $result;
+// }
+ public function check_userscore($competition){
+    // $this->db->select('*');
+    $this->db->select('*');
+ // $this->db->join('profile', 'userscore_master.user_id = profile.user_id', 'left');
+
+$this->db->where('competitionid',$competition);
+// $this->db->where('user_id',$quizweb_user_id);
+$this->db->from('userscore_master');
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+  }
+//add_assign winner
+   function fetch_userscore($competitionid)
+  {
+    $this->db->select('userscore_master.*,user.*,competition.*,points_master.*');
+    $this->db->join('user', 'userscore_master.user_id = user.user_id', 'left');
+    $this->db->join('competition', 'userscore_master.competitionid = competition.competitionid', 'left');
+    $this->db->join('points_master', 'userscore_master.competitionid = points_master.competitionid', 'left');
+  
+  $this->db->group_by("userscore_master.user_id");
+  $this->db->where('userscore_master.competitionid', $competitionid);
+  $query = $this->db->get("userscore_master");
+  return $query->result();
+  // print_r($query);
+  }
   public function admincheck_quiz($user_id,$competition_id,$question_id,$answer_text)
   {
      // print_r($_POST); die();
@@ -347,11 +410,69 @@ class User_Model extends CI_Model{
   // print_r($query);
  }
  //quiz_display userlist fetch
+
+ public function fetch_userlist_quiz($competitionid){
+    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,competition.*');
+    
+    $this->db->join('competition', 'userquizsubmit.dynamiccompetitionid = competition.competitionid', 'left');
+    
+
+   
+    $this->db->join('user', 'user.user_id = userquizsubmit.user_id', 'left');
+  
+    $this->db->join('userscore_master', 'userscore_master.user_id = userquizsubmit.user_id', 'left');
+
+
+    $this->db->where('userquizsubmit.dynamiccompetitionid', $competitionid);
+    $this->db->group_by('userquizsubmit.user_id');
+    $this->db->from('userquizsubmit');
+
+
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+ }
+  public function fetch_userlist_othercompetition($competitionid){
+    $this->db->select('competition_uploadfile_submit.*,user.*,competition.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+    $this->db->join('competition', 'competition_uploadfile_submit.competitionid = competition.competitionid', 'left');
+
+    $this->db->join('user', 'competition_uploadfile_submit.user_id = user.user_id', 'left');
+
+    // $this->db->join('userscore_master', 'userquizsubmit.user_id = userscore_master.user_id', 'inner');
+
+    $this->db->group_by('competition_uploadfile_submit.competitionid');
+
+    $this->db->where('competition_uploadfile_submit.competitionid', $competitionid);
+
+    $this->db->from('competition_uploadfile_submit');
+ 
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+ }
+function fetch_user_uploadfile($competitionid)
+ {
+  $this->db->select('competition_uploadfile_submit.*,user.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+    $this->db->join('user', 'competition_uploadfile_submit.user_id = user.user_id', 'inner');
+
+  
+  // $this->db->order_by("pincode", "");
+  $this->db->where('competitionid', $competitionid);
+  $query = $this->db->get("competition_uploadfile_submit");
+  return $query->result();
+  // print_r($query);
+ }
+
  public function fetch_userlist($competitionid){
      // $this->db->select('*');
     $this->db->select('profile.*,user.*,competition.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+
     $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
     $this->db->where('profile.competitionid', $competitionid);
     // $this->db->where('userquizsubmit.user_id', $user_id);
@@ -407,13 +528,24 @@ class User_Model extends CI_Model{
     //print_r($result->result_array());die();
    
     return $result->result_array();
-  }
-   public function uploadfile_download($quiz_id)
-  {
-    $this->db->select('*');
-    // $this->db->join('userquizsubmit', 'competition_uploadfile_submit.dynamiccompetitionid = userquizsubmit.question_id', 'inner');
 
-    $this->db->where('competitionid',$quiz_id);
+  }
+  public function competitionName($competitionid){
+    
+    $this->db->select('*');
+    $this->db->where('competitionid',$competitionid);
+    $result = $this->db->get('competition');
+   
+    return $result->result_array();
+
+
+   }
+    public function uploadfile_download($quiz_id)
+   {
+    $this->db->select('competition_uploadfile_submit.*');
+    // $this->db->join('competition', 'competition_uploadfile_submit.competitionid = competition.competitionid', 'inner');
+
+    $this->db->where('competition_uploadfile_submit.competitionid',$quiz_id);
     $result = $this->db->get('competition_uploadfile_submit');
     //$result = $this->db->query($cmd);
     //print_r($result->result_array());die();

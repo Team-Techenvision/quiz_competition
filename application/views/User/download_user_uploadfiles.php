@@ -32,6 +32,11 @@
               <!-- form start -->
               <form id="form_action" role="form" action="<?php echo base_url(); ?>User/download/<?php echo $competitionid; ?>" method="post" >
                 <div class="card-body row">
+
+                     <div class="form-group col-sm-12 text-center">
+                     <h4><?php echo $title; ?></h4>
+                
+                      </div>
                   
                       <div class="form-group col-sm-12">
                       <label>Name : </label>

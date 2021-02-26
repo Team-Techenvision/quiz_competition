@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 02:41 PM
+-- Generation Time: Feb 26, 2021 at 02:31 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -62,54 +62,21 @@ CREATE TABLE `admincheck_answer` (
 --
 
 INSERT INTO `admincheck_answer` (`admincheck_answerid`, `user_id`, `competitionid`, `question_id`, `checkanswer`, `created_date`) VALUES
-(1, 256, 7, 36, 0, '2021-02-24 06:52:40'),
-(2, 256, 7, 37, 1, '2021-02-24 06:52:40'),
-(3, 256, 7, 38, 0, '2021-02-24 06:52:40'),
-(4, 256, 7, 39, 0, '2021-02-24 06:52:40'),
-(5, 256, 7, 40, 1, '2021-02-24 06:52:40'),
-(6, 256, 7, 67, 0, '2021-02-24 06:52:40'),
-(13, 29, 7, 36, 0, '2021-02-24 07:03:45'),
-(14, 29, 7, 37, 1, '2021-02-24 07:03:45'),
-(15, 29, 7, 38, 0, '2021-02-24 07:03:45'),
-(16, 29, 7, 39, 1, '2021-02-24 07:03:45'),
-(17, 29, 7, 40, 0, '2021-02-24 07:03:45'),
-(18, 29, 7, 67, 0, '2021-02-24 07:03:45'),
-(19, 62, 7, 36, 0, '2021-02-24 07:41:14'),
-(20, 62, 7, 37, 1, '2021-02-24 07:41:14'),
-(21, 62, 7, 38, 0, '2021-02-24 07:41:14'),
-(22, 62, 7, 39, 1, '2021-02-24 07:41:14'),
-(23, 62, 7, 40, 1, '2021-02-24 07:41:14'),
-(24, 62, 7, 67, 0, '2021-02-24 07:41:14'),
-(43, 62, 53, 64, 0, '2021-02-25 05:18:40'),
-(44, 62, 53, 0, 1, '2021-02-25 05:18:40'),
-(45, 29, 7, 36, 0, '2021-02-25 05:19:21'),
-(46, 29, 7, 37, 1, '2021-02-25 05:19:21'),
-(47, 29, 7, 38, 1, '2021-02-25 05:19:21'),
-(48, 29, 7, 67, 0, '2021-02-25 05:19:21'),
-(50, 241, 7, 36, 0, '2021-02-25 12:26:55'),
-(51, 241, 7, 37, 1, '2021-02-25 12:26:55'),
-(52, 241, 7, 38, 1, '2021-02-25 12:26:55'),
-(53, 241, 7, 39, 1, '2021-02-25 12:26:56'),
-(54, 241, 7, 40, 1, '2021-02-25 12:26:56'),
-(55, 241, 7, 67, 0, '2021-02-25 12:26:56'),
-(92, 236, 7, 36, 0, '2021-02-25 12:48:35'),
-(93, 236, 7, 37, 1, '2021-02-25 12:48:35'),
-(94, 236, 7, 38, 1, '2021-02-25 12:48:36'),
-(95, 236, 7, 39, 1, '2021-02-25 12:48:36'),
-(96, 236, 7, 40, 1, '2021-02-25 12:48:36'),
-(97, 236, 7, 67, 0, '2021-02-25 12:48:36'),
-(98, 225, 7, 36, 0, '2021-02-25 12:49:36'),
-(99, 225, 7, 37, 1, '2021-02-25 12:49:37'),
-(100, 225, 7, 38, 1, '2021-02-25 12:49:37'),
-(101, 225, 7, 39, 1, '2021-02-25 12:49:37'),
-(102, 225, 7, 40, 1, '2021-02-25 12:49:37'),
-(103, 225, 7, 67, 0, '2021-02-25 12:49:37'),
-(140, 17, 7, 36, 0, '2021-02-25 13:02:42'),
-(141, 17, 7, 37, 1, '2021-02-25 13:02:42'),
-(142, 17, 7, 38, 1, '2021-02-25 13:02:42'),
-(143, 17, 7, 39, 1, '2021-02-25 13:02:43'),
-(144, 17, 7, 40, 1, '2021-02-25 13:02:43'),
-(145, 17, 7, 67, 0, '2021-02-25 13:02:43');
+(1, 256, 7, 36, 0, '2021-02-26 08:10:48'),
+(2, 256, 7, 37, 1, '2021-02-26 08:10:48'),
+(3, 256, 7, 38, 1, '2021-02-26 08:10:49'),
+(4, 256, 7, 39, 1, '2021-02-26 08:10:49'),
+(5, 256, 7, 40, 1, '2021-02-26 08:10:49'),
+(6, 256, 7, 67, 0, '2021-02-26 08:10:49'),
+(7, 220, 12, 65, 0, '2021-02-26 10:57:25'),
+(8, 220, 12, 66, 0, '2021-02-26 10:57:25'),
+(9, 220, 12, 68, 0, '2021-02-26 10:57:26'),
+(10, 262, 7, 36, 0, '2021-02-26 13:26:17'),
+(11, 262, 7, 37, 1, '2021-02-26 13:26:17'),
+(12, 262, 7, 38, 1, '2021-02-26 13:26:17'),
+(13, 262, 7, 39, 1, '2021-02-26 13:26:17'),
+(14, 262, 7, 40, 0, '2021-02-26 13:26:17'),
+(15, 262, 7, 67, 0, '2021-02-26 13:26:17');
 
 -- --------------------------------------------------------
 
@@ -690,7 +657,9 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (70, 'aa', '2013-06-12', 'aaa@gmail.com', '6', 'sm', 'Kolhapur', 0, 'abc', '9874563210', 1, 'Kolhapur', 'Kolhapur', 22, 7, 258, 40, 'profile_image_258_1613891266.jpg', '2021-02-21'),
 (71, 'aa', '2013-06-12', 'aaa@gmail.com', '6', 'sm', 'Kolhapur', 0, 'abc', '9874563210', 1, 'Kolhapur', 'Kolhapur', 22, 59, 258, 40, 'profile_image_258_1613891266.jpg', '2021-02-21'),
 (72, 'Manish', '2015-02-17', 'manish@gmail.com', '5', 'ppg', 'Kolhapur', 0, 'Neha Rane', '7456552121', 2, 'kolhapur', 'kolhapur', 22, 72, 259, 41, 'profile_image_259_1613978579.png', '2021-02-22'),
-(73, 'Tukaram', '2017-06-13', 'manish@gmail.com', '1', 'sm', 'Kolhapur', 0, 'Prakash Ilage', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 73, 261, 43, 'profile_image_261_1613982851.png', '2021-02-22');
+(73, 'Tukaram', '2017-06-13', 'manish@gmail.com', '1', 'sm', 'Kolhapur', 0, 'Prakash Ilage', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 73, 261, 43, 'profile_image_261_1613982851.png', '2021-02-22'),
+(74, 'Manish', '2016-02-17', 'manish@gmail.com', '6', 'SM', 'kolhapur', 0, 'Raju Patel', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 7, 262, 44, 'profile_image_262_1614339172.png', '2021-02-26'),
+(75, 'Umesh', '2016-06-15', 'manish@gmail.com', '6', 'SM', 'Kolhapur', 0, 'Ramesh Jadhav', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 7, 263, 45, 'profile_image_263_1614340427.png', '2021-02-26');
 
 -- --------------------------------------------------------
 
@@ -978,7 +947,9 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (258, 0, '', 3, 'abc', '', 416012, '', '', '7412587412', 'Ki@12345', NULL, 'active', '', '2021-02-21 07:05:22', 3),
 (259, 0, '', 3, 'Neha Rane', '', 416015, '', '', '8698066910', 'Ki@123456', NULL, 'active', '', '2021-02-22 07:22:59', 3),
 (260, 0, '', 3, 'fgsdg', '', 567567, '', '', '8698066930', 'gfgfd43534534', NULL, 'active', '', '2021-02-22 05:38:49', 3),
-(261, 0, '', 3, 'Prakash Ilage', '', 416012, '', '', '8698066970', 'Ki@12345', NULL, 'active', '', '2021-02-22 08:31:59', 3);
+(261, 0, '', 3, 'Prakash Ilage', '', 416012, '', '', '8698066970', 'Ki@12345', NULL, 'active', '', '2021-02-22 08:31:59', 3),
+(262, 0, '', 3, 'Raju Patel', '', 416012, '', '', '8698066945', 'Ki@12345', NULL, 'active', '', '2021-02-26 11:30:29', 3),
+(263, 0, '', 3, 'Ramesh Jadhav', '', 416012, '', '', '8698066946', 'Ki@12345', NULL, 'active', '', '2021-02-26 11:52:57', 3);
 
 -- --------------------------------------------------------
 
@@ -1056,7 +1027,9 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (40, 258, 1, 'abc', '416012', '7412587412', 'Ki@12345', 'aa', '2013-06-12', 'aaa@gmail.com', 6, 'sm', 'Kolhapur', '', 'abc', '9874563210', 1, 'Kolhapur', 'Kolhapur', 22, 'profile_image_258_1613891266.jpg', '2021-02-21 07:05:23'),
 (41, 259, 1, 'asdf', '416015', '8698066910', 'Ki@123456', 'Manish', '2015-02-17', 'manish@gmail.com', 5, 'ppg', 'Kolhapur', '', 'Neha Rane', '7456552121', 2, 'kolhapur', 'kolhapur', 22, 'profile_image_259_1613978579.png', '2021-02-22 04:58:06'),
 (42, 260, 0, 'fgsdg', '567567', '8698066930', 'gfgfd43534534', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-02-22 05:38:50'),
-(43, 261, 1, 'Prakash Ilage', '416012', '8698066970', 'Ki@12345', 'Tukaram', '2017-06-13', 'manish@gmail.com', 1, 'sm', 'Kolhapur', '', 'Prakash Ilage', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_261_1613982851.png', '2021-02-22 08:31:59');
+(43, 261, 1, 'Prakash Ilage', '416012', '8698066970', 'Ki@12345', 'Tukaram', '2017-06-13', 'manish@gmail.com', 1, 'sm', 'Kolhapur', '', 'Prakash Ilage', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_261_1613982851.png', '2021-02-22 08:31:59'),
+(44, 262, 1, 'Raju Patel', '416012', '8698066945', 'Ki@12345', 'Manish', '2016-02-17', 'manish@gmail.com', 6, 'SM', 'kolhapur', '', 'Raju Patel', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_262_1614339172.png', '2021-02-26 11:30:29'),
+(45, 263, 1, 'Ramesh Jadhav', '416012', '8698066946', 'Ki@12345', 'Umesh', '2016-06-15', 'manish@gmail.com', 6, 'SM', 'Kolhapur', '', 'Ramesh Jadhav', '9874563210', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_263_1614340427.png', '2021-02-26 11:52:58');
 
 -- --------------------------------------------------------
 
@@ -1088,7 +1061,19 @@ INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetition
 (29, 256, 7, '38', '2', '2021-02-20 12:45:07'),
 (30, 256, 7, '39', 'On the afternoon of August 3, 1914, two days after declaring war on Russia, Germany declares war on France, moving ahead with a long-held strategy, conceived by the former chief of staff of the German army, Alfred von Schlieffen, for a two-front war again', '2021-02-20 12:45:07'),
 (31, 256, 7, '40', 'Two of the planes, American Airlines Flight 11 and United Airlines Flight 175, crashed into the North and South towers, respectively, of the World Trade Center complex in Lower Manhattan. Within an hour and 42 minutes, both 110-story towers collapsed.', '2021-02-20 12:45:07'),
-(32, 256, 7, '67', '1', '2021-02-20 12:45:07');
+(32, 256, 7, '67', '1', '2021-02-20 12:45:07'),
+(33, 262, 7, '36', '3', '2021-02-26 11:33:34'),
+(34, 262, 7, '37', '3', '2021-02-26 11:33:34'),
+(35, 262, 7, '38', '1', '2021-02-26 11:33:34'),
+(36, 262, 7, '39', 'On the afternoon of August 3, 1914, two days after declaring war on Russia, Germany declares war on France, moving ahead with a long-held strategy, conceived by the former chief of staff of the German army, Alfred von Schlieffen, for a two-front war again', '2021-02-26 11:33:34'),
+(37, 262, 7, '40', '1994', '2021-02-26 11:33:34'),
+(38, 262, 7, '67', '1', '2021-02-26 11:33:34'),
+(39, 263, 7, '36', '3', '2021-02-26 11:54:24'),
+(40, 263, 7, '37', '1', '2021-02-26 11:54:24'),
+(41, 263, 7, '38', '1', '2021-02-26 11:54:24'),
+(42, 263, 7, '39', 'On the afternoon of August 3, 1914, two days after declaring war on Russia, Germany declares war on France, moving ahead with a long-held strategy, conceived by the former chief of staff of the German army, Alfred von Schlieffen, for a two-front war again', '2021-02-26 11:54:24'),
+(43, 263, 7, '40', '1994', '2021-02-26 11:54:24'),
+(44, 263, 7, '67', '1', '2021-02-26 11:54:24');
 
 -- --------------------------------------------------------
 
@@ -1101,15 +1086,18 @@ CREATE TABLE `userscore_master` (
   `user_id` int(11) NOT NULL,
   `competitionid` int(11) NOT NULL,
   `total_question` int(11) NOT NULL,
-  `correct_answer` int(11) NOT NULL
+  `correct_answer` int(11) NOT NULL,
+  `score_percentage` float(18,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `userscore_master`
 --
 
-INSERT INTO `userscore_master` (`userscore_id`, `user_id`, `competitionid`, `total_question`, `correct_answer`) VALUES
-(1, 17, 7, 6, 4);
+INSERT INTO `userscore_master` (`userscore_id`, `user_id`, `competitionid`, `total_question`, `correct_answer`, `score_percentage`) VALUES
+(1, 256, 7, 6, 4, 66.67),
+(2, 220, 12, 3, 0, 0.00),
+(3, 262, 7, 6, 3, 50.00);
 
 -- --------------------------------------------------------
 
@@ -1301,7 +1289,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `admincheck_answer`
 --
 ALTER TABLE `admincheck_answer`
-  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `assigncompetition`
@@ -1403,7 +1391,7 @@ ALTER TABLE `points_master`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1421,25 +1409,25 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `userscore_master`
 --
 ALTER TABLE `userscore_master`
-  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `winner`

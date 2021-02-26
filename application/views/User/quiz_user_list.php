@@ -68,14 +68,10 @@
                   </div>
                  </form>
 
-               <!--    <?php foreach ($competitiontype as $value) {
+            
 
-                    $competition = $value->competitiontypeid;
-
-                        // print_r($competition); die();
-                      } ?> -->
-
-                 
+            <?php  if(empty($competitiontypeid)){$competitiontypeid="";} ?>
+            <?php  if($competitiontypeid=="1"){ ?>     
            <div class="form-group row">
                         <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
@@ -89,23 +85,29 @@
                 </thead>
                 <tbody>
                   <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  foreach ($fetch_userlist_quiz as $list) {
+                    // print_r($fetch_userlist_quiz);
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td> 
-                    <td><?php echo $list->user_id ?></td> 
+                   
+                    <td><?php echo $list->user_id ?></td>
+                   
                     <td><?php echo $list->user_name ?></td>
                    
-                    <td><div class="form-group col-md-12">
-                     <?php  if($list->competitiontypeid=="1"){
-                     ?>
+                    <td>
+                      <div class="form-group col-md-12">
+                 <?php  if(!isset($list->score_percentage)){
+                      ?> 
                        <a class="btn btn-primary btnviewquiz" name="user_id" id="btnviewquiz <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/quiz_display/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >View Quiz</a>
-                     <?php }else{?>
 
-                       <a class="btn btn-primary btndownload" name="user_id" id="btndownload <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/download_user_uploadfiles/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Download</a>
+                <?php 
+                   }else{ ?>  
+                   <?php echo $list->score_percentage ?> 
+  <!--  <label>< ?php echo $correct_answer; ?></label>/<label>< ?php echo $total_question; ?></label> --> 
 
-                      <!--  <button class="btn btn-primary btndownload" name="user_id" id="btndownload <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Download</button> -->
-                     <?php } ?>
+               <?php } ?>  
+                   
                         </div>
                      </td>
 
@@ -116,7 +118,42 @@
 
                 </tbody>
               </table> 
-                  </div> 
+                  </div>
+                  <?php }else{ ?>
+                <div class="form-group row">
+                        <table id="dataTable" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th class="wt_50">#</th>
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <!-- <th>User Name</th> -->
+                  <th class="wt_50">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 0;
+                  foreach ($fetch_userlist_othercompetition as $list) {
+                    $i++; ?>
+                  <tr>
+                    <td><?php echo $i; ?></td> 
+                    <td><?php echo $list->user_id ?></td> 
+                    <td><?php echo $list->user_name ?></td>
+                   
+                    <td><div class="form-group col-md-12">
+                   <a class="btn btn-primary btndownload" name="user_id" id="btndownload <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/download_user_uploadfiles/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Download</a>
+
+                    
+                        </div>
+                     </td>
+
+                  </tr>
+                   <?php } ?>
+
+                </tbody>
+              </table> 
+                  </div>
+                 <?php  } ?>
              
 	                 <!--  <div id="build-wrap" name="text">
 
