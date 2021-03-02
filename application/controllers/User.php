@@ -208,7 +208,7 @@ class User extends CI_Controller{
          $this->User_Model->admincheck_quiz($user_id,$competition_id,$question_id,$checkanswer);
 
       }
-      $data['result'] = $this->User_Model->quize_get($competition_id);
+      $data['result'] = $this->User_Model->quize_get($competition_id,$user_id);
     foreach ($data['result'] as $value) {
       $question = $value['question_id']; 
       // print_r($question);
@@ -277,7 +277,11 @@ class User extends CI_Controller{
    
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['users'] = $this->User_Model->fetch_user_name($user_id);
-    $data['result'] = $this->User_Model->quize_get($competitionid);
+    $data['result'] = $this->User_Model->quize_get($competitionid,$user_id);
+     // $data['user_result'] = $this->User_Model->get_list_by_id('competitionid', $competitionid,'','','','','userquizsubmit'); 
+
+     // print_r($data['result']); die();
+
  //    foreach ($data['result'] as $value) {
  //      $question = $value['question_id']; 
  //      // print_r($question);
@@ -333,7 +337,7 @@ class User extends CI_Controller{
 
     // print_r($totalquest); die();
 
-      $data['result'] = $this->User_Model->quize_get($competitionid);
+      $data['result'] = $this->User_Model->quize_get($competitionid,$user_id);
       foreach ($data['result'] as $value) {
              $question = $value['question_id']; 
 
@@ -1754,6 +1758,7 @@ class User extends CI_Controller{
     // print_r($user_id);die();
 
     $user_id = $this->session->userdata('user_id');
+    $competitionid = $this->session->userdata('competitionid');
 
 
    // echo $user_id; die();
@@ -1761,7 +1766,67 @@ class User extends CI_Controller{
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'WebsiteController'); }
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+
+     //   $profile_info = $this->User_Model->get_info('user_id', $user_id, 'userprofile_master');
+
+     //    $competition_info = $this->User_Model->getcompetition_info($competitionid);
+
+     //    $check_allready_participate = $this->User_Model->check_participate($user_id,$competitionid);
+
+     //    // print_r($check_allready_participate); die();
+
+
+     //    foreach ($competition_info as $value) {
+
+     //   $fromstand = $value->fromstand;
+     //   $tostand = $value->tostand;
+     //   $alluser = $value->alluser;
+
+     //   $userparticipatetype = $value->gender; //all[3],male[1],female[2]
+     //   $fromage = $value->fromage;
+     //   $toage = $value->toage;
+     //   // print_r($userparticipatetype);die();
+
+     // }
+
+     // foreach ($profile_info as  $value) {
+       
+     //   $standard = $value->standard;
+     //   $parentname = $value->parentname;
+     //   $fullname = $value->fullname;
+     //   $birthdate = $value->birthdate;
+     //   $schoolcollegename = $value->schoolcollegename;
+     //   $emailid = $value->emailid;
+     //   $address = $value->address;
+     //   $pincode = $value->pincode;
+     //   $profile_image = $value->profile_image;
+     //   $alternatemobno = $value->alternatemobno;
+     //   $gender = $value->gender; // male[1],female[2]
+     //   $cityid = $value->cityid;
+     //   $districtid = $value->districtid;
+     //   $stateid = $value->stateid;
+     //   $profile_submitted = $value->profile_submitted;
+     //   $userprofileid = $value->userprofileid;
+
+     //   // print_r($gender); die();
+
+     //   //  $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
+     //   //  $query = $this->db->query($sql);
+     //   //  $result = $query->result_array();
+
+     //   //  // print_r($result); die();
+     //   // $a="";
+     //   //  foreach ($result as $value) {
+     //   //    // print_r(expression) $value;
+     //   //    // $age;
+          
+     //   //  }
+
+     //    // die();
+    
+      
+     // }
 
 
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
@@ -1796,6 +1861,10 @@ class User extends CI_Controller{
         // $lastid = $this->db->insert_id();
       // echo $last_updated_id; die();
 
+      // if($standard >= $fromstand && $standard <= $tostand ){  
+
+
+      // if(empty($check_allready_participate)){
       $save_data = array(
         'parentname' => $this->input->post('parentname'),
         'fullname' => $this->input->post('fullname'),
@@ -1819,9 +1888,24 @@ class User extends CI_Controller{
       );
       // print_r($save_data);
       $this->User_Model->save_data('profile',$save_data);
+
+
       $this->session->set_flashdata('save_success','success');
       $this->session->unset_userdata('user_id');
-      header('location:'.base_url().'User/participate_list');
+      header('location:'.base_url().'User/participate_list'); 
+  //  }else{
+
+  //     $this->session->set_flashdata('profileAlready_error','error');
+  //     header('location:'.base_url().'User/add_participate');
+    
+  //   }
+  // }else{
+  //       // print_r($standard); die();
+
+  //     $this->session->set_flashdata('class_error','error');
+  //     header('location:'.base_url().'User/add_participate');
+  // }
+
     }
 
  
@@ -1869,6 +1953,17 @@ class User extends CI_Controller{
       // print_r($userprofile_info); die();
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['state'] = $this->User_Model->fetch_state();
+    $fetch_profile_list = $this->User_Model->fetch_profile_list($user_id);
+
+    foreach ($fetch_profile_list as $value) {
+      $competitionid = $value->competitionid;
+      $this->session->set_userdata('competitionid',  $competitionid);
+
+        // print_r($competitionid); 
+
+    }
+    // die();
+
     // $data['city'] = $this->User_Model->fetch_city1($stateid);
     // $data['district'] = $this->User_Model->fetch_district1($districtid);
 
@@ -2025,28 +2120,43 @@ class User extends CI_Controller{
   }
 
 /******************************* Assign Competition Information ****************************/
+
+public function add(){
+   $userId = $_POST['user'];
+      // $compid = $_POST['comp_id'];
+      // $userid2 = $_POST['userid'];
+      return $userId;
+  // return "string";
+}
  public function add_assigncompetition(){
+      $userId = $_POST['user'];
+      $compid = $_POST['comp_id'];
+      $userid2 = $_POST['userid'];
+      return $userid2;
+    // print_r($userId); d ie();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
+    $this->form_validation->set_rules('compid', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
        
-        'competitionid' => $this->input->post('competitionid'),
-        'pincode' => $this->input->post('pincode'),
-        'user_id1' => $this->input->post('user_id1'),
-        'user_id2' => $this->input->post('user_id2'),
+        'competitionid' => $compid,
+        // 'pincode' => $this->input->post('pincode'),
+        'user_id1' => $userId,
+        'user_id2' => $userid2,
         'created_date' => date('Y-m-d H:i:s'),
       );
       // print_r($save_data);
-      $this->User_Model->save_data('assigncompetition',$save_data);
-      $this->session->set_flashdata('save_success','success');
+      $result = $this->User_Model->save_data('assigncompetition',$save_data);
+      return $result;
+      // $this->session->set_flashdata('save_success','success');
       // header('location:'.base_url().'User/profile_list');
     }
 
-  $data['competition'] = $this->User_Model->fetch_competition();
+  // $data['competition'] = $this->User_Model->fetch_competition();
   // $data['pincode'] = $this->User_Model->fetch_pincode();
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
  // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
@@ -2055,10 +2165,10 @@ class User extends CI_Controller{
   // $data['profile'] = $this->User_Model->fetch_profile();
   // $data['city'] = $this->User_Model->fetch_city();
 
-   $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/assigncompetition',$data);
-    $this->load->view('Include/footer',$data);
+    // $this->load->view('Include/head',$data);
+    // $this->load->view('Include/navbar',$data);
+    // $this->load->view('User/assigncompetition',$data);
+    // $this->load->view('Include/footer',$data);
   }
    public function assigncompetition_list(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
@@ -2073,6 +2183,7 @@ class User extends CI_Controller{
      // print_r($user_id);   
      
     $data['assigncompetition_list'] = $this->User_Model->assigncompetition_list($competitionid,$pincode);
+    $data['competition'] = $this->User_Model->fetch_competition();
 
     // print_r($data['assigncompetition_list']);
 
@@ -2100,21 +2211,30 @@ class User extends CI_Controller{
     public function addassigncompetition_list_test()
     {
       $userId = $_POST['user'];
+      $compid = $_POST['comp_id'];
+      // print_r($userId); die();
      
-      $data = $this->User_Model->addassigncompetition_list($userId);
+      $data = $this->User_Model->addassigncompetition_list($userId,$compid);
       // echo (json_encode($data));
 
       foreach ($data as $value) {
         # code...
+        // echo form_open('books/input');
         ?> 
-                <tr><td><?php  echo $value['user_id']; ?></td>
-                <td><?php  echo $value['user_name']; ?></td>
-              <td><button class="btn btn-primary btnaddcomp" name="user_id2" id="" value="<?php echo $value['user_id']; ?>" >Add </button></td></tr>  
+            <tr>
+        <!-- <form action="< ?php echo base_url(); ?>User/add_assigncompetition"> -->
 
-             
+              <td style="display:none;"><?php  echo $userId; ?></td>
+              <td><?php  echo $value['user_id']; ?></td>
+              <td><?php  echo $value['user_name']; ?></td>
+              <td><button class="btn btn-primary btnaddcomp" onclick="myFunction(<?php  echo $userId; ?>,<?php  echo $compid; ?>,<?php echo $value['user_id']; ?>)" name="user_id2" id="comp1" value="<?php echo $value['user_id']; ?>" >Add </button></td>
+         <!-- </form>     -->
+
+            </tr>  
+
 
         <?php
-
+        // echo form_close();
       }
 
      
@@ -2153,8 +2273,11 @@ class User extends CI_Controller{
      $data['fetch_user_uploadfile'] = $this->User_Model->fetch_user_uploadfile($competitionid);
      $data['fetch_userlist_othercompetition'] = $this->User_Model->fetch_userlist_othercompetition($competitionid);
 
-    // print_r($data['user_list']); die();
     $data['userscore'] = $this->User_Model->fetch_userscore($competitionid);
+    $data['points'] = $this->User_Model->fetch_points($competitionid);
+
+    // print_r($data['points']); die();
+
 
     $data['competitionid'] =  $competitionid;
    
@@ -2164,49 +2287,43 @@ class User extends CI_Controller{
       $this->load->view('Include/footer',$data);
     }
 
- // public function add_assignwinner(){
- //    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
- //    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
- //    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
- //    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
- //    $this->form_validation->set_rules('competition', 'First Name', 'trim|required');
- //    if ($this->form_validation->run() != FALSE) {
- //  // print_r($_POST);
+ public function save_winner(){
 
- //      $save_data = array(
-       
- //        'competitionid' => $this->input->post('competition'),
- //        'pincodeid' => $this->input->post('pin'),
- //        'user_id' => $this->input->post('user_id'),
- //        // 'pincode' => $this->input->post('pincode'),
-        
-        
- //        // 'user_addedby' => $quizweb_user_id,
- //      );
- //      // print_r($save_data);
- //      $this->User_Model->save_data('assignwinner',$save_data);
- //      $this->session->set_flashdata('save_success','success');
- //      // header('location:'.base_url().'User/profile_list');
- //    }
+    // print_r($_POST);
 
- //  $data['competition'] = $this->User_Model->fetch_competition();
- //  // $data['pincode'] = $this->User_Model->fetch_pincode();
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+  // print_r($_POST);
+  $user_id = $this->input->post('user_id');
+  $competitionid = $this->input->post('competitionid');
+  $check_winnerexists = $this->User_Model->check_winnerexists($user_id,$competitionid);
+  
+  if(empty($check_winnerexists)){
+      $save_data = array(
 
- //  // print_r($data['competition']);
- //  // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
- // // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
+        'competitionid' => $this->input->post('competitionid'),
+        'pointsid' => $this->input->post('pointsid'),
+        'user_id' => $this->input->post('user_id'),
 
+      );
+      // print_r($save_data);
+      $this->User_Model->save_data('assignwinner',$save_data);
+      $this->session->set_flashdata('save_success','success');
+      header('location:'.base_url().'User/add_assignwinner');
+    }else{
+      $this->session->set_flashdata('record_error','error');
+      header('location:'.base_url().'User/add_assignwinner');
 
- //  // $data['profile'] = $this->User_Model->fetch_profile();
- //  // $data['city'] = $this->User_Model->fetch_city();
-
- //    $this->load->view('Include/head',$data);
- //    $this->load->view('Include/navbar',$data);
- //    $this->load->view('User/assignwinner',$data);
- //    $this->load->view('Include/footer',$data);
- //  }
+      // echo 'record exists';
+    }
+}
+}
  //   public function assignwinner_list(){
- //    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+ //    $quizweb_user_id = $thisquizweb_user_id');
  //    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
  //    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
  //    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }     

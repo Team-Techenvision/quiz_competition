@@ -252,7 +252,20 @@
   <br>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
-
+<script type="text/javascript">
+  <?php if($this->session->flashdata('profileAlready_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('User is Already Participated in this Competition ');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('class_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('User Can not Participate in this Competition');
+    });
+  <?php } ?>
+</script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 
 <script>

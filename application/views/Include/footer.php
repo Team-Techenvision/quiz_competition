@@ -200,4 +200,11 @@ $(function() {
     });
   });
 </script>
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+  $('#comp1').click(function(){
+  alert('hello');
+  });
+});
+</script> -->
 

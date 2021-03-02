@@ -6,6 +6,8 @@ class WebsiteController extends CI_Controller{
     parent::__construct();
 
     $this->load->model('Website_Model');
+    $this->load->helper('download');
+
     // $this->load->model('Transaction_Model');
   }
 
@@ -239,6 +241,11 @@ class WebsiteController extends CI_Controller{
 
     $data['uploadfile_list'] = $this->Website_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','competition_uploadfile_submit');
 
+     $data['check_userscore_exists'] = $this->Website_Model->check_userscore_exists($quizweb_user_id,$competitionid);
+
+     // print_r($data['check_userscore_exists']); 
+
+
     foreach ($data['uploadfile_list'] as $value) { 
 
       $upload_audio1 = $value->upload_audio;
@@ -261,7 +268,23 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/competition_usersave',$data);
     $this->load->view('Website/Include/footer',$data);
-}     
+} 
+public function download($quiz_id){
+
+        $quiz_id = $this->uri->segment(3);
+  // print_r($quiz_id); die();
+
+
+        $fileinfo = $this->Website_Model->download($quiz_id);
+        foreach ($fileinfo as $value) {
+          $filename = $value['upload_image'];
+        }
+        $name = $filename;
+        $data = file_get_contents(base_url().'assets/images/competition_images/'.$filename); 
+        force_download($name, $data); 
+    
+  }
+
 public function competition_uploadfile(){
 
   // print_r($_POST); die();
@@ -1359,6 +1382,7 @@ public function insert_profiledata(){
 
    // Winner List....
   public function winner_list(){
+    // print_r($_POST); die();
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
@@ -1554,6 +1578,34 @@ public function insert_profiledata(){
     // print_r($data['result']); die();
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/star_quizs',$data);
+    $this->load->view('Website/Include/footer',$data);
+  }
+  /***    user submitted quiz after display quiz correct and incorrect ans of user  ******/
+
+
+  public function after_user_submitted_quiz_display(){
+    $competition_id = $this->uri->segment(3);
+    // $user_id = $this->uri->segment(4);
+
+    // print_r($competition_id);
+    // print_r($user_id);
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+   
+    $data['competition'] = $this->Website_Model->fetch_competition();
+    $data['users'] = $this->Website_Model->fetch_user_name($quizweb_user_id);
+    $data['result'] = $this->Website_Model->quize_get_front($competition_id,$quizweb_user_id);
+    $data['score_display'] = $this->Website_Model->score_display_front($competition_id,$quizweb_user_id);
+    $data['quiz_display'] = $this->Website_Model->quiz_display_front($competition_id,$quizweb_user_id,$quizweb_user_id);
+    
+    
+    // print_r($data['result']);
+
+    $this->load->view('Website/Include/head',$data);
+    $this->load->view('Website/quiz_display_front',$data);
     $this->load->view('Website/Include/footer',$data);
   }
 

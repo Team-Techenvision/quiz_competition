@@ -31,7 +31,7 @@
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
-              <!-- <form id="form_action" role="form" action="" method="post"> -->
+              
                 <div class="card-body">
                 
                   <form id="form_action" role="form" action="<?php echo base_url(); ?>User/add_assignwinner" method="post" >
@@ -67,6 +67,38 @@
 
                   </div>
                  </form>
+
+                 <form id="form_action" role="form" action="<?php echo base_url(); ?>User/save_winner" method="post">
+
+                 <div class="row">
+                 <div class="form-group col-md-6">
+                    <label>Winner Position <span style="color: red;">*</span></label>
+                       <?php
+
+                          if(isset($pointsid)){?>
+
+                           <input type="hidden" class="form-control required title-case text" name="points" id="points" value="<?php if(isset($pointsid)){ echo $pointsid; } ?>" disabled="">
+                         <?php }?>
+
+                       <select name="pointsid" id="pointsid"class="form-control" required="">
+                          <option value="">Select Competition</option>
+               
+                          <?php 
+                          
+                          foreach($points as $points)
+                          {
+                           
+                          echo '<option value="'. $points->pointsid.'" '.$selected.'>'. $points->winnerposition.'</option>';
+                           }              
+                           
+                          ?>  
+
+                           
+                       </select>
+                    </div> 
+                   </div>
+
+
             <?php  if(empty($competitiontypeid)){$competitiontypeid="";} ?>
 
               <?php 
@@ -82,7 +114,7 @@
                   <th>User Name</th>
                   <th>Score(%)</th>
                   <!-- <th>Correct Answer</th> -->
-                  <th class="wt_50">Action</th>
+                  <!-- <th class="wt_50">Action</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -90,14 +122,15 @@
                   foreach ($userscore as $list) {
                     $i++; ?>
                   <tr>
-                    <td><?php echo $i; ?></td> 
+                    <td><input type="radio" id="" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 
                     <td><?php echo $list->user_id ?></td> 
                     <td><?php echo $list->user_name ?></td>
                     <td><?php echo $list->score_percentage ?></td>
-                     <!-- <td><?php echo $list->correct_answer ?></td> -->
-                   
-                    <td>
-                     </td>
+                    <!-- <td><?php echo $list->competitionid ?></td> -->
+
+                  
+                   <!--  <td>
+                     </td> -->
 
 
                  
@@ -116,7 +149,7 @@
                   <th>User Id</th>
                   <th>User Name</th>
                   <!-- <th>User Name</th> -->
-                  <th class="wt_50">Action</th>
+                  <!-- <th class="wt_50">Action</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -124,12 +157,14 @@
                   foreach ($fetch_userlist_othercompetition as $list) {
                     $i++; ?>
                   <tr>
-                    <td><?php echo $i; ?></td> 
+                    <td><input type="radio" id="" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 
                     <td><?php echo $list->user_id ?></td> 
                     <td><?php echo $list->user_name ?></td>
+                    <!-- <td><?php echo $list->competitionid ?></td> -->
+
                    
-                    <td>
-                     </td>
+                   <!--  <td>
+                     </td> -->
 
 
                  
@@ -144,16 +179,18 @@
                    <!--  <div id="build-wrap" name="text">
 
                     </div> -->
-       
+                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
+                    <a href="< ?php echo base_url() ?>User/add_competition" class="btn btn-default ml-4">Cancel</a>
+            </form>
                 </div>                           
                 <!-- /.card-body -->
               <!--  <div class="card-footer">
-                  < ?php if(isset($update)){ ?>
+                  <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                  < ?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
-                  < ?php } ?>
-                  <a href="< ?php echo base_url() ?>User/add_competition" class="btn btn-default ml-4">Cancel</a>
+                  <?php } else{ ?>
+                   
+                  <?php } ?>
+               
                 </div>  -->
               <!-- </form> -->
             </div>
@@ -172,9 +209,20 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 <script>
-  <?php if($this->session->flashdata('admincheck_success')){ ?>
+  // <?php if($this->session->flashdata('admincheck_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Quiz Checked and Saved Successfully');
+      // toastr.success('Quiz Checked and Saved Successfully');
+    // });
+  // <?php } ?> 
+
+  <?php if($this->session->flashdata('save_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Winner Saved Successfully');
+    });
+  <?php } ?>
+   <?php if($this->session->flashdata('record_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Record Exists');
     });
   <?php } ?>
 </script>

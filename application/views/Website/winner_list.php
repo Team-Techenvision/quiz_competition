@@ -60,6 +60,7 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Competition</th>
+                  <th>Winner Position</th>
                
                 
                 </tr>
@@ -74,7 +75,7 @@
                    <!--  <td><?php echo $list->competitionid ?></td> -->
                    <!-- <td><?php echo $list->profileid ?></td> -->
                     <td><?php echo $list->title ?></td>
-                    <!-- <td><?php echo $list->user_name ?></td> -->
+                    <td><?php echo $list->winnerposition  ?></td>
                 
                   <?php } ?>
                   </tr>

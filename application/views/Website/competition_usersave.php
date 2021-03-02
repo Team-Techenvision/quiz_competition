@@ -55,6 +55,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                 <?php foreach ($competition_list as $value) { 
                     
                     $comptype = $value->competitiontypeid;
+                    $competitionid = $value->competitionid;
                     $upload = $value->uploadfile;
                     $email = $value->email;
                     $whatsapp = $value->whatsapp;
@@ -210,18 +211,38 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                 <?php  } }?>
                                     <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->
                                     <!-- <div class="form-group"> -->
-                                       <?php if(isset($update)){ ?>
-                                        <button id="btn_update" type="submit" class="btn btn-primary">Submit </button>
-                                      <?php } else{ ?>
+                                       
                                         <button id="btn_save" type="submit" class="btn btn-primary px-4">Submit</button>
-                                      <?php } ?>
+                                     
+                                      
+                                      
                                    <!--  <button id="btn_save"  type="submit" class="btn btn-primary px-4">Submit</button> -->
                                   <!-- </div> -->
 
 
                                    
                                   </div>
-                                  <div class="col-md-12">
+                                 
+                             
+                             <!--   <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>" class="btn btn-info">Start</a> -->
+        
+
+                            <?php } ?>
+
+                            <?php if(empty($check_userscore_exists)){}else{ ?>
+                                <div class="button11" id="button-6">
+                                 <div id="spin"></div>
+                                 <a href="<?php echo base_url(); ?>WebsiteController/after_user_submitted_quiz_display/<?php echo $competitionid; ?>/<?php echo $quizweb_user_id; ?>" >view Result</a>
+                                </div>
+                              <?php } ?>
+                              <!-- after_user_submitted_quiz_display/'.$competition_id.'/'.$user_id -->
+<!-- 
+                                 <a id="btn_save" type="submit" class="btn btn-primary px-4">view Result</a> -->
+
+                             </form>
+
+
+                              <div class="col-md-12">
 
                                      <?php 
                                       if($file_format=='1'){
@@ -276,18 +297,17 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                           // print_r($uploadaudio);
                                        ?>
+                                       <!-- <?php echo $competitionid; ?> -->
+                                          <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/download/<?php echo $competitionid; ?>" method="post" >
                                     
                                           <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadimage; ?>" alt="" width="320" height="240" />
+                                            <br><br>
+                                           <button id="" type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span>Download </button>
+                                         </form>
 
                                     <?php } } ?>
                                      </div>
 
-                             
-                             <!--   <a href="<?php  echo base_url(); ?>WebsiteController/star_competion/<?php echo $value->competitionid ?>" class="btn btn-info">Start</a> -->
-                            <?php } ?>
-
-
-                             </form>
                      </div>
                      
 

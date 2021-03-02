@@ -31,7 +31,7 @@
 
         <div class="button11" id="button-6">
          <div id="spin"></div>
-         <a href="<?php echo base_url(); ?>/WebsiteController" >go to home</a>
+         <a href="<?php echo base_url(); ?>WebsiteController" >go to home</a>
         </div>
 
  
@@ -74,7 +74,7 @@
          <!-- /.row -->
           <br><br>
        <!-- Past competition -->
-        <?php   if($enddate <= $today){ ?>  
+        <?php   if($enddate < $today){ ?>  
           <label class="complabal mb-4">Past Competition</label>
            <?php }  ?>  
          <div class="row">
@@ -84,7 +84,7 @@
             $enddate = $list->enddate;
                 $today = date('Y-m-d'); 
             // print_r($enddate); 
-            if($enddate <= $today){
+            if($enddate < $today){
           ?>
         
           <div class="col-xl-3 col-md-3 col-sm-12 col-12 ">

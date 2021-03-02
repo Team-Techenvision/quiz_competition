@@ -31,7 +31,13 @@
                 <div class="card-body row">
                      <form id="form_action" role="form" action="<?php echo base_url(); ?>User/assigncompetition_list" method="post" > <div class="row" >          
                      <div class="form-group col-md-6">
-                     <label>Competition Title <span style="color: red;">*</span></label>        
+
+                     <label>Competition Title <span style="color: red;">*</span></label>  
+                      <?php
+                      if(isset($competitionid)){?>
+
+                       <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
+                       <?php }?>      
                       <select name="competitionid" id="competitionid"class="form-control" required="">
                     <option value="">Select Competition</option>
          
@@ -48,7 +54,8 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label>Pincode</label>
-                      <input type="text" class="form-control required title-case text " name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php if(isset($pincode)){ echo $pincode; } ?>" placeholder="Enter Pincode" >
+                    <?php if(empty($pincodeid)){ $pincodeid="";} ?>
+                      <input type="text" class="form-control required title-case text " name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php  echo $pincodeid;  ?>" placeholder="Enter Pincode" >
 
 
                     <!--   <select name="pincode" id="pincode"class="form-control">
@@ -143,6 +150,8 @@
                                   </div>
                                   <!-- <div id="customers-list"></div> -->
                                   <!-- <div id="compitiorlist"></div> -->
+                                  <!-- <form action="< ?php echo base_url(); ?>User/add_assigncompetition"> -->
+                                         
                                      <table id="compitiorlist" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
@@ -151,14 +160,15 @@
                                           <th class="wt_50">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody class="comp" id="competitor">
-                                          <form action="<?php echo base_url(); ?>User/add_assigncompetition">
+
                         
-                                          </form>
+                                        <tbody class="comp" id="competitor">
+                                         
                                           
                                         </tbody>
                                       
                                       </table>  
+                                          <!-- </form> -->
                                                         
                                
                               </div>
@@ -215,6 +225,9 @@
 
 $(document).ready(function(){
 
+   var competition = $('#competition').val();
+ $("#competitionid option[value='"+competition+"']").attr("selected","selected");
+
    $('#dataTable').DataTable();
 
   $('.btnadd').click(function(){
@@ -228,7 +241,8 @@ $(document).ready(function(){
     // alert(pincodeid); 
     // alert(user_id);
     $.post('<?php echo base_url(); ?>User/addassigncompetition_list_test',
-      {user:user_id},
+      {user:user_id,comp_id:competition},
+      // {user:user_id},
 
       function(data,status){
 
@@ -249,12 +263,59 @@ $(document).ready(function(){
  
 
 </script>
-<script type="text/javascript">
-  $(document).ready(function(){
-  $('#competitor .btnaddcomp').click(function(){
-  alert('hello');
-  });
-});
+<script>
+function myFunction(userid1,compid,userid2) {
+
+  // alert("I am an alert box!");
+    var userid= userid1;
+    var comp=compid;
+    var user=userid2;
+
+ // alert(userid);
+ // alert(comp);
+ // alert(user);
+ // $.ajax({
+ //        url: '< ?php echo base_url(); ?>User/add',
+ //        data: ({user:userid,comp_id:comp,userid:user)
+ //        // dataType: 'json', 
+ //        type: 'post',
+ //        success: function(data) {
+
+ //            response = jQuery.parseJSON(data);
+ //            console.log(response);
+ //            alert(response);
+ //        }             
+ //    });
+ $.ajax({
+    url:"<?php echo base_url(); ?>User/add",
+    method:"POST",
+    data:{user:userid},
+    success:function(data)
+    {
+      alert(data);
+     // $('#cityid').html(data);
+     // $('#districtid').html('<option value="">Select District</option>');
+
+    }
+   });
+
+    // $.post('< ?php echo base_url(); ?>User/add_assigncompetition',
+      // {user:userid},
+      // {comp_id:comp},
+      // {userid:user},
+
+    //   function(data){
+
+    //   alert(data);
+    //   // console.log(data);
+    //   // $('#competitor').html(data);
+
+
+    // });
+
+}
 </script>
+
+
 </body>
 </html>

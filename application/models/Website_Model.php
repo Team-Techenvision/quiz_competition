@@ -11,7 +11,109 @@ function check_login($mobile,$password){
     return $result;
   }
 
+ public function download($quiz_id)
+  {
+    $this->db->select('*');
+    $this->db->where('competitionid',$quiz_id);
+    $result = $this->db->get('competition_uploadfile_submit');
+   
+    return $result->result_array();
+ 
+  }
+  public function check_userscore_exists($user_id,$competition_id){
+  $this->db->select('*');
+  $this->db->where('competitionid',$competition_id);
+  $this->db->where('user_id',$user_id);
+  $this->db->from('userscore_master');
+  $query = $this->db->get();
+  $result = $query->num_rows();
+  return $result;
+  }
+   public function score_display_front($competitionid,$user_id)
+  {
+    // $this->db->select('userquizsubmit.*,dynamiccompetition.*');   
+     // $this->db->join('dynamiccompetition', 'userquizsubmit.question_id = dynamiccompetition.dynamiccompetitionid', 'inner');
+    // $this->db->group_by('question_id');
 
+    $this->db->where('competitionid',$competitionid);
+    $this->db->where('user_id',$user_id);
+    $result = $this->db->get('userscore_master');
+    //$result = $this->db->query($cmd);
+    //print_r($result->result_array());die();
+   
+    return $result->result_array();
+
+  }
+  public function quiz_display_front($competitionid,$user_id,$user_id1)
+  {
+
+    $this->db->select('userquizsubmit.*,admincheck_answer.*,dynamiccompetition.*');   
+     $this->db->join('userquizsubmit', 'admincheck_answer.question_id = userquizsubmit.question_id', 'inner');
+     $this->db->join('dynamiccompetition', 'admincheck_answer.question_id = dynamiccompetition.dynamiccompetitionid', 'inner');
+    $this->db->group_by('admincheck_answer.question_id');
+
+    $this->db->where('admincheck_answer.competitionid',$competitionid);
+
+    $this->db->where('admincheck_answer.user_id',$user_id);
+    $this->db->where('userquizsubmit.user_id',$user_id1);
+    $result = $this->db->get('admincheck_answer');
+    //$result = $this->db->query($cmd);
+    // print_r($result->result_array());die();
+   
+    return $result->result_array();
+
+  }
+  // public function display_score($user_id){
+  //   $this->db->where('user.user_id', $user_id);
+
+  //   $this->db->from('user');
+ 
+  //   $query = $this->db->get();
+  //   $result = $query->result();
+  // }
+   public function fetch_user_name($user_id){
+     // $this->db->select('*');
+    // $this->db->select('user.*,competition.*');
+//     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
+    // $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    // $this->db->join('user', 'userquizsubmit.user_id = user.user_id', 'inner');
+    // $this->db->where('profile.competitionid', $competitionid);
+    $this->db->where('user.user_id', $user_id);
+
+    $this->db->from('user');
+ 
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+   }
+   public function quize_get_front($quiz_id,$user_id)
+  {
+
+    // print_r($user_id); die();
+    $this->db->select('userquizsubmit.*,dynamiccompetition.*');   
+     $this->db->join('dynamiccompetition', 'userquizsubmit.question_id = dynamiccompetition.dynamiccompetitionid', 'inner');
+     // $this->db->join('admincheck_answer', 'userquizsubmit.question_id = admincheck_answer.question_id', 'inner');
+     // $this->db->join('admincheck_answer', 'userquizsubmit.dynamiccompetitionid = admincheck_answer.competitionid', 'left');
+    // $this->db->group_by('userquizsubmit.question_id');
+
+    $this->db->where('userquizsubmit.dynamiccompetitionid',$quiz_id);
+    $this->db->where('userquizsubmit.user_id',$user_id);
+    $result = $this->db->get('userquizsubmit');
+    //$result = $this->db->query($cmd);
+    // print_r($result->result_array());die();
+   
+    return $result->result_array();
+
+  }
+  //  public function view_ques($q_id)
+  // {
+  //   $this->db->select('title');
+  //   $this->db->where('competitionid',$q_id);
+  //   $result = $this->db->get('competition');
+  //   //print_r($result->result_array());die();
+  //   return $result->result_array();
+  // }
   // function check_loginM($mobile){
   //   $query = $this->db->select('user.user_mobile,user.*')
   //     ->where('user_mobile', $mobile)
@@ -110,9 +212,10 @@ function check_login($mobile,$password){
     return $result;
   }
   public function resultwinner_list($user_id){
-     // $this->db->select('*');
-    $this->db->select('assignwinner.*,user.*,competition.*');
+     $this->db->select('*');
+    $this->db->select('assignwinner.*,user.*,competition.*,points_master.*');
     $this->db->join('user', 'assignwinner.user_id = user.user_id', 'left');
+    $this->db->join('points_master', 'assignwinner.pointsid = points_master.pointsid', 'left');
     $this->db->join('competition', 'assignwinner.competitionid = competition.competitionid', 'left');
        $this->db->where('assignwinner.user_id', $user_id);
     // $this->db->where('assignwinner.user_id', $quizweb_user_id);
@@ -121,6 +224,7 @@ function check_login($mobile,$password){
  
     $query = $this->db->get();
     $result = $query->result();
+    // print_r($result); die();
     return $result;
    }
     public function mycompetition_list($user_id){

@@ -74,7 +74,7 @@
                    <div class="form-group col-md-12">
                     <label>Competition Topics</label>
 
-                      <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
+                      <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style=" width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
 
                     </div>
            

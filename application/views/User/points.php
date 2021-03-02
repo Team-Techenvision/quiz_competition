@@ -76,7 +76,7 @@
                        
                         <tr>
                           <td>1</td>
-                          <td><label>1st Winner</label><input type="hidden" name="winnerposition[]" value="1st"></td>
+                          <td><label>1st Winner</label><input type="hidden" name="winnerposition[]" value="1st Winner"></td>
                           
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points1st" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
 
@@ -84,25 +84,25 @@
                          </tr>
                          <tr>
                           <td>2</td>
-                          <td><label>2nd Winner</label><input type="hidden" name="winnerposition[]" value="2nd"></td>
+                          <td><label>2nd Winner</label><input type="hidden" name="winnerposition[]" value="2nd Winner"></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points2nd" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints2nd" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required=""></td>
                          </tr>
                         <tr>
                           <td>3</td>
-                           <td><label>3rd Winner</label><input type="hidden" name="winnerposition[]" value="3rd"></td>
+                           <td><label>3rd Winner</label><input type="hidden" name="winnerposition[]" value="3rd Winner"></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points3rd" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints3rd" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required=""></td>
                          </tr>
                         <tr>
                           <td>4</td>
-                           <td><label>1st Runner Up</label><input type="hidden" name="winnerposition[]" value="4th"></td>
+                           <td><label>1st Runner Up</label><input type="hidden" name="winnerposition[]" value="1st Runner Up"></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points1stR" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints1stR" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required=""></td>
                          </tr>
                          <tr>
                           <td>5</td>
-                         <td><label>2st Runner Up</label><input type="hidden" name="winnerposition[]" value="5th"></td>
+                         <td><label>2st Runner Up</label><input type="hidden" name="winnerposition[]" value="2st Runner Up"></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points2ndR" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints2ndR" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required=""></td>
                          </tr>

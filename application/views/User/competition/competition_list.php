@@ -46,6 +46,8 @@
                 <tbody>
                   <?php $i = 0;
                   foreach ($competition_list as $list) {
+                  // print_r($list->competitiontypeid); 
+
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
@@ -61,7 +63,10 @@
 
                      <a type="button" id="<?php echo $list->competitionid; ?>" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href=""> View</a> 
 
+                   <?php if($list->competitiontypeid==1){ ?>
+
                       <a type="button" id="" name="" class="btn btn-sm btn-primary " href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>">view Question</a>
+                    <?php } ?>
                     </td>
                   <?php } ?>
                   </tr>

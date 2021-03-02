@@ -50,7 +50,7 @@
                           <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadimage; ?>" alt="" width="320" height="240" />
 
                           <br><br>
-<!-- 
+                         <!-- 
                           <a class="btn btn-success btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Download</a> -->
 
                           <button id="" type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span>Download </button>

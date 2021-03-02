@@ -10,7 +10,7 @@
     $winner_list  = $this->Website_Model->resultwinner_list($quizweb_user_id); 
 
 
-// print_r($profile_list);die();
+// print_r($winner_list);die();
 
 ?>
 <style type="text/css">

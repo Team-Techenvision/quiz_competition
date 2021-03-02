@@ -64,7 +64,7 @@
 
 
 
-                            // print_r($question_id);
+                            // print_r($result);
 
                             ?>
                             <!-- <input type="hidden" name="question_id" value="<?php echo $question_id; ?>"> -->
@@ -155,9 +155,9 @@
                             
                            
 
-             <!--      <label>Correct Answer : <?php echo $my_Array; ?></label>
+              <!-- <label>Correct Answer : <?php echo $my_Array; ?></label> -->
                       
-                            <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>">  -->
+                            <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>"> 
                             
                        <!--    </div> -->
                          <!--  <div class="col-sm-12 mb-3"> -->
@@ -177,7 +177,7 @@
                           </div>
                         
                           <?php } ?>
-                           <!--  <input type="hidden" name="" id="userselected" value="< ?php echo $value['selectanswertext']; ?>"> -->
+                            <input type="hidden" name="" id="userselected" value="<?php echo $value['selectanswertext']; ?>">
                        </div> 
 
                     

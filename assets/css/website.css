@@ -1100,12 +1100,31 @@ to{
 }
 
 /*login end*/
-
+@media max-width: 600px{
+   .resultuserwrapper{
+padding-left: 0px;
+padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+}
+.resultuserwrapper{
+padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  
+}
 .competitionwrapper{
 padding-left: 100px;
     padding-right: 100px;
     padding-top: 50px;
     padding-bottom: 50px;
+   /* background-image:url('<?php echo base_url(); ?>/assets/images/17973908.jpg');
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #ecf1eabf;*/
 } 
 .profilewrapper{
     padding-left: 150px;
