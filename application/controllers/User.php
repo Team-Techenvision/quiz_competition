@@ -2121,43 +2121,37 @@ class User extends CI_Controller{
 
 /******************************* Assign Competition Information ****************************/
 
-public function add(){
-   $userId = $_POST['user'];
-      // $compid = $_POST['comp_id'];
-      // $userid2 = $_POST['userid'];
-      return $userId;
-  // return "string";
-}
- public function add_assigncompetition(){
-      $userId = $_POST['user'];
-      $compid = $_POST['comp_id'];
-      $userid2 = $_POST['userid'];
-      return $userid2;
-    // print_r($userId); d ie();
-
+public function save_assigncompetition(){
+   $userId1 = $_POST['u_id1'];
+   $compId = $_POST['c_id'];
+   $userId2 = $_POST['u_id2'];
+ 
+      // echo $userId2;
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('compid', 'First Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
+    // $this->form_validation->set_rules('user_id2', 'First Name', 'trim|required');
+    // if ($this->form_validation->run() != FALSE) {
       $save_data = array(
        
-        'competitionid' => $compid,
+        'competitionid' => $compId,
         // 'pincode' => $this->input->post('pincode'),
-        'user_id1' => $userId,
-        'user_id2' => $userid2,
+        'user_id1' => $userId1,
+        'user_id2' => $userId2,
         'created_date' => date('Y-m-d H:i:s'),
       );
-      // print_r($save_data);
-      $result = $this->User_Model->save_data('assigncompetition',$save_data);
-      return $result;
-      // $this->session->set_flashdata('save_success','success');
-      // header('location:'.base_url().'User/profile_list');
-    }
+      // print_r($save_data); die();
+      $this->User_Model->save_data('assigncompetition',$save_data);
+   
+      $this->session->set_flashdata('save_success','success');
+      // header('location:'.base_url().'User/add_assigncompetition');
+    // }
+}
+ public function add_assigncompetition(){
+  
 
-  // $data['competition'] = $this->User_Model->fetch_competition();
-  // $data['pincode'] = $this->User_Model->fetch_pincode();
+  $data['competition'] = $this->User_Model->fetch_competition();
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
  // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
 
@@ -2165,10 +2159,10 @@ public function add(){
   // $data['profile'] = $this->User_Model->fetch_profile();
   // $data['city'] = $this->User_Model->fetch_city();
 
-    // $this->load->view('Include/head',$data);
-    // $this->load->view('Include/navbar',$data);
-    // $this->load->view('User/assigncompetition',$data);
-    // $this->load->view('Include/footer',$data);
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/assigncompetition',$data);
+    $this->load->view('Include/footer',$data);
   }
    public function assigncompetition_list(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
@@ -2184,8 +2178,10 @@ public function add(){
      
     $data['assigncompetition_list'] = $this->User_Model->assigncompetition_list($competitionid,$pincode);
     $data['competition'] = $this->User_Model->fetch_competition();
+    // $data['assigncomp'] = $this->User_Model->fetch_assigncompetition($competitionid);
 
-    // print_r($data['assigncompetition_list']);
+
+    // print_r($data['assigncomp']);
 
     $data['competitionid'] =  $competitionid;
     $data['pincodeid'] =  $pincode;
@@ -2215,11 +2211,14 @@ public function add(){
       // print_r($userId); die();
      
       $data = $this->User_Model->addassigncompetition_list($userId,$compid);
-      // echo (json_encode($data));
 
+      // echo (json_encode($data));
+ 
       foreach ($data as $value) {
         # code...
-        // echo form_open('books/input');
+               // echo form_open('books/input');
+        $data['assigncomp'] = $this->User_Model->fetch_assigncompetition($value['user_id'],$compid);
+        
         ?> 
             <tr>
         <!-- <form action="< ?php echo base_url(); ?>User/add_assigncompetition"> -->
@@ -2227,14 +2226,20 @@ public function add(){
               <td style="display:none;"><?php  echo $userId; ?></td>
               <td><?php  echo $value['user_id']; ?></td>
               <td><?php  echo $value['user_name']; ?></td>
-              <td><button class="btn btn-primary btnaddcomp" onclick="myFunction(<?php  echo $userId; ?>,<?php  echo $compid; ?>,<?php echo $value['user_id']; ?>)" name="user_id2" id="comp1" value="<?php echo $value['user_id']; ?>" >Add </button></td>
+              <td>
+                <?php if(!$data['assigncomp']){ ?>
+                <button class="btn btn-primary btnaddcomp" onclick="myFunction(<?php  echo $userId; ?>,<?php  echo $compid; ?>,<?php echo $value['user_id']; ?>)" name="user_id2" id="comp1" value="<?php echo $value['user_id']; ?>" >Add </button>
+                <?php }else{
+                  echo "Competitor Already Choosed";
+                } ?>
+              </td>
          <!-- </form>     -->
 
             </tr>  
 
 
         <?php
-        // echo form_close();
+      
       }
 
      

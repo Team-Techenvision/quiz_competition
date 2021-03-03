@@ -73,27 +73,30 @@
                             <?php if($value['answertype']=="1"){ ?>                           
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
+                            $s=1;
                             foreach($myArray as $my_Array)
                             { 
                               ?>                            
                             <div class="radio">
                               <label>
-                            
+                                <?php echo $s; ?>. 
                                 <input type="radio" name="" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" > <?php echo $my_Array ;?></label>
                             </div>
 
 
-                            <?php } ?>                            
+                            <?php $s++; } ?>                            
                             <?php } elseif ($value['answertype']=="2")
                             {?>                           
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
+                            $r=1;
                             foreach($myArray as $my_Array)
                             { ?>
                             <div class="checkbox">
+                              <?php echo $r; ?>. 
                               <label><input type="checkbox" name="" value="<?php echo $my_Array ;?>" > <?php echo $my_Array ;?></label>
                             </div>
-                            <?php } ?>                            
+                            <?php $r++; } ?>                            
                             <?php } elseif ($value['answertype']=="3") { ?>                            
                             <input type="text" name=""  class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" >
                           
@@ -135,6 +138,12 @@
                             <?php if(empty($correct)){ }else{?>
                             <input type="hidden" name="<?php echo $value['question_id'];?>" id="correctvalue" value="1">  
                             <h5 class="alert alert-success correct">Correct</h5>
+
+                            <label>Correct Anwer: <?php echo $my_Array; ?></label>
+                              <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>"> 
+                              <br>
+                              <label>User Anwer: <?php echo $value['selectanswertext']; ?></label>
+                              <input type="hidden" name="" id="userselected" value="<?php echo $value['selectanswertext']; ?>"> 
                             <?php } ?>
                            <?php }else{
                              
@@ -147,6 +156,11 @@
                             <?php if(empty($wrong)){}else{ ?>
                              <input type="hidden" name="<?php echo $value['question_id'];?>" id="incorrectcalue" value="0">
                             <h5 class="alert alert-danger incorrect">Incorrect</h5>
+                            <label>Correct Anwer: <?php echo $my_Array; ?></label>
+                              <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>"> 
+                              <br>
+                              <label>User Anwer: <?php echo $value['selectanswertext']; ?></label>
+                              <input type="hidden" name="" id="userselected" value="<?php echo $value['selectanswertext']; ?>"> 
                               <?php } ?>
                             <!-- <h5 class="alert alert-success correct">Incorrect</h5> -->
 

@@ -92,7 +92,7 @@
 
                      <input type="hidden" class="form-control required title-case text" name="pin" id="pin" value="<?php echo $pincodeid ?>" >
 
-
+                
 
                  <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
@@ -113,7 +113,17 @@
                     <td><?php echo $list->user_name ?></td>
                    
                     <td><div class="form-group col-md-12">
-                       <button class="btn btn-primary btnadd" name="user_id1" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add Competitor</button>
+                     <?php 
+                         $data['assigncomp'] = $this->User_Model->fetch_assigncompetition($list->user_id,$competitionid);
+                        // print_r($data['assigncomp']);
+                         if(!$data['assigncomp']){ ?>
+                             <button class="btn btn-primary btnadd" name="user_id1" id="btnAddCompetitor <?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >Add Competitor</button>
+                        <?php }
+
+                      ?>
+                       <!-- <button class="btn btn-primary btnadd" name="user_id1" id="btnAddCompetitor < ?php echo $list->user_id ?>" value="< ?php echo $list->user_id ?>" >Add Competitor</button> -->
+                     
+
                         </div>
                      </td>
 
@@ -214,7 +224,13 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
-
+<script type="text/javascript">
+   <?php if($this->session->flashdata('save_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Record Saved successfully');
+    });
+  <?php } ?>
+</script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     
 <script type="text/javascript">
@@ -267,51 +283,22 @@ $(document).ready(function(){
 function myFunction(userid1,compid,userid2) {
 
   // alert("I am an alert box!");
-    var userid= userid1;
-    var comp=compid;
-    var user=userid2;
+    var userid1= userid1;
+    var compid=compid;
+    var userid2=userid2;
 
- // alert(userid);
- // alert(comp);
- // alert(user);
- // $.ajax({
- //        url: '< ?php echo base_url(); ?>User/add',
- //        data: ({user:userid,comp_id:comp,userid:user)
- //        // dataType: 'json', 
- //        type: 'post',
- //        success: function(data) {
-
- //            response = jQuery.parseJSON(data);
- //            console.log(response);
- //            alert(response);
- //        }             
- //    });
  $.ajax({
-    url:"<?php echo base_url(); ?>User/add",
+    url:"<?php echo base_url(); ?>User/save_assigncompetition",
     method:"POST",
-    data:{user:userid},
+    data:{u_id1:userid1,c_id:compid,u_id2:userid2},
     success:function(data)
     {
-      alert(data);
-     // $('#cityid').html(data);
-     // $('#districtid').html('<option value="">Select District</option>');
+      // alert(data);
+      // console.log(data);
+     window.location = "<?php echo base_url(); ?>User/add_assigncompetition";
 
     }
    });
-
-    // $.post('< ?php echo base_url(); ?>User/add_assigncompetition',
-      // {user:userid},
-      // {comp_id:comp},
-      // {userid:user},
-
-    //   function(data){
-
-    //   alert(data);
-    //   // console.log(data);
-    //   // $('#competitor').html(data);
-
-
-    // });
 
 }
 </script>

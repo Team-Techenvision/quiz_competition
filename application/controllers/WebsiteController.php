@@ -992,27 +992,32 @@ public function insert_profiledata(){
        $userprofileid = $value->userprofileid;
 
        // print_r($gender); die();
+        // if($gender==2){
+        $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
+        $query = $this->db->query($sql);
+        $age = $query->result_array();
+      // }
+        // print_r($age); die();
+        // $userparticipatetype=$gender;
 
-       //  $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
-       //  $query = $this->db->query($sql);
-       //  $result = $query->result_array();
+        // print_r($userparticipatetype); die();
 
-       //  // print_r($result); die();
-       // $a="";
-       //  foreach ($result as $value) {
-       //    // print_r(expression) $value;
-       //    // $age;
-          
-       //  }
-
+        // if($userparticipatetype==2){
+        //   echo 2;
+        //   print_r($gender);
+        // }else{
+        //   echo 1;
+        //   print_r($gender);
+        // }
         // die();
+       
     
       
      }
 
     if($profile_submitted == 1){
-     // print_r($profile_info); die();
-    if($standard >= $fromstand && $standard <= $tostand ){
+     // print_r($profile_info); die();   
+    if($standard >= $fromstand && $standard <= $tostand || $userparticipatetype == $gender && $age >=18){
 
     if(empty($check_allready_participate)){
       

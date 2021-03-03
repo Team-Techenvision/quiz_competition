@@ -135,7 +135,7 @@
 <script>
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
-      toastr.success('Quetion Saved successfully');
+      toastr.success('Question Saved successfully');
     });
   <?php } ?>
 </script>

@@ -189,56 +189,45 @@ $this->db->from('userscore_master');
       // $competition="";
       // $user="";
 
-    $this->db->select('userscore_master.*,user.*,competition.*,points_master.*');
-    $this->db->join('user', 'userscore_master.user_id = user.user_id', 'left');
-    $this->db->join('competition', 'userscore_master.competitionid = competition.competitionid', 'left');
-    $this->db->join('points_master', 'userscore_master.competitionid = points_master.competitionid', 'left');
+     $this->db->select('userscore_master.*,user.*,competition.*,points_master.*');
+     $this->db->join('user', 'userscore_master.user_id = user.user_id', 'left');
+     $this->db->join('competition', 'userscore_master.competitionid = competition.competitionid', 'left');
+     $this->db->join('points_master', 'userscore_master.competitionid = points_master.competitionid', 'left');
   
-  $this->db->group_by("userscore_master.user_id");
-  $this->db->order_by("userscore_master.score_percentage","DESC");
-  $this->db->where('userscore_master.competitionid', $competitionid);
-  $query = $this->db->get("userscore_master");
-  $result = $query->result_array();
-//    foreach ($result as $value) {
-//         # code...
-//       $points = $value['pointsid'];
-//       $competition = $value['competitionid'];
-//       $user = $value['user_id'];
-// // print_r($points); 
-// // echo "<br>";
-// // print_r($competition); 
-// // echo "<br>";
-// // print_r($user); 
-// // echo "<br>";
-//     }
-//        $this->db->select('assignwinner.*,userscore_master.*,user.*');
-//        $this->db->join('assignwinner', 'userscore_master.user_id = assignwinner.user_id', 'left');
-//        $this->db->join('user', 'userscore_master.user_id = user.user_id', 'left');
-//        $this->db->where('userscore_master.user_id !=', $user);
-//        $this->db->where('userscore_master.competitionid =', $competition);
-//        // $this->db->where('userscore_master.pointsid', $points);
-//        $query = $this->db->get('userscore_master');
-//        $result = $query->result_array();
-// print_r($result); 
-//  // die();
-
-
-
+      $this->db->group_by("userscore_master.user_id");
+      $this->db->order_by("userscore_master.score_percentage","DESC");
+      $this->db->where('userscore_master.competitionid', $competitionid);
+      $query = $this->db->get("userscore_master");
+      $result = $query->result_array();
       return $query->result();
-      // return result();
-
-      // print_r($query); die();
+      
   }
    public function fetch_points($competition){
     // $this->db->select('*');
     $this->db->select('*');
  // $this->db->join('profile', 'userscore_master.user_id = profile.user_id', 'left');
-$this->db->order_by('points_master.competitionid');
+    $this->db->order_by('points_master.competitionid');
 
-$this->db->where('competitionid',$competition);
-$this->db->from('points_master');
+    $this->db->where('competitionid',$competition);
+    $this->db->from('points_master');
     $query = $this->db->get();
     $result = $query->result();
+    return $result;
+  }
+   public function fetch_assigncompetition($userid1,$competitionid){
+    // $this->db->select('*');
+    $this->db->select('*');
+ // $this->db->join('profile', 'userscore_master.user_id = profile.user_id', 'left');
+    $this->db->order_by('assigncompetition.competitionid');
+
+    // $this->db->where('user_id1',$userid1);
+    $this->db->where('user_id1',$userid1);
+    $this->db->or_where('user_id2',$userid1);
+    $this->db->where('competitionid',$competitionid);
+    $this->db->from('assigncompetition');
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result); die();
     return $result;
   }
   public function admincheck_quiz($user_id,$competition_id,$question_id,$answer_text)
