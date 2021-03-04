@@ -1,6 +1,19 @@
 <?php
 class Website_Model extends CI_Model{
 
+
+   function __construct()
+    {
+        parent::__construct();
+        $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
+    }
+
+  public function save_data1($tbl_name, $data){
+    $this->db1->insert($tbl_name, $data);
+    $insert_id = $this->db1->insert_id();
+    return  $insert_id;
+  } 
+
 function check_login($mobile,$password){
     $query = $this->db->select('*')
       ->where('user_mobile', $mobile)

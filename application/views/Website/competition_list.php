@@ -1,7 +1,28 @@
 
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+  #toast-container{
+  
+  }
+  /*.profileerr .toast-top-right{
 
+    top:50%;
+    right: 22%;
+  }*/
+  .toast-top-right{
+
+    top:50%;
+    right: 30%;
+  }
+    .toast {
+    width: 100% !important;
+    max-width: 600px!important;
+  
+    font-size: 22px!important;
+   
+   }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/17973908.jpg');background-blend-mode: overlay;
     background-repeat: no-repeat;

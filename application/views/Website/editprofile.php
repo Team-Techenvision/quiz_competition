@@ -157,20 +157,22 @@
                                     <?php }?>  
                                   <select name="standard" id="standard"class="form-control" required="" >
                                   <option value="">Select Standard</option>
-                                  <option value="1">1st</option>
-                                  <option value="2">2nd</option>
-                                  <option value="3">3rd</option>
-                                  <option value="4">4th</option>
-                                  <option value="5">5th</option>
-                                  <option value="6">6th</option>
-                                  <option value="7">7th</option>
-                                  <option value="8">8th</option>
-                                  <option value="9">9th</option>
-                                  <option value="10">10th</option>
-                                  <option value="11">11th</option>
-                                  <option value="12">12th</option>
-                                  <option value="13">Male(18+)</option>
-                                  <option value="14">Female(18+)</option>
+                                  <option value="1">Nursary</option>
+                                  <option value="2">KG-I</option>
+                                  <option value="3">KG-II</option>
+                                  <option value="4">KG-III</option>
+                                  <option value="5">1st</option>
+                                  <option value="6">2nd</option>
+                                  <option value="7">3rd</option>
+                                  <option value="8">4th</option>
+                                  <option value="9">5th</option>
+                                  <option value="10">6th</option>
+                                  <option value="11">7th</option>
+                                  <option value="12">8th</option>
+                                  <option value="13">9th</option>
+                                 
+                                  <option value="14">Male(18+)</option>
+                                  <option value="15">Female(18+)</option>
                                 </select>
                                  </div>
                                 </div>

@@ -552,9 +552,9 @@ public function competition_uploadfile(){
       }
       
       // $this->session->set_flashdata('save_success','success');
-      $this->session->set_flashdata('upload_success','success'); 
+      // $this->session->set_flashdata('upload_success','success'); 
 
-      header('location:'.base_url().'WebsiteController/competition_list');
+      header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);
 
     }else{
       // echo "hello";
@@ -773,9 +773,9 @@ public function competition_uploadfile(){
       }
       
       // $this->session->set_flashdata('save_success','success');
-      $this->session->set_flashdata('upload_success','success');
+      // $this->session->set_flashdata('uploadfile_success','success');
 
-      header('location:'.base_url().'WebsiteController/competition_list');
+      header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);
 
     }
     
@@ -991,8 +991,7 @@ public function insert_profiledata(){
        $profile_submitted = $value->profile_submitted;
        $userprofileid = $value->userprofileid;
 
-       // print_r($gender); die();
-        // if($gender==2 && $gender==1){
+     
         $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
         $query = $this->db->query($sql);
         $result = $query->result_array();
@@ -1003,29 +1002,12 @@ public function insert_profiledata(){
         }
 
         $y = "18";
-      // }
-        // echo $age; die();
-        // print_r($age); die();
-        // $userparticipatetype=$gender;
-
-        // print_r($userparticipatetype); die();
-
-        // if($userparticipatetype==2){
-        //   echo 2;
-        //   print_r($gender);
-        // }else{
-        //   echo 1;
-        //   print_r($gender);
-        // }
-        // die();
-       
-    
-      
+            
      }
 
     if($profile_submitted == 1){
-     // print_r($profile_info); die(); $standard >= $fromstand && $standard <= $tostand || $userparticipatetype == $gender &&   
-    if($age >= $y){
+     // print_r($profile_info); die();   
+    if($standard >= $fromstand && $standard <= $tostand || $userparticipatetype == $gender && $age >= $y){
      // print_r($age); die();
     if(empty($check_allready_participate)){
       

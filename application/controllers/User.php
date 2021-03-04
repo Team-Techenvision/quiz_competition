@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller{
+  
   public function __construct(){
     parent::__construct();
     $this->load->model('User_Model');
@@ -13,7 +14,10 @@ class User extends CI_Controller{
     $this->session->sess_destroy();
     header('location:'.base_url().'User');
   }
-
+  
+  // public function a(){
+  //    $data['response'] = $this->User_Model->getRecords();
+  // }
 /**************************      Login      ********************************/
   public function index(){
     // print_r($_POST);

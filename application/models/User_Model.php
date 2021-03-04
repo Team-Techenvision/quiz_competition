@@ -1,6 +1,36 @@
 <?php
 class User_Model extends CI_Model{
 
+ 
+    function __construct()
+    {
+        parent::__construct();
+        $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
+    }
+
+ //  function getRecords(){
+ 
+ //   // Load database
+ //   // $db1 = $this->load->database('quiz_ecommerce', TRUE);
+
+ //   // Select records from 1st database
+ //   $this->db1->select('*');
+ //   $q = $this->db1->get('customer_information');
+ //   $result1 = $q->result_array();
+
+ //    $response = array("response1"=>$result1);
+
+ //   print_r($response); die();
+
+ //   // // Select records from 2nd database
+ //   // $db2->select('*');
+ //   // $q = $db2->get('users');
+ //   // $result2 = $q->result_array();
+ 
+ //   // $response = array("response1"=>$result1,"response2"=>$result2);
+ //   // return $response;
+ // }
+
   function check_login($email, $password){
     $query = $this->db->select('*')
       ->where('user_email', $email)
@@ -14,6 +44,11 @@ class User_Model extends CI_Model{
   public function save_data($tbl_name, $data){
     $this->db->insert($tbl_name, $data);
     $insert_id = $this->db->insert_id();
+    return  $insert_id;
+  }
+  public function save_data1($tbl_name, $data){
+    $this->db1->insert($tbl_name, $data);
+    $insert_id = $this->db1->insert_id();
     return  $insert_id;
   } 
   //  public function update($competitionid,$data){

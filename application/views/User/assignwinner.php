@@ -34,7 +34,7 @@
               
                 <div class="card-body">
                 
-                  <form id="form_action" role="form" action="<?php echo base_url(); ?>User/add_assignwinner" method="post" >
+                  <form id="form_action" role="form" name="winner" action="<?php echo base_url(); ?>User/add_assignwinner" method="post" >
                   <div class="row"> 
                  <div class="form-group col-md-6">
                     <label>Competition Title <span style="color: red;">*</span></label>
@@ -157,7 +157,7 @@
                   foreach ($fetch_userlist_othercompetition as $list) {
                     $i++; ?>
                   <tr>
-                    <td><input type="radio" id="" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 
+                    <td><input type="radio" id="user" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>" required="required"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 
                     <td><?php echo $list->user_id ?></td> 
                     <td><?php echo $list->user_name ?></td>
                     <!-- <td><?php echo $list->competitionid ?></td> -->
@@ -235,5 +235,26 @@ $(document).ready(function(){
 
 });
 </script>
+<!-- <script type="text/javascript">
+$(function() {
+
+  
+  $("form[name='winner']").validate({
+
+    rules: {
+  
+      user_id: "required"
+     
+      
+    },
+  
+    messages: {
+      user_id: "Please select user."
+    
+    },
+  });
+});
+
+</script> -->
 </body>
 </html>

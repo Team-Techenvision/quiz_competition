@@ -11,6 +11,28 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
     margin-bottom: -20px!important;
 }
 </style>
+<style type="text/css">
+  #toast-container{
+  
+  }
+  /*.profileerr .toast-top-right{
+
+    top:50%;
+    right: 22%;
+  }*/
+  .toast-top-right{
+
+    top:50%;
+    right: 30%;
+  }
+    .toast {
+    width: 100% !important;
+    max-width: 600px!important;
+  
+    font-size: 22px!important;
+   
+   }
+</style>
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -169,6 +191,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                  if($upload_audio=='1') {?>
 
+
                                   <input type="hidden" id="upload_audio1" name="file_format" value="<?php echo $file_format; ?>" />
 
                                   <!--   <div class="form-group"> -->
@@ -177,7 +200,10 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                           // print_r($uploadaudio);
                                        ?> -->
                                      <input type="file" id="upload_audio" name="upload_audio" accept="audio/*" />
+
                                    <!-- <  ?php } ?> -->
+
+                             <p class="text-primary" style="position: absolute;">Note:Only .mp3, .ogg, .webm Audio Files are allowed </p>
 
                                                 
                                 <?php  } }else if($file_format=='3'){?>
@@ -187,6 +213,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                        <input type="hidden" id="upload_vedio1" name="file_format" value="<?php echo $file_format; ?>" />
 
                                      <input type="file" id="upload_vedio" name="upload_vedio"  accept="video/*"/>
+
+                                      <p class="text-primary" style="position: absolute;">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed </p>
                                     <!-- </div> -->
                                 
                                 <?php  } }else if($file_format=='4'){?>
@@ -198,6 +226,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                      <input type="file" id="upload_image" name="upload_image" accept="image/*"  />
                                     <!-- </div> -->
+
+                                     <p class="text-primary" style="position: absolute;">Note:Only .jpg, .jpeg, .png Image Files are allowed </p>
                                 
                                 <?php  } }else{?>
                                     <?php if($upload=='1') {?>
@@ -207,6 +237,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                      <input type="file" id="uploadfile" name="uploadfile"  />
                                     <!-- </div> -->
+
+                                    <p class="text-primary" style="position: absolute;">Note:Only .pdf File is allowed </p>
                                 
                                 <?php  } }?>
                                     <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->
@@ -241,8 +273,8 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                              </form>
 
-
-                              <div class="col-md-12">
+                            
+                              <div class="col-md-12 mt-5">
 
                                      <?php 
                                       if($file_format=='1'){
