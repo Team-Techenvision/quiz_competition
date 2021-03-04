@@ -832,6 +832,17 @@ public function competition_uploadfile(){
         );
 
       $this->Website_Model->save_data('userprofile_master',$data_view);
+       $data_viewdb1 = array(
+            // 'user_id' => $id,
+            'customer_id'   => $this->generator(15),
+            'customer_name' => $this->input->post('user_name'),
+            'customer_mobile' => $this->input->post('user_mobile'),
+            'password' => $this->input->post('user_password'),
+            // 'user_pincode' => $this->input->post('user_pincode'), 
+            // 'profile_submitted' =>0,          
+        );
+        // print_r($data_viewdb1); die();
+      $this->Website_Model->save_data1('customer_information',$data_viewdb1);
        // $this->session->set_flashdata('register_success','success');
        // header('location:'.base_url().'WebsiteController');
       $mobile = $this->input->post('user_mobile');
@@ -1603,6 +1614,26 @@ public function insert_profiledata(){
     $this->load->view('Website/quiz_display_front',$data);
     $this->load->view('Website/Include/footer',$data);
   }
-
+//This function is used to Generate Key
+  public function generator($lenth)
+  {
+    $number=array("A","B","C","D","E","F","G","H","I","J","K","L","N","M","O","P","Q","R","S","U","V","T","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0");
+  
+    for($i=0; $i<$lenth; $i++)
+    {
+      $rand_value=rand(0,34);
+      $rand_number=$number["$rand_value"];
+    
+      if(empty($con)){ 
+        $con = $rand_number;
+      }else{
+        $con = "$con"."$rand_number";
+      }
+    }
+    return $con;
+  }
 
 }
+
+
+
