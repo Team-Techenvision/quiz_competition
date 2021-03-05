@@ -275,6 +275,11 @@ label#user_password-error {
                    <input class="input" type="text" name="user_pincode"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
 
                 </div>
+                 <div class="form-group col-md-6">
+
+                <input type="email" class="input" name="user_email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php if(isset($user_email)){ echo $user_email; } ?>" placeholder="Enter Email Address" required>
+
+              </div>
                 <div class="form-group col-md-6">
                   <label class="userLabel">Note: Entered mobile no. will be used as user name</label>
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext mobileNo" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
@@ -288,7 +293,8 @@ label#user_password-error {
 
 
                 </div>
-                <div class="form-group col-md-12 labelerror" style="margin-top: 20px;">
+               
+                <div class="form-group col-md-6 labelerror" style="margin-top: 20px;">
                    <label class="form-check-label " style="margin-left: 50px;">
                     <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
                    </label>
@@ -556,6 +562,14 @@ var user_mobile21 = $('#user_mobile').val();
   // Wait for the DOM to be ready
 $(function() {
 
+jQuery.validator.addMethod("validate_email", function(value, element) {
+
+    if (/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+});
    
 $.validator.addMethod("pwcheck", function(value) {
    return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
@@ -576,7 +590,12 @@ $.validator.addMethod("pwcheck", function(value) {
       user_name: "required",
       user_pincode: "required",
       user_mobile: "required",
-      // user_password: "required",
+      user_email: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        validate_email: true
+      },
       remember:"required",
       user_password: {
         required: true,
@@ -591,6 +610,7 @@ $.validator.addMethod("pwcheck", function(value) {
       user_name: "Please enter your name.",
       user_mobile: "Please enter valid mobile number.",
       user_password: "Please enter valid password.",
+      user_email: "Please enter valid Email Address.",
       // user_password: "Password contain uppercase, lowercase letters and number with minimum 8 characters.",
 
       user_pincode: "Please enter a valid pincode.",
@@ -602,10 +622,12 @@ $.validator.addMethod("pwcheck", function(value) {
       // form.submit();
       
 
-      var mobile = $('#user_mobile').val();
+     var mobile = $('#user_mobile').val();
      var pincode = $('#user_pincode').val();
      var name = $('#user_name').val();
      var password = $('#user_password').val();
+
+     var email = $('#user_email').val();
     
       // alert(mobile);
       // alert(pincode);
@@ -615,7 +637,7 @@ $.validator.addMethod("pwcheck", function(value) {
       $.ajax({
            url:"<?php echo base_url(); ?>WebsiteController/add_registration",
            method:"POST",
-           data:{user_mobile:mobile,user_pincode:pincode,user_name:name,user_password:password},
+           data:{user_mobile:mobile,user_pincode:pincode,user_name:name,user_password:password,user_email:email},
            success:function(data)
             {   
 
@@ -634,7 +656,7 @@ $.validator.addMethod("pwcheck", function(value) {
                }
                else{
 
-                $('#user_mobile').val("");
+                // $('#user_mobile').val("");
 
                 $('.alert-danger').html(data);
                 $('.mobileerror').show().delay(5000).fadeOut();

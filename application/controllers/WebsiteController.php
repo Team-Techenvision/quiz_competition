@@ -803,41 +803,64 @@ public function competition_uploadfile(){
     $this->form_validation->set_rules('user_name', 'First user_name', 'trim|required');
 
     if ($this->form_validation->run() != FALSE) {
+
+      $password = $this->input->post('user_password');
       $save_data = array(
        
         'user_pincode' => $this->input->post('user_pincode'),
         'user_mobile' => $this->input->post('user_mobile'),
+        'user_email' => $this->input->post('user_email'),
         'user_name' => $this->input->post('user_name'),
-        'user_password' => $this->input->post('user_password'),
+        'user_password' => md5($password),
         // 'user_addedby' => $quizweb_user_id,
         'is_admin' => 3,
         'roll_id' => 3,
       );
 
+      // print_r($save_data); 
+
       $mobile = $this->input->post('user_mobile');
+      $email = $this->input->post('user_email');
    
       $mob = $this->Website_Model->check_reg($mobile);
+      $email1 = $this->Website_Model->check_reg1($email);
+
+      $email2 = $this->Website_Model->check_regdb1($email);
+
+      // $customer = 
+
+            // print_r($email1); die();
+
+     
+
+      if(empty($email1) || $email1==""){
+
+      if(empty($email2) || $email2==""){  
    
       if(empty($mob) || $mob==""){
-    
+      // print_r($email); die();
+
      $id = $this->Website_Model->save_data('user',$save_data);
 
       $data_view = array(
             'user_id' => $id,
             'user_name' => $this->input->post('user_name'),
+            'user_email' => $this->input->post('user_email'),
             'user_mobile' => $this->input->post('user_mobile'),
-            'user_password' => $this->input->post('user_password'),
+            'user_password' => $password,
             'user_pincode' => $this->input->post('user_pincode'), 
             'profile_submitted' =>0,          
         );
 
       $this->Website_Model->save_data('userprofile_master',$data_view);
        $data_viewdb1 = array(
-            // 'user_id' => $id,
+            'user_id' => $id,
             'customer_id'   => $this->generator(15),
             'customer_name' => $this->input->post('user_name'),
+            'first_name' => $this->input->post('user_name'),
             'customer_mobile' => $this->input->post('user_mobile'),
-            'password' => $this->input->post('user_password'),
+            'customer_email' => $this->input->post('user_email'),
+            'password' =>  md5("gef".$password),
             // 'user_pincode' => $this->input->post('user_pincode'), 
             // 'profile_submitted' =>0,          
         );
@@ -880,7 +903,12 @@ public function competition_uploadfile(){
       // print_r($mob);
       echo "Mobile Number is Already Exists";
     }
-
+  }else{
+     echo "Email Address is Already Exists";
+  }
+}else{
+     echo "Email Address is Already Exists";
+  }
       // $this->Website_Model->save_data('user',$save_data);
 
       //*********************   remove this code after demo   *********************

@@ -130,7 +130,7 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">Email Address</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                    <input type="email" class="form-control" name="emailid" id="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php if(isset($emailid)){ echo $emailid; } ?>" placeholder="Enter Email Address" required>
+                                    <input type="email" class="form-control" name="emailid" id="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php echo $value->user_email;  ?>" placeholder="Enter Email Address" disabled>
                                   </div></div>
                                   </div>
 

@@ -7,7 +7,7 @@ class Website_Model extends CI_Model{
         parent::__construct();
         $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
     }
-
+// save data for database quizecommerce
   public function save_data1($tbl_name, $data){
     $this->db1->insert($tbl_name, $data);
     $insert_id = $this->db1->insert_id();
@@ -17,10 +17,42 @@ class Website_Model extends CI_Model{
 function check_login($mobile,$password){
     $query = $this->db->select('*')
       ->where('user_mobile', $mobile)
-      ->where('user_password', $password)
+      ->where('user_password', md5($password))
       ->from('user')
       ->get();
     $result = $query->result_array();
+    return $result;
+  }
+  function check_reg($mobile){
+    $query = $this->db->select('*')
+      ->where('user_mobile', $mobile)
+      // ->where('user_email', $email)
+     
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+    // print_r($result);
+    return $result;
+  }
+  function check_reg1($email){
+    $query = $this->db->select('*')
+      ->where('user_email', $email)
+      // ->where('user_email', $email)
+     
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+
+    // print_r($result);
+    return $result;
+  }
+  function check_regdb1($email1){
+    $query = $this->db1->select('*')
+            ->from('customer_information')
+            ->where('customer_email',$email1)
+            ->get();
+    $result = $query->result_array();
+
     return $result;
   }
 
@@ -145,16 +177,7 @@ function check_login($mobile,$password){
   //   $result = $query->result_array();
   //   return $result;
   // }
-  function check_reg($mobile){
-    $query = $this->db->select('*')
-      ->where('user_mobile', $mobile)
-     
-      ->from('user')
-      ->get();
-    $result = $query->result_array();
-    // print_r($result);
-    return $result;
-  }
+  
   //  function check_regP($password){
   //   $query = $this->db->select('*')
   //     ->where('user_password', $password)

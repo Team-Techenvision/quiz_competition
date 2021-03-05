@@ -86,9 +86,8 @@
                           <?php 
                           
                           foreach($points as $points)
-                          {
-                           
-                          echo '<option value="'. $points->pointsid.'" '.$selected.'>'. $points->winnerposition.'</option>';
+                          { 
+                            echo '<option value="'. $points->pointsid.'" '.$selected.'>'. $points->winnerposition.'</option>';
                            }              
                            
                           ?>  
@@ -97,6 +96,7 @@
                        </select>
                     </div> 
                    </div>
+
 
 
             <?php  if(empty($competitiontypeid)){$competitiontypeid="";} ?>
@@ -155,6 +155,7 @@
                 <tbody>
                   <?php $i = 0;
                   foreach ($fetch_userlist_othercompetition as $list) {
+                    // print_r($fetch_userlist_othercompetition);
                     $i++; ?>
                   <tr>
                     <td><input type="radio" id="user" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>" required="required"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 

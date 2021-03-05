@@ -229,7 +229,7 @@ $this->db->from('userscore_master');
      $this->db->join('competition', 'userscore_master.competitionid = competition.competitionid', 'left');
      $this->db->join('points_master', 'userscore_master.competitionid = points_master.competitionid', 'left');
   
-      $this->db->group_by("userscore_master.user_id");
+      // $this->db->group_by("userscore_master.user_id");
       $this->db->order_by("userscore_master.score_percentage","DESC");
       $this->db->where('userscore_master.competitionid', $competitionid);
       $query = $this->db->get("userscore_master");
@@ -551,7 +551,7 @@ $this->db->from('userscore_master');
 
     // $this->db->join('userscore_master', 'userquizsubmit.user_id = userscore_master.user_id', 'inner');
 
-    $this->db->group_by('competition_uploadfile_submit.competitionid');
+    // $this->db->group_by('competition_uploadfile_submit.competitionid');
 
     $this->db->where('competition_uploadfile_submit.competitionid', $competitionid);
 
@@ -1082,6 +1082,23 @@ function fetch_user_uploadfile($competitionid)
     return $result;
   }
 
+public function get_list_by_id1($col_name1,$col_val1,$col_name2,$col_val2,$order_col,$order,$tbl_name){
+    $this->db1->select('*');
+    if($col_name1 != ''){
+      $this->db1->where($col_name1,$col_val1);
+    }
+    if($col_name2 != ''){
+      $this->db1->where($col_name2,$col_val2);
+    }
+    if($order_col != ''){
+      $this->db1->order_by($order_col, $order);
+    }
+    $this->db1->from($tbl_name);
+    $query = $this->db1->get();
+    $result = $query->result();
+    return $result;
+  }
+
   public function get_info($id_type, $id, $tbl_name){
     $this->db->select('*');
 
@@ -1112,6 +1129,10 @@ function fetch_user_uploadfile($competitionid)
 
   public function update_info($id_type, $id, $tbl_name, $data){
     $this->db->where($id_type, $id)
+    ->update($tbl_name, $data);
+  }
+  public function update_info1($id_type, $id, $tbl_name, $data){
+    $this->db1->where($id_type, $id)
     ->update($tbl_name, $data);
   }
 

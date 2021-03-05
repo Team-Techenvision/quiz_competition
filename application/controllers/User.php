@@ -2298,7 +2298,7 @@ public function save_assigncompetition(){
 
  public function save_winner(){
 
-    // print_r($_POST);
+    // print_r($_POST); die();
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
@@ -2306,21 +2306,115 @@ public function save_assigncompetition(){
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-  // print_r($_POST);
+  // print_r($_POST); 
   $user_id = $this->input->post('user_id');
   $competitionid = $this->input->post('competitionid');
   $check_winnerexists = $this->User_Model->check_winnerexists($user_id,$competitionid);
   
   if(empty($check_winnerexists)){
-      $save_data = array(
+
+      $pointsid = $this->input->post('pointsid');
+
+     $points_m = $this->User_Model->get_list_by_id('pointsid', $pointsid,'','','','','points_master');
+     foreach ($points_m as $value) {
+      $points =$value->points;
+      $conversionpoints =$value->conversionpoints;
+
+     }
+
+
+     $points_user = $this->User_Model->get_list_by_id('user_id', $user_id,'','','','','user'); 
+     foreach ($points_user as $value) {
+      $points1 =$value->points;
+      $conversionpoints1 =$value->conversionpoints;
+
+     }
+
+
+     $points_userdb1 = $this->User_Model->get_list_by_id1('user_id', $user_id,'','','','','customer_information'); 
+     foreach ($points_user as $value) {
+      $points2 =$value->points;
+      $conversionpoints2 =$value->conversionpoints;
+
+     }
+
+     if(empty($points_user) && empty($points_userdb1) )
+     {
+ 
+          $save_data = array(
 
         'competitionid' => $this->input->post('competitionid'),
-        'pointsid' => $this->input->post('pointsid'),
+        'pointsid' => $pointsid,
+        'points' => $points,
+        'conversionpoints' => $conversionpoints,
         'user_id' => $this->input->post('user_id'),
 
       );
-      // print_r($save_data);
       $this->User_Model->save_data('assignwinner',$save_data);
+      
+      $update_data = array(
+         'points' => $points,
+         'conversionpoints' => $conversionpoints,
+      );
+
+      $this->User_Model->update_info('user_id', $user_id, 'user', $update_data);
+
+        $update_datadb1 = array(
+         'points' => $points,
+         'conversionpoints' => $conversionpoints,
+      );
+
+      $this->User_Model->update_info1('user_id', $user_id, 'customer_information', $update_datadb1);
+
+     }else{
+        
+
+     $p1 = $points + $points1;
+     $p2 = $points + $points2;
+
+     $cp1 = $conversionpoints + $conversionpoints1;
+     $cp2 = $conversionpoints + $conversionpoints2;
+
+     // print_r($cp2); die();
+
+       $save_data = array(
+
+        'competitionid' => $this->input->post('competitionid'),
+        'pointsid' => $pointsid,
+        'points' => $points,
+        'conversionpoints' => $conversionpoints,
+        'user_id' => $this->input->post('user_id'),
+
+      );
+      $this->User_Model->save_data('assignwinner',$save_data);
+      
+      $update_data = array(
+         'points' => $p1,
+         'conversionpoints' => $cp1,
+      );
+
+      $this->User_Model->update_info('user_id', $user_id, 'user', $update_data);
+
+        $update_datadb1 = array(
+         'points' => $p2,
+         'conversionpoints' => $cp2,
+      );
+
+      $this->User_Model->update_info1('user_id', $user_id, 'customer_information', $update_datadb1);
+
+     }
+
+
+
+
+     
+
+     
+     
+    // print_r($conversionpoints); die();
+
+     
+
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/add_assignwinner');
     }else{
