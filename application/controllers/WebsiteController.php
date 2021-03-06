@@ -805,6 +805,7 @@ public function competition_uploadfile(){
     if ($this->form_validation->run() != FALSE) {
 
       $password = $this->input->post('user_password');
+      $emailAddress = $this->input->post('user_email');
       $save_data = array(
        
         'user_pincode' => $this->input->post('user_pincode'),
@@ -829,7 +830,7 @@ public function competition_uploadfile(){
 
       // $customer = 
 
-            // print_r($email1); die();
+            // print_r($email2); die();
 
      
 
@@ -847,7 +848,7 @@ public function competition_uploadfile(){
             'user_name' => $this->input->post('user_name'),
             'user_email' => $this->input->post('user_email'),
             'user_mobile' => $this->input->post('user_mobile'),
-            'user_password' => $password,
+            'user_password' => md5($password),
             'user_pincode' => $this->input->post('user_pincode'), 
             'profile_submitted' =>0,          
         );
@@ -897,17 +898,77 @@ public function competition_uploadfile(){
 
       
 
-    } 
+         } 
 
+        }else{
+          // print_r($mob);
+          echo "Mobile Number is Already Exists";
+        }
+      }else{
+        // email2 already exists then userid can update in database 2
+         // echo "Email Address is Already Exists";
+         if(empty($mob) || $mob==""){
+        $id1 = $this->Website_Model->save_data('user',$save_data);
+
+         $data_view = array(
+            'user_id' => $id1,
+            'user_name' => $this->input->post('user_name'),
+            'user_email' => $this->input->post('user_email'),
+            'user_mobile' => $this->input->post('user_mobile'),
+            'user_password' => md5($password),
+            'user_pincode' => $this->input->post('user_pincode'), 
+            'profile_submitted' =>0,          
+        );
+
+      $this->Website_Model->save_data('userprofile_master',$data_view);
+
+          $update_datadb1 = array(
+         'user_id' => $id1,
+         // 'conversionpoints' => $cp2,
+         );
+          // print_r($update_datadb1); die();
+
+        $this->Website_Model->update_info1('customer_email', $emailAddress, 'customer_information', $update_datadb1);
+
+      $mobile = $this->input->post('user_mobile');
+      $password = $this->input->post('user_password');
+
+      $login = $this->Website_Model->check_login($mobile,$password);
+
+      // print_r($login);die();
+      if($login == null){
+        // alert("login_error");
+        // $this->session->set_flashdata('msg','login_error');
+        // $this->session->set_flashdata('login_ermsg','error');
+        // header('location:'.base_url().'WebsiteController');
+
+      } else{
+       // print_r($login); die();
+        // echo 'null not';
+        $this->session->set_userdata('quizweb_user_id', $login[0]['user_id']);
+        // $this->session->set_userdata('quizweb_user_name', $login[0]['user_name']);
+        $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
+        $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+        // $mob = $this->Website_Model->check_reg($mobile);
+      // print_r($mobile); 
+
+        // $this->session->set_flashdata('login_success','success');
+        echo "Sign Up Successfully";
+        // header('location:'.base_url().'WebsiteController');
+        // redirect('WebsiteController');
+
+      
+
+         } 
+
+       }else{
+
+        echo "Mobile Number is Already Exists";
+       }
+
+      }
     }else{
-      // print_r($mob);
-      echo "Mobile Number is Already Exists";
-    }
-  }else{
-     echo "Email Address is Already Exists";
-  }
-}else{
-     echo "Email Address is Already Exists";
+       echo "Email Address is Already Exists";
   }
       // $this->Website_Model->save_data('user',$save_data);
 

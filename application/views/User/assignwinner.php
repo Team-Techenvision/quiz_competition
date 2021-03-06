@@ -26,7 +26,7 @@
               <div class="card-header">
                 <h4 class="card-title">Add Winner</h4>
                 <div class="card-tools col-md-3 " >
-                <!-- <a href="<?php echo base_url(); ?>User/competition_list" class="btn btn-sm btn-block btn-primary">View Question</a> -->
+                <a href="<?php echo base_url(); ?>User/assign_winner_list" class="btn btn-sm btn-block btn-primary">Assign Winner List</a>
               </div>
               </div> 
               <!-- /.card-header -->
@@ -181,7 +181,7 @@
 
                     </div> -->
                      <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
-                    <a href="< ?php echo base_url() ?>User/add_competition" class="btn btn-default ml-4">Cancel</a>
+                    <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
             </form>
                 </div>                           
                 <!-- /.card-body -->

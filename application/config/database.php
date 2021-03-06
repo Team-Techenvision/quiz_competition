@@ -120,3 +120,4 @@ $db['quiz_ecommerce'] = array(
     'failover' => array(),
     'save_queries' => TRUE
 );
+

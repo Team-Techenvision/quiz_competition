@@ -76,6 +76,7 @@
                    <div class="form-group col-md-2">
                    <button id="btn_search" type="search" style="margin-top: 32px;" class="btn btn-primary">Search </button>
                  </div>
+
                </div>
                   </form>
                   <!-- table fetch Participant name -->
@@ -210,7 +211,9 @@
                   <a href="" class="btn btn-default ml-4">Cancel</a>
                 </div> -->
              
-             
+              <div class="form-group col-md-2">
+                 <a href="<?php echo base_url(); ?>User/add_assigncompetition" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+               </div>
             </div>
 
           </div>

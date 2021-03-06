@@ -26,6 +26,9 @@
             <div class="card card-default">
               <div class="card-header">
                 <h4 class="card-title">Quiz Check</h4>
+                   <div class="card-tools col-md-5 " >
+                <a href="<?php echo base_url(); ?>User/quiz_user_list" class="btn btn-sm btn-block btn-primary" >Competition Participated User List</a>
+              </div>
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
@@ -216,7 +219,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Submit</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/dynamiccompetition" class="btn btn-default ml-4">Cancel</a>
+                  <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div> 
               </form>
             </div>

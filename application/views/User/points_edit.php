@@ -90,7 +90,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button>
                   <?php } ?>
-                  <a href="<?php echo base_url() ?>User/prize_list" class="btn btn-default ml-4">Cancel</a>
+                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>

@@ -24,8 +24,8 @@
             <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Check and Download User Uploaded Files</h3>
-                 <div class="card-tools col-md-3 " >
-               <!--  <a href="<?php echo base_url(); ?>User/class_list" class="btn btn-sm btn-block btn-primary "  >Class Group List</a> -->
+                 <div class="card-tools col-md-5 " >
+                <a href="<?php echo base_url(); ?>User/quiz_user_list" class="btn btn-sm btn-block btn-primary" >Competition Participated User List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -75,14 +75,14 @@
                  
                  </div>
                 <!-- /.card-body -->
-               <!--  <div class="card-footer">
-                  <?php if(isset($update)){ ?>
+                <div class="card-footer">
+                <!--   < ?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
-                  <?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button>
-                  <?php } ?>
-                  <a href="<?php echo base_url() ?>User/class_list" class="btn btn-default ml-4">Cancel</a>
-                </div> -->
+                  < ?php } else{ ?> -->
+                   <!--  <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button> -->
+                  <!-- < ?php } ?> -->
+                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                </div>
               </form>
             </div>
 

@@ -142,10 +142,10 @@ class User extends CI_Controller{
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }      
           // print_r($_POST);
     $competitionid =$this->input->post('competitionid');
-    // $pincode = $this->input->post('pincode');
+    $user_id = $this->input->post('user_id');
     // $user_id = $this->input->post('user_id');
      
-     // print_r($user_id);   
+     // print_r($user_id);   die();
     $data['competition'] = $this->User_Model->fetch_competition();
     // $data['competitiontype'] = $this->User_Model->competition_list($competitionid);
      
@@ -195,7 +195,7 @@ class User extends CI_Controller{
       $competition_id = $this->session->userdata('competitionid');
       $score_admincheck_que = $this->session->userdata('question');
 
-      // echo $score_admincheck_que; die();
+      // echo $competition_id; die();
        $totalquest  = $this->input->post('totalquest');
        $this->session->set_userdata('totalquest',$totalquest);
 
@@ -2403,17 +2403,8 @@ public function save_assigncompetition(){
       $this->User_Model->update_info1('user_id', $user_id, 'customer_information', $update_datadb1);
 
      }
-
-
-
-
-     
-
-     
      
     // print_r($conversionpoints); die();
-
-     
 
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/add_assignwinner');
@@ -2425,6 +2416,19 @@ public function save_assigncompetition(){
     }
 }
 }
+
+ // winner List....
+  public function assign_winner_list(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['assign_winner_list'] = $this->User_Model->assign_winner_list('assignwinnerid');
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/assign_winner_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
  //   public function assignwinner_list(){
  //    $quizweb_user_id = $thisquizweb_user_id');
  //    $quizweb_company_id = $this->session->userdata('quizweb_company_id');

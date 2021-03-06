@@ -78,6 +78,20 @@ return $result;
     $result = $query->result();
      return $result;
   }
+   public function assign_winner_list($bannerid){
+    $this->db->select('assignwinner.*,competition.*,user.*,points_master.*');
+
+    $this->db->join('competition', 'assignwinner.competitionid = competition.competitionid', 'left');
+
+    $this->db->join('user', 'assignwinner.user_id = user.user_id', 'left');
+
+    $this->db->join('points_master', 'assignwinner.pointsid = points_master.pointsid', 'left');
+
+    $this->db->from('assignwinner');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
    public function class_list($tabinputtextid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -229,7 +243,7 @@ $this->db->from('userscore_master');
      $this->db->join('competition', 'userscore_master.competitionid = competition.competitionid', 'left');
      $this->db->join('points_master', 'userscore_master.competitionid = points_master.competitionid', 'left');
   
-      // $this->db->group_by("userscore_master.user_id");
+      $this->db->group_by("userscore_master.user_id");
       $this->db->order_by("userscore_master.score_percentage","DESC");
       $this->db->where('userscore_master.competitionid', $competitionid);
       $query = $this->db->get("userscore_master");
@@ -521,9 +535,11 @@ $this->db->from('userscore_master');
  //quiz_display userlist fetch
 
  public function fetch_userlist_quiz($competitionid){
-    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,competition.*');
+    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,userscore_master.competitionid,competition.*');
     
     $this->db->join('competition', 'userquizsubmit.dynamiccompetitionid = competition.competitionid', 'left');
+
+    // $this->db->join('userscore_master', 'userscore_master.competitionid = userquizsubmit.dynamiccompetitionid ', 'left');
     
 
    
@@ -533,7 +549,13 @@ $this->db->from('userscore_master');
 
 
     $this->db->where('userquizsubmit.dynamiccompetitionid', $competitionid);
+    $this->db->or_where('userscore_master.competitionid', $competitionid);
+    // $this->db->where('userscore_master.competitionid', 7);
+    // $this->db->where('userscore_master.user_id', 307);
+
     $this->db->group_by('userquizsubmit.user_id');
+    // $this->db->group_by('userscore_master.user_id');
+    // $this->db->group_by('userquizsubmit.dynamiccompetitionid');
     $this->db->from('userquizsubmit');
 
 

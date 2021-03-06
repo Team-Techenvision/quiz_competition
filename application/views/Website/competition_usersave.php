@@ -275,7 +275,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                             
                               <div class="col-md-12 mt-5">
-
+                                <?php if($comptype!='1'){ ?>
                                      <?php 
                                       if($file_format=='1'){
                                  
@@ -337,7 +337,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                            <button id="" type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span>Download </button>
                                          </form>
 
-                                    <?php } } ?>
+                                    <?php } } }?>
                                      </div>
 
                      </div>

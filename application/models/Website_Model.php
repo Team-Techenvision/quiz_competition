@@ -12,6 +12,10 @@ class Website_Model extends CI_Model{
     $this->db1->insert($tbl_name, $data);
     $insert_id = $this->db1->insert_id();
     return  $insert_id;
+  }
+   public function update_info1($id_type, $id, $tbl_name, $data){
+    $this->db1->where($id_type, $id)
+    ->update($tbl_name, $data);
   } 
 
 function check_login($mobile,$password){

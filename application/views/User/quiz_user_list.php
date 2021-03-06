@@ -86,12 +86,12 @@
                 <tbody>
                   <?php $i = 0;
                   foreach ($fetch_userlist_quiz as $list) {
-                    // print_r($fetch_userlist_quiz);
+                    // print_r($fetch_userlist_quiz);<?php echo $competitionid;
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td> 
                    
-                    <td><?php echo $list->user_id ?></td>
+                    <td><?php echo $list->user_id ?>  </td>
                    
                     <td><?php echo $list->user_name ?></td>
                    

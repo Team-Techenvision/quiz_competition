@@ -65,7 +65,7 @@
                   <?php }else{ ?>
                     <button type="submit" class="btn btn-success">Create Company</button>
                   <?php } ?>
-                  <a href="<?php echo base_url(); ?>/User/company_information_list" class="btn btn-default ml-4">Cancel</a>
+                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>

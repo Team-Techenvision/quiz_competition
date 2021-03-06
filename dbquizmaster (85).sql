@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2021 at 02:33 PM
+-- Generation Time: Mar 06, 2021 at 01:21 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -106,7 +106,23 @@ INSERT INTO `admincheck_answer` (`admincheck_answerid`, `user_id`, `competitioni
 (78, 307, 7, 38, 1, '2021-03-05 12:39:31'),
 (79, 307, 7, 39, 1, '2021-03-05 12:39:32'),
 (80, 307, 7, 40, 1, '2021-03-05 12:39:32'),
-(81, 307, 7, 67, 0, '2021-03-05 12:39:32');
+(81, 307, 7, 67, 0, '2021-03-05 12:39:32'),
+(82, 307, 79, 72, 0, '2021-03-06 04:48:30'),
+(83, 307, 79, 73, 1, '2021-03-06 04:48:30'),
+(84, 307, 79, 72, 0, '2021-03-06 04:48:48'),
+(85, 307, 79, 73, 1, '2021-03-06 04:48:48'),
+(86, 307, 7, 36, 1, '2021-03-06 04:58:09'),
+(87, 307, 7, 37, 1, '2021-03-06 04:58:09'),
+(88, 307, 7, 38, 1, '2021-03-06 04:58:09'),
+(89, 307, 7, 39, 1, '2021-03-06 04:58:09'),
+(90, 307, 7, 40, 1, '2021-03-06 04:58:09'),
+(91, 307, 7, 67, 0, '2021-03-06 04:58:09'),
+(92, 333, 7, 36, 1, '2021-03-06 10:32:40'),
+(93, 333, 7, 37, 1, '2021-03-06 10:32:40'),
+(94, 333, 7, 38, 1, '2021-03-06 10:32:40'),
+(95, 333, 7, 39, 1, '2021-03-06 10:32:40'),
+(96, 333, 7, 40, 1, '2021-03-06 10:32:40'),
+(97, 333, 7, 67, 1, '2021-03-06 10:32:40');
 
 -- --------------------------------------------------------
 
@@ -158,7 +174,9 @@ INSERT INTO `assignwinner` (`assignwinnerid`, `competitionid`, `pointsid`, `poin
 (4, 7, 5, 500, 50, 264),
 (6, 7, 3, 300, 30, 307),
 (7, 60, 16, 1000, 100, 307),
-(8, 60, 17, 800, 80, 220);
+(8, 60, 17, 800, 80, 220),
+(9, 79, 21, 1000, 200, 307),
+(10, 7, 1, 100, 15, 333);
 
 -- --------------------------------------------------------
 
@@ -456,7 +474,8 @@ INSERT INTO `competition_uploadfile_submit` (`uploadfileid`, `competitionid`, `u
 (76, 60, 220, 'uploadfile_220_1613989668.pdf', 1, '', '', '', '2021-02-22 10:27:48'),
 (77, 59, 255, '', 1, '', '', '', '2021-03-04 05:44:45'),
 (78, 59, 267, '', 1, '', '', '', '2021-03-04 06:02:11'),
-(79, 60, 307, 'uploadfile_307_1614948339.pdf', 1, '', '', '', '2021-03-05 12:45:38');
+(79, 60, 307, 'uploadfile_307_1614948339.pdf', 1, '', '', '', '2021-03-05 12:45:38'),
+(80, 60, 333, 'uploadfile_333_1615026529.pdf', 1, '', '', '', '2021-03-06 10:28:48');
 
 -- --------------------------------------------------------
 
@@ -653,7 +672,12 @@ INSERT INTO `points_master` (`pointsid`, `competitionid`, `points`, `winnerposit
 (17, 60, 800, '2nd Winner', 80, '0000-00-00'),
 (18, 60, 600, '3rd Winner', 60, '0000-00-00'),
 (19, 60, 400, '1st Runner Up', 40, '0000-00-00'),
-(20, 60, 200, '2st Runner Up', 20, '0000-00-00');
+(20, 60, 200, '2st Runner Up', 20, '0000-00-00'),
+(21, 79, 1000, '1st Winner', 200, '0000-00-00'),
+(22, 79, 800, '2nd Winner', 150, '0000-00-00'),
+(23, 79, 600, '3rd Winner', 100, '0000-00-00'),
+(24, 79, 400, '1st Runner Up', 50, '0000-00-00'),
+(25, 79, 200, '2st Runner Up', 20, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -755,7 +779,9 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (115, 'edasd', '2015-02-06', 'manish@gmail.com', '10', 'sm', 'kkk', 0, 'abccfasd', '4343545666', 1, 'kolhapur', 'kolhapur', 22, 59, 267, 49, '', '2021-03-04'),
 (116, 'ramesh', '2015-07-08', '', '9', 'sm', 'kolhapur', 0, 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 7, 307, 85, 'profile_image_307_1614947895.jpg', '2021-03-05'),
 (117, 'ramesh', '2015-07-08', '', '9', 'sm', 'kolhapur', 0, 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 60, 307, 85, 'profile_image_307_1614947895.jpg', '2021-03-05'),
-(118, 'ramesh', '2015-07-08', '', '9', 'sm', 'kolhapur', 0, 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 79, 307, 85, 'profile_image_307_1614947895.jpg', '2021-03-05');
+(118, 'ramesh', '2015-07-08', '', '9', 'sm', 'kolhapur', 0, 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 79, 307, 85, 'profile_image_307_1614947895.jpg', '2021-03-05'),
+(119, 'Mahesh', '2005-11-16', '', '9', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 60, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-06'),
+(120, 'Mahesh', '2005-11-16', '', '9', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 7, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-06');
 
 -- --------------------------------------------------------
 
@@ -1083,7 +1109,20 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (304, 0, '', 3, 'asdhf', '', 416016, '', 'qweeee@gmail.com', '8698055611', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-05 11:32:00', 3),
 (305, 0, '', 3, 'abcd', '', 416012, '', 'abcd@1gmail.com', '8698066123', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-05 11:34:58', 3),
 (306, 0, '', 3, 'Manisha Rane', '', 416012, '', 'manisha1@gmail.com', '7798025888', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-05 12:29:49', 3),
-(307, 0, '', 3, 'Chinmayi Patil', '', 416012, '', 'chinu@gmail.com', '7798025899', 'be6148685373df5bcc6f0baffda23be3', 1300, 130, NULL, 'active', '', '2021-03-05 13:23:01', 3);
+(307, 0, '', 3, 'Chinmayi Patil', '', 416012, '', 'chinu@gmail.com', '7798025899', 'be6148685373df5bcc6f0baffda23be3', 2300, 330, NULL, 'active', '', '2021-03-06 05:17:55', 3),
+(310, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025877', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-06 08:00:01', 3),
+(315, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025878', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:04:46', 3),
+(317, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025879', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:05:12', 3),
+(319, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025855', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:12:08', 3),
+(323, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025866', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:16:24', 3),
+(325, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025867', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:17:09', 3),
+(326, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025868', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:17:21', 3),
+(327, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025869', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:17:53', 3),
+(328, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025861', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:19:49', 3),
+(329, 0, '', 3, 'Prathamesh Shinde', '', 416012, '', 'pratham1@gmail.com', '7798025862', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:21:07', 3),
+(331, 0, '', 3, 'Parth Shinde', '', 416012, '', 'parth@gmail.com', '8698066956', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:34:33', 3),
+(332, 0, '', 3, 'Ramesh Rane', '', 416012, '', 'ramesh1@gmail.com', '8698066954', '121afe6c927d03e219e7e790677ea625', 0, 0, NULL, 'active', '', '2021-03-06 08:39:02', 3),
+(333, 0, '', 3, 'Ramesh Shinde', '', 416012, '', 'rameshs@gmail.com', '8421751623', 'be6148685373df5bcc6f0baffda23be3', 100, 15, NULL, 'active', '', '2021-03-06 11:04:31', 3);
 
 -- --------------------------------------------------------
 
@@ -1199,7 +1238,9 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (82, 304, 0, 'asdhf', '416016', '8698055611', 'Ki@123456', 'qweeee@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-03-05 11:32:00'),
 (83, 305, 0, 'abcd', '416012', '8698066123', 'Ki@123456', 'abcd@1gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-03-05 11:34:58'),
 (84, 306, 0, 'Manisha Rane', '416012', '7798025888', 'Ki@123456', 'manisha1@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-03-05 12:29:49'),
-(85, 307, 1, 'Chinmayi Patil', '416012', '7798025899', 'Ki@123456', 'chinu@gmail.com', 'ramesh', '2015-07-08', '', 9, 'sm', 'kolhapur', '', 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 'profile_image_307_1614947895.jpg', '2021-03-05 12:32:04');
+(85, 307, 1, 'Chinmayi Patil', '416012', '7798025899', 'Ki@123456', 'chinu@gmail.com', 'ramesh', '2015-07-08', '', 9, 'sm', 'kolhapur', '', 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 'profile_image_307_1614947895.jpg', '2021-03-05 12:32:04'),
+(86, 332, 0, 'Ramesh Rane', '416012', '8698066954', 'Ki@1234567', 'ramesh1@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', '2021-03-06 08:39:02'),
+(87, 333, 1, 'Ramesh Shinde', '416012', '8421751623', 'be6148685373df5bcc6f0baffda23be3', 'rameshs@gmail.com', 'Mahesh', '2005-11-16', '', 9, 'sm', 'kolhapur', '', 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_333_1615025594.PNG', '2021-03-06 09:57:59');
 
 -- --------------------------------------------------------
 
@@ -1276,7 +1317,13 @@ INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetition
 (92, 307, 7, '40', '1994', '2021-03-05 12:39:10'),
 (93, 307, 7, '67', '3', '2021-03-05 12:39:10'),
 (94, 307, 79, '72', '1', '2021-03-05 13:30:53'),
-(95, 307, 79, '73', '2', '2021-03-05 13:30:53');
+(95, 307, 79, '73', '2', '2021-03-05 13:30:53'),
+(96, 333, 7, '36', '1', '2021-03-06 10:31:47'),
+(97, 333, 7, '37', '2', '2021-03-06 10:31:47'),
+(98, 333, 7, '38', '1', '2021-03-06 10:31:47'),
+(99, 333, 7, '39', 'On the afternoon of August 3, 1914, two days after declaring war on Russia, Germany declares war on France, moving ahead with a long-held strategy, conceived by the former chief of staff of the German army, Alfred von Schlieffen, for a two-front war again', '2021-03-06 10:31:47'),
+(100, 333, 7, '40', '1994\r\n', '2021-03-06 10:31:47'),
+(101, 333, 7, '67', '2', '2021-03-06 10:31:47');
 
 -- --------------------------------------------------------
 
@@ -1305,7 +1352,9 @@ INSERT INTO `userscore_master` (`userscore_id`, `user_id`, `competitionid`, `tot
 (7, 265, 7, 6, 4, 66.67),
 (8, 264, 7, 6, 4, 66.67),
 (9, 266, 7, 6, 5, 83.33),
-(10, 307, 7, 6, 5, 83.33);
+(11, 307, 79, 2, 2, 100.00),
+(13, 307, 7, 6, 5, 83.33),
+(14, 333, 7, 6, 6, 100.00);
 
 -- --------------------------------------------------------
 
@@ -1497,7 +1546,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `admincheck_answer`
 --
 ALTER TABLE `admincheck_answer`
-  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `assigncompetition`
@@ -1509,7 +1558,7 @@ ALTER TABLE `assigncompetition`
 -- AUTO_INCREMENT for table `assignwinner`
 --
 ALTER TABLE `assignwinner`
-  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `assignwinnerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `banner`
@@ -1557,7 +1606,7 @@ ALTER TABLE `competitiontype`
 -- AUTO_INCREMENT for table `competition_uploadfile_submit`
 --
 ALTER TABLE `competition_uploadfile_submit`
-  MODIFY `uploadfileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `uploadfileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -1593,13 +1642,13 @@ ALTER TABLE `pincodemaster`
 -- AUTO_INCREMENT for table `points_master`
 --
 ALTER TABLE `points_master`
-  MODIFY `pointsid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `pointsid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1617,25 +1666,25 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=334;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `userscore_master`
 --
 ALTER TABLE `userscore_master`
-  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `winner`
