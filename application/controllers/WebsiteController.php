@@ -194,15 +194,23 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/Include/footer');
 }
 
-/**************************    Terms and Coditions     ********************************/
+/*********************     Terms and Coditions     ****************************/
   public function termsandcondition(){
 
     $this->load->view('Website/Include/head');
     $this->load->view('Website/termsandcondition');
     $this->load->view('Website/Include/footer');
+} 
+
+/*********************     faq     ****************************/
+  public function FAQ(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/faq');
+    $this->load->view('Website/Include/footer');
 }     
 
-/**************************    Competition Single Page View    *****************************/
+/***************** Competition Single Page View    *********************/
   public function competition_singlepage(){
 
     // $quizweb_user_id = $this->session->userdata('quizweb_user_id');

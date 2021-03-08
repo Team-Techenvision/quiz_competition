@@ -1,7 +1,47 @@
 <!DOCTYPE html>
+
 <html>
+<style type="text/css">
+  .about {
+  pointer-events: none;
+}
+.pp{
+  pointer-events: none;
+}
+.overview{
+  pointer-events: none;
+}
+.teachers{
+  pointer-events: none;
+}
+.tandc{
+  pointer-events: none;
+}
+.faq{
+  pointer-events: none; 
+}
+.contactus{
+  pointer-events: none;  
+}
+.register{
+  pointer-events: none;  
+}
+.twit{
+  pointer-events: none;  
+}
+.face{
+  pointer-events: none;    
+}
+.pint{
+  pointer-events: none;    
+}
+.insta{
+  pointer-events: none;    
+}
+</style>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+
       <!-- Content Wrapper. Contains page content -->
       <div class="competitionwrapper"  style="background-image:url('<?php echo base_url(); ?>/assets/images/93128-OJM4KV-79.jpg');background-blend-mode: overlay;
         background-repeat: no-repeat;
@@ -127,7 +167,7 @@
             </script>
             <script type="text/javascript">
               //right click disable
-              // document.addEventListener('contextmenu', event => event.preventDefault());
+              document.addEventListener('contextmenu', event => event.preventDefault());
 
               //header pointerevent close
               document.getElementById('logo').style.pointerEvents = 'none';
@@ -136,19 +176,19 @@
               document.getElementById('contact').style.pointerEvents = 'none';
               document.getElementById('username').style.pointerEvents = 'none';
 
-              //footer
-              document.getElementById('About').style.pointerEvents = 'none';
-              document.getElementById('overview').style.pointerEvents = 'none';
-              document.getElementById('teachers').style.pointerEvents = 'none';
-              document.getElementById('pp').style.pointerEvents = 'none';
-              document.getElementById('tandc').style.pointerEvents = 'none';
-              document.getElementById('faq').style.pointerEvents = 'none';
-              document.getElementById('contactus').style.pointerEvents = 'none';
-              document.getElementById('register').style.pointerEvents = 'none';
-              document.getElementById('twit').style.pointerEvents = 'none';
-              document.getElementById('face').style.pointerEvents = 'none';
-              document.getElementById('pint').style.pointerEvents = 'none';
-              document.getElementById('insta').style.pointerEvents = 'none';
+              //footer not working code
+              // document.getElementById('About').style.pointerEvents = 'none';
+              // document.getElementById('overview').style.pointerEvents = 'none';
+              // document.getElementById('teachers').style.pointerEvents = 'none';
+              // document.getElementById('pp').style.pointerEvents = 'none';
+              // document.getElementById('tandc').style.pointerEvents = 'none';
+              // document.getElementById('faq').style.pointerEvents = 'none';
+              // document.getElementById('contactus').style.pointerEvents = 'none';
+              // document.getElementById('register').style.pointerEvents = 'none';
+              // document.getElementById('twit').style.pointerEvents = 'none';
+              // document.getElementById('face').style.pointerEvents = 'none';
+              // document.getElementById('pint').style.pointerEvents = 'none';
+              // document.getElementById('insta').style.pointerEvents = 'none';
 
               //keys close
                // document.getElementById('content').onkeypress=function(){return false;}//not worked

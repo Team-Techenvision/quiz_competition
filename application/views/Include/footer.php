@@ -76,7 +76,7 @@
   });
 </script>
      <!-- email validation  -->
- <script type="text/javascript">
+<!--  <script type="text/javascript">
  
   // Wait for the DOM to be ready
 $(function() {
@@ -115,7 +115,7 @@ $(function() {
     }
   });
 });
- </script>
+ </script> -->
  <!-- only text no number  -->
  <script>
  $( document ).ready(function() {
@@ -130,14 +130,14 @@ $(function() {
  </script>
 
  <!-- only number input -->
- <script>
+<!--  <script>
   document.querySelector(".notext").addEventListener("keypress", function (evt) {
     if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
     {
         evt.preventDefault();
     }
 });
- </script>
+ </script> -->
 <script type="text/javascript">
   $('#date1').datetimepicker({
     format: 'DD-MM-Y'

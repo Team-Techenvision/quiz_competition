@@ -354,11 +354,12 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
           </div>
           <!-- /.card -->
           </div>
+       </section>
+
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
-  </div>
+  <!-- </div> -->
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
    <script>

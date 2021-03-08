@@ -112,7 +112,7 @@ class User extends CI_Controller{
     }
      // print_r($data['lastid']); die();
 
-    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['competition'] = $this->User_Model->fetch_competition_for_quiz();
     
     $data['data'] = $que_id;
     // print_r($data['competition']);  
@@ -1727,17 +1727,50 @@ class User extends CI_Controller{
     $this->load->view('User/competition/competition',$data);
     $this->load->view('Include/footer',$data);
   }
+// function competition_active(){
+//     $competitionid = $this->input->get("competitionid");
+//     $active = $this->input->get("active");
+
+  
+//     $this->User_Model->activate($competitionid);
+//   // }
+
+//     // if(isset($_REQUEST['status']))
+//     // {
+//     //     // $this->load->model('categorymodel','category');    
+//     //     $set_status=$this->User_Model->competition_active();
+//     //     if($set_status>0){
+//     //       echo "active";
+//     //     $this->session->set_flashdata('message',"category has been updated.");
+//     //     }else{
+//     //       echo "deactive";
+//     //     $this->session->set_flashdata('message',"category has not been updated.");
+//     //     }
+
+//     // }
+//     // return redirect("User/competition_list");
+// }
+//   public function competition_active(){
+//      print_r($_POST); die();
+//     $active = $this->input->get("active");
+
+   
+//     if($active == 1){
+//     // $this->load->model("competition");
+//     $this->User_Model->activate($competitionid);
+//   }
+// }
 
   // Delete Competition....
-  public function delete_competition($competitionid){
-    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
-    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $this->User_Model->delete_info('competitionid', $competitionid, 'competition');
-    $this->session->set_flashdata('delete_success','success');
-    header('location:'.base_url().'User/competition_list');
-  }
+  // public function delete_competition($competitionid){
+  //   $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+  //   $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+  //   $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+  //   if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+  //   $this->User_Model->delete_info('competitionid', $competitionid, 'competition');
+  //   $this->session->set_flashdata('delete_success','success');
+  //   header('location:'.base_url().'User/competition_list');
+  // }
 
 /*******************************    Participate Information     **************************/
 
@@ -2592,6 +2625,7 @@ function fetch_profile()
      // print_r($_POST['conversionpoints']); 
 
     // echo $_POST['conversionpoints'][0];
+    $competitionid="";
 
     // $points="";
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
@@ -2600,11 +2634,18 @@ function fetch_profile()
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('competitionid', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-
     $competitionid = $this->input->post('competitionid');
 
     // print_r($competitionid); die();
+     $data['competition_check'] = $this->User_Model->checkpoints_competition($competitionid);
+
+      // print_r($data['competition_check']); die();
+
     // $i=0;
+
+      if(empty($data['competition_check'])){
+
+
      for( $i=0 ,  $count = count($_POST); $i <= $count; $i++) {
    
      
@@ -2620,9 +2661,16 @@ function fetch_profile()
 
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/points_list');
+
+    }else{
+      // echo "already exists";
+      $this->session->set_flashdata('competition_exists_error','error');
+      header('location:'.base_url().'User/add_points');
+    }
     }
 
     $data['competition'] = $this->User_Model->fetch_competition();
+   
     // $data['level'] = $this->User_Model->fetch_level();
 
 

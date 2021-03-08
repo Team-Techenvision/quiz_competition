@@ -58,8 +58,19 @@
                     <td>
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
                       <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>"> <i class="fa fa-edit"></i> </a>
+                        
+                         <!--  < ?php $status = $list->status; 
+                          if ($status == 1) {?> 
+                              <a class="btn btn-success" href="< ?php echo base_url();?>User/competition_active?competitionid=< ?php echo $list->competitionid;?>&active=< ?php echo $list->status;?>" >Active</a> 
+                          < ?php } else {?> 
+                              <a href="< ?php echo base_url();?>User/competition_active?competitionid=< ?php echo $list->competitionid;?>&active=< ?php echo $list->status;?>" class="btn btn-danger">Inactive</a> 
+                          < ?php } ?> 
+                       -->
 
-                      <a href="<?php echo base_url(); ?>User/delete_competition/<?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to delete this competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                 <!--    <a href=" < ?php echo base_url(); ?>User/competition_active/< ?php echo $list->competitionid; ?>/".&active=1>Active</a> -->
+
+
+                    <!--   <a href="< ?php echo base_url(); ?>User/delete_competition/< ?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to delete this competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a> -->
 
                      <a type="button" id="<?php echo $list->competitionid; ?>" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href=""> View</a> 
 

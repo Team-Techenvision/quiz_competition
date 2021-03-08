@@ -144,6 +144,13 @@ $(document).ready(function(){
 
 });
 </script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('competition_exists_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Competition Points Already Exists');
+    });
+  <?php } ?>
+</script>
  
 </body>
 </html>

@@ -32,17 +32,17 @@
                                 <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__link-wrap">
                                     <ul class="list-unstyled footer-widget__link-list">
-                                        <li><a id="About" href="<?php echo base_url(); ?>About-Us">About</a></li>
-                                        <li><a id="overview" href="#">Overview</a></li>
-                                        <li><a id="teachers" href="#">Teachers</a></li>
-                                        <li><a id="pp" href="<?php echo base_url(); ?>Privacy-Policy">Privacy Policy</a></li>
+                                        <li><a id="About" class="about" href="<?php echo base_url(); ?>About-Us">About</a></li>
+                                        <li><a id="overview" class="overview" href="#">Overview</a></li>
+                                        <li><a id="teachers" class="teachers" href="#">Teachers</a></li>
+                                        <li><a id="pp" class="pp" href="<?php echo base_url(); ?>Privacy-Policy">Privacy Policy</a></li>
                                        
                                     </ul><!-- /.footer-widget__link-list -->
                                     <ul class="list-unstyled footer-widget__link-list">
-                                         <li><a id="tandc" href="<?php echo base_url(); ?>Terms-and-Condition">Terms and Conditions</a></li>
-                                        <li><a id="faq" href="<?php echo base_url(); ?>FAQ">FAQ </a></li>
-                                        <li><a id="contactus" href="<?php echo base_url(); ?>Contact-Us">Contact</a></li>
-                                        <li><a id="register" href="#">Register Now</a></li>
+                                         <li><a id="tandc" class="tandc" href="<?php echo base_url(); ?>Terms-and-Condition">Terms and Conditions</a></li>
+                                        <li><a id="faq" class="faq" href="<?php echo base_url(); ?>FAQ">FAQ </a></li>
+                                        <li><a id="contactus" class="contactus" href="<?php echo base_url(); ?>Contact-Us">Contact</a></li>
+                                        <li><a id="register" class="register" href="#">Register Now</a></li>
                                     </ul><!-- /.footer-widget__link-list -->
                                 </div><!-- /.footer-widget__link-wrap -->
                             </div><!-- /.footer-widget -->
@@ -51,7 +51,7 @@
                             <div class="footer-widget footer-widget__gallery">
                                 <h2 class="footer-widget__title">Connect With Us</h2><!-- /.footer-widget__title -->
                                 <ul class="site-footer__social bg-website">
-                                     <a id="twit" href="#"><i class="fab fa-twitter twit"></i></a>
+                                     <a id="twit"  href="#"><i class="fab fa-twitter twit"></i></a>
                                      <a id="face" href="#"><i class="fab fa-facebook-square face"></i></a>
                                      <a id="pint" href="#"><i class="fab fa-pinterest-p pint"></i></a>
                                      <a id="insta" href="#"><i class="fab fa-instagram insta"></i></a>

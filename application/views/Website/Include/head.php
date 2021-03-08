@@ -280,7 +280,7 @@ label#user_password-error {
                 <input type="email" class="input" name="user_email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php if(isset($user_email)){ echo $user_email; } ?>" placeholder="Enter Email Address" required>
 
               </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" style="margin-top: -10px;" >
                   <label class="userLabel">Note: Entered mobile no. will be used as user name</label>
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext mobileNo" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 

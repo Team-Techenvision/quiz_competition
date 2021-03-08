@@ -8,6 +8,30 @@ class User_Model extends CI_Model{
         $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
     }
 
+//     function update_status(){
+
+//     $competitionid=$_REQUEST['competitionid'];
+//     // print_r($_REQUEST['competitionid']); die();
+//     $status=$_REQUEST['status'];
+
+//     if ($status==1) {
+//         $status='inactive';
+//     } else {
+//         $status='active';
+//     }
+//     $data = array(
+//         'status' => $status
+//     );
+//     print_r($data); die();
+//     $this->db->where('competitionid',$competitionid);
+//     return $this->db->update('competition',$data);                
+// }
+
+    
+    // public function activate($competitionid){
+    // $this->db->query("UPDATE competition SET status = 1 
+    //                   WHERE competitionid =?", array($competitionid));
+    // }
  //  function getRecords(){
  
  //   // Load database
@@ -127,6 +151,17 @@ return $result;
     $this->db->from('points_master');
     $query = $this->db->get();
     $result = $query->result();
+     return $result;
+  }
+  public function checkpoints_competition($competitionid){
+
+     $this->db->where('competitionid',$competitionid);
+     $this->db->group_by('competitionid');
+    $this->db->from('points_master');
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result); die();
+
      return $result;
   }
   public function save_points($competition_id,$winner,$points,$conversionpoints)
@@ -518,7 +553,17 @@ $this->db->from('userscore_master');
   $this->db->order_by("competitionid", "ASC");
   $c_date = date('Y-m-d');   
   $this->db->where('enddate >=', $c_date);
-  // $this->db->where('competitiontypeid');
+  // $this->db->where('competitiontypeid',1);
+  $query = $this->db->get("competition");
+  return $query->result();
+  // print_r($query);
+ }
+   function fetch_competition_for_quiz()
+ {
+  $this->db->order_by("competitionid", "ASC");
+  $c_date = date('Y-m-d');   
+  $this->db->where('enddate >=', $c_date);
+  $this->db->where('competitiontypeid',1);
   $query = $this->db->get("competition");
   return $query->result();
   // print_r($query);
