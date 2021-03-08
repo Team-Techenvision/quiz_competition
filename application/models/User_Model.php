@@ -8,30 +8,7 @@ class User_Model extends CI_Model{
         $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
     }
 
-//     function update_status(){
-
-//     $competitionid=$_REQUEST['competitionid'];
-//     // print_r($_REQUEST['competitionid']); die();
-//     $status=$_REQUEST['status'];
-
-//     if ($status==1) {
-//         $status='inactive';
-//     } else {
-//         $status='active';
-//     }
-//     $data = array(
-//         'status' => $status
-//     );
-//     print_r($data); die();
-//     $this->db->where('competitionid',$competitionid);
-//     return $this->db->update('competition',$data);                
-// }
-
-    
-    // public function activate($competitionid){
-    // $this->db->query("UPDATE competition SET status = 1 
-    //                   WHERE competitionid =?", array($competitionid));
-    // }
+   
  //  function getRecords(){
  
  //   // Load database

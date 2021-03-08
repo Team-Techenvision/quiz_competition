@@ -1727,39 +1727,31 @@ class User extends CI_Controller{
     $this->load->view('User/competition/competition',$data);
     $this->load->view('Include/footer',$data);
   }
-// function competition_active(){
-//     $competitionid = $this->input->get("competitionid");
-//     $active = $this->input->get("active");
+function competition_active(){
+    $competitionid = $this->input->get("competitionid");
+    $status = $this->input->get("active");
 
-  
-//     $this->User_Model->activate($competitionid);
-//   // }
+    if($status==1){
+      $s = 0;
+    }else
+    {
+      $s=1;
+    }
 
-//     // if(isset($_REQUEST['status']))
-//     // {
-//     //     // $this->load->model('categorymodel','category');    
-//     //     $set_status=$this->User_Model->competition_active();
-//     //     if($set_status>0){
-//     //       echo "active";
-//     //     $this->session->set_flashdata('message',"category has been updated.");
-//     //     }else{
-//     //       echo "deactive";
-//     //     $this->session->set_flashdata('message',"category has not been updated.");
-//     //     }
+    $update_data = array(
+      
+        'status' => $s,
+      );
 
-//     // }
-//     // return redirect("User/competition_list");
-// }
-//   public function competition_active(){
-//      print_r($_POST); die();
-//     $active = $this->input->get("active");
+      // print_r($update_data); die();
+
+     $this->User_Model->update_info('competitionid', $competitionid, 'competition', $update_data);
+
+     header('location:'.base_url().'User/competition_list');
 
    
-//     if($active == 1){
-//     // $this->load->model("competition");
-//     $this->User_Model->activate($competitionid);
-//   }
-// }
+ 
+}
 
   // Delete Competition....
   // public function delete_competition($competitionid){

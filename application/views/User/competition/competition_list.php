@@ -59,13 +59,13 @@
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
                       <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>"> <i class="fa fa-edit"></i> </a>
                         
-                         <!--  < ?php $status = $list->status; 
+                      <?php $status = $list->status; 
                           if ($status == 1) {?> 
-                              <a class="btn btn-success" href="< ?php echo base_url();?>User/competition_active?competitionid=< ?php echo $list->competitionid;?>&active=< ?php echo $list->status;?>" >Active</a> 
-                          < ?php } else {?> 
-                              <a href="< ?php echo base_url();?>User/competition_active?competitionid=< ?php echo $list->competitionid;?>&active=< ?php echo $list->status;?>" class="btn btn-danger">Inactive</a> 
-                          < ?php } ?> 
-                       -->
+                              <a class="btn btn-success" href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Deactivate this competition?');" >Active</a> 
+                          <?php } else {?> 
+                              <a href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Activate this competition?');" class="btn btn-danger">Inactive</a> 
+                          <?php } ?> 
+                     
 
                  <!--    <a href=" < ?php echo base_url(); ?>User/competition_active/< ?php echo $list->competitionid; ?>/".&active=1>Active</a> -->
 
@@ -135,6 +135,7 @@
       toastr.error('Competition Deleted Successfully');
     });
   <?php } ?>
+  
 
 </script>
 <!--  <script>

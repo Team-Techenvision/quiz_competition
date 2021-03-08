@@ -159,10 +159,10 @@
                             <?php if(empty($wrong)){}else{ ?>
                              <input type="hidden" name="<?php echo $value['question_id'];?>" id="incorrectcalue" value="0">
                             <h5 class="alert alert-danger incorrect">Incorrect</h5>
-                            <label>Correct Anwer: <?php echo $my_Array; ?></label>
+                            <label>Correct Answer: <?php echo $my_Array; ?></label>
                               <input type="hidden" name="" id="databasecorrect" value="<?php echo $my_Array; ?>"> 
                               <br>
-                              <label>User Anwer: <?php echo $value['selectanswertext']; ?></label>
+                              <label>User Answer: <?php echo $value['selectanswertext']; ?></label>
                               <input type="hidden" name="" id="userselected" value="<?php echo $value['selectanswertext']; ?>"> 
                               <?php } ?>
                             <!-- <h5 class="alert alert-success correct">Incorrect</h5> -->
