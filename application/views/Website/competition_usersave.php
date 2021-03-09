@@ -172,7 +172,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                 
                                 <?php if($whatsapp=='1') {?>
                                    <div class="form-group col-md-1">
-                                    <a href="https://wa.me/91<?php echo $value->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition"><img src="<?php echo base_url();?>assets/images/whatsapp.jpg" height="40px" width="40px"/></a>
+                                    <a href="https://wa.me/91<?php echo $value->whatsappnumber; ?>?text=I%20am%20interested%20in%20your%20competition" target="_blank" ><img src="<?php echo base_url();?>assets/images/whatsapp.jpg"  height="40px" width="40px"/></a>
                                   </div>
                                 <?php }?>
                                  <?php if($email=='1') {?>

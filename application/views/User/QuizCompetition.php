@@ -53,7 +53,7 @@
 
                     <div class="form-group col-md-12">
                       <label>Question </label>
-                   <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question" >
+                   <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php  echo $list['question'];  ?>" placeholder="Enter Question" required>
                        
                       </div>
                         <div class="form-group col-md-12">
@@ -65,7 +65,7 @@
 
                          <input style="margin-right: 15px;" type="checkbox"  name="correctans[]" value="<?php echo $i; ?>" <?php if(in_array($i,$corAns)) { echo "checked";} ?> > <?php  }else{ ?><input type="checkbox" style="margin-right: 15px;" name="correctans[]" value="<?php echo $i; ?>" <?php if(in_array($i,$corAns)) { echo "checked";} ?> >
                          <?php } $i++;?>
-                          <input type="text" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array; ?>" >
+                          <input type="text" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array; ?>" required>
 
                         </div>   
                   

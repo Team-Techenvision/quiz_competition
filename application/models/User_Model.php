@@ -8,7 +8,18 @@ class User_Model extends CI_Model{
         $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
     }
 
-   
+//    public function check_compit($competitionid){
+// // $this->db->select('*');
+//   // print_r($user_mobile); die();
+// // $this->db->where('user_id',$quizweb_user_id);
+// $this->db->where('competitionid',$competitionid);
+
+// $this->db->from('competition');
+// $query = $this->db->get();
+// $result = $query->num_rows();
+// // print_r($result); die();
+// return $result;
+// }
  //  function getRecords(){
  
  //   // Load database
@@ -136,7 +147,41 @@ return $result;
      $this->db->group_by('competitionid');
     $this->db->from('points_master');
     $query = $this->db->get();
-    $result = $query->result();
+    $result = $query->num_rows();
+    // print_r($result); die();
+
+     return $result;
+  }
+   public function check_level($levelname){
+
+     $this->db->where('levelname',$levelname);
+     // $this->db->group_by('competitionid');
+    $this->db->from('levelmaster');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    // print_r($result); die();
+
+     return $result;
+  }
+   public function check_competitiontype($competitiontype){
+
+     $this->db->where('competitiontype',$competitiontype);
+     // $this->db->group_by('competitiontype');
+    $this->db->from('competitiontype');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    // print_r($result); die();
+
+     return $result;
+  }
+   public function check_dynamic_question($competitionid,$question){
+
+     $this->db->where('competitionid',$competitionid);
+     $this->db->where('question',$question);
+     // $this->db->group_by('competitionid');
+    $this->db->from('dynamiccompetition');
+    $query = $this->db->get();
+    $result = $query->num_rows();
     // print_r($result); die();
 
      return $result;
@@ -755,11 +800,11 @@ function fetch_user_uploadfile($competitionid)
 
  public function assigncompetition_list($competitionid,$pincode){
      // $this->db->select('*');
-    $this->db->select('profile.*,user.*');
+    $this->db->select('profile.*,user.*,competition.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
-//     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
+    $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
     $this->db->join('user', 'profile.user_id = user.user_id', 'left');
-    $this->db->where('competitionid', $competitionid);
+    $this->db->where('profile.competitionid', $competitionid);
        // $this->db->order_by('profile.user_id');
     $this->db->where('pincode', $pincode);
 

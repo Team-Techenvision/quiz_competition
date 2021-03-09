@@ -656,7 +656,7 @@ $.validator.addMethod("pwcheck", function(value) {
                }
                else{
 
-                // $('#user_mobile').val("");
+                $('#user_mobile').val("");
 
                 $('.alert-danger').html(data);
                 $('.mobileerror').show().delay(5000).fadeOut();

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -30,7 +35,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" name="form_action" role="form" action="" method="post" enctype="multipart/form-data">
+              <form id="form_action" name="comp_action1" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
                 <div class="row">
                   <div class="form-group col-md-12">
@@ -43,7 +48,7 @@
 
                 
 
-                      <select name="competitiontypeid" id="competitiontypeid"class="form-control" required>
+                      <select name="competitiontypeid" id="competitiontypeid" class="form-control" required>
                         <option value="">Select Competition Type</option>
 
 
@@ -85,7 +90,7 @@
                       <?php
                       if(isset($standard)){?>
 
-                       <input type="hidden" class="form-control required title-case text" name="classname" id="classname" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
+                       <input type="hidden" class="form-control title-case text" name="classname" id="classname" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                        <?php }?>
 
                       <select name="standard" id="standard" class="form-control" required>
@@ -131,8 +136,8 @@
                          
                       </select>
                     </div>
-                    <p  style="color: blue; position: absolute;top: 740px;" class="ml-2">Note: Select same option from class and tab input text dropdown lists.</p>
-                 
+                   <!--  <p  style="color: blue; position: absolute;top: 740px;" class="ml-2 pl-1 mt-2 border border-dark">Note: Select same option from class and tab input text dropdown lists.</p>
+                  -->
                      <div class="form-group col-md-3">
                     <label> End Date <span style="color: red;">*</span></label>
 
@@ -189,8 +194,10 @@
                   <div class="radio col-md-2">
                     <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?> > Female</label>
                   </div>
+                  <p  style="color: blue;" class="ml-2 pl-1 border border-dark">Note: If select Female(18+) / Male (18+) / (All & other class options) from class dropdownlist then correspondingly select Female(18+) / Male (18+) / All from paticipant Type radiobuttons.</p>
                   </div>
                   </div>
+                   
                    <!--  <div class="form-group col-md-6">
                     <label>Points <span style="color: red;">*</span></label>
 
@@ -230,20 +237,21 @@
                    <input type="hidden" name="old_photo" value="<?php if(isset($photo)){ echo $photo; } ?>"> 
 
                   <?php }?>
-
+                   
+                   <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: Only .jpg, .jpeg, .png Image Files are allowed.</p>
 
                   </div>
                
                    <div class="form-group col-md-12">
                     <label>Terms and Conditions <span style="color: red;">*</span></label>
 
-                    <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
+                    <textarea class="textarea required" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                    </div>
                  
                     <div class="form-group col-md-12">
                     <label>Instructions <span style="color: red;">*</span></label>
 
-                    <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
+                    <textarea class="textarea required" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                    </div>
                      <div class="form-group col-md-12">
                     <label>File Format</label>
@@ -251,7 +259,7 @@
                     <?php
                       if(isset($file_format)){?>
 
-                       <input type="hidden" class="form-control required title-case text" name="file_format" id="fileformat" value="<?php if(isset($file_format)){ echo $file_format; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text file_format" name="file_format" id="fileformat" value="<?php if(isset($file_format)){ echo $file_format; } ?>" disabled="">
                        <?php }?>
                     <select name="file_format" id="file_format"class="form-control" >
                     <option value="0">Select File Format</option>
@@ -262,6 +270,9 @@
                     <option value="4">Image File</option>
                    
                   </select>
+
+                  <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: If select (Document file/ powerpoint File)/ Audio File/ Video File/ Image File then correspondingly checked checkbox of Upload.</p>
+
                   </div>
                   <div class="form-group col-md-12">
                     <label>Options</label>
@@ -298,12 +309,12 @@
                         <div class="row" >
                           <div class="col-md-2">
                              <?php  if(empty($email)){$email="";} ?>
-                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control required title-case text " name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" placeholder=" Enter E-mail Address" ></div>
+                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control  title-case text " name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>"  placeholder=" Enter E-mail Address" ></div>
                       </div><br>
                        <div class="row">
                           <div class="col-md-2">
                              <?php  if(empty($whatsapp)){$whatsapp="";} ?>
-                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div><div class="col-md-10"><input type="text" class="form-control required title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" ></div>
+                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div><div class="col-md-10"><input type="text" class="form-control  title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" ></div>
                       </div>
 
                     </div>
@@ -336,8 +347,8 @@
       </div><!-- /.container-fluid -->
     </section>
   </div>
-  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+ <!--  <script src="< ?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="< ?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> -->
 
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
   
@@ -448,12 +459,116 @@ $('form').validate({
     });
 });
 </script> 
-<!-- <script type="text/javascript">
-  $('.numinput').on('input', function() {
-      this.value = this.value.replace(/(?!^-)[^0-9.]/g, "").replace(/(\..*)\./g, '$1'); 
-});
-</script>
- -->
+ <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-</body>
-</html>
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<!-- <script src="trunk/dev/validation.js"></script> -->
+
+
+<script type="text/javascript">
+  $(function () {
+ $('#file_format').change(function () {
+   var val = $(this).val();
+   // alert(val);
+   $('input[name="uploadfile"]').prop('checked', false);
+   $('input[name="uploadfile"][value=' + val + ']').prop('checked', true);
+
+  });
+});
+
+
+</script>
+<script type="text/javascript">
+var checkBox = document.querySelector('input[name="email"]');
+var textInput = document.querySelector('input[name="emailaddress"]');
+
+// var checkBox1 = document.querySelector('input[name="whatsapp"]');
+// var textInput1 = document.querySelector('input[name="whatsappnumber"]');
+
+
+function toggleRequired() {
+
+    if (textInput.hasAttribute('required') !== true) {
+        textInput.setAttribute('required','required');
+    }
+
+    else {
+        textInput.removeAttribute('required');  
+    }
+
+}
+
+
+checkBox.addEventListener('change',toggleRequired,false);
+
+</script>
+<script type="text/javascript">
+
+var checkBoxW = document.querySelector('input[name="whatsapp"]');
+var textInputW = document.querySelector('input[name="whatsappnumber"]');
+
+
+function toggleRequired() {
+
+    if (textInputW.hasAttribute('required') !== true) {
+        textInputW.setAttribute('required','required');
+    }
+
+    else {
+        textInputW.removeAttribute('required');  
+    }
+
+}
+
+
+checkBoxW.addEventListener('change',toggleRequired,false);
+
+</script>
+
+
+ <script type="text/javascript">
+ 
+  // Wait for the DOM to be ready
+$(function() {
+  // alert("hii");
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='comp_action1']").validate({
+
+    // Specify validation rules
+    rules: {
+
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      // title: "required",
+      // title: "required",
+      // address: "required",
+      // pin_code: "required",
+      // email: {
+      //   required: true,
+      //   // Specify that email should be validated
+      //   // by the built-in "email" rule
+      //   email: true
+      // },
+      
+    },
+    // Specify validation error messages
+    messages: {
+      // title: "Please enter user name",
+      // title: "Please enter competition title",
+      // email: "Please enter a valid email address",
+      // pin_code: "Please enter a valid pincode",
+      // address: "Please enter Street Address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      // alert("hello");
+      form.submit();
+    }
+  });
+});
+ </script>

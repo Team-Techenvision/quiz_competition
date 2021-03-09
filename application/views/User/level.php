@@ -35,8 +35,11 @@
                  <div class="form-group col-md-12">
                   <label>Level <span style="color: red;">*</span></label>
                     <input type="text" class="form-control required title-case " name="levelname" id="levelname" value="<?php if(isset($levelname)){ echo $levelname; } ?>" placeholder="Enter Level " required="">
+
+                    <p class="levelval mb-0" id="levelval" style="font-size:14px;  color: red;"></p>
                   </div>
-                 
+                  
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -61,6 +64,40 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
- 
+  <script>
+   
+
+  $('#levelname').on('change',function(){
+    // alert("hii");
+
+     var level = $('#levelname').val();
+     // alert(mobile);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/check_level",
+           method:"POST",
+           data:{levelname:level},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+                   $('.levelval').hide();
+
+                 }else{
+                // alert(data);
+                 $('.levelval').html(data);
+                 $('#levelname').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+
+</script>
 </body>
 </html>

@@ -60,6 +60,7 @@
 
                      
                   </select>
+                  <p class="competval mb-0" id="competval" style="font-size:14px;  color: red;"></p>
                   </div>
                    <div class="form-group col-md-12">
                   <table id="" class="table table-bordered table-striped">
@@ -150,6 +151,41 @@ $(document).ready(function(){
       toastr.error('Competition Points Already Exists');
     });
   <?php } ?>
+</script>
+<script>
+   
+
+  $('#competitionid').on('change',function(){
+    // alert("hii");
+
+     var comp = $('#competitionid').val();
+     // alert(comp);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/checkpoints_competition1",
+           method:"POST",
+           data:{competitionid:comp},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+                   $('.competval').hide();
+
+                 }else{
+                // alert(data);
+                 $('.competval').html(data);
+                 $('#competitionid').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+
 </script>
  
 </body>

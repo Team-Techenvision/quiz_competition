@@ -10,6 +10,9 @@
         z-index: 2;
         color: black;
     }
+    .error{
+      color: red;
+    }
 </style>
 <!DOCTYPE html>
 <html>
@@ -43,16 +46,16 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post">
+              <form id="form_action" name="user_form1" role="form" action="" method="post">
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                     <label>Name<span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name of User" required="required">
+                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name of User" required>
                   </div>
                    <div class="form-group col-md-12">
                     <label>Address<span style="color: red;">*</span></label>
 
-                    <textarea type="text" class="form-control required title-case text " name="user_address" id="user_address" value="" placeholder="Enter Address of User" required ><?php if(isset($user_address)){ echo $user_address; } ?></textarea>
+                    <textarea type="text" class="form-control required title-case text " name="user_address" id="user_address"  placeholder="Enter Address of User" required ><?php if(isset($user_address)){ echo $user_address; } ?></textarea>
                   </div>
                      <div class="form-group col-md-12">
                     <label>Pincode<span style="color: red;">*</span></label>
@@ -61,12 +64,12 @@
                   <div class="form-group col-md-12">
                     <label>City<span style="color: red;">*</span></label>
 
-                    <input type="text" class="form-control txtOnly" name="user_city" id="user_city" value="<?php if(isset($user_city)){ echo $user_city; } ?>" placeholder="Enter City" required>
+                    <input type="text" class="form-control required txtOnly" name="user_city" id="user_city" value="<?php if(isset($user_city)){ echo $user_city; } ?>" placeholder="Enter City" required>
                   </div>
                   <div class="form-group col-md-12">
                     <label>Mobile No<span style="color: red;">*</span></label>
 
-                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="form-control notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="form-control required notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
                  
                   </div>
                   <div class="form-group col-md-12">
@@ -79,7 +82,7 @@
 
                    <!--  <input type="password" class="form-control " name="user_password" id="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required> -->
 
-                      <input input type="password" id="user_password" name="user_password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> <span style="margin-left: -30px;" toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+                      <input input type="password" id="user_password" name="user_password" class="form-control required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> <span style="margin-left: -30px;" toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></span>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -105,7 +108,11 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<!-- <script src="trunk/dev/validation.js"></script> -->
+  
 
 <script type="text/javascript">
 // Check Mobile Duplication..
@@ -160,5 +167,51 @@
 });
 </script>
 
+ <script type="text/javascript">
+ 
+  // Wait for the DOM to be ready
+$(function() {
+  
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='user_form1']").validate({
+
+    // Specify validation rules
+    rules: {
+
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      // user_name2: "required",
+      // title: "required",
+      // address: "required",
+      // pin_code: "required",
+      // email: {
+      //   required: true,
+      //   // Specify that email should be validated
+      //   // by the built-in "email" rule
+      //   email: true
+      // },
+      
+    },
+    // Specify validation error messages
+    messages: {
+      // user_name2: "Please enter user name",
+      // title: "Please enter competition title",
+      // email: "Please enter a valid email address",
+      // pin_code: "Please enter a valid pincode",
+      // address: "Please enter Street Address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      // alert("hello");
+      form.submit();
+    }
+  });
+});
+ </script>
+
 </body>
+
 </html>

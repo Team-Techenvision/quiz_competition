@@ -1,4 +1,4 @@
-<!-- <?php
+<!-- < ?php
   $out_user_id = $this->session->userdata('out_user_id');
   $out_company_id = $this->session->userdata('out_company_id');
   $out_roll_id = $this->session->userdata('out_roll_id');

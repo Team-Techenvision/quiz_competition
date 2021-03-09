@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+  .disabled {
+  pointer-events: none;
+  cursor: default;
+}
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -56,7 +62,7 @@
                    
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_points/<?php echo $list->pointsid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_points/<?php echo $list->pointsid; ?>" onclick="return confirm('Do you want to Delete this Points?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_points/<?php echo $list->pointsid; ?>" onclick="return confirm('Do you want to Delete this Points?');" class="ml-2 disabled"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>

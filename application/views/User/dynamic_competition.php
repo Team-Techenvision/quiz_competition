@@ -75,7 +75,8 @@
 	                  <div class="form-group col-md-12">
 	                  	<label>Question <span style="color: red;">*</span></label>
 			             <input type="text" class="form-control required title-case text" name="question" id="question"  value="<?php if(isset($question)){ echo $question; } ?>" placeholder="Enter Question" required="">
-		                   
+
+		                    <p class="queval mb-0" id="queval" style="font-size:14px;  color: red;"></p>
                       </div>
                         <div class="form-group col-md-12">
                              <label>Answer Type <span style="color: red;">*</span></label>
@@ -153,6 +154,42 @@ jQuery($ => {
       toastr.success('Record Saved Successfully');
     });
   <?php } ?>
+</script>
+<script>
+   
+
+  $('#question').on('change',function(){
+    // alert("hii");
+
+     var comp = $('#competitionid').val();
+     var que = $('#question').val();
+     // alert(mobile);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/check_dynamic_question",
+           method:"POST",
+           data:{question:que,competitionid:comp},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+                   $('.queval').hide();
+
+                 }else{
+                // alert(data);
+                 $('.queval').html(data);
+                 $('#question').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+
 </script>
 </body>
 </html>

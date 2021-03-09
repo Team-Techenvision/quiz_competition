@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+  .disabled {
+  pointer-events: none;
+  cursor: default;
+}
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -48,7 +54,7 @@
                     <td><?php echo $list->competitiontype ?></td>
                     <td>
                       <a href="<?php echo base_url(); ?>User/edit_competitiontype/<?php echo $list->competitiontypeid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to delete this competition type?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to delete this competition type?');" class="ml-2 disabled "> <i class="fa fa-trash text-danger"></i> </a>
                      
                     </td>
                   <?php } ?>

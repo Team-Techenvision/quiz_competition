@@ -62,7 +62,36 @@ class User extends CI_Controller{
   }
 
 
-/**************************      Dynamic Competition      ********************************/
+/*******************   Dynamic Competition   ***********************/
+
+ public function check_dynamic_question(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+    $competitionid = $this->input->post('competitionid');
+    $question = $this->input->post('question');
+
+    $check_dynamic_question = $this->User_Model->check_dynamic_question($competitionid,$question); 
+// print_r($checkpoints_competition); die();
+        if($check_dynamic_question > 0){
+
+         echo "Question Already Exists." ; 
+         // return false;
+
+
+        }else{
+
+          echo "true";
+
+        }
+}
+
+
+
+
   public function dynamiccompetition(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
@@ -282,40 +311,7 @@ class User extends CI_Controller{
     $data['competition'] = $this->User_Model->fetch_competition();
     $data['users'] = $this->User_Model->fetch_user_name($user_id);
     $data['result'] = $this->User_Model->quize_get($competitionid,$user_id);
-     // $data['user_result'] = $this->User_Model->get_list_by_id('competitionid', $competitionid,'','','','','userquizsubmit'); 
-
-     // print_r($data['result']); die();
-
- //    foreach ($data['result'] as $value) {
- //      $question = $value['question_id']; 
- //      // print_r($question);
-
- //     // count($question);
- //     $score_admincheck_que = $this->User_Model->score_admincheck_question($user_id,$competitionid,$question);
-
-
- // // score_admincheck_question
-
-    
-    
- //    // print_r($score_admincheck_answer); 
- //    }
- //    echo $this->session->set_userdata('question',$score_admincheck_que);
-     // echo $score_admincheck_que;
-
-
-//answer count by user_id
-    // $score_admincheck_answer = $this->User_Model->score_admincheck_answer($user_id,$competitionid,$checkanswer);
-
-
-     // echo $score_admincheck_answer;
-
-     // die();
-
-
-
-
-    
+  
  
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -591,7 +587,32 @@ class User extends CI_Controller{
     header('location:'.base_url().'User/quizcompetition_list/'.$compid);
   }
 
-/*******************************    Competition Type Information      ****************************/
+/******************  Competition Type Information      **********************/
+
+public function check_competitiontype(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+    $competitiontype = $this->input->post('competitiontype');
+
+    $check_competitiontype = $this->User_Model->check_competitiontype($competitiontype); 
+// print_r($checkpoints_competition); die();
+        if($check_competitiontype > 0){
+
+         echo "Competition Type Already Exists." ; 
+         // return false;
+
+
+        }else{
+
+          echo "true";
+
+        }
+}
+
 
   // Add New Competition Type....
   public function add_competitiontype(){
@@ -2523,8 +2544,32 @@ function fetch_profile()
     $this->load->view('Include/footer',$data);
   }
 
-  /*******************************    Level Information      ****************************/
+  /********************   Level Information      **************************/
 
+
+   public function check_level(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+     $levelname = $this->input->post('levelname');
+
+    $check_level = $this->User_Model->check_level($levelname); 
+// print_r($checkpoints_competition); die();
+        if($check_level > 0){
+
+         echo "Competition Level Already Exists." ; 
+         // return false;
+
+
+        }else{
+
+          echo "true";
+
+        }
+}
   // Add New Level....
   public function add_level(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
@@ -2603,7 +2648,33 @@ function fetch_profile()
     header('location:'.base_url().'User/level_list');
   }
 
-/*******************************    Prizes Information      ****************************/
+/**********************  Prizes Information      ***********************/
+
+
+
+public function checkpoints_competition1(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+    $competitionid = $this->input->post('competitionid');
+
+    $checkpoints_competition = $this->User_Model->checkpoints_competition($competitionid); 
+// print_r($checkpoints_competition); die();
+        if($checkpoints_competition > 0){
+
+         echo "Competition Points Already Exists." ; 
+         // return false;
+
+
+        }else{
+
+          echo "true";
+
+        }
+}
 
   // Add New Prizes....
   public function add_points(){

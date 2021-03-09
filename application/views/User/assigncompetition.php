@@ -85,7 +85,9 @@
                  
                       <!-- <form id="form_action" role="form" action="" method="post" > -->
                          <?php
-                    if(isset($assigncompetition_list)){?> 
+                    if(isset($assigncompetition_list)){
+                    
+                      ?> 
 
                      
                   <div class="form-group col-12">
@@ -93,7 +95,7 @@
 
                      <input type="hidden" class="form-control required title-case text" name="pin" id="pin" value="<?php echo $pincodeid ?>" >
 
-                
+            
 
                  <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
@@ -150,10 +152,12 @@
                               <div class="modal-body">
                               
                                  <div class="card-body row">
+                                
                                      <div class="form-group col-md-6">
                                       <label>Competition Title</label>
-                                        <input type="text" class="form-control required title-case text" name="comp" id="comp" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" >
+                                        <input type="text" class="form-control required title-case text" name="comp" id="comp" value="<?php  echo $list->title;  ?>" >
                                      </div>
+                                 
                                      <div class="form-group col-md-6">
                                       <label>Pincode</label>
                                        <input type="text" class="form-control required title-case text" name="pincode1" id="pincode1" value="<?php if(isset($pincodeid)){ echo $pincodeid; } ?>" >

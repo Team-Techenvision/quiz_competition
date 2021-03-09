@@ -122,7 +122,7 @@
                   foreach ($userscore as $list) {
                     $i++; ?>
                   <tr>
-                    <td><input type="radio" id="" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 
+                    <td><input type="radio" id="" style="margin-right: 10px;" name="user_id" value="<?php echo $list->user_id ?>" required="required"><input type="hidden" name="competitionid" value="<?php echo $list->competitionid ?>"><?php echo $i; ?></td> 
                     <td><?php echo $list->user_id ?></td> 
                     <td><?php echo $list->user_name ?></td>
                     <td><?php echo $list->score_percentage ?></td>
