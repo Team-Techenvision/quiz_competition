@@ -42,10 +42,10 @@
 
                           if(isset($competitionid)){?>
 
-                           <input type="hidden" class="form-control required title-case text" name="competitionid" id="competition" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
+                           <input type="hidden" class="form-control  title-case text" name="competitionid" id="competition" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
                          <?php }?>
 
-                       <select name="competitionid" id="competitionid"class="form-control" required="">
+                       <select name="competitionid" id="competitionid" class="form-control required" required>
                           <option value="">Select Competition</option>
                
                           <?php 
@@ -81,7 +81,7 @@
                          <?php }?>
 
                        <select name="pointsid" id="pointsid"class="form-control" required="">
-                          <option value="">Select Competition</option>
+                          <option value="">Select Winner Position</option>
                
                           <?php 
                           

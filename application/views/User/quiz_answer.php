@@ -79,9 +79,9 @@
                            <!-- dropdown -->
                           <tr >  
                               <td id="dynamic_dropdown" class="p-0">  <div class="form-check mb-2 mt-2" >
-                                  <input class="form-check-input" type="radio" name="correctans[]" value="1"  id="flexRadioDefault1" required="required">
+                                  <input class="form-check-input"  type="radio" name="correctans[]" value="1"  id="flexRadioDefault1" required="required">
                                   <label class="form-check-label" for="flexRadioDefault1">
-                                    <input type="text"  placeholder="Enter Option"  name="addmore[]" class="form-control " required="required" />
+                                    <input type="text" placeholder="Enter Option"  name="addmore[]" class="form-control " required="required" />
                                   </label>
                                 </div>  
                               <td><button type="button" name="add" id="add_dropdown" class="btn btn-success">Add More</button></td>  
@@ -113,7 +113,7 @@
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
+                    <button id="btn_save" type="submit" onclick="alert('Answer Field can not be blank');" class="btn btn-success px-4">Add</button>
                   <?php } ?>
                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div> 

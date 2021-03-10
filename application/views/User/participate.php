@@ -116,7 +116,7 @@
 
                       <input type="hidden" class="form-control required title-case text" name="competitionid" id="competitionid" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
                      
-                      <select name="competitionid" id="competitionid"class="form-control" required="">
+                      <select name="competitionid" id="compet"class="form-control" required="">
                       <option value="">Select Competition</option>
                        <?php foreach($competition as $competition)
                          {
@@ -127,6 +127,9 @@
                          ?>   
                     
                     </select>
+                     <p class="compval mb-0" id="compval" style="font-size:14px;  color: red;"></p>
+
+
                   </div>
 
                    <div class="form-group col-md-6">
@@ -136,20 +139,22 @@
                                 
                                   <select name="standard" id="standard"class="form-control" required="" >
                                   <option value="">Select Standard</option>
-                                  <option value="1">1st</option>
-                                  <option value="2">2nd</option>
-                                  <option value="3">3rd</option>
-                                  <option value="4">4th</option>
-                                  <option value="5">5th</option>
-                                  <option value="6">6th</option>
-                                  <option value="7">7th</option>
-                                  <option value="8">8th</option>
-                                  <option value="9">9th</option>
-                                  <option value="10">10th</option>
-                                  <option value="11">11th</option>
-                                  <option value="12">12th</option>
-                                  <option value="13">Male(18+)</option>
-                                  <option value="14">Female(18+)</option>
+                                  <option value="1">Nursary</option>
+                                  <option value="2">KG-I</option>
+                                  <option value="3">KG-II</option>
+                                  <option value="4">KG-III</option>
+                                  <option value="5">1st</option>
+                                  <option value="6">2nd</option>
+                                  <option value="7">3rd</option>
+                                  <option value="8">4th</option>
+                                  <option value="9">5th</option>
+                                  <option value="10">6th</option>
+                                  <option value="11">7th</option>
+                                  <option value="12">8th</option>
+                                  <option value="13">9th</option>
+                                 
+                                  <option value="14">Male(18+)</option>
+                                  <option value="15">Female(18+)</option>
                                 </select>
                   </div>
                   <div class="form-group col-md-12">
@@ -266,7 +271,7 @@
     });
   <?php } ?>
 </script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
 
 <script>
    
@@ -295,8 +300,7 @@
     <script>
 $(document).ready(function(){
 
- // $('#btn_serach').click(function(){
-  // alert('hii');
+
 
  var gender = $('#Gender').val();
  // console.log(gender);
@@ -308,67 +312,51 @@ $(document).ready(function(){
  var state = $('#StateId').val();
  $("#stateid option[value='"+state+"']").attr("selected","selected");
 
- // var city = $('#CityId').val();
- // $("#cityid option[value='"+city+"']").attr("selected","selected");
-
- // var district = $('#DistrictId').val();
- // $("#districtid option[value='"+district+"']").attr("selected","selected");
-
-// }); 
-
- // $('#stateid').change(function(){
- //  // alert('hii');
-
- //  var stateid = $('#stateid').val();
- //  // alert(stateid);
-
- //  if(stateid != '')
- //  {
- //   $.ajax({
- //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_city",
- //    method:"POST",
- //    data:{stateid:stateid},
- //    success:function(data)
- //    {
- //     $('#cityid').html(data);
- //     $('#districtid').html('<option value="">Select District</option>');
-
- //    }
- //   });
- //  }
- //  else
- //  {
- //   $('#cityid').html('<option value="">Select City</option>');
- //     $('#districtid').html('<option value="">Select District</option>');
-
- //  }
- // });
-
- //  $('#cityid').change(function(){
- //  var cityid = $('#cityid').val();
- //  if(cityid != '')
- //  {
- //   $.ajax({
- //    url:"< ?php echo base_url(); ?>WebsiteController/fetch_district",
- //    method:"POST",
- //    data:{cityid:cityid},
- //    success:function(data)
- //    {
- //     $('#districtid').html(data);
-     
- //    }
- //   });
- //  }
- //  else
- //  {
- //   $('#districtid').html('<option value="">Select District</option>');
-   
-
- //  }
- // });
  
 });
 </script>
+<script>
+   
+
+  $('#compet').on('change',function(){
+
+    // alert("hii");
+
+     var comp = $('#compet').val();
+     var standard = $('#standard').val();
+     var gender = $('#gender').val();
+     var birthdate = $('#birthdate').val();
+     // alert(birthdate);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/check_competition_validation",
+           method:"POST",
+           data:{competitionid:comp,standard:standard,gender:gender,birthdate:birthdate},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+                   $('.compval').hide();
+
+                
+                 }
+                 else{
+                // alert(data);
+                 $('.compval').html(data);
+                 $('#compet').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+
+</script>
+
 
 </body>
 </html>

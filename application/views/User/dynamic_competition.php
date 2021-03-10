@@ -155,6 +155,13 @@ jQuery($ => {
     });
   <?php } ?>
 </script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('question_exists_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Question Already Exists');
+    });
+  <?php } ?>
+</script>
 <script>
    
 

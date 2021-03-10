@@ -53,9 +53,9 @@
                   </select>
                   </div>
                   <div class="form-group col-md-4">
-                    <label>Pincode</label>
+                    <label>Pincode <span style="color: red;">*</span></label>
                     <?php if(empty($pincodeid)){ $pincodeid="";} ?>
-                      <input type="text" class="form-control required title-case text " name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php  echo $pincodeid;  ?>" placeholder="Enter Pincode" >
+                      <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " name="pincode" id="pincode" minlength="6" maxlength="6" value="<?php  echo $pincodeid;  ?>" placeholder="Enter Pincode" required>
 
 
                     <!--   <select name="pincode" id="pincode"class="form-control">

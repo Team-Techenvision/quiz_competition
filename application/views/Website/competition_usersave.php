@@ -190,8 +190,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                   if($file_format=='2'){ 
 
                                  if($upload_audio=='1') {?>
-
-
+                                  
+                                 <!--    <audio  src="< ?php echo base_url(); ?>/assets/images/competition_audio/< ?php echo $uploadaudio; ?>" controls></audio>
+ -->
                                   <input type="hidden" id="upload_audio1" name="file_format" value="<?php echo $file_format; ?>" />
 
                                   <!--   <div class="form-group"> -->
@@ -199,7 +200,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                           // print_r($uploadaudio);
                                        ?> -->
-                                     <input type="file" id="upload_audio" name="upload_audio" accept="audio/*" />
+                                     <input type="file" id="upload_audio" onchange="previewAudio(this);" name="upload_audio" accept="audio/*" />
+
+
 
                                    <!-- <  ?php } ?> -->
 
@@ -301,7 +304,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                           // print_r($uploadaudio);
                                        ?>
                                        <!-- <input type="" name="" value="<?php echo $uploadaudio; ?>"> -->
-                                     <audio src="<?php echo base_url(); ?>/assets/images/competition_audio/<?php echo $uploadaudio; ?>" controls></audio>
+                                     <audio id="test3" src="<?php echo base_url(); ?>/assets/images/competition_audio/<?php echo $uploadaudio; ?>" controls></audio>
                                      <?php } } ?>
 
                                      <?php 
@@ -391,10 +394,22 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 <script type="text/javascript">
   <?php if($this->session->flashdata('upload_error')){ ?>
     $(document).ready(function(){
-      toastr.success('File not Uploaded ');
+      toastr.error('File not Uploaded ');
     });
   <?php } ?>
 </script>
+<script type="text/javascript">
+  function previewAudio(input)
+    {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+        $('#test3').attr('src', e.target.result);
+        }
+            reader.readAsDataURL(input.files[0]);
+        }
 
+    }
+</script>
  </body>
 </html>

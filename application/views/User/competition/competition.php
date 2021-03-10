@@ -35,7 +35,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" name="comp_action1" role="form" action="" method="post" enctype="multipart/form-data">
+              <form id="form_action" name="comp_action1"  role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
                 <div class="row">
                   <div class="form-group col-md-12">
@@ -228,8 +228,8 @@
                   <div class="form-group col-md-6">
                     <label>Competition Image <span style="color: red;">*</span></label>
 
-                 <input type="file" id="photo" name="photo" onchange="readURL(this);"  />
-
+                 <input type="file" id="photo" onchange="ValidateSingleInput(this); readURL(this);"  name="photo"   />
+<!-- onchange="readURL(this);" -->
                  <?php
                  if(isset($photo)){?>
                   <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
@@ -309,12 +309,12 @@
                         <div class="row" >
                           <div class="col-md-2">
                              <?php  if(empty($email)){$email="";} ?>
-                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control  title-case text " name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>"  placeholder=" Enter E-mail Address" ></div>
+                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control  title-case text " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>"  placeholder=" Enter E-mail Address" disabled></div>
                       </div><br>
                        <div class="row">
                           <div class="col-md-2">
                              <?php  if(empty($whatsapp)){$whatsapp="";} ?>
-                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div><div class="col-md-10"><input type="text" class="form-control  title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" ></div>
+                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div><div class="col-md-10"><input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control  title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" disabled></div>
                       </div>
 
                     </div>
@@ -347,11 +347,19 @@
       </div><!-- /.container-fluid -->
     </section>
   </div>
- <!--  <script src="< ?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <script src="< ?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> -->
+  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-  
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+  <script type="text/javascript">
+  <?php if($this->session->flashdata('upload_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('File not Uploaded ');
+    });
+  <?php } ?>
+</script>
   <script>
    
    $('.pis').bind("click" , function () {
@@ -459,11 +467,7 @@ $('form').validate({
     });
 });
 </script> 
- <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <!-- <script src="trunk/dev/validation.js"></script> -->
 
 
@@ -505,6 +509,17 @@ checkBox.addEventListener('change',toggleRequired,false);
 
 </script>
 <script type="text/javascript">
+  jQuery(function($) {
+    $('#email, #whatsapp').click(function() {
+        var cb1 = $('#email').is(':checked');
+        var cb2 = $('#whatsapp').is(':checked');
+        $('#emailaddress').prop('disabled',!cb1);
+        $('#whatsappnumber').prop('disabled', !cb2);
+        // $('#color, #size, #model').prop('disabled', !cb2);    
+    });
+});
+</script>
+<script type="text/javascript">
 
 var checkBoxW = document.querySelector('input[name="whatsapp"]');
 var textInputW = document.querySelector('input[name="whatsappnumber"]');
@@ -532,9 +547,17 @@ checkBoxW.addEventListener('change',toggleRequired,false);
  
   // Wait for the DOM to be ready
 $(function() {
-  // alert("hii");
-  // Initialize form validation on the registration form.
-  // It has the name attribute "registration"
+
+  jQuery.validator.addMethod("validate_email", function(value, element) {
+
+    if (/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+});
+ 
+ 
   $("form[name='comp_action1']").validate({
 
     // Specify validation rules
@@ -547,19 +570,19 @@ $(function() {
       // title: "required",
       // address: "required",
       // pin_code: "required",
-      // email: {
-      //   required: true,
-      //   // Specify that email should be validated
-      //   // by the built-in "email" rule
-      //   email: true
-      // },
+     emailaddress: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        validate_email: true
+      },
       
     },
     // Specify validation error messages
     messages: {
       // title: "Please enter user name",
       // title: "Please enter competition title",
-      // email: "Please enter a valid email address",
+      emailaddress: "Please enter a valid email address",
       // pin_code: "Please enter a valid pincode",
       // address: "Please enter Street Address"
     },
@@ -572,3 +595,28 @@ $(function() {
   });
 });
  </script>
+<script type="text/javascript">
+  var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>

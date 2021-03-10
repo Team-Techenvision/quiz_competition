@@ -107,6 +107,12 @@ class User extends CI_Controller{
        // $data['ans']= implode(',',$array);
 
       // $data['json'] = json_encode($this->input->post('text'));
+       $competitionid = $this->input->post('competitionid');
+    $question = $this->input->post('question');
+
+    $check_dynamic_question = $this->User_Model->check_dynamic_question($competitionid,$question); 
+// print_r($checkpoints_competition); die();
+        if(empty($check_dynamic_question) ){
 
       $save_data = array(
         'competitionid' => $this->input->post('competitionid'),
@@ -117,7 +123,6 @@ class User extends CI_Controller{
       );
       $this->User_Model->save_data('dynamiccompetition', $save_data);
       $this->session->set_flashdata('save_success','success');
-     
 
       $que_id = $this->db->insert_id();
        // print_r($lastid); die();
@@ -136,6 +141,14 @@ class User extends CI_Controller{
 
          header('location:'.base_url().'User/quizanswer/'.$que_id);
       }
+     
+    }else{
+
+          $this->session->set_flashdata('question_exists_error','error');
+          header('location:'.base_url().'User/dynamiccompetition');
+    }
+
+      
 
       // $this->quizanswer($lastid);
     }
@@ -622,6 +635,12 @@ public function check_competitiontype(){
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('competitiontype', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+       $competitiontype = $this->input->post('competitiontype');
+
+    $check_competitiontype = $this->User_Model->check_competitiontype($competitiontype); 
+// print_r($checkpoints_competition); die();
+        if(empty($check_competitiontype)){
+
       $save_data = array(
    
         'competitiontype' => $this->input->post('competitiontype'),
@@ -631,6 +650,11 @@ public function check_competitiontype(){
       $this->User_Model->save_data('competitiontype', $save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/competitiontype_list');
+
+    }else{
+       $this->session->set_flashdata('competitiontype_exists_error','error');
+      header('location:'.base_url().'User/add_competitiontype');
+    }
     }
     $this->load->view('Include/head');
     $this->load->view('Include/navbar');
@@ -1399,6 +1423,7 @@ public function check_competitiontype(){
         {
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
+            header('location:'.base_url().'User/add_competition');
         }
       // }
      }
@@ -1785,30 +1810,124 @@ function competition_active(){
   //   header('location:'.base_url().'User/competition_list');
   // }
 
-/*******************************    Participate Information     **************************/
+/***********************    Participate Information     **************************/
 
-// function fetch_city()
-//  {
-//   if($this->input->post('stateid'))
-//   {
-//    echo $this->User_Model->fetch_city($this->input->post('stateid'));
-//   }
-//  }   
-//  function fetch_district()
-//  {
-//   if($this->input->post('cityid'))
-//   {
-//    echo $this->User_Model->fetch_district($this->input->post('cityid'));
-//   }
-//  }  
+public function check_competition_validation(){
+
+    $userparticipatetype="";
+
+    $user_id = $this->session->userdata('user_id');
+    // $competitionid = $this->session->userdata('competitionid');
+
+    $competitionid = $this->input->post('competitionid');
+    $standard = $this->input->post('standard');
+    $gender = $this->input->post('gender');
+    $birthdate = $this->input->post('birthdate');
+
+    // print_r($competitionid);
+     // $competition_info = $this->User_Model->get_list_by_id('competitionid', $competitionid,'','','','','','','competition'); 
+
+    $competition_info = $this->User_Model->getcompetition_info($competitionid);
+
+    $check_allready_participate = $this->User_Model->check_participate($user_id,$competitionid);
+
+   $profile_info = $this->User_Model->get_info('user_id', $user_id, 'userprofile_master');
+
+
+       // print_r($competition_info);die();
+
+      foreach ($competition_info as $value) {
+
+       $fromstand = $value->fromstand;
+       $tostand = $value->tostand;
+       $alluser = $value->alluser;
+
+       $userparticipatetype = $value->gender; //all[3],male[1],female[2]
+       $fromage = $value->fromage;
+       $toage = $value->toage;
+       // print_r($userparticipatetype);die();
+
+     }
+
+     foreach ($profile_info as  $value) {
+       
+       // $standard = $value->standard;
+       $parentname = $value->parentname;
+       $fullname = $value->fullname;
+       // $birthdate = $value->birthdate;
+       $schoolcollegename = $value->schoolcollegename;
+       $emailid = $value->emailid;
+       $address = $value->address;
+       $pincode = $value->pincode;
+       $profile_image = $value->profile_image;
+       $alternatemobno = $value->alternatemobno;
+       $gender = $value->gender; // male[1],female[2]
+       $cityid = $value->cityid;
+       $districtid = $value->districtid;
+       $stateid = $value->stateid;
+       $profile_submitted = $value->profile_submitted;
+       $userprofileid = $value->userprofileid;
+
+       // print_r($gender); die();
+
+        $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $user_id && gender = $userparticipatetype)";    
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+       // print_r($result); die();
+
+        
+        $age = 0;
+        foreach ($result as $value) {
+         $age = $value['Age'];
+        }
+
+        $y = "18";
+    
+      
+     }
+
+      // if($profile_submitted == 1){
+     // print_r($profile_info); die(); 
+       // echo "true";  || $userparticipatetype == $gender && $age >= $y
+     if($standard >= $fromstand && $standard <= $tostand || $userparticipatetype == $gender && $age >= $y){
+     // print_r($tostand); die();
+          echo "true";
+
+      }
+      else{
+
+        echo "User Can not Participate in this Competition";
+       
+     }
+
+
+    // }else{
+  //       echo "Please complete your profile before participating in the competition";
+  // }
+         // if(empty($check_allready_participate)){
+            
+         //    echo "true";
+
+         //    }
+         //    else{
+
+         //    echo "User is Already Participated in this Competition";
+       
+         //    }
+
+} 
+
+
  // Add New Profile....
   public function add_participate(){
 
     // $user_id = $this->uri->segment(3);
     // print_r($user_id);die();
+    // $userparticipatetype="";
+
 
     $user_id = $this->session->userdata('user_id');
-    $competitionid = $this->session->userdata('competitionid');
+    // $competitionid = $this->session->userdata('competitionid');
 
 
    // echo $user_id; die();
@@ -1818,65 +1937,69 @@ function competition_active(){
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
 
-     //   $profile_info = $this->User_Model->get_info('user_id', $user_id, 'userprofile_master');
+        $competitionid = $this->input->post('competitionid');
+        $standard = $this->input->post('standard');
+        $gender = $this->input->post('gender');
+        $birthdate = $this->input->post('birthdate');
 
-     //    $competition_info = $this->User_Model->getcompetition_info($competitionid);
+        // print_r($gender); die();
 
-     //    $check_allready_participate = $this->User_Model->check_participate($user_id,$competitionid);
+       $profile_info = $this->User_Model->get_info('user_id', $user_id, 'userprofile_master');
 
-     //    // print_r($check_allready_participate); die();
+        $competition_info = $this->User_Model->getcompetition_info($competitionid);
 
+        $check_allready_participate = $this->User_Model->check_participate($user_id,$competitionid);
 
-     //    foreach ($competition_info as $value) {
+        // print_r($check_allready_participate); die();
 
-     //   $fromstand = $value->fromstand;
-     //   $tostand = $value->tostand;
-     //   $alluser = $value->alluser;
+        // $userparticipatetype="";
+        foreach ($competition_info as $value) {
 
-     //   $userparticipatetype = $value->gender; //all[3],male[1],female[2]
-     //   $fromage = $value->fromage;
-     //   $toage = $value->toage;
-     //   // print_r($userparticipatetype);die();
+       $fromstand = $value->fromstand;
+       $tostand = $value->tostand;
+       $alluser = $value->alluser;
 
-     // }
+       $userparticipatetype = $value->gender; //all[3],male[1],female[2]
+       $fromage = $value->fromage;
+       $toage = $value->toage;
+       // print_r($userparticipatetype);die();
 
-     // foreach ($profile_info as  $value) {
+     }
+
+     foreach ($profile_info as  $value) {
        
-     //   $standard = $value->standard;
-     //   $parentname = $value->parentname;
-     //   $fullname = $value->fullname;
-     //   $birthdate = $value->birthdate;
-     //   $schoolcollegename = $value->schoolcollegename;
-     //   $emailid = $value->emailid;
-     //   $address = $value->address;
-     //   $pincode = $value->pincode;
-     //   $profile_image = $value->profile_image;
-     //   $alternatemobno = $value->alternatemobno;
-     //   $gender = $value->gender; // male[1],female[2]
-     //   $cityid = $value->cityid;
-     //   $districtid = $value->districtid;
-     //   $stateid = $value->stateid;
-     //   $profile_submitted = $value->profile_submitted;
-     //   $userprofileid = $value->userprofileid;
+       // $standard = $value->standard;
+       $parentname = $value->parentname;
+       $fullname = $value->fullname;
+       // $birthdate = $value->birthdate;
+       $schoolcollegename = $value->schoolcollegename;
+       $emailid = $value->emailid;
+       $address = $value->address;
+       $pincode = $value->pincode;
+       $profile_image = $value->profile_image;
+       $alternatemobno = $value->alternatemobno;
+       // $gender = $value->gender; // male[1],female[2]
+       $cityid = $value->cityid;
+       $districtid = $value->districtid;
+       $stateid = $value->stateid;
+       $profile_submitted = $value->profile_submitted;
+       $userprofileid = $value->userprofileid;
 
-     //   // print_r($gender); die();
+       // print_r($gender); die();
+      
+        // $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $user_id && gender = $gender)";    
+        // $query = $this->db->query($sql);
+        // $result = $query->result_array();
+        
+        // $age = 0;
+        // foreach ($result as $value) {
+        //  $age = $value['Age'];
+        // }
 
-     //   //  $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
-     //   //  $query = $this->db->query($sql);
-     //   //  $result = $query->result_array();
-
-     //   //  // print_r($result); die();
-     //   // $a="";
-     //   //  foreach ($result as $value) {
-     //   //    // print_r(expression) $value;
-     //   //    // $age;
-          
-     //   //  }
-
-     //    // die();
+        // $y = "18";
     
       
-     // }
+     }
 
 
     $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
@@ -1911,10 +2034,11 @@ function competition_active(){
         // $lastid = $this->db->insert_id();
       // echo $last_updated_id; die();
 
-      // if($standard >= $fromstand && $standard <= $tostand ){  
+     // if($standard >= $fromstand && $standard <= $tostand || $userparticipatetype == $gender && $age >= $y ){
 
 
-      // if(empty($check_allready_participate)){
+      if(empty($check_allready_participate)){
+
       $save_data = array(
         'parentname' => $this->input->post('parentname'),
         'fullname' => $this->input->post('fullname'),
@@ -1943,12 +2067,12 @@ function competition_active(){
       $this->session->set_flashdata('save_success','success');
       $this->session->unset_userdata('user_id');
       header('location:'.base_url().'User/participate_list'); 
-  //  }else{
+   }else{
 
-  //     $this->session->set_flashdata('profileAlready_error','error');
-  //     header('location:'.base_url().'User/add_participate');
+      $this->session->set_flashdata('profileAlready_error','error');
+      header('location:'.base_url().'User/add_participate');
     
-  //   }
+    }
   // }else{
   //       // print_r($standard); die();
 
@@ -2147,7 +2271,7 @@ function competition_active(){
      $data['state'] = $this->User_Model->fetch_state();
      // $data['city'] = $this->User_Model->fetch_city1($data['stateid']);
      // $data['district'] = $this->User_Model->fetch_district1($data['districtid']);
-     $data['user_list'] = $this->User_Model->get_list_by_id('user_id', $quizweb_user_id,'','','','','user'); 
+     // $data['user_list'] = $this->User_Model->get_list_by_id('user_id', $user_id,'','','','','user'); 
     
   
     
@@ -2578,6 +2702,12 @@ function fetch_profile()
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('levelname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+        $levelname = $this->input->post('levelname');
+
+    $check_level = $this->User_Model->check_level($levelname); 
+// print_r($checkpoints_competition); die();
+        if(empty($check_level)){
+
       $save_data = array(
        
         'levelname' => $this->input->post('levelname'),
@@ -2587,6 +2717,10 @@ function fetch_profile()
       $this->User_Model->save_data('levelmaster', $save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/level_list');
+    }else{
+       $this->session->set_flashdata('level_exists_error','error');
+      header('location:'.base_url().'User/add_level');
+    }
     }
     $this->load->view('Include/head');
     $this->load->view('Include/navbar');
