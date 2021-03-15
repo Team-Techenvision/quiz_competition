@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper" >
+<div class="wrapper" id="msg_display" >
   <!-- Content Wrapper. Contains page content -->
-  <div class=" profilewrapper" style="background-image:url('<?php echo base_url(); ?>/assets/images/20252.jpg');" >
+  <div class=" profilewrapper" style="background-image:url('<?php echo base_url(); ?>/assets/images/20252.jpg');"  >
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -29,8 +29,13 @@
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card" style="border-radius: 2.25rem!important; border:none!important;">
-            <div class="card-header ">
-            
+             <!--  < ?php if($this->session->flashdata('message')){?>
+                <div class="alert alert-danger">      
+                  < ?php echo $this->session->flashdata('message')?>
+                </div>
+              < ?php } ?> -->
+            <div class="card-header " >
+             <p class="alert alert-danger msg mb-0"  id="msg" style="font-size:14px;  color: red;"></p>
               <h4 class="card-title text-center" style="color: #3156bd;"><!-- <i class="fa fa-list"></i>  -->Profile Information</h4>
              <!--  <div class="card-tools col-md-2 " >
                 <a href="add_profile" class="btn btn-sm btn-block btn-primary "  >Add Participation</a>
@@ -38,7 +43,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-               <form id="form_action" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data" autocomplete="off"> 
+               <form id="form_update" role="form" action="<?php echo base_url(); ?>WebsiteController/edit_profile" method="post" enctype="multipart/form-data" autocomplete="off"> 
                  <div class="row" >   
                   <div class="form-group col-md-3">
                   <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
@@ -88,7 +93,25 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">BirthDate</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                  <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" required>
+                                  <?php foreach ($profile_info as $value) {
+                                    $check = $value->check_one;
+
+                                    if($check==0){ ?>
+
+                                    <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" required>
+
+                                   <?php  }else{ ?>
+                                     
+                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" disabled>
+
+
+                                   <?php } } ?>
+
+
+                                  
+
+
+                                   
 
                                 </div>
                                </div>
@@ -98,7 +121,12 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">Gender</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                  <?php
+                                   <?php foreach ($profile_info as $value) {
+                                    $check = $value->check_one;
+
+                                    if($check==0){ ?>
+
+                                     <?php
                                       if(isset($gender)){?>
 
                                       <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
@@ -108,6 +136,24 @@
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
                                   </select>
+
+                                   <?php  }else{ ?>
+                                     
+                                      <?php
+                                      if(isset($gender)){?>
+
+                                      <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
+                                    <?php }?>  
+                                  <select name="gender" id="gender"class="form-control" disabled="">
+                                    <option value="">Select Gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                  </select>
+
+
+                                   <?php } } ?>
+
+                                 
                                  </div>
                                 </div>
                                 
@@ -150,6 +196,11 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">Standard</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
+                                    <?php foreach ($profile_info as $value) {
+                                    $check = $value->check_one;
+
+                                    if($check==0){ ?>
+
                                    <?php
                                       if(isset($standard)){?>
 
@@ -174,6 +225,38 @@
                                   <option value="14">Male(18+)</option>
                                   <option value="15">Female(18+)</option>
                                 </select>
+
+                                   <?php  }else{ ?>
+                                     
+                                    <?php
+                                      if(isset($standard)){?>
+
+                                      <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
+                                    <?php }?>  
+                                  <select name="standard" id="standard"class="form-control" disabled="" >
+                                  <option value="">Select Standard</option>
+                                  <option value="1">Nursary</option>
+                                  <option value="2">KG-I</option>
+                                  <option value="3">KG-II</option>
+                                  <option value="4">KG-III</option>
+                                  <option value="5">1st</option>
+                                  <option value="6">2nd</option>
+                                  <option value="7">3rd</option>
+                                  <option value="8">4th</option>
+                                  <option value="9">5th</option>
+                                  <option value="10">6th</option>
+                                  <option value="11">7th</option>
+                                  <option value="12">8th</option>
+                                  <option value="13">9th</option>
+                                 
+                                  <option value="14">Male(18+)</option>
+                                  <option value="15">Female(18+)</option>
+                                </select>
+
+
+                                   <?php } } ?>
+
+                                   
                                  </div>
                                 </div>
                                 
@@ -293,7 +376,7 @@
                        <div id="spin"></div>
                        <a href="#" id="btn_update" type="submit" >Update</a>
                       </div></center> -->
-                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary">Edit </button>
+                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary btnUpdate">Edit </button>
                  </div>
                </div>
               
@@ -326,8 +409,15 @@
       toastr.error('Mobile Number is Already Exists');
     });
   <?php } ?>
+  // < ?php if($this->session->flashdata('birthdate_error')){ ?>
+  //   $(document).ready(function(){
+  //     toastr.error('Please Enter Correct Birthdate, Gender and Standard.');
+  //   });
+  // < ?php } ?>
+
 
   </script>
+  
   <script>
    
    $('.pis').bind("click" , function () {
@@ -364,6 +454,7 @@
    <script>
 $(document).ready(function(){
 
+ // alert("hii");
 
  var gender = $('#Gender').val();
  $("#gender option[value='"+gender+"']").attr("selected","selected");
@@ -405,9 +496,8 @@ $(document).ready(function(){
  
 <!-- For mobile no validation if enter alternate number is user registration mobile no -->
  <script>
-   
-
-  $('#alternatemobno').on('change',function(){
+ 
+   $('#alternatemobno').on('change',function(){
     // alert("hii");
 
      var mobile = $('#alternatemobno').val();
@@ -436,6 +526,63 @@ $(document).ready(function(){
            }
          });
        // e.preventdefault();
+  });
+
+</script>
+
+
+<!-- Validation For standard(Male 18+ , female 18+ ), gender and birthdate -->
+ <script>
+ $(document).ready(function(){
+    $('.msg').hide();
+
+  $('#form_update').on('submit', function(e){
+        e.preventDefault();
+   // $('.btnUpdate').click(function(){
+    // alert("hii");
+
+
+     var stand = $('#standard').val();
+     var gender = $('#gender').val();
+     var birthdate = $('#birthdate').val();
+     // alert(stand);
+     // alert(gender);
+     // alert(birthdate);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/check_userdata_profile",
+           method:"POST",
+           data:{standard:stand,gender:gender,birthdate:birthdate},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "correct"){
+                     // alert(data);
+                   $('.msg').hide();
+                   // $("#form_update").submit();
+                   document.getElementById("form_update").submit();
+                   // window.location = "< ?php echo base_url(); ?>WebsiteController";
+
+                 }else{
+
+                // alert(data);
+                // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
+                 $('.msg').show();
+                 $('.msg').html(data);
+                 $([document.documentElement, document.body]).animate({
+                      scrollTop: $("#msg_display").offset().top
+                  }, 500);
+                  // $('#msg').focus();
+                 // $('#alternatemobno').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
   });
 
 </script>

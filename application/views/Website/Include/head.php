@@ -570,12 +570,15 @@ jQuery.validator.addMethod("validate_email", function(value, element) {
         return false;
     }
 });
-   
-$.validator.addMethod("pwcheck", function(value) {
-   return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
-       && /[a-z]/.test(value) // has a lowercase letter
-       && /\d/.test(value) // has a digit
-});
+$.validator.addMethod("pwcheck", function(value, element) {
+    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*])[a-zA-Z0-9!@#$%&*]+$/.test(value);
+  //(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]
+}, "");   
+// $.validator.addMethod("pwcheck", function(value) {
+//    return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+//        && /[a-z]/.test(value) // has a lowercase letter
+//        && /\d/.test(value) // has a digit
+// });
   
   // Initialize form validation on the registration form.
   // It has the name attribute "registration"
@@ -656,7 +659,7 @@ $.validator.addMethod("pwcheck", function(value) {
                }
                else{
 
-                $('#user_mobile').val("");
+                // $('#user_mobile').val("");
 
                 $('.alert-danger').html(data);
                 $('.mobileerror').show().delay(5000).fadeOut();

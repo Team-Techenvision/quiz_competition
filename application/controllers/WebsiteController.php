@@ -858,7 +858,9 @@ public function competition_uploadfile(){
             'user_mobile' => $this->input->post('user_mobile'),
             'user_password' => md5($password),
             'user_pincode' => $this->input->post('user_pincode'), 
-            'profile_submitted' =>0,          
+            'profile_submitted' =>0, 
+            'check_one' =>0,
+
         );
 
       $this->Website_Model->save_data('userprofile_master',$data_view);
@@ -925,7 +927,9 @@ public function competition_uploadfile(){
             'user_mobile' => $this->input->post('user_mobile'),
             'user_password' => md5($password),
             'user_pincode' => $this->input->post('user_pincode'), 
-            'profile_submitted' =>0,          
+            'profile_submitted' =>0, 
+            'check_one' =>0, 
+
         );
 
       $this->Website_Model->save_data('userprofile_master',$data_view);
@@ -975,7 +979,9 @@ public function competition_uploadfile(){
        }
 
       }
-    }else{
+
+    }
+    else{
        echo "Email Address is Already Exists";
   }
       // $this->Website_Model->save_data('user',$save_data);
@@ -1273,6 +1279,54 @@ public function insert_profiledata(){
 
         }
 }
+//check standard and gender and birthdate
+public function check_userdata_profile(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+    $birthdate = $this->input->post('birthdate');
+    $standard = $this->input->post('standard');
+    $gender = $this->input->post('gender');
+    $current_date = date("Y-m-d");
+
+    //difference between bithdate and current date in year
+
+    $date1 = date("Y-m-d",strtotime($current_date));
+    $date2 = date("Y-m-d",strtotime($birthdate));
+
+    $diff = abs(strtotime($date2) - strtotime($date1));
+
+    $years = floor($diff / (365*60*60*24));
+
+    $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
+    foreach ($check_userdata as $value) {
+      $birth = $value['birthdate'];
+      $standard = $value['standard'];
+      $gender = $value['gender'];
+    }
+
+    if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 14){
+
+      echo "correct";
+       $this->session->set_flashdata('updateProfile_success','success');
+      // header('location:'.base_url().'WebsiteController');
+
+
+    }else{
+      echo "Please enter correct birthdate,gender and standard.";
+      // header('location:'.base_url().'WebsiteController/edit_profile');
+
+     // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
+
+
+    }
+
+   // print_r($standard); die();
+ 
+   }
  
   public function edit_profile(){
 
@@ -1293,6 +1347,7 @@ public function insert_profiledata(){
     $update_data = $_POST; 
 
         $alternatemobno = $this->input->post('alternatemobno');
+
        $checkusermobile = $this->Website_Model->check_usermobile($quizweb_user_id,$alternatemobno); 
     if($checkusermobile > 0){
 
@@ -1324,6 +1379,7 @@ public function insert_profiledata(){
         'stateid' => $this->input->post('stateid'),
         'user_id' => $quizweb_user_id,
         'profile_submitted' =>1,
+        'check_one' =>1, 
 
       );
     }else{
@@ -1345,6 +1401,7 @@ public function insert_profiledata(){
         'stateid' => $this->input->post('stateid'),
         'user_id' => $quizweb_user_id,
         'profile_submitted' =>1,
+        'check_one' =>1,
 
       );
     }
@@ -1414,6 +1471,9 @@ public function insert_profiledata(){
        
 }
     $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');
+    $data['profile_info'] =$profile_info;
+
+    // print_r($data['profile_info']); 
     // if($profile_info == ''){ header('location:'.base_url().'WebsiteController/edit_profile'); }
     foreach($profile_info as $info){
       $data['update'] = 'update';
@@ -1430,7 +1490,7 @@ public function insert_profiledata(){
       $data['cityid'] = $info->cityid;
       $data['districtid'] = $info->districtid;
       $data['stateid'] = $info->stateid;
-      // $data['competitionid'] = $info->competitionid;
+      $data['check_one'] = $info->check_one;
       $data['profile_image'] = $info->profile_image;
     }
     // $data ['state']=$data['stateid'];

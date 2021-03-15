@@ -1916,8 +1916,57 @@ public function check_competition_validation(){
          //    }
 
 } 
+//check standard and gender and birthdate
+public function check_userdata_profile(){
+    // echo "string";
+    $user_id = $this->session->userdata('user_id');
+    
+
+    $birthdate = $this->input->post('birthdate');
+    $standard = $this->input->post('standard');
+    $gender = $this->input->post('gender');
+    $current_date = date("Y-m-d");
 
 
+
+    //difference between bithdate and current date in year
+
+    $date1 = date("Y-m-d",strtotime($current_date));
+    $date2 = date("Y-m-d",strtotime($birthdate));
+
+    $diff = abs(strtotime($date2) - strtotime($date1));
+
+    $years = floor($diff / (365*60*60*24));
+
+    $check_userdata = $this->User_Model->check_userdata($user_id,$birthdate,$standard,$gender); 
+    foreach ($check_userdata as $value) {
+      $birth = $value['birthdate'];
+      $standard = $value['standard'];
+      $gender = $value['gender'];
+    }
+
+   // print_r($check_userdata); die();
+    
+
+    if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 14){
+
+      echo "correct";
+       $this->session->set_flashdata('updateProfile_success','success');
+      // header('location:'.base_url().'WebsiteController');
+
+
+    }else{
+      echo "Please enter correct birthdate,gender and standard.";
+      // header('location:'.base_url().'WebsiteController/edit_profile');
+
+     // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
+
+
+    }
+
+   // print_r($standard); die();
+ 
+   }
  // Add New Profile....
   public function add_participate(){
 

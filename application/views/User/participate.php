@@ -91,6 +91,7 @@
                     <label>Email Address <span style="color: red;">*</span></label>
                     <input type="email" class="form-control" name="emailid" id="emailid" value="<?php  echo $value->emailid;?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email Address" required="">
                   </div>
+
                    <div class="form-group col-md-4">
                     <label>BirthDate <span style="color: red;">*</span></label>
                     <input type="date" class="form-control notext" name="birthdate" id="birthdate" value="<?php  echo $value->birthdate;  ?>" placeholder="Enter Birthdate" required="">
@@ -105,7 +106,35 @@
                           <option value="2">Female</option>
                         </select>
                      </div>
-                     <div class="form-group col-md-4">
+                      <div class="form-group col-md-4">
+                    <label>Standard <span style="color: red;">*</span></label>
+                 
+                        <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php  echo $value->standard;  ?>" disabled="">
+                                
+                                  <select name="standard" id="standard"class="form-control" required="" >
+                                  <option value="">Select Standard</option>
+                                  <option value="1">Nursary</option>
+                                  <option value="2">KG-I</option>
+                                  <option value="3">KG-II</option>
+                                  <option value="4">KG-III</option>
+                                  <option value="5">1st</option>
+                                  <option value="6">2nd</option>
+                                  <option value="7">3rd</option>
+                                  <option value="8">4th</option>
+                                  <option value="9">5th</option>
+                                  <option value="10">6th</option>
+                                  <option value="11">7th</option>
+                                  <option value="12">8th</option>
+                                  <option value="13">9th</option>
+                                 
+                                  <option value="14">Male(18+)</option>
+                                  <option value="15">Female(18+)</option>
+                                </select>
+                  </div>
+                  <div class="form-group col-md-12">
+                      <p class="msg mb-0"  id="msg" style="font-size:14px; color: red;"></p>
+                  </div>
+                     <div class="form-group col-md-6">
                     <label>Alternative Mobile No. <span style="color: red;">*</span></label>
                       <input type="text" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php  echo $value->alternatemobno;  ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
                   </div>
@@ -132,31 +161,7 @@
 
                   </div>
 
-                   <div class="form-group col-md-6">
-                    <label>Standard <span style="color: red;">*</span></label>
-                 
-                        <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php  echo $value->standard;  ?>" disabled="">
-                                
-                                  <select name="standard" id="standard"class="form-control" required="" >
-                                  <option value="">Select Standard</option>
-                                  <option value="1">Nursary</option>
-                                  <option value="2">KG-I</option>
-                                  <option value="3">KG-II</option>
-                                  <option value="4">KG-III</option>
-                                  <option value="5">1st</option>
-                                  <option value="6">2nd</option>
-                                  <option value="7">3rd</option>
-                                  <option value="8">4th</option>
-                                  <option value="9">5th</option>
-                                  <option value="10">6th</option>
-                                  <option value="11">7th</option>
-                                  <option value="12">8th</option>
-                                  <option value="13">9th</option>
-                                 
-                                  <option value="14">Male(18+)</option>
-                                  <option value="15">Female(18+)</option>
-                                </select>
-                  </div>
+                  
                   <div class="form-group col-md-12">
                     <label>School/College Name <span style="color: red;">*</span></label>
                   <input type="text" class="form-control required title-case text txtOnly" name="schoolcollegename" id="schoolcollegename" value="<?php  echo $value->schoolcollegename;  ?>" placeholder="Enter School/college Name" required >
@@ -238,7 +243,7 @@
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
+                    <button id="btn_save" type="submit" class="btn btn-success btn_save px-4">Add</button>
                   <?php } ?>
                    <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
@@ -356,6 +361,62 @@ $(document).ready(function(){
   });
 
 </script>
+<!-- Validation For standard(Male 18+ , female 18+ ), gender and birthdate -->
+ <script>
+ $(document).ready(function(){
+    $('.msg').hide();
+
+  // $('#btn_save').on('submit', function(e){
+        // e.preventDefault();
+   $('.btn_save').click(function(){
+    alert("hii");
+
+
+     var stand = $('#standard').val();
+     var gender = $('#gender').val();
+     var birthdate = $('#birthdate').val();
+     alert(stand);
+     // alert(gender);
+     // alert(birthdate);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/check_userdata_profile",
+           method:"POST",
+           data:{standard:stand,gender:gender,birthdate:birthdate},
+
+           success:function(data)
+            {   
+
+               alert(data);
+               // console.log(data);
+                 if(data == "correct"){
+                     alert(data);
+                   $('.msg').hide();
+                   // $("#form_update").submit();
+                   // document.getElementById("btn_save").submit();
+                   // window.location = "< ?php echo base_url(); ?>WebsiteController";
+
+                 }else{
+
+                alert(data);
+                // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
+                 // $('.msg').show();
+                 $('.msg').html(data);
+                 // $([document.documentElement, document.body]).animate({
+                 //      scrollTop: $("#msg_display").offset().top
+                 //  }, 500);
+                  // $('#msg').focus();
+                 // $('#alternatemobno').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+  });
+
+</script>
+
 
 
 </body>

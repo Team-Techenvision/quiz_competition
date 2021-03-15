@@ -79,6 +79,21 @@ $result = $query->num_rows();
 // print_r($result); die();
 return $result;
 }
+//check user entered data of gender, standard and birthdate
+public function check_userdata($quizweb_user_id,$birthdate,$standard,$gender){
+// $this->db->select('*');
+  // print_r($user_mobile); die();
+$this->db->where('user_id',$quizweb_user_id);
+$this->db->where('birthdate',$birthdate);
+$this->db->where('standard',$standard);
+$this->db->where('gender',$gender);
+
+$this->db->from('userprofile_master');
+$query = $this->db->get();
+$result = $query->result_array();
+// print_r($result); die();
+return $result;
+}
   public function banner_list($bannerid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
