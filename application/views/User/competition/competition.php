@@ -3,6 +3,11 @@
 <style type="text/css">
   .error{
     color: red;
+
+  }
+  #gender-error{
+    position: absolute;
+    top: 18px;
   }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -146,7 +151,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" hidden>
                     <label>Competition level <span style="color: red;">*</span></label>
 
                       <?php
@@ -157,7 +162,7 @@
 
 
 
-                      <select name="levelid" id="levelid"class="form-control" required>
+                      <select name="levelid" id="levelid"class="form-control" >
                     <option value="">Select Level</option>
          
                       <?php foreach($level as $level)
@@ -171,30 +176,30 @@
                      
                   </select>
                   </div>
-                   <div class="form-group col-md-3">
+                   <div class="form-group col-md-6">
                     <label>From Age <span style="color: red;">*</span></label>
 
                     <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required>
                   </div>
-                   <div class="form-group col-md-3">
+                   <div class="form-group col-md-6">
                     <label>To Age <span style="color: red;">*</span></label>
 
                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext " name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
                   </div>
                   <div class="col-md-12">
-                    <label>Participant Type</label>
+                    <label>Participant Type <span style="color: red;">*</span></label>
                   <div class="form-group row"> 
                       <?php  if(empty($gender)){$gender="";} ?>
-                  <div class="radio col-md-2">
-                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?>> All</label>
+                  <div class="radio col-md-3">
+                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> required> All</label>
                   </div>
-                  <div class="radio col-md-2">
-                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?>> Male</label>
+                  <div class="radio col-md-3">
+                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?> > Male</label>
                   </div>
-                  <div class="radio col-md-2">
+                  <div class="radio col-md-6">
                     <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?> > Female</label>
                   </div>
-                  <p  style="color: blue;" class="ml-2 pl-1 border border-dark">Note: If select Female(18+) / Male (18+) / (All & other class options) from class dropdownlist then correspondingly select Female(18+) / Male (18+) / All from paticipant Type radiobuttons.</p>
+                  <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note: If select Female(18+) / Male (18+) / (All & other class options) from class dropdownlist then correspondingly select Female(18+) / Male (18+) / All from paticipant Type radiobuttons.</p>
                   </div>
                   </div>
                    
@@ -216,7 +221,7 @@
 
                        <input type="hidden" class="form-control required title-case text" name="competitionusertype" id="competitionuser" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
                        <?php }?>
-                    <select name="competitionusertype" id="competitionusertype"class="form-control" >
+                    <select name="competitionusertype" id="competitionusertype" class="form-control" >
                     <option value="">Competition User Type</option>
                     <option value="1">All</option>
                     <option value="2">one to one</option>

@@ -874,7 +874,7 @@ public function check_competitiontype(){
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $data['user_list'] = $this->User_Model->user_list($quizweb_company_id);
+    $data['user_list'] = $this->User_Model->user_list($quizweb_user_id);
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('User/user_list',$data);
@@ -2203,12 +2203,18 @@ public function check_userdata_profile(){
 
    // Profile List....
   public function participate_list(){
+
+    $user_id = $this->uri->segment(3);
+
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    $data['participate_list'] = $this->User_Model->participate_list('profileid');
 
+    $data['participate_list'] = $this->User_Model->participate_list($user_id);
+    
+    // print_r($data['participate_list']); die();
 
      $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);

@@ -114,12 +114,12 @@
                 <p>Assign Winner</p>
               </a>
             </li> 
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/level_list" class="nav-link">
+          <!--   <li class="nav-item">
+              <a href="< ?php echo base_url(); ?>User/level_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Level</p>
               </a>
-            </li> 
+            </li>  -->
              <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/class_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

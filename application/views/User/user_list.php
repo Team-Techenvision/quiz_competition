@@ -34,11 +34,11 @@
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>User Name</th>
-                  <th>City</th>
+                  <th>Name</th>
+                  <!-- <th>City</th> -->
                   <th>Mobile No.</th>
                   <th>Email</th>
-                  <th class="wt_50">Action</th>
+                  <th class="wt_50" >Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,12 +48,14 @@
                   <tr>
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
+                    <!-- <td>< ?php echo $list->user_city ?></td> -->
                     <td><?php echo $list->user_mobile ?></td>
                     <td><?php echo $list->user_email ?></td>
-                    <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Do you want to delete this user?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                  
+                    <td >
+                       <a href="<?php echo base_url(); ?>User/participate_list/<?php echo $list->user_id; ?>" > <i class="fa fa-trophy" aria-hidden="true"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>" hidden> <i class="fa fa-edit" ></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Do you want to delete this user?');" class="ml-2" hidden> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>

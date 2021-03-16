@@ -35,11 +35,11 @@
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>Full Name</th>
+                 <!--  <th>Full Name</th>
                   <th>BirthDate</th>
-                  <th>Pincode</th>
+                  <th>Pincode</th> -->
                   <th>Competition</th>
-                  <th class="wt_50">Action</th>
+                  <th class="wt_50" hidden>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,14 +47,14 @@
                   foreach ($participate_list as $list) {
                     $i++; ?>
                   <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $list->fullname ?></td>
+                   <td><?php echo $i; ?></td>
+                  <!--  <td><?php echo $list->fullname ?></td>
                     <td><?php echo $list->birthdate ?></td>
-                    <td><?php echo $list->pincode ?></td>
-                    <td><?php echo $list->title ?></td>
+                    <td><?php echo $list->pincode ?></td> -->
+                    <td><?php echo $list['title']; ?></td>
                     
                    
-                    <td>
+                    <td hidden>
                       <a href="<?php echo base_url(); ?>User/edit_participate/<?php echo $list->profileid; ?>"> <i class="fa fa-edit"></i> </a>
                       <a href="<?php echo base_url(); ?>User/delete_participate/<?php echo $list->profileid; ?>" onclick="return confirm('Do you want to delete this participant?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>

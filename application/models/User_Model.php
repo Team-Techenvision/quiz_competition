@@ -981,17 +981,21 @@ function fetch_user_uploadfile($competitionid)
  //  return $query->result();
  //  // print_r($query);
  // }
-   public function participate_list($profileid){
+   public function participate_list($user_id){
+    // echo $user_id;
+    // print_r($user_id); die();
     // $this->db->select('*');
      $this->db->select('profile.*,competition.*');
     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    $this->db->order_by('profileid', "DESC");
+    // $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    // $this->db->order_by('profileid', "DESC");
     // if($company_id != ''){
-    //   $this->db->where('company_id', $company_id);
+      $this->db->where('user_id', $user_id);
     // }
     $this->db->from('profile');
     $query = $this->db->get();
-    $result = $query->result();
+    $result = $query->result_array();
+    // print_r($result); die();
     return $result;
   }
 //for Participate form 
@@ -1257,12 +1261,13 @@ public function get_list_by_id1($col_name1,$col_val1,$col_name2,$col_val2,$order
     return $result;
   }
 
-  public function user_list($company_id){
+  public function user_list($user_id){
     $this->db->select('*');
-    $this->db->where('is_admin', 1);
-    if($company_id != ''){
-      $this->db->where('company_id', $company_id);
-    }
+    // $this->db->where('is_admin', 1);
+    $this->db->order_by('user_id',"DESC");
+    // if($company_id != ''){
+    //   $this->db->where('company_id', $company_id);
+    // }
     $this->db->from('user');
     $query = $this->db->get();
     $result = $query->result();

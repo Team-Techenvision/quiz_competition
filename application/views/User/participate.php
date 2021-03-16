@@ -50,7 +50,7 @@
                
                 </div>  
               </form>
-              <form id="form_action" role="form" action="<?php echo base_url(); ?>User/add_participate" method="post">
+              <form id="form_profileUpdate" role="form" action="<?php echo base_url(); ?>User/add_participate" method="post">
                <div class="card-body row" style="margin-top: -50px;">
 
                 <?php 
@@ -363,13 +363,15 @@ $(document).ready(function(){
 </script>
 <!-- Validation For standard(Male 18+ , female 18+ ), gender and birthdate -->
  <script>
- $(document).ready(function(){
-    $('.msg').hide();
+ // $(document).ready(function(){
+    // $('.msg').hide();
 
   // $('#btn_save').on('submit', function(e){
-        // e.preventDefault();
-   $('.btn_save').click(function(){
-    alert("hii");
+    $('#form_profileUpdate').submit(function(e) {
+    // $("form").submit(function(e){
+        e.preventDefault();
+   // $('.btn_save').click(function(e){
+    // alert("hii");
 
 
      var stand = $('#standard').val();
@@ -388,32 +390,32 @@ $(document).ready(function(){
            success:function(data)
             {   
 
-               alert(data);
+               // alert(data);
                // console.log(data);
                  if(data == "correct"){
-                     alert(data);
+                     // alert(data);
                    $('.msg').hide();
                    // $("#form_update").submit();
-                   // document.getElementById("btn_save").submit();
+                   document.getElementById("form_profileUpdate").submit();
                    // window.location = "< ?php echo base_url(); ?>WebsiteController";
 
                  }else{
 
-                alert(data);
+                // alert(data);
                 // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
                  // $('.msg').show();
                  $('.msg').html(data);
                  // $([document.documentElement, document.body]).animate({
                  //      scrollTop: $("#msg_display").offset().top
                  //  }, 500);
-                  // $('#msg').focus();
+                  $('#birthdate').focus();
                  // $('#alternatemobno').val('');
                 }               
            }
          });
        // e.preventdefault();
   });
-  });
+  // });
 
 </script>
 

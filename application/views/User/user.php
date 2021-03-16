@@ -50,21 +50,21 @@
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                     <label>Name<span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name of User" required>
+                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name" required>
                   </div>
-                   <div class="form-group col-md-12">
+                   <div class="form-group col-md-12" hidden>
                     <label>Address<span style="color: red;">*</span></label>
 
-                    <textarea type="text" class="form-control required title-case text " name="user_address" id="user_address"  placeholder="Enter Address of User" required ><?php if(isset($user_address)){ echo $user_address; } ?></textarea>
+                    <textarea type="text" class="form-control required title-case text " name="user_address" id="user_address"  placeholder="Enter Address"  ><?php if(isset($user_address)){ echo $user_address; } ?></textarea>
                   </div>
                      <div class="form-group col-md-12">
                     <label>Pincode<span style="color: red;">*</span></label>
                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " minlength="6" maxlength="6" name="user_pincode" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>" placeholder="Enter Pincode" required>
                   </div>
-                  <div class="form-group col-md-12">
+                  <div class="form-group col-md-12" hidden>
                     <label>City<span style="color: red;">*</span></label>
 
-                    <input type="text" class="form-control required txtOnly" name="user_city" id="user_city" value="<?php if(isset($user_city)){ echo $user_city; } ?>" placeholder="Enter City" required>
+                    <input type="text" class="form-control required txtOnly" name="user_city" id="user_city" value="<?php if(isset($user_city)){ echo $user_city; } ?>" placeholder="Enter City" >
                   </div>
                   <div class="form-group col-md-12">
                     <label>Mobile No<span style="color: red;">*</span></label>

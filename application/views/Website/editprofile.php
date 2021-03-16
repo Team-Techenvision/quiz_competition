@@ -78,11 +78,11 @@
                                </div>
                           </div>
                          
-                           <div class="form-group col-md-12">
+                           <div class="form-group col-md-12" hidden>
                             <div class="row">
                               <div class="col-md-4"><label>Parent Name</label>&nbsp;<label style="color:red;">*</label></div>
                         
-                         <div class="col-md-8"><input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" required></div>
+                         <div class="col-md-8"><input type="text" class="form-control txtOnly" name="parentname" id="parentname" value="<?php if(isset($parentname)){ echo $parentname; } ?>" placeholder="Enter Parent Name" ></div>
                        </div>
                       <!--   <input type="hidden" name="competition_id" id="competition_model_id" value="< ?php if(isset($competitionid)){ echo $competitionid; } ?>">
                    -->
@@ -294,7 +294,7 @@
                                    <div class="col-md-8">
                                     
 
-                                      <input type="text" class="form-control title-case txtOnly" name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" placeholder="Enter District">
+                                      <input type="text" class="form-control title-case txtOnly" name="districtid" id="districtid" value="<?php if(isset($districtid)){ echo $districtid; } ?>" placeholder="Enter District" required>
                                     
                                    <!--  <select name="districtid" id="districtid"class="form-control" required="" >
                                     <option value="">select District</option>
@@ -317,7 +317,7 @@
                                    <div class="col-md-8">
                                      
 
-                                      <input type="text" class="form-control title-case txtOnly" name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" placeholder="Enter City">
+                                      <input type="text" class="form-control title-case txtOnly" name="cityid" id="cityid" value="<?php if(isset($cityid)){ echo $cityid; } ?>" placeholder="Enter City" required>
                                      
 
                                 

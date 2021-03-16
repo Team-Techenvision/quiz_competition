@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2021 at 02:18 PM
+-- Generation Time: Mar 16, 2021 at 02:14 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -424,7 +424,7 @@ CREATE TABLE `competitiontype` (
 --
 
 INSERT INTO `competitiontype` (`competitiontypeid`, `competitiontype`, `created_date`) VALUES
-(1, 'Quiz', '2021-01-11 00:00:00'),
+(1, 'Quiz', '2021-03-16 07:18:33'),
 (2, 'Singing', '2021-01-11 07:03:32'),
 (3, 'Dancing', '2021-01-11 07:03:42'),
 (4, 'Essay Writing', '2021-02-04 13:13:16'),
@@ -791,7 +791,9 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (122, 'Vinay', '2014-02-04', '', '6', 'rainbow school', 'kolhapur', 0, 'Pratham Chavan', '9856321456', 1, 'kolhapur', 'kolhapur', 22, 7, 334, 88, 'profile_image_334_1615187696.PNG', '2021-03-08'),
 (126, 'Mahesh', '2005-11-16', '', '9', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 79, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10'),
 (127, 'Mahesh', '2005-11-16', '', '9', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 88, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10'),
-(130, 'Mahesh', '2005-11-16', '', '10', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 59, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10');
+(130, 'Mahesh', '2005-11-16', '', '10', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 59, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10'),
+(132, 'Mohan', '1994-06-07', 'demo@gmail.com', '14', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 1, 'Kolhapur', 'Kolhapur', 22, 81, 220, 2, '', '2021-03-16'),
+(149, 'Mohan', '1999-07-07', 'demo@gmail.com', '15', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 2, 'Kolhapur', 'Kolhapur', 22, 84, 220, 2, '', '2021-03-16');
 
 -- --------------------------------------------------------
 
@@ -827,8 +829,7 @@ INSERT INTO `state` (`stateid`, `statename`, `created_date`) VALUES
 (15, 'Jammu and Kashmir', '0000-00-00 00:00:00'),
 (16, 'Jharkhand', '0000-00-00 00:00:00'),
 (17, 'Karnataka', '0000-00-00 00:00:00'),
-(18, 'Kenmore', '0000-00-00 00:00:00'),
-(19, 'Kerala', '0000-00-00 00:00:00'),
+(18, 'Kerala', '0000-00-00 00:00:00'),
 (20, 'Lakshadweep', '0000-00-00 00:00:00'),
 (21, 'Madhya Pradesh', '0000-00-00 00:00:00'),
 (22, 'Maharashtra', '0000-00-00 00:00:00'),
@@ -836,10 +837,7 @@ INSERT INTO `state` (`stateid`, `statename`, `created_date`) VALUES
 (24, 'Meghalaya', '0000-00-00 00:00:00'),
 (25, 'Mizoram', '0000-00-00 00:00:00'),
 (26, 'Nagaland', '0000-00-00 00:00:00'),
-(27, 'Narora', '0000-00-00 00:00:00'),
-(28, 'Natwar', '0000-00-00 00:00:00'),
 (29, 'Odisha', '0000-00-00 00:00:00'),
-(30, 'Paschim Medinipur', '0000-00-00 00:00:00'),
 (31, 'Pondicherry', '0000-00-00 00:00:00'),
 (32, 'Punjab', '0000-00-00 00:00:00'),
 (33, 'Rajasthan', '0000-00-00 00:00:00'),
@@ -847,10 +845,10 @@ INSERT INTO `state` (`stateid`, `statename`, `created_date`) VALUES
 (35, 'Tamil Nadu', '0000-00-00 00:00:00'),
 (36, 'Telangana', '0000-00-00 00:00:00'),
 (37, 'Tripura', '0000-00-00 00:00:00'),
-(38, 'TEST', '0000-00-00 00:00:00'),
-(39, 'UP-1', '0000-00-00 00:00:00'),
 (40, 'West Bengal', '0000-00-00 00:00:00'),
-(41, 'UP-2', '0000-00-00 00:00:00');
+(42, 'Ladakh', '2021-03-16 00:00:00'),
+(43, 'Uttarakhand', '0000-00-00 00:00:00'),
+(44, 'Uttar Pradesh', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1139,7 +1137,8 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (337, 0, '', 3, 'asdf', '', 416012, '', 'asdf@gmail.com', '8698066560', '7d532c0ff2fda8f2cd91993db0202332', 0, 0, NULL, 'active', '', '2021-03-15 05:23:42', 3),
 (338, 0, '', 3, 'Assdf', '', 416012, '', 'asdf1@gmail.com', '8698064155', '74b1598b5c826f66c19011c320443e70', 0, 0, NULL, 'active', '', '2021-03-15 05:32:17', 3),
 (339, 0, '', 3, 'asdf lkjh', '', 416012, '', 'asdf123@gmail.com', '9284355651', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-15 09:59:32', 3),
-(340, 0, '', 3, 'asdf', '', 416012, '', 'aasdf@gmail.com', '9284355151', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-15 12:24:37', 3);
+(340, 0, '', 3, 'asdf', '', 416012, '', 'aasdf@gmail.com', '9284355151', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-15 12:24:37', 3),
+(341, 1, '', 2, 'Nagraj Chavan', '', 416012, '', 'Nagraj@gmail.com', '8698009595', 'Ki@123456', 0, 0, NULL, 'active', '1', '2021-03-16 11:43:10', 1);
 
 -- --------------------------------------------------------
 
@@ -1179,7 +1178,7 @@ CREATE TABLE `userprofile_master` (
 --
 
 INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted`, `user_name`, `user_pincode`, `user_mobile`, `user_password`, `user_email`, `parentname`, `birthdate`, `emailid`, `standard`, `schoolcollegename`, `address`, `pincode`, `fullname`, `alternatemobno`, `gender`, `cityid`, `districtid`, `stateid`, `profile_image`, `check_one`, `created_date`) VALUES
-(2, 220, 1, 'Rohan Velhal', '416012', '8484888489', 'Ki@1234556', '', 'Mohan', '1994-06-07', 'demo@gmail.com', 10, 'SM Lohiya', 'Kolhapur', '416012', 'Rohan Velhal', '8745965412', 1, 'Kolhapur', 'Kolhapur', 22, 'profile_image_220_1613565686.png', 0, '2021-03-15 07:44:23'),
+(2, 220, 1, 'Rohan Velhal', '416012', '8484888489', 'Ki@1234556', '', 'Mohan', '1999-07-07', 'demo@gmail.com', 15, 'SM Lohiya', 'Kolhapur', '416012', 'Rohan Velhal', '8745965412', 2, 'Kolhapur', 'Kolhapur', 22, 'profile_image_220_1613565686.png', 0, '2021-03-16 00:47:54'),
 (4, 222, 1, 'sadfs', '444444', '6655534444', 'Ss@12344556', '', 'sghdad', '2010-02-02', 'dsaf@gmail.com', 4, 'gkg', 'ghfhdf, kolhapur', '444444', 'sadfs', '7896541236', 1, '1', '1', 22, '', 0, '2021-02-11 08:23:55'),
 (5, 223, 1, 'dfgdf', '555565', '6454434545', 'Ki@445623547', '', 'sdfg', '2017-05-30', 'manish@gmail.com', 5, 'kkk', 'kkk', '555565', 'dfgdf', '4343545666', 1, '1', '1', 22, 'profile_image_223_1613036680.jpg', 0, '2021-02-11 08:40:52'),
 (6, 224, 0, 'Komal Kadam', '416012', '9876789877', 'Ko@123454566', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '0', '0', 0, '', 0, '2021-02-11 10:39:57'),
@@ -1265,7 +1264,8 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (91, 337, 0, 'asdf', '416012', '8698066560', '7d532c0ff2fda8f2cd91993db0202332', 'asdf@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-15 05:23:42'),
 (92, 338, 0, 'Assdf', '416012', '8698064155', '74b1598b5c826f66c19011c320443e70', 'asdf1@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-15 05:32:17'),
 (93, 339, 1, 'asdf lkjh', '416012', '9284355651', 'be6148685373df5bcc6f0baffda23be3', 'asdf123@gmail.com', 'zxcv', '1999-03-03', '', 14, 'sm', 'Kolhapur', '', 'asdf lkjh', '9284355451', 1, 'Kolhapur', 'Kolhapur', 22, '', 1, '2021-03-15 09:59:32'),
-(94, 340, 1, 'asdf', '416012', '9284355151', 'be6148685373df5bcc6f0baffda23be3', 'aasdf@gmail.com', 'asddd', '2008-06-05', '', 10, 'sm', 'Kolhapur', '', 'asdf', '9284355451', 1, 'Kolhapur', 'Kolhapur', 22, '', 1, '2021-03-15 12:24:37');
+(94, 340, 1, 'asdf', '416012', '9284355151', 'be6148685373df5bcc6f0baffda23be3', 'aasdf@gmail.com', 'asddd', '2008-06-05', '', 10, 'sm', 'Kolhapur', '', 'asdf', '9284355451', 1, 'Kolhapur', 'Kolhapur', 22, '', 1, '2021-03-15 12:24:37'),
+(95, 341, 0, 'Nagraj Chavan', '416012', '8698009595', 'Ki@123456', '', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-16 11:43:10');
 
 -- --------------------------------------------------------
 
@@ -1613,7 +1613,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `competitionquizsubject`
@@ -1673,13 +1673,13 @@ ALTER TABLE `points_master`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT for table `state`
 --
 ALTER TABLE `state`
-  MODIFY `stateid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `stateid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `tabcompetition`
@@ -1691,13 +1691,13 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=342;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
