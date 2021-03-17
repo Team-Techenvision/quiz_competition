@@ -832,6 +832,18 @@ public function check_competitiontype(){
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('user_name', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
+      $password = $this->input->post('user_password');
+      $emailAddress = $this->input->post('user_email');
+
+      $email = $this->input->post('user_email');
+
+
+      $email2 = $this->User_Model->check_regdb1($email);
+      
+      // print_r($email2); die();
+  if(empty($email2) || $email2==""){  
+
       $save_data = array(
         'company_id' => $quizweb_company_id,
         'user_name' => $this->input->post('user_name'),
@@ -839,7 +851,7 @@ public function check_competitiontype(){
         'user_mobile' => $this->input->post('user_mobile'),
         'user_city' => $this->input->post('user_city'),
         'user_email' => $this->input->post('user_email'),
-        'user_password' => $this->input->post('user_password'),
+        'user_password' => md5($password),
         'user_pincode' => $this->input->post('user_pincode'),
         'user_addedby' => $quizweb_user_id,
         'is_admin' => 1,
@@ -852,13 +864,74 @@ public function check_competitiontype(){
             'user_id' => $id,
             'user_name' => $this->input->post('user_name'),
             'user_mobile' => $this->input->post('user_mobile'),
-            'user_password' => $this->input->post('user_password'),
+            'user_email' => $this->input->post('user_email'),
+
+            // 'user_password' => md5($password),
             'user_pincode' => $this->input->post('user_pincode'), 
-            'profile_submitted' =>0,          
+            'profile_submitted' =>0, 
+            'check_one' =>0,          
         );
 
       $this->User_Model->save_data('userprofile_master',$data_view);
+
+       $data_viewdb1 = array(
+            'user_id' => $id,
+            'customer_id'   => $this->generator(15),
+            'customer_name' => $this->input->post('user_name'),
+            'first_name' => $this->input->post('user_name'),
+            'customer_mobile' => $this->input->post('user_mobile'),
+            'customer_email' => $this->input->post('user_email'),
+            'password' =>  md5("gef".$password),
+            // 'user_pincode' => $this->input->post('user_pincode'), 
+            // 'profile_submitted' =>0,          
+        );
+        // print_r($data_viewdb1); die();
+      $this->User_Model->save_data1('customer_information',$data_viewdb1);
+
+
+    }else{
+       $save_data = array(
+        'company_id' => $quizweb_company_id,
+        'user_name' => $this->input->post('user_name'),
+        'user_address' => $this->input->post('user_address'),
+        'user_mobile' => $this->input->post('user_mobile'),
+        'user_city' => $this->input->post('user_city'),
+        'user_email' => $this->input->post('user_email'),
+        'user_password' => md5($password),
+        'user_pincode' => $this->input->post('user_pincode'),
+        'user_addedby' => $quizweb_user_id,
+        'is_admin' => 1,
+        'roll_id' => 2,
+      );
+      $id = $this->User_Model->save_data('user', $save_data);
+      // $this->session->set_flashdata('save_success','success');
+
+      $data_view = array(
+            'user_id' => $id,
+            'user_name' => $this->input->post('user_name'),
+            'user_mobile' => $this->input->post('user_mobile'),
+            'user_email' => $this->input->post('user_email'),
+
+            // 'user_password' => md5($password),
+            'user_pincode' => $this->input->post('user_pincode'), 
+            'profile_submitted' =>0,  
+            'check_one' =>0,         
+        );
+
+      $this->User_Model->save_data('userprofile_master',$data_view);
+
+       $update_datadb1 = array(
+         'user_id' => $id,
+      
+         );
+          // print_r($update_datadb1); die();
+
+        $this->User_Model->update_info1('customer_email', $emailAddress, 'customer_information', $update_datadb1);
+
+    }
       $this->session->set_flashdata('save_success','success');
+
+
 
       header('location:'.base_url().'User/user_list');
     }
@@ -867,7 +940,53 @@ public function check_competitiontype(){
     $this->load->view('User/user');
     $this->load->view('Include/footer');
   }
+    public function competitionlist_by_userid(){
+    // echo $_POST['userid']; die();
+   $user_id=$this->input->post('user_id');
+   $data=$this->User_Model->participate_list($user_id);
+   // echo (json_encode($data));
+  foreach ($data as  $val) {
+    $name = $val['user_name'];
+  }
+    // print_r($name); die();
+  if(!empty($name)){ 
+ ?><div class="">
+          <label for="recipient-name"  class="col-form-label"><b>Name : </b></label>
+        <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $name; ?></label>
+          </div>
+            <div class="">
+          
+             <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th class="wt_50">#</th>
+                   <th>Competition Title</th>
+                         
+                 </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 0;
+                  foreach ($data as $list) {
+                  // print_r($list->competitiontypeid); 
 
+                    $i++; ?>
+                  <tr>
+                    <td><?php echo $i; ?></td>
+                
+                    <td><?php echo $list['title'] ?></td>
+                  <?php } ?>
+                  </tr>
+
+                </tbody>
+              </table>
+         </div>
+          <?php 
+}else{
+  echo "The user does not participate in any competition.";
+}
+  
+    
+  }
   // User List....
   public function user_list(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
@@ -1442,6 +1561,20 @@ public function check_competitiontype(){
     $this->load->view('User/competition/competition',$data);
     $this->load->view('Include/footer',$data);
   }
+   public function fetch_class_age(){
+    // echo $_POST['competitionid']; die();
+   $tabinputtextid=$this->input->post('tabinputtextid');
+   $data=$this->User_Model->fetch_class_age($tabinputtextid);
+   echo (json_encode($data));
+   foreach ($data as  $value) {
+     $from = $value['fromage'];
+     $to = $value['toage'];
+   }
+
+
+   // echo json_encode(array("a" => $value['fromage'], "b" => $value['toage'])); 
+  
+ }
  
    public function competitionName_list(){
     // echo $_POST['competitionid']; die();
@@ -1498,7 +1631,60 @@ public function check_competitiontype(){
     
   }
 
-  
+  public function userlist_by_competitionid(){
+    // echo $_POST['userid']; die();
+   $competitionid=$this->input->post('competitionid');
+   $data=$this->User_Model->userlist_by_competitionid($competitionid);
+   // echo (json_encode($data));
+    foreach ($data as  $val) {
+      $name = $val['title'];
+    }
+      // print_r($name); die();
+    if(!empty($name)){ 
+    ?>               
+             <div class="">
+                <label for="recipient-name"  class="col-form-label"><b> Competition Title : </b></label>
+                 <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $name; ?></label>
+             </div>
+             <div class="">
+             <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th class="wt_50">#</th>
+                   <th>Participant Name</th>
+                   <th>Email Address</th>
+                   <th>City</th>
+                         
+                 </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 0;
+                  foreach ($data as $list) {
+                  // print_r($list->competitiontypeid); 
+
+                    $i++; ?>
+                  <tr>
+                    <td><?php echo $i; ?></td>
+                
+                    <td><?php echo $list['user_name'] ?></td>
+                    <td><?php echo $list['emailid'] ?></td>
+                    <td><?php echo $list['cityid'] ?></td>
+                  <?php } ?>
+                  </tr>
+
+                </tbody>
+              </table>
+             </div>
+
+  <?php 
+  }else{
+    echo "There are no participants participate are in the competition.";
+  }
+
+
+  }
+    
+
   // Competition List....
   public function competition_list(){
 
@@ -3087,8 +3273,11 @@ public function checkpoints_competition1(){
        
                 'tabinputtext' => $this->input->post('tabinputtext'),
                 'tabid' => $this->input->post('tabid'),
+                'toage' => $this->input->post('toage'),
+                'fromage' => $this->input->post('fromage'),
                 'fromstand' => $fromstand,
                 'tostand' => $tostand,
+              
                 'alluser' => $this->input->post('alluser'),
              
       );
@@ -3133,6 +3322,8 @@ public function checkpoints_competition1(){
                 'tabinputtext' => $this->input->post('tabinputtext'),
                 'tabid' => $this->input->post('tabid'),
                 'fromstand' => $this->input->post('fromstand'),
+                'toage' => $this->input->post('toage'),
+                'fromage' => $this->input->post('fromage'),
                 'tostand' => $this->input->post('tostand'),
                 'alluser' => $this->input->post('alluser'),
                
@@ -3150,6 +3341,8 @@ public function checkpoints_competition1(){
       $data['tabinputtext'] = $info->tabinputtext;
       $data['tabid'] = $info->tabid;
       $data['fromstand'] = $info->fromstand;
+      $data['fromage'] = $info->fromage;
+      $data['toage'] = $info->toage;
       $data['alluser'] = $info->alluser;
       $data['tostand'] = $info->tostand;
      
@@ -3222,5 +3415,25 @@ public function checkpoints_competition1(){
 
   }
  
+
+ //This function is used to Generate Key
+  public function generator($lenth)
+  {
+    $number=array("A","B","C","D","E","F","G","H","I","J","K","L","N","M","O","P","Q","R","S","U","V","T","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0");
+  
+    for($i=0; $i<$lenth; $i++)
+    {
+      $rand_value=rand(0,34);
+      $rand_number=$number["$rand_value"];
+    
+      if(empty($con)){ 
+        $con = $rand_number;
+      }else{
+        $con = "$con"."$rand_number";
+      }
+    }
+    return $con;
+  }
+
 }
 ?>

@@ -46,13 +46,21 @@ class User_Model extends CI_Model{
   function check_login($email, $password){
     $query = $this->db->select('*')
       ->where('user_email', $email)
-      ->where('user_password', $password)
+      ->where('user_password', md5($password))
       ->from('user')
       ->get();
     $result = $query->result_array();
     return $result;
   }
+   function check_regdb1($email1){
+    $query = $this->db1->select('*')
+            ->from('customer_information')
+            ->where('customer_email',$email1)
+            ->get();
+    $result = $query->result_array();
 
+    return $result;
+  }
   public function save_data($tbl_name, $data){
     $this->db->insert($tbl_name, $data);
     $insert_id = $this->db->insert_id();
@@ -62,7 +70,11 @@ class User_Model extends CI_Model{
     $this->db1->insert($tbl_name, $data);
     $insert_id = $this->db1->insert_id();
     return  $insert_id;
-  } 
+  }
+  //   public function update_info1($id_type, $id, $tbl_name, $data){
+  //   $this->db1->where($id_type, $id)
+  //   ->update($tbl_name, $data);
+  // }  
   //  public function update($competitionid,$data){
   //   $this->db->where($competitionid, $competitionid)
   //   ->update('competitionquizsubject',$data);
@@ -430,6 +442,19 @@ $this->db->from('userscore_master');
   // return $query->result();
   // // print_r($query);
   // }
+  public function userlist_by_competitionid($competitionid){
+  
+      $this->db->select('profile.*,competition.title,user.user_name');
+      $this->db->join('user', 'profile.user_id = user.user_id', 'inner');
+      $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'inner');
+    
+    
+      $this->db->where('profile.competitionid',$competitionid);
+      $query = $this->db->get('profile');
+      $result = $query->result_array();
+      return $result;
+
+  }
   public function competitionName_list($competitionid){
    //   // $today = date('Y-m-d');
    //   // $this->db->select('*');
@@ -985,12 +1010,12 @@ function fetch_user_uploadfile($competitionid)
     // echo $user_id;
     // print_r($user_id); die();
     // $this->db->select('*');
-     $this->db->select('profile.*,competition.*');
+     $this->db->select('profile.user_id,profile.competitionid,competition.title,user.user_name');
     $this->db->join('competition', 'profile.competitionid = competition.competitionid', 'left');
-    // $this->db->join('user', 'profile.user_id = user.user_id', 'left');
+    $this->db->join('user', 'profile.user_id = user.user_id', 'left');
     // $this->db->order_by('profileid', "DESC");
     // if($company_id != ''){
-      $this->db->where('user_id', $user_id);
+      $this->db->where('profile.user_id', $user_id);
     // }
     $this->db->from('profile');
     $query = $this->db->get();
@@ -1131,9 +1156,24 @@ function fetch_user_uploadfile($competitionid)
  {
   $this->db->order_by("tabinputtextid", "ASC");
   $query = $this->db->get("tabcompetition");
+  // print_r($query->result()); die();
+
   return $query->result();
-  // print_r($query);
+
  }
+ public function fetch_class_age($tabinputtextid){
+     // $today = date('Y-m-d');
+     $this->db->select('*');
+
+    $this->db->where("tabinputtextid", $tabinputtextid);
+   
+    $this->db->from('tabcompetition');
+    $query = $this->db->get();
+    $result = $query->result_array();
+    // print_r($result); 
+    return $result;
+
+  }
 
 
    

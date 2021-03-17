@@ -23,6 +23,7 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
+                
                 <h3 class="card-title">Add Competition Type</h3>
                 <div class="card-tools col-md-4 " >
                 <a href="<?php echo base_url(); ?>User/competitiontype_list" class="btn btn-sm btn-block btn-primary ">Competition Type List</a>

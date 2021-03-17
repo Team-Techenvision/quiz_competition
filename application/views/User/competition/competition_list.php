@@ -36,7 +36,7 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Competition Type</th>
-                  <th>Title</th>
+                  <th>Competition Title</th>
                   <th>From-To Class</th>
                   <th>End Date</th>
                                 
@@ -57,14 +57,16 @@
                     <td><?php echo $list->enddate ?></td>
                     <td>
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
-                      <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>"> <i class="fa fa-edit"></i> </a> &nbsp;
+                      <a  id="<?php echo $list->competitionid; ?>" class="competition_btn" value="<?php echo $list->competitionid; ?>" href=""> <i class="fas fa-eye"></i></a> &nbsp;
+                       <a  id="<?php echo $list->competitionid; ?>" class="users_btn" value="<?php echo $list->competitionid; ?>" href=""><i class="fas fa-user"></i></a> &nbsp;
                         
                       <?php $status = $list->status; 
                           if ($status == 1) {?> 
-                              <a class="btn btn-success" href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Deactivate this competition?');" >Active</a> 
+                              <a class="btn btn-success" href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Deactivate this competition?');" ><i class="fa fa-thumbs-up"></i></a> 
                           <?php } else {?> 
-                              <a href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Activate this competition?');" class="btn btn-danger">Inactive</a> 
-                          <?php } ?> 
+                              <a href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Activate this competition?');" class="btn btn-danger"><i class="fa fa-thumbs-down"></i></a> 
+                          <?php } ?> &nbsp;
                      
 
                  <!--    <a href=" < ?php echo base_url(); ?>User/competition_active/< ?php echo $list->competitionid; ?>/".&active=1>Active</a> -->
@@ -72,7 +74,7 @@
 
                     <!--   <a href="< ?php echo base_url(); ?>User/delete_competition/< ?php echo $list->competitionid; ?>" onclick="return confirm('Do you want to delete this competition?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a> -->
 
-                     <a type="button" id="<?php echo $list->competitionid; ?>" class="btn btn-sm btn-primary competition_btn" value="<?php echo $list->competitionid; ?>" href=""> View</a> 
+                 
 
                    <?php if($list->competitiontypeid==1){ ?>
 
@@ -97,6 +99,28 @@
                     <div class="modal-body" id="competition">
                       
                     
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+                 
+                    </div>
+                  </div>
+                </div>
+              </div>
+           <!-- /.end modal -->
+             <!-- Modal -->
+               <div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Participant Details</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" id="users">
+                     
+                 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
@@ -175,4 +199,34 @@
 });
 
   </script>  
+
+<!--    // users display by competition id  -->
+  <script>
+    $(document).ready(function(){
+
+      $('.users_btn').click(function(e){
+
+    var competitionid=$(this).attr("id");
+    // var title=$('#competitionid option:selected').text();
+    // alert(competitionid);
+    $.post('<?php echo base_url(); ?>User/userlist_by_competitionid',
+      {competitionid:competitionid},
+
+      function(data,status){
+
+      // alert(data);
+      // console.log(data);
+      $('#users').html(data);
+
+
+    });
+    $('#exampleModal').modal('show');
+    e.preventDefault();
+    
+    });
+      
+});
+
+  </script>  
+
 

@@ -37,8 +37,10 @@
                   <th>Class Group</th>
                   <th>From Class</th>
                   <th>To Class</th>
+                  <th>From Age</th>
+                  <th>To Age</th>
                  
-                  <th class="wt_50">Action</th>
+                  <th class="wt_50" hidden>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,11 +52,13 @@
                     <td><?php echo $list->tabinputtext ?></td>
                     <td><?php echo $list->fromstand ?></td>
                     <td><?php echo $list->tostand ?></td>
+                    <td><?php echo $list->fromage ?></td>
+                    <td><?php echo $list->toage ?></td>
                   
                    
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_class/<?php echo $list->tabinputtextid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_class/<?php echo $list->tabinputtextid; ?>" onclick="return confirm('Do you want to delete this class group?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_class/<?php echo $list->tabinputtextid; ?>" hidden> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_class/<?php echo $list->tabinputtextid; ?>" onclick="return confirm('Do you want to delete this class group?');" class="ml-2" hidden> <i class="fa fa-trash text-danger" ></i> </a>
                     </td>
                   <?php } ?>
                   </tr>

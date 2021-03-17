@@ -33,7 +33,13 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
+                  <?php if(isset($update)){ ?>
+
+                <h3 class="card-title">Edit Competition</h3>
+              <?php }else{ ?>
                 <h3 class="card-title">Add Competition</h3>
+              <?php } ?>
+
                 <div class="card-tools col-md-3 " >
                 <a href="<?php echo base_url(); ?>User/competition_list" class="btn btn-sm btn-block btn-primary "  >Competition List</a>
               </div>
@@ -409,6 +415,43 @@ $(document).ready(function(){
 
 }); 
 </script>
+<script type="text/javascript">
+        $(document).ready(function(){
+ 
+            $('#standard').change(function(){ 
+
+                var id=$(this).val();
+                alert(id);
+//                 $.getJSON("<?php echo base_url(); ?>User/fetch_class_age", function(data) {
+//   alert("Value for 'a': " + data.a + "\nValue for 'b': " + data.b);
+//                           $('#fromage').val(data.a);
+//                           $('#toage').val(data.b);
+
+// });
+                $.ajax({
+                    url : "<?php echo base_url(); ?>User/fetch_class_age",
+                    method : "POST",
+                    data : {tabinputtextid: id},
+                    // async : true,
+                    // dataType : 'json',
+                    success: function(data){
+                       // var inputVal = document.getElementById("myInput").value;
+                          $('#fromage').val(data[0].fromage);
+                          // $('#toage').val(data.to);
+                          // var a = $(this).val('fromage');
+                          // $("#fromage").html(data.a);
+                          // $("#fromage").val(data[0].fromage);
+                            // $("input[name='fromage']").val(data.fromage);
+                               // $("#Strasse1").val(result.strasse);
+                        alert(data);
+ 
+                    }
+                });
+            
+            }); 
+             
+        });
+    </script>
 
 <!--  <script type="text/javascript">
   
@@ -489,6 +532,7 @@ $('form').validate({
 
 
 </script>
+
 <script type="text/javascript">
 var checkBox = document.querySelector('input[name="email"]');
 var textInput = document.querySelector('input[name="emailaddress"]');

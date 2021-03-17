@@ -42,7 +42,7 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Competition Type</th>
-                  <th class="wt_50">Action</th>
+                  <th class="wt_50" hidden>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,8 +53,8 @@
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->competitiontype ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_competitiontype/<?php echo $list->competitiontypeid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to delete this competition type?');" class="ml-2 disabled "> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_competitiontype/<?php echo $list->competitiontypeid; ?>" hidden> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_competitiontype/<?php echo $list->competitiontypeid; ?>" onclick="return confirm('Do you want to delete this competition type?');" class="ml-2 disabled " hidden> <i class="fa fa-trash text-danger"></i> </a>
                      
                     </td>
                   <?php } ?>

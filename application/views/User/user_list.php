@@ -53,7 +53,10 @@
                     <td><?php echo $list->user_email ?></td>
                   
                     <td >
-                       <a href="<?php echo base_url(); ?>User/participate_list/<?php echo $list->user_id; ?>" > <i class="fa fa-trophy" aria-hidden="true"></i> </a>
+                       <input type="hidden" name="user_id" id="user_id" value="<?php echo $list->user_id; ?>">
+
+                       <a href="" id="<?php echo $list->user_id; ?>"  class="comp_by_userid" value="<?php echo $list->user_id; ?>" > <i class="fa fa-trophy" aria-hidden="true"></i> </a>
+
                       <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>" hidden> <i class="fa fa-edit" ></i> </a>
                       <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Do you want to delete this user?');" class="ml-2" hidden> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
@@ -62,6 +65,30 @@
 
                 </tbody>
               </table>
+
+                <!-- Modal -->
+               <div class="modal fade" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Competition Details</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" id="competition">
+                     
+                 
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+                 
+                    </div>
+                  </div>
+                </div>
+              </div>
+           <!-- /.end modal -->
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -92,6 +119,35 @@
   <?php } ?>
 
   </script>
+
+   <script>
+    $(document).ready(function(){
+
+      $('.comp_by_userid').click(function(e){
+
+    var user_id=$(this).attr("id");
+    // var title=$('#competitionid option:selected').text();
+    // alert(competitionid);
+    $.post('<?php echo base_url(); ?>User/competitionlist_by_userid',
+      {user_id:user_id},
+
+      function(data,status){
+
+      // alert(data);
+      // console.log(data);
+      $('#competition').html(data);
+
+
+    });
+    $('#exampleModal').modal('show');
+    e.preventDefault();
+    
+    });
+      
+});
+
+  </script>  
+
 
 </body>
 </html>

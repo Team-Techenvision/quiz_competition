@@ -40,13 +40,21 @@
                     <label>Class Tab Group <span style="color: red;">*</span></label>
                     <input type="text" class="form-control required title-case text " name="tabid" id="tabid" value="<?php if(isset($tabid)){ echo $tabid; } ?>" placeholder="Enter Class Tab Group " required="" >
                   </div>
-                   <div class="form-group col-md-6">
-                    <label>From Class </label>
-                    <input type="text" class="form-control required title-case text " name="fromstand" id="fromstand" value="<?php if(isset($fromstand)){ echo $fromstand; } ?>" placeholder="Enter From Class"  >
+                   <div class="form-group col-md-3">
+                    <label>From Class <span style="color: red;">*</span></label>
+                    <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " name="fromstand" id="fromstand" value="<?php if(isset($fromstand)){ echo $fromstand; } ?>" placeholder="Enter From Class" required >
                   </div>
-                   <div class="form-group col-md-6">
-                    <label>To Class </label>
-                    <input type="text" class="form-control required title-case text " name="tostand" id="tostand" value="<?php if(isset($tostand)){ echo $tostand; } ?>" placeholder="Enter To Class" >
+                   <div class="form-group col-md-3">
+                    <label>To Class <span style="color: red;">*</span></label>
+                    <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " name="tostand" id="tostand" value="<?php if(isset($tostand)){ echo $tostand; } ?>" placeholder="Enter To Class" required>
+                  </div>
+                   <div class="form-group col-md-3">
+                    <label>From Age <span style="color: red;">*</span></label>
+                    <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="Enter From Age"  required>
+                  </div>
+                   <div class="form-group col-md-3">
+                    <label>To Age <span style="color: red;">*</span></label>
+                    <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control required title-case text " name="toage" id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder="Enter To Age" required>
                   </div>
                    <div class="form-group col-md-6">
                     <?php  if(empty($alluser)){$alluser="";} ?>
@@ -83,6 +91,6 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
- 
+  
 </body>
 </html>

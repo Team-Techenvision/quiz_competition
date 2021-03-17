@@ -35,7 +35,7 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Banner Title</th>
-                  <th>Banner Sub Title</th>
+                  <th>Banner Description</th>
                   <th>Profile Image</th>
                  
                   <th class="wt_50">Action</th>
@@ -53,7 +53,7 @@
                    
                    <td>
                       <a href="<?php echo base_url(); ?>User/edit_banner/<?php echo $list->bannerid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_banner/<?php echo $list->bannerid; ?>" onclick="return confirm('Do you want to delete this banner?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_banner/<?php echo $list->bannerid; ?>" onclick="return confirm('Do you want to delete this banner?');" class="ml-2" hidden> <i class="fa fa-trash text-danger"></i> </a>
                     </td> 
                   <?php } ?>
                   </tr>

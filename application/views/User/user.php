@@ -39,7 +39,13 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
+                <?php if(isset($update)){ ?>
+
+                <h3 class="card-title">Edit User</h3>
+
+                <?php }else{ ?>
                 <h3 class="card-title">Add User</h3>
+                <?php } ?>
                 <div class="card-tools col-md-2 " >
                 <a href="<?php echo base_url(); ?>User/user_list" class="btn btn-sm btn-block btn-primary">User List</a>
               </div>
@@ -50,7 +56,7 @@
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                     <label>Name<span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text txtOnly" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name" required>
+                    <input type="text" class="form-control required title-case text txtOnly"  onkeypress="return blockSpecialChar(event)" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Name" required>
                   </div>
                    <div class="form-group col-md-12" hidden>
                     <label>Address<span style="color: red;">*</span></label>
@@ -69,20 +75,22 @@
                   <div class="form-group col-md-12">
                     <label>Mobile No<span style="color: red;">*</span></label>
 
-                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="form-control required notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+                    <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="form-control required notext" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
                  
                   </div>
                   <div class="form-group col-md-12">
                     <label>Email Address<span style="color: red;">*</span></label>
 
-                    <input type="email" class="form-control" name="user_email" id="user_email" value="<?php if(isset($user_email)){ echo $user_email; } ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email Address" required>
+                    <input type="email" class="form-control" name="user_email" id="user_email" value="<?php if(isset($user_email)){ echo $user_email; } ?>" placeholder="Enter Email Address" required>
                   </div>
                   <div class="form-group col-md-12">
                     <label>Password<span style="color: red;">*</span></label>
 
                    <!--  <input type="password" class="form-control " name="user_password" id="user_password" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required> -->
 
-                      <input input type="password" id="user_password" name="user_password" class="form-control required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> <span style="margin-left: -30px;" toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+                      <input input type="password" id="user_password" name="user_password" class="form-control required"  minlength="8" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> <span style="margin-left: -30px;" toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></span>
+
+                     <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: Password must contain uppercase, lowercase letters, special symbol, and number with a minimum of 8 characters.</p>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -109,11 +117,17 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <!-- <script src="trunk/dev/validation.js"></script> -->
   
-
+  <script type="text/javascript">
+    function blockSpecialChar(e){
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+        }
+    </script>
 <script type="text/javascript">
 // Check Mobile Duplication..
   var user_mobile1 = $('#user_mobile').val();
@@ -137,7 +151,7 @@
   });
 
 // Check Email Duplication..
-  var user_email1 = $('#mobile').val();
+  var user_email1 = $('#user_email').val();
   $('#user_email').on('change',function(){
     var user_email = $(this).val();
     $.ajax({
@@ -155,6 +169,25 @@
       }
     });
   });
+  // // Check Email Duplication..
+  // var user_email1 = $('#user_email').val();
+  // $('#user_email').on('change',function(){
+  //   var customer_email = $(this).val();
+  //   $.ajax({
+  //     url:'< ?php echo base_url(); ?>User/check_duplication',
+  //     type: 'POST',
+  //     data: {"column_name":"customer_email",
+  //            "column_val":customer_email,
+  //            "table_name":"customer_information"},
+  //     context: this,
+  //     success: function(result){
+  //       if(result > 0){
+  //         $('#user_email').val(user_email1);
+  //         toastr.error(customer_email+' Email Id Exist.');
+  //       }
+  //     }
+  //   });
+  // });
 </script>
 
 <script type="text/javascript">
@@ -171,6 +204,22 @@
  
   // Wait for the DOM to be ready
 $(function() {
+
+
+
+  jQuery.validator.addMethod("validate_email", function(value, element) {
+
+    if (/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+});
+
+$.validator.addMethod("pwcheck", function(value, element) {
+    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*])[a-zA-Z0-9!@#$%&*]+$/.test(value);
+  //(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]
+}, "");    
   
   // Initialize form validation on the registration form.
   // It has the name attribute "registration"
@@ -186,19 +235,26 @@ $(function() {
       // title: "required",
       // address: "required",
       // pin_code: "required",
-      // email: {
-      //   required: true,
-      //   // Specify that email should be validated
-      //   // by the built-in "email" rule
-      //   email: true
-      // },
+     user_email: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        validate_email: true
+      },
+      user_password: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        pwcheck: true
+      },
       
     },
     // Specify validation error messages
     messages: {
       // user_name2: "Please enter user name",
       // title: "Please enter competition title",
-      // email: "Please enter a valid email address",
+      user_email: "Please enter a valid email address",
+      user_password: "Please enter valid password.",
       // pin_code: "Please enter a valid pincode",
       // address: "Please enter Street Address"
     },

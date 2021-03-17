@@ -856,7 +856,7 @@ public function competition_uploadfile(){
             'user_name' => $this->input->post('user_name'),
             'user_email' => $this->input->post('user_email'),
             'user_mobile' => $this->input->post('user_mobile'),
-            'user_password' => md5($password),
+            // 'user_password' => md5($password),
             'user_pincode' => $this->input->post('user_pincode'), 
             'profile_submitted' =>0, 
             'check_one' =>0,

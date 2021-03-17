@@ -23,7 +23,14 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
+                  <?php if(isset($update)){ ?>
+                  
+                <h3 class="card-title">Edit Banner</h3>
+
+                <?php }else{ ?>
                 <h3 class="card-title">Add Banner</h3>
+                <?php } ?>
+              
                 <div class="card-tools col-md-2 " >
                 <a href="<?php echo base_url(); ?>User/banner_list" class="btn btn-sm btn-block btn-primary "  >Banner List</a>
               </div>
@@ -34,25 +41,35 @@
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                    <label>Banner Title <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" required>
-                  </div>
+                     <?php if(isset($update)){ ?>
+                       <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" disabled>
+                       <?php }else{ ?>
+                      <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" required>
+                      <?php } ?>
+                   
+                   </div>
                   
                   <div class="form-group col-md-12">
-                   <label>Banner Sub Title <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control "  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter banner sub title" required>
+
+                   <label>Banner Description <span style="color: red;">*</span></label>
+                     <?php if(isset($update)){ ?>
+                       <textarea type="text" class="form-control "  name="subtitle" id="subtitle" value="" placeholder="Enter banner description" disabled><?php if(isset($subtitle)){ echo $subtitle; } ?></textarea>
+                       <?php }else{ ?>
+                       <textarea type="text" class="form-control "  name="subtitle" id="subtitle" value="" placeholder="Enter banner description" required><?php if(isset($subtitle)){ echo $subtitle; } ?></textarea>
+                       <?php } ?>
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-7">
                     <label>Banner Image <span style="color: red;">*</span></label>
-                 <input type="file" id="profile_image" name="profile_image"  onchange="readURL(this);" />
+                 <input type="file" id="profile_image" name="profile_image"  onchange="ValidateSingleInput(this); readURL(this);" />
                  <?php
                  if(isset($profile_image)){?>
 
              
-                  <img id="blah" src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" alt="" height="150px" width="150px" />
+                  <img id="blah" class="mb-2 mt-2" src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" alt="" height="150px" width="150px" />
 
                 <input type="hidden" name="old_image" value="<?php if(isset($profile_image)){ echo $profile_image; } ?>"> 
                    <?php }?>
-
+                 <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: Only .jpg, .jpeg, .png Image Files are allowed.</p>
 
                  </div>
                 </div>
@@ -98,7 +115,31 @@
               }
           }
   </script>
-
+<script type="text/javascript">
+  var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
 
 
 

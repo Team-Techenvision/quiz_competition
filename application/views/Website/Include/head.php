@@ -287,7 +287,7 @@ label#user_password-error {
                   
                 </div>
                 <div class="form-group col-md-6" style="margin-top: -18px;">
-                     <label class="passwordlabel">Note: Password must contain uppercase, lowercase letters and number with minimum 8 characters</label>
+                     <label class="passwordlabel">Note: Password must contain uppercase, lowercase letters and number with a minimum of 8 characters</label>
                   <span toggle="#password-field1"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password1"></span>
                    <input type="password" id="user_password" name="user_password" minlength="8" class="input" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
 

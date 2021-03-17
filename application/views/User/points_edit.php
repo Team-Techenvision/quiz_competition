@@ -23,7 +23,12 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title">Add Points</h3>
+                 <?php if(isset($update)){ ?>
+                    <h3 class="card-title">Edit Points</h3>
+                  <?php } else{ ?>
+                    <h3 class="card-title">Add Points</h3>
+                  <?php } ?>
+               
                  <div class="card-tools col-md-2 " >
                 <a href="<?php echo base_url(); ?>User/points_list" class="btn btn-sm btn-block btn-primary "  >Points List</a>
               </div>
@@ -46,7 +51,7 @@
 
 
 
-                      <select name="competitionid" id="competitionid"class="form-control" required="">
+                      <select name="competitionid" id="competitionid"class="form-control" disabled="">
                     <option value="">Select Competition</option>
 
          
@@ -64,17 +69,17 @@
                    <div class="form-group col-md-6">
                     <label>Winner Position</label>
 
-                     <input type="text" class="form-control" name="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>">
+                     <input type="text" class="form-control" name="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>" disabled>
                    </div> 
                      <div class="form-group col-md-6">
-                    <label>Points</label>
+                    <label>Points <span style="color: red;">*</span></label>
 
-                     <input type="text" class="form-control" name="points" value="<?php if(isset($points)){ echo $points; } ?>">
+                     <input type="text" class="form-control" name="points" value="<?php if(isset($points)){ echo $points; } ?>" required>
                    </div> 
                      <div class="form-group col-md-6">
-                    <label>Conversion Points</label>
+                    <label>Conversion Points <span style="color: red;">*</span></label>
 
-                     <input type="text" class="form-control" name="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>">
+                     <input type="text" class="form-control" name="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" required>
                    </div> 
                   
                   
