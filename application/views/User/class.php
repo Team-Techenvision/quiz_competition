@@ -38,7 +38,7 @@
                   </div>
                    <div class="form-group col-md-6">
                     <label>Class Tab Group <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " name="tabid" id="tabid" value="<?php if(isset($tabid)){ echo $tabid; } ?>" placeholder="Enter Class Tab Group " required="" >
+                    <input type="text" class="form-control required title-case text " name="tabid" id="tabid" value="<?php if(isset($tabid)){ echo $tabid; } ?>" placeholder="Enter Class Tab Group " disabled required >
                   </div>
                    <div class="form-group col-md-3">
                     <label>From Class <span style="color: red;">*</span></label>
@@ -91,6 +91,17 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
-  
+ <script type="text/javascript">
+  $(document).ready(function(){
+    $("#tabinputtext").on('input',function(){
+
+      var  tabinput = $(this).val();
+
+      $('#tabid').val(tabinput)
+
+    });
+
+  });
+</script> 
 </body>
 </html>

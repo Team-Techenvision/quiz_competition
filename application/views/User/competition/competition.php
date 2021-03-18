@@ -9,7 +9,9 @@
     position: absolute;
     top: 18px;
   }
+
 </style>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -34,11 +36,10 @@
             <div class="card card-default">
               <div class="card-header">
                   <?php if(isset($update)){ ?>
-
-                <h3 class="card-title">Edit Competition</h3>
-              <?php }else{ ?>
-                <h3 class="card-title">Add Competition</h3>
-              <?php } ?>
+                    <h3 class="card-title">Edit Competition</h3>
+                  <?php }else{ ?>
+                    <h3 class="card-title">Add Competition</h3>
+                  <?php } ?>
 
                 <div class="card-tools col-md-3 " >
                 <a href="<?php echo base_url(); ?>User/competition_list" class="btn btn-sm btn-block btn-primary "  >Competition List</a>
@@ -57,22 +58,32 @@
                        <input type="hidden" class="form-control required title-case text" name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontypeid)){ echo $competitiontypeid; } ?>" disabled="">
                        <?php }?>
 
-                
+                       <?php if(isset($update)){ ?>
 
-                      <select name="competitiontypeid" id="competitiontypeid" class="form-control" required>
+                 <select name="competitiontypeid" id="competitiontypeid" class="form-control" disabled>
                         <option value="">Select Competition Type</option>
+                          <?php foreach($competitiontype as $competitiontype)
+                          {
 
+                          echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
+                                         
+                           }
+                          ?>  
+                       </select>
+              <?php }else{ ?>
+                 <select name="competitiontypeid" id="competitiontypeid" class="form-control" required>
+                        <option value="">Select Competition Type</option>
+                          <?php foreach($competitiontype as $competitiontype)
+                          {
 
-                    <?php foreach($competitiontype as $competitiontype)
-                        {
+                          echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
+                                         
+                           }
+                          ?>  
+                       </select>
+              <?php } ?>
 
-                        echo '<option value="'. $competitiontype->competitiontypeid.'" '.$selected.'>'. $competitiontype->competitiontype.'</option>';
-                                       
-                         }
-                        ?>  
-
-                         
-                      </select>
+                     
                   </div> 
                    <!--  <div class="form-group col-md-12" id="quiz">
                       <label>Quiz Subject </label>
@@ -104,20 +115,35 @@
                        <input type="hidden" class="form-control title-case text" name="classname" id="classname" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                        <?php }?>
 
-                      <select name="standard" id="standard" class="form-control" required>
+
+                       <?php if(isset($update)){ ?>
+
+                         <select name="standard" id="standard" onchange="change();" class="form-control" disabled>
                         <option value="">Select From Class-To Class</option>
-
-
-                    <?php foreach($class as $classname)
+                       <?php foreach($class as $classname)
                         {
 
                         echo '<option value="'. $classname->tabinputtextid.'" '.$selected.'>'. $classname->tabinputtext.'</option>';
                                         
                          }
-                        ?>  
-
-                         
+                        ?>    
                       </select>
+                        <?php }else{ ?>
+
+                          <select name="standard" id="standard" onchange="change();" class="form-control" required>
+                            <option value="">Select From Class-To Class</option>
+                           <?php foreach($class as $classname)
+                            {
+
+                            echo '<option value="'. $classname->tabinputtextid.'" '.$selected.'>'. $classname->tabinputtext.'</option>';
+                                            
+                             }
+                            ?>    
+                          </select>
+                            <?php } ?>
+
+
+                      
                   </div>
                  
                   
@@ -132,7 +158,7 @@
 
 
 
-                      <select name="tabinputtextid" id="tabinputtextid"class="form-control" required>
+                      <select name="tabinputtextid" id="tabinputtextid"class="form-control" required disabled>
                         <option value="">Select Input Text</option>
 
 
@@ -157,6 +183,7 @@
                 </div>
                 <br>
                 <div class="row">
+                  <!-- hidden field -->
                     <div class="form-group col-md-6" hidden>
                     <label>Competition level <span style="color: red;">*</span></label>
 
@@ -185,19 +212,31 @@
                    <div class="form-group col-md-6">
                     <label>From Age <span style="color: red;">*</span></label>
 
-                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required>
+                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required disabled>
                   </div>
                    <div class="form-group col-md-6">
                     <label>To Age <span style="color: red;">*</span></label>
 
-                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext " name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required>
+                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext " name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required disabled>
                   </div>
                   <div class="col-md-12">
                     <label>Participant Type <span style="color: red;">*</span></label>
-                  <div class="form-group row"> 
+                  <div class="form-group row "> 
                       <?php  if(empty($gender)){$gender="";} ?>
+
+                        <?php if(isset($update)){ ?>
+                   <div class="radio col-md-3">
+                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> required disabled> All</label>
+                  </div>
                   <div class="radio col-md-3">
-                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> required> All</label>
+                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?> disabled> Male</label>
+                  </div>
+                  <div class="radio col-md-6">
+                    <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?> disabled> Female</label>
+                  </div>
+                  <?php }else{ ?>
+                    <div class="radio col-md-3">
+                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> required > All</label>
                   </div>
                   <div class="radio col-md-3">
                     <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?> > Male</label>
@@ -205,6 +244,9 @@
                   <div class="radio col-md-6">
                     <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?> > Female</label>
                   </div>
+                  <?php } ?>
+
+                  
                   <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note: If select Female(18+) / Male (18+) / (All & other class options) from class dropdownlist then correspondingly select Female(18+) / Male (18+) / All from paticipant Type radiobuttons.</p>
                   </div>
                   </div>
@@ -227,12 +269,22 @@
 
                        <input type="hidden" class="form-control required title-case text" name="competitionusertype" id="competitionuser" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
                        <?php }?>
-                    <select name="competitionusertype" id="competitionusertype" class="form-control" >
-                    <option value="">Competition User Type</option>
-                    <option value="1">All</option>
-                    <option value="2">one to one</option>
+                        <?php if(isset($update)){ ?>
+                            <select name="competitionusertype" id="competitionusertype" class="form-control" disabled>
+                            <option value="">Competition User Type</option>
+                            <option value="1">All</option>
+                            <option value="2">one to one</option>
+                           
+                            </select>
+                          <?php }else{ ?>
+                            <select name="competitionusertype" id="competitionusertype" class="form-control" >
+                            <option value="">Competition User Type</option>
+                            <option value="1">All</option>
+                            <option value="2">one to one</option>
+                           
+                            </select>
+                          <?php } ?>
                    
-                  </select>
                   </div>
                      
                   
@@ -272,15 +324,28 @@
 
                        <input type="hidden" class="form-control required title-case text file_format" name="file_format" id="fileformat" value="<?php if(isset($file_format)){ echo $file_format; } ?>" disabled="">
                        <?php }?>
-                    <select name="file_format" id="file_format"class="form-control" >
-                    <option value="0">Select File Format</option>
-                   
-                    <option value="1">Document File / PowerPoint file</option>
-                    <option value="2">Audio File</option>
-                    <option value="3">Video File</option>
-                    <option value="4">Image File</option>
-                   
-                  </select>
+                       <?php if(isset($update)){ ?>
+                      <select name="file_format" id="file_format"class="form-control" disabled>
+                        <option value="0">Select File Format</option>
+                       
+                        <option value="1">Document File / PDF file</option>
+                        <option value="2">Audio File</option>
+                        <option value="3">Video File</option>
+                        <option value="4">Image File</option>
+                       
+                      </select>
+                      <?php }else{ ?>
+                         <select name="file_format" id="file_format"class="form-control" >
+                        <option value="0">Select File Format</option>
+                       
+                        <option value="1">Document File / PowerPoint file</option>
+                        <option value="2">Audio File</option>
+                        <option value="3">Video File</option>
+                        <option value="4">Image File</option>
+                       
+                      </select>
+                      <?php } ?>
+                  
 
                   <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: If select (Document file/ powerpoint File)/ Audio File/ Video File/ Image File then correspondingly checked checkbox of Upload.</p>
 
@@ -320,12 +385,18 @@
                         <div class="row" >
                           <div class="col-md-2">
                              <?php  if(empty($email)){$email="";} ?>
-                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div><div class="col-md-10"><input type="email" class="form-control  title-case text " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>"  placeholder=" Enter E-mail Address" disabled></div>
+                        <input type="checkbox" id="email"  name="email" value="1" <?php if($email=="1") { echo "checked";} ?>> E-mail </div>
+                        <div class="col-md-10">
+                          <input type="email" class="form-control  title-case text " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emailaddress" id="emailaddress" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>"  placeholder=" Enter E-mail Address" disabled></div>
                       </div><br>
                        <div class="row">
                           <div class="col-md-2">
                              <?php  if(empty($whatsapp)){$whatsapp="";} ?>
-                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div><div class="col-md-10"><input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control  title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" disabled></div>
+                        <input type="checkbox" id="whatsapp" name="whatsapp" value="1"<?php if($whatsapp=="1") { echo "checked";} ?> > Whatsapp  </div>
+                        <div class="col-md-10">
+
+                          <input type="text"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control  title-case text " name="whatsappnumber" id="whatsappnumber" maxlength="10" minlength="10" value="<?php if(isset($whatsappnumber)){ echo $whatsappnumber; } ?>" placeholder=" Enter Whatsapp Number" disabled></div>
+
                       </div>
 
                     </div>
@@ -361,7 +432,7 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
   <script type="text/javascript">
@@ -390,6 +461,30 @@
               }
 
 </script>
+<script type="text/javascript">
+  $(function(){
+
+    // var t = new Date(currentdate.setMonth(currentdate.getMonth()-3));
+
+    var dtToday = new Date();
+
+    // alert(t);
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var minDate = year + '-' + month + '-' + day;
+    // alert(maxDate);
+    $('#enddate').attr('min', minDate);
+});
+</script> 
   <script>
 $(document).ready(function(){
 
@@ -414,20 +509,18 @@ $(document).ready(function(){
 
 
 }); 
+
+
+
 </script>
+
 <script type="text/javascript">
         $(document).ready(function(){
  
             $('#standard').change(function(){ 
 
                 var id=$(this).val();
-                alert(id);
-//                 $.getJSON("<?php echo base_url(); ?>User/fetch_class_age", function(data) {
-//   alert("Value for 'a': " + data.a + "\nValue for 'b': " + data.b);
-//                           $('#fromage').val(data.a);
-//                           $('#toage').val(data.b);
-
-// });
+        
                 $.ajax({
                     url : "<?php echo base_url(); ?>User/fetch_class_age",
                     method : "POST",
@@ -435,15 +528,13 @@ $(document).ready(function(){
                     // async : true,
                     // dataType : 'json',
                     success: function(data){
-                       // var inputVal = document.getElementById("myInput").value;
-                          $('#fromage').val(data[0].fromage);
-                          // $('#toage').val(data.to);
-                          // var a = $(this).val('fromage');
-                          // $("#fromage").html(data.a);
-                          // $("#fromage").val(data[0].fromage);
-                            // $("input[name='fromage']").val(data.fromage);
-                               // $("#Strasse1").val(result.strasse);
-                        alert(data);
+                        // alert(data);
+                      
+                          var a = JSON.parse(data);
+                       
+                          $("#fromage").val(a[0]['fromage']);
+                          $("#toage").val(a[0]['toage']);
+                        
  
                     }
                 });
@@ -452,6 +543,21 @@ $(document).ready(function(){
              
         });
     </script>
+    <script type="text/javascript">
+      function change() {
+  if (document.getElementById('standard').value == '1')
+    document.getElementById("tabinputtextid").value = '1';
+  else if (document.getElementById('standard').value == '2')
+    document.getElementById("tabinputtextid").value = '2';
+  else if (document.getElementById('standard').value == '3')
+    document.getElementById("tabinputtextid").value = '3';
+  else if (document.getElementById('standard').value == '4')
+    document.getElementById("tabinputtextid").value = '4';
+  else if (document.getElementById('standard').value == '5')
+    document.getElementById("tabinputtextid").value = '5';
+};
+    </script>
+  
 
 <!--  <script type="text/javascript">
   

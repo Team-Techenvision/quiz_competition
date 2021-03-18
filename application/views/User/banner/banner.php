@@ -41,22 +41,22 @@
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                    <label>Banner Title <span style="color: red;">*</span></label>
-                     <?php if(isset($update)){ ?>
-                       <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" disabled>
-                       <?php }else{ ?>
+                    <!--  < ?php if(isset($update)){ ?>
+                       <input type="text" class="form-control required title-case text " name="title" id="title" value="< ?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" disabled>
+                       < ?php }else{ ?> -->
                       <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter banner title" required>
-                      <?php } ?>
-                   
+                     <!--  < ?php } ?>
+                    -->
                    </div>
                   
                   <div class="form-group col-md-12">
 
                    <label>Banner Description <span style="color: red;">*</span></label>
-                     <?php if(isset($update)){ ?>
-                       <textarea type="text" class="form-control "  name="subtitle" id="subtitle" value="" placeholder="Enter banner description" disabled><?php if(isset($subtitle)){ echo $subtitle; } ?></textarea>
-                       <?php }else{ ?>
+                  <!--    < ?php if(isset($update)){ ?>
+                       <textarea type="text" class="form-control "  name="subtitle" id="subtitle" value="" placeholder="Enter banner description" disabled>< ?php if(isset($subtitle)){ echo $subtitle; } ?></textarea>
+                        < ?php }else{ ?> -->
                        <textarea type="text" class="form-control "  name="subtitle" id="subtitle" value="" placeholder="Enter banner description" required><?php if(isset($subtitle)){ echo $subtitle; } ?></textarea>
-                       <?php } ?>
+                     <!--   < ?php } ?> -->
                   </div>
                   <div class="form-group col-md-7">
                     <label>Banner Image <span style="color: red;">*</span></label>

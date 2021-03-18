@@ -68,6 +68,8 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
 <script >
+ 
+
    $(function () {
     $("#example1").DataTable({
       "responsive": true,

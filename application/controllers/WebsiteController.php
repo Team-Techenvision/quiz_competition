@@ -328,9 +328,14 @@ public function competition_uploadfile(){
         $competitionid = $this->input->post('competitionid');
 
          $check_already_uploadfile = $this->Website_Model->check_user_uploadfiles($quizweb_user_id,$competitionid);
+         $fetch_user_uploadfiles = $this->Website_Model->fetch_user_uploadfiles($quizweb_user_id,$competitionid);
+
+         foreach ($fetch_user_uploadfiles as $value) {
+           $uploadfileid = $value['uploadfileid'];
+         }
 
 
-        // print_r($check_already_uploadfile); die();
+        // print_r($uploadfileid); die();
    // if($quizweb_user_id== "" && $quizweb_user_id != "" ){
 
 
@@ -341,9 +346,9 @@ public function competition_uploadfile(){
 
       // update code
        $update_data = array(
-        'competitionid' => $this->input->post('competitionid'),
-        'file_format' => $fileformat,
-        'user_id' => $quizweb_user_id,
+        // 'competitionid' => $this->input->post('competitionid'),
+        // 'file_format' => $fileformat,
+        // 'user_id' => $quizweb_user_id,
         'uploadfile' => $this->input->post('uploadfile'),
         'upload_image' => $this->input->post('upload_image'),
         'upload_vedio' => $this->input->post('upload_vedio'),
@@ -354,8 +359,9 @@ public function competition_uploadfile(){
       );
       // print_r($update_data); die();
 
-      $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $update_data);
+     $update_id = $this->Website_Model->update_info('uploadfileid', $uploadfileid, 'competition_uploadfile_submit', $update_data);
       
+    // print_r($update_id); die();  
        //file upload
 
       if($fileformat=='1'){
@@ -368,7 +374,7 @@ public function competition_uploadfile(){
 
               $config['upload_path'] = 'assets/images/competition_files/';
 
-              $config['allowed_types'] = 'doc|docx|pdf|ppt|pptx|pptm|txt';
+              $config['allowed_types'] = 'doc|docx|pdf';
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['uploadfile']['name'];
@@ -379,7 +385,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('uploadfile') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('uploadfile') && $uploadfileid && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -388,7 +394,7 @@ public function competition_uploadfile(){
 
                   $image['uploadfile'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $uploadfileid, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -439,7 +445,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('upload_audio') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_audio') && $uploadfileid && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -448,7 +454,7 @@ public function competition_uploadfile(){
 
                   $image['upload_audio'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $uploadfileid, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -488,7 +494,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('upload_vedio') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_vedio') && $uploadfileid && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -497,7 +503,7 @@ public function competition_uploadfile(){
 
                   $image['upload_vedio'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $uploadfileid, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -534,7 +540,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('upload_image') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_image') && $uploadfileid && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -543,7 +549,7 @@ public function competition_uploadfile(){
 
                   $image['upload_image'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $uploadfileid, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -574,7 +580,8 @@ public function competition_uploadfile(){
       
       );
            
-      $this->Website_Model->save_data('competition_uploadfile_submit',$save_data);
+      $id = $this->Website_Model->save_data('competition_uploadfile_submit',$save_data);
+      // print_r($id); die();
 
    
        //file upload
@@ -589,7 +596,7 @@ public function competition_uploadfile(){
 
               $config['upload_path'] = 'assets/images/competition_files/';
 
-              $config['allowed_types'] = 'doc|docx|pdf|ppt|pptx|pptm|txt';
+              $config['allowed_types'] = 'doc|docx|pdf';
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['uploadfile']['name'];
@@ -600,7 +607,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('uploadfile') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('uploadfile') && $id && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -609,7 +616,7 @@ public function competition_uploadfile(){
 
                   $image['uploadfile'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $id, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -660,7 +667,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('upload_audio') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_audio') && $id && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -669,7 +676,7 @@ public function competition_uploadfile(){
 
                   $image['upload_audio'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $id, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -709,7 +716,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('upload_vedio') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_vedio') && $id && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -718,7 +725,7 @@ public function competition_uploadfile(){
 
                   $image['upload_vedio'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $id, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        
@@ -755,7 +762,7 @@ public function competition_uploadfile(){
 
                      
 
-              if ($this->upload->do_upload('upload_image') && $quizweb_user_id && $image_name && $ext && $filename) {
+              if ($this->upload->do_upload('upload_image') && $id && $image_name && $ext && $filename) {
 
                     // print_r($image_name); 
 
@@ -764,7 +771,7 @@ public function competition_uploadfile(){
 
                   $image['upload_image'] = $image_name.'.'.$ext;
                   // print_r($image['upload_audio']); die();
-                  $this->Website_Model->update_info('user_id', $quizweb_user_id, 'competition_uploadfile_submit', $image);
+                  $this->Website_Model->update_info('uploadfileid', $id, 'competition_uploadfile_submit', $image);
                    // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
                   $this->session->set_flashdata('upload_success','File Uploaded Successfully');
        

@@ -1,4 +1,9 @@
+
+<?php $page = 'competitiontype'; 
+// echo $page; die();
+?>
 <!DOCTYPE html>
+
 <html>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -111,6 +116,7 @@
   });
 
 </script>
+
 
 </body>
 </html>

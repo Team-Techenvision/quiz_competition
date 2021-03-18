@@ -136,6 +136,9 @@
       // alert(data);
       // console.log(data);
       $('#competition').html(data);
+       $('#example2').DataTable({ 
+          "destroy": true, //use for reinitialize datatable
+      });
 
 
     });

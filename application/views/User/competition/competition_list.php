@@ -217,6 +217,9 @@
       // alert(data);
       // console.log(data);
       $('#users').html(data);
+      $('#example3').DataTable({ 
+          "destroy": true, //use for reinitialize datatable
+      });
 
 
     });

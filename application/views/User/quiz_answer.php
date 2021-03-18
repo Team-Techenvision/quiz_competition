@@ -50,7 +50,8 @@
                         <!-- checkbox -->
 
                            <tr >  
-                            <td id="dynamic_checkbox" class="p-0"> <div class="form-check mb-2 mt-2">
+                            <td id="dynamic_checkbox" class="p-0"> 
+                              <div class="form-check mb-2 mt-2" style="margin-left: -60px;">
 
                             <input class="form-check-input" type="checkbox" name="correctans[]" value="1" id="flexCheckDefault" >
                               <label class="form-check-label" for="flexCheckDefault">
@@ -78,7 +79,8 @@
                               <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
                            <!-- dropdown -->
                           <tr >  
-                              <td id="dynamic_dropdown" class="p-0">  <div class="form-check mb-2 mt-2" >
+                              <td id="dynamic_dropdown" class="p-0">  
+                                <div class="form-check mb-2 mt-2" style="margin-left: -60px;" >
                                   <input class="form-check-input"  type="radio" name="correctans[]" value="1"  id="flexRadioDefault1" required="required">
                                   <label class="form-check-label" for="flexRadioDefault1">
                                     <input type="text" placeholder="Enter Option"  name="addmore[]" class="form-control " required="required" />
@@ -91,9 +93,10 @@
                       <input type="hidden" name="queNo" value="<?php echo $queNo; ?>">
                             <!-- Radio button -->
                        <tr >  
-                              <td id="dynamic_radiobtn" class="p-0"> <div class="form-check mb-2 mt-2" >
+                              <td id="dynamic_radiobtn" class="p-0"> 
+                                <div class="form-check mb-2 mt-2" style="margin-left: -60px;">
                                   <input class="form-check-input" type="radio" name="correctans[]" value="1" id="flexRadioDefault1" required="required">
-                                  <label class="form-check-label" for="flexRadioDefault1">
+                                  <label class="form-check-label" for="flexRadioDefault1"> 
                                     <input type="text"  placeholder="Enter field name"  name="addmore[]" class="form-control " required="required" />
                                   </label>
                                 </div>

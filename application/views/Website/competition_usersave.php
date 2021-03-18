@@ -279,7 +279,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                             
                               <div class="col-md-12 mt-5">
                                 <?php if($comptype!='1'){ ?>
-                                     <?php 
+                                     <!-- < ?php 
                                       if($file_format=='1'){
                                  
                                     if(empty($uploadfile)) { 
@@ -287,14 +287,14 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                           // print_r($uploadaudio);
                                        ?>
-                                         <!-- <input type="" name="" value="<?php echo $uploadvedio; ?>"> -->
+                                         <! -- <input type="" name="" value="< ?php echo $uploadvedio; ?>"> -->
 
-                                        <iframe src="<?php echo base_url(); ?>/assets/images/competition_files/<?php echo $uploadfile; ?>" style="width:100%;height:700px;"></iframe> 
+                                        <!-- <iframe src="< ?php echo base_url(); ?>/assets/images/competition_files/< ?php echo $uploadfile; ?>" style="width:100%;height:700px;"></iframe>  -->
 
-                                        <!--  <iframe src="<?php echo base_url(); ?>/assets/images/competition_files/<?php echo $uploadfile; ?>" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+                                        <!--  <iframe src="< ?php echo base_url(); ?>/assets/images/competition_files/< ?php echo $uploadfile; ?>" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> 
    
                                     
-                                    <?php } } ?>
+                                    < ?php } } ?> -->
 
                                     <?php 
                                     if($file_format=='2'){

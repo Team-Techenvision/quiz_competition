@@ -298,6 +298,7 @@ function check_login($mobile,$password){
     $c_date = date('Y-m-d');   
 
     $this->db->where('enddate >=', $c_date);
+    $this->db->where('status',1);
 
     $this->db->from('competition');
     $query = $this->db->get();
@@ -410,6 +411,15 @@ function check_user_uploadfiles($user_id,$competitionid){
     $this->db->from('competition_uploadfile_submit');
     $query = $this->db->get();
     $result = $query->num_rows();
+    return $result;
+  }
+  function fetch_user_uploadfiles($user_id,$competitionid){
+    // $this->db->select('*');
+    $this->db->where('user_id', $user_id);
+    $this->db->where('competitionid', $competitionid);
+    $this->db->from('competition_uploadfile_submit');
+    $query = $this->db->get();
+    $result = $query->result_array();
     return $result;
   }
 public function check_usermobile($quizweb_user_id,$user_mobile){

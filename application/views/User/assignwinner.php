@@ -61,14 +61,21 @@
                            
                        </select>
                     </div> 
+
                     <div class="form-group col-md-3">
-                   <button id="btn_search" type="search" style="margin-top: 32px;" class="btn btn-primary">View Participate </button>
+                      <!--  < ?php  if(empty($competitionid)){ ?> -->
+                   <button id="btn_search" type="search" style="margin-top: 32px;" class="btn btn-primary" >View Participate </button>
+                
+
                  </div>
+               
 
                   </div>
                  </form>
 
-                 <form id="form_action" role="form" action="<?php echo base_url(); ?>User/save_winner" method="post">
+                 <div id="demo" >
+
+                 <form id="form_winner" role="form" action="<?php echo base_url(); ?>User/save_winner" method="post">
 
                  <div class="row">
                  <div class="form-group col-md-6">
@@ -183,6 +190,7 @@
                      <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                     <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
             </form>
+          </div>
                 </div>                           
                 <!-- /.card-body -->
               <!--  <div class="card-footer">
@@ -257,5 +265,26 @@ $(function() {
 });
 
 </script> -->
+<!-- <script type="text/javascript">
+  // $(document).ready(function(){
+
+
+  //  $('#btn_search').click(function(){
+  //  });
+  // });
+
+  $(document).ready(function(){
+    $('#demo').hide();
+
+   $('#competitionid').change(function(e){
+    $('#demo').show();
+    e.preventDefault();
+
+   });
+   // return false;
+  });
+</script> -->
+
+
 </body>
 </html>

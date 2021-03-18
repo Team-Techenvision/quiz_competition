@@ -56,166 +56,97 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link head">
+         <li class="nav-item has-treeview">
+          <a href="<?php echo base_url(); ?>User/banner_list" class="nav-link head">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-              Master
+              Banner
+              <!-- <i class="right fas fa-angle-left"></i> -->
+            </p>
+          </a>
+        </li>
+         <li class="nav-item has-treeview">
+          <a href=" <?php echo base_url(); ?>User/competition_list" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Competition
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            
-            <li class="nav-item ">
-              <a href="<?php echo base_url(); ?>User/user_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>User</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/banner_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Banner</p>
-              </a>
-            </li>
-              <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link">
+           <ul class="nav nav-treeview">
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Competition Type</p>
               </a>
             </li> 
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/competition_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Competition</p>
-              </a>
-            </li> 
-           <!--   <li class="nav-item">
-              <a href="< ?php echo base_url(); ?>User/participate_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Participate</p>
-              </a>
-            </li>  -->
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/add_assigncompetition" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Assign Competition</p>
-              </a>
-            </li> 
-               <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/points_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Point</p>
-              </a>
-            </li>   
-              <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/assign_winner_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Assign Winner</p>
-              </a>
-            </li> 
-          <!--   <li class="nav-item">
-              <a href="< ?php echo base_url(); ?>User/level_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Level</p>
-              </a>
-            </li>  -->
-             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/class_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Class Group</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="nav-link">
+           </ul>
+        </li>
+         <li class="nav-item has-treeview">
+          <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+            Dynamic Quiz
+            <!--   <i class="right fas fa-angle-left"></i> -->
+            </p>
+          </a>
+         </li>
+          <li class="nav-item has-treeview">
+          <a href="<?php echo base_url(); ?>User/user_list" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              User
+             <!--  <i class="right fas fa-angle-left"></i> -->
+            </p>
+          </a>
+        </li>
+          <li class="nav-item has-treeview">
+          <a href="<?php echo base_url(); ?>User/add_assigncompetition" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+             Assign Competition
+            <!--   <i class="right fas fa-angle-left"></i> -->
+            </p>
+          </a>
+        </li>
+          <li class="nav-item has-treeview">
+          <a href="<?php echo base_url(); ?>User/quiz_user_list" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+             Check Quiz and Files
+            <!--   <i class="right fas fa-angle-left"></i> -->
+            </p>
+          </a>
+        </li>
+         <li class="nav-item has-treeview">
+          <a href="<?php echo base_url(); ?>User/assign_winner_list" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+            Assign Winner
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/points_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Dynamic Quiz Competition</p>
+                <p>Point</p>
               </a>
             </li> 
-             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/quiz_user_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Competition Participated User List</p>
-              </a>
-            </li>
-         
-
-          </ul>
+         </ul>
         </li>
+        
 
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link head">
-            <i class="nav-icon fas fa-chart-pie"></i>
-            <p>
-              Manage
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <!-- <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/customer_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Customers</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/supplier_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Suppliers</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/items_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Items</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/stock_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Stock</p>
-              </a>
-            </li>
-          </ul> -->
-        </li>
 
-        <!-- <li class="nav-item has-treeview">
-          <a href="#" class="nav-link head">
-            <i class="nav-icon fas fa-chart-pie"></i>
-            <p>
-              Transaction
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Demo Link
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li> -->
+     
 
-        <!-- <li class="nav-item has-treeview">
-          <a href="#" class="nav-link head">
-            <i class="nav-icon fas fa-chart-pie"></i>
-            <p>
-              Report
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Demo Link</p>
-              </a>
-            </li>
-          </ul>
-        </li> -->
+      
       </nav>
     <!-- /.sidebar-menu -->
     </div>

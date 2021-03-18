@@ -620,6 +620,16 @@ $this->db->from('userscore_master');
   return $query->result();
   // print_r($query);
  }
+   function fetch_competition_usertype()
+   {
+    $this->db->order_by("competitionid", "ASC");
+    $c_date = date('Y-m-d');   
+    $this->db->where('enddate >=', $c_date);
+    $this->db->where('competitionusertype',2);
+    $query = $this->db->get("competition");
+    return $query->result();
+    // print_r($query);
+    }
    function fetch_competition_for_quiz()
  {
   $this->db->order_by("competitionid", "ASC");

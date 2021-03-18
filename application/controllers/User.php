@@ -956,7 +956,7 @@ public function check_competitiontype(){
           </div>
             <div class="">
           
-             <table id="example1" class="table table-bordered table-striped">
+             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
@@ -1647,7 +1647,7 @@ public function check_competitiontype(){
                  <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $name; ?></label>
              </div>
              <div class="">
-             <table id="example1" class="table table-bordered table-striped">
+             <table id="example3" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
@@ -2566,7 +2566,7 @@ public function save_assigncompetition(){
  public function add_assigncompetition(){
   
 
-  $data['competition'] = $this->User_Model->fetch_competition();
+  $data['competition'] = $this->User_Model->fetch_competition_usertype();
   // $data['getassigncompetition_list'] = $this->User_Model->get_list2('','','user');
  // $data['user_list'] = $this->User_Model->get_list_by_id('user_id','','','','user');
 
@@ -2592,7 +2592,7 @@ public function save_assigncompetition(){
      // print_r($user_id);   
      
     $data['assigncompetition_list'] = $this->User_Model->assigncompetition_list($competitionid,$pincode);
-    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['competition'] = $this->User_Model->fetch_competition_usertype();
     // $data['assigncomp'] = $this->User_Model->fetch_assigncompetition($competitionid);
 
 
