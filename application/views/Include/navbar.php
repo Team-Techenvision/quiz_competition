@@ -5,6 +5,8 @@
   $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $out_company_id, 'company');
   $user_info = $this->User_Model->get_info_arr_fields('user_name','user_id', $out_user_id, 'user');
 ?> -->
+
+
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
   <ul class="navbar-nav">
@@ -75,7 +77,8 @@
           </a>
            <ul class="nav nav-treeview">
              <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link ">
+           <!--    < ?php $page = 'competitiontype'; ?>< ?php if($page == 'competitiontype'){echo 'active'; } ?> -->
+              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link  ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Competition Type</p>
               </a>

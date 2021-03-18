@@ -1,7 +1,5 @@
 
-<?php $page = 'competitiontype'; 
-// echo $page; die();
-?>
+ 
 <!DOCTYPE html>
 
 <html>
@@ -15,6 +13,7 @@
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
             <h1>Competition Type Information</h1>
+           
           </div>
         </div>
       </div><!-- /.container-fluid -->

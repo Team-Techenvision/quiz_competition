@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <style type="text/css">
@@ -20,7 +22,9 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
+<?php $page = 'competitiontype'; 
+// echo $page; die();
+?>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
