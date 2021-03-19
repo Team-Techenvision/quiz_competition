@@ -31,7 +31,7 @@
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post">
+              <form id="form_action" role="form" action="" enctype="multipart/form-data" method="post">
                 <div class="card-body">
                 <div class="row">
 	               <div class="form-group col-md-6">
@@ -78,6 +78,35 @@
 
 		                    <p class="queval mb-0" id="queval" style="font-size:14px;  color: red;"></p>
                       </div>
+                       <div class="form-group col-md-6">
+            
+                      <label>File Format </label>
+                       <?php
+                          if(isset($file_type)){?>
+
+                           <input type="text" class="form-control required title-case text" name="file_type" id="filetype" value="<?php if(isset($file_type)){ echo $file_type; } ?>" disabled="">
+                         <?php }?>
+
+                           <select name="file_type" id="file_type"class="form-control">
+                              <option value="">Select File Format</option>
+                              <option value="1">Image Upload</option>
+                              <option value="2">Video Upload</option>    
+                           </select>
+                        </div> 
+                        <div class="form-group col-md-6" id="u_image">
+                            <label>Upload Image</label>
+                           <input class="form-control" type="file" id="upload_image" name="upload_image" accept="image/*"  /> 
+                            <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .jpg, .jpeg, .png Image Files are allowed.</p>
+                        </div>
+                         <div class="form-group col-md-6" id="u_video">
+                            <label>Upload Video</label>
+
+                           <input class="form-control" type="file" id="upload_video" name="upload_file" accept="video/*"  /> 
+                           <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed.</p>
+
+                        </div>
+
+
                         <div class="form-group col-md-12">
                              <label>Answer Type <span style="color: red;">*</span></label>
                              <div class="form-check">
@@ -148,6 +177,20 @@ jQuery($ => {
  -->
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script type="text/javascript">
+  <?php if($this->session->flashdata('upload_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('File Uploaded Successfully');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('upload_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('File not Uploaded ');
+    });
+  <?php } ?>
+</script>
 <script>
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
@@ -161,6 +204,36 @@ jQuery($ => {
       toastr.error('Question Already Exists');
     });
   <?php } ?>
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+        $("#u_video").hide();
+        $("#u_image").hide();
+
+    $('#file_type').on('change', function() {
+      if (this.value == '1')
+    
+      {
+        $("#u_image").show();
+        $("#u_video").hide();
+
+      }
+      else if (this.value == '2')
+      {
+        $("#u_video").show();
+        $("#u_image").hide();
+
+      }
+      else
+      {
+        $("#u_video").hide();
+        $("#u_image").hide();
+
+
+      }
+    });
+});
 </script>
 <script>
    
@@ -198,5 +271,31 @@ jQuery($ => {
   });
 
 </script>
+<!-- <script type="text/javascript">
+//for image upload
+ $("#upload_image").change(function () {
+
+    var validExtensions = [".jpg", ".jpeg", ".png"]
+    var file = $(this).val().split('.').pop();
+    if (validExtensions.indexOf(file) == -1) {
+        alert("Only formats are allowed : "+validExtensions.join(', '));
+         var file = $(this).val("");
+    }
+
+});
+
+
+ //for video upload
+ $("#upload_video").change(function () {
+
+    var validExtensions = [".mp4", ".3pg", ".mkv" , ".wmv"]
+    var file = $(this).val().split('.').pop();
+    if (validExtensions.indexOf(file) == -1) {
+        alert("Only formats are allowed : "+validExtensions.join(', '));
+         var file = $(this).val("");
+    }
+
+});
+</script> -->
 </body>
 </html>

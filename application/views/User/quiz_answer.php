@@ -116,7 +116,7 @@
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" onclick="alert('Answer Field can not be blank');" class="btn btn-success px-4">Add</button>
+                    <button id="btn_save" type="submit"  class="btn btn-success px-4">Add</button>
                   <?php } ?>
                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div> 

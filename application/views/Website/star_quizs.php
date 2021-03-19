@@ -88,19 +88,41 @@
                           <?php 
                           // print_r($result); die();
                           $q = 1; foreach ($result as $value) { 
+
+                            // print_r($result); die();
                             ?>
                           <div class="mb-3 p-2 border border-success">                           
                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                            
-                            <?php if($value['answertype']=="1"){ ?>                           
+                            <?php if($value['answertype']=="1"){ ?>
+
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
                             $i=1;
                             foreach($myArray as $my_Array)
-                            { ?>                            
+                            { ?> 
+
                             <div class="radio">
                               <label><input type="radio" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $i ;?>" required> <?php echo $my_Array ;?></label>
                             </div>
-                            <?php $i++; } ?>                            
+
+
+
+                            <?php $i++; } ?> 
+
+                            
+
+                            <?php if($value['file_type']=="1"){ ?>
+                             <img id="blah" src="<?php echo base_url(); ?>/assets/images/quizimage_files/<?php echo $value['upload_image']; ?>" alt="" width="320" height="240" />
+                           <?php } ?>
+                           
+                            <?php if($value['file_type']=="2"){ ?>
+                            
+                             <video width="320" height="240" controls>
+                             <source src="<?php echo base_url(); ?>/assets/images/quizvideo_files/<?php echo $value['upload_file']; ?>" >
+                              </video>
+                             <?php } ?>
+                          
+
                             <?php } elseif ($value['answertype']=="2")
                             {?>                           
                             <?php $myString = $value['optionvalues'];
@@ -109,7 +131,8 @@
                             foreach($myArray as $my_Array)
                             { ?>
                             <div class="checkbox">
-                              <label><input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $j; ?>" > <?php echo $my_Array ;?></label>
+                              <label>
+                                <input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $j; ?>" > <?php echo $my_Array ;?></label>
                             </div>
                             <?php $j++; } ?>                            
                             <?php } elseif ($value['answertype']=="3") { ?>                            
@@ -167,7 +190,7 @@
             </script>
             <script type="text/javascript">
               //right click disable
-              document.addEventListener('contextmenu', event => event.preventDefault());
+              // document.addEventListener('contextmenu', event => event.preventDefault());
 
               //header pointerevent close
               document.getElementById('logo').style.pointerEvents = 'none';

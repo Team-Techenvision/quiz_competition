@@ -68,28 +68,38 @@
           </a>
         </li>
          <li class="nav-item has-treeview">
-          <a href=" <?php echo base_url(); ?>User/competition_list" class="nav-link head">
+           
+           <a href="#" class="nav-link head">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-              Competition
+            Competition Info
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-           <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview">
              <li class="nav-item">
            <!--    < ?php $page = 'competitiontype'; ?>< ?php if($page == 'competitiontype'){echo 'active'; } ?> -->
-              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link  ">
-                <i class="far fa-circle nav-icon"></i>
+              <a href="<?php echo base_url(); ?>User/competitiontype_list" class="nav-link">
+               <!--  <i class="far fa-circle nav-icon"></i> -->
+       <i class="mdi mdi-credit-card-plus" nav-icon></i>
                 <p>Competition Type</p>
               </a>
             </li> 
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/class_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+        <i class="mdi mdi-credit-card-plus" nav-icon></i>
                 <p>Class Group</p>
               </a>
             </li>
-           </ul>
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/competition_list" class="nav-link">
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+        <i class="mdi mdi-credit-card-plus" nav-icon></i>
+                <p>Competition</p>
+              </a>
+            </li>
+           </ul>  
         </li>
          <li class="nav-item has-treeview">
           <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="nav-link head">
@@ -128,28 +138,31 @@
           </a>
         </li>
          <li class="nav-item has-treeview">
-          <a href="<?php echo base_url(); ?>User/assign_winner_list" class="nav-link head">
+          <a href="#" class="nav-link head">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-            Assign Winner
+            Winner Info
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
              <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/points_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+               <!--  <i class="far fa-circle nav-icon"></i> -->
+       <i class="mdi mdi-credit-card-plus" nav-icon></i>
                 <p>Point</p>
+              </a>
+            </li> 
+             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/assign_winner_list" class="nav-link">
+             <!--    <i class="far fa-circle nav-icon"></i> -->
+     <i class="mdi mdi-credit-card-plus" nav-icon></i>
+                <p> Assign Winner</p>
               </a>
             </li> 
          </ul>
         </li>
         
-
-
-     
-
-      
       </nav>
     <!-- /.sidebar-menu -->
     </div>

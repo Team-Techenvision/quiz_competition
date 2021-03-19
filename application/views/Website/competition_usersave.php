@@ -95,7 +95,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
               
                  <div class="row mb-4">
                     <div class="col-md-3 m-4" >
-                    <img src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="350px" width="300px"/>
+                    <img src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="330px" width="300px" style="border-radius: 10px;"  />
                    </div>
                    <div class="col-md-7 m-4 ">
                       <div class="col ml-4 mb-4 userSTitle" style="font-size: 30px;font-weight: 600;color: #225dca;" >
@@ -241,7 +241,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                      <input type="file" id="uploadfile" name="uploadfile"  />
                                     <!-- </div> -->
 
-                                    <p class="text-primary" style="position: absolute;">Note:Only .pdf File is allowed </p>
+                                    <p class="text-primary" style="position: absolute;">Note:Only .pdf, .doc, .docx File is allowed </p>
                                 
                                 <?php  } }?>
                                     <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->

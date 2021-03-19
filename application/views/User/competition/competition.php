@@ -338,7 +338,7 @@
                          <select name="file_format" id="file_format"class="form-control" >
                         <option value="0">Select File Format</option>
                        
-                        <option value="1">Document File / PowerPoint file</option>
+                        <option value="1">Document File / PDF file</option>
                         <option value="2">Audio File</option>
                         <option value="3">Video File</option>
                         <option value="4">Image File</option>
@@ -471,7 +471,7 @@
     // alert(t);
     
     var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
+    var day = dtToday.getDate() + 1;
     var year = dtToday.getFullYear();
 
 

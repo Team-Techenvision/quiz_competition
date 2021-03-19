@@ -159,7 +159,10 @@
 
 	                  </div> -->
        
-                </div>                           
+                </div>   
+                 <div class="form-group col-md-2">
+                 <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+               </div>                        
                 <!-- /.card-body -->
               <!--  <div class="card-footer">
                   < ?php if(isset($update)){ ?>

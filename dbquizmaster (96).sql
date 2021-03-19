@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 02:06 PM
+-- Generation Time: Mar 19, 2021 at 02:10 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -122,7 +122,17 @@ INSERT INTO `admincheck_answer` (`admincheck_answerid`, `user_id`, `competitioni
 (94, 333, 7, 38, 1, '2021-03-06 10:32:40'),
 (95, 333, 7, 39, 1, '2021-03-06 10:32:40'),
 (96, 333, 7, 40, 1, '2021-03-06 10:32:40'),
-(97, 333, 7, 67, 1, '2021-03-06 10:32:40');
+(97, 333, 7, 67, 1, '2021-03-06 10:32:40'),
+(98, 349, 12, 65, 1, '2021-03-19 11:59:26'),
+(99, 349, 12, 66, 0, '2021-03-19 11:59:26'),
+(100, 349, 12, 68, 0, '2021-03-19 11:59:26'),
+(101, 349, 12, 98, 1, '2021-03-19 11:59:26'),
+(102, 349, 12, 99, 1, '2021-03-19 11:59:26'),
+(103, 349, 12, 65, 1, '2021-03-19 12:06:17'),
+(104, 349, 12, 66, 0, '2021-03-19 12:06:17'),
+(105, 349, 12, 68, 0, '2021-03-19 12:06:17'),
+(106, 349, 12, 98, 1, '2021-03-19 12:06:17'),
+(107, 349, 12, 99, 1, '2021-03-19 12:06:17');
 
 -- --------------------------------------------------------
 
@@ -533,6 +543,7 @@ CREATE TABLE `dynamiccompetition` (
   `question` varchar(255) NOT NULL,
   `file_type` int(11) NOT NULL,
   `upload_file` varchar(255) NOT NULL,
+  `upload_image` varchar(255) NOT NULL,
   `answertype` varchar(255) NOT NULL COMMENT '1=RBbtn,2=ChkBbtn,3=textbox,4=textarea,5=ddl',
   `optionvalues` varchar(255) NOT NULL,
   `correctans` varchar(255) NOT NULL,
@@ -543,52 +554,54 @@ CREATE TABLE `dynamiccompetition` (
 -- Dumping data for table `dynamiccompetition`
 --
 
-INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `question`, `file_type`, `upload_file`, `answertype`, `optionvalues`, `correctans`, `created_date`) VALUES
-(10, 1, '	\r\nIndia has largest deposits of ____ in the world.', 0, '', '1', 'gold,copper,mica,None of the above', '3', '2021-01-07'),
-(11, 1, 'how are you?', 0, '', '1', 'abc,def,ghi,jkl', '2', '2021-01-07'),
-(13, 2, 'how are you?', 0, '', '2', 'g,gf,j,hg', '2', '2021-01-07'),
-(15, 1, 'how are you?', 0, '', '2', 'a,b,c', '1,2', '2021-01-08'),
-(29, 1, 'how are you?', 0, '', '3', '', '', '2021-01-08'),
-(30, 1, 'how are you?', 0, '', '4', '', '', '2021-01-08'),
-(34, 1, 'how are you?', 0, '', '1', 'dsf,a,gdf,gd', '2', '2021-01-08'),
-(36, 7, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '5', '\'Jhansi Ki Rani\', Sohrab Modi, Sir Syed Ahmed, \'Mirza Ghalib\'', '1', '2021-01-08'),
-(37, 7, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '1', '32,25,30,17', '2', '2021-01-08'),
-(38, 7, 'ICAO stands for', 0, '', '2', 'International Civil Aviation Organization,Indian Corporation of Agriculture Organization,Institute of Company of Accounts Organization,None of the above', '1', '2021-01-08'),
-(39, 7, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '3', '', '', '2021-01-08'),
-(40, 7, 'In which year, terrorists crash two planes into New York\'s World Trade Centre on September 11 in a sequence of destruction?', 0, '', '4', '', '', '2021-01-08'),
-(41, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', 'dsf,a,dsf,gdf', '3', '2021-01-14'),
-(42, 4, 'Which of the following statement is/are correct about Subhash Chandra Bose?', 0, '', '1', 'iiiii,a,dsf,gdf', '3', '2021-01-12'),
-(43, 4, 'Who is known as the political guru of Subhash Chandra Bose?', 0, '', '2', 'Chittaranjan Das,Gopal Krishna Gokhle,Mahatma Gandhi,Vivekananda', '1', '2021-01-12'),
-(44, 4, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '2', 'as,sds,dfg,fgh', '1,2,3', '2021-01-12'),
-(45, 4, 'ICAO stands for', 0, '', '2', 'hgh,gfh,ggh,ghh', '3,4', '2021-01-12'),
-(46, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '2', 'ghgh,hh,kk,kk', '1,2', '2021-01-12'),
-(47, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', 'kj,h,jk,jk', '2', '2021-01-12'),
-(48, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', 'jk,kkk,jku,uuuk', '3', '2021-01-12'),
-(49, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '5', 'hk,jk,jk,kjk', '1', '2021-01-12'),
-(50, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '2', 'kjhk,jhkjg,jhg,jk', '1,2,4', '2021-01-12'),
-(51, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', '', '', '2021-01-14'),
-(52, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', '', '', '2021-01-14'),
-(53, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', '', '', '2021-01-14'),
-(54, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', '', '', '2021-01-14'),
-(55, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', '', '', '2021-01-14'),
-(56, 4, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '1', '', '', '2021-01-14'),
-(57, 4, 'ICAO stands for', 0, '', '1', '', '', '2021-01-14'),
-(58, 4, 'ICAO stands for', 0, '', '1', 'dsf,a,a,hgj', '', '2021-01-14'),
-(59, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', 'dsf,a,h,gdf', '', '2021-01-14'),
-(60, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', '', '', '2021-01-15'),
-(61, 6, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '1', 'dsf,a,h,hgj', '2', '2021-01-15'),
-(62, 9, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', 'iiim,iimm,iimn,iidn', '3', '2021-01-27'),
-(63, 59, 'Q.1: Use Euclid’s division lemma to show that the square of any positive integer is either of the form 3m or 3m + 1 for some integer m.', 0, '', '2', '5,50,20,60', '', '2021-02-19'),
-(64, 53, 'Q.2: Express each number as a product of its prime factors:', 0, '', '1', '5,6,8,9', '2', '2021-02-20'),
-(65, 12, 'Q.2: Express each number as a product of its prime factors:', 0, '', '2', '5,8,9,12', '2', '2021-02-03'),
-(66, 12, 'Q.2: Express each number as a product of its prime factors:', 0, '', '1', '5,6,8,20', '3', '2021-02-03'),
-(67, 7, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', '41,4,14,17', '2', '2021-02-04'),
-(68, 12, 'Question 1. What is three fifth of 100?', 0, '', '5', '3,5,20,60', '2', '2021-02-15'),
-(69, 60, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', '10,20,30,40', '3', '2021-03-05'),
-(70, 60, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', '10,22,23,45', '2', '2021-03-05'),
-(71, 60, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '1', '4,7,5,3', '3', '2021-03-05'),
-(72, 79, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '1', '10,20,32,40', '2', '2021-03-10'),
-(73, 79, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '1', '10,21,11,44', '2', '2021-03-09');
+INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `question`, `file_type`, `upload_file`, `upload_image`, `answertype`, `optionvalues`, `correctans`, `created_date`) VALUES
+(10, 1, '	\r\nIndia has largest deposits of ____ in the world.', 0, '', '', '1', 'gold,copper,mica,None of the above', '3', '2021-01-07'),
+(11, 1, 'how are you?', 0, '', '', '1', 'abc,def,ghi,jkl', '2', '2021-01-07'),
+(13, 2, 'how are you?', 0, '', '', '2', 'g,gf,j,hg', '2', '2021-01-07'),
+(15, 1, 'how are you?', 0, '', '', '2', 'a,b,c', '1,2', '2021-01-08'),
+(29, 1, 'how are you?', 0, '', '', '3', '', '', '2021-01-08'),
+(30, 1, 'how are you?', 0, '', '', '4', '', '', '2021-01-08'),
+(34, 1, 'how are you?', 0, '', '', '1', 'dsf,a,gdf,gd', '2', '2021-01-08'),
+(36, 7, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '5', '\'Jhansi Ki Rani\', Sohrab Modi, Sir Syed Ahmed, \'Mirza Ghalib\'', '1', '2021-01-08'),
+(37, 7, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '', '1', '32,25,30,17', '2', '2021-01-08'),
+(38, 7, 'ICAO stands for', 0, '', '', '2', 'International Civil Aviation Organization,Indian Corporation of Agriculture Organization,Institute of Company of Accounts Organization,None of the above', '1', '2021-01-08'),
+(39, 7, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '3', '', '', '2021-01-08'),
+(40, 7, 'In which year, terrorists crash two planes into New York\'s World Trade Centre on September 11 in a sequence of destruction?', 0, '', '', '4', '', '', '2021-01-08'),
+(41, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', 'dsf,a,dsf,gdf', '3', '2021-01-14'),
+(42, 4, 'Which of the following statement is/are correct about Subhash Chandra Bose?', 0, '', '', '1', 'iiiii,a,dsf,gdf', '3', '2021-01-12'),
+(43, 4, 'Who is known as the political guru of Subhash Chandra Bose?', 0, '', '', '2', 'Chittaranjan Das,Gopal Krishna Gokhle,Mahatma Gandhi,Vivekananda', '1', '2021-01-12'),
+(44, 4, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '', '2', 'as,sds,dfg,fgh', '1,2,3', '2021-01-12'),
+(45, 4, 'ICAO stands for', 0, '', '', '2', 'hgh,gfh,ggh,ghh', '3,4', '2021-01-12'),
+(46, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '2', 'ghgh,hh,kk,kk', '1,2', '2021-01-12'),
+(47, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', 'kj,h,jk,jk', '2', '2021-01-12'),
+(48, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', 'jk,kkk,jku,uuuk', '3', '2021-01-12'),
+(49, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '5', 'hk,jk,jk,kjk', '1', '2021-01-12'),
+(50, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '2', 'kjhk,jhkjg,jhg,jk', '1,2,4', '2021-01-12'),
+(51, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', '', '', '2021-01-14'),
+(52, 4, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', '', '', '2021-01-14'),
+(53, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '', '', '2021-01-14'),
+(54, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '', '', '2021-01-14'),
+(55, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '', '', '2021-01-14'),
+(56, 4, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '', '1', '', '', '2021-01-14'),
+(57, 4, 'ICAO stands for', 0, '', '', '1', '', '', '2021-01-14'),
+(58, 4, 'ICAO stands for', 0, '', '', '1', 'dsf,a,a,hgj', '', '2021-01-14'),
+(59, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', 'dsf,a,h,gdf', '', '2021-01-14'),
+(60, 4, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '', '', '2021-01-15'),
+(61, 6, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '', '1', 'dsf,a,h,hgj', '2', '2021-01-15'),
+(62, 9, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', 'iiim,iimm,iimn,iidn', '3', '2021-01-27'),
+(63, 59, 'Q.1: Use Euclid’s division lemma to show that the square of any positive integer is either of the form 3m or 3m + 1 for some integer m.', 0, '', '', '2', '5,50,20,60', '', '2021-02-19'),
+(64, 53, 'Q.2: Express each number as a product of its prime factors:', 0, '', '', '1', '5,6,8,9', '2', '2021-02-20'),
+(65, 12, 'Q.2: Express each number as a product of its prime factors:', 0, '', '', '2', '5,8,9,12', '2', '2021-02-03'),
+(66, 12, 'Q.2: Express each number as a product of its prime factors:', 0, '', '', '1', '5,6,8,20', '3', '2021-02-03'),
+(67, 7, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', '41,4,14,17', '2', '2021-02-04'),
+(68, 12, 'Question 1. What is three fifth of 100?', 0, '', '', '5', '3,5,20,60', '2', '2021-02-15'),
+(69, 60, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', '10,20,30,40', '3', '2021-03-05'),
+(70, 60, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '10,22,23,45', '2', '2021-03-05'),
+(71, 60, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '', '1', '4,7,5,3', '3', '2021-03-05'),
+(72, 79, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', '10,20,32,40', '2', '2021-03-10'),
+(73, 79, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '10,21,11,44', '2', '2021-03-09'),
+(98, 12, 'What is measurement of the indicated angle assuming the figure is a square?', 1, '', 'upload_image_98_1616139028.jpg', '1', '45 degree,90 degree,60 degree,30 degree', '2', '2021-03-19'),
+(99, 12, 'What is the sum of all the angles in the rectangle above?', 1, '', 'upload_image_99_1616141458.jpg', '1', '180,360,90,120', '2', '2021-03-19');
 
 -- --------------------------------------------------------
 
@@ -793,7 +806,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (127, 'Mahesh', '2005-11-16', '', '9', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 88, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10'),
 (130, 'Mahesh', '2005-11-16', '', '10', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 59, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10'),
 (132, 'Mohan', '1994-06-07', 'demo@gmail.com', '14', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 1, 'Kolhapur', 'Kolhapur', 22, 81, 220, 2, '', '2021-03-16'),
-(149, 'Mohan', '1999-07-07', 'demo@gmail.com', '15', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 2, 'Kolhapur', 'Kolhapur', 22, 84, 220, 2, '', '2021-03-16');
+(149, 'Mohan', '1999-07-07', 'demo@gmail.com', '15', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 2, 'Kolhapur', 'Kolhapur', 22, 84, 220, 2, '', '2021-03-16'),
+(150, '', '2010-02-02', '', '10', 'sm', 'Kolhapur', 0, 'Harsh Kulkarni', '9874563214', 1, 'Kolhapur', 'Kolhapur', 22, 12, 349, 103, 'profile_image_349_1616140709.PNG', '2021-03-19');
 
 -- --------------------------------------------------------
 
@@ -1147,7 +1161,8 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (345, 0, '', 3, 'Kartik Powar', '', 416012, '', 'kartik@gmail.com', '9603917086', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-17 07:52:06', 3),
 (346, 0, '', 3, 'Manish Kore', '', 416012, '', 'manishk@gmail.com', '9603917085', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-17 07:55:38', 3),
 (347, 0, '', 2, 'Prasad Patil', '', 416012, '', 'prasad@gamil.com', '9603917084', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '346', '2021-03-17 08:00:32', 1),
-(348, 0, '', 3, 'Mayuri Patil', '', 416012, '', 'mayuri@gmail.com', '9603917083', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-17 08:03:37', 3);
+(348, 0, '', 3, 'Mayuri Patil', '', 416012, '', 'mayuri@gmail.com', '9603917083', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-17 08:03:37', 3),
+(349, 0, '', 3, 'Harsh Kulkarni', '', 416012, '', 'harsh@gmail.com', '9603917082', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-03-19 07:48:34', 3);
 
 -- --------------------------------------------------------
 
@@ -1281,7 +1296,8 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (99, 345, 0, 'Kartik Powar', '416012', '9603917086', '', 'kartik@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-17 07:52:06'),
 (100, 346, 0, 'Manish Kore', '416012', '9603917085', '', 'manishk@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-17 07:55:38'),
 (101, 347, 0, 'Prasad Patil', '416012', '9603917084', '', 'prasad@gamil.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-17 08:00:32'),
-(102, 348, 0, 'Mayuri Patil', '416012', '9603917083', 'be6148685373df5bcc6f0baffda23be3', 'mayuri@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-17 08:03:38');
+(102, 348, 0, 'Mayuri Patil', '416012', '9603917083', 'be6148685373df5bcc6f0baffda23be3', 'mayuri@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-17 08:03:38'),
+(103, 349, 1, 'Harsh Kulkarni', '416012', '9603917082', '', 'harsh@gmail.com', '', '2010-02-02', '', 10, 'sm', 'Kolhapur', '', 'Harsh Kulkarni', '9874563214', 1, 'Kolhapur', 'Kolhapur', 22, 'profile_image_349_1616140709.PNG', 1, '2021-03-19 07:48:34');
 
 -- --------------------------------------------------------
 
@@ -1366,7 +1382,12 @@ INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetition
 (100, 333, 7, '40', '1994\r\n', '2021-03-06 10:31:47'),
 (101, 333, 7, '67', '2', '2021-03-06 10:31:47'),
 (102, 333, 79, '72', '2', '2021-03-18 08:00:45'),
-(103, 333, 79, '73', '3', '2021-03-18 08:00:45');
+(103, 333, 79, '73', '3', '2021-03-18 08:00:45'),
+(104, 349, 12, '65', '2', '2021-03-19 11:58:48'),
+(105, 349, 12, '66', '1', '2021-03-19 11:58:49'),
+(106, 349, 12, '68', '3', '2021-03-19 11:58:49'),
+(107, 349, 12, '98', '2', '2021-03-19 11:58:49'),
+(108, 349, 12, '99', '2', '2021-03-19 11:58:49');
 
 -- --------------------------------------------------------
 
@@ -1397,7 +1418,8 @@ INSERT INTO `userscore_master` (`userscore_id`, `user_id`, `competitionid`, `tot
 (9, 266, 7, 6, 5, 83.33),
 (11, 307, 79, 2, 2, 100.00),
 (13, 307, 7, 6, 5, 83.33),
-(14, 333, 7, 6, 6, 100.00);
+(14, 333, 7, 6, 6, 100.00),
+(16, 349, 12, 5, 6, 120.00);
 
 -- --------------------------------------------------------
 
@@ -1589,7 +1611,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `admincheck_answer`
 --
 ALTER TABLE `admincheck_answer`
-  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `assigncompetition`
@@ -1607,7 +1629,7 @@ ALTER TABLE `assignwinner`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -1667,7 +1689,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `dynamiccompetition`
 --
 ALTER TABLE `dynamiccompetition`
-  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `levelmaster`
@@ -1691,7 +1713,7 @@ ALTER TABLE `points_master`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1709,25 +1731,25 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `userscore_master`
 --
 ALTER TABLE `userscore_master`
-  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `winner`

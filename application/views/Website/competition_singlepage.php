@@ -53,7 +53,7 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
                  </div>
                  <div class="row mb-4">
                     <div class="col-md-3 m-4" >
-                    <img class="imgBox" src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="350px" width="300px"/>
+                    <img class="imgBox" src="<?php echo base_url("assets/images/competition/".$value->photo);?>"height="330px" width="300px" style="border-radius: 10px; " />
                    </div>
                    <div class="col-md-7 m-4">
                       <div class="col ml-4" >

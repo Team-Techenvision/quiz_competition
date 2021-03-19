@@ -187,14 +187,20 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                             <div class="radio">
                               <label>
                                  
-                                <?php echo $s; ?>. <input type="radio" name="" value="<?php if(isset($emailaddress)){ echo $emailaddress; } ?>" >  <?php echo $my_Array ;?></label>
+                                <?php echo $s; ?>. <input type="radio" name=""  >  <?php echo $my_Array ;?></label>
                             </div>
+                           <?php $s++;} ?>     
 
-
-
-                            <?php 
-
-                           $s++;} ?>                            
+                            <?php if($value['file_type']=="1"){ ?>
+                             <img id="blah" src="<?php echo base_url(); ?>/assets/images/quizimage_files/<?php echo $value['upload_image']; ?>" alt="" width="320" height="240" />
+                           <?php } ?>
+                           
+                            <?php if($value['file_type']=="2"){ ?>
+                            
+                             <video width="320" height="240" controls>
+                             <source src="<?php echo base_url(); ?>/assets/images/quizvideo_files/<?php echo $value['upload_file']; ?>" >
+                              </video>
+                             <?php } ?>                       
                             <?php } elseif ($value['answertype']=="2")
                             {?>                           
                             <?php $myString = $value['optionvalues'];

@@ -529,7 +529,7 @@ public function competition_uploadfile(){
 
               $config['upload_path'] = 'assets/images/competition_images/';
 
-              $config['allowed_types'] = 'jpg|jpeg|png|gif|mp3';
+              $config['allowed_types'] = 'jpg|jpeg|png';
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_image']['name'];
@@ -1338,7 +1338,6 @@ public function check_userdata_profile(){
   public function edit_profile(){
 
     // echo "string";
-    // print_r($_POST); die();
 
 
     // $data['stateid'] = "";
@@ -1349,9 +1348,13 @@ public function check_userdata_profile(){
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
      if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
-    $this->form_validation->set_rules('parentname', 'First Name', 'trim|required');
+
+    $this->form_validation->set_rules('fullname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
-    $update_data = $_POST; 
+    $update_data = $_POST;
+
+    // print_r($_POST); die();
+
 
         $alternatemobno = $this->input->post('alternatemobno');
 
@@ -1412,7 +1415,7 @@ public function check_userdata_profile(){
 
       );
     }
-
+   // print_r($update_data); die();
     $this->Website_Model->update_info('user_id', $quizweb_user_id, 'userprofile_master', $update_data);
 
 
@@ -1745,6 +1748,7 @@ public function check_userdata_profile(){
     }
 
     $data['result'] = $this->Website_Model->quize_get($competition_id);
+    
     // print_r($data['result']); die();
     $this->load->view('Website/Include/head',$data);
     $this->load->view('Website/star_quizs',$data);
