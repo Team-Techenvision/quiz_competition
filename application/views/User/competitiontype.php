@@ -40,7 +40,7 @@
                        
                   <div class="form-group col-md-12">
                     <label>Competition Type <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontype)){ echo $competitiontype; } ?>" placeholder="Enter Competition Type" required>
+                    <input type="text" class="form-control required title-case text " name="competitiontype" id="competitiontype" value="<?php if(isset($competitiontype)){ echo $competitiontype; } ?>"  onkeypress="return blockSpecialChar(event)"placeholder="Enter Competition Type" required>
 
                     <p class="comptypeval mb-0" id="comptypeval" style="font-size:14px;  color: red;"></p>
 
@@ -56,7 +56,7 @@
                   <?php } else{ ?>
                     <button id="btn_save"  type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                   <a href="<?php echo base_url(); ?>User/competitiontype_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
 

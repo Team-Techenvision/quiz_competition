@@ -25,20 +25,23 @@
             <div class="card card-default">
               <div class="card-header">
                 <h4 class="card-title">Edit Quiz</h4>
-                <!-- <div class="card-tools col-md-2 " >< !-- < ? php echo $compid; ?> -->
-                <!-- <a href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $compid['compid']; ?>" class="btn btn-sm btn-block btn-primary">Quiz List</a> -->
-              <!-- </div>  -->
+                <div class="card-tools col-md-2 " > 
+                <a href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $compid; ?>" class="btn btn-sm btn-block btn-primary">Quiz List</a>
+              </div> 
                 
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post">
+              <form id="form_action" role="form" action="" enctype="multipart/form-data" method="post">
                 <div class="card-body">
                 <div class="row">
                       <?php $i=1;
 
                         foreach ($fetch_dynamicquizlist as $list){
                         $anstype = $list['answertype']; 
+                        $file_type = $list['file_type']; 
+                        $upload_image = $list['upload_image']; 
+                        $upload_file = $list['upload_file']; 
 
                         $myString = $list['optionvalues'];
                         $myArray = explode(',', $myString); 
@@ -46,7 +49,7 @@
                         $selectans = $list['correctans']; 
                         $corAns = explode(',', $selectans); 
 
-                        // print_r($corAns); die();
+                        // print_r($fetch_dynamicquizlist); die();
 
                          ?>
 
@@ -84,11 +87,49 @@
                            <input type="text" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array;?>" required="">
                           <!--  <button type="button" name="remove" id="'+k+'" class="btn btn-danger btn_remove">X</button> -->
 
-                        
+
                       </div>
                       <?php }?>
 
                       <!-- <button type="button" name="add" id="add_radiobtn" class="btn btn-sm btn-success">Add More</button> -->
+
+                     <!-- for image edit -->
+                       <?php if($file_type==1){ ?>
+                          <div class="form-group col-md-6" >
+                            <label>Upload Image</label>
+                            <input class="form-control" type="file" id="upload_image" name="upload_image" onchange="ValidateSingleInput(this); readURL(this);" accept="image/*"  /> 
+                            <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .jpg, .jpeg, .png Image Files are allowed.</p>
+
+                            <?php if(isset($upload_image)){?>
+                          <img id="blah" src="<?php if(isset($upload_image)){ echo base_url();?>assets/images/quizimage_files/<?php echo $upload_image; } ?>" alt="" height="150px" width="200px" />
+                          <!--  -->
+
+                           <input type="hidden" name="old_photo" value="<?php if(isset($upload_image)){ echo $upload_image; } ?>"> 
+
+                          <?php }?>
+
+                          </div>
+                          <?php } ?>
+
+                          <!-- for video edit -->
+                           
+                          <?php if($file_type==2){ ?> 
+                             <div class="form-group col-md-6" id="u_video">
+                            <label>Upload Video</label>
+
+                           <input class="form-control" type="file" id="upload_video" name="upload_file" accept="video/*"  /> 
+                           <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed.</p>
+
+                           <video width="320" height="240" controls>
+                             <source src="<?php echo base_url(); ?>/assets/images/quizvideo_files/<?php echo $upload_file; ?>" > 
+                           </video>
+
+                        </div>
+
+
+
+                          <?php } ?>
+
 
                     <?php } ?>
 
@@ -183,7 +224,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                   <a href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $compid; ?>" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div> 
               </form>
             </div>
@@ -198,6 +239,60 @@
     </section>
   </div>
   <br>
+ 
+<script type="text/javascript">
+  var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
+<script type="text/javascript">
+document.getElementById("upload_video")
+.onchange = function(event) {
+  let file = event.target.files[0];
+  let blobURL = URL.createObjectURL(file);
+  document.querySelector("video").src = blobURL;
+}
+</script>
+
+ <script>
+   
+   $('.pis').bind("click" , function () {
+          $('#upload_image').click();
+   });
+   
+    function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#blah')
+                          .attr('src', e.target.result);
+                  };
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+  </script>
 <!-- <script src="<?php echo base_url(); ?>assets/dist/js/form-builder.min.js"></script> -->
 <!-- <script src="<?php echo base_url(); ?>assets/dist/js/form-render.min.js"></script> -->
 <!-- <script>

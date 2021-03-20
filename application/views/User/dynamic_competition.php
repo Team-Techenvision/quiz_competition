@@ -95,7 +95,7 @@
                         </div> 
                         <div class="form-group col-md-6" id="u_image">
                             <label>Upload Image</label>
-                           <input class="form-control" type="file" id="upload_image" name="upload_image" accept="image/*"  /> 
+                           <input class="form-control" type="file" id="upload_image" name="upload_image"  accept="image/*"  /> 
                             <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .jpg, .jpeg, .png Image Files are allowed.</p>
                         </div>
                          <div class="form-group col-md-6" id="u_video">
@@ -151,7 +151,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                  <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                  <a href="<?php echo base_url(); ?>User/competition_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div> 
               </form>
             </div>

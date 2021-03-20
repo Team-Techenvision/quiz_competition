@@ -85,25 +85,26 @@
                 </thead>
                 <tbody>
                   <?php $i = 0;
+                  // print_r($fetch_userlist_quiz); die();
                   foreach ($fetch_userlist_quiz as $list) {
                     // print_r($list->score_percentage);
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td> 
                    
-                    <td><?php echo $list->user_id ?>  </td>
+                    <td><?php echo $list['user_id']; ?>  </td>
                    
-                    <td><?php echo $list->user_name ?></td>
+                   <td><?php echo $list['dynamiccompetitionid']; ?></td>
                    
                     <td>
                       <div class="form-group col-md-12">
-                 <?php  if(!isset($list->score_percentage)){
+                 <?php  if(!$list['score_percentage']){
                       ?> 
-                       <a class="btn btn-primary btnviewquiz" name="user_id" id="btnviewquiz <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/quiz_display/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >View Quiz</a>
+                       <a class="btn btn-primary btnviewquiz" name="user_id" id="btnviewquiz <?php echo $list['user_id'] ?>" href="<?php echo base_url(); ?>User/quiz_display/<?php echo $list['dynamiccompetitionid'] ?>/<?php echo $list['user_id'] ?>" value="<?php echo $list['user_id'] ?>" >View Quiz</a>
 
                 <?php 
                    }else{ ?>  
-                   <?php echo $list->score_percentage ?> 
+                   <?php echo $list['score_percentage'] ?> 
   <!--  <label>< ?php echo $correct_answer; ?></label>/<label>< ?php echo $total_question; ?></label> --> 
 
                <?php } ?>  
@@ -161,7 +162,7 @@
        
                 </div>   
                  <div class="form-group col-md-2">
-                 <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                 <a href="<?php echo base_url(); ?>User/quiz_user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                </div>                        
                 <!-- /.card-body -->
               <!--  <div class="card-footer">

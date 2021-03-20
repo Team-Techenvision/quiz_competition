@@ -34,49 +34,49 @@
           <div class="col-md-3 col-6">
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?php echo $total_user; ?></h3>
-                <p>User Information</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="user_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3><?php echo $total_banner; ?></h3>
-                <p>Banner Information</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="banner_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="small-box bg-green">
-              <div class="inner">
                 <h3><?php echo $total_competition; ?></h3>
-                <p>Competition Information</p>
+                <p>Total Competition</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url(); ?>User/competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="small-box bg-red">
               <div class="inner">
-                <h3>5</h3>
-                <p>demo Information</p>
+                <h3><?php echo $total_competitioncompleted; ?></h3>
+                <p>Completed Competition</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="party_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url(); ?>User/competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="small-box bg-green">
+              <div class="inner">
+                <h3><?php echo $total_competitionongoing; ?></h3>
+                <p>On-going Competition</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="<?php echo base_url(); ?>User/competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="small-box bg-yellow">
+              <div class="inner">
+                <h3><?php echo $total_user; ?></h3>
+                <p>Total Registered Users</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="<?php echo base_url(); ?>User/user_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

@@ -55,6 +55,8 @@ class User extends CI_Controller{
     $data['total_user'] =$this->User_Model->get_count('user_id','','','','','','user');
     $data['total_banner'] =$this->User_Model->get_count('bannerid','','','','','','banner');
     $data['total_competition'] =$this->User_Model->get_count('competitionid','','','','','','competition');
+    $data['total_competitioncompleted'] =$this->User_Model->get_countcompleted_competition('competitionid','','','','','','competition');
+    $data['total_competitionongoing'] =$this->User_Model->get_countongoing_competition('competitionid','','','','','','competition');
     $this->load->view('Include/head', $data);
     $this->load->view('Include/navbar', $data);
     $this->load->view('User/dashboard', $data);
@@ -621,12 +623,23 @@ class User extends CI_Controller{
     $compid = $this->uri->segment(3);
     $dynamiccompetitionid = $this->uri->segment(4);
 
+     $data['fetch_dynamicquizlist'] = $this->User_Model->fetch_dynamicquizlist($dynamiccompetitionid);
+
+       foreach ($data['fetch_dynamicquizlist'] as $value) {
+           $file_type = $value['file_type'];
+       }
+      // print_r($file_type); die();
+
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('question', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
+
+      
+
 
         $admore  = $this->input->post('addmore');
         $correct = $this->input->post('correctans');
@@ -650,6 +663,101 @@ class User extends CI_Controller{
             );
 
           $this->User_Model->update_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition', $update_data);
+          // Upload image for quiz
+        if($file_type==1){
+
+               if($_FILES['upload_image']['name']){
+              $time = time();
+              // $image_name = 'profile_image_'.$time;
+              $image_name = 'upload_image_'.$dynamiccompetitionid.'_'.$time;
+
+
+              $config['upload_path'] = 'assets/images/quizimage_files/';
+
+              $config['allowed_types'] = 'jpg|jpeg|png';
+              $config['file_name'] = $image_name;
+
+              $filename = $_FILES['upload_image']['name'];
+              $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              $this->upload->initialize($config); // if upload library autoloaded
+             
+
+
+                     
+
+              if ($this->upload->do_upload('upload_image') && $dynamiccompetitionid && $image_name && $ext && $filename) {
+
+                    // print_r($image_name); 
+
+
+                   // print_r($insert_id);
+
+                  $image['upload_image'] = $image_name.'.'.$ext;
+                  // print_r($image['upload_file']); die();
+                  $this->User_Model->update_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition', $image);
+                   // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+                  $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+       
+        } 
+        else 
+        {
+                    // print_r($image_name); 
+
+           $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_error',$error);
+        }
+      }
+
+        }
+
+     // Upload video for quiz
+
+        if($file_type==2){
+
+          // print_r($file_type); die();
+                 if($_FILES['upload_file']['name']){
+                    $time = time();
+                    // $image_name = 'profile_image_'.$time;
+                    $image_name = 'upload_file_'.$dynamiccompetitionid.'_'.$time;
+
+
+                    $config['upload_path'] = 'assets/images/quizvideo_files/';
+
+                    $config['allowed_types'] = 'mp4|3pg|mkv|wmv';
+                    $config['file_name'] = $image_name;
+
+                    $filename = $_FILES['upload_file']['name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    $this->upload->initialize($config); // if upload library autoloaded
+                   
+
+
+                           
+
+                    if ($this->upload->do_upload('upload_file') && $dynamiccompetitionid && $image_name && $ext && $filename) {
+
+                          // print_r($image_name); 
+
+
+                         // print_r($insert_id);
+
+                        $image['upload_file'] = $image_name.'.'.$ext;
+                        // print_r($image['upload_file']); die();
+                        $this->User_Model->update_info('dynamiccompetitionid', $dynamiccompetitionid, 'dynamiccompetition', $image);
+                         // if($_POST['old_profile_image']){ unlink("assets/images/".$_POST['old_profile_image']); }
+                        $this->session->set_flashdata('upload_success','File Uploaded Successfully');
+             
+              } 
+              else 
+              {
+                          // print_r($image_name); 
+
+                 $error = $this->upload->display_errors();
+                  $this->session->set_flashdata('upload_error',$error);
+              }
+            }
+        }
+
           $this->session->set_flashdata('update_success','success');
           header('location:'.base_url().'User/quizcompetition_list/'.$compid);
 
@@ -667,15 +775,14 @@ class User extends CI_Controller{
       $data['question'] = $info->question;
       $data['optionvalues'] = $info->optionvalues;
       $data['correctans'] = $info->correctans;
-      // $data['grade'] = $info->grade;
-      // $data['schoolcollegename'] = $info->schoolcollegename;
-      // $data['address'] = $info->address;
+      $data['file_type'] = $info->file_type;
+      $data['upload_file'] = $info->upload_file;
+      $data['upload_image'] = $info->upload_image;
       // $data['pincode'] = $info->pincode;
       // $data['competitionid'] = $info->competitionid;
     }
 
     
-    $data['fetch_dynamicquizlist'] = $this->User_Model->fetch_dynamicquizlist($dynamiccompetitionid);
 
     // print_r($data); die();
   

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2021 at 02:10 PM
+-- Generation Time: Mar 20, 2021 at 02:58 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -123,16 +123,11 @@ INSERT INTO `admincheck_answer` (`admincheck_answerid`, `user_id`, `competitioni
 (95, 333, 7, 39, 1, '2021-03-06 10:32:40'),
 (96, 333, 7, 40, 1, '2021-03-06 10:32:40'),
 (97, 333, 7, 67, 1, '2021-03-06 10:32:40'),
-(98, 349, 12, 65, 1, '2021-03-19 11:59:26'),
-(99, 349, 12, 66, 0, '2021-03-19 11:59:26'),
-(100, 349, 12, 68, 0, '2021-03-19 11:59:26'),
-(101, 349, 12, 98, 1, '2021-03-19 11:59:26'),
-(102, 349, 12, 99, 1, '2021-03-19 11:59:26'),
-(103, 349, 12, 65, 1, '2021-03-19 12:06:17'),
-(104, 349, 12, 66, 0, '2021-03-19 12:06:17'),
-(105, 349, 12, 68, 0, '2021-03-19 12:06:17'),
-(106, 349, 12, 98, 1, '2021-03-19 12:06:17'),
-(107, 349, 12, 99, 1, '2021-03-19 12:06:17');
+(108, 349, 12, 65, 1, '2021-03-20 08:57:37'),
+(109, 349, 12, 66, 0, '2021-03-20 08:57:37'),
+(110, 349, 12, 68, 0, '2021-03-20 08:57:37'),
+(111, 349, 12, 98, 1, '2021-03-20 08:57:37'),
+(112, 349, 12, 99, 1, '2021-03-20 08:57:37');
 
 -- --------------------------------------------------------
 
@@ -600,8 +595,9 @@ INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `ques
 (71, 60, 'How many Lok Sabha seats belong to Rajasthan?', 0, '', '', '1', '4,7,5,3', '3', '2021-03-05'),
 (72, 79, 'India\'s first Technicolor film ____ in the early 1950s was produced by ____', 0, '', '', '1', '10,20,32,40', '2', '2021-03-10'),
 (73, 79, 'In which year of First World War Germany declared war on Russia and France?', 0, '', '', '1', '10,21,11,44', '2', '2021-03-09'),
-(98, 12, 'What is measurement of the indicated angle assuming the figure is a square?', 1, '', 'upload_image_98_1616139028.jpg', '1', '45 degree,90 degree,60 degree,30 degree', '2', '2021-03-19'),
-(99, 12, 'What is the sum of all the angles in the rectangle above?', 1, '', 'upload_image_99_1616141458.jpg', '1', '180,360,90,120', '2', '2021-03-19');
+(98, 12, 'What is measurement of the indicated angle assuming the figure is a square?', 1, '', 'upload_image_98_1616228205.jpg', '1', '45 degree,90 degree,60 degree,30 degree', '2', '2021-03-20'),
+(99, 12, 'What is the sum of all the angles in the rectangle above?', 1, '', 'upload_image_99_1616141458.jpg', '1', '180,360,90,120', '2', '2021-03-19'),
+(100, 12, 'In which year of First World War Germany declared war on Russia and France?', 2, 'upload_file_100_1616228232.mp4', '', '1', '1,2,3,4', '2', '2021-03-20');
 
 -- --------------------------------------------------------
 
@@ -807,7 +803,8 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (130, 'Mahesh', '2005-11-16', '', '10', 'sm', 'kolhapur', 0, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 59, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-10'),
 (132, 'Mohan', '1994-06-07', 'demo@gmail.com', '14', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 1, 'Kolhapur', 'Kolhapur', 22, 81, 220, 2, '', '2021-03-16'),
 (149, 'Mohan', '1999-07-07', 'demo@gmail.com', '15', 'SM Lohiya', 'Kolhapur', 416012, 'Rohan Velhal', '8745965412', 2, 'Kolhapur', 'Kolhapur', 22, 84, 220, 2, '', '2021-03-16'),
-(150, '', '2010-02-02', '', '10', 'sm', 'Kolhapur', 0, 'Harsh Kulkarni', '9874563214', 1, 'Kolhapur', 'Kolhapur', 22, 12, 349, 103, 'profile_image_349_1616140709.PNG', '2021-03-19');
+(150, '', '2010-02-02', '', '10', 'sm', 'Kolhapur', 0, 'Harsh Kulkarni', '9874563214', 1, 'Kolhapur', 'Kolhapur', 22, 12, 349, 103, 'profile_image_349_1616140709.PNG', '2021-03-19'),
+(151, '', '2010-02-02', '', '10', 'sm', 'Kolhapur', 0, 'Harsh Kulkarni', '9874563214', 1, 'Kolhapur', 'Kolhapur', 22, 53, 349, 103, 'profile_image_349_1616140709.PNG', '2021-03-20');
 
 -- --------------------------------------------------------
 
@@ -1387,7 +1384,8 @@ INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetition
 (105, 349, 12, '66', '1', '2021-03-19 11:58:49'),
 (106, 349, 12, '68', '3', '2021-03-19 11:58:49'),
 (107, 349, 12, '98', '2', '2021-03-19 11:58:49'),
-(108, 349, 12, '99', '2', '2021-03-19 11:58:49');
+(108, 349, 12, '99', '2', '2021-03-19 11:58:49'),
+(109, 349, 53, '64', '2', '2021-03-20 11:11:56');
 
 -- --------------------------------------------------------
 
@@ -1419,7 +1417,7 @@ INSERT INTO `userscore_master` (`userscore_id`, `user_id`, `competitionid`, `tot
 (11, 307, 79, 2, 2, 100.00),
 (13, 307, 7, 6, 5, 83.33),
 (14, 333, 7, 6, 6, 100.00),
-(16, 349, 12, 5, 6, 120.00);
+(17, 349, 12, 5, 3, 60.00);
 
 -- --------------------------------------------------------
 
@@ -1611,7 +1609,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `admincheck_answer`
 --
 ALTER TABLE `admincheck_answer`
-  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `admincheck_answerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `assigncompetition`
@@ -1629,7 +1627,7 @@ ALTER TABLE `assignwinner`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `bannerid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -1689,7 +1687,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `dynamiccompetition`
 --
 ALTER TABLE `dynamiccompetition`
-  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `levelmaster`
@@ -1713,7 +1711,7 @@ ALTER TABLE `points_master`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1743,13 +1741,13 @@ ALTER TABLE `userprofile_master`
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `userscore_master`
 --
 ALTER TABLE `userscore_master`
-  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `userscore_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `winner`

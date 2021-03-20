@@ -100,7 +100,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
                   <?php } ?>
-                <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                <a href="<?php echo base_url(); ?>User/user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>
@@ -121,13 +121,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <!-- <script src="trunk/dev/validation.js"></script> -->
   
-  <script type="text/javascript">
-    function blockSpecialChar(e){
-        var k;
-        document.all ? k = e.keyCode : k = e.which;
-        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
-        }
-    </script>
+
 <script type="text/javascript">
 // Check Mobile Duplication..
   var user_mobile1 = $('#user_mobile').val();

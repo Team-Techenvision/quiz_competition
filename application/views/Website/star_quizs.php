@@ -190,7 +190,7 @@
             </script>
             <script type="text/javascript">
               //right click disable
-              // document.addEventListener('contextmenu', event => event.preventDefault());
+              document.addEventListener('contextmenu', event => event.preventDefault());
 
               //header pointerevent close
               document.getElementById('logo').style.pointerEvents = 'none';

@@ -651,36 +651,45 @@ $this->db->from('userscore_master');
  }
  //quiz_display userlist fetch
 
+
  public function fetch_userlist_quiz($competitionid){
-    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,userscore_master.competitionid,competition.*');
-    
-    $this->db->join('competition', 'userquizsubmit.dynamiccompetitionid = competition.competitionid', 'left');
 
-    // $this->db->join('userscore_master', 'userscore_master.competitionid = userquizsubmit.dynamiccompetitionid ', 'left');
-    
+    $sql="SELECT userquizsubmit.user_id, userquizsubmit.dynamiccompetitionid ,userscore_master.score_percentage FROM `userquizsubmit` left JOIN userscore_master on (userscore_master.competitionid = userquizsubmit.dynamiccompetitionid ) WHERE (`dynamiccompetitionid`= $competitionid ) GROUP BY userquizsubmit.user_id";    
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
 
-   
-    $this->db->join('user', 'user.user_id = userquizsubmit.user_id', 'left');
-  
-    $this->db->join('userscore_master', 'userscore_master.user_id = userquizsubmit.user_id', 'left');
-
-
-    $this->db->where('userquizsubmit.dynamiccompetitionid', $competitionid);
-    $this->db->or_where('userscore_master.competitionid', $competitionid);
-    // $this->db->where('userscore_master.competitionid', 7);
-    // $this->db->where('userscore_master.user_id', 307);
-
-    $this->db->group_by('userquizsubmit.user_id');
-    // $this->db->group_by('userscore_master.user_id');
-    // $this->db->group_by('userquizsubmit.dynamiccompetitionid');
-    $this->db->from('userquizsubmit');
-
-
-    $query = $this->db->get();
-    $result = $query->result();
-    // print_r($result);die();
-    return $result;
+        return $result;
+        // print_r($result); die();
  }
+
+ // public function fetch_userlist_quiz($competitionid){
+ //    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,userscore_master.competitionid,competition.*');
+    
+ //    $this->db->join('competition', 'userquizsubmit.dynamiccompetitionid = competition.competitionid', 'left');
+
+ //    // $this->db->join('userscore_master', 'userscore_master.competitionid = userquizsubmit.dynamiccompetitionid ', 'left');
+    
+ //    $this->db->join('user', 'user.user_id = userquizsubmit.user_id', 'left');
+  
+ //    $this->db->join('userscore_master', 'userscore_master.user_id = userquizsubmit.user_id', 'left');
+
+
+ //    $this->db->where('userquizsubmit.dynamiccompetitionid', $competitionid);
+ //    $this->db->or_where('userscore_master.competitionid', $competitionid);
+ //    // $this->db->where('userscore_master.competitionid', 7);
+ //    // $this->db->where('userscore_master.user_id', 307);
+
+ //    $this->db->group_by('userquizsubmit.user_id');
+ //    // $this->db->group_by('userscore_master.user_id');
+ //    // $this->db->group_by('userquizsubmit.dynamiccompetitionid');
+ //    $this->db->from('userquizsubmit');
+
+
+ //    $query = $this->db->get();
+ //    $result = $query->result();
+ //    // print_r($result);die();
+ //    return $result;
+ // }
   public function fetch_userlist_othercompetition($competitionid){
     $this->db->select('competition_uploadfile_submit.*,user.*,competition.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
@@ -1355,6 +1364,56 @@ public function get_list_by_id1($col_name1,$col_val1,$col_name2,$col_val2,$order
     return $result;
   }
 
+  public function get_countcompleted_competition($id_type,$company_id,$added_by,$mat_user_id,$status_col,$status_key,$tbl_name){
+     $this->db->select($id_type);
+    if($company_id != ''){
+      $this->db->where('4', $company_id);
+    }
+    if($added_by != ''){
+      $this->db->where($added_by, $mat_user_id);
+    }
+    if($status_col != ''){
+      $this->db->where($status_col, $status_key);
+    }
+
+    $c_date = date('Y-m-d');   
+    $this->db->where('enddate <=', $c_date);
+
+    $this->db->from($tbl_name);
+      $query =  $this->db->get();
+    $result = $query->num_rows();
+    return $result;
+    // $this->db->order_by("competitionid", "ASC");
+  // $c_date = date('Y-m-d');   
+  // $this->db->where('enddate >=', $c_date);
+  // $this->db->where('competitionid',$competitionid);
+  // $query = $this->db->get("competition");
+  // return $query->result();
+      // $query =  $this->db->get();
+    // $result = $query->num_rows();
+    // return $result;
+  }
+  public function get_countongoing_competition($id_type,$company_id,$added_by,$mat_user_id,$status_col,$status_key,$tbl_name){
+     $this->db->select($id_type);
+    if($company_id != ''){
+      $this->db->where('4', $company_id);
+    }
+    if($added_by != ''){
+      $this->db->where($added_by, $mat_user_id);
+    }
+    if($status_col != ''){
+      $this->db->where($status_col, $status_key);
+    }
+    
+    $c_date = date('Y-m-d');   
+    $this->db->where('enddate >=', $c_date);
+
+    $this->db->from($tbl_name);
+      $query =  $this->db->get();
+    $result = $query->num_rows();
+    return $result;
+  
+  }
   // function check_otp($otp, $user_id){
   //   $query = $this->db->select('*')
   //       ->where('user_otp', $otp)

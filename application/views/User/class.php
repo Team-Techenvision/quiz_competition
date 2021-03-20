@@ -34,7 +34,7 @@
                 <div class="card-body row">
                    <div class="form-group col-md-6">
                     <label>Class Group <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " name="tabinputtext" id="tabinputtext" value="<?php if(isset($tabinputtext)){ echo $tabinputtext; } ?>" placeholder="Enter Class Group" required="" >
+                    <input type="text" class="form-control required title-case text" onkeypress="return blockSpecialChar(event)" name="tabinputtext" id="tabinputtext" value="<?php if(isset($tabinputtext)){ echo $tabinputtext; } ?>"  placeholder="Enter Class Group" required="" >
                   </div>
                    <div class="form-group col-md-6">
                     <label>Class Tab Group <span style="color: red;">*</span></label>
@@ -62,12 +62,7 @@
                         <label><input type="radio" name="alluser" id="alluser" value="1"<?php if($alluser=="1") { echo "checked";} ?> > All</label>
                     </div>
                   </div>
-
-
-                  
-                    
-                 
-                 </div>
+               </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <?php if(isset($update)){ ?>
@@ -75,7 +70,7 @@
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button>
                   <?php } ?>
-                   <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                   <a href="<?php echo base_url(); ?>User/class_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
               </form>
             </div>

@@ -188,7 +188,7 @@
 
                     </div> -->
                      <button id="btn_save" type="submit" class="btn btn-success px-4">Add</button>
-                    <a href="" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                    <a href="<?php echo base_url(); ?>User/assign_winner_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
             </form>
           </div>
                 </div>                           

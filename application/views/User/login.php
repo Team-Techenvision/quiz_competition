@@ -20,6 +20,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
+    <img src="<?php echo base_url(); ?>assets/images/admin2.jpg" width="150" height="100"><br>
     <b>Admin Login</b>
   </div>
   <!-- /.login-logo -->
