@@ -1721,8 +1721,12 @@ public function check_competitiontype(){
               $config['upload_path'] = 'assets/images/competition/';
               $config['allowed_types'] = 'jpg|jpeg|png|gif';
               $config['file_name'] = $image_name;
+              $config['maintain_ratio'] = TRUE;
+              $config['width']    = 509;
+              $config['height']   = 339;
               $filename = $_FILES['photo']['name'];
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
               // $allowed = array('gif', 'png', 'jpg');
 
               // print_r($allowed);  echo $ext; die();
@@ -2079,17 +2083,30 @@ public function check_competitiontype(){
       if($_FILES['photo']['name']){
               $time = time();
               // $image_name = 'profile_image_'.$time;
+
               $image_name = 'photo_'.$competitionid.'_'.$time;
+              $config['image_library'] = 'gd2';
 
               $config['upload_path'] = 'assets/images/competition/';
               $config['allowed_types'] = 'jpg|jpeg|png|gif';
               $config['file_name'] = $image_name;
+              $config['maintain_ratio'] = TRUE;
+              $config['width']         = 509;
+              $config['height']       = 399;
+
+                     
               $filename = $_FILES['photo']['name'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+              $this->load->library('image_lib', $config);
+
+              $this->image_lib->resize(); 
+
               $this->upload->initialize($config); // if upload library autoloaded
 
 
-                    // print_r($_POST);
+            // print_r($_POST);
                      
 
               if ($this->upload->do_upload('photo') && $competitionid && $image_name && $ext && $filename) {
@@ -2883,7 +2900,20 @@ public function save_assigncompetition(){
       //          });
       //         </script>
       //  <?php
-/******************************* Assign Winner Information ****************************/
+
+
+      public function assign_competition_list(){
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['assign_competition_list'] = $this->User_Model->assign_competition_list('assigncompetitionid');
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/assigncompetitor_list',$data);
+    $this->load->view('Include/footer',$data);
+  }
+/************************ Assign Winner Information ****************************/
  public function add_assignwinner(){
 
 

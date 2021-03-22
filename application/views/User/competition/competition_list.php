@@ -59,6 +59,7 @@
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
                       <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>"> <i class="fa fa-edit"></i> </a> &nbsp;
                       <a  id="<?php echo $list->competitionid; ?>" class="competition_btn" value="<?php echo $list->competitionid; ?>" href=""> <i class="fas fa-eye"></i></a> &nbsp;
+                      
                        <a  id="<?php echo $list->competitionid; ?>" class="users_btn" value="<?php echo $list->competitionid; ?>" href=""><i class="fas fa-user"></i></a> &nbsp;
                         
                       <?php $status = $list->status; 

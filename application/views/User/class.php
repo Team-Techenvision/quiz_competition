@@ -38,7 +38,7 @@
                   </div>
                    <div class="form-group col-md-6">
                     <label>Class Tab Group <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " name="tabid" id="tabid" value="<?php if(isset($tabid)){ echo $tabid; } ?>" placeholder="Enter Class Tab Group " disabled required >
+                    <input type="text" class="form-control required title-case text " name="tabid" id="tabid" value="<?php if(isset($tabid)){ echo $tabid; } ?>" placeholder="Enter Class Tab Group " readonly required >
                   </div>
                    <div class="form-group col-md-3">
                     <label>From Class <span style="color: red;">*</span></label>

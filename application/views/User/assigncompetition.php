@@ -24,6 +24,9 @@
             <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Add Assign Competition</h3>
+                  <div class="card-tools col-md-3 " >
+                <a href="<?php echo base_url(); ?>User/assign_competition_list" class="btn btn-sm btn-block btn-primary">Competitor List</a>
+              </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -216,7 +219,7 @@
                 </div> -->
              
               <div class="form-group col-md-2">
-                 <a href="<?php echo base_url(); ?>User/add_assigncompetition" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
+                 <a href="<?php echo base_url(); ?>User/assign_competition_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                </div>
             </div>
 

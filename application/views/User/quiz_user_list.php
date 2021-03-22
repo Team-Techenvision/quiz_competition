@@ -92,19 +92,19 @@
                   <tr>
                     <td><?php echo $i; ?></td> 
                    
-                    <td><?php echo $list['user_id']; ?>  </td>
+                    <td><?php echo $list->user_id; ?>  </td>
                    
-                   <td><?php echo $list['dynamiccompetitionid']; ?></td>
+                   <td><?php echo $list->user_name; ?></td>
                    
                     <td>
                       <div class="form-group col-md-12">
-                 <?php  if(!$list['score_percentage']){
+                 <?php  if(!$list->score_percentage){
                       ?> 
-                       <a class="btn btn-primary btnviewquiz" name="user_id" id="btnviewquiz <?php echo $list['user_id'] ?>" href="<?php echo base_url(); ?>User/quiz_display/<?php echo $list['dynamiccompetitionid'] ?>/<?php echo $list['user_id'] ?>" value="<?php echo $list['user_id'] ?>" >View Quiz</a>
+                       <a class="btn btn-primary btnviewquiz" name="user_id" id="btnviewquiz <?php echo $list->user_id ?>" href="<?php echo base_url(); ?>User/quiz_display/<?php echo $list->competitionid ?>/<?php echo $list->user_id ?>" value="<?php echo $list->user_id ?>" >View Quiz</a>
 
                 <?php 
                    }else{ ?>  
-                   <?php echo $list['score_percentage'] ?> 
+                   <?php echo $list->score_percentage ?> 
   <!--  <label>< ?php echo $correct_answer; ?></label>/<label>< ?php echo $total_question; ?></label> --> 
 
                <?php } ?>  

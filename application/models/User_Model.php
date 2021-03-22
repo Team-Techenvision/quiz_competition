@@ -117,7 +117,7 @@ return $result;
     $result = $query->result();
      return $result;
   }
-   public function assign_winner_list($bannerid){
+   public function assign_winner_list($assignwinnerid){
     $this->db->select('assignwinner.*,competition.*,user.*,points_master.*');
 
     $this->db->join('competition', 'assignwinner.competitionid = competition.competitionid', 'left');
@@ -130,6 +130,36 @@ return $result;
     $query = $this->db->get();
     $result = $query->result();
      return $result;
+  }
+   public function assign_competition_list($assigncompetitionid){
+    $this->db->select('assigncompetition.*,competition.*');
+
+    $this->db->join('competition', 'assigncompetition.competitionid = competition.competitionid', 'left');
+
+    // $this->db->join('user', 'assigncompetition.user_id1 = user.user_id ', 'left');
+    // $this->db->join('user', 'assigncompetition.user_id2 = user.user_id', 'left');
+
+    // $this->db->join('points_master', 'assignwinner.pointsid = points_master.pointsid', 'left');
+
+    $this->db->from('assigncompetition');
+    $query = $this->db->get();
+    $result = $query->result();
+     return $result;
+  }
+  public function get_U_name($u_id){
+    $u_name1= "";
+
+    $this->db->where('user_id',$u_id);
+    $this->db->from('user');
+    $query = $this->db->get();
+    $result = $query->result_array();
+
+    foreach ($result as  $value) {
+      $u_name1 = $value['user_name'];
+    }
+    // $num_rows = $query->num_rows();
+    // print_r($num_rows['user_name']);
+     return $u_name1;
   }
    public function class_list($tabinputtextid){
     $this->db->select('*');
@@ -652,48 +682,43 @@ $this->db->from('userscore_master');
  //quiz_display userlist fetch
 
 
- public function fetch_userlist_quiz($competitionid){
+ // public function fetch_US($competitionid){
 
-    $sql="SELECT userquizsubmit.user_id, userquizsubmit.dynamiccompetitionid ,userscore_master.score_percentage FROM `userquizsubmit` left JOIN userscore_master on (userscore_master.competitionid = userquizsubmit.dynamiccompetitionid ) WHERE (`dynamiccompetitionid`= $competitionid ) GROUP BY userquizsubmit.user_id";    
-        $query = $this->db->query($sql);
-        $result = $query->result_array();
+ //    $sql="SELECT userquizsubmit.user_id,userquizsubmit.dynamiccompetitionid,userscore_master.score_percentage FROM userquizsubmit LEFT JOIN userscore_master ON(userscore_master.competitionid=userquizsubmit.dynamiccompetitionid AND userscore_master.user_id=userquizsubmit.user_id) WHERE (userquizsubmit.dynamiccompetitionid=$competitionid) GROUP BY(userquizsubmit.user_id)";    
+ //        $query = $this->db->query($sql);
+ //        $result = $query->result_array();
 
-        return $result;
-        // print_r($result); die();
- }
-
- // public function fetch_userlist_quiz($competitionid){
- //    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,userscore_master.competitionid,competition.*');
-    
- //    $this->db->join('competition', 'userquizsubmit.dynamiccompetitionid = competition.competitionid', 'left');
-
- //    // $this->db->join('userscore_master', 'userscore_master.competitionid = userquizsubmit.dynamiccompetitionid ', 'left');
-    
- //    $this->db->join('user', 'user.user_id = userquizsubmit.user_id', 'left');
-  
- //    $this->db->join('userscore_master', 'userscore_master.user_id = userquizsubmit.user_id', 'left');
-
-
- //    $this->db->where('userquizsubmit.dynamiccompetitionid', $competitionid);
- //    $this->db->or_where('userscore_master.competitionid', $competitionid);
- //    // $this->db->where('userscore_master.competitionid', 7);
- //    // $this->db->where('userscore_master.user_id', 307);
-
- //    $this->db->group_by('userquizsubmit.user_id');
- //    // $this->db->group_by('userscore_master.user_id');
- //    // $this->db->group_by('userquizsubmit.dynamiccompetitionid');
- //    $this->db->from('userquizsubmit');
-
-
- //    $query = $this->db->get();
- //    $result = $query->result();
- //    // print_r($result);die();
- //    return $result;
+ //        return $result;
+ //        print_r($result); die();
  // }
+
+
+ public function fetch_userlist_quiz($competitionid){
+    // $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,userscore_master.competitionid,competition.*');
+    $this->db->select('userquizsubmit.*,user.*,userscore_master.user_id As score_user_id,userscore_master.score_percentage,userscore_master.competitionid,competition.*,userquizsubmit.user_id,userquizsubmit.dynamiccompetitionid,userscore_master.score_percentage');
+    
+    $this->db->join('competition', 'userquizsubmit.dynamiccompetitionid = competition.competitionid', 'left');
+
+    $this->db->join('user', 'user.user_id = userquizsubmit.user_id', 'left');
+  
+    $this->db->join('userscore_master', 'userscore_master.competitionid = userquizsubmit.dynamiccompetitionid AND userscore_master.user_id = userquizsubmit.user_id ' , 'left' );
+
+    $this->db->where('userquizsubmit.dynamiccompetitionid', $competitionid);
+    
+    $this->db->group_by('userquizsubmit.user_id');
+   
+    $this->db->from('userquizsubmit');
+
+
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result);die();
+    return $result;
+ }
   public function fetch_userlist_othercompetition($competitionid){
     $this->db->select('competition_uploadfile_submit.*,user.*,competition.*');
 //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
-    $this->db->join('competition', 'competition_uploadfile_submit.competitionid = competition.competitionid', 'left');
+    $this->db->join('competition', 'competition_uploadfile_submit.competitionid = competition.competitionid ', 'left');
 
     $this->db->join('user', 'competition_uploadfile_submit.user_id = user.user_id', 'left');
 
@@ -951,6 +976,7 @@ function fetch_user_uploadfile($competitionid)
     $result = $query->result();
     return $result;
    }
+
 //    public function addassigncompetition_list($competitionid,$pincode){
 //     $this->db->select('profile.*,user.*');
 // //     $this->db->join('pincodemaster', 'profile.pincode = pincodemaster.pincodeid', 'left');
@@ -1157,6 +1183,7 @@ function fetch_user_uploadfile($competitionid)
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
     $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
    $this->db->order_by('enddate ', 'DESC');
+   // $this->db->where('status ',1);
     $this->db->from('competition');
     $query = $this->db->get();
     $result = $query->result();

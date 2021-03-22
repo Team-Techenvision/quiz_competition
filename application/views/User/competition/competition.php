@@ -60,7 +60,7 @@
 
                        <?php if(isset($update)){ ?>
 
-                 <select name="competitiontypeid" id="competitiontypeid" class="form-control" disabled>
+                 <select name="competitiontypeid" id="competitiontypeid" class="form-control" readonly>
                         <option value="">Select Competition Type</option>
                           <?php foreach($competitiontype as $competitiontype)
                           {
@@ -118,7 +118,7 @@
 
                        <?php if(isset($update)){ ?>
 
-                         <select name="standard" id="standard" onchange="change();" class="form-control" disabled>
+                         <select name="standard" id="standard" onchange="change();" class="form-control" readonly>
                         <option value="">Select From Class-To Class</option>
                        <?php foreach($class as $classname)
                         {
@@ -130,7 +130,7 @@
                       </select>
                         <?php }else{ ?>
 
-                          <select name="standard" id="standard" onchange="change();" class="form-control" required>
+                          <select name="standard" id="standard" onchange="change();" class="form-control" required >
                             <option value="">Select From Class-To Class</option>
                            <?php foreach($class as $classname)
                             {
@@ -158,7 +158,7 @@
 
 
 
-                      <select name="tabinputtextid" id="tabinputtextid"class="form-control" required disabled>
+                      <select name="tabinputtextid" id="tabinputtextid"class="form-control" required readonly="readonly" >
                         <option value="">Select Input Text</option>
 
 
@@ -212,12 +212,12 @@
                    <div class="form-group col-md-6">
                     <label>From Age <span style="color: red;">*</span></label>
 
-                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required disabled>
+                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required readonly>
                   </div>
                    <div class="form-group col-md-6">
                     <label>To Age <span style="color: red;">*</span></label>
 
-                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext " name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required disabled>
+                    <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"  class="form-control required title-case text notext " name="toage"  maxlength="2"  id="toage" value="<?php if(isset($toage)){ echo $toage; } ?>" placeholder=" To Age" required readonly>
                   </div>
                   <div class="col-md-12">
                     <label>Participant Type <span style="color: red;">*</span></label>
@@ -226,13 +226,13 @@
 
                         <?php if(isset($update)){ ?>
                    <div class="radio col-md-3">
-                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> required disabled> All</label>
+                    <label><input type="radio" name="gender" value="3" <?php if($gender=="3") { echo "checked";} ?> required readonly> All</label>
                   </div>
                   <div class="radio col-md-3">
-                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?> disabled> Male</label>
+                    <label><input type="radio" name="gender" value="1" <?php if($gender=="1") { echo "checked";} ?> readonly> Male</label>
                   </div>
                   <div class="radio col-md-6">
-                    <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?> disabled> Female</label>
+                    <label><input type="radio" name="gender" value="2" <?php if($gender=="2") { echo "checked";} ?> readonly> Female</label>
                   </div>
                   <?php }else{ ?>
                     <div class="radio col-md-3">
@@ -270,7 +270,8 @@
                        <input type="hidden" class="form-control required title-case text" name="competitionusertype" id="competitionuser" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
                        <?php }?>
                         <?php if(isset($update)){ ?>
-                            <select name="competitionusertype" id="competitionusertype" class="form-control" disabled>
+                            <select name="competitionusertype" id="competitionusertype" class="form-control" readonly>
+                              <!-- disabled -->
                             <option value="">Competition User Type</option>
                             <option value="1">All</option>
                             <option value="2">one to one</option>
@@ -325,7 +326,7 @@
                        <input type="hidden" class="form-control required title-case text file_format" name="file_format" id="fileformat" value="<?php if(isset($file_format)){ echo $file_format; } ?>" disabled="">
                        <?php }?>
                        <?php if(isset($update)){ ?>
-                      <select name="file_format" id="file_format"class="form-control" disabled>
+                      <select name="file_format" id="file_format"class="form-control" readonly>
                         <option value="0">Select File Format</option>
                        
                         <option value="1">Document File / PDF file</option>
@@ -433,7 +434,7 @@
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
   <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
   <script type="text/javascript">
   <?php if($this->session->flashdata('upload_error')){ ?>
@@ -555,7 +556,16 @@ $(document).ready(function(){
     document.getElementById("tabinputtextid").value = '4';
   else if (document.getElementById('standard').value == '5')
     document.getElementById("tabinputtextid").value = '5';
+   else if (document.getElementById('standard').value == '6')
+    document.getElementById("tabinputtextid").value = '6';
 };
+    </script>
+    <script type="text/javascript">
+      $('#tabinputtextid').change(function(e) {
+       // alert('hii');
+    e.preventDefault();
+    // $("#txtSearch").datepicker("disable");
+});
     </script>
   
 

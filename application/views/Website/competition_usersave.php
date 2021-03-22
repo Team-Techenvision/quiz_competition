@@ -200,7 +200,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                           // print_r($uploadaudio);
                                        ?> -->
-                                     <input type="file" id="upload_audio" onchange="previewAudio(this);" name="upload_audio" accept="audio/*" />
+                                     <input type="file" id="upload_audio" onchange="previewAudio(this); Validate_audio(this);" name="upload_audio" accept="audio/*" />
 
 
 
@@ -215,7 +215,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <!-- <div class="form-group "> -->
                                        <input type="hidden" id="upload_vedio1" name="file_format" value="<?php echo $file_format; ?>" />
 
-                                     <input type="file" id="upload_vedio" name="upload_vedio"  accept="video/*"/>
+                                     <input type="file" id="upload_vedio" name="upload_vedio" onchange="Validate_video(this);"  accept="video/*"/>
 
                                       <p class="text-primary" style="position: absolute;">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed </p>
                                     <!-- </div> -->
@@ -227,7 +227,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <!-- <div class="form-group"> -->
                                       <input type="hidden" id="upload_image1" name="file_format" value="<?php echo $file_format; ?>" />
 
-                                     <input type="file" id="upload_image" name="upload_image" accept="image/*"  />
+                                     <input type="file" id="upload_image" name="upload_image" onchange="ValidateSingleInput(this);" accept="image/*"  />
                                     <!-- </div> -->
 
                                      <p class="text-primary" style="position: absolute;">Note:Only .jpg, .jpeg, .png Image Files are allowed </p>
@@ -238,7 +238,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <!-- <div class="form-group "> -->
                                        <input type="hidden" id="uploadfile1" name="file_format" value="<?php echo $file_format; ?>" />
 
-                                     <input type="file" id="uploadfile" name="uploadfile"  />
+                                     <input type="file" id="uploadfile" name="uploadfile" onchange="Validate_file(this);"  />
                                     <!-- </div> -->
 
                                     <p class="text-primary" style="position: absolute;">Note:Only .pdf, .doc, .docx File is allowed </p>
@@ -410,6 +410,106 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
         }
 
     }
+</script>
+<script type="text/javascript">
+  var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
+<script type="text/javascript">
+  var _validFile = [".mp4", ".3pg", ".mkv" , ".wmv" ];    
+function Validate_video(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFile[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFile.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
+<script type="text/javascript">
+  var _validFile1 = [".mp3", ".ogg", ".webm"];    
+function Validate_audio(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFile1[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFile1.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
+<script type="text/javascript">
+  var _validFile2 = [".pdf", ".doc", ".docx"];    
+function Validate_file(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFile2[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFile2.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
 </script>
  </body>
 </html>

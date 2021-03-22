@@ -226,7 +226,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 
               <div class="row ">
               <div class="col-xl-12 col-md-12 col-sm-12 col-12 over" >
-                 <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px;  border-radius: 10px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid" >
+                 <img src="<?php echo base_url('assets/images/competition/'.$list->photo); ?>" style=" height:300px; width: 100%;  border-radius: 10px; vertical-align: middle; border-style: none;" alt="intellithon" class="img-fluid" >
               
              <div class="overlay">
                   <div class="text">

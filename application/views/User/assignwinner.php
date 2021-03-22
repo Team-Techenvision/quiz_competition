@@ -68,6 +68,10 @@
                 
 
                  </div>
+                 <div class="form-group col-md-12">
+                   <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: Please select the competition title first then click on view participate.</p>
+                 </div>
+
                
 
                   </div>

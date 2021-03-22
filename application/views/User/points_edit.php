@@ -51,7 +51,7 @@
 
 
 
-                      <select name="competitionid" id="competitionid"class="form-control" disabled="">
+                      <select name="competitionid" id="competitionid"class="form-control" readonly="">
                     <option value="">Select Competition</option>
 
          
@@ -69,7 +69,7 @@
                    <div class="form-group col-md-6">
                     <label>Winner Position</label>
 
-                     <input type="text" class="form-control" name="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>" disabled>
+                     <input type="text" class="form-control" name="winnerposition" value="<?php if(isset($winnerposition)){ echo $winnerposition; } ?>" readonly>
                    </div> 
                      <div class="form-group col-md-6">
                     <label>Points <span style="color: red;">*</span></label>

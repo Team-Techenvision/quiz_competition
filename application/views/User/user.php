@@ -118,7 +118,7 @@
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
   <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <!-- <script src="trunk/dev/validation.js"></script> -->
   
 

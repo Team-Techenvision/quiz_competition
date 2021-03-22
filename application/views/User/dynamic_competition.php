@@ -95,13 +95,14 @@
                         </div> 
                         <div class="form-group col-md-6" id="u_image">
                             <label>Upload Image</label>
-                           <input class="form-control" type="file" id="upload_image" name="upload_image"  accept="image/*"  /> 
+
+                           <input class="form-control" type="file" id="upload_image" name="upload_image" onchange="ValidateSingleInput(this);"  accept="image/*"  /> 
                             <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .jpg, .jpeg, .png Image Files are allowed.</p>
                         </div>
                          <div class="form-group col-md-6" id="u_video">
                             <label>Upload Video</label>
 
-                           <input class="form-control" type="file" id="upload_video" name="upload_file" accept="video/*"  /> 
+                           <input class="form-control" type="file" id="upload_video" name="upload_file" onchange="Validate_video(this);" accept="video/*"  /> 
                            <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed.</p>
 
                         </div>
@@ -270,6 +271,56 @@ jQuery($ => {
        // e.preventdefault();
   });
 
+</script>
+<script type="text/javascript">
+  var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
+<script type="text/javascript">
+  var _validFile = [".mp4", ".3pg", ".mkv" , ".wmv" ];    
+function Validate_video(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFile[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFile.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
 </script>
 <!-- <script type="text/javascript">
 //for image upload

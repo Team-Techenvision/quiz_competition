@@ -102,7 +102,7 @@
 
                                    <?php  }else{ ?>
                                      
-                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" disabled>
+                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" readonly>
 
 
                                    <?php } } ?>
@@ -144,7 +144,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="gender" id="gender"class="form-control" disabled="">
+                                  <select name="gender" id="gender"class="form-control" readonly="">
                                     <option value="">Select Gender</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
@@ -176,7 +176,7 @@
                               <div class="col-md-4"><label for="inputName" class="form-label">Email Address</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                    <input type="email" class="form-control" name="emailid" id="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php echo $value->user_email;  ?>" placeholder="Enter Email Address" disabled>
+                                    <input type="email" class="form-control" name="emailid" id="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php echo $value->user_email;  ?>" placeholder="Enter Email Address" readonly>
                                   </div></div>
                                   </div>
 
@@ -233,7 +233,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="standard" id="standard"class="form-control" disabled="" >
+                                  <select name="standard" id="standard"class="form-control" readonly="" >
                                   <option value="">Select Standard</option>
                                   <option value="1">Nursary</option>
                                   <option value="2">KG-I</option>
@@ -359,7 +359,7 @@
 
                                       <input type="text" class="form-control title-case " name="pincode" id="pincode" value="<?php if(isset($pincode)){ echo $pincode; } ?>" disabled="">
                                        <?php }?>   -->
-                                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" disabled >
+                                     <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" minlength="6" maxlength="6" name="pincode" id="pincode" value="<?php echo $value->user_pincode;  ?>" placeholder="Enter pincode" readonly >
                                     </div></div>
                                   </div>
                             <?php } ?>
