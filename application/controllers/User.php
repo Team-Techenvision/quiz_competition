@@ -1036,6 +1036,100 @@ public function check_competitiontype(){
 
 /*******************************    User Information      ****************************/
 
+// Add New User....
+  public function add_bulk(){
+    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    // if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/add_bulk');
+    $this->load->view('Include/footer');
+  }
+
+  public function importFile(){
+  
+      if ($this->input->post('submit')) {
+                 
+                $path = 'assets/uploads/';
+                require_once APPPATH . "/third_party/PHPExcel.php";
+                $config['upload_path'] = $path;
+                $config['allowed_types'] = 'xlsx|xls|csv';
+                $config['remove_spaces'] = TRUE;
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);            
+                if (!$this->upload->do_upload('uploadFile')) {
+                    $error = array('error' => $this->upload->display_errors());
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+                }
+                if(empty($error)){
+                  if (!empty($data['upload_data']['file_name'])) {
+                    $import_xls_file = $data['upload_data']['file_name'];
+                } else {
+                    $import_xls_file = 0;
+                }
+                $inputFileName = $path . $import_xls_file;
+                 
+                try {
+                    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+                    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                    $objPHPExcel = $objReader->load($inputFileName);
+                    $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+                    $flag = true;
+                    $i=0;
+
+                    // $inserdata="";
+                    foreach ($allDataInSheet as $value) {
+
+
+                      // if($flag){
+                      //   $flag =false;
+                      //   continue;
+                      // } 
+        // 'company_id' => $quizweb_company_id,
+
+                      // $inserdata[$i]['company_id'] = $value['A'];
+                      // $inserdata[$i]['last_name'] = $value['B'];
+                      // $inserdata[$i]['email'] = $value['C'];
+                      // $inserdata[$i]['contact_no'] = $value['D'];
+                      $indata[$i]['user_name'] = $value['A'];
+                      $indata[$i]['user_mobile'] = $value['B'];
+                      // $indata[$i]['user_city'] = $value['C'];
+                      $indata[$i]['user_email'] = $value['C'];
+                      $indata[$i]['user_password'] = md5($value['D']);
+                      $indata[$i]['user_pincode'] = $value['E'];
+
+                      // print_r($indata); die();
+
+                      $i++;
+                    }   
+                      // print_r($data[$i]['user_name']); die();            
+                    $result = $this->User_Model->importData($indata);   
+                    if($result){
+                      echo "Imported successfully";
+                    }else{
+                      echo "ERROR !";
+                    }             
+      
+              } catch (Exception $e) {
+                   die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
+                            . '": ' .$e->getMessage());
+                }
+              }else{
+                  echo $error['error'];
+                }
+                 
+                 
+        }
+         $this->load->view('Include/head');
+         $this->load->view('Include/navbar');
+         $this->load->view('User/add_bulk');
+         $this->load->view('Include/footer');
+    }
+
   // Add New User....
   public function add_user(){
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');

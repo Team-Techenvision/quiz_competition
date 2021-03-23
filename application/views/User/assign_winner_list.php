@@ -39,7 +39,7 @@
                   <th>Competition Title</th>
                   <th>Winner Position</th>
                   <th>Points</th>
-                  <th>Conersion Points</th>
+                  <th>Conversion Points</th>
                  
                  <!--  <th class="wt_50">Action</th> -->
                 </tr>

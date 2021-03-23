@@ -152,7 +152,30 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
                   </div>
                 </div>
               </div>
-          <?php } } } ?>
+          <?php } } }else{ ?>
+            <div class="item">
+                <div class="main-slide ">
+                  <div class="row ">
+                   <!--  <div class=" col-md-4 col-12 ">
+                        <h1>< ?php echo $list->title; ?> </h1>
+                        <p>< ?php echo $list->subtitle; ?></p>
+                        
+                    </div> -->
+                    <!-- <div class="image-gradient"></div> -->
+                    <div class="col-md-4 bg-website banner_text_div">
+                         <h1 class="text-white">Preview: Aus vs India, 1st Test </h1>
+                        <p class="ptitle">Australia host India in the first of four Tests starting this Thursday and here's all you need to know</p>
+                    </div>
+                    <div class="col-md-8 col-12 image_div">
+                        <div class="grad">
+                       
+                        </div>
+                        <img src="<?php echo base_url(); ?>assets/images/banner/profile_image_2_1608269490.jpg" width="100%">
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <?php  } ?>
       </div>
       </div>
      </div>

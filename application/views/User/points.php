@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" >
+              <form id="form_action" name="point_form" role="form" action="" method="post" >
                 <div class="card-body row">
                   <div class="form-group col-md-6">
                    <label>Competiton Title <span style="color: red;">*</span></label>
@@ -117,9 +117,9 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <?php if(isset($update)){ ?>
-                    <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
+                    <button id="btn_update" onclick="return checkPrice()" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button>
+                    <button id="btn_save" type="submit" onclick="return checkPrice()" class="btn btn-success px-4">  Add</button>
                   <?php } ?>
                   <a href="<?php echo base_url(); ?>User/points_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
@@ -186,6 +186,44 @@ $(document).ready(function(){
        // e.preventdefault();
   });
 
+</script>
+<!-- <script type="text/javascript">
+  $.validator.addMethod('le', function(value, element, param) {
+      return this.optional(element) || value <= $(param).val();
+}, 'Invalid value');
+$.validator.addMethod('ge', function(value, element, param) {
+      return this.optional(element) || value >= $(param).val();
+}, 'Invalid value');
+
+$('point_form').validate({rules: {
+            conversionpoints: {le: '#points1st'},
+            points: {ge: '#conversionpoints1st'},
+          
+      },
+      messages: {
+            conversionpoints: {le: 'Must be less than or equal to field 2'},
+            points: {ge: 'Must be greater than or equal to field 1'},
+            
+      }
+});
+</script> -->
+<script type="text/javascript">
+  function checkPrice(){
+    var conversionpoints1st = parseFloat(document.getElementById('conversionpoints1st').value);
+    var points1st = parseFloat(document.getElementById('points1st').value);
+    
+    // if (isNaN(lastprice) || isNaN(harga)) {
+    //     alert("Entered values are not numeric.");
+    //     return false;
+    // }
+    
+    if (points1st > conversionpoints1st) {
+        alert("Entered value is bigger");
+        return false;
+    }
+    
+    return true;
+}
 </script>
  
 </body>

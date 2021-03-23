@@ -35,7 +35,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" >
+              <form id="project_form1" role="form" action="" method="post" >
                 <div class="card-body row">
                   <div class="form-group col-md-6">
                    <label>Competiton Title <span style="color: red;">*</span></label>
@@ -74,12 +74,12 @@
                      <div class="form-group col-md-6">
                     <label>Points <span style="color: red;">*</span></label>
 
-                     <input type="text" class="form-control" name="points" value="<?php if(isset($points)){ echo $points; } ?>" required>
+                     <input type="text" id="points" class="form-control" name="points" value="<?php if(isset($points)){ echo $points; } ?>" required>
                    </div> 
                      <div class="form-group col-md-6">
                     <label>Conversion Points <span style="color: red;">*</span></label>
 
-                     <input type="text" class="form-control" name="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" required>
+                     <input type="text" id="conversionpoints" class="form-control" name="conversionpoints" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" required>
                    </div> 
                   
                   
@@ -91,7 +91,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <?php if(isset($update)){ ?>
-                    <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
+                    <button id="btn_update" onclick="return validateForm()" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
                     <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button>
                   <?php } ?>
@@ -119,6 +119,20 @@ $(document).ready(function(){
  $("#competitionid option[value='"+competition+"']").attr("selected","selected");
 
 });
+</script>
+<script type="text/javascript">
+   function validateForm() {
+ var x = $('#points').val();
+ var y = $('#conversionpoints').val();
+ 
+ // alert(x);
+ // alert(y);
+ 
+    if (x < y) {
+        alert("Please enter conversion points which should be less than points.");
+        return false;
+    }
+}
 </script>
  
 </body>

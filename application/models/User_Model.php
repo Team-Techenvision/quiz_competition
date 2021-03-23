@@ -7,6 +7,16 @@ class User_Model extends CI_Model{
         parent::__construct();
         $this->db1 = $this->load->database('quiz_ecommerce', TRUE);
     }
+    public function importData($data) {
+  
+            $res = $this->db->insert_batch('user',$data);
+            if($res){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+      
+        }
 
 //    public function check_compit($competitionid){
 // // $this->db->select('*');
