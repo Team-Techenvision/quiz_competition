@@ -2,7 +2,7 @@
 
 <section class="about-us aboutus" >
             <div class="container">
-                <div class="row">
+                <div class="row" style="color:#fffffffa;">
                   <div class="col-md-6">
                     <img src="<?php echo base_url(); ?>assets/images/aboutus1.jpg" class="rounded" alt="Responsive image"  width="100%" >
                   </div>
@@ -24,7 +24,7 @@
 <section class="about bgbackgroundpages" style="">
             <div class="container">
                <h3 class="text-white text-center mb-4">SOFT SKILLS</h3>
-                <div class="row">
+                <div class="row" style="color:#fffffffa;">
                    <div class="col-md-3">
                     <h4 class="text-white text-center">01</h4>
                      <div class="row mb-4"><img src="<?php echo base_url(); ?>assets/images/focus.jpg" class="rounded-circle center" alt="Responsive image" height="150" width="50%" ></div>

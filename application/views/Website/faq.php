@@ -1,7 +1,7 @@
 <section class="faq pt-5 py-5 bgbackgroundpages">
             <div class="container">
             	<h2 class="text-white text-center mb-5">Frequently Ask Question</h2>
-                <div class="row">
+                <div class="row" style="color:#fffffffa;">
                 	<h4 class="text-white mb-4"> How does Google protect my privacy and keep my information secure?</h4>
                    <p>
 					

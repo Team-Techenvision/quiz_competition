@@ -1,4 +1,6 @@
-<?php $page = 'user'; 
+<?php 
+// phpinfo();
+$page = 'user'; 
 // echo $page; die();
 ?>
 <style type="text/css">

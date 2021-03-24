@@ -113,6 +113,11 @@
       toastr.success('User Saved Successfully');
     });
   <?php } ?>
+   <?php if($this->session->flashdata('import_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Data Import Successfully');
+    });
+  <?php } ?>
   <?php if($this->session->flashdata('update_success')){ ?>
     $(document).ready(function(){
       toastr.success('User Updated Successfully');

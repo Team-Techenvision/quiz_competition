@@ -15,8 +15,9 @@ class User_Model extends CI_Model{
             }else{
                 return FALSE;
             }
-      
+       
         }
+   
 
 //    public function check_compit($competitionid){
 // // $this->db->select('*');
@@ -62,6 +63,30 @@ class User_Model extends CI_Model{
     $result = $query->result_array();
     return $result;
   }
+  function check_reg($mobile){
+    $query = $this->db->select('*')
+      ->where('user_mobile', $mobile)
+      // ->where('user_email', $email)
+     
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+    // print_r($result);
+    return $result;
+  }
+  function check_reg1($email){
+    $query = $this->db->select('*')
+      ->where('user_email', $email)
+      // ->where('user_email', $email)
+     
+      ->from('user')
+      ->get();
+    $result = $query->result_array();
+
+    // print_r($result);
+    return $result;
+  }
+ 
    function check_regdb1($email1){
     $query = $this->db1->select('*')
             ->from('customer_information')

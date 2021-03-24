@@ -296,7 +296,7 @@ label#user_password-error {
                
                 <div class="form-group col-md-6 labelerror" style="margin-top: 20px;">
                    <label class="form-check-label " style="margin-left: 50px;">
-                    <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t">Data Protection Policy</label> 
+                    <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t"><a href="<?php echo base_url(); ?>Privacy-Policy">Data Protection Policy</a></label> 
                    </label>
                   </div>
               </div>

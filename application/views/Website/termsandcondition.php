@@ -1,7 +1,7 @@
 <section class="temsandcondition pt-5 py-5 bgbackgroundpages">
             <div class="container">
             	<h2 class="text-white text-center mb-5">Terms and Condition</h2>
-                <div class="row">
+                <div class="row" style="color:#fffffffa;">
                 	<h4 class="text-white mb-4"> Is a Terms and Conditions required?</h4>
                    <p>
 					A Terms and Conditions is not required and it's not mandatory by law. Unlike Privacy Policies, which are required by laws such as the GDPR, CalOPPA and many others, there's no law or regulation on Terms and Conditions.<br><br>

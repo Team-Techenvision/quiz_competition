@@ -20,13 +20,13 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img class="rounded-circle" src="<?php echo base_url(); ?>assets/images/admin2.jpg" width="150" height="100"><br>
+    <img  src="<?php echo base_url(); ?>assets/images/logo.jpg" height="70"><br>
     <b>Admin Login</b>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Sign in to admin</p>
       <form method="post" action="">
         <div class="input-group mb-3">
           <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
@@ -46,17 +46,18 @@
           </div>
         </div>
         <span class="text-red"> <?php echo form_error('password'); ?> </span>
-        <div class="row">
-          <div class="col-4">
+        <div class="row text-center">
+
+          <div class="col-md-4 ">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
       <!-- /.social-auth-links -->
-      <p class="mb-1">
+    <!--   <p class="mb-1">
         <a href="#">I forgot my password</a>
-      </p>
+      </p> -->
       <div class="alert alert-danger p-2 msg_invalid" style="display:none" role="alert">
         Invalid Information
       </div>

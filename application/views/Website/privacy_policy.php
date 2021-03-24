@@ -1,7 +1,7 @@
 <section class="privacy_policy pt-5 py-5 bgbackgroundpages">
             <div class="container">
             	<h2 class="text-white text-center mb-5">Privacy Policy</h2>
-                <div class="row">
+                <div class="row" style="color:#fffffffa;">
                    <p> techEnvision is committed to protecting your privacy and developing technology that gives you the most powerful and safe online experience. This Statement of Privacy applies to the techEnvision website and governs data collection and usage. By using the techEnvision website, you consent to the data practices described in this statement.<br><br>
 
                    Collection Of Your Personal Information<br>

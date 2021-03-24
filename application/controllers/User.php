@@ -1038,10 +1038,10 @@ public function check_competitiontype(){
 
 // Add New User....
   public function add_bulk(){
-    // $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    // $quizweb_company_id = $this->session->userdata('quizweb_company_id');
-    // $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    // if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     
     $this->load->view('Include/head');
     $this->load->view('Include/navbar');
@@ -1050,6 +1050,11 @@ public function check_competitiontype(){
   }
 
   public function importFile(){
+
+     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
   
       if ($this->input->post('submit')) {
                  
@@ -1079,40 +1084,177 @@ public function check_competitiontype(){
                     $objPHPExcel = $objReader->load($inputFileName);
                     $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
                     $flag = true;
-                    $i=0;
+                    // $i=0;
 
                     // $inserdata="";
                     foreach ($allDataInSheet as $value) {
 
-
+                      
                       // if($flag){
                       //   $flag =false;
                       //   continue;
                       // } 
         // 'company_id' => $quizweb_company_id,
 
-                      // $inserdata[$i]['company_id'] = $value['A'];
-                      // $inserdata[$i]['last_name'] = $value['B'];
-                      // $inserdata[$i]['email'] = $value['C'];
-                      // $inserdata[$i]['contact_no'] = $value['D'];
-                      $indata[$i]['user_name'] = $value['A'];
-                      $indata[$i]['user_mobile'] = $value['B'];
-                      // $indata[$i]['user_city'] = $value['C'];
-                      $indata[$i]['user_email'] = $value['C'];
-                      $indata[$i]['user_password'] = md5($value['D']);
-                      $indata[$i]['user_pincode'] = $value['E'];
+                      $companyid = $quizweb_company_id;
+                      $username = $value['A'];
+                      $usermobile = $value['B'];
+                      $useremail = $value['C'];
+                      $userpassword = md5($value['D']);
+                      $userpincode = $value['E'];
+                      // $indata[$i]['user_addedby'] = $i;
+                      $isadmin = 1;
+                      $rollid = 2;
 
-                      // print_r($indata); die();
+                     $userm = $this->User_Model->check_reg($usermobile);
+                     $usere1 = $this->User_Model->check_reg1($useremail);
+                     $usere2 = $this->User_Model->check_regdb1($useremail);
 
-                      $i++;
+                     // print_r($usere2); die();
+
+                     if(empty($userm) || $userm==""){ 
+
+                       if(empty($usere1) || $usere1==""){ 
+
+                        if(empty($usere2) || $usere2==""){ 
+                     // print_r($usere2); die();
+
+
+                      $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
+                        VALUES ('$companyid', '$username',  '$usermobile', '$useremail', '$userpassword', '$userpincode','$isadmin', '$rollid');";
+                      $query1 = $this->db->query($sql1); 
+                      // print_r($query1); die();
+
+                    // $result = $this->User_Model->save_data("user",$indata); 
+                    // $result = $this->User_Model->importData($sql1); 
+
+                    // print_r($result); die();
+                   
+                      $sql = "SELECT * FROM user ORDER BY `user_id` DESC LIMIT 1";
+                      $query = $this->db->query($sql); 
+                      $result = $query->result_array();
+                      $us_id = $result[0]['user_id']; 
+                      $us_name = $result[0]['user_name']; 
+                      $us_mobile = $result[0]['user_mobile']; 
+                      $us_email = $result[0]['user_email']; 
+                      $us_pincode = $result[0]['user_pincode']; 
+                      $us_password = $result[0]['user_password']; 
+
+                      $data_view = array(
+                          'user_id' => $us_id,
+                          'user_name' => $us_name,
+                          'user_mobile' => $us_mobile,
+                          'user_email' => $us_email,
+
+                          // 'user_password' => md5($password),
+                          'user_pincode' => $us_pincode, 
+                          'profile_submitted' =>0, 
+                          'check_one' =>0,          
+                      );
+
+                    $this->User_Model->save_data('userprofile_master',$data_view);
+
+                     $data_viewdb1 = array(
+                          'user_id' => $us_id,
+                          'customer_id'   => $this->generator(15),
+                          'customer_name' => $us_name,
+                          'first_name' => $us_name,
+                          'customer_mobile' => $us_mobile,
+                          'customer_email' => $us_email,
+                          'password' =>  $us_password,
+                          // 'user_pincode' => $this->input->post('user_pincode'), 
+                          // 'profile_submitted' =>0,          
+                      );
+                      // print_r($data_viewdb1); die();
+                    $this->User_Model->save_data1('customer_information',$data_viewdb1);
+
+                    $this->session->set_flashdata('import_success','success');
+                      header('location:'.base_url().'User/user_list');
+
+                  }else{
+
+                      $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
+                        VALUES ('$companyid', '$username',  '$usermobile', '$useremail', '$userpassword', '$userpincode','$isadmin', '$rollid');";
+                      $query1 = $this->db->query($sql1); 
+                                      
+                      $sql = "SELECT * FROM user ORDER BY `user_id` DESC LIMIT 1";
+                      $query = $this->db->query($sql); 
+                      $result1 = $query->result_array();
+                      $us_id = $result1[0]['user_id']; 
+                      $us_name = $result1[0]['user_name']; 
+                      $us_mobile = $result1[0]['user_mobile']; 
+                      $us_email = $result1[0]['user_email']; 
+                      $us_pincode = $result1[0]['user_pincode']; 
+                      $us_password = $result1[0]['user_password']; 
+
+                      $data_view = array(
+                          'user_id' => $us_id,
+                          'user_name' => $us_name,
+                          'user_mobile' => $us_mobile,
+                          'user_email' => $us_email,
+
+                          // 'user_password' => md5($password),
+                          'user_pincode' => $us_pincode, 
+                          'profile_submitted' =>0, 
+                          'check_one' =>0,          
+                      );
+
+                    $this->User_Model->save_data('userprofile_master',$data_view);
+
+                    $update_datadb1 = array(
+                     'user_id' => $us_id,
+                  
+                     );
+                      // print_r($update_datadb1); die();
+
+                    $this->User_Model->update_info1('customer_email', $us_email, 'customer_information', $update_datadb1);
+
+                     $this->session->set_flashdata('import_error','error');
+                     header('location:'.base_url().'User/add_bulk');
+                      // echo $result; die();
+                      // echo "ERROR !";
+                      // $this->session->set_flashdata('import_error','error');
+                      // header('location:'.base_url().'User/add_bulk');
+                    } 
+
+                        }
+                    // else{
+                        //       // echo $result; die();
+                        //       // echo "ERROR !";
+                        //       $this->session->set_flashdata('import_error','error');
+                        //       header('location:'.base_url().'User/add_bulk');
+                        //     } 
+                      }
+                        // else{
+                  //             // echo $result; die();
+                  //             // echo "ERROR !";
+                  //             $this->session->set_flashdata('import_error','error');
+                  //             header('location:'.base_url().'User/add_bulk');
+                  // } 
+                   //complete    // print_r($us_id); die();
+
+                      // $i++;
                     }   
-                      // print_r($data[$i]['user_name']); die();            
-                    $result = $this->User_Model->importData($indata);   
-                    if($result){
-                      echo "Imported successfully";
+                if($result){
+                      // echo "Imported successfully";
+                      $this->session->set_flashdata('import_success','success');
+                      header('location:'.base_url().'User/user_list');
                     }else{
-                      echo "ERROR !";
-                    }             
+                      // echo $result; die();
+                      // echo "ERROR !";
+                      $this->session->set_flashdata('import_error','error');
+                      header('location:'.base_url().'User/add_bulk');
+                    }  
+                    if($result1){
+                      // echo "Imported successfully";
+                      $this->session->set_flashdata('import_success','success');
+                      header('location:'.base_url().'User/user_list');
+                    }else{
+                      // echo $result; die();
+                      // echo "ERROR !";
+                      $this->session->set_flashdata('import_error','error');
+                      header('location:'.base_url().'User/add_bulk');
+                    }               
       
               } catch (Exception $e) {
                    die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
@@ -1236,9 +1378,6 @@ public function check_competitiontype(){
 
     }
       $this->session->set_flashdata('save_success','success');
-
-
-
       header('location:'.base_url().'User/user_list');
     }
     $this->load->view('Include/head');

@@ -79,7 +79,18 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
-
+<script type="text/javascript">
+  <?php if($this->session->flashdata('import_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Data are not import successfully');
+    });
+  <?php } ?>
+ // < ?php if($this->session->flashdata('alreadyexits_error')){ ?>
+ //    $(document).ready(function(){
+ //      toastr.error('Data is already exits');
+ //    });
+ //  < ?php } ?>
+</script>
   <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
 <!-- <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script> -->
 <!-- <script src="trunk/dev/validation.js"></script> -->

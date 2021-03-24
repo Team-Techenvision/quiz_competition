@@ -35,7 +35,9 @@
                 </div>
               < ?php } ?> -->
             <div class="card-header " >
-             <p class="alert alert-danger msg mb-0"  id="msg" style="font-size:14px;  color: red;"></p>
+             <p class="alert alert-danger mesg mb-0"  id="mesg" style="font-size:14px;  color: red;"></p>
+
+            <!-- <p class="alert alert-danger msg1 mb-0"  id="msg1" style="font-size:14px;  color: red;"></p> -->
               <h4 class="card-title text-center" style="color: #3156bd;"><!-- <i class="fa fa-list"></i>  -->Profile Information</h4>
              <!--  <div class="card-tools col-md-2 " >
                 <a href="add_profile" class="btn btn-sm btn-block btn-primary "  >Add Participation</a>
@@ -102,7 +104,7 @@
 
                                    <?php  }else{ ?>
                                      
-                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" readonly>
+                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" >
 
 
                                    <?php } } ?>
@@ -233,7 +235,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="standard" id="standard"class="form-control" readonly="" >
+                                  <select name="standard" id="standard"class="form-control"  >
                                   <option value="">Select Standard</option>
                                   <option value="1">Nursary</option>
                                   <option value="2">KG-I</option>
@@ -586,7 +588,61 @@ $(document).ready(function(){
   });
 
 </script>
+<!-- Validation For standard and birthdate -->
+ <script>
+ $(document).ready(function(){
+    $('.mesg').hide();
 
+  $('#form_update').on('submit', function(e){
+        e.preventDefault();
+   // $('.btnUpdate').click(function(){
+    // alert("hii");
+
+
+     var stand = $('#standard').val();
+     // var gender = $('#gender').val();
+     var birthdate = $('#birthdate').val();
+     // alert(stand);
+     // alert(gender);
+     // alert(birthdate);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>WebsiteController/check_profile_standard",
+           method:"POST",
+           data:{standard:stand,birthdate:birthdate},
+
+           success:function(data)
+            {   
+
+               alert(data);
+               // console.log(data);
+                 if(data == "true"){
+                     // alert(data);
+                   $('.mesg').hide();
+                   // $("#form_update").submit();
+                   document.getElementById("form_update").submit();
+                   // window.location = "<?php echo base_url(); ?>WebsiteController";
+
+                 }else{
+
+                // alert(data);
+                // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
+                 $('.mesg').show();
+                 $('.mesg').html(data);
+                 $([document.documentElement, document.body]).animate({
+                      scrollTop: $("#msg_display").offset().top
+                  }, 500);
+                  // $('#msg').focus();
+                 // $('#alternatemobno').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+  });
+
+</script>
  <script>
    
 

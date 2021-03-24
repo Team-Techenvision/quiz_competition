@@ -1308,12 +1308,14 @@ public function check_userdata_profile(){
 
     $years = floor($diff / (365*60*60*24));
 
-    $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
-    foreach ($check_userdata as $value) {
-      $birth = $value['birthdate'];
-      $standard = $value['standard'];
-      $gender = $value['gender'];
-    }
+
+
+    // $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
+    // foreach ($check_userdata as $value) {
+    //   $birth = $value['birthdate'];
+    //   $standard = $value['standard'];
+    //   $gender = $value['gender'];
+    // }
 
     if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 14){
 
@@ -1334,6 +1336,69 @@ public function check_userdata_profile(){
    // print_r($standard); die();
  
    }
+   //check standard and birthdate
+public function check_profile_standard(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+    $birthdate = $this->input->post('birthdate');
+    $standard = $this->input->post('standard');
+    // $gender = $this->input->post('gender');
+    $current_date = date("Y-m-d");
+
+    //difference between bithdate and current date in year
+
+    $date1 = date("Y-m-d",strtotime($current_date));
+    $date2 = date("Y-m-d",strtotime($birthdate));
+
+    $diff = abs(strtotime($date2) - strtotime($date1));
+
+    $years = floor($diff / (365*60*60*24));
+
+    print_r($years); 
+
+    
+
+    // $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
+    // foreach ($check_userdata as $value) {
+    //   $birth = $value['birthdate'];
+    //   $standard = $value['standard'];
+    //   $gender = $value['gender'];
+    // }
+
+
+    if( $years <= 6  ){
+
+      // $a= 1;
+
+      // echo $a;
+
+      echo "true";
+       $this->session->set_flashdata('updateProfile_success','success');
+      // header('location:'.base_url().'WebsiteController');
+
+
+    }
+       else{
+      // $a= 0;
+
+        // echo $a;
+      echo "Please enter correct birthdate and standard.";
+      // die();
+      // header('location:'.base_url().'WebsiteController/edit_profile');
+
+     // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
+
+
+    }
+
+   // print_r($standard); die();
+ 
+   }
+ 
  
   public function edit_profile(){
 
@@ -1579,9 +1644,6 @@ public function check_userdata_profile(){
     $cnt = $this->Website_Model->check_dupli_num($company_id,$column_val,$column_name,$table_name);
     echo $cnt;
   }
-
-
-
 
 
 
