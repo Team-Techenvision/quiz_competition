@@ -63,7 +63,7 @@ class User_Model extends CI_Model{
     $result = $query->result_array();
     return $result;
   }
-  function check_reg($mobile){
+  function check_reg_m($mobile){
     $query = $this->db->select('*')
       ->where('user_mobile', $mobile)
       // ->where('user_email', $email)
@@ -74,7 +74,7 @@ class User_Model extends CI_Model{
     // print_r($result);
     return $result;
   }
-  function check_reg1($email){
+  function check_reg1_e($email){
     $query = $this->db->select('*')
       ->where('user_email', $email)
       // ->where('user_email', $email)
@@ -87,7 +87,7 @@ class User_Model extends CI_Model{
     return $result;
   }
  
-   function check_regdb1($email1){
+   function check_regdb1_e($email1){
     $query = $this->db1->select('*')
             ->from('customer_information')
             ->where('customer_email',$email1)

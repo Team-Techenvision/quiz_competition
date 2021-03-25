@@ -35,7 +35,7 @@
                 </div>
               < ?php } ?> -->
             <div class="card-header " >
-             <p class="alert alert-danger mesg mb-0"  id="mesg" style="font-size:14px;  color: red;"></p>
+             <p class="alert alert-danger msg mb-0"  id="msg" style="font-size:14px;  color: red;"></p>
 
             <!-- <p class="alert alert-danger msg1 mb-0"  id="msg1" style="font-size:14px;  color: red;"></p> -->
               <h4 class="card-title text-center" style="color: #3156bd;"><!-- <i class="fa fa-list"></i>  -->Profile Information</h4>
@@ -591,7 +591,7 @@ $(document).ready(function(){
 <!-- Validation For standard and birthdate -->
  <script>
  $(document).ready(function(){
-    $('.mesg').hide();
+    $('.msg').hide();
 
   $('#form_update').on('submit', function(e){
         e.preventDefault();
@@ -619,17 +619,17 @@ $(document).ready(function(){
                // console.log(data);
                  if(data == "true"){
                      // alert(data);
-                   $('.mesg').hide();
+                   $('.msg').hide();
                    // $("#form_update").submit();
                    document.getElementById("form_update").submit();
-                   // window.location = "<?php echo base_url(); ?>WebsiteController";
+                   // window.location = "< ?php echo base_url(); ?>WebsiteController";
 
                  }else{
 
                 // alert(data);
                 // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
-                 $('.mesg').show();
-                 $('.mesg').html(data);
+                 $('.msg').show();
+                 $('.msg').html(data);
                  $([document.documentElement, document.body]).animate({
                       scrollTop: $("#msg_display").offset().top
                   }, 500);

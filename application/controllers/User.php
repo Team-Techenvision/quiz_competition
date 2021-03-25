@@ -1106,9 +1106,9 @@ public function check_competitiontype(){
                       $isadmin = 1;
                       $rollid = 2;
 
-                     $userm = $this->User_Model->check_reg($usermobile);
-                     $usere1 = $this->User_Model->check_reg1($useremail);
-                     $usere2 = $this->User_Model->check_regdb1($useremail);
+                     $userm = $this->User_Model->check_reg_m($usermobile);
+                     $usere1 = $this->User_Model->check_reg1_e($useremail);
+                     $usere2 = $this->User_Model->check_regdb1_e($useremail);
 
                      // print_r($usere2); die();
 
@@ -1287,7 +1287,7 @@ public function check_competitiontype(){
       $email = $this->input->post('user_email');
 
 
-      $email2 = $this->User_Model->check_regdb1($email);
+      $email2 = $this->User_Model->check_regdb1_e($email);
       
       // print_r($email2); die();
   if(empty($email2) || $email2==""){  
@@ -3210,11 +3210,16 @@ public function save_assigncompetition(){
 
 
      $points_user = $this->User_Model->get_list_by_id('user_id', $user_id,'','','','','user'); 
+     // print_r($points_user); die();
      foreach ($points_user as $value) {
       $points1 =$value->points;
       $conversionpoints1 =$value->conversionpoints;
+      $username =$value->user_name;
+      $useremail =$value->user_email;
 
      }
+
+     // print_r($useremail); die();
 
 
      $points_userdb1 = $this->User_Model->get_list_by_id1('user_id', $user_id,'','','','','customer_information'); 

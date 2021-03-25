@@ -1,5 +1,5 @@
 <?php 
-// phpinfo();
+
 $page = 'user'; 
 // echo $page; die();
 ?>

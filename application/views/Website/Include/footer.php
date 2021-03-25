@@ -92,6 +92,7 @@
             </form>
         </div><!-- /.search-popup__inner -->
     </div><!-- /.search-popup -->
+ <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
 
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.bundle.min.js"></script>
@@ -111,10 +112,9 @@
       AOS.init();
     </script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> 
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/form-builder.min.js"></script> -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/form-render.min.js"></script> -->
+ <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>  -->
+<!-- <script src="< ?php echo base_url(); ?>assets/js/form-builder.min.js"></script> -->
+<!-- <script src="< ?php echo base_url(); ?>assets/js/form-render.min.js"></script> -->
 <script> 
 
    // <!-- template scripts -->
@@ -174,6 +174,8 @@ $(function() {
                   // alert(data);
  
                    if(data=='Sign In Successful'){
+
+                    // alert(data);
 
                       $('.alert-success').html(data);
                       $('.successresponse').show().delay(5000).fadeOut();

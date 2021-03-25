@@ -76,6 +76,9 @@ class WebsiteController extends CI_Controller{
       $login = $this->Website_Model->check_login($mobile,$password);
    
      if($login == null ){
+
+      // $a=0;
+      // echo $a;
      
          echo "Invalid Credentials";
 
@@ -86,6 +89,10 @@ class WebsiteController extends CI_Controller{
         $this->session->set_userdata('quizweb_user_id', $login[0]['user_id'] );
         $this->session->set_userdata('quizweb_company_id', $login[0]['company_id']);
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
+        // $a = 1;
+      // echo $a;
+
+
         echo 'Sign In Successful';
       
       }
@@ -947,7 +954,7 @@ public function competition_uploadfile(){
          );
           // print_r($update_datadb1); die();
 
-        $this->Website_Model->update_info1('customer_email', $emailAddress, 'customer_information', $update_datadb1);
+      $this->Website_Model->update_info1('customer_email', $emailAddress, 'customer_information', $update_datadb1);
 
       $mobile = $this->input->post('user_mobile');
       $password = $this->input->post('user_password');
@@ -1370,7 +1377,7 @@ public function check_profile_standard(){
     // }
 
 
-    if( $years <= 6  ){
+    if($years >=3 || $years <= 6  && $standard >=1 ||$standard <=5  ){
 
       // $a= 1;
 
