@@ -215,7 +215,174 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/Include/head');
     $this->load->view('Website/faq');
     $this->load->view('Website/Include/footer');
-}     
+}  
+
+/*********************     Forgot Password     ****************************/
+  public function forgotpassword(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/forgotpassword_view');
+    $this->load->view('Website/Include/footer');
+}  
+
+public function forgotpasswordsubmit(){
+     
+
+     $email_Add = $this->input->post('email_id');
+
+      $check_email = $this->Website_Model->check_reg1($email_Add);
+
+   
+
+    //   print_r($check_email); die();
+
+       if($check_email == null ){
+           
+        //   echo "Enter Valid Email Address";
+
+        $this->session->set_flashdata('email_error','error');
+        header('location:'.base_url().'WebsiteController/forgotpassword');
+
+       }else{
+           
+    $userName = $check_email[0]['user_name'];
+ 
+    $this->form_validation->set_rules('email_id', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+
+       $randcode = rand(10000,100000);
+       // print_r($randcode); die();
+      $save_data = array(
+       
+       
+        'email_id' => $this->input->post('email_id'),
+        'rand_code' => $randcode,
+       
+      
+      );
+      // print_r($save_data);
+      $this->Website_Model->save_data('forgotpassword',$save_data);
+      
+       $this->session->set_flashdata('emaillink_success','success');
+       header('location:'.base_url().'WebsiteController/forgotpassword');
+
+        require("phpmailer/sendemail.php");
+        require("phpmailer/mail-reset-pass.php");
+        
+        // $name = 'Vinayak';
+        $rcpt= $email_Add;
+        $sub= 'Forgot Password';
+        $msg= $msg_reset_pass;
+        $msg = str_replace('[[UserName]]', $userName, $msg);
+        $msg = str_replace('[[code]]', $randcode, $msg);
+        
+        
+        sendemail($rcpt, $sub, $msg);
+     
+    }
+
+  
+   } 
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/forgotpassword_view');
+    $this->load->view('Website/Include/footer');
+   
+}
+
+public function resetpassword(){
+
+    $code = $this->uri->segment(3);
+
+    $check_code = $this->Website_Model->check_resetpass($code);
+    
+    
+    // print_r($check_code); die();
+    if($check_code == null)
+    {
+       $this->session->set_flashdata('email_error','error');
+       header('location:'.base_url().'WebsiteController/forgotpassword');
+       
+    }else{
+        
+      $this->session->set_userdata('randcode',  $code);
+
+      $this->load->view('Website/Include/head');
+      $this->load->view('Website/resetpassword');
+      $this->load->view('Website/Include/footer');
+
+    }
+
+
+}
+
+public function reset(){
+
+      $code = $this->session->userdata('randcode');
+
+      $check_code = $this->Website_Model->check_code($code);
+
+      $userName = $check_code[0]['user_name'];
+      $userEmail = $check_code[0]['user_email'];
+      $user_id = $check_code[0]['user_id'];
+      
+      $newpass = $this->input->post('newpassword');
+      $Re_enter_newpass = $this->input->post('retypepassword');
+
+    //   print_r($userEmail); die();
+
+      if($newpass == $Re_enter_newpass ){
+            $this->form_validation->set_rules('newpassword', 'First Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+
+             // print_r($randcode); die();
+      $update_data = array(
+
+       'user_password' => md5($this->input->post('newpassword')),  
+      
+      ); 
+      // print_r($save_data);
+       $this->Website_Model->update_info('user_id', $user_id, 'user', $update_data);
+      
+        $update_data1 = array(
+
+       'password' => md5($this->input->post('newpassword')),  
+      
+      ); 
+      // print_r($save_data);
+       $this->Website_Model->update_info1('user_id', $user_id, 'customer_information', $update_data1);
+
+        require("phpmailer/sendemail.php");
+        require("phpmailer/new-reset-password.php");
+        
+        // $name = 'Vinayak';
+        $rcpt= $userEmail;
+        $sub= 'Forgot Password';
+        $msg= $new_msg_reset_pass;
+        $msg = str_replace('[[UserName]]', $userName, $msg);
+        
+        
+      sendemail($rcpt, $sub, $msg);
+
+      $this->session->set_flashdata('resetpassword_success','success');
+      header('location:'.base_url().'WebsiteController');
+    }
+
+       
+
+      }else{
+ 
+    
+        $this->session->set_flashdata('emailcheck_error','error');
+        header('location:'.base_url().'WebsiteController/resetpassword/'.$code);
+  
+  } 
+      $this->load->view('Website/Include/head');
+      $this->load->view('Website/resetpassword');
+      $this->load->view('Website/Include/footer');
+   
+}
+
+
 
 /***************** Competition Single Page View    *********************/
   public function competition_singlepage(){
@@ -828,6 +995,8 @@ public function competition_uploadfile(){
 
       $password = $this->input->post('user_password');
       $emailAddress = $this->input->post('user_email');
+      $name = $this->input->post('user_name');
+      
       $save_data = array(
        
         'user_pincode' => $this->input->post('user_pincode'),
@@ -915,6 +1084,18 @@ public function competition_uploadfile(){
         // $mob = $this->Website_Model->check_reg($mobile);
       // print_r($mobile); 
 
+        require("phpmailer/sendemail.php");
+        require("phpmailer/mail-instruction.php");
+        
+        // $name = 'Vinayak';
+        $rcpt= $emailAddress;
+        $sub= 'Thank you for registration';
+        $msg= $msg_instregistered;
+        $msg = str_replace('[[UserName]]', $name, $msg);
+        
+        
+        sendemail($rcpt, $sub, $msg); 
+
         // $this->session->set_flashdata('login_success','success');
         echo "Sign Up Successfully";
         // header('location:'.base_url().'WebsiteController');
@@ -977,6 +1158,17 @@ public function competition_uploadfile(){
         $this->session->set_userdata('quizweb_roll_id', $login[0]['roll_id']);
         // $mob = $this->Website_Model->check_reg($mobile);
       // print_r($mobile); 
+        require("phpmailer/sendemail.php");
+        require("phpmailer/mail-instruction.php");
+        
+        // $name = 'Vinayak';
+        $rcpt= $emailAddress;
+        $sub= 'Thank you for registration';
+        $msg= $msg_instregistered;
+        $msg = str_replace('[[UserName]]', $name, $msg);
+        
+        
+        sendemail($rcpt, $sub, $msg);
 
         // $this->session->set_flashdata('login_success','success');
         echo "Sign Up Successfully";

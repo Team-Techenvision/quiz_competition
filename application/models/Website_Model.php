@@ -38,6 +38,7 @@ function check_login($mobile,$password){
     // print_r($result);
     return $result;
   }
+
   function check_reg1($email){
     $query = $this->db->select('*')
       ->where('user_email', $email)
@@ -58,6 +59,30 @@ function check_login($mobile,$password){
     $result = $query->result_array();
 
     return $result;
+  }
+
+   function check_resetpass($code){
+    $query = $this->db->select('*')
+      ->where('rand_code', $code)
+      // ->where('user_email', $email)
+     
+      ->from('forgotpassword')
+      ->get();
+    $result = $query->result_array();
+    // print_r($result);
+    return $result;
+  }
+   public function check_code($code){
+
+   $this->db->select('forgotpassword.*,user.*');   
+   $this->db->join('user', 'forgotpassword.email_id = user.user_email', 'inner');
+
+  $this->db->where('rand_code', $code);
+  
+  $this->db->from('forgotpassword');
+  $query = $this->db->get();
+  $result = $query->result_array();
+  return $result;
   }
 
  public function download($quiz_id)

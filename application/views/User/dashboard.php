@@ -52,7 +52,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="<?php echo base_url(); ?>User/competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url(); ?>User/competition_list_complete" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3 col-6">
@@ -64,7 +64,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="<?php echo base_url(); ?>User/competition_list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url(); ?>User/competition_list_ongoing" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3 col-6">

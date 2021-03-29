@@ -107,6 +107,9 @@
 
                       <?php } } ?>
                       </table> 
+                         <div class="form-group col-md-12">
+                           <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: User can Enter Field Name as Answer Options and Select Correct Answer as Radio Button and Check Box. </p>
+                         </div>
                     </div>
                 </div>
              

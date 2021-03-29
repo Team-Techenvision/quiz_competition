@@ -45,7 +45,7 @@
                 </thead>
                 <tbody>
                   <?php $i = 0;
-                  foreach ($competition_list as $list) {
+                  foreach ($competition_list_ongoing as $list) {
                   // print_r($list->competitiontypeid); 
 
                     $i++; ?>

@@ -110,17 +110,14 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                           <label class="text-dark labelSC">Competition Subject : </label>
                            <label class="subject" style="margin-bottom: -20px!important;"><?php echo $value->subjectstextarea; ?></label>
                      </div>
-                      <div class="col ml-4" >
-                         <label class="text-dark labelSC">Competition Level : </label>
-                         <?php echo $value->levelname; ?>
-                     </div>
+                   
                       <div class="col ml-4" >
                          <label class="text-dark labelSC">Class : </label>
                          <?php echo $value->tabinputtext; ?>
                      </div>
                        <div class="col ml-4" >
                          <label class="text-dark labelSC">End Date : </label>
-                         <?php echo $value->enddate; ?>
+                         <?php $newDate = date("d-m-Y", strtotime($value->enddate));    echo $newDate; ?>
                      </div>
                        <div class="col ml-4" >
                          <label class="text-dark labelSC">Age : </label>
@@ -200,7 +197,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                           // print_r($uploadaudio);
                                        ?> -->
-                                     <input type="file" id="upload_audio" onchange="previewAudio(this); Validate_audio(this);" name="upload_audio" accept="audio/*" />
+                                     <input type="file" id="upload_audio" onchange="previewAudio(this); Validate_audio(this);" name="upload_audio" accept="audio/*" required/>
 
 
 
@@ -215,7 +212,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <!-- <div class="form-group "> -->
                                        <input type="hidden" id="upload_vedio1" name="file_format" value="<?php echo $file_format; ?>" />
 
-                                     <input type="file" id="upload_vedio" name="upload_vedio" onchange="Validate_video(this);"  accept="video/*"/>
+                                     <input type="file" id="upload_vedio" name="upload_vedio" onchange="Validate_video(this);"  accept="video/*" required/>
 
                                       <p class="text-primary" style="position: absolute;">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed </p>
                                     <!-- </div> -->
@@ -227,7 +224,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <!-- <div class="form-group"> -->
                                       <input type="hidden" id="upload_image1" name="file_format" value="<?php echo $file_format; ?>" />
 
-                                     <input type="file" id="upload_image" name="upload_image" onchange="ValidateSingleInput(this);" accept="image/*"  />
+                                     <input type="file" id="upload_image" name="upload_image" onchange="ValidateSingleInput(this);" accept="image/*" required />
                                     <!-- </div> -->
 
                                      <p class="text-primary" style="position: absolute;">Note:Only .jpg, .jpeg, .png Image Files are allowed </p>
@@ -238,7 +235,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                                     <!-- <div class="form-group "> -->
                                        <input type="hidden" id="uploadfile1" name="file_format" value="<?php echo $file_format; ?>" />
 
-                                     <input type="file" id="uploadfile" name="uploadfile" onchange="Validate_file(this);"  />
+                                     <input type="file" id="uploadfile" name="uploadfile" onchange="Validate_file(this);" required />
                                     <!-- </div> -->
 
                                     <p class="text-primary" style="position: absolute;">Note:Only .pdf, .doc, .docx File is allowed </p>

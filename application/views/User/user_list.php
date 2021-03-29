@@ -61,7 +61,7 @@
                     <td >
                        <input type="hidden" name="user_id" id="user_id" value="<?php echo $list->user_id; ?>">
 <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
-                       <a href="" id="<?php echo $list->user_id; ?>"  class="comp_by_userid" value="<?php echo $list->user_id; ?>" >  <img src="<?php echo base_url(); ?>assets/images/competition.jpg" width="50" height="25"></a>
+                       <a href="" id="<?php echo $list->user_id; ?>"  class="comp_by_userid" value="<?php echo $list->user_id; ?>" title="View Competition" >  <img src="<?php echo base_url(); ?>assets/images/competition.jpg" width="50" height="25"></a>
 
                       <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>" hidden> <i class="fa fa-edit" ></i> </a>
                       <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Do you want to delete this user?');" class="ml-2" hidden> <i class="fa fa-trash text-danger"></i> </a>

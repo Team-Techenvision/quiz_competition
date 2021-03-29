@@ -80,7 +80,9 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                       <div class="container border border-dark">
-
+                         <!-- <div class="col-md-12 text-right"> <label >Time : </label>
+                      <div  id="display"></div></div>
+ -->
         <!-- ================================================================ -->
 
                         <form id="form_action" name="quiz_form" role="form" action="<?php echo base_url();?>WebsiteController/submit_quizs" method="post"  class="m-3">
@@ -91,7 +93,7 @@
 
                             // print_r($result); die();
                             ?>
-                          <div class="mb-3 p-2 border border-success">                           
+                          <div class="mb-3 p-2 border border-success question">                           
                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                            
                             <?php if($value['answertype']=="1"){ ?>
 
@@ -154,6 +156,10 @@
                             <?php } ?>
                           </div>
                           <?php $q++; } ?>
+                         <!--  <div class="d-flex m-5 justify-content-center ">
+                               <div class="button1 hide col-md-2 btn btn-primary  " id="next">Next</div>
+                               <div class="button1 hide col-md-2 btn btn-primary  ml-2" id="prev">Prev</div>
+                         </div> -->
                           <div class="d-flex m-5">
                             <button class="btn btn-primary">Submit</button>                            
                           </div> 
@@ -199,24 +205,152 @@
               document.getElementById('contact').style.pointerEvents = 'none';
               document.getElementById('username').style.pointerEvents = 'none';
 
-              //footer not working code
-              // document.getElementById('About').style.pointerEvents = 'none';
-              // document.getElementById('overview').style.pointerEvents = 'none';
-              // document.getElementById('teachers').style.pointerEvents = 'none';
-              // document.getElementById('pp').style.pointerEvents = 'none';
-              // document.getElementById('tandc').style.pointerEvents = 'none';
-              // document.getElementById('faq').style.pointerEvents = 'none';
-              // document.getElementById('contactus').style.pointerEvents = 'none';
-              // document.getElementById('register').style.pointerEvents = 'none';
-              // document.getElementById('twit').style.pointerEvents = 'none';
-              // document.getElementById('face').style.pointerEvents = 'none';
-              // document.getElementById('pint').style.pointerEvents = 'none';
-              // document.getElementById('insta').style.pointerEvents = 'none';
-
+          
               //keys close
                // document.getElementById('content').onkeypress=function(){return false;}//not worked
 
             </script>
+
+            <!-- ////////////////////////////////////////////////////////////////////////////// -->
+      <!--       <script>
+       $(document).ready(function() {
+   
+   
+   
+   
+   
+    //Store the total number of questions
+   var totalQuestions = $('.question').size();
+   // alert(totalQuestions);
+   //Set the current question to display to 1
+   var currentQuestion = 0;
+   //Store the selector in a variable.
+   //It is good practice to prefix jQuery selector variables with a $
+   $questions = $('.question');
+   $prev=$('#prev');
+   $next=$('#next');
+   
+   
+   
+   
+   //Hide all the questions
+   $questions.hide();
+   
+   
+   
+   
+   $prev.hide();
+   //Show the first question
+   $($questions.get(currentQuestion)).fadeIn();
+   //attach a click listener to the HTML element with the id of 'next'
+   $('#next').click(function () {
+        //fade out the current question,
+        //putting a function inside of fadeOut calls that function
+        //immediately after fadeOut is completed,
+        //this is for a smoother transition animation
+        $($questions.get(currentQuestion)).fadeOut(function () {
+           //increment the current question by one
+           currentQuestion = currentQuestion + 1;
+           if(currentQuestion<=1) $('.button1').fadeIn();
+          //alert(currentQuestion);
+           if (isNaN(currentQuestion) || currentQuestion == totalQuestions ) {
+        $('#next').fadeOut();
+       $($questions.get(currentQuestion)).fadeIn();
+      }
+           //if there are no more questions do stuff
+           if (currentQuestion == totalQuestions) {
+              // var result = sum_values()
+               //do stuff with the result
+               //alert(totalQuestions);
+               $('#prev').fadeIn();
+               $('#next').fadeOut();
+               currentQuestion=currentQuestion-1
+               $($questions.get(currentQuestion)).fadeIn();
+           } else {
+               $('#next').fadeIn();
+               //otherwise show the next question
+               $($questions.get(currentQuestion)).fadeIn();
+           }
+       });
+   });
+   
+   
+$('#prev').click(function () {
+   //fade out the current question,
+   //putting a function inside of fadeOut calls that function
+   //immediately after fadeOut is completed,
+   //this is for a smoother transition animation
+   $($questions.get(currentQuestion)).fadeOut(function () {
+      //Decrement the current question by one
+      currentQuestion = currentQuestion - 1;
+      //if there are no more questions do stuff
+      if (isNaN(currentQuestion) || currentQuestion <= 0 ) {
+       $('#prev').fadeOut();
+       $($questions.get(currentQuestion)).fadeIn();
+      }
+      if (currentQuestion == totalQuestions) {
+          currentQuestion=currentQuestion-1
+          $($questions.get(currentQuestion)).fadeIn();
+      } else {
+       $('#next').fadeIn();
+          //otherwise show the next question
+          $($questions.get(currentQuestion)).fadeIn();
+      }
+   });
+   
+   });
+   });
+   </script>  -->
+   <!-- //////////////    Timer         //////////////// -->
+
+   <script type="text/javascript">
+
+  //  var countdown = 30 * 60 * 1000;
+//var timerId = setInterval(function(){
+ // countdown -= 1000;
+//  var min = Math.floor(countdown / (60 * 1000));
+  //var sec = Math.floor(countdown - (min * 60 * 1000));  // wrong
+//  var sec = Math.floor((countdown - (min * 60 * 1000)) / 1000);  //correct
+
+//  if (countdown <= 0) {
+//     alert("30 min!");
+//     //doSomething();
+//  } else {
+   //  $("#display").html(min + " : " + sec);
+ // }
+
+//}, 1000); //1000ms. = 1sec.
+     // function CountDown(duration, display) {
+     //       if (!isNaN(duration)) {
+     //           var timer = duration, minutes, seconds;
+               
+     //         var interVal=  setInterval(function () {
+     //               minutes = parseInt(timer / 60, 10);
+     //               seconds = parseInt(timer % 60, 10);
+
+     //               minutes = minutes < 10 ? "0" + minutes : minutes;
+     //               seconds = seconds < 10 ? "0" + seconds : seconds;
+
+     //               $(display).html("<b>" + minutes + "m : " + seconds + "s" + "</b>");
+     //               if (--timer < 0) {
+     //                   timer = duration;
+     //                  SubmitFunction();
+     //                  $('#display').empty();
+     //                  clearInterval(interVal)
+     //               }
+     //               },1000);
+     //       }
+     //   }
+       
+     //   function SubmitFunction(){
+     //  $('form').submit();
+     //   window.location = "< ?php echo base_url(); ?>WebsiteController";
+       
+     //   }
+   
+     //    CountDown(300,$('#display'));
+     
+   </script>
             
           </body>
         </html>

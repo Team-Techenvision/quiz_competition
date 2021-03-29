@@ -286,6 +286,13 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script> 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
 <script type="text/javascript">
+  <?php if($this->session->flashdata('resetpassword_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Your password has been reset successfully');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     // $(document).ready(function(){
 

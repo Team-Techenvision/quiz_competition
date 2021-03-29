@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>COMPETITION INFORMATION</h4>
+            <h4>COMPLETE COMPETITION INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -45,7 +45,7 @@
                 </thead>
                 <tbody>
                   <?php $i = 0;
-                  foreach ($competition_list as $list) {
+                  foreach ($competition_list_complete as $list) {
                   // print_r($list->competitiontypeid); 
 
                     $i++; ?>
@@ -64,9 +64,9 @@
                         
                       <?php $status = $list->status; 
                           if ($status == 1) {?> 
-                              <a class="btn btn-success" href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Deactivate this competition?');" title="Active" ><i class="fa fa-thumbs-up"></i></a> 
+                              <a class="btn btn-success" href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Deactivate this competition?');" title="Active" hidden ><i class="fa fa-thumbs-up"></i></a> 
                           <?php } else {?> 
-                              <a href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Activate this competition?');" class="btn btn-danger" title="Inactive"><i class="fa fa-thumbs-down"></i></a> 
+                              <a href="<?php echo base_url();?>User/competition_active?competitionid=<?php echo $list->competitionid;?>&active=<?php echo $list->status;?>"onclick="return confirm('Are you sure to Activate this competition?');" class="btn btn-danger" title="Inactive" hidden><i class="fa fa-thumbs-down"></i></a> 
                           <?php } ?> &nbsp;
                      
 
@@ -79,7 +79,7 @@
 
                    <?php if($list->competitiontypeid==1){ ?>
 
-                      <a  id="" name="" href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>" title="View Question"> <img src="<?php echo base_url(); ?>assets/images/question.jpg" width="40" height="40"></a>
+                      <a  id="" name="" href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>" title="View Question" hidden> <img src="<?php echo base_url(); ?>assets/images/question.jpg" width="40" height="40"></a>
                     <?php } ?>
                     </td>
                   <?php } ?>

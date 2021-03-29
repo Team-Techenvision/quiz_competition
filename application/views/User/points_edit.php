@@ -30,7 +30,7 @@
                   <?php } ?>
                
                  <div class="card-tools col-md-2 " >
-                <a href="<?php echo base_url(); ?>User/points_list" class="btn btn-sm btn-block btn-primary "  >Points List</a>
+                <a href="<?php echo base_url(); ?>User/points_list" class="btn btn-sm btn-block btn-primary ">Points List</a>
               </div>
               </div>
               <!-- /.card-header -->
@@ -45,7 +45,7 @@
 
                        ?>
 
-                       <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="competition" id="competition" value="<?php if(isset($competitionid)){ echo $competitionid; } ?>" disabled>
 
                        <?php }?>
 
@@ -114,6 +114,7 @@
   <script>
 $(document).ready(function(){
 
+ // var competition = $('#competition').val();
  var competition = $('#competition').val();
 
  $("#competitionid option[value='"+competition+"']").attr("selected","selected");

@@ -337,6 +337,10 @@ label#user_password-error {
              <span style="position: absolute; right: 20px;" toggle="#password-field"  class="fa fa-fw fa-eye field_icon toggle-password"></span>
              <input type="password" class="input" name="password" id="password" placeholder="Password" >
            </div>
+
+            <div class="form-group">
+             <label class="text-primary t"> <a href="<?php echo base_url(); ?>WebsiteController/forgotpassword">Forgot Password</a></label>
+            </div>
           
            <!--  <span class="text-red"> < ?php echo form_error('password'); ?> </span> -->
 

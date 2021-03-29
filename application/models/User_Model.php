@@ -521,6 +521,7 @@ $this->db->from('userscore_master');
 
   }
   public function competitionName_list($competitionid){
+    // print_r($competitionid);
    //   // $today = date('Y-m-d');
    //   // $this->db->select('*');
    //  $this->db->select('competition.*');
@@ -530,13 +531,14 @@ $this->db->from('userscore_master');
    //  $this->db->where('competitionid',$competitionid);
    //  $query = $this->db->get();
    //  $result = $query->result_array();
-      $this->db->select('competition.*,competitiontype.*,levelmaster.*');
+      $this->db->select('competition.*,competitiontype.*');
       $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
-      $this->db->join('levelmaster', 'competition.levelid = levelmaster.levelid', 'inner');
+      // $this->db->join('levelmaster', 'competition.levelid = levelmaster.levelid', 'inner');
     
       $this->db->where('competitionid',$competitionid);
       $query = $this->db->get('competition');
       $result = $query->result_array();
+      // print_r($result); die();
       return $result;
 
   }
@@ -1217,6 +1219,40 @@ function fetch_user_uploadfile($competitionid)
     $this->db->select('competition.*,tabcompetition.*,competitiontype.*,competitiontype.competitiontype,tabcompetition.tabid');
     $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
     $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
+   $this->db->order_by('enddate ', 'DESC');
+   // $this->db->where('status ',1);
+    $this->db->from('competition');
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result); 
+    return $result;
+
+  }
+   public function competition_list_complete($competitionid){
+     // $today = date('Y-m-d');
+    $this->db->select('*');
+    $this->db->select('competition.*,tabcompetition.*,competitiontype.*,competitiontype.competitiontype,tabcompetition.tabid');
+    $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
+    $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
+    $c_date = date('Y-m-d');   
+    $this->db->where('enddate <=', $c_date);
+   $this->db->order_by('enddate ', 'DESC');
+   // $this->db->where('status ',1);
+    $this->db->from('competition');
+    $query = $this->db->get();
+    $result = $query->result();
+    // print_r($result); 
+    return $result;
+
+  }
+  public function competition_list_ongoing($competitionid){
+     // $today = date('Y-m-d');
+     $this->db->select('*');
+    $this->db->select('competition.*,tabcompetition.*,competitiontype.*,competitiontype.competitiontype,tabcompetition.tabid');
+    $this->db->join('tabcompetition', 'competition.tabinputtextid = tabcompetition.tabinputtextid', 'inner');
+    $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
+  $c_date = date('Y-m-d');   
+  $this->db->where('enddate >=', $c_date);
    $this->db->order_by('enddate ', 'DESC');
    // $this->db->where('status ',1);
     $this->db->from('competition');

@@ -72,7 +72,7 @@
 
                         </div>   
                   
-                     <?php } }else{?>
+                     <?php } }elseif($anstype=="1"){?>
                          
                        <!-- radio btn -->
                          <?php foreach($myArray as $my_Array){  ?> 
@@ -131,11 +131,33 @@
                           <?php } ?>
 
 
-                    <?php } ?>
+                    <?php }elseif ($anstype=="5") { ?>
+                       <?php foreach($myArray as $my_Array){  ?> 
+                      <div class="row pl-4" id="dynamic_radiobtn">
+                    
+                         <?php if($selectans==$i){?>
 
+                           <input class="form-check-input"  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1" checked="checked" required><?php  }else{ ?><input class="form-check-input"  type="radio" name="correctans[]" value="<?php echo $i; ?>"  id="flexRadioDefault1" required="">
+                         <?php } $i++;?>
+              
+                        
+                           <input type="text" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array;?>" required="">
                        </div>
+
+                   <?php } ?>
+
                      
-                  <?php } ?>
+                  <?php }else{ ?>
+
+                     <?php foreach($myArray as $my_Array){  ?> 
+                      <div class="row pl-4" id="dynamic_radiobtn">
+                           <input type="hidden" name="addmore[]"  class="form-control col-md-10 mb-2" value="<?php echo $my_Array;?>" >
+                      </div>
+                    <?php } ?> 
+
+                      
+
+                  <?php } } ?>
                     
                      <!--   <table class="table table-bordered text-center" >
                        

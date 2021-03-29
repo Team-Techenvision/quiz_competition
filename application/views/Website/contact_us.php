@@ -20,7 +20,7 @@
                         <input type="email" class="form-control" placeholder="Enter email" id="email">
                       </div>
                        <div class="form-group col-md-12">
-                        <label for="mobno" class="text-white">Email</label>
+                        <label for="mobno" class="text-white">Mobile No.</label>
                         <input type="number" class="form-control" placeholder="Enter Mobile No." id="mobno">
                       </div>
                       <div class="form-group col-md-12">

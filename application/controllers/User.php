@@ -1900,6 +1900,7 @@ public function check_competitiontype(){
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
         'file_format' => $this->input->post('file_format'),
+        'file_size' => $this->input->post('file_size'),
         'uploadfile'=>   $data['uploadfile'],
         'upload_audio'=>   $data['upload_audio'],
         'upload_image'=>   $data['upload_image'],
@@ -2026,9 +2027,11 @@ public function check_competitiontype(){
  }
  
    public function competitionName_list(){
-    // echo $_POST['competitionid']; die();
+    // echo $_POST['competitionid']; 
    $competitionid=$this->input->post('competitionid');
    $data=$this->User_Model->competitionName_list($competitionid);
+   // print_r($data);
+
    // echo (json_encode($data));
   foreach ($data as $value) {
     ?>
@@ -2044,11 +2047,7 @@ public function check_competitiontype(){
           <label for="recipient-name"  class="col-form-label">Competition Sub Title :</label>
           <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['subtitle']; ?></label>
           </div>
-           <div class="">
-          <label for="recipient-name"  class="col-form-label">Competition Level :</label>
-          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['levelname']; ?></label>
-          </div>
-           <div class="">
+          <div class="">
           <label for="recipient-name"  class="col-form-label">Age :</label>
           <label>From</label>
           <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['fromage']; ?></label>
@@ -2149,6 +2148,34 @@ public function check_competitiontype(){
     $this->load->view('Include/footer',$data);
   }
 
+   public function competition_list_complete(){
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['competition_list_complete'] = $this->User_Model->competition_list_complete('competitionid');
+    
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/competition/competition_list_complete',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
+   public function competition_list_ongoing(){
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
+    $data['competition_list_ongoing'] = $this->User_Model->competition_list_ongoing('competitionid');
+    
+    $this->load->view('Include/head',$data);
+    $this->load->view('Include/navbar',$data);
+    $this->load->view('User/competition/competition_list_ongoing',$data);
+    $this->load->view('Include/footer',$data);
+  }
+
   // Edit Competition....
   public function edit_competition($competitionid){
 
@@ -2238,6 +2265,7 @@ public function check_competitiontype(){
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
         'file_format' => $this->input->post('file_format'),
+        'file_size' => $this->input->post('file_size'),
         'uploadfile'=>   $data['uploadfile'],
         'upload_audio'=>   $data['upload_audio'],
         'upload_image'=>   $data['upload_image'],
@@ -2274,6 +2302,7 @@ public function check_competitiontype(){
         'enddate' => $this->input->post('enddate'),
         'subjectstextarea' => $this->input->post('subjectstextarea'),
         'file_format' => $this->input->post('file_format'),
+        'file_size' => $this->input->post('file_size'),
         'uploadfile'=>   $data['uploadfile'],
         'upload_audio'=>   $data['upload_audio'],
         'upload_image'=>   $data['upload_image'],
@@ -2397,7 +2426,7 @@ public function check_competitiontype(){
       $data['whatsapp'] = $info->whatsapp;
       $data['whatsappnumber'] = $info->whatsappnumber;
       $data['competitiontypeid'] = $info->competitiontypeid;
-      // $data['points'] = $info->points;
+      $data['file_size'] = $info->file_size;
       // $data['conversionpoints'] = $info->conversionpoints;
       $data['gender'] = $info->gender;
 
@@ -3210,7 +3239,11 @@ public function save_assigncompetition(){
 
 
      $points_user = $this->User_Model->get_list_by_id('user_id', $user_id,'','','','','user'); 
-     // print_r($points_user); die();
+     $competition_user = $this->User_Model->get_list_by_id('competitionid', $competitionid,'','','','','competition'); 
+     foreach ($competition_user as $value) {
+       $title = $value->title;
+      } 
+     // print_r($title); die();
      foreach ($points_user as $value) {
       $points1 =$value->points;
       $conversionpoints1 =$value->conversionpoints;
@@ -3242,6 +3275,18 @@ public function save_assigncompetition(){
 
       );
       $this->User_Model->save_data('assignwinner',$save_data);
+
+        require("phpmailer/sendemail.php");
+        require("phpmailer/assignwinner_mail.php");
+      
+        $rcpt= $useremail;
+        $sub= 'Congratulations';
+        $msg= $msg_instwinner;
+        $msg = str_replace('[[UserName]]', $username, $msg);
+        $msg = str_replace('[[CompetitionName]]', $title, $msg);
+        
+        
+        sendemail($rcpt, $sub, $msg); 
       
       $update_data = array(
          'points' => $points,
@@ -3278,6 +3323,17 @@ public function save_assigncompetition(){
 
       );
       $this->User_Model->save_data('assignwinner',$save_data);
+        require("phpmailer/sendemail.php");
+        require("phpmailer/assignwinner_mail.php");
+      
+        $rcpt= $useremail;
+        $sub= 'Congratulations';
+        $msg= $msg_instwinner;
+        $msg = str_replace('[[UserName]]', $username, $msg);
+        $msg = str_replace('[[CompetitionName]]', $title, $msg);
+        
+        
+        sendemail($rcpt, $sub, $msg); 
       
       $update_data = array(
          'points' => $p1,

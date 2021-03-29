@@ -88,7 +88,7 @@
                          <?php }?>
 
                            <select name="file_type" id="file_type"class="form-control">
-                              <option value="">Select File Format</option>
+                              <option value="0">Select File Format</option>
                               <option value="1">Image Upload</option>
                               <option value="2">Video Upload</option>    
                            </select>
@@ -106,31 +106,34 @@
                            <p  style="color: blue;" class="ml-2 mt-3 pl-1 border border-dark">Note:Only .mp4, .3pg, .mkv, .wmv Video Files are allowed.</p>
 
                         </div>
+                         <div class="form-group col-md-12">
+                           <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: When user select Image Upload and Video Upload then select Answer Type only Radio Button.</p>
+                         </div>
 
 
                         <div class="form-group col-md-12">
                              <label>Answer Type <span style="color: red;">*</span></label>
-                             <div class="form-check">
+                             <div class="form-check r1">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="answertype" value="1" checked>Radio Button
                                 </label>
                               </div>
-                              <div class="form-check">
+                              <div class="form-check r2">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="answertype" value="2">Check Box
                                 </label>
                               </div>
-                              <div class="form-check disabled">
+                              <div class="form-check  r3 ">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="answertype" value="3" >Text Box
                                 </label>
                               </div>
-                               <div class="form-check disabled">
+                               <div class="form-check r4 ">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="answertype" value="4">TextArea
                                 </label>
                               </div>
-                               <div class="form-check disabled">
+                               <div class="form-check r5 ">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="answertype" value="5">Dropdown List
                                 </label>
@@ -206,6 +209,7 @@ jQuery($ => {
     });
   <?php } ?>
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
 

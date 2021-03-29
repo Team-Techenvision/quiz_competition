@@ -100,7 +100,7 @@
                     <input type="text" class="form-control "  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
                   </div>
                    <div class="form-group col-md-12">
-                    <label>Competition Topics</label>
+                    <label>Competition Subject</label>
 
                       <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style=" width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
 
@@ -350,6 +350,26 @@
 
                   <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: If select (Document file/ powerpoint File)/ Audio File/ Video File/ Image File then correspondingly checked checkbox of Upload.</p>
 
+                  </div>
+                    <div class="form-group col-md-12">
+                    <label>File Size</label>
+                    <select name="file_size" id="file_size"class="form-control">
+
+                        <option value="0">Select File Size</option>
+                       
+                        <option value="1">1 MB</option>
+                        <option value="2">2 MB</option>
+                        <option value="3">3 MB</option>
+                        <option value="4">4 MB</option>
+                        <option value="5">5 MB</option>
+                        <option value="6">6 MB</option>
+                        <option value="7">7 MB</option>
+                        <option value="8">8 MB</option>
+                        <option value="9">9 MB</option>
+                        <option value="10">10 MB</option>
+                       
+                    </select>
+                   
                   </div>
                   <div class="form-group col-md-12">
                     <label>Options</label>
