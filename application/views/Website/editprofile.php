@@ -534,7 +534,7 @@ $(document).ready(function(){
 
 
 <!-- Validation For standard(Male 18+ , female 18+ ), gender and birthdate -->
- <script>
+ <!-- <script>
  $(document).ready(function(){
     $('.msg').hide();
 
@@ -544,6 +544,59 @@ $(document).ready(function(){
     // alert("hii");
 
 
+     var stand = $('#standard').val();
+     var gender = $('#gender').val();
+     var birthdate = $('#birthdate').val();
+     // alert(stand);
+     // alert(gender);
+     // alert(birthdate);
+    
+   
+      $.ajax({
+           url:"< ?php echo base_url(); ?>WebsiteController/check_userdata_profile",
+           method:"POST",
+           data:{standard:stand,gender:gender,birthdate:birthdate},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "correct"){
+                     // alert(data);
+                   $('.msg').hide();
+                   // $("#form_update").submit();
+                   document.getElementById("form_update").submit();
+                   // window.location = "< ?php echo base_url(); ?>WebsiteController";
+
+                 }else{
+
+                alert(data);
+                // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
+                 $('.msg').show();
+                 $('.msg').html(data);
+                 $([document.documentElement, document.body]).animate({
+                      scrollTop: $("#msg_display").offset().top
+                  }, 500);
+
+                 return false;
+
+                  // $('#msg').focus();
+                 // $('#alternatemobno').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+  });
+
+</script> -->
+<!-- Validation For standard and birthdate -->
+ <script>
+ $(document).ready(function(){
+
+
+  function check_gender(){
      var stand = $('#standard').val();
      var gender = $('#gender').val();
      var birthdate = $('#birthdate').val();
@@ -578,25 +631,24 @@ $(document).ready(function(){
                  $([document.documentElement, document.body]).animate({
                       scrollTop: $("#msg_display").offset().top
                   }, 500);
+                 
+                 return false;
+
                   // $('#msg').focus();
                  // $('#alternatemobno').val('');
                 }               
            }
          });
-       // e.preventdefault();
-  });
-  });
+    }
 
-</script>
-<!-- Validation For standard and birthdate -->
- <script>
- $(document).ready(function(){
+
     $('.msg').hide();
 
   $('#form_update').on('submit', function(e){
         e.preventDefault();
    // $('.btnUpdate').click(function(){
     // alert("hii");
+
 
 
      var stand = $('#standard').val();
@@ -615,13 +667,15 @@ $(document).ready(function(){
            success:function(data)
             {   
 
-               alert(data);
+               // alert(data);
                // console.log(data);
                  if(data == "true"){
                      // alert(data);
                    $('.msg').hide();
                    // $("#form_update").submit();
-                   document.getElementById("form_update").submit();
+                   check_gender();
+
+                   // document.getElementById("form_update").submit();
                    // window.location = "< ?php echo base_url(); ?>WebsiteController";
 
                  }else{
@@ -633,6 +687,8 @@ $(document).ready(function(){
                  $([document.documentElement, document.body]).animate({
                       scrollTop: $("#msg_display").offset().top
                   }, 500);
+
+                 return false;
                   // $('#msg').focus();
                  // $('#alternatemobno').val('');
                 }               

@@ -16,7 +16,7 @@ function sendemail($rcpt, $sub, $msg)
     $mail->Port = 25;
     $mail->Username = "nammaadvocate@1618033.in";
     $mail->Password = "u5nt[;#9D1iL";
-    $mail->SetFrom('info@NammaAdvocate.in', 'Namma Advocate');
+    $mail->SetFrom('info@QuizCompetition.in', 'Quiz Competition');
     $mail->IsHTML(true);    
     $mail->AddAddress($rcpt);
     $mail->Subject  = $sub;

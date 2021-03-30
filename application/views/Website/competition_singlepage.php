@@ -71,9 +71,7 @@ $profile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,
                      </div>
                        <div class="col ml-4" >
                          <label class="text-dark labelSC">End Date : </label>
-                         <?php 
-                         $newDate = date("d-m-Y", strtotime($value->enddate));  
-                         echo $newDate; ?>
+                         <?php $newDate = date("d-m-Y", strtotime($value->enddate));    echo $newDate; ?>
                      </div>
                        <div class="col ml-4" >
                          <label class="text-dark labelSC">Age : </label>

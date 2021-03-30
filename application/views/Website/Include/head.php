@@ -471,7 +471,7 @@ var user_mobile21 = $('#user_mobile').val();
       // alert(mobile);
       // alert(password);
       $.ajax({
-           url:"<?php echo base_url(); ?>WebsiteController/login1",
+           url:"< ?php echo base_url(); ?>WebsiteController/login1",
            method:"POST",
            data:{mobile:mobile,password:password},
            success:function(data)
@@ -517,7 +517,7 @@ var user_mobile21 = $('#user_mobile').val();
       // alert(password);
    
       $.ajax({
-           url:"<?php echo base_url(); ?>WebsiteController/add_registration",
+           url:"< ?php echo base_url(); ?>WebsiteController/add_registration",
            method:"POST",
            data:{user_mobile:mobile,user_pincode:pincode,user_name:name,user_password:password},
            success:function(data)

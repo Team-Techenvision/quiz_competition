@@ -53,9 +53,9 @@
                    
                    <td>
                       <a href="<?php echo base_url(); ?>User/edit_banner/<?php echo $list->bannerid; ?>"> <i class="fa fa-edit"></i> </a>
-                      <?php if(!$list->bannerid==1){ ?>
+                   
                            <a href="<?php echo base_url(); ?>User/delete_banner/<?php echo $list->bannerid; ?>" onclick="return confirm('Do you want to delete this banner?');" class="ml-2" > <i class="fa fa-trash text-danger"></i> </a>
-                      <?php } ?>
+                    
                      
                     </td> 
                   <?php } ?>

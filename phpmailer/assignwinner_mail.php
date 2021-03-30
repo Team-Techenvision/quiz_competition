@@ -1,5 +1,4 @@
-<?php
-$msg_reset_pass =
+<?php $msg_instwinner =
 '<table id="background-table" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333;">
     <tbody>
         <tr>
@@ -16,7 +15,7 @@ $msg_reset_pass =
                                 <table class="notification-comment-pattern" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px">
                                     <tbody>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px; color:#333333; font-size: 20px;">Forgot your password</td>
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px; color:#333333; font-size: 20px;">Welcome to World Cup Title Winners!</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -27,11 +26,12 @@ $msg_reset_pass =
                                 <table class="notification-comment-pattern" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px">
                                     <tbody>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px"> Hi [[UserName]],
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px"> Welcome [[UserName]],
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="border-collapse: collapse; padding-top: 10px;">You Just resquested to forgot your password. Click on below link to reset your password. Your password reset link is: <a href="https://1618033.in/quiz_competition/WebsiteController/resetpassword/[[code]]">HERE</a>  
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="border-collapse: collapse; padding-top: 10px;">You have winner for this [[CompetitionName]], You got points number for redeem <a href="https://1618033.in/quizecommerce/login">please visit our shop</a> 
+                                         
                                             </td>
                                         </tr>
                                     </tbody>
@@ -60,5 +60,4 @@ $msg_reset_pass =
   </tbody>
 </table>
 ';
-
 ?>

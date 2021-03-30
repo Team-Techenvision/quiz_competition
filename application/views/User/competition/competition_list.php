@@ -57,7 +57,7 @@
                     <td><?php echo $list->enddate ?></td>
                     <td>
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
-                      <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>" hidden> <i class="fa fa-edit"></i> </a> &nbsp;
+                      <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>" > <i class="fa fa-edit"></i> </a> &nbsp;
                       <a  id="<?php echo $list->competitionid; ?>" class="competition_btn" value="<?php echo $list->competitionid; ?>" href="" title="View Competition Details"> <i class="fas fa-eye"></i></a> &nbsp;
                       
                        <a  id="<?php echo $list->competitionid; ?>" class="users_btn" value="<?php echo $list->competitionid; ?>" href="" title="View User"><i class="fas fa-user"></i></a> &nbsp;

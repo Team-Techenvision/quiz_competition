@@ -500,6 +500,7 @@ public function competition_uploadfile(){
 
         $fileformat = $this->input->post('file_format');
         $competitionid = $this->input->post('competitionid');
+        $filesize = $this->input->post('file_size');
 
          $check_already_uploadfile = $this->Website_Model->check_user_uploadfiles($quizweb_user_id,$competitionid);
          $fetch_user_uploadfiles = $this->Website_Model->fetch_user_uploadfiles($quizweb_user_id,$competitionid);
@@ -509,7 +510,7 @@ public function competition_uploadfile(){
          }
 
 
-        // print_r($uploadfileid); die();
+        // print_r($filesize); die();
    // if($quizweb_user_id== "" && $quizweb_user_id != "" ){
 
 
@@ -552,10 +553,14 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['uploadfile']['name'];
+              $size=$_FILES['uploadfile']['size'];
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
+              $file_value = 1000000 * $filesize;
 
+                    // print_r($file_value); die();
+             if($size < $file_value){
 
                      
 
@@ -580,13 +585,19 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+        }else{
+
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
       }
 
       //audio upload
 
       if($fileformat=='2'){
-        // print_r($fileformat); 
+        // print_r(sizeof($upload_audio));  die();
         if($_FILES['upload_audio']['name']){
 
 //           $configVideo['upload_path'] = 'assets/gallery/images'; # check path is correct
@@ -612,16 +623,19 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_audio']['name'];
+              $size=$_FILES['upload_audio']['size'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
-             
+              
+              $file_value = 1000000 * $filesize;
 
-
-                     
+                    // print_r($file_value); die();
+             if($size < $file_value){
+           
 
               if ($this->upload->do_upload('upload_audio') && $uploadfileid && $image_name && $ext && $filename) {
 
-                    // print_r($image_name); 
 
 
                    // print_r($insert_id);
@@ -640,6 +654,12 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+          }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
       }
 
@@ -661,10 +681,14 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_vedio']['name'];
+              $size=$_FILES['upload_vedio']['size'];
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
+              $file_value = 1000000 * $filesize;
 
+                    // print_r($filesize); die();
+             if($size < $file_value){
 
                      
 
@@ -689,6 +713,12 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+         }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
     }
       //image upload
@@ -707,9 +737,15 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_image']['name'];
+              $size=$_FILES['upload_image']['size'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
+              $file_value = 1000000 * $filesize;
+
+                    // print_r($file_value); die();
+              if($size < $file_value){
 
 
                      
@@ -735,6 +771,12 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+         }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
       
       }
@@ -774,10 +816,16 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['uploadfile']['name'];
+              $size=$_FILES['uploadfile']['size'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
 
+              $file_value = 1000000 * $filesize;
+
+                    // print_r($file_value); die();
+              if($size < $file_value){
 
                      
 
@@ -802,6 +850,12 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+        }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
       }
 
@@ -834,10 +888,15 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_audio']['name'];
+              $size=$_FILES['upload_audio']['size'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
+              $file_value = 1000000 * $filesize;
 
+                    // print_r($file_value); die();
+              if($size < $file_value){
 
                      
 
@@ -862,6 +921,12 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+        }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
       }
 
@@ -883,9 +948,15 @@ public function competition_uploadfile(){
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_vedio']['name'];
+              $size=$_FILES['upload_vedio']['size'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
+               $file_value = 1000000 * $filesize;
+
+                    // print_r($file_value); die();
+              if($size < $file_value){
 
 
                      
@@ -911,6 +982,12 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+          }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
       }
     }
       //image upload
@@ -925,13 +1002,19 @@ public function competition_uploadfile(){
 
               $config['upload_path'] = 'assets/images/competition_images/';
 
-              $config['allowed_types'] = 'jpg|jpeg|png|gif|mp3';
+              $config['allowed_types'] = 'jpg|jpeg|png';
               $config['file_name'] = $image_name;
 
               $filename = $_FILES['upload_image']['name'];
+              $size=$_FILES['upload_vedio']['size'];
+
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $this->upload->initialize($config); // if upload library autoloaded
              
+              $file_value = 1000000 * $filesize;
+
+                    // print_r($file_value); die();
+              if($size < $file_value){
 
 
                      
@@ -957,6 +1040,13 @@ public function competition_uploadfile(){
            $error = $this->upload->display_errors();
             $this->session->set_flashdata('upload_error',$error);
         }
+
+        }else{
+  
+              $this->session->set_flashdata('filesize_error','File must be between the size of 1-'.$filesize.' MB'); 
+              header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);       
+         }
+
       }
       
       }
@@ -966,11 +1056,7 @@ public function competition_uploadfile(){
 
       header('location:'.base_url().'WebsiteController/competition_usersave/'.$competitionid);
 
-    }
-    
-
-
-      
+    }  
     }
 
  
@@ -1507,7 +1593,7 @@ public function check_userdata_profile(){
 
     $years = floor($diff / (365*60*60*24));
 
-
+    // print_r($years);
 
     // $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
     // foreach ($check_userdata as $value) {
@@ -1516,7 +1602,9 @@ public function check_userdata_profile(){
     //   $gender = $value['gender'];
     // }
 
-    if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 14){
+    if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 15  ){
+
+   // if($years <= 6  && $standard <=5   ){
 
       echo "correct";
        $this->session->set_flashdata('updateProfile_success','success');
@@ -1557,7 +1645,7 @@ public function check_profile_standard(){
 
     $years = floor($diff / (365*60*60*24));
 
-    print_r($years); 
+    // print_r($years); 
 
     
 
@@ -1569,29 +1657,54 @@ public function check_profile_standard(){
     // }
 
 
-    if($years >=3 || $years <= 6  && $standard >=1 ||$standard <=5  ){
+  
 
-      // $a= 1;
+    if($years >= 3 && $years <= 6 )
+    {
+      if($standard >= 1 && $standard <= 5 )
+      {
+         echo "true";
+         $this->session->set_flashdata('updateProfile_success','success');
+      }
+      else
+      {
 
-      // echo $a;
-
-      echo "true";
-       $this->session->set_flashdata('updateProfile_success','success');
+        echo "Please enter correct birthdate from age(3-6) and standard(Nursary-1st).";
+      }
+      // $a= 1; echo $a; echo "true"; this->session->set_flashdata('updateProfile_success','success');
       // header('location:'.base_url().'WebsiteController');
 
-
     }
-       else{
-      // $a= 0;
-
-        // echo $a;
-      echo "Please enter correct birthdate and standard.";
-      // die();
-      // header('location:'.base_url().'WebsiteController/edit_profile');
-
-     // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
-
-
+    elseif($years >= 7 && $years <= 10 )
+    {
+       if($standard >= 6 && $standard <= 9 )
+      {
+         echo "true";
+         $this->session->set_flashdata('updateProfile_success','success');
+      }
+      else
+      {
+          echo "Please enter correct birthdate from age(7-10) and standard(2nd-5th).";
+      }
+    }
+    else
+    {
+    //   // $a= 0; echo $a;
+      // echo "Please enter correct birthdate and standard.";
+      if($years >=11  && $years <= 14 )
+      {
+          if($standard >= 10 && $standard <= 13 )
+          {
+             echo "true";
+             $this->session->set_flashdata('updateProfile_success','success');
+          }
+          else
+          {
+             echo "Please enter correct birthdate from age(11-14) and standard(6th-9th).";
+          }
+         
+       }
+    //   // die(); header('location:'.base_url().'WebsiteController/edit_profile'); $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
     }
 
    // print_r($standard); die();

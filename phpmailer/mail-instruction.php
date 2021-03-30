@@ -4,7 +4,7 @@ $msg_instregistered =
     <tbody>
         <tr>
             <td id="email-content-container" class="email-content-top-padding" style="padding: 0px; border-collapse: collapse; padding: 0 20px; padding-top: 20px">
-                <a href="https://1618033.in/namma-advocate/"><img src="https://1618033.in/namma-advocate/img/final_logo.png" width="220" alt="Namma Advocate" style=" display: block; margin: 0 auto;"></a>
+                <a href="https://1618033.in/quiz_competition/"><img src="https://1618033.in/quiz_competition/assets/images/logo.jpg" width="220" alt="Quiz Competition" style=" display: block; margin: 0 auto;"></a>
                 <br /><br />
                 <table id="email-content-table" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333; border-spacing: 0; border-collapse: separate">
                     <tbody>
@@ -16,7 +16,7 @@ $msg_instregistered =
                                 <table class="notification-comment-pattern" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px">
                                     <tbody>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px; color:#333333; font-size: 20px;">Welcome to Namma Advocate!</td>
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px; color:#333333; font-size: 20px;">Welcome to World Cup Title Winners!</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -27,11 +27,12 @@ $msg_instregistered =
                                 <table class="notification-comment-pattern" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px">
                                     <tbody>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px"> Hi [[UserName]],
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="padding: 0px; border-collapse: collapse; padding: 0px"> Welcome [[UserName]],
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="border-collapse: collapse; padding-top: 10px;">Thanks for joining us. Currently your account is under review. Once your account is approved by admin, you will receive an email. And you can start usingyour account.  
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="border-collapse: collapse; padding-top: 10px;">Thanks for registration on World Cup Title Winners. Please <a href="https://1618033.in/quiz_competition/">click here </a>to login.  
+                                         
                                             </td>
                                         </tr>
                                     </tbody>
@@ -60,6 +61,11 @@ $msg_instregistered =
   </tbody>
 </table>
 ';
+
+
+
+
+
 
 $msg_admin_instregistered =
 '<table id="background-table" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333;">

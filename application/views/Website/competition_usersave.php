@@ -85,8 +85,9 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                     $upload_audio = $value->upload_audio;
                     $upload_vedio = $value->upload_vedio;
                     $upload_image = $value->upload_image;
+                    $file_size = $value->file_size;
 
-// print_r($file_format);
+// print_r($file_size);
 // print_r($upload_audio);
 // print_r($upload_vedio);
 // print_r($upload_image);
@@ -188,9 +189,16 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                  if($upload_audio=='1') {?>
                                   
-                                 <!--    <audio  src="< ?php echo base_url(); ?>/assets/images/competition_audio/< ?php echo $uploadaudio; ?>" controls></audio>
- -->
+                                 <!--    <audio  src="< ?php echo base_url(); ?>/assets/images/competition_audio/< ?php echo $uploadaudio; ?>" controls></audio> -->
+
+                                 <!--  < ?php if($this->session->flashdata('filesize_error')){
+                                           echo 'Please Upload File is'.$file_size.'MB' ;
+                                        
+                                  } ?> -->
                                   <input type="hidden" id="upload_audio1" name="file_format" value="<?php echo $file_format; ?>" />
+
+                                  <input type="hidden" id="file_size1" name="file_size" value="<?php echo $file_size; ?>" />
+
 
                                   <!--   <div class="form-group"> -->
                                       <!-- < ?php if(empty(var)) { 
@@ -211,6 +219,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                     <!-- <div class="form-group "> -->
                                        <input type="hidden" id="upload_vedio1" name="file_format" value="<?php echo $file_format; ?>" />
+                                       <input type="hidden" id="file_size2" name="file_size" value="<?php echo $file_size; ?>" />
 
                                      <input type="file" id="upload_vedio" name="upload_vedio" onchange="Validate_video(this);"  accept="video/*" required/>
 
@@ -223,6 +232,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                     <!-- <div class="form-group"> -->
                                       <input type="hidden" id="upload_image1" name="file_format" value="<?php echo $file_format; ?>" />
+                                      <input type="hidden" id="file_size3" name="file_size" value="<?php echo $file_size; ?>" />
 
                                      <input type="file" id="upload_image" name="upload_image" onchange="ValidateSingleInput(this);" accept="image/*" required />
                                     <!-- </div> -->
@@ -234,11 +244,12 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
 
                                     <!-- <div class="form-group "> -->
                                        <input type="hidden" id="uploadfile1" name="file_format" value="<?php echo $file_format; ?>" />
+                                       <input type="hidden" id="file_size4" name="file_size" value="<?php echo $file_size; ?>" />
 
                                      <input type="file" id="uploadfile" name="uploadfile" onchange="Validate_file(this);" required />
                                     <!-- </div> -->
 
-                                    <p class="text-primary" style="position: absolute;">Note:Only .pdf, .doc, .docx File is allowed </p>
+                                    <p class="text-primary" style="position: absolute;">Note:Only .pdf, .doc, .docx File are allowed </p>
                                 
                                 <?php  } }?>
                                     <!-- <img id="blah" src="<?php if(isset($uploadfile)){ echo base_url();?>assets/images/competition/<?php echo $uploadfile; } ?>" alt="" height="150px" width="150px" /> -->
@@ -393,6 +404,15 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
     $(document).ready(function(){
       toastr.error('File not Uploaded ');
     });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('filesize_error')){ ?>
+    $(document).ready(function(){ 
+       
+       toastr.error("<?php echo $this->session->flashdata('filesize_error'); ?>");
+         
+   });
   <?php } ?>
 </script>
 <script type="text/javascript">

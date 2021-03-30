@@ -3,7 +3,7 @@ require("sendemail.php");
 require("mail-instruction.php");
 
 $name = 'Vinayak';
-$rcpt= 'fortestingpurpose05@gmail.com';
+$rcpt= 'priyanka.techenvision@gmail.com';
 $sub= 'Working of php mailer';
 $msg= $msg_instregistered;
 $msg = str_replace('[[SellerName]]', $name, $msg);

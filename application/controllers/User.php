@@ -2323,7 +2323,7 @@ public function check_competitiontype(){
         // 'user_addedby' => $quizweb_user_id,
       );
     }
-      // print_r($update_data);
+      // print_r($update_data); die();
 
      $this->User_Model->update_info('competitionid', $competitionid, 'competition', $update_data);
   

@@ -1,5 +1,5 @@
 <?php
-$msg_reset_pass =
+$new_msg_reset_pass =
 '<table id="background-table" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #333;">
     <tbody>
         <tr>
@@ -31,7 +31,7 @@ $msg_reset_pass =
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="notification-comment-pattern-container mobile-resize-text" style="border-collapse: collapse; padding-top: 10px;">You Just resquested to forgot your password. Click on below link to reset your password. Your password reset link is: <a href="https://1618033.in/quiz_competition/WebsiteController/resetpassword/[[code]]">HERE</a>  
+                                            <td class="notification-comment-pattern-container mobile-resize-text" style="border-collapse: collapse; padding-top: 10px;">Your password reset successfully. Please login <a href="https://1618033.in/quiz_competition/WebsiteController">HERE</a>  
                                             </td>
                                         </tr>
                                     </tbody>

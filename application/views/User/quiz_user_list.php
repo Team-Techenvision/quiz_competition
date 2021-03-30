@@ -104,7 +104,7 @@
 
                 <?php 
                    }else{ ?>  
-                   <?php echo $list->score_percentage ?> 
+                   <?php echo $list->score_percentage ?> %
   <!--  <label>< ?php echo $correct_answer; ?></label>/<label>< ?php echo $total_question; ?></label> --> 
 
                <?php } ?>  
