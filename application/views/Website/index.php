@@ -99,18 +99,36 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 </style> -->
 
 <!-- <div class="container-fluid conhead"> -->
-       <!-- <div class="row">
-         <div class="col-md-12 p-0">
+       <div class="row">
+         <div class="col-md-12 p-0 ">
            <div id="slider2" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                < ?php $i=0; foreach ($banner_list as $list) {
+                <?php 
+                 if($banner_list){
+
+                  $i=0; foreach ($banner_list as $list) {
                   if($list->slider_possition == 1 ){ $i++;
                 ?>
-                  <div class="carousel-item image-gradient < ?php if($i == 1){ echo 'active'; } ?>">
-                    <img class="middle-img border-img" src="< ?php echo base_url('assets/images/banner/'.$list->profile_image); ?>" alt="First slide">
-               
+                  <div class="carousel-item image-gradient <?php if($i == 1){ echo 'active'; } ?>">
+                    <img class="middle-img border-img" src="<?php echo base_url('assets/images/banner/'.$list->profile_image); ?>" alt="First slide">
                   </div>
-                < ?php } } ?>
+                  <div class="carousel-caption  text-white col-md-10" style=" margin-top: 333px;margin-left: -105px;background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;background-color: #00000080;">
+                        <h3><?php echo $list->title; ?> </h3>
+                        <p><?php echo $list->subtitle; ?></p>
+                  </div>
+
+                  
+                  
+                <?php } } }else{?>
+                    <div class="carousel-item image-gradient <?php if($i == 1){ echo 'active'; } ?>">
+                    <img class="middle-img border-img" src="<?php echo base_url(); ?>assets/images/banner/profile_image_2_1608269490.jpg" alt="First slide">
+                  </div>
+                  <div class="carousel-caption  text-white col-md-10" style=" margin-top: 333px;margin-left: -105px;background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;background-color: #00000080;">
+                        <h3 >Preview: Aus vs India, 1st Test </h3>
+                        <p >Australia host India in the first of four Tests starting this Thursday and here's all you need to know</p>
+                  </div>
+
+                <?php } ?>
               </div>
               <a class="carousel-control-prev" href="#slider2" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -122,9 +140,9 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
               </a>
             </div>
          </div>
-       </div> -->
+       </div>
 
-       <div class="row carousel">
+    <!--    <div class="row carousel">
         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
         <div class="owl-carousel owl-theme owl-one">
         <?php if($banner_list){
@@ -132,14 +150,14 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
               if($list->slider_possition == '1'){ ?>
               <div class="item">
                 <div class="main-slide ">
-                  <div class="row ">
+                  <div class="row "> -->
                    <!--  <div class=" col-md-4 col-12 ">
                         <h1>< ?php echo $list->title; ?> </h1>
                         <p>< ?php echo $list->subtitle; ?></p>
                         
                     </div> -->
                     <!-- <div class="image-gradient"></div> -->
-                    <div class="col-md-4 bg-website banner_text_div">
+                   <!--  <div class="col-md-4 bg-website banner_text_div">
                          <h1 class="text-white"><?php echo $list->title; ?> </h1>
                         <p class="ptitle"><?php echo $list->subtitle; ?></p>
                     </div>
@@ -155,14 +173,14 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
           <?php } } }else{ ?>
             <div class="item">
                 <div class="main-slide ">
-                  <div class="row ">
+                  <div class="row "> -->
                    <!--  <div class=" col-md-4 col-12 ">
                         <h1>< ?php echo $list->title; ?> </h1>
                         <p>< ?php echo $list->subtitle; ?></p>
                         
                     </div> -->
                     <!-- <div class="image-gradient"></div> -->
-                    <div class="col-md-4 bg-website banner_text_div">
+                   <!--  <div class="col-md-4 bg-website banner_text_div">
                          <h1 class="text-white">Preview: Aus vs India, 1st Test </h1>
                         <p class="ptitle">Australia host India in the first of four Tests starting this Thursday and here's all you need to know</p>
                     </div>
@@ -178,7 +196,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
         <?php  } ?>
       </div>
       </div>
-     </div>
+     </div> -->
 
 
  <section class="about-two">

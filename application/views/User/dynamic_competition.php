@@ -107,7 +107,7 @@
 
                         </div>
                          <div class="form-group col-md-12">
-                           <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: When user select Image Upload and Video Upload then select Answer Type only Radio Button.</p>
+                           <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: When the user selected any one option from 'File Format' then the user must select Radiobutton from 'Answer Type'.</p>
                          </div>
 
 

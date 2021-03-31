@@ -108,7 +108,7 @@
                       <?php } } ?>
                       </table> 
                          <div class="form-group col-md-12">
-                           <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: User can Enter Field Name as Answer Options and Select Correct Answer as Radio Button and Check Box. </p>
+                           <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: The user has to enter answers in the text field & choose the radio button or checkbox for correct answers. </p>
                          </div>
                     </div>
                 </div>

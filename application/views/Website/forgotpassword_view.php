@@ -34,14 +34,14 @@
                  <div class="form-group col-md-12">
                       <button type="submit" style="border-radius: 10px; " name="submit" class="btn btn btn-outline-primary pl-4 pr-4">SUBMIT</button>
                       </div>
-                     <div class="form-group col-md-12">
+                     <div class="form-group col-md-12 text-danger">
                        <?php if($this->session->flashdata('email_error')){
                         
                              echo 'Enter Valid Email Address';
                             
                          } ?>
                          </div>
-                          <div class="form-group col-md-12">
+                          <div class="form-group col-md-12 text-success">
                        <?php if($this->session->flashdata('emaillink_success')){
                         
                              echo 'Your password reset link is sent to your email Successfully';

@@ -215,6 +215,14 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/Include/head');
     $this->load->view('Website/faq');
     $this->load->view('Website/Include/footer');
+} 
+
+/*********************     Login/Register     ****************************/
+  public function login_register(){
+
+    $this->load->view('Website/Include/head');
+    $this->load->view('Website/login_register');
+    $this->load->view('Website/Include/footer');
 }  
 
 /*********************     Forgot Password     ****************************/
@@ -1180,7 +1188,7 @@ public function competition_uploadfile(){
         $msg = str_replace('[[UserName]]', $name, $msg);
         
         
-        sendemail($rcpt, $sub, $msg); 
+        sendemail($rcpt, $sub, $msg);
 
         // $this->session->set_flashdata('login_success','success');
         echo "Sign Up Successfully";

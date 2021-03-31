@@ -348,7 +348,7 @@ label#user_password-error {
             <h6 class="alert alert-danger errorresponse"></h6>
        
             <button class="form-btn button sx sign-in" type="button">Sign Up</button>
-            <button class="form-btn button dx" type="submit" >Log In</button>
+            <button class="form-btn button dx" type="submit" >Sign In</button>
 
              <!-- <div id="messages"></div> -->
          

@@ -14,8 +14,8 @@ function sendemail($rcpt, $sub, $msg)
     // $mail->SetFrom('info@yarnlive.com', 'YarnLIVE');
     $mail->Host = "mail.1618033.in";
     $mail->Port = 25;
-    $mail->Username = "nammaadvocate@1618033.in";
-    $mail->Password = "u5nt[;#9D1iL";
+    $mail->Username = "quizcompetition@1618033.in";
+    $mail->Password = "^,W,IaAWShZ2";
     $mail->SetFrom('info@QuizCompetition.in', 'Quiz Competition');
     $mail->IsHTML(true);    
     $mail->AddAddress($rcpt);

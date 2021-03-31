@@ -50,9 +50,10 @@
               <!-- form start -->
               <form id="form_action" name="user_form1" role="form" action="<?php echo base_url();?>User/importFile" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
-                    <div class="form-group col-md-6">
-                    <label> Upload excel file <span style="color: red;">*</span></label>
-                     <input type="file" name="uploadFile" value="" required="" />
+                    <div class="form-group ">
+                    <label  class=" col-md-12"> Upload excel file <span style="color: red;">*</span></label>
+                     <input type="file" class="col-md-12" name="uploadFile" value="" onchange="ValidateSingleInput(this);" required="" />
+                      <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note:Only .xlsx, .xls, .csv Excel Files are allowed. </p>
                   </div>
                   
                 </div>
@@ -77,7 +78,10 @@
       </div><!-- /.container-fluid -->
     </section>
   </div>
-  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+ 
+
+</body>
+ <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 <script type="text/javascript">
   <?php if($this->session->flashdata('import_error')){ ?>
@@ -85,91 +89,32 @@
       toastr.error('Data are not import successfully');
     });
   <?php } ?>
- // < ?php if($this->session->flashdata('alreadyexits_error')){ ?>
- //    $(document).ready(function(){
- //      toastr.error('Data is already exits');
- //    });
- //  < ?php } ?>
-</script>
-  <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
-<!-- <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script> -->
-<!-- <script src="trunk/dev/validation.js"></script> -->
-  
 
+</script>
 <script type="text/javascript">
-// Check Mobile Duplication..
-  var user_mobile1 = $('#user_mobile').val();
-  $('#user_mobile').on('change',function(){
-    var user_mobile = $(this).val();
-    $.ajax({
-      url:'<?php echo base_url(); ?>User/check_duplication',
-      type: 'POST',
-      data: {"column_name":"user_mobile",
-             "column_val":user_mobile,
-             "table_name":"user"},
-      context: this,
-      success: function(result){
-        if(result > 0){
-          $('#user_mobile').val(user_mobile1);
-          toastr.error(user_mobile+' Mobile No Exist.'); 
+  var _validFileExtensions = [".xlsx", ".xls", ".csv"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
         }
-        
-      }
-    });
-  });
-
-// Check Email Duplication..
-  var user_email1 = $('#user_email').val();
-  $('#user_email').on('change',function(){
-    var user_email = $(this).val();
-    $.ajax({
-      url:'<?php echo base_url(); ?>User/check_duplication',
-      type: 'POST',
-      data: {"column_name":"user_email",
-             "column_val":user_email,
-             "table_name":"user"},
-      context: this,
-      success: function(result){
-        if(result > 0){
-          $('#user_email').val(user_email1);
-          toastr.error(user_email+' Email Id Exist.');
-        }
-      }
-    });
-  });
-  // // Check Email Duplication..
-  // var user_email1 = $('#user_email').val();
-  // $('#user_email').on('change',function(){
-  //   var customer_email = $(this).val();
-  //   $.ajax({
-  //     url:'< ?php echo base_url(); ?>User/check_duplication',
-  //     type: 'POST',
-  //     data: {"column_name":"customer_email",
-  //            "column_val":customer_email,
-  //            "table_name":"customer_information"},
-  //     context: this,
-  //     success: function(result){
-  //       if(result > 0){
-  //         $('#user_email').val(user_email1);
-  //         toastr.error(customer_email+' Email Id Exist.');
-  //       }
-  //     }
-  //   });
-  // });
+    }
+    return true;
+}
 </script>
-
-<script type="text/javascript">
-  $(document).on('click', '.toggle-password', function() {
-
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    
-    var input = $("#user_password");
-    input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
-});
-</script>
-
- 
-
-</body>
 
 </html>

@@ -57,15 +57,25 @@
 
  
           <?php }else{ 
-
+             $endD = "";
+             $endDT = "";
            foreach ($mycompetition_list as $list) { 
 
             $enddate = $list->enddate;
                 $today = date('Y-m-d'); 
-           
+                if($enddate >= $today ){ 
+                  $endD = 1;
+                }
+                
+                 if($enddate < $today){
+                   $endDT = 1;
+                }
             }
+
+// print_r($endD);
+
          ?>
-        <?php  if($enddate >= $today ){ ?> 
+        <?php  if($endD ){  ?> 
 
           <label class="complabal mb-4">Current Competition</label>
          <?php } ?> 
@@ -95,15 +105,18 @@
          <!-- /.row -->
           <br><br>
        <!-- Past competition -->
-        <?php   if($enddate < $today){ ?>  
+        <?php   if($endDT){ ?>  
           <label class="complabal mb-4">Past Competition</label>
            <?php }  ?>  
          <div class="row">
-          
-          <?php   foreach ($mycompetition_list as $list) { 
+            
+          <?php   
+         
+          foreach ($mycompetition_list as $list) { 
 // print_r($list);
             $enddate = $list->enddate;
                 $today = date('Y-m-d'); 
+               
             // print_r($enddate); 
             if($enddate < $today){
           ?>

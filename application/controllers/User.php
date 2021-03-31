@@ -1051,7 +1051,7 @@ public function check_competitiontype(){
 
   public function importFile(){
 
-     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
@@ -1209,8 +1209,8 @@ public function check_competitiontype(){
 
                     $this->User_Model->update_info1('customer_email', $us_email, 'customer_information', $update_datadb1);
 
-                     $this->session->set_flashdata('import_error','error');
-                     header('location:'.base_url().'User/add_bulk');
+                      $this->session->set_flashdata('import_success','success');
+                      header('location:'.base_url().'User/user_list');
                       // echo $result; die();
                       // echo "ERROR !";
                       // $this->session->set_flashdata('import_error','error');
@@ -1239,13 +1239,8 @@ public function check_competitiontype(){
                       // echo "Imported successfully";
                       $this->session->set_flashdata('import_success','success');
                       header('location:'.base_url().'User/user_list');
-                    }else{
-                      // echo $result; die();
-                      // echo "ERROR !";
-                      $this->session->set_flashdata('import_error','error');
-                      header('location:'.base_url().'User/add_bulk');
-                    }  
-                    if($result1){
+                      
+                    }elseif($result1){
                       // echo "Imported successfully";
                       $this->session->set_flashdata('import_success','success');
                       header('location:'.base_url().'User/user_list');
@@ -1254,7 +1249,8 @@ public function check_competitiontype(){
                       // echo "ERROR !";
                       $this->session->set_flashdata('import_error','error');
                       header('location:'.base_url().'User/add_bulk');
-                    }               
+                    }  
+                               
       
               } catch (Exception $e) {
                    die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
@@ -1427,7 +1423,7 @@ public function check_competitiontype(){
          </div>
           <?php 
 }else{
-  echo "The user does not participate in any competition.";
+  echo "This user does not participate yet in any competitions.";
 }
   
     
@@ -2126,7 +2122,7 @@ public function check_competitiontype(){
 
   <?php 
   }else{
-    echo "There are no participants participate are in the competition.";
+    echo "No one has participated in this competition yet.";
   }
 
 
