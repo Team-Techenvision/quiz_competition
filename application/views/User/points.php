@@ -208,21 +208,17 @@ $('point_form').validate({rules: {
 });
 </script> -->
 <script type="text/javascript">
-  function checkPrice(){
-    var conversionpoints1st = parseFloat(document.getElementById('conversionpoints1st').value);
-    var points1st = parseFloat(document.getElementById('points1st').value);
-    
-    // if (isNaN(lastprice) || isNaN(harga)) {
-    //     alert("Entered values are not numeric.");
-    //     return false;
-    // }
-    
-    if (points1st > conversionpoints1st) {
-        alert("Entered value is bigger");
+   function validateForm() {
+ var x = $('#points').val();
+ var y = $('#conversionpoints').val();
+ 
+ // alert(x);
+ // alert(y);
+ 
+    if (x < y) {
+        alert("Please enter conversion points which should be less than points.");
         return false;
     }
-    
-    return true;
 }
 </script>
  

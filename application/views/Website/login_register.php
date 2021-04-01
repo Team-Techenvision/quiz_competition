@@ -7,11 +7,11 @@
     top:50%;
     right: 22%;
   }*/
-  .toast-top-right{
 
-    top:50%;
-    right: 30%;
-  }
+  .toast-top-right {
+    top: 15%;
+    right: 58%;
+}
     .toast {
     width: 100% !important;
     max-width: 600px!important;
@@ -163,6 +163,13 @@
    <?php } ?>
 
  </script>
+ <script type="text/javascript">
+  <?php if($this->session->flashdata('Login_error')){ ?>
+   $(document).ready(function(){
+      toastr.error('Please Register to Participate');
+   });
+  <?php } ?>
+</script>
 <script type="text/javascript">
    $(document).ready(function(){
       $('.mobileerror1').hide();

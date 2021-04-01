@@ -498,7 +498,7 @@ img::before {
 }*/
 
 .over img{
-    transition: 2s ease;
+    transition: 1s ease;
 }
 
 
@@ -513,7 +513,7 @@ img::before {
     height: 100%;
     width: 100%;
     opacity: 0;
-    transition: 2s ease;
+    transition: 1s ease;
     /*background-color: #0c0c0c6e;*/
     background-image: linear-gradient(rgba(12, 17, 27, 0.05),  rgba(12, 17, 27, 0.9));
 
@@ -787,25 +787,25 @@ to{
   position:absolute;
   width: auto;
   height:auto;
-  top: calc(50% - 240px);
-  left: calc(50% - 2px);
+  top: calc(50% - 150px);
+  left: calc(50% - -60px);
   /*right: calc(50% - 125px);*/
 }
 .conSU{
   position:absolute;
   width: auto;
   height:auto;
-  top: calc(50% - 240px);
-  left: calc(50% - 25px);
+  top: calc(50% - 150px);
+  left: calc(50% - -35px);
   /*right: calc(50% - 125px);*/
 }
-        .form {
+ .form {
   position: absolute;
   text-align: center;
   background: #fff;
-  height: 460px;
+  height: 320px;
   border-radius: 10px;
-  padding: 30px 20px 0 20px;
+  padding: 15px 10px 0 10px;
   box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
 }
@@ -862,11 +862,11 @@ to{
 .button.form-btn {
   position: absolute;
   width: 50%;
-  height: 60px;
+  height: 45px;
   bottom: 0;
   border: 0;
  font-family: 'Roboto', sans-serif;
-  font-size: 24px;
+  font-size: 1.25rem;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -943,13 +943,13 @@ to{
     z-index: 1;
     transform: perspective(100px) translate3d(100px, 0px, -30px);
     opacity: 0.5;
-    width: 400px;
+    width: 350px;
 
 }
 
 .signUp {
   z-index: 2;
-  width: 600px;
+  width: 550px;
 }
 
 .active-sx{
@@ -1391,3 +1391,12 @@ label {
   }
 
 /*  my competition end */
+
+
+.main{
+  background-color: #1f80e0;
+}
+a.dropdown-item.pro_menu:hover{
+  background-color: #1f80e0!important;
+  color: white!important;
+}

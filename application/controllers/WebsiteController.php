@@ -1359,7 +1359,7 @@ public function insert_profiledata(){
     
     if(empty($quizweb_user_id) && $quizweb_company_id == '' && $quizweb_roll_id ==''){ 
       $this->session->set_flashdata('Login_error','error');
-      header('location:'.base_url()); }else{
+      header('location:'.base_url().'WebsiteController/login_register'); }else{
 
      $competitionid = $this->input->post('competition_id');
 

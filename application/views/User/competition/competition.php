@@ -97,12 +97,12 @@
                   <div class="form-group col-md-12">
                     <label>Competition Sub Title <span style="color: red;">*</span></label>
 
-                    <input type="text" class="form-control "  name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
+                    <input type="text" class="form-control" name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
                   </div>
                    <div class="form-group col-md-12">
                     <label>Competition Subject</label>
 
-                      <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style=" width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
+                      <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style=" width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
 
                     </div>
                 
@@ -212,7 +212,7 @@
                    <div class="form-group col-md-6">
                     <label>From Age <span style="color: red;">*</span></label>
 
-                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age " required readonly>
+                    <input type="text" min="0" maxlength="2"   class="form-control required title-case text notext" name="fromage" id="fromage" value="<?php if(isset($fromage)){ echo $fromage; } ?>" placeholder="From Age" required readonly>
                   </div>
                    <div class="form-group col-md-6">
                     <label>To Age <span style="color: red;">*</span></label>
@@ -309,13 +309,13 @@
                    <div class="form-group col-md-12">
                     <label>Terms and Conditions <span style="color: red;">*</span></label>
 
-                    <textarea class="textarea required" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
+                    <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required="required"><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                    </div>
                  
                     <div class="form-group col-md-12">
                     <label>Instructions <span style="color: red;">*</span></label>
 
-                    <textarea class="textarea required" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
+                    <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                    </div>
                      <div class="form-group col-md-12">
                     <label>File Format</label>
@@ -336,7 +336,7 @@
                        
                       </select>
                       <?php }else{ ?>
-                         <select name="file_format" id="file_format"class="form-control" >
+                         <select name="file_format" id="file_format"class="form-control " required>
                         <option value="0">Select File Format</option>
                        
                         <option value="1">Document File / PDF file</option>
@@ -353,7 +353,14 @@
                   </div>
                     <div class="form-group col-md-12">
                     <label>File Size</label>
-                    <select name="file_size" id="file_size"class="form-control">
+                     <?php
+                      if(isset($file_size)){?>
+
+                       <input type="hidden" class="form-control required title-case text " name="file_size" id="filesize" value="<?php if(isset($file_size)){ echo $file_size; } ?>" disabled="">
+                       <?php }?>
+
+                    <select name="file_size" id="file_size"class="form-control" required="">
+
 
                         <option value="0">Select File Size</option>
                        
@@ -527,7 +534,8 @@ $(document).ready(function(){
  var fileformat = $('#fileformat').val();
  $("#file_format option[value='"+fileformat+"']").attr("selected","selected");
 
-
+var filesize = $('#filesize').val();
+ $("#file_size option[value='"+filesize+"']").attr("selected","selected");
 
 }); 
 

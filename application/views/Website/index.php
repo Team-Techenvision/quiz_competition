@@ -76,6 +76,9 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
     font-size: 22px!important;
    
    }
+  /* #nur-class1 .active{
+    background-color: red;
+   }*/
 </style>
 
 <!-- <style type="text/css">
@@ -108,25 +111,30 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 
                   $i=0; foreach ($banner_list as $list) {
                   if($list->slider_possition == 1 ){ $i++;
+
+
                 ?>
+
                   <div class="carousel-item image-gradient <?php if($i == 1){ echo 'active'; } ?>">
                     <img class="middle-img border-img" src="<?php echo base_url('assets/images/banner/'.$list->profile_image); ?>" alt="First slide">
+                      <div class="carousel-caption  text-white col-md-6" style=" margin-top: 333px;margin-left: -105px;background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;background-color: #6f6e6e96;">
+                        <h4><?php echo $list->title; ?> </h4>
+                        <p style="font-size: 16px;"><?php echo $list->subtitle; ?></p>   
                   </div>
-                  <div class="carousel-caption  text-white col-md-10" style=" margin-top: 333px;margin-left: -105px;background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;background-color: #00000080;">
-                        <h3><?php echo $list->title; ?> </h3>
-                        <p><?php echo $list->subtitle; ?></p>
                   </div>
+                
 
                   
                   
                 <?php } } }else{?>
-                    <div class="carousel-item image-gradient <?php if($i == 1){ echo 'active'; } ?>">
+                    <div class="carousel-item image-gradient active">
                     <img class="middle-img border-img" src="<?php echo base_url(); ?>assets/images/banner/profile_image_2_1608269490.jpg" alt="First slide">
+                     <div class="carousel-caption  text-white col-md-10" style=" margin-top: 333px;margin-left: -105px;background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;background-color: #6f6e6e96;">
+                        <h4>Preview: Aus vs India, 1st Test </h4>
+                        <p style="font-size: 16px;">Australia host India in the first of four Tests starting this Thursday and here's all you need to know</p>
                   </div>
-                  <div class="carousel-caption  text-white col-md-10" style=" margin-top: 333px;margin-left: -105px;background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;background-color: #00000080;">
-                        <h3 >Preview: Aus vs India, 1st Test </h3>
-                        <p >Australia host India in the first of four Tests starting this Thursday and here's all you need to know</p>
                   </div>
+                 
 
                 <?php } ?>
               </div>
@@ -142,35 +150,35 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
          </div>
        </div>
 
-    <!--    <div class="row carousel">
+  <!-- <div class="row carousel">
         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
         <div class="owl-carousel owl-theme owl-one">
-        <?php if($banner_list){
+        < ?php if($banner_list){
             foreach ($banner_list as $list) {
               if($list->slider_possition == '1'){ ?>
               <div class="item">
                 <div class="main-slide ">
-                  <div class="row "> -->
+                  <div class="row ">  -->
                    <!--  <div class=" col-md-4 col-12 ">
                         <h1>< ?php echo $list->title; ?> </h1>
                         <p>< ?php echo $list->subtitle; ?></p>
                         
                     </div> -->
                     <!-- <div class="image-gradient"></div> -->
-                   <!--  <div class="col-md-4 bg-website banner_text_div">
-                         <h1 class="text-white"><?php echo $list->title; ?> </h1>
-                        <p class="ptitle"><?php echo $list->subtitle; ?></p>
+                  <!--   <div class="col-md-4 bg-website banner_text_div">
+                         <h1 class="text-white">< ?php echo $list->title; ?> </h1>
+                        <p class="ptitle">< ?php echo $list->subtitle; ?></p>
                     </div>
                     <div class="col-md-8 col-12 image_div">
                         <div class="grad">
                        
                         </div>
-                        <img src="<?php echo base_url(); ?>assets/images/banner/<?php echo $list->profile_image; ?>" width="100%">
+                        <img src="< ?php echo base_url(); ?>assets/images/banner/< ?php echo $list->profile_image; ?>" width="100%">
                     </div>
                   </div>
                 </div>
               </div>
-          <?php } } }else{ ?>
+          < ?php } } }else{ ?>
             <div class="item">
                 <div class="main-slide ">
                   <div class="row "> -->
@@ -180,7 +188,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
                         
                     </div> -->
                     <!-- <div class="image-gradient"></div> -->
-                   <!--  <div class="col-md-4 bg-website banner_text_div">
+                    <!-- <div class="col-md-4 bg-website banner_text_div">
                          <h1 class="text-white">Preview: Aus vs India, 1st Test </h1>
                         <p class="ptitle">Australia host India in the first of four Tests starting this Thursday and here's all you need to know</p>
                     </div>
@@ -188,16 +196,16 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
                         <div class="grad">
                        
                         </div>
-                        <img src="<?php echo base_url(); ?>assets/images/banner/profile_image_2_1608269490.jpg" width="100%">
+                        <img src="< ?php echo base_url(); ?>assets/images/banner/profile_image_2_1608269490.jpg" width="100%">
                     </div>
                   </div>
                 </div>
               </div>
-        <?php  } ?>
+        < ?php  } ?>
       </div>
       </div>
-     </div> -->
-
+     </div>
+ -->
 
  <section class="about-two">
             <div class="container">
@@ -233,7 +241,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
                 <?php $i = 0;
                   foreach ($tab_list as $list) {
                     $i++; ?>
-                      <button class="theme-btn" data-filter="<?php echo $list->tabid;?>">  <?php echo $list->tabinputtext;?> </button>
+                      <button class="theme-btn" id="<?php echo $list->tabid;?>" data-filter="<?php echo $list->tabid;?>">  <?php echo $list->tabinputtext;?> </button>
 
                 <?php } ?>
                    <!-- Tab button fetch dyanamic ends  -->
@@ -405,6 +413,12 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 function myFunction() {
             document.getElementById("myForm").reset();
         }
+
+$(".theme-btn").click(function(){
+  $(".theme-btn").removeClass("main");
+  $(this).addClass("main");
+
+});
 
 </script>
 

@@ -16,8 +16,8 @@
 <style type="text/css">
   .error{
     color: red;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1px;
 
   }
  /* .maxheight{
@@ -31,6 +31,7 @@
   .labelerror #remember-error {
     position: absolute;
     top: 35px;
+    margin-left: -20px;
 }
 .userLabel{
   color: #0e0e0e;
@@ -53,10 +54,28 @@
    position: relative;
    line-height: 1;
     bottom:-57px;
+    /*margin-left: 25px;*/
 }
 label#user_password-error {
     margin-top: 15px;
 } 
+#user_name-error{
+    margin-top: -15px;
+}
+#user_pincode-error{
+    margin-top: -15px;
+
+}
+#user_email-error{
+    margin-top: -15px;
+
+}
+#password-error{
+    margin-top: -15px;
+
+}
+
+
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,22 +234,23 @@ label#user_password-error {
                   <!--   <a class="login/register text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login </a>  -->
               <?php if(isset($user_list[0]->user_name)){ 
                ?>
-                 <div class="dropdown ">
-    <button type="button" id="username" class="btn btnlogout dropdown-toggle" data-toggle="dropdown">
+              
+                 <div class="dropdown" >
+    <button type="button" id="dropdownMenuButton" class="btn btnlogout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Welcome <?php echo $user_list[0]->user_name;?>
     </button>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     
-      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/edit_profile" >My Profile</a>
+      <a class="dropdown-item pro_menu" href="<?php echo base_url(); ?>WebsiteController/edit_profile" >My Profile</a>
   
-      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/competition_list">My Competition</a>
+      <a class="dropdown-item pro_menu" href="<?php echo base_url(); ?>WebsiteController/competition_list">My Competition</a>
 
       <?php if(isset($winner_list[0]->user_id)) { 
         // print_r($winner_list[0]->user_id);
         ?> 
-      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/winner_list">Result</a>
+      <a class="dropdown-item pro_menu" href="<?php echo base_url(); ?>WebsiteController/winner_list">Result</a>
         <?php  }?>
-      <a class="dropdown-item" href="<?php echo base_url(); ?>WebsiteController/logout">Logout</a>
+      <a class="dropdown-item pro_menu" href="<?php echo base_url(); ?>WebsiteController/logout">Logout</a>
      
     </div>
   </div>
@@ -268,35 +288,35 @@ label#user_password-error {
               <!-- <p class="p">Just enter your email address</br>and your password for join.</p> -->
               <!-- <input class=" input w100" type="email" placeholder="Insert eMail" reqired autocomplete='off' /> -->
               <div class="row maxheight">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 " style="margin-bottom: 0px!important;padding-right:  0px!important;">
                    <input class="input txtOnly" type="text" name="user_name" id="user_name" value="<?php if(isset($user_name)){ echo $user_name; } ?>" placeholder="Enter Your Name" required="" /> 
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" style="margin-bottom: 0px!important;padding-left: 0px!important;">
                    <input class="input" type="text" name="user_pincode"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" minlength="6" maxlength="6" id="user_pincode" value="<?php if(isset($user_pincode)){ echo $user_pincode; } ?>"  placeholder="Enter Pincode" required="" />
 
                 </div>
-                 <div class="form-group col-md-6">
+                 <div class="form-group col-md-6"style="margin-bottom: 0px!important;padding-right: 0px!important;">
 
                 <input type="email" class="input" name="user_email" id="user_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php if(isset($user_email)){ echo $user_email; } ?>" placeholder="Enter Email Address" required>
 
               </div>
-                <div class="form-group col-md-6" style="margin-top: -10px;" >
+                <div class="form-group col-md-6" style="margin-top: -10px; margin-bottom: 0px!important;padding-left: 0px!important;" >
                   <label class="userLabel">Note: Entered mobile no. will be used as user name</label>
                    <input type="text" id="user_mobile" name="user_mobile" value="<?php if(isset($user_mobile)){ echo $user_mobile; } ?>" class="input notext mobileNo" placeholder="Enter Mobile No." minlength="10" maxlength="10" required="" />
 
                   
                 </div>
-                <div class="form-group col-md-6" style="margin-top: -18px;">
+                <div class="form-group col-md-6" style="margin-top: -25px; margin-bottom: 0px!important;padding-right: 0px!important;">
                      <label class="passwordlabel">Note: Password must contain uppercase, lowercase letters and number with a minimum of 8 characters</label>
-                  <span toggle="#password-field1"  style="position: absolute; right: 35px;" class="fa fa-fw fa-eye field_icon toggle-password1"></span>
+                  <span toggle="#password-field1"  style="position: absolute; right: 20px; font-size: 16px;" class="fa fa-fw fa-eye field_icon toggle-password1"></span>
                    <input type="password" id="user_password" name="user_password" minlength="8" class="input" value="<?php if(isset($user_password)){ echo $user_password; } ?>" placeholder="Enter Password" required="" /> 
 
 
                 </div>
                
-                <div class="form-group col-md-6 labelerror" style="margin-top: 20px;">
-                   <label class="form-check-label " style="margin-left: 50px;">
-                    <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t"><a href="<?php echo base_url(); ?>Privacy-Policy">Data Protection Policy</a></label> 
+                <div class="form-group col-md-6 labelerror" style="margin-top: 10px; margin-bottom: 0px!important; font-size: 14px; padding-left: 0px!important;">
+                   <label class="form-check-label " style="margin-left: 0px;">
+                    <input class="form-check-input title-case " style ="margin-top: 10px; position: initial;" type="checkbox" name="remember" required="" /> I agree <label class="text-primary t" style="font-size: 14px;"><a href="<?php echo base_url(); ?>Privacy-Policy">Data Protection Policy</a></label> 
                    </label>
                   </div>
               </div>
@@ -312,8 +332,8 @@ label#user_password-error {
 
                   
              
-                 <h6 class="alert alert-danger mobileerror"></h6>
-                 <h6 class="alert alert-success mobilesuccess"></h6>
+                 <h6 class="alert alert-danger mobileerror" style="top: 5px;"></h6>
+                 <h6 class="alert alert-success mobilesuccess" style="top: 5px;"></h6>
                   
 
               <button class="form-btn button sx back" type="button">Back</button>
@@ -324,21 +344,21 @@ label#user_password-error {
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="h3">Welcome Back !</h4>
+            <h4 class="h3" style="margin-bottom: -5px;">Welcome Back !</h4>
             <!-- <button class=" fb" type="button">Log In With Facebook</button> -->
             <!-- <p class="p">- or -</p> -->
-            <div class="form-group">
+            <div class="form-group"  style="margin-bottom: 0px!important;">
               <label class="user">Note: Entered mobile no. will be used as user name</label>
             <input type="text" id="mobile"  name="mobile" class="input notext"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Mobile No." minlength="10" maxlength="10"  />
             </div>
           <!--   <span class="text-red"> < ?php echo form_error('mobile'); ?></span> -->
             <!-- <div id="infoMessage">< ?php echo form_error('mobile'); ?></div> -->
-             <div class="form-group">
-             <span style="position: absolute; right: 20px;" toggle="#password-field"  class="fa fa-fw fa-eye field_icon toggle-password"></span>
+             <div class="form-group"  style="margin-bottom: 0px!important;">
+             <span style="position: absolute; right: 20px; font-size: 16px;" toggle="#password-field"  class="fa fa-fw fa-eye field_icon toggle-password"></span>
              <input type="password" class="input" name="password" id="password" placeholder="Password" >
            </div>
 
-            <div class="form-group">
+            <div class="form-group"  style="margin-bottom: 0px!important;">
              <label class="text-primary t"> <a href="<?php echo base_url(); ?>WebsiteController/forgotpassword">Forgot Password</a></label>
             </div>
           

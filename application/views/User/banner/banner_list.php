@@ -25,7 +25,7 @@
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-list"></i> List Banner Information</h3>
               <div class="card-tools">
-                <a href="add_banner" class="btn btn-sm btn-block btn-primary">Add Banner</a>
+                <a href="<?php echo base_url(); ?>User/add_banner" class="btn btn-sm btn-block btn-primary">Add Banner</a>
               </div>
             </div>
             <!-- /.card-header -->
