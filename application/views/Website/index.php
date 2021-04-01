@@ -76,9 +76,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
     font-size: 22px!important;
    
    }
-  /* #nur-class1 .active{
-    background-color: red;
-   }*/
+ 
 </style>
 
 <!-- <style type="text/css">
@@ -209,17 +207,17 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
 
  <section class="about-two">
             <div class="container">
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-xl-12">
 
                      
-                        <div class="about-two__content  abt">
+                        <div class="about-two__content  abt ">
 
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12 " >
                               <!-- data-aos="fade-up" data-aos-duration="7000" -->
 
                   <!-- <h4 class="mt-3"><span class="number_area">1 </span><span class="font-we text-uppercase"></span></h4> -->
-                  <p class="headingtitle">We plan 30 different competition activities every month. Your child can perform, experiment participate in all the activities from the comfort of your home. This keeps your child fresh, active motivated.</p>
+                  <p class="headingtitle ">We plan 30 different competition activities every month. Your child can perform, experiment participate in all the activities from the comfort of your home. This keeps your child fresh, active motivated.</p>
 
                 </div>
 
@@ -280,7 +278,7 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
              <div class="overlay">
                   <div class="text">
                       <a class="text-white" href="<?php echo base_url(); ?>WebsiteController/competition_singlepage/<?php echo "$list->competitionid"; ?>" ><h5 > <?php echo $list->title;?>  </h5></a>
-                    <h6> <?php echo $list->subtitle;?> </h6>
+                   <!--  <h6> < ?php echo $list->subtitle;?> </h6> -->
 
                    <form id="myForm" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post" >
 

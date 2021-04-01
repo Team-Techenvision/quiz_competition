@@ -23,7 +23,7 @@
     </section>
 
     <section class="content">
-      <div class="container-fluid">
+      <div class="container-fluid" style="width: 66%; margin: 0 auto;">
         <div class="row" >
           <!-- left column -->
           <div class="col-md-12">
@@ -160,12 +160,12 @@
                                 </div>
                                 
                               </div>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-12" hidden>
                              <div class="row">
                               <div class="col-md-4"><label for="inputName" class="form-label">Alternate Mobile No.</label>&nbsp;<label style="color:red;">*</label></div>
                         
                                  <div class="col-md-8">
-                                  <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." required>
+                                  <input type="text" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control notext"  name="alternatemobno" id="alternatemobno" value="<?php if(isset($alternatemobno)){ echo $alternatemobno; } ?>" minlength="10" maxlength="10" placeholder="Enter Alternate Mobile No." >
 
                                     <p class="mobileval mb-0" id="mobileval" style="font-size:14px;  color: red;"></p>
 
@@ -378,7 +378,12 @@
                        <div id="spin"></div>
                        <a href="#" id="btn_update" type="submit" >Update</a>
                       </div></center> -->
-                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary btnUpdate">Edit </button>
+                   <?php if(!empty($gender)){ ?>
+                   <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary ">Update </button>
+                  <?php } else{ ?>
+                     <button id="btn_save" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary ">Add </button>
+                  <?php } ?>
+                   <!-- <button id="btn_update" style="padding-left: 20px; padding-right: 20px;" type="submit" class="btn btn-primary btnUpdate">Update </button> -->
                  </div>
                </div>
               

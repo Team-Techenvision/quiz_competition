@@ -153,7 +153,7 @@ label#user_password-error {
                     <div class="logo-box clearfix">
 
                         <a class="navbar-brand" id="logo" href="<?php echo base_url(); ?>">
-                            <img src="<?php echo base_url('assets/images/companylogo/'.$company_list[0]->company_logo); ?>" class="main-logo" width="128" alt="" />
+                            <img src="<?php echo base_url('assets/images/companylogo/'.$company_list[0]->company_logo); ?>" class="main-logo" width="150" alt="" />
                         </a>
 
                         <!-- <div class="header__social">
