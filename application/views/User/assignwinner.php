@@ -116,11 +116,11 @@
 
                 if($competitiontypeid=="1"){
                     ?>             
-             <div class="form-group row">
-               <table id="dataTable" class="table table-bordered table-striped">
+             <div class="">
+               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>User Id</th>
                   <th>User Name</th>
                   <th>Score(%)</th>
@@ -152,11 +152,11 @@
               </table> 
                   </div> 
                 <?php  }else{ ?>
-                  <div class="form-group row">
-                        <table id="dataTable" class="table table-bordered table-striped">
+                  <div class="">
+                        <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>User Id</th>
                   <th>User Name</th>
                   <!-- <th>User Name</th> -->

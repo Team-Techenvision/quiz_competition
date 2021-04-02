@@ -34,7 +34,8 @@
                 <div class="card-body row">
                    <div class="form-group col-md-6">
                     <label>Class Group <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text" onkeypress="return blockSpecialChar(event)" name="tabinputtext" id="tabinputtext" value="<?php if(isset($tabinputtext)){ echo $tabinputtext; } ?>"  placeholder="Enter Class Group" required="" >
+                    <input type="text" class="form-control required title-case " onkeypress="return blockSpecialChar(event)" name="tabinputtext" id="tabinputtext" value="<?php if(isset($tabinputtext)){ echo $tabinputtext; } ?>"  placeholder="Enter Class Group" required="" >
+                      <p class="tabval mb-0" id="tabval" style="font-size:14px;  color: red;"></p>
                   </div>
                    <div class="form-group col-md-6">
                     <label>Class Tab Group <span style="color: red;">*</span></label>
@@ -86,6 +87,13 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script type="text/javascript">
+  <?php if($this->session->flashdata('class_exists_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Class Group Already Exists');
+    });
+  <?php } ?>
+</script>
  <script type="text/javascript">
   $(document).ready(function(){
     $("#tabinputtext").on('input',function(){
@@ -97,6 +105,41 @@
     });
 
   });
+</script>
+<script>
+   
+
+  $('#tabinputtext').on('change',function(){
+    // alert("hii");
+
+     var tab = $('#tabinputtext').val();
+     // alert(mobile);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/check_tabcompetition_class",
+           method:"POST",
+           data:{tabinputtext:tab},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data == "true"){
+
+                   $('.tabval').hide();
+
+                 }else{
+                // alert(data);
+                 $('.tabval').html(data);
+                 $('#tabinputtext').val('');
+                }               
+           }
+         });
+       // e.preventdefault();
+  });
+
 </script> 
 </body>
 </html>

@@ -103,7 +103,7 @@
                  <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>User Id</th>
                   <th>User Name</th>
                   <th class="wt_50">Action</th>
@@ -173,7 +173,7 @@
                                      <table id="compitiorlist" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                          <th class="wt_50">#</th>
+                                          <th class="wt_50">Sr No.</th>
                                           <th>User Name</th>
                                           <th class="wt_50">Action</th>
                                         </tr>

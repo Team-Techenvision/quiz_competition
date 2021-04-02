@@ -34,7 +34,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>Competition Type</th>
                   <th>Competition Title</th>
                   <th>From-To Class</th>
@@ -54,7 +54,7 @@
                     <td><?php echo $list->competitiontype ?></td>
                     <td><?php echo $list->title ?></td>
                     <td><?php echo $list->tabinputtext ?></td>
-                    <td><?php echo $list->enddate ?></td>
+                    <td><?php $newDate = date("d-m-Y", strtotime($list->enddate));     ?><?php echo $newDate ?></td>
                     <td>
                       <input type="hidden" name="competitionid" id="competitionid" value="<?php echo $list->competitionid; ?>">
                       <a href="<?php echo base_url(); ?>User/edit_competition/<?php echo $list->competitionid; ?>" > <i class="fa fa-edit"></i> </a> &nbsp;
@@ -79,7 +79,7 @@
 
                    <?php if($list->competitiontypeid==1){ ?>
 
-                      <a  id="" name="" href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>" title="View Question"> <img src="<?php echo base_url(); ?>assets/images/question.jpg" width="40" height="40"></a>
+                      <a  id="" name="" href="<?php echo base_url(); ?>User/quizcompetition_list/<?php echo $list->competitionid; ?>" title="View Question"> <img src="<?php echo base_url(); ?>assets/images/question.jpg"  width="35" height="32"></a>
                     <?php } ?>
                     </td>
                   <?php } ?>

@@ -359,7 +359,7 @@ label#user_password-error {
            </div>
 
             <div class="form-group"  style="margin-bottom: 0px!important;">
-             <label class="text-primary t"> <a href="<?php echo base_url(); ?>WebsiteController/forgotpassword">Forgot Password</a></label>
+             <label class="text-primary t"> <a href="<?php echo base_url(); ?>WebsiteController/forgotpassword">Forgot Password?</a></label>
             </div>
           
            <!--  <span class="text-red"> < ?php echo form_error('password'); ?> </span> -->
@@ -595,7 +595,7 @@ jQuery.validator.addMethod("validate_email", function(value, element) {
     }
 });
 $.validator.addMethod("pwcheck", function(value, element) {
-    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*])[a-zA-Z0-9!@#$%&*]+$/.test(value);
+    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/.test(value);
   //(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]
 }, "");   
 // $.validator.addMethod("pwcheck", function(value) {

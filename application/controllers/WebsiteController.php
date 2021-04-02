@@ -302,23 +302,39 @@ public function resetpassword(){
     $code = $this->uri->segment(3);
 
     $check_code = $this->Website_Model->check_resetpass($code);
-    
+    $status = $check_code[0]['status'];
+
+     if(!empty($status)){
+
+        // echo "You have already reset password.";
+
+        $this->session->set_flashdata('alreadyreset_error','error');
+        // header('location:'.base_url().'WebsiteController/resetpassword');
+
+          $this->load->view('Website/Include/head');
+          $this->load->view('Website/singalpage_resetpassword');
+          $this->load->view('Website/Include/footer');
+      
+      } 
+      else
+      {
     
     // print_r($check_code); die();
-    if($check_code == null)
-    {
-       $this->session->set_flashdata('email_error','error');
-       header('location:'.base_url().'WebsiteController/forgotpassword');
-       
-    }else{
-        
-      $this->session->set_userdata('randcode',  $code);
+        if($check_code == null)
+        {
+           $this->session->set_flashdata('email_error','error');
+           header('location:'.base_url().'WebsiteController/forgotpassword');
+           
+        }else{
+            
+          $this->session->set_userdata('randcode',  $code);
 
-      $this->load->view('Website/Include/head');
-      $this->load->view('Website/resetpassword');
-      $this->load->view('Website/Include/footer');
+          $this->load->view('Website/Include/head');
+          $this->load->view('Website/resetpassword');
+          $this->load->view('Website/Include/footer');
 
-    }
+        }
+  }
 
 
 }
@@ -332,32 +348,55 @@ public function reset(){
       $userName = $check_code[0]['user_name'];
       $userEmail = $check_code[0]['user_email'];
       $user_id = $check_code[0]['user_id'];
+      $status = $check_code[0]['status'];
+      $user_password = $check_code[0]['user_password'];
       
-      $newpass = $this->input->post('newpassword');
-      $Re_enter_newpass = $this->input->post('retypepassword');
+      $newpass = md5($this->input->post('newpassword'));
+      $Re_enter_newpass = md5($this->input->post('retypepassword'));
 
-    //   print_r($userEmail); die();
+      // print_r($user_password); die();
 
-      if($newpass == $Re_enter_newpass ){
-            $this->form_validation->set_rules('newpassword', 'First Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
+     
 
-             // print_r($randcode); die();
-      $update_data = array(
+    if($newpass == $Re_enter_newpass ){
 
-       'user_password' => md5($this->input->post('newpassword')),  
+      if($user_password == $newpass){
+
+        $this->session->set_flashdata('passwordcheck_error','error');
+        header('location:'.base_url().'WebsiteController/resetpassword/'.$code);
       
-      ); 
-      // print_r($save_data);
-       $this->Website_Model->update_info('user_id', $user_id, 'user', $update_data);
-      
-        $update_data1 = array(
+      }
+      else
+      {
 
-       'password' => md5($this->input->post('newpassword')),  
-      
-      ); 
-      // print_r($save_data);
-       $this->Website_Model->update_info1('user_id', $user_id, 'customer_information', $update_data1);
+         $this->form_validation->set_rules('newpassword', 'First Name', 'trim|required');
+        if ($this->form_validation->run() != FALSE) {
+
+                 // print_r($randcode); die();
+
+          $data = array(
+
+             'status' =>1,
+          );
+          $this->Website_Model->update_info('rand_code', $code, 'forgotpassword', $data);
+          
+          // $this->Website_Model->save_data('forgotpassword',$data);
+
+          $update_data = array(
+
+           'user_password' => $newpass,  
+          
+          ); 
+          // print_r($save_data);
+           $this->Website_Model->update_info('user_id', $user_id, 'user', $update_data);
+          
+            $update_data1 = array(
+
+           'password' => $newpass,  
+          
+          ); 
+          // print_r($save_data);
+           $this->Website_Model->update_info1('user_id', $user_id, 'customer_information', $update_data1);
 
         require("phpmailer/sendemail.php");
         require("phpmailer/new-reset-password.php");
@@ -375,7 +414,7 @@ public function reset(){
       header('location:'.base_url().'WebsiteController');
     }
 
-       
+    }   
 
       }else{
  
@@ -383,7 +422,9 @@ public function reset(){
         $this->session->set_flashdata('emailcheck_error','error');
         header('location:'.base_url().'WebsiteController/resetpassword/'.$code);
   
-  } 
+      }
+
+
       $this->load->view('Website/Include/head');
       $this->load->view('Website/resetpassword');
       $this->load->view('Website/Include/footer');

@@ -120,7 +120,7 @@
           </a>
         </li>
           <li class="nav-item has-treeview">
-          <a href="<?php echo base_url(); ?>User/add_assigncompetition" class="nav-link head">
+          <a href="<?php echo base_url(); ?>User/assign_competition_list" class="nav-link head">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
              Assign Competition

@@ -104,7 +104,7 @@
 
                                    <?php  }else{ ?>
                                      
-                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" >
+                                     <input type="date" class="form-control notext"  name="birthdate" id="birthdate" value="<?php if(isset($birthdate)){ echo $birthdate; } ?>" placeholder="Enter Birthdate" required>
 
 
                                    <?php } } ?>
@@ -146,7 +146,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="gender" id="gender"class="form-control" readonly="">
+                                  <select name="gender" id="gender"class="form-control" readonly="" required="">
                                     <option value="">Select Gender</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
@@ -235,7 +235,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="standard" id="standard"class="form-control"  >
+                                  <select name="standard" id="standard"class="form-control" required="" >
                                   <option value="">Select Standard</option>
                                   <option value="1">Nursary</option>
                                   <option value="2">KG-I</option>
@@ -400,6 +400,7 @@
   </div>
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
@@ -499,6 +500,15 @@ $(document).ready(function(){
     // alert(maxDate);
     $('#birthdate').attr('max', maxDate);
 });
+
+  // $("input").on("change", function() {
+  //   // alert('hii');
+  //       this.setAttribute(
+  //           "data-date",
+  //           moment(this.value, "MM/DD/YYYY")
+  //           .format( this.getAttribute("data-date-format") )
+  //       )
+  //   }).trigger("change")
 </script> 
  
 <!-- For mobile no validation if enter alternate number is user registration mobile no -->

@@ -108,6 +108,7 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.ajaxchimp.min.js"></script>
     <!-- template scripts -->
     <script src="<?php echo base_url(); ?>assets/js/theme.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script>
       AOS.init();
     </script>

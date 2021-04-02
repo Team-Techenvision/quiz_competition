@@ -76,7 +76,7 @@
                         <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>User Id</th>
                   <th>User Name</th>
                   <!-- <th>User Name</th> -->
@@ -125,7 +125,7 @@
                         <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>User Id</th>
                   <th>User Name</th>
                   <!-- <th>User Name</th> -->

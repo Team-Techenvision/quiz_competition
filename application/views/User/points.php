@@ -103,7 +103,7 @@
                          </tr>
                          <tr>
                           <td>5</td>
-                         <td><label>2st Runner Up</label><input type="hidden" name="winnerposition[]" value="2st Runner Up"></td>
+                         <td><label>2nd Runner Up</label><input type="hidden" name="winnerposition[]" value="2nd Runner Up"></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points2ndR" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
                           <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints2ndR" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required=""></td>
                          </tr>

@@ -255,6 +255,17 @@ return $result;
 
      return $result;
   }
+   public function check_tabcompetition_class($tabinputtext){
+
+     $this->db->where('tabinputtext',$tabinputtext);
+     // $this->db->group_by('competitionid');
+    $this->db->from('tabcompetition');
+    $query = $this->db->get();
+    $result = $query->num_rows();
+    // print_r($result); die();
+
+     return $result;
+  }
    public function check_competitiontype($competitiontype){
 
      $this->db->where('competitiontype',$competitiontype);
@@ -683,6 +694,18 @@ $this->db->from('userscore_master');
   $c_date = date('Y-m-d');   
   $this->db->where('enddate >=', $c_date);
   // $this->db->where('competitiontypeid',1);
+  $query = $this->db->get("competition");
+  return $query->result();
+  // print_r($query);
+ }
+ //for assignwinner
+
+   function fetch_competition_forwinner()
+ {
+  $this->db->order_by("competitionid", "ASC");
+  $c_date = date('Y-m-d');   
+  $this->db->where('enddate <=', $c_date);
+  $this->db->where('status',1);
   $query = $this->db->get("competition");
   return $query->result();
   // print_r($query);

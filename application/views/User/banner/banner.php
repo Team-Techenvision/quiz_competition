@@ -60,15 +60,19 @@
                   </div>
                   <div class="form-group col-md-7">
                     <label>Banner Image <span style="color: red;">*</span></label>
-                 <input type="file" id="profile_image" name="profile_image"  onchange="ValidateSingleInput(this); readURL(this);" />
+                
                  <?php
                  if(isset($profile_image)){?>
 
-             
+                 <input type="file" id="profile_image" name="profile_image"  onchange="ValidateSingleInput(this); readURL(this);" />
+
                   <img id="blah" class="mb-2 mt-2" src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" alt="" height="150px" width="150px" />
 
                 <input type="hidden" name="old_image" value="<?php if(isset($profile_image)){ echo $profile_image; } ?>"> 
-                   <?php }?>
+                   <?php }else{?>
+                     <input type="file" id="profile_image" name="profile_image"  onchange="ValidateSingleInput(this); readURL(this);" required="" />
+                   <?php } ?>
+                   
                  <p  style="color: blue;" class="ml-2 pl-1 border border-dark mt-2">Note: Only .jpg, .jpeg, .png Image Files are allowed.</p>
 
                  </div>

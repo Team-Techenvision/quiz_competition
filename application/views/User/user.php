@@ -212,8 +212,9 @@ $(function() {
     }
 });
 
+
 $.validator.addMethod("pwcheck", function(value, element) {
-    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*])[a-zA-Z0-9!@#$%&*]+$/.test(value);
+    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/.test(value);
   //(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]
 }, "");    
   

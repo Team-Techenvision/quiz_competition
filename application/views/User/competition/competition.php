@@ -102,7 +102,7 @@
                    <div class="form-group col-md-12">
                     <label>Competition Subject</label>
 
-                      <textarea class="textarea" name="subjectstextarea" id="subjectstextarea" placeholder="Place some text here" style=" width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
+                      <textarea class="form-control" name="subjectstextarea" id="subjectstextarea" placeholder="Enter Competition Subject" rows="6" cols="50" ><?php if(isset($subjectstextarea)){ echo $subjectstextarea; } ?></textarea>
 
                     </div>
                 
@@ -292,13 +292,24 @@
                   <div class="form-group col-md-6">
                     <label>Competition Image <span style="color: red;">*</span></label>
 
-                 <input type="file" id="photo" onchange="ValidateSingleInput(this); readURL(this);"  name="photo"   />
+                   
+               
 <!-- onchange="readURL(this);" -->
                  <?php
                  if(isset($photo)){?>
+
+                  <input type="file" id="photo" onchange="ValidateSingleInput(this); readURL(this);"  name="photo"  class="mb-2" />
+
+                   
+
                   <img id="blah" src="<?php if(isset($photo)){ echo base_url();?>assets/images/competition/<?php echo $photo; } ?>" alt="" height="150px" width="150px" />
 
                    <input type="hidden" name="old_photo" value="<?php if(isset($photo)){ echo $photo; } ?>"> 
+
+                  <?php }else{?>
+
+                     <input type="file" id="photo" onchange="ValidateSingleInput(this); readURL(this);"  name="photo"  required="" />
+
 
                   <?php }?>
                    
@@ -309,13 +320,13 @@
                    <div class="form-group col-md-12">
                     <label>Terms and Conditions <span style="color: red;">*</span></label>
 
-                    <textarea class="textarea" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required="required"><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
+                    <textarea class="form-control" name="termsandconditions" id="termsandconditions" placeholder="Enter Terms and Conditions" rows="6" cols="50" required="required"><?php if(isset($termsandconditions)){ echo $termsandconditions; } ?></textarea>
                    </div>
                  
                     <div class="form-group col-md-12">
                     <label>Instructions <span style="color: red;">*</span></label>
 
-                    <textarea class="textarea" name="instruction" id="instruction" placeholder="Enter Instruction" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
+                    <textarea class="form-control" name="instruction" id="instruction" placeholder="Enter Instruction" rows="6" cols="50" required="required"><?php if(isset($instruction)){ echo $instruction; } ?></textarea>
                    </div>
                      <div class="form-group col-md-12">
                     <label>File Format</label>
@@ -336,7 +347,7 @@
                        
                       </select>
                       <?php }else{ ?>
-                         <select name="file_format" id="file_format"class="form-control " required>
+                         <select name="file_format" id="file_format"class="form-control " >
                         <option value="0">Select File Format</option>
                        
                         <option value="1">Document File / PDF file</option>
@@ -359,7 +370,7 @@
                        <input type="hidden" class="form-control required title-case text " name="file_size" id="filesize" value="<?php if(isset($file_size)){ echo $file_size; } ?>" disabled="">
                        <?php }?>
 
-                    <select name="file_size" id="file_size"class="form-control" required="">
+                    <select name="file_size" id="file_size"class="form-control" >
 
 
                         <option value="0">Select File Size</option>

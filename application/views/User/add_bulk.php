@@ -86,7 +86,7 @@
 <script type="text/javascript">
   <?php if($this->session->flashdata('import_error')){ ?>
     $(document).ready(function(){
-      toastr.error('Data are not import successfully');
+      toastr.error('You have already data imported');
     });
   <?php } ?>
 

@@ -33,6 +33,9 @@ label#user_password-error {
    position: relative;
     bottom: -35px;
 }
+#retypepassword-error{
+   margin-top: 15px;
+}
 </style>
 <section class="reset_password aboutus  " style="background-color: #121a2b;" >
             <div class="container mb-5 mt-5">
@@ -43,8 +46,7 @@ label#user_password-error {
                   <div class="form-group col-md-4 mb-5">
                   <label  class="text-white">New Password</label>
                     <label class="passwordlabel">Note: Password must contain uppercase, lowercase letters and number with a minimum of 8 characters</label>
-                  <span toggle="#password-field1"  style="position: absolute; right: 35px; top :90px;
-    color: black;" class="fa fa-fw fa-eye field_icon toggle-password2"></span>
+                  <span toggle="#password-field1"  style="position: absolute; right: 35px; top :90px;color: black;" class="fa fa-fw fa-eye field_icon toggle-password2"></span>
                   <input type="password"  style="border-radius: 25px; height: 50px;" class="form-control text-center" name="newpassword" id="newpassword" placeholder="Enter Your New Password" required="">
 
                  </div>
@@ -55,8 +57,7 @@ label#user_password-error {
 
                   <div class="form-group col-md-4">
                   <label  class="text-white">Re-Enter New Password</label>
-                    <span style="position: absolute; right: 35px;  top :60px;
-    color: black;" toggle="#password-field"  class="fa fa-fw fa-eye field_icon toggle-password3"></span>
+                    <span style="position: absolute; right: 35px;  top :60px;color: black;" toggle="#password-field"  class="fa fa-fw fa-eye field_icon toggle-password3"></span>
                   <input type="password" style="border-radius: 25px; height: 50px;" class="form-control text-center" name="retypepassword" id="retypepassword" placeholder="Re-Enter Your New Password" required="">
 
                  </div>
@@ -70,7 +71,21 @@ label#user_password-error {
                              echo 'Password did not match';
                             
                          } ?>
-                         </div>
+                      </div>
+                     <!--   <div class="form-group col-md-12 text-danger">
+                       < ?php if($this->session->flashdata('alreadyreset_error')){
+                        
+                             echo 'You have already reset password.';
+                            
+                         } ?>
+                      </div> -->
+                       <div class="form-group col-md-12 text-danger">
+                       <?php if($this->session->flashdata('passwordcheck_error')){
+                        
+                             echo 'Try again with a password you have not used before.' ;
+                            
+                         } ?>
+                      </div>
                       </div>
                   </form>
                   

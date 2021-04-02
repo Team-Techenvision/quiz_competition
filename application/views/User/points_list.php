@@ -39,7 +39,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                   <th>Competition</th>
                   <th>Winner Position</th>
                   <th>Points</th>

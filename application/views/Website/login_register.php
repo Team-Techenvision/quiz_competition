@@ -24,6 +24,16 @@
     top: 35px;
     margin-left: -15px;
 }
+.alert-danger {
+    color: #efe9ea;
+    background-color: #fb0505;
+    border-color: #f92b41;
+}
+.alert-success{
+    color: #efe9ea;
+    background-color: #4BB543;
+    border-color: #4BB543;
+}
 </style>
 <section class="login_register aboutus  "  >
     <div class="container mb-5 mt-5">
@@ -114,7 +124,7 @@
                <div class="form-group col-md-2"></div>
 
             <div class="form-group col-md-8">
-             <label class="text-primary t"> <a href="<?php echo base_url(); ?>WebsiteController/forgotpassword">Forgot Password</a></label>
+             <label class="text-primary t"> <a href="<?php echo base_url(); ?>WebsiteController/forgotpassword">Forgot Password?</a></label>
             </div>
               <div class="form-group col-md-2"></div>
                <div class="form-group col-md-2"></div>
@@ -189,7 +199,7 @@ jQuery.validator.addMethod("validate_email", function(value, element) {
     }
 });
 $.validator.addMethod("pwcheck", function(value, element) {
-    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*])[a-zA-Z0-9!@#$%&*]+$/.test(value);
+    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/.test(value);
   //(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]
 }, "");   
 // $.validator.addMethod("pwcheck", function(value) {

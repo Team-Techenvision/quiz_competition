@@ -1086,8 +1086,15 @@ public function check_competitiontype(){
                     $flag = true;
                     // $i=0;
 
+                    // die();
+
                     // $inserdata="";
-                    foreach ($allDataInSheet as $value) {
+                    foreach ($allDataInSheet as $value){
+
+                      //validation for excel sheet wrong
+                      $this->form_validation->set_rules('user_email', $value['C'], 'trim|valid_email|required');
+                       if ($this->form_validation->run() != FALSE) { 
+                      
 
                       
                       // if($flag){
@@ -1111,16 +1118,12 @@ public function check_competitiontype(){
                      $usere2 = $this->User_Model->check_regdb1_e($useremail);
 
                      // print_r($usere2); die();
+                       if(empty($userm) || $userm==""){ 
 
-                     if(empty($userm) || $userm==""){ 
+                          if(empty($usere1) || $usere1==""){ 
 
-                       if(empty($usere1) || $usere1==""){ 
-
-                        if(empty($usere2) || $usere2==""){ 
-                     // print_r($usere2); die();
-
-
-                      $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
+                            if(empty($usere2) || $usere2==""){ 
+                                   $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
                         VALUES ('$companyid', '$username',  '$usermobile', '$useremail', '$userpassword', '$userpincode','$isadmin', '$rollid');";
                       $query1 = $this->db->query($sql1); 
                       // print_r($query1); die();
@@ -1215,27 +1218,20 @@ public function check_competitiontype(){
                       // echo "ERROR !";
                       // $this->session->set_flashdata('import_error','error');
                       // header('location:'.base_url().'User/add_bulk');
-                    } 
 
-                        }
-                    // else{
-                        //       // echo $result; die();
-                        //       // echo "ERROR !";
-                        //       $this->session->set_flashdata('import_error','error');
-                        //       header('location:'.base_url().'User/add_bulk');
-                        //     } 
+                            } 
+                          }
+                    
                       }
-                        // else{
-                  //             // echo $result; die();
-                  //             // echo "ERROR !";
-                  //             $this->session->set_flashdata('import_error','error');
-                  //             header('location:'.base_url().'User/add_bulk');
-                  // } 
-                   //complete    // print_r($us_id); die();
+                     
+                    }else{
 
-                      // $i++;
+
+                      echo "your excel sheet format is wrong";
+                    }
+
                     }   
-                if($result){
+                    if($result){
                       // echo "Imported successfully";
                       $this->session->set_flashdata('import_success','success');
                       header('location:'.base_url().'User/user_list');
@@ -1244,6 +1240,7 @@ public function check_competitiontype(){
                       // echo "Imported successfully";
                       $this->session->set_flashdata('import_success','success');
                       header('location:'.base_url().'User/user_list');
+
                     }else{
                       // echo $result; die();
                       // echo "ERROR !";
@@ -1400,7 +1397,7 @@ public function check_competitiontype(){
              <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                    <th>Competition Title</th>
                          
                  </tr>
@@ -2052,7 +2049,7 @@ public function check_competitiontype(){
           </div>
             <div class="">
           <label for="recipient-name"  class="col-form-label">Competition End Date :</label>
-          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['enddate']; ?></label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php $newDate = date("d-m-Y", strtotime($value['enddate'])); ?><?php echo $newDate ?></label>
           </div>
             <div class="">
           <label for="recipient-name"  class="col-form-label">Competition Class :</label>
@@ -2094,7 +2091,7 @@ public function check_competitiontype(){
              <table id="example3" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th class="wt_50">#</th>
+                  <th class="wt_50">Sr No.</th>
                    <th>Participant Name</th>
                    <th>Email Address</th>
                    <th>City</th>
@@ -3182,7 +3179,7 @@ public function save_assigncompetition(){
       
     $competitionid =$this->input->post('competitionid');
    
-    $data['competition'] = $this->User_Model->fetch_competition();
+    $data['competition'] = $this->User_Model->fetch_competition_forwinner();
        
     $data['user_list'] = $this->User_Model->fetch_userlist($competitionid);
     foreach ($data['user_list'] as $value) {
@@ -3780,7 +3777,32 @@ public function checkpoints_competition1(){
     header('location:'.base_url().'User/points_list');
   }
 
-/*******************************    Class Information      ****************************/
+/*************  Class Information      ****************************/
+
+
+  public function check_tabcompetition_class(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+     $tabinputtext = $this->input->post('tabinputtext');
+
+    $check_tabcompetition_class = $this->User_Model->check_tabcompetition_class($tabinputtext); 
+// print_r($checkpoints_competition); die();
+        if($check_tabcompetition_class > 0){
+
+         echo "Class Group Already Exists." ; 
+         // return false;
+
+
+        }else{
+
+          echo "true";
+
+        }
+}
 
   // Add New Class....
   public function add_class(){
@@ -3801,6 +3823,10 @@ public function checkpoints_competition1(){
                $tostand = $this->input->post('tostand');
       }
 
+       $$data['check_tabcompetition_class'] = $this->User_Model->check_tabcompetition_class($tabinputtext); 
+
+       if(empty($data['check_tabcompetition_class'])){
+
       $save_data = array(
        
                 'tabinputtext' => $this->input->post('tabinputtext'),
@@ -3816,6 +3842,13 @@ public function checkpoints_competition1(){
       $this->User_Model->save_data('tabcompetition', $save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'User/class_list');
+
+      }else{
+      // echo "already exists";
+      $this->session->set_flashdata('class_exists_error','error');
+      header('location:'.base_url().'User/add_class');
+      }
+
     }
 
     // $data['competition'] = $this->User_Model->fetch_competition();
