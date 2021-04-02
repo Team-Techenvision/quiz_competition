@@ -163,6 +163,8 @@ $(function() {
     format: 'DD-MM-Y'
   })
 </script>
+
+<script>$('#date').datepicker({ dateFormat: 'dd-mm-yy' }).val();</script>
 <!-- <script>
   $(function () {
     $("#example1").DataTable();

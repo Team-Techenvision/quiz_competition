@@ -1086,15 +1086,11 @@ public function check_competitiontype(){
                     $flag = true;
                     // $i=0;
 
-                    // die();
-
                     // $inserdata="";
                     foreach ($allDataInSheet as $value){
-
                       //validation for excel sheet wrong
-                      $this->form_validation->set_rules('user_email', $value['C'], 'trim|valid_email|required');
-                       if ($this->form_validation->run() != FALSE) { 
-                      
+                      // $this->form_validation->set_rules('user_email', $value['C'], 'trim|required');
+                      //  if ($this->form_validation->run() != FALSE) { 
 
                       
                       // if($flag){
@@ -1118,12 +1114,16 @@ public function check_competitiontype(){
                      $usere2 = $this->User_Model->check_regdb1_e($useremail);
 
                      // print_r($usere2); die();
-                       if(empty($userm) || $userm==""){ 
 
-                          if(empty($usere1) || $usere1==""){ 
+                     if(empty($userm) || $userm==""){ 
 
-                            if(empty($usere2) || $usere2==""){ 
-                                   $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
+                       if(empty($usere1) || $usere1==""){ 
+
+                        if(empty($usere2) || $usere2==""){ 
+                     // print_r($usere2); die();
+
+
+                      $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
                         VALUES ('$companyid', '$username',  '$usermobile', '$useremail', '$userpassword', '$userpincode','$isadmin', '$rollid');";
                       $query1 = $this->db->query($sql1); 
                       // print_r($query1); die();
@@ -1218,20 +1218,31 @@ public function check_competitiontype(){
                       // echo "ERROR !";
                       // $this->session->set_flashdata('import_error','error');
                       // header('location:'.base_url().'User/add_bulk');
+                    } 
 
-                            } 
-                          }
-                    
+                        }
+                    // else{
+                        //       // echo $result; die();
+                        //       // echo "ERROR !";
+                        //       $this->session->set_flashdata('import_error','error');
+                        //       header('location:'.base_url().'User/add_bulk');
+                        //     } 
                       }
-                     
-                    }else{
+                        // else{
+                  //             // echo $result; die();
+                  //             // echo "ERROR !";
+                  //             $this->session->set_flashdata('import_error','error');
+                  //             header('location:'.base_url().'User/add_bulk');
+                  // } 
+                   //complete    // print_r($us_id); die();
 
+                      // $i++;
 
-                      echo "your excel sheet format is wrong";
-                    }
-
+                    // }else{
+                    //   echo "your excel sheet format is wrong";
+                    // }
                     }   
-                    if($result){
+                if($result){
                       // echo "Imported successfully";
                       $this->session->set_flashdata('import_success','success');
                       header('location:'.base_url().'User/user_list');
@@ -1240,7 +1251,6 @@ public function check_competitiontype(){
                       // echo "Imported successfully";
                       $this->session->set_flashdata('import_success','success');
                       header('location:'.base_url().'User/user_list');
-
                     }else{
                       // echo $result; die();
                       // echo "ERROR !";
