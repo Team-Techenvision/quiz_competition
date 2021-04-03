@@ -272,7 +272,7 @@ return $result;
      // $this->db->group_by('competitiontype');
     $this->db->from('competitiontype');
     $query = $this->db->get();
-    $result = $query->num_rows();
+    $result = $query->result_array();
     // print_r($result); die();
 
      return $result;
@@ -542,9 +542,9 @@ $this->db->from('userscore_master');
    //  $this->db->where('competitionid',$competitionid);
    //  $query = $this->db->get();
    //  $result = $query->result_array();
-      $this->db->select('competition.*,competitiontype.*');
+      $this->db->select('competition.*,competitiontype.*,tabcompetition.*');
       $this->db->join('competitiontype', 'competition.competitiontypeid = competitiontype.competitiontypeid', 'inner');
-      // $this->db->join('levelmaster', 'competition.levelid = levelmaster.levelid', 'inner');
+      $this->db->join('tabcompetition', 'competition.standard = tabcompetition.tabinputtextid', 'inner');
     
       $this->db->where('competitionid',$competitionid);
       $query = $this->db->get('competition');

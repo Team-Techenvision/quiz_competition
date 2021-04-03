@@ -90,9 +90,10 @@
                           <?php 
                           // print_r($result); die();
                           $q = 1; foreach ($result as $value) { 
-
+                             if($value['optionvalues']){
                             // print_r($result); die();
                             ?>
+
                           <div class="mb-3 p-2 border border-success question">                           
                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                            
                             <?php if($value['answertype']=="1"){ ?>
@@ -155,7 +156,7 @@
                             </select>
                             <?php } ?>
                           </div>
-                          <?php $q++; } ?>
+                          <?php $q++; } }?>
                          <!--  <div class="d-flex m-5 justify-content-center ">
                                <div class="button1 hide col-md-2 btn btn-primary  " id="next">Next</div>
                                <div class="button1 hide col-md-2 btn btn-primary  ml-2" id="prev">Prev</div>

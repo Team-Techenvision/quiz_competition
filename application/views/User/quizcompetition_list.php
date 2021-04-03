@@ -19,11 +19,15 @@
       <div class="container-fluid">
         <div class="row">
           <!-- left column -->
+           <div class="form-group col-md-7">
+                 <p  style="color: blue;" class="ml-2 pl-1 border border-dark ">Note: Questions denoted by "!" marks are invalid. Please delete invalid questions. </p>
+               </div>
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-list"></i> List Quiz Information</h3>
+             
               <div class="card-tools">
                 <a href="<?php echo base_url(); ?>User/dynamiccompetition" class="btn btn-sm btn-block btn-primary">Add Quiz</a>
               </div>
@@ -40,15 +44,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <?php $i = 0;
+                  <?php 
+                // print_r($quizcompetition_list);
+                  $i = 0;
+
                   foreach ($quizcompetition_list as $list) {
+
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
                     <td><?php echo $list->question ?></td>
                    
                     <td>
+                     <?php if($list->optionvalues){?>
                       <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
+
+                    <?php }else{ ?>
+
+                         <span class="mr-2" ><i class="fas fa-exclamation 4x text-info font-weight-bold"  title="Question is not Valid"></i></span>
+
+                    <?php } ?>
                       <a href="<?php echo base_url(); ?>User/delete_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>" onclick="return confirm('Do you want to Delete this question?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
@@ -68,6 +83,8 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+ 
+
   <script type="text/javascript">
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){

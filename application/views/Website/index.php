@@ -277,10 +277,13 @@ $userprofile_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user
               
              <div class="overlay">
                   <div class="text">
-                     <form id="myForm1" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata" method="post" >
+                     <form id="myForm1" role="form"   action="<?php echo base_url(); ?>WebsiteController/insert_profiledata1" method="post" >
 
                      <input type="hidden" name="competition_id" id="competition_model_id" value="<?php echo $list->competitionid;?>">
-                      <a class="text-white" href="<?php echo base_url(); ?>WebsiteController/competition_singlepage/<?php echo "$list->competitionid"; ?>" ><h5 > <?php echo $list->title;?>  </h5></a>
+
+                     <button href="" data-toggle="modal" id="participate_btn" data-target="#participate"  class="competition_btn pb-4" type="submit" value="<?php echo $list->competitionid;?>"> <h5> <?php echo $list->title;?></h5></button>
+
+                     <!--  <a class="text-white" href="<?php echo base_url(); ?>WebsiteController/competition_singlepage/<?php echo "$list->competitionid"; ?>" ><h5> <?php echo $list->title;?>  </h5></a> -->
 
                     </form>
                    <!--  <h6> < ?php echo $list->subtitle;?> </h6> -->

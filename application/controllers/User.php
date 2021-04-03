@@ -824,17 +824,18 @@ public function check_competitiontype(){
 
     $check_competitiontype = $this->User_Model->check_competitiontype($competitiontype); 
 // print_r($checkpoints_competition); die();
-        if($check_competitiontype > 0){
-
-         echo "Competition Type Already Exists." ; 
-         // return false;
-
-
-        }else{
-
+        if(!$check_competitiontype){
+          
           echo "true";
 
+          // echo "Competition Type Already Exists." ; 
+         // return false;
         }
+          // else{
+
+          
+
+        // }
 }
 
 
@@ -2056,7 +2057,7 @@ public function check_competitiontype(){
           </div>
             <div class="">
           <label for="recipient-name"  class="col-form-label">Competition Class :</label>
-          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['standard']; ?></label>
+          <label for="recipient-name" id="titlell" type="text" class="col-form-label"><?php echo $value['tabinputtext']; ?></label>
           </div>
            <div class="">
           <label for="recipient-name"  class="col-form-label">Terms and Conditions :</label>

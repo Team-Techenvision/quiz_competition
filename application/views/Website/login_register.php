@@ -199,7 +199,7 @@ jQuery.validator.addMethod("validate_email", function(value, element) {
     }
 });
 $.validator.addMethod("pwcheck", function(value, element) {
-    return this.optional(element) || /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/.test(value);
+    return this.optional(element) || /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,64}$/.test(value);
   //(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]
 }, "");   
 // $.validator.addMethod("pwcheck", function(value) {

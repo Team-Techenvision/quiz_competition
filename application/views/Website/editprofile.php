@@ -4,6 +4,7 @@
     width:120px;
     color:transparent;
 }
+
 </style>
 <!DOCTYPE html>
 <html>
@@ -51,20 +52,20 @@
                   <?php if( (isset($profile_image)) && ($profile_image != '') ) {  ?>
                   <img id="blah" class="rounded-circle " src="<?php  echo base_url();?>assets/images/profile/<?php echo $profile_image; ?>" alt="" height="150px" width="150px" />
 
-                     <input type="hidden" name="old_image" value="<?php if(isset($profile_image)){ echo $profile_image; } ?>">
+                     <input type="hidden" name="old_image" value="<?php if(isset($profile_image)){ echo $profile_image; } ?>" >
 
                   <?php }else{ ?>
                   <img id="blah" class="rounded-circle " src="<?php echo base_url();?>assets/images/profile/profile1.jpg" alt="" height="150px" width="150px" />
                 <?php  }?>
                 <br>
 
-                  <!--  <input type="file" class="col" id="profile_image" name="profile_image" style="margin-top: 15px;" onchange="readURL(this);" /> -->
-                   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px; margin-left: 20px;" onchange="readURL(this);"  ><label id="fileLabel" class="col text-left">No Choosen file</label></div>
+                   <div> <input type="file" id="profile_image" style="margin-top: 15px; margin-left: 20px;" name="profile_image"  onchange="ValidateSingleInput(this); readURL(this);" /><label id="fileLabel" class="col text-left">No Choosen file</label></div>
+                 <!--   <div><input class="" type='file' id="profile_image" name="profile_image" style="margin-top: 15px; margin-left: 20px;" onchange="readURL(this); ValidateSingleInput(this);"  ><label id="fileLabel" class="col text-left">No Choosen file</label></div> -->
 
                   <!-- 
-                  src="<?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/<?php echo $profile_image; } ?>" -->
+                  src="< ?php if(isset($profile_image)){ echo base_url();?>assets/images/banner/< ?php echo $profile_image; } ?>" -->
                    
-                      <!--  <img id="blah"  class="rounded-circle" src="<?php  echo base_url();?>assets/images/profile1.jpg" alt="" height="150px" width="150px" /> -->
+                      <!--  <img id="blah"  class="rounded-circle" src="< ?php  echo base_url();?>assets/images/profile1.jpg" alt="" height="150px" width="150px" /> -->
                    </div> 
                    <div class="form-group col-md-9">
                       <div class="row" >
@@ -146,7 +147,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Gender" value="<?php if(isset($gender)){ echo $gender; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="gender" id="gender"class="form-control" readonly="" required="">
+                                  <select name="gender" id="gender"class="form-control"  required="">
                                     <option value="">Select Gender</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
@@ -235,7 +236,7 @@
 
                                       <input type="hidden" class="form-control title-case " name="" id="Standard" value="<?php if(isset($standard)){ echo $standard; } ?>" disabled="">
                                     <?php }?>  
-                                  <select name="standard" id="standard"class="form-control" required="" >
+                                  <select name="standard" id="standard"class="form-control stand" required="" readonly >
                                   <option value="">Select Standard</option>
                                   <option value="1">Nursary</option>
                                   <option value="2">KG-I</option>
@@ -422,9 +423,34 @@
   //     toastr.error('Please Enter Correct Birthdate, Gender and Standard.');
   //   });
   // < ?php } ?>
-
+$('.stand').attr("style", "pointer-events: none;");
 
   </script>
+  <script type="text/javascript">
+  var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("File is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>
   
   <script>
    
@@ -436,7 +462,8 @@
    
 
     function readURL(input) {
-                var a = document.getElementById('profile_image');
+
+              var a = document.getElementById('profile_image');
               if(a.value == "")
               {
                   fileLabel.innerHTML = "Choose file";
@@ -446,6 +473,8 @@
                   var theSplit = a.value.split('\\');
                   fileLabel.innerHTML = theSplit[theSplit.length-1];
               }
+            
+
                 if (input.files && input.files[0]) {
                   var reader = new FileReader();
 
@@ -575,7 +604,7 @@ $(document).ready(function(){
            success:function(data)
             {   
 
-               alert(data);
+               // alert(data);
                // console.log(data);
                  if(data === "true"){
 

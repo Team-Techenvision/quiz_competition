@@ -107,7 +107,7 @@ $user_list = $this->Website_Model->get_list_by_id('user_id',$quizweb_user_id,'',
                           <label class="text-dark labelSC">Competition Type : </label>
                           <?php echo $value->competitiontype; ?>
                      </div>
-                      <div class="col ml-4 mb-0" >
+                      <div class="col ml-4" >
                           <label class="text-dark labelSC">Competition Subject : </label>
                            <label class="subject" style="margin-bottom: -20px!important;"><?php echo $value->subjectstextarea; ?></label>
                      </div>

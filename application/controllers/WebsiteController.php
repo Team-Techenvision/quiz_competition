@@ -1388,7 +1388,104 @@ public function competition_uploadfile(){
   }
 
 /*******************************    Profile Information     **************************/
+public function insert_profiledata1(){
 
+
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    
+    if(empty($quizweb_user_id) && $quizweb_company_id == '' && $quizweb_roll_id ==''){ 
+      $this->session->set_flashdata('Login_error','error');
+      header('location:'.base_url().'WebsiteController/login_register'); }else{
+
+     $competitionid = $this->input->post('competition_id');
+
+   // print_r($quizweb_user_id);die();
+
+     $profile_info = $this->Website_Model->get_info('user_id', $quizweb_user_id, 'userprofile_master');
+
+     $competition_info = $this->Website_Model->getcompetition_info($competitionid);
+     // $competitionClass_info = $this->Website_Model->tab_list('tabinputtextid');
+     // print_r($competition_info); die();
+     $check_allready_participate = $this->Website_Model->check_participate($quizweb_user_id,$competitionid);
+
+     $userparticipatetype="";
+     foreach ($competition_info as $value) {
+
+       $fromstand = $value->fromstand;
+       $tostand = $value->tostand;
+       $alluser = $value->alluser;
+
+       $userparticipatetype = $value->gender; //all[3],male[1],female[2]
+       $fromage = $value->fromage;
+       $toage = $value->toage;
+       // print_r($userparticipatetype);die();
+
+     }
+
+     foreach ($profile_info as  $value) {
+       
+       $standard = $value->standard;
+       $parentname = $value->parentname;
+       $fullname = $value->fullname;
+       $birthdate = $value->birthdate;
+       $schoolcollegename = $value->schoolcollegename;
+       $emailid = $value->emailid;
+       $address = $value->address;
+       $pincode = $value->pincode;
+       $profile_image = $value->profile_image;
+       $alternatemobno = $value->alternatemobno;
+       $gender = $value->gender; // male[1],female[2]
+       $cityid = $value->cityid;
+       $districtid = $value->districtid;
+       $stateid = $value->stateid;
+       $profile_submitted = $value->profile_submitted;
+       $userprofileid = $value->userprofileid;
+
+     
+        $sql="SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)), '%Y')+0 AS Age FROM userprofile_master where (user_id = $quizweb_user_id && gender = $userparticipatetype)";    
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        
+        $age = 0;
+        foreach ($result as $value) {
+         $age = $value['Age'];
+        }
+
+        $y = "18";
+            
+     }
+
+    if($profile_submitted == 1){
+     // print_r($profile_info); die();   
+    if($standard >= $fromstand && $standard <= $tostand || $userparticipatetype == $gender && $age >= $y){
+     // print_r($age); die();
+      // $this->session->set_flashdata('class_error','error');
+      header('location:'.base_url().'WebsiteController/competition_singlepage/'.$competitionid);
+   
+    }else{
+
+     // echo "msg standard Participate";
+      $this->session->set_flashdata('class_error','error');
+      header('location:'.base_url().'WebsiteController');
+
+    }
+
+  }else{
+    // echo "Profile is not submitted";
+      $this->session->set_flashdata('profile_error','error');
+      header('location:'.base_url().'WebsiteController');
+  }
+
+  
+}
+   // print_r($data);
+
+
+   // $this->load->view('Website/index',$data);
+
+}
 
 
 public function insert_profiledata(){
@@ -1698,21 +1795,28 @@ public function check_userdata_profile(){
              echo "Please enter correct birthdate from age(11-14) and standard(6th-9th).";
           }
          
-       }else
+       }
+       else
         {
    
-            if($years >=15  && $years < 18 )
+            if($years >=15 && $years <=17 )
             {
-                 echo "Competitions are not available for 14-18 age group.";
+                 echo "Competitions are not available for 15-17 age group.";
+            }
+            else{
+
+              // echo "true";
             }
          
        }
+
        $this->session->set_flashdata('updateProfile_success','success');
       // header('location:'.base_url().'WebsiteController');
 
 
     }else{
-      echo "Please enter correct birthdate,gender and standard.";
+
+      echo "Please enter correct birthdate from age 18+,gender(Male, Female) and standard (Male 18+ and Female 18+).";
       // header('location:'.base_url().'WebsiteController/edit_profile');
 
      // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');

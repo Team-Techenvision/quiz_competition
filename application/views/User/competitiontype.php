@@ -35,7 +35,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" >
+              <form id="form_action" role="form" action="" method="post" autocomplete="off" >
                 <div class="card-body row">
                        
                   <div class="form-group col-md-12">
@@ -82,6 +82,7 @@
 </script>
 <script>
    
+ $(document).ready(function(){
 
   $('#competitiontype').on('change',function(){
     // alert("hii");
@@ -96,22 +97,29 @@
            data:{competitiontype:comptype},
 
            success:function(data)
-            {   
-
+            {  
                // alert(data);
                // console.log(data);
-                 if(data == "true"){
+                 if(data != "true"){
 
-                   $('.comptypeval').hide();
-
-                 }else{
-                // alert(data);
-                 $('.comptypeval').html(data);
+                 $('.comptypeval').text("Competition Type Already Exists.");
+                 $('.comptypeval').show().delay(2000).fadeOut();
                  $('#competitiontype').val('');
-                }               
+
+                   // $('.comptypeval').hide();
+
+                 }
+                //  else{
+                // // alert(data);
+                // $('.comptypeval').html(data);
+                //  $('.comptypeval').show().delay(2000).fadeOut();
+                //  $('#competitiontype').val('');
+                // }
            }
          });
        // e.preventdefault();
+  });
+      // $(".comptypeval").fadeIn();
   });
 
 </script>
