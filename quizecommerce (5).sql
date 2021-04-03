@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 06, 2021 at 05:15 AM
--- Server version: 5.6.47-cll-lve
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Generation Time: Apr 03, 2021 at 08:09 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -675,15 +675,102 @@ CREATE TABLE `customer_information` (
   `password` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `company` varchar(255) DEFAULT NULL,
-  `status` int(2) NOT NULL COMMENT '1=paid,2=credit'
+  `status` int(2) NOT NULL COMMENT '1=paid,2=credit',
+  `user_id` int(11) NOT NULL,
+  `points` bigint(50) NOT NULL,
+  `conversionpoints` bigint(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customer_information`
 --
 
-INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`, `last_name`, `customer_short_address`, `customer_address_1`, `customer_address_2`, `city`, `state`, `country`, `zip`, `customer_mobile`, `customer_email`, `image`, `password`, `token`, `company`, `status`) VALUES
-('I1QWPK34FVMWOJY', 'aaaaaa bbbbb', 'aaaaaa', 'bbbbb', 'dhaka,Dhaka,Bangladesh,', '45435', '23423', 'dhaka', 'Dhaka', '18', '', '11212', 'abc@abc.com', NULL, '41d99b369894eb1ec3f461135132d8bb', '', '', 0);
+INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`, `last_name`, `customer_short_address`, `customer_address_1`, `customer_address_2`, `city`, `state`, `country`, `zip`, `customer_mobile`, `customer_email`, `image`, `password`, `token`, `company`, `status`, `user_id`, `points`, `conversionpoints`) VALUES
+('17TNTPJAKWMS9K8', 'dfsgsdfg', 'dfsgsdfg', '', '', '', '', '', '', '', '', '8698562394', 'aasssd@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('1DOSIUQ7AZID1AF', 'asda', NULL, '', '', '', '', '', '', '', '', '4343545666', 'mmmm@ff', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('1O9XFMQ8SJ8QIVR', 'name18', 'name18', '', '', '', '', '', '', '', '', '9403604859', 'abcdefg1234567@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 534, 0, 0),
+('1V8N21DSQNEYWOW', 'Ramesh shinde', 'Ramesh', 'shinde', '', '', '', '', '', '', '', '8421751623', 'rameshs@gmail.com', 'assets/dist/img/user.png', '121afe6c927d03e219e7e790677ea625', '', NULL, 1, 333, 100, 15),
+('2Z3MDXU96WQX9TG', 'Harsh Kulkarni', 'Harsh Kulkarni', '', '', '', '', '', '', '', '', '9603917082', 'harsh@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 349, 0, 0),
+('3QBVS1VWTE4AD4T', 'name9', 'name9', '', '', '', '', '', '', '', '', '8698055111', 'email9@email.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 525, 0, 0),
+('4SVO2HSL8NC5QHC', 'Chinmayi Patil', 'Chinmayi Patil', '', '', '', '', '', '', '', '', '7798025899', 'chinu@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 307, 2300, 330),
+('53QFSWL3NABHUZU', 'Prathamesh Shinde', 'Prathamesh', 'Shinde', '', '', '', '', '', '', '', '7798025877', 'pratham1@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 329, 0, 0),
+('5DHBBG145P2QQDH', 'Purva Chavan', 'Purva Chavan', '', '', '', '', '', '', '', '', '9603917089', 'purva@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 343, 0, 0),
+('5QDKU1JR1KZ46IY', 'gfg', 'gfg', '', '', '', '', '', '', '', '', '9856985698', 'kkk@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('5SL24CTCV4DU2GI', 'assss', 'assss', '', '', '', '', '', '', '', '', '7412563241', 'mmmm@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('5ZB3JIEMV7W5GFW', 'asdd', 'asdd', '', '', '', '', '', '', '', '', '4343123456', 'manish1234567@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 554, 0, 0),
+('5ZLFHMZQETRAWVS', 'Rohan Patil', 'Rohan', 'Patil', '', '', '', '', '', '', '', '4343545666', 'demo@email.com', 'assets/dist/img/user.png', '41d99b369894eb1ec3f461135132d8bb', '', NULL, 1, 0, 0, 0),
+('63FHJJIA7N38Y8Q', 'dfsgsdfg', 'dfsgsdfg', '', '', '', '', '', '', '', '', '8698562399', 'aasss@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('6GIQ8WW138VAMFY', 'asdhf', 'asdhf', '', '', '', '', '', '', '', '', '8698055611', 'qweeee@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('75XTL3F6ZZWOPAG', 'mahesh ', 'mahesh ', '', '', '', '', '', '', '', '', '8695651424', 'maheshhh114@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 559, 0, 0),
+('7O4LX279WHBUL1P', 'sdfaf', 'sdfaf', '', '', '', '', '', '', '', '', '4343541111', 'manish1121@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 551, 0, 0),
+('89D4PRLDOTHXCFZ', 'dcsd', 'dcsd', '', '', '', '', '', '', '', '', '8698066998', 'ggg@dfd.df', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('8NKCHP8UYFMJNCJ', 'name19', 'name19', '', '', '', '', '', '', '', '', '8668318812', 'qwerty112@gamil.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 547, 0, 0),
+('8VRP1U7CJXWPQRL', 'dfsgsdfg', 'dfsgsdfg', '', '', '', '', '', '', '', '', '8698562398', 'aass@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('9F2U4R557BFWVI2', 'name14', 'name14', '', '', '', '', '', '', '', '', '9403604855', 'abcdef1234@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 530, 0, 0),
+('9PHKQHFYH69P3GA', 'name18', 'name18', '', '', '', '', '', '', '', '', '4569870112', 'lkjh112@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 546, 0, 0),
+('9RLO8G3JUQLZRZM', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '8698066560', 'asdf@gmail.com', NULL, '6250083d7b514f5f7423617da068212b', '', NULL, 0, 337, 0, 0),
+('A22ET6DD5LFSZYT', 'asdfghj', 'asdfghj', '', '', '', '', '', '', '', '', '8888555552', 'asdfghjk@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 543, 0, 0),
+('ACED1RHWUHK9FV5', 'asdadf', 'asdadf', '', '', '', '', '', '', '', '', '4343512345', 'manish123456@gmail.com', NULL, '5092023c3031bd13d45d32c35e6cc715', '', NULL, 0, 553, 0, 0),
+('AFCYGGPVX3LVIAL', 'Kartik Powar', 'Kartik Powar', '', '', '', '', '', '', '', '', '9603917086', 'kartik@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 345, 0, 0),
+('BLAU85UB7APRO47', 'name15', 'name15', '', '', '', '', '', '', '', '', '9403604856', 'abcdefg1234@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 531, 0, 0),
+('BMZ9XL6RH86GPVJ', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '8421751111', 'asdf1234@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 541, 0, 0),
+('BXVH9HASILX6ULC', 'asdhf', 'asdhf', '', '', '', '', '', '', '', '', '8698055632', 'qwe@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('C5NUZWYMJUQEECZ', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '4343541234', 'manish1234@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 552, 0, 0),
+('D5WD2D2OENJ8MRC', 'assss', 'assss', '', '', '', '', '', '', '', '', '7412563242', 'mmmmmm@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('D9DURI89TGUP3K8', 'vbggvg', NULL, '', '', '', '', '', '', '', '', '8698066941', 'kiran@gmail.com', NULL, 'Ki@12345', '', NULL, 0, 0, 0, 0),
+('EKP6LTU4ODN244B', 'name15', 'name15', '', '', '', '', '', '', '', '', '9403604857', 'abcdefg12345@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 532, 0, 0),
+('EUC76J2MT3UV67Z', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '8421751112', 'asdfefggh1234@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 542, 0, 0),
+('EYJ7QVNXQ1E3D5N', 'name16', 'name16', '', '', '', '', '', '', '', '', '9403604858', 'abcdefg123456@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 533, 0, 0),
+('F1FWV4DNG1H97CJ', 'Parth Shinde', 'Parth', 'Shinde', '', '', '', '', '', '', '', '7798066555', 'parth@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 331, 0, 0),
+('F49YWZV5AQS69PH', 'name9', 'name9', '', '', '', '', '', '', '', '', '8698055112', 'email9@email.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 526, 0, 0),
+('FBRAPHXGAXAL8TL', 'Ramesh Rane', 'Ramesh Rane', '', '', '', '', '', '', '', '', '8698066954', 'ramesh1@gmail.com', NULL, '9e6388ae06f207d9471f142a735f0f94', '', NULL, 0, 332, 0, 0),
+('FGV88KUCH1DOSIU', 'Karuna Patil', 'Karuna', 'Patil', '', '', '', '', '', '', '', '9603917087', 'karuna@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 344, 0, 0),
+('FV53DXNTBCDJ43Y', 'xdfdf', NULL, '', '', '', '', '', '', '', '', '8745987458', 'manish@gmail.com', NULL, 'Ki@123456', '', NULL, 0, 0, 0, 0),
+('FWHZTCMLCKMVAMM', 'gdf', NULL, '', '', '', '', '', '', '', '', '4343545668', 'manish123@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('GGI2DQP5AGG844E', 'asdfg', 'asdfg', '', '', '', '', '', '', '', '', '7458321636', 'asss@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('H2BU4OK8I4I3SJX', 'name14', 'name14', '', '', '', '', '', '', '', '', '8698065986', 'asss1@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 528, 0, 0),
+('H6YYFJ7UZUUGM44', 'mahesh kulkani', 'mahesh kulkani', '', '', '', '', '', '', '', '', '869856239', 'mahesgKKK@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 560, 0, 0),
+('H72727VLEL1S43T', 'XCFZX', 'XCFZX', '', '', '', '', '', '', '', '', '4154455255', 'SDFAF@DSRS.COM', NULL, 'aef00f9657ada04d82e3a511c4cb7e78', '', NULL, 0, 557, 0, 0),
+('I1QWPK34FVMWOJY', 'aaaaaa bbbbb', 'aaaaaa', 'bbbbb', 'dhaka,Dhaka,Bangladesh,', '45435', '23423', 'dhaka', 'Dhaka', '18', '', '11212', 'abc@abc.com', NULL, '41d99b369894eb1ec3f461135132d8bb', '', '', 0, 0, 0, 0),
+('I5UWT7ZYT7KRZ6S', 'dfgd', 'dfgd', '', '', '', '', '', '', '', '', '7412589633', 'kkk@kkk.kkk', NULL, '129e659741e4265678708bb98db8577f', '', NULL, 0, 0, 0, 0),
+('KB9NNA46W2WI9K8', 'assdd', 'assdd', '', '', '', '', '', '', '', '', '7854785478', 'kiran1111@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 555, 0, 0),
+('KDOBOUD7K9V677T', 'lkjh gfdsa', 'lkjh', 'gfdsa', '', '', '', '', '', '', '', '9812981298', 'lkjh@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 538, 0, 0),
+('KHRMWPQETEK5DIW', 'Manish Kore', 'Manish Kore', '', '', '', '', '', '', '', '', '9603917085', 'manishk@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 346, 0, 0),
+('KY3TZTY6FB9XLJH', 'name19', 'name19', '', '', '', '', '', '', '', '', '8668318811', 'qwerty11@gamil.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 545, 0, 0),
+('L7LV18ZVJD82ZMV', 'name13', 'name13', '', '', '', '', '', '', '', '', '8698055113', 'email13@email.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 527, 0, 0),
+('LOIS1OFV5OM65K7', 'Prasad Patil', 'Prasad', 'Patil', '', '', '', '', '', '', '', '9603917084', 'prasad@gamil.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 347, 0, 0),
+('MECEVY7NTPXYCEY', 'asdhf', 'asdhf', '', '', '', '', '', '', '', '', '8698055631', 'qwee@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('MH4WZ6H9TDASEDB', 'dfgd', 'dfgd', '', '', '', '', '', '', '', '', '7412589632', 'kkk@kkk.kk', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('NDXFKEFGV88KUCH', 'dfds', NULL, '', '', '', '', '', '', '', '', '8698066943', 'manish12@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('NJMK5AYZXHLYYPA', 'zxddcd', 'zxddcd', '', '', '', '', '', '', '', '', '8454125441', 'xzcz@dfs.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 556, 0, 0),
+('NSKXO3SNOWOWH7T', 'aaaa', NULL, '', '', '', '', '', '', '', '', '8698066333', '', NULL, 'Ki@12345', '', NULL, 0, 0, 0, 0),
+('NY99DBU43AZZFN4', 'dfsd', 'dfsd', '', '', '', '', '', '', '', '', '7415896589', 'aaaa@12h.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('OD1RTNLYTDHH13Q', 'name25', 'name25', '', '', '', '', '', '', '', '', '9822119999', 'dhnanjay11122@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 562, 0, 0),
+('OFV5OM65K7BQMJF', 'assss', 'assss', '', '', '', '', '', '', '', '', '7854858585', 'mm@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('OJBLESCP11L73BB', 'Assdf', 'Assdf', '', '', '', '', '', '', '', '', '8698064155', 'asdf1@gmail.com', NULL, 'dff94678e50a86e49227669824e587e3', '', NULL, 0, 338, 0, 0),
+('OT6RHLT876MFH9S', 'Pratham Chavan', 'Pratham Chavan', '', '', '', '', '', '', '', '', '8698066925', 'pratham@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 334, 0, 0),
+('PKWC9OYNCCG32R6', 'poiuy qwerty', 'poiuy', 'qwerty', '', '', '', '', '', '', '', '8668318836', 'qwerty@gamil.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 539, 0, 0),
+('PRSHZDE9GDO7F7P', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '9284355151', 'aasdf@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 340, 0, 0),
+('Q7HP53GAF81DTH5', 'dddd', NULL, '', '', '', '', '', '', '', '', '8698066942', 'manish1@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('QFSWL3NABHUZU85', 'Manisha Rane', 'Manisha Rane', '', '', '', '', '', '', '', '', '7798025888', 'manisha1@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('QLT5M8Y8JFQT84S', 'Mayuri Patil', 'Mayuri', 'Patil', '', '', '', '', '', '', '', '9603917083', 'mayuri@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 348, 0, 0),
+('QTNFTKTK6W52Q59', 'sssss', NULL, '', '', '', '', '', '', '', '', '8968569856', 'manish@gmail.com', NULL, 'Ki@123456', '', NULL, 0, 0, 0, 0),
+('R34P6WFEPAVXOOH', 'name18', 'name18', '', '', '', '', '', '', '', '', '4569870111', 'lkjh11@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 544, 0, 0),
+('R62BNLMBSTTJQ4X', 'Vedu Patil', 'Vedu Patil', '', '', '', '', '', '', '', '', '8698055940', 'manish1233@gmail.com', NULL, 'e7bd8d5aa941a1edca9a3059556c3aa0', '', NULL, 0, 335, 0, 0),
+('R9AOQ7ZMJ8F6TN4', 'Rohan Patil', 'Rohan', 'Patil', 'Kolhapur', 'Kolhapur', '', 'Kolhapur', '', '', '1', '8698066952', 'rohan@gmail.com', 'http://localhost/quizecommerce/assets/dist/img/user.png', '1c78961d02a45ffb866cdc5003405eaa', '', '', 1, 0, 0, 0),
+('RMWPQETEK5DIWLO', 'fgddf', 'fgddf', '', '', '', '', '', '', '', '', '8965741236', 'fddf@gmic.vvv', NULL, '505c3bfd6bc3e00c91a12aee9daeb5c9', '', NULL, 0, 0, 0, 0),
+('SGTJGDATDHTPV8U', 'dfsd', 'dfsd', '', '', '', '', '', '', '', '', '8698044650', 'manish11111@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 336, 0, 0),
+('TWGLW14U6I55T5K', 'name8', 'name8', '', '', '', '', '', '', '', '', '8698055110', 'email8@email.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 524, 0, 0),
+('UM3OE19Z53GO5ZI', 'dfsgsdfg', 'dfsgsdfg', '', '', '', '', '', '', '', '', '8698562392', 'aasssdggg@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
+('UXL5KTR62WXU61O', 'fortestingpurpose', 'fortestingpurpose', '', '', '', '', '', '', '', '', '8421751366', 'fortestingpurpose03@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 548, 0, 0),
+('V9N6G4RWC5V1Q5T', 'Narayan Shinde', 'Narayan Shinde', '', '', '', '', '', '', '', '', '9603917088', 'narayan@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 342, 0, 0),
+('VS7Y9DBFEBSOWDY', 'rohini', 'rohini', '', '', '', '', '', '', '', '', '9284355159', 'roh@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('VUP77KRETKOGVF8', 'asdf lkjh', 'asdf lkjh', '', '', '', '', '', '', '', '', '9284355651', 'asdf123@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 339, 0, 0),
+('WA84FCTPXKNNHN7', 'asdhf', 'asdhf', '', '', '', '', '', '', '', '', '8698055610', 'qweee@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('WMBB53URNAB358C', 'name14', 'name14', '', '', '', '', '', '', '', '', '8484759156', 'abcd1234@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 529, 0, 0),
+('YGGPVX3LVIALPKH', 'dd', NULL, '', '', '', '', '', '', '', '', '7458965896', 'dd@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('ZFJY8JUGMQFWTPM', 'mnbv zxcv', 'mnbv', 'zxcv', '', '', '', '', '', '', '', '8668318837', 'mnbv@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 540, 0, 0),
+('ZNZLA2FT28O4ECL', 'abcd', 'abcd', '', '', '', '', '', '', '', '', '8698066123', 'abcd@1gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4111,8 +4198,7 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`user_id`, `store_id`, `username`, `password`, `token`, `user_type`, `security_code`, `status`) VALUES
-('1', '1', 'super@admin.com', '41d99b369894eb1ec3f461135132d8bb', NULL, 1, '1', 1),
-('9AGPZNIVP11R4GU', '', 'manish@gmail.com', '46195da05f08b1e08d03746a582f11bb', NULL, 2, '', 1);
+('1', '1', 'super@admin.com', '41d99b369894eb1ec3f461135132d8bb', NULL, 1, '1', 1);
 
 -- --------------------------------------------------------
 

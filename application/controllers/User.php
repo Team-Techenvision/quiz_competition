@@ -1049,7 +1049,7 @@ public function check_competitiontype(){
     $this->load->view('Include/footer');
   }
 
-  public function importFile(){
+   public function importFile(){
 
     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
@@ -1087,10 +1087,7 @@ public function check_competitiontype(){
                     // $i=0;
 
                     // $inserdata="";
-                    foreach ($allDataInSheet as $value){
-                      //validation for excel sheet wrong
-                      // $this->form_validation->set_rules('user_email', $value['C'], 'trim|required');
-                      //  if ($this->form_validation->run() != FALSE) { 
+                    foreach ($allDataInSheet as $value) {
 
                       
                       // if($flag){
@@ -1237,10 +1234,6 @@ public function check_competitiontype(){
                    //complete    // print_r($us_id); die();
 
                       // $i++;
-
-                    // }else{
-                    //   echo "your excel sheet format is wrong";
-                    // }
                     }   
                 if($result){
                       // echo "Imported successfully";

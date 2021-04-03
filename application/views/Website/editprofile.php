@@ -549,7 +549,7 @@ $(document).ready(function(){
 
 
 <!-- Validation For standard(Male 18+ , female 18+ ), gender and birthdate -->
- <!-- <script>
+ <script>
  $(document).ready(function(){
     $('.msg').hide();
 
@@ -568,17 +568,18 @@ $(document).ready(function(){
     
    
       $.ajax({
-           url:"< ?php echo base_url(); ?>WebsiteController/check_userdata_profile",
+           url:"<?php echo base_url(); ?>WebsiteController/check_userdata_profile",
            method:"POST",
            data:{standard:stand,gender:gender,birthdate:birthdate},
 
            success:function(data)
             {   
 
-               // alert(data);
+               alert(data);
                // console.log(data);
-                 if(data == "correct"){
-                     // alert(data);
+                 if(data === "true"){
+
+                                     // alert(data);
                    $('.msg').hide();
                    // $("#form_update").submit();
                    document.getElementById("form_update").submit();
@@ -586,7 +587,7 @@ $(document).ready(function(){
 
                  }else{
 
-                alert(data);
+                // alert(data);
                 // window.location = "< ?php echo base_url(); ?>WebsiteController/edit_profile";
                  $('.msg').show();
                  $('.msg').html(data);
@@ -605,9 +606,9 @@ $(document).ready(function(){
   });
   });
 
-</script> -->
+</script>
 <!-- Validation For standard and birthdate -->
- <script>
+<!--  <script>
  $(document).ready(function(){
 
 
@@ -713,7 +714,7 @@ $(document).ready(function(){
   });
   });
 
-</script>
+</script> -->
  <script>
    
 

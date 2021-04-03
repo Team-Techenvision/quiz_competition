@@ -1651,62 +1651,12 @@ public function check_userdata_profile(){
     //   $gender = $value['gender'];
     // }
 
-    if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 15  ){
+    if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 || $years < 18 && $gender==1 && $standard < 14 ||$years < 18 && $gender==2 && $standard < 15  )
+    {
+       if($years >= 18 && $gender==1 && $standard==14 ||$years >= 18 && $gender==2 && $standard==15 ){
 
-   // if($years <= 6  && $standard <=5   ){
-
-      echo "correct";
-       $this->session->set_flashdata('updateProfile_success','success');
-      // header('location:'.base_url().'WebsiteController');
-
-
-    }else{
-      echo "Please enter correct birthdate,gender and standard.";
-      // header('location:'.base_url().'WebsiteController/edit_profile');
-
-     // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
-
-
-    }
-
-   // print_r($standard); die();
- 
-   }
-   //check standard and birthdate
-public function check_profile_standard(){
-    // echo "string";
-    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
-    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
-    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
-    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
-
-    $birthdate = $this->input->post('birthdate');
-    $standard = $this->input->post('standard');
-    // $gender = $this->input->post('gender');
-    $current_date = date("Y-m-d");
-
-    //difference between bithdate and current date in year
-
-    $date1 = date("Y-m-d",strtotime($current_date));
-    $date2 = date("Y-m-d",strtotime($birthdate));
-
-    $diff = abs(strtotime($date2) - strtotime($date1));
-
-    $years = floor($diff / (365*60*60*24));
-
-    // print_r($years); 
-
-    
-
-    // $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
-    // foreach ($check_userdata as $value) {
-    //   $birth = $value['birthdate'];
-    //   $standard = $value['standard'];
-    //   $gender = $value['gender'];
-    // }
-
-
-  
+               echo "true";
+       }
 
     if($years >= 3 && $years <= 6 )
     {
@@ -1736,11 +1686,7 @@ public function check_profile_standard(){
           echo "Please enter correct birthdate from age(7-10) and standard(2nd-5th).";
       }
     }
-    else
-    {
-    //   // $a= 0; echo $a;
-      // echo "Please enter correct birthdate and standard.";
-      if($years >=11  && $years <= 14 )
+     elseif($years >=11  && $years <= 14 )
       {
           if($standard >= 10 && $standard <= 13 )
           {
@@ -1752,13 +1698,130 @@ public function check_profile_standard(){
              echo "Please enter correct birthdate from age(11-14) and standard(6th-9th).";
           }
          
+       }else
+        {
+   
+            if($years >=15  && $years < 18 )
+            {
+                 echo "Competitions are not available for 14-18 age group.";
+            }
+         
        }
-    //   // die(); header('location:'.base_url().'WebsiteController/edit_profile'); $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
+       $this->session->set_flashdata('updateProfile_success','success');
+      // header('location:'.base_url().'WebsiteController');
+
+
+    }else{
+      echo "Please enter correct birthdate,gender and standard.";
+      // header('location:'.base_url().'WebsiteController/edit_profile');
+
+     // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
+
+
     }
 
    // print_r($standard); die();
  
    }
+   //check standard and birthdate
+// public function check_profile_standard(){
+//     // echo "string";
+//     $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+//     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+//     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+//     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
+
+//     $birthdate = $this->input->post('birthdate');
+//     $standard = $this->input->post('standard');
+//     // $gender = $this->input->post('gender');
+//     $current_date = date("Y-m-d");
+
+//     //difference between bithdate and current date in year
+
+//     $date1 = date("Y-m-d",strtotime($current_date));
+//     $date2 = date("Y-m-d",strtotime($birthdate));
+
+//     $diff = abs(strtotime($date2) - strtotime($date1));
+
+//     $years = floor($diff / (365*60*60*24));
+
+//     // print_r($years); 
+
+    
+
+//     // $check_userdata = $this->Website_Model->check_userdata($quizweb_user_id,$birthdate,$standard,$gender); 
+//     // foreach ($check_userdata as $value) {
+//     //   $birth = $value['birthdate'];
+//     //   $standard = $value['standard'];
+//     //   $gender = $value['gender'];
+//     // }
+
+
+  
+
+//     if($years >= 3 && $years <= 6 )
+//     {
+//       if($standard >= 1 && $standard <= 5 )
+//       {
+//          echo "true";
+//          $this->session->set_flashdata('updateProfile_success','success');
+//       }
+//       else
+//       {
+
+//         echo "Please enter correct birthdate from age(3-6) and standard(Nursary-1st).";
+//       }
+//       // $a= 1; echo $a; echo "true"; this->session->set_flashdata('updateProfile_success','success');
+//       // header('location:'.base_url().'WebsiteController');
+
+//     }
+//     elseif($years >= 7 && $years <= 10 )
+//     {
+//        if($standard >= 6 && $standard <= 9 )
+//       {
+//          echo "true";
+//          $this->session->set_flashdata('updateProfile_success','success');
+//       }
+//       else
+//       {
+//           echo "Please enter correct birthdate from age(7-10) and standard(2nd-5th).";
+//       }
+//     }
+//     elseif($years >=11  && $years <= 14 )
+//       {
+//           if($standard >= 10 && $standard <= 13 )
+//           {
+//              echo "true";
+//              $this->session->set_flashdata('updateProfile_success','success');
+//           }
+//           else
+//           {
+//              echo "Please enter correct birthdate from age(11-14) and standard(6th-9th).";
+//           }
+         
+//        }
+//     {
+//     //   // $a= 0; echo $a;
+//       // echo "Please enter correct birthdate and standard.";
+//       if($years >=11  && $years <= 14 )
+//       {
+//           if($standard >= 10 && $standard <= 13 )
+//           {
+//              echo "true";
+//              $this->session->set_flashdata('updateProfile_success','success');
+//           }
+//           else
+//           {
+//              echo "Please enter correct birthdate from age(11-14) and standard(6th-9th).";
+//           }
+         
+//        }
+//     //   // die(); header('location:'.base_url().'WebsiteController/edit_profile'); $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');
+//     }
+
+//    // print_r($standard); die();
+ 
+//    }
  
  
   public function edit_profile(){
