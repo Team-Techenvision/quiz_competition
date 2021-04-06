@@ -703,7 +703,10 @@ return $result;
   public function quize_get($quiz_id)
   {
     /*$cmd = "SELECT * FROM dynamiccompetition INNER JOIN competition ON dynamiccompetition.competitionid = competition.competitionid INNER JOIN profile ON dynamiccompetition.competitionid = profile.competitionid WHERE competition.enddate >= now() && profile.competitionid = $quiz_id";*/
+    $this->db->select('dynamiccompetition.dynamiccompetitionid,dynamiccompetition.competitionid,dynamiccompetition.question,dynamiccompetition.file_type,dynamiccompetition.upload_file,dynamiccompetition.upload_image,dynamiccompetition.answertype,dynamiccompetition.optionvalues');
+
     $this->db->where('competitionid',$quiz_id);
+    
     $result = $this->db->get('dynamiccompetition');
     //$result = $this->db->query($cmd);
     //print_r($result->result_array());die();

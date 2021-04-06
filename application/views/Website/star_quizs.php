@@ -90,13 +90,18 @@
                           <?php 
                           // print_r($result); die();
                           $q = 1; foreach ($result as $value) { 
-                             if($value['optionvalues']){
+
+                             // if($value['optionvalues']){
                             // print_r($result); die();
                             ?>
 
-                          <div class="mb-3 p-2 border border-success question">                           
-                            <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                            
-                            <?php if($value['answertype']=="1"){ ?>
+                                                     
+                                                        
+                            <?php if($value['answertype']=="1"){ 
+                               if($value['optionvalues']){
+                              ?>
+                              <div class="mb-3 p-2 border border-success question">
+                              <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>
 
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
@@ -124,10 +129,14 @@
                              <source src="<?php echo base_url(); ?>/assets/images/quizvideo_files/<?php echo $value['upload_file']; ?>" >
                               </video>
                              <?php } ?>
-                          
+                          </div>
 
-                            <?php } elseif ($value['answertype']=="2")
-                            {?>                           
+                            <?php $q++; } } elseif ($value['answertype']=="2")
+                            {
+                             if($value['optionvalues']){
+                              ?>  
+                              <div class="mb-3 p-2 border border-success question">
+                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>                         
                             <?php $myString = $value['optionvalues'];
                             $myArray = explode(',', $myString);
                             $j=1;
@@ -135,16 +144,32 @@
                             { ?>
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" value="<?php echo $j; ?>" > <?php echo $my_Array ;?></label>
+                                <input type="checkbox" name="<?php echo $value['dynamiccompetitionid'];?>[]" id="<?php echo $j; ?>" value="<?php echo $j; ?>" > <?php echo $my_Array ;?></label>
                             </div>
-                            <?php $j++; } ?>                            
-                            <?php } elseif ($value['answertype']=="3") { ?>                            
+                            <?php $j++; } ?> 
+                            </div>                           
+                            <?php $q++; } } elseif ($value['answertype']=="3") { ?>
+                              <div class="mb-3 p-2 border border-success question">
+
+                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>
+
                             <input type="text" name="<?php echo $value['dynamiccompetitionid'];?>[]" class="form-control w-75" placeholder="Answers....." style="background-color:#c1bebe;" required>
-                            <?php  } elseif ($value['answertype']=="4") { ?>                            
+                          </div>
+                            <?php  $q++; } elseif ($value['answertype']=="4") { ?>
+                              <div class="mb-3 p-2 border border-success question">
+
+                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>
+
                             <textarea name="<?php echo $value['dynamiccompetitionid'];?>[]" placeholder="Answers will be written here..."class="form-control w-75" style="background-color:#c1bebe;" required></textarea>
-                            <?php } else { ?>                            
+                          </div>
+                            <?php $q++; } else { 
+                             if($value['optionvalues']){
+                              ?> 
+                            <div class="mb-3 p-2 border border-success question">     
+                             <span class="h5 d-flex text-capitalize"><?php echo $q." ". $value['question']; ?> </span>
+
                             <select name="<?php echo $value['dynamiccompetitionid'];?>[]" id="ansoption" class="form-control w-25" required>
-                                <!-- <option value=" ">select answer</option> -->
+                                 <option value="">select answer</option> 
 
                               <?php $myString = $value['optionvalues'];
                               $myArray = explode(',', $myString);
@@ -154,15 +179,16 @@
                               <option value="<?php echo $k ;?>"> <?php echo $my_Array ;?></option>
                               <?php $k++; } ?>
                             </select>
-                            <?php } ?>
                           </div>
-                          <?php $q++; } }?>
+
+                            <?php $q++; } }?>
+                          <?php  } ?>
                          <!--  <div class="d-flex m-5 justify-content-center ">
                                <div class="button1 hide col-md-2 btn btn-primary  " id="next">Next</div>
                                <div class="button1 hide col-md-2 btn btn-primary  ml-2" id="prev">Prev</div>
                          </div> -->
                           <div class="d-flex m-5">
-                            <button class="btn btn-primary">Submit</button>                            
+                            <button class="btn btn-primary"  id="submit_quiz">Submit</button>                            
                           </div> 
                         </form>
   <!-- ====================================================================== --> 
@@ -210,7 +236,22 @@
               //keys close
                // document.getElementById('content').onkeypress=function(){return false;}//not worked
 
-            </script>
+ </script>
+<script type="text/javascript">
+  // var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  // var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+// $(document).ready(function () {
+//     $('#submit_quiz').click(function() {
+//       checked = $(".checkbox input[type=checkbox]:checked").length;
+
+//       if(!checked) {
+//         alert("You must check at least one checkbox of correct answer.");
+//         return false;
+//       }
+//     });
+// });
+
+</script>
 
             <!-- ////////////////////////////////////////////////////////////////////////////// -->
       <!--       <script>

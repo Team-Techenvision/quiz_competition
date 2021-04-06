@@ -78,17 +78,17 @@ class User extends CI_Controller{
 
     $check_dynamic_question = $this->User_Model->check_dynamic_question($competitionid,$question); 
 // print_r($checkpoints_competition); die();
-        if($check_dynamic_question > 0){
-
-         echo "Question Already Exists." ; 
+        if(!$check_dynamic_question){
+          
+         echo "true";
+         // echo "Question Already Exists." ; 
          // return false;
-
-
-        }else{
-
-          echo "true";
-
         }
+        // else{
+
+        //   echo "true";
+
+        // }
 }
 
 
@@ -554,7 +554,8 @@ class User extends CI_Controller{
     $quizweb_company_id = $this->session->userdata('quizweb_company_id');
     $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
-    // $this->form_validation->set_rules('question', 'First Name', 'trim|required');
+
+    // $this->form_validation->set_rules('correctans', 'correctans', 'trim|required');
     // if ($this->form_validation->run() == FALSE) {
 
         $admore  = $this->input->post('addmore');
@@ -571,10 +572,12 @@ class User extends CI_Controller{
         // print_r($all_tags);
           
         $update_data = array(
+
+         
                 'optionvalues' => $all_tags,
                 'correctans' =>  $check,
              // 'created_date' => date('Y-m-d H:i:s'),
-                
+           
               );
           
             
@@ -583,10 +586,10 @@ class User extends CI_Controller{
            header('location:'.base_url().'User/dynamiccompetition');
 
         }
-    $data['quizquestion'] = $this->User_Model->fetch_quizquestion($que_id);
+      $data['quizquestion'] = $this->User_Model->fetch_quizquestion($que_id);
 
     // print_r($data['competition']);
-
+   // }
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -1090,7 +1093,11 @@ public function check_competitiontype(){
                     // $inserdata="";
                     foreach ($allDataInSheet as $value) {
 
-                      
+                     // $this->form_validation->set_rules('user_name', $value['A'], 'trim|required');
+                       
+                       // if ($this->form_validation->run() != FALSE) {
+
+                        // print_r($allDataInSheet); die();
                       // if($flag){
                       //   $flag =false;
                       //   continue;
@@ -1112,13 +1119,21 @@ public function check_competitiontype(){
                      $usere2 = $this->User_Model->check_regdb1_e($useremail);
 
                      // print_r($usere2); die();
+                     // $this->form_validation->set_rules('user_name', '$username', 'required');
+                       
+                     //   if($this->form_validation->run() != FALSE) {
+
+                     // print_r($username); die();
+
 
                      if(empty($userm) || $userm==""){ 
 
                        if(empty($usere1) || $usere1==""){ 
 
                         if(empty($usere2) || $usere2==""){ 
-                     // print_r($usere2); die();
+
+
+
 
 
                       $sql1 = "INSERT INTO user (`company_id`, `user_name`, `user_mobile`, `user_email`, `user_password`, `user_pincode`,`is_admin`,`roll_id`)
@@ -1235,6 +1250,10 @@ public function check_competitiontype(){
                    //complete    // print_r($us_id); die();
 
                       // $i++;
+
+                      // }else{
+                      //   echo "data is incorrect";
+                      // }
                     }   
                 if($result){
                       // echo "Imported successfully";
@@ -1250,7 +1269,8 @@ public function check_competitiontype(){
                       // echo "ERROR !";
                       $this->session->set_flashdata('import_error','error');
                       header('location:'.base_url().'User/add_bulk');
-                    }  
+                    } 
+
                                
       
               } catch (Exception $e) {
@@ -1810,7 +1830,29 @@ public function check_competitiontype(){
 
 /*******************************  Add competition  ****************************/
 
+   public function check_standard_competition(){
+    // echo "string";
+    $quizweb_user_id = $this->session->userdata('quizweb_user_id');
+    $quizweb_company_id = $this->session->userdata('quizweb_company_id');
+    $quizweb_roll_id = $this->session->userdata('quizweb_roll_id');
+    if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url()); }
 
+     $title = $this->input->post('title');
+     $standard = $this->input->post('standard');
+
+    $check_standard_competition = $this->User_Model->check_standard_competition($title,$standard); 
+// print_r($checkpoints_competition); die();
+        if(!$check_standard_competition){
+           echo "true";
+
+         // echo "Competition Level Already Exists." ;  // return false;
+        }
+        // else{
+
+        //   echo "true";
+
+        // }
+}
 
  // Add Competition....
   public function add_competition(){
@@ -1823,6 +1865,12 @@ public function check_competitiontype(){
     if($quizweb_user_id == '' && $quizweb_company_id == '' && $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('title', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
+     $title = $this->input->post('title');
+     $standard = $this->input->post('standard');
+
+    $check_standard_competition = $this->User_Model->check_standard_competition($title,$standard); 
+
 
        // $array = $this->input->post('choosefiletransfer');
        // $data['subject']= implode(',',$array);
@@ -1882,6 +1930,10 @@ public function check_competitiontype(){
 
         echo $data['whatsapp'] = 0;
       }
+
+
+       if(empty($check_standard_competition)){
+
       $save_data = array(
        
         'title' => $this->input->post('title'),
@@ -1993,8 +2045,11 @@ public function check_competitiontype(){
         }
       // }
      }
-
-
+    }
+    else{
+            $this->session->set_flashdata('checkstandard_error',$error);
+            header('location:'.base_url().'User/add_competition');
+     }
             
     }
       $data['tabinputtext'] = $this->User_Model->fetch_tabinputtext();
@@ -3114,7 +3169,6 @@ public function save_assigncompetition(){
       // print_r($userId); die();
      
       $data = $this->User_Model->addassigncompetition_list($userId,$compid);
-
       // echo (json_encode($data));
  
       foreach ($data as $value) {
@@ -3476,6 +3530,7 @@ function fetch_profile()
     if($quizweb_user_id == '' && $quizweb_company_id == ''&& $quizweb_roll_id ==''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('levelname', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
+
         $levelname = $this->input->post('levelname');
 
     $check_level = $this->User_Model->check_level($levelname); 
@@ -3571,17 +3626,18 @@ public function checkpoints_competition1(){
 
     $checkpoints_competition = $this->User_Model->checkpoints_competition($competitionid); 
 // print_r($checkpoints_competition); die();
-        if($checkpoints_competition > 0){
+        if(!$checkpoints_competition){
 
-         echo "Competition Points Already Exists." ; 
-         // return false;
-
-
-        }else{
-
+         // echo "Competition Points Already Exists." ; 
           echo "true";
 
-        }
+         // return false;
+       }
+       // else{
+
+       //    echo "true";
+
+       //  }
 }
 
   // Add New Prizes....
@@ -3795,17 +3851,20 @@ public function checkpoints_competition1(){
 
     $check_tabcompetition_class = $this->User_Model->check_tabcompetition_class($tabinputtext); 
 // print_r($checkpoints_competition); die();
-        if($check_tabcompetition_class > 0){
-
-         echo "Class Group Already Exists." ; 
-         // return false;
-
-
-        }else{
+        if(!$check_tabcompetition_class){
 
           echo "true";
 
+         // echo "Class Group Already Exists." ; 
+         // return false;
+
+
         }
+        // else{
+
+        //   echo "true";
+
+        // }
 }
 
   // Add New Class....

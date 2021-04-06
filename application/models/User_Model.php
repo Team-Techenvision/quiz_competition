@@ -141,6 +141,21 @@ $result = $query->result_array();
 // print_r($result); die();
 return $result;
 }
+
+// competition check already exists for this standard
+
+public function check_standard_competition($title,$standard){
+
+     $this->db->where('title',$title);
+     $this->db->where('standard',$standard);
+     // $this->db->group_by('competitionid');
+    $this->db->from('competition');
+    $query = $this->db->get();
+    $result = $query->result_array();
+    // print_r($result); die();
+
+     return $result;
+  }
   public function banner_list($bannerid){
     $this->db->select('*');
     // $this->db->where('is_admin', 0);
@@ -239,7 +254,7 @@ return $result;
      $this->db->group_by('competitionid');
     $this->db->from('points_master');
     $query = $this->db->get();
-    $result = $query->num_rows();
+    $result = $query->result_array();
     // print_r($result); die();
 
      return $result;
@@ -261,7 +276,7 @@ return $result;
      // $this->db->group_by('competitionid');
     $this->db->from('tabcompetition');
     $query = $this->db->get();
-    $result = $query->num_rows();
+    $result = $query->result_array();
     // print_r($result); die();
 
      return $result;
@@ -284,7 +299,7 @@ return $result;
      // $this->db->group_by('competitionid');
     $this->db->from('dynamiccompetition');
     $query = $this->db->get();
-    $result = $query->num_rows();
+    $result = $query->result_array();
     // print_r($result); die();
 
      return $result;

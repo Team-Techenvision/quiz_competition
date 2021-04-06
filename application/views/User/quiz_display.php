@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
-
+<style type="text/css">
+  .error{
+    color: red;
+   /* position: absolute;
+    top: 20px;*/
+  }
+  .correctradio {
+      position: absolute;
+    left: -8px;
+    top: 6px;
+  }
+</style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -192,10 +203,10 @@
                           <div class="col-md-12">
                              <div class="form-group row"> 
                              
-                                    <div class="radio col-md-2">
-                                      <label><input class="correctradio" type="radio" name="<?php echo $value['question_id'];?>" value="1"> Correct</label>
+                                    <div class="radio col-md-4">
+                                      <label>Correct<input class="correctradio" type="radio" name="<?php echo $value['question_id'];?>" value="1" required> </label>
                                     </div>
-                                    <div class="radio col-md-2">
+                                    <div class="radio col-md-3">
                                       <label><input class="incorrectradio" type="radio" name="<?php echo $value['question_id'];?>" value="0" > Incorrect</label>
                                     </div>
                               </div>
@@ -219,7 +230,7 @@
                     </div>
                 </div>
              
-	                                   
+                                     
                 <!-- /.card-body -->
                <div class="card-footer">
                   <?php if(isset($update)){ ?>
@@ -244,6 +255,7 @@
   <br>
    <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <script>
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){
@@ -251,6 +263,46 @@
     });
   <?php } ?>
 </script>
+ <script type="text/javascript">
+ 
+  // Wait for the DOM to be ready
+$(function() {
+
+ 
+  $("form[name='quiz_form']").validate({
+
+    // Specify validation rules
+    rules: {
+
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      // title: "required",
+      // title: "required",
+      // address: "required",
+      // pin_code: "required",
+   
+      
+    },
+    // Specify validation error messages
+    messages: {
+      // title: "Please enter user name",
+      // title: "Please enter competition title",
+      // emailaddress: "Please enter a valid email address",
+      // pin_code: "Please enter a valid pincode",
+      // address: "Please enter Street Address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      // alert("hello");
+      form.submit();
+    }
+  });
+});
+
+
+ </script>
 <!-- <script type="text/javascript">
   $( document ).ready(function() {
    

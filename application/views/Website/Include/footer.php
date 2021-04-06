@@ -8,7 +8,7 @@
             <div class="site-footer__upper mb-2">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-md-4 col-lg-6 col-sm-12 mr">
+                        <div class="col-xl-4 col-md-4 col-lg-4 col-sm-12 mr">
                             <div class="footer-widget footer-widget__contact">
                                 <h2 class="footer-widget__title" >Contact Us</h2><!-- /.footer-widget__title -->
 
@@ -27,7 +27,7 @@
                                 <!-- /.footer-widget__course-list -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-3 col-md-3 col-lg-6 col-sm-12 mr1" >
+                        <div class="col-xl-3 col-md-4 col-lg-4 col-sm-12 mr1" >
                             <div class="footer-widget footer-widget__link">
                                 <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
                                 <div class="footer-widget__link-wrap">
@@ -47,7 +47,7 @@
                                 </div><!-- /.footer-widget__link-wrap -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 -->
-                        <div class="col-xl-3 col-md-3 col-lg-6 col-sm-12 bg-website ">
+                        <div class="col-xl-3 col-md-4 col-lg-4 col-sm-12 mr2 bg-website ">
                             <div class="footer-widget footer-widget__gallery">
                                 <h2 class="footer-widget__title">Connect With Us</h2><!-- /.footer-widget__title -->
                                 <ul class="site-footer__social bg-website">
@@ -62,11 +62,11 @@
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </div><!-- /.site-footer__upper -->
-            <div class="justify-content-center" style="padding-left: 550px;">
+            <div class="justify-content-center " style="">
             <div class="site-footer__bottom bg-website justify-content-center">
-                <div class="container text-center">
-                    <p class="site-footer__copy text-center w-100">&copy; &nbsp;<span class="text-center"> Copyright 2020 </span></p>
-                    <div class="site-footer__social">
+                <div class="container text-center footcopy">
+                    <p class="site-footer__copy text-center w-100">&copy; &nbsp;<span class="text-center "> Copyright 2020 </span></p>
+                    <div class="site-footer__social sco">
                       
                        <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top scroll"><i class="kipso-icon-top-arrow" ></i></a> 
 
@@ -95,6 +95,7 @@
  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   -->
 
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> -->
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/owl.carousel.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/waypoints.min.js"></script>
@@ -109,6 +110,7 @@
     <!-- template scripts -->
     <script src="<?php echo base_url(); ?>assets/js/theme.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+
     <script>
       AOS.init();
     </script>

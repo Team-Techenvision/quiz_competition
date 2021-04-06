@@ -126,15 +126,19 @@
 
                // alert(data);
                // console.log(data);
-                 if(data == "true"){
+                 if(data != "true"){
 
-                   $('.tabval').hide();
+                   // $('.tabval').hide();
+                   $('.tabval').text("Class Group Already Exists.");
+                   $('.tabval').show().delay(2000).fadeOut();
+                   $('#tabinputtext').val('');
 
-                 }else{
-                // alert(data);
-                 $('.tabval').html(data);
-                 $('#tabinputtext').val('');
-                }               
+                 }
+                //  else{
+                // // alert(data);
+                //  $('.tabval').html(data);
+                //  $('#tabinputtext').val('');
+                // }               
            }
          });
        // e.preventdefault();

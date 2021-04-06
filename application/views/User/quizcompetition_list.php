@@ -56,14 +56,22 @@
                     <td><?php echo $list->question ?></td>
                    
                     <td>
-                     <?php if($list->optionvalues){?>
+                     <?php 
+                     
+                     if($list->optionvalues){
+                      // if($list->answertype==3 && $list->answertype==4){
+                      ?>
                       <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
 
-                    <?php }else{ ?>
-
+                    <?php  }else{ 
+                   if($list->answertype!=3 && $list->answertype!=4){
+                      ?>
                          <span class="mr-2" ><i class="fas fa-exclamation 4x text-info font-weight-bold"  title="Question is not Valid"></i></span>
 
-                    <?php } ?>
+                    <?php }else{ ?>
+                         <a href="<?php echo base_url(); ?>User/edit_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>"> <i class="fa fa-edit"></i> </a>
+
+                    <?php } }?>
                       <a href="<?php echo base_url(); ?>User/delete_quizcompetition/<?php echo $list->competitionid; ?>/<?php echo $list->dynamiccompetitionid; ?>" onclick="return confirm('Do you want to Delete this question?');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>

@@ -37,7 +37,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
+              <form id="form_action" role="form" action="" method="post" enctype="multipart/form-data" autocomplete="off">
                 <div class="card-body row">
                   <div class="form-group col-md-12">
                    <label>Banner Title <span style="color: red;">*</span></label>

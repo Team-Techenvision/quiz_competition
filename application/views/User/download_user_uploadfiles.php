@@ -49,25 +49,41 @@
                         <?php if(empty($uploadimage)){ }else{?>
                           <img id="blah" src="<?php echo base_url(); ?>/assets/images/competition_images/<?php echo $uploadimage; ?>" alt="" width="320" height="240" />
 
+
+
                           <br><br>
                          <!-- 
                           <a class="btn btn-success btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Download</a> -->
 
                           <button id="" type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span>Download </button>
+
+                          <a href="<?php echo base_url(); ?>User/quiz_user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                         <?php } ?>
 
                          <?php if(empty($uploadaudio)){ }else{?>
                           <audio src="<?php echo base_url(); ?>/assets/images/competition_audio/<?php echo $uploadaudio; ?>" controls></audio>
+                          <br>
+                          <br>
+
+                          <a href="<?php echo base_url(); ?>User/quiz_user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                         <?php } ?>
 
                            <?php if(empty($uploadvedio)){ }else{?>
                           <video width="320" height="240" controls>
                           <source src="<?php echo base_url(); ?>/assets/images/competition_video/<?php echo $uploadvedio; ?>" > 
                           </video>
+                          <br>
+                          <br>
+
+                          <a href="<?php echo base_url(); ?>User/quiz_user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                         <?php } ?>
 
                             <?php if(empty($uploadfile)){ }else{?>
                           <iframe src="<?php echo base_url(); ?>/assets/images/competition_files/<?php echo $uploadfile; ?>" style="width:100%;height:700px;"></iframe> 
+                          <br>
+                          <br>
+
+                          <a href="<?php echo base_url(); ?>User/quiz_user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
 
                         <?php } ?>
                       </div>
@@ -75,14 +91,14 @@
                  
                  </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
+                <!-- <div class="card-footer"> -->
                 <!--   < ?php if(isset($update)){ ?>
                     <button id="btn_update" type="submit" class="btn btn-primary">Update </button>
                   < ?php } else{ ?> -->
                    <!--  <button id="btn_save" type="submit" class="btn btn-success px-4">  Add</button> -->
                   <!-- < ?php } ?> -->
-                   <a href="<?php echo base_url(); ?>User/quiz_user_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
-                </div>
+                   
+                <!-- </div> -->
               </form>
             </div>
 

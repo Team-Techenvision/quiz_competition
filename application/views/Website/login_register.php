@@ -34,6 +34,9 @@
     background-color: #4BB543;
     border-color: #4BB543;
 }
+.error{
+      margin-bottom: 10px
+}
 </style>
 <section class="login_register aboutus  "  >
     <div class="container mb-5 mt-5">
@@ -153,6 +156,11 @@
 </section>
  <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script type="text/javascript">
+
+     document.getElementById('login-register').style.pointerEvents = 'none';
+    
+  </script>
 <script type="text/javascript">
   <?php if($this->session->flashdata('register_page_success')){ ?>
     $(document).ready(function(){

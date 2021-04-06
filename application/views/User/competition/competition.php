@@ -11,6 +11,8 @@
   }
 
 </style>
+ <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
+
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -47,7 +49,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" name="comp_action1"  role="form" action="" method="post" enctype="multipart/form-data">
+              <form id="form_action" name="comp_action1"  role="form" action="" method="post" enctype="multipart/form-data" autocomplete="off">
                 <div class="card-body row">
                 <div class="row">
                   <div class="form-group col-md-12">
@@ -106,7 +108,7 @@
 
                     </div>
                 
-                   <div class="form-group col-md-6">
+                   <div class="form-group col-md-4">
                     <label>Class <span style="color: red;">*</span></label>
 
                       <?php
@@ -140,6 +142,7 @@
                              }
                             ?>    
                           </select>
+                           <p class="standval mb-0" id="standval" style="font-size:14px;  color: red;"></p>
                             <?php } ?>
 
 
@@ -147,7 +150,7 @@
                   </div>
                  
                   
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                     <label>Tab Input Text <span style="color: red;">*</span></label>
 
                       <?php
@@ -175,10 +178,12 @@
                     </div>
                    <!--  <p  style="color: blue; position: absolute;top: 740px;" class="ml-2 pl-1 mt-2 border border-dark">Note: Select same option from class and tab input text dropdown lists.</p>
                   -->
-                     <div class="form-group col-md-3">
+                     <div class="form-group col-md-4">
                     <label> End Date <span style="color: red;">*</span></label>
 
-                    <input type="date" class="form-control required title-case text " name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required>
+                   <!--  <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="form-control required title-case text datepicker" data-provide="datepicker" name="enddate" id="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder=" Enter End Date" required> -->
+                  
+                    <input class="form-control date_input" data-date-format="dd/mm/yyyy" id="enddate"  name="enddate" value="<?php if(isset($enddate)){ echo $enddate; } ?>" placeholder="dd/mm/yyyy" required>
                   </div>
                 </div>
                 <br>
@@ -338,7 +343,7 @@
                        <?php }?>
                        <?php if(isset($update)){ ?>
                       <select name="file_format" id="file_format"class="form-control" readonly>
-                        <option value="0">Select File Format</option>
+                        <option value="">Select File Format</option>
                        
                         <option value="1">Document File / PDF file</option>
                         <option value="2">Audio File</option>
@@ -348,7 +353,7 @@
                       </select>
                       <?php }else{ ?>
                          <select name="file_format" id="file_format"class="form-control " >
-                        <option value="0">Select File Format</option>
+                        <option value="">Select File Format</option>
                        
                         <option value="1">Document File / PDF file</option>
                         <option value="2">Audio File</option>
@@ -373,7 +378,7 @@
                     <select name="file_size" id="file_size"class="form-control" >
 
 
-                        <option value="0">Select File Size</option>
+                        <option value="">Select File Size</option>
                        
                         <option value="1">1 MB</option>
                         <option value="2">2 MB</option>
@@ -470,10 +475,162 @@
   </div>
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+  <?php if($this->session->flashdata('checkstandard_error')){ ?>
+    $(document).ready(function(){
+      toastr.error('Competition already exists for this standard');
+    });
+  <?php } ?>
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+        // $("#u_video").hide();
+        // $("#u_image").hide();
+
+    $('#file_format').on('change', function() {
+
+
+
+      if (this.value == '1')
+      {
+        $("#file_size").prop('required',true);
+      }
+      else if(this.value == '2')
+      {
+        alert("hii");
+         $("#file_size").prop('required',true);
+      }
+      else if(this.value == '3')
+      {
+         $("#file_size").prop('required',true);
+      }
+      else if(this.value == '4')
+      {
+         $("#file_size").prop('required',true);
+      }
+      else
+      {
+         $("#file_size").prop('required',false);
+       }
+    });
+});
+</script>
+<script>
+   
+
+  $('#standard').on('change',function(){
+    // alert("hii");
+
+     var comp = $('#standard').val();
+     var title = $('#title').val();
+     // alert(comp);
+    
+   
+      $.ajax({
+           url:"<?php echo base_url(); ?>User/check_standard_competition",
+           method:"POST",
+           data:{standard:comp,title:title},
+
+           success:function(data)
+            {   
+
+               // alert(data);
+               // console.log(data);
+                 if(data != "true"){
+
+                   // $('.competval').hide();
+
+                 $('.standval').html("Competition already exists for this standard.");
+                 $('.standval').show().delay(2000).fadeOut();
+                 $('#standard').val('');
+                 $('#tabinputtextid').val('');
+
+                 }
+                //  else{
+                // // alert(data);
+                //  $('.competval').html(data);
+                //  $('#competitionid').val('');
+                // }               
+           }
+         });
+       // e.preventdefault();
+  });
+
+</script>
 
   <!-- <script src="https://code.jquery.com/jquery-2.1.4.js"></script> -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> -->
+
+<!-- datepicker dd/mm/yyyy -->
+<script type="text/javascript">
+        $(function () {
+            /*--FOR DATE----*/
+            var date = new Date();
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
+
+            //Date1
+            $('#enddate').datepicker({
+              format: 'dd-mm-yyyy',
+              todayHighlight:'',
+              startDate: today,
+              endDate:0,
+              autoclose: true
+            });
+
+        });
+</script>
+
+
+<!-- <script type="text/javascript">
+  $(function(){
+
+    // var t = new Date(currentdate.setMonth(currentdate.getMonth()-3));
+
+    var dtToday = new Date();
+
+    // alert(t);
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate() + 1;
+    var year = dtToday.getFullYear();
+
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var minDate = year + '-' + month + '-' + day;
+    // alert(maxDate);
+    $('#enddate').attr('min', minDate);
+});
+</script>  -->
+
+<script type="text/javascript">
+  
+ 
+    // $('#enddate').datepicker({
+        // weekStart: 1,
+        // daysOfWeekHighlighted: "",
+        // autoclose: true,
+        // todayHighlight: true,
+         // numberOfMonths: 3,
+        // showButtonPanel: true,
+        // minDate: dateToday
+    // });
+    // $('#enddate').datepicker();
+//     $("#enddate").datepicker({
+//     datesDisabled:
+// });
+//     $('.date_input').daterangepicker({
+//     maxDate: new Date()
+// })
+// $( ".date_input" ).datepicker({ minDate: 0 });
+</script>
   <script type="text/javascript">
   <?php if($this->session->flashdata('upload_error')){ ?>
     $(document).ready(function(){
@@ -500,30 +657,7 @@
               }
           }
   </script>
-<script type="text/javascript">
-  $(function(){
 
-    // var t = new Date(currentdate.setMonth(currentdate.getMonth()-3));
-
-    var dtToday = new Date();
-
-    // alert(t);
-    
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate() + 1;
-    var year = dtToday.getFullYear();
-
-
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
-    
-    var minDate = year + '-' + month + '-' + day;
-    // alert(maxDate);
-    $('#enddate').attr('min', minDate);
-});
-</script> 
   <script>
 $(document).ready(function(){
 
@@ -798,6 +932,8 @@ $(function() {
     }
   });
 });
+
+
  </script>
 <script type="text/javascript">
   var _validFileExtensions = [".jpg", ".jpeg", ".png"];    

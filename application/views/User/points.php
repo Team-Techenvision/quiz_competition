@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" name="point_form" role="form" action="" method="post" >
+              <form id="form_action" name="point_form" role="form" action="" method="post" onsubmit ="return validate()">
                 <div class="card-body row">
                   <div class="form-group col-md-6">
                    <label>Competiton Title <span style="color: red;">*</span></label>
@@ -79,9 +79,9 @@
                           <td>1</td>
                           <td><label>1st Winner</label><input type="hidden" name="winnerposition[]" value="1st Winner"></td>
                           
-                          <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points1st" value="<?php if(isset($points)){ echo $points; } ?>" placeholder=" Enter Points" required=""></td>
+                          <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="points[]" id="points1st" value="<?php if(isset($points)){ echo $points; } ?>"  pattern="(|-)?[0-9]{0,3}?" placeholder=" Enter Points" required=""></td>
 
-                          <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints1st" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required=""></td>
+                          <td><input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints[]" id="conversionpoints1st" value="<?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>"  pattern="(|-)?[0-9]{0,3}?"placeholder=" Enter Conversion Points" required=""></td>
                          </tr>
                          <tr>
                           <td>2</td>
@@ -112,14 +112,15 @@
                     </table>
                   </div>
                   
-                 
+                
                  </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <?php if(isset($update)){ ?>
                     <button id="btn_update" onclick="return checkPrice()" type="submit" class="btn btn-primary">Update </button>
                   <?php } else{ ?>
-                    <button id="btn_save" type="submit" onclick="return checkPrice()" class="btn btn-success px-4">  Add</button>
+                    <button id="btn_save" type="submit"  class="btn btn-success px-4">  Add</button>
+                    <!-- <div id=log><div> -->
                   <?php } ?>
                   <a href="<?php echo base_url(); ?>User/points_list" onclick="this.form.reset();" class="btn btn-default ml-4">Cancel</a>
                 </div>
@@ -172,19 +173,98 @@ $(document).ready(function(){
 
                // alert(data);
                // console.log(data);
-                 if(data == "true"){
+                 if(data != "true"){
 
-                   $('.competval').hide();
+                   // $('.competval').hide();
 
-                 }else{
-                // alert(data);
-                 $('.competval').html(data);
+                 $('.competval').html("Competition Points Already Exists.");
+                 $('.competval').show().delay(2000).fadeOut();
                  $('#competitionid').val('');
-                }               
+
+                 }
+                //  else{
+                // // alert(data);
+                //  $('.competval').html(data);
+                //  $('#competitionid').val('');
+                // }               
            }
          });
        // e.preventdefault();
   });
+
+</script>
+<script type="text/javascript">
+ 
+  function validate(){
+     var max = parseInt(document.getElementById('points1st').value);
+     var min = parseInt(document.getElementById('conversionpoints1st').value);
+     if(min > max){
+         alert('Points should be greater than conversion points for 1st winner.');
+          return false;
+         $("#points1st").focus();
+     }else{
+      return validate1()
+     }
+}
+
+
+</script>
+<script type="text/javascript">
+  function validate1(){
+     var max = parseInt(document.getElementById('points2nd').value);
+     var min = parseInt(document.getElementById('conversionpoints2nd').value);
+     if(min > max){
+         alert('Points should be greater than conversion points for 2nd winner');
+        
+          return false;
+     }else{
+      return validate2()
+     }
+         // $("#points2nd").focus();
+
+
+}
+
+</script>
+<script type="text/javascript">
+  function validate2(){
+     var max = parseInt(document.getElementById('points3rd').value);
+     var min = parseInt(document.getElementById('conversionpoints3rd').value);
+     if(min > max){
+         alert('Points should be greater than conversion points for 3rd winner');
+        
+          return false;
+     }else{
+      return validate3()
+     }
+}
+
+</script>
+<script type="text/javascript">
+  function validate3(){
+     var max = parseInt(document.getElementById('points1stR').value);
+     var min = parseInt(document.getElementById('conversionpoints1stR').value);
+     if(min > max){
+         alert('Points should be greater than conversion points for 1st runner up winner');
+        
+          return false;
+     }
+     else{
+      return validate4()
+     }
+}
+
+</script>
+<script type="text/javascript">
+  function validate4(){
+     var max = parseInt(document.getElementById('points2ndR').value);
+     var min = parseInt(document.getElementById('conversionpoints2ndR').value);
+     if(min > max){
+         alert('Points should be greater than conversion points for 2nd runner up winner');
+        
+          return false;
+     } 
+}
 
 </script>
 <!-- <script type="text/javascript">

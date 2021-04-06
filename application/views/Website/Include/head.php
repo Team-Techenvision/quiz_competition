@@ -90,6 +90,8 @@ label#user_password-error {
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicons/favi16x16.png">
     <link rel="manifest" href="<?php echo base_url(); ?>assets/images/favicons/site.webmanifest">
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+     <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+ -->
 
       <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.theme.default.min.css">
@@ -263,7 +265,7 @@ label#user_password-error {
                  <?php }else{?>
                    <!-- do something when doesn't exist -->
 
-                     <a class="login text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login"  data-toggle="modal" data-target="#login">Login / Register </a> 
+                     <a class="login text-white login-btn" href="<?php echo base_url(); ?>WebsiteController/login" id="login-register"  data-toggle="modal" data-target="#login">Login / Register </a> 
               <?php }
                ?>
                     <!-- <a class="login/register text-white" href="<?php echo base_url(); ?>WebsiteController/add_registration" data-toggle="modal" data-target="#registration">Register</a> -->

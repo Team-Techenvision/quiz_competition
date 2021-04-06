@@ -72,8 +72,8 @@
 
             <?php  if(empty($competitiontypeid)){$competitiontypeid="";} ?>
             <?php  if($competitiontypeid=="1"){ ?>     
-           <div class="form-group row">
-                        <table id="dataTable" class="table table-bordered table-striped">
+           <div class="">
+                        <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">Sr No.</th>
@@ -104,7 +104,7 @@
 
                 <?php 
                    }else{ ?>  
-                   <?php echo $list->score_percentage ?> %
+                   <?php echo $list->score_percentage ?> 
   <!--  <label>< ?php echo $correct_answer; ?></label>/<label>< ?php echo $total_question; ?></label> --> 
 
                <?php } ?>  
@@ -121,8 +121,8 @@
               </table> 
                   </div>
                   <?php }else{ ?>
-                <div class="form-group row">
-                        <table id="dataTable" class="table table-bordered table-striped">
+                <div class="">
+                        <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th class="wt_50">Sr No.</th>

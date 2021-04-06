@@ -31,7 +31,7 @@
               </div> 
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="form_action" role="form" action="" enctype="multipart/form-data" method="post">
+              <form id="form_action" role="form" action="" enctype="multipart/form-data" method="post" autocomplete="off">
                 <div class="card-body">
                 <div class="row">
 	               <div class="form-group col-md-6">
@@ -217,16 +217,26 @@ jQuery($ => {
         $("#u_image").hide();
 
     $('#file_type').on('change', function() {
+
+      $(".r2").hide();
+      $(".r3").hide();
+      $(".r4").hide();
+      $(".r5").hide();
+
       if (this.value == '1')
-    
+
       {
         $("#u_image").show();
+        $("#upload_image").prop('required',true);
+        $("#upload_video").prop('required',false);
         $("#u_video").hide();
 
       }
       else if (this.value == '2')
       {
         $("#u_video").show();
+        $("#upload_video").prop('required',true);
+        $("#upload_image").prop('required',false);
         $("#u_image").hide();
 
       }
@@ -234,6 +244,12 @@ jQuery($ => {
       {
         $("#u_video").hide();
         $("#u_image").hide();
+        $("#upload_video").prop('required',false);
+        $("#upload_image").prop('required',false);
+        $(".r2").show();
+        $(".r3").show();
+        $(".r4").show();
+        $(".r5").show();
 
 
       }
@@ -261,15 +277,19 @@ jQuery($ => {
 
                // alert(data);
                // console.log(data);
-                 if(data == "true"){
+                 if(data != "true"){
 
-                   $('.queval').hide();
-
-                 }else{
-                // alert(data);
-                 $('.queval').html(data);
+                   // $('.queval').hide();
+                 $('.queval').html("Question Already Exists.");
+                 $('.queval').show().delay(2000).fadeOut();
                  $('#question').val('');
-                }               
+
+                 }
+                //  else{
+                // // alert(data);
+                //  $('.queval').html(data);
+                //  $('#question').val('');
+                // }               
            }
          });
        // e.preventdefault();

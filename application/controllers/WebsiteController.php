@@ -179,6 +179,7 @@ class WebsiteController extends CI_Controller{
     $this->load->view('Website/about_us');
     $this->load->view('Website/Include/footer');
 }
+ 
 
 
   
@@ -1765,7 +1766,7 @@ public function check_userdata_profile(){
       else
       {
 
-        echo "Please enter correct birthdate from age(3-6) and standard(Nursary-1st).";
+        echo "Please enter correct birthdate for age group (3-6) and standard (Nursary-1st).";
       }
       // $a= 1; echo $a; echo "true"; this->session->set_flashdata('updateProfile_success','success');
       // header('location:'.base_url().'WebsiteController');
@@ -1780,7 +1781,7 @@ public function check_userdata_profile(){
       }
       else
       {
-          echo "Please enter correct birthdate from age(7-10) and standard(2nd-5th).";
+          echo "Please enter correct birthdate for age group (7-10) and standard (2nd-5th).";
       }
     }
      elseif($years >=11  && $years <= 14 )
@@ -1792,7 +1793,7 @@ public function check_userdata_profile(){
           }
           else
           {
-             echo "Please enter correct birthdate from age(11-14) and standard(6th-9th).";
+             echo "Please enter correct birthdate for age group (11-14) and standard (6th-9th).";
           }
          
        }
@@ -1816,7 +1817,7 @@ public function check_userdata_profile(){
 
     }else{
 
-      echo "Please enter correct birthdate from age 18+,gender(Male, Female) and standard (Male 18+ and Female 18+).";
+      echo "Please enter correct birthdate for age 18+, gender (Male, Female) correspondingly select standard (Male 18+ and Female 18+).";
       // header('location:'.base_url().'WebsiteController/edit_profile');
 
      // $this->session->set_flashdata('message','Please Enter Correct Birthdate, Gender and Standard');

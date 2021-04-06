@@ -423,7 +423,7 @@
   //     toastr.error('Please Enter Correct Birthdate, Gender and Standard.');
   //   });
   // < ?php } ?>
-$('.stand').attr("style", "pointer-events: none;");
+// $('.stand').attr("style", "pointer-events: none;");
 
   </script>
   <script type="text/javascript">

@@ -1400,3 +1400,56 @@ a.dropdown-item.pro_menu:hover{
   background-color: #1f80e0!important;
   color: white!important;
 }
+.footcopy{
+  padding-left: 550px!important;
+}
+
+/* footer */
+
+@media (min-width: 1024px) and (max-width: 1366px){
+
+.mr{
+  margin-right: 0px!important;
+  padding-left: 60px!important;
+}
+
+.mr1{
+  margin-right: 0px!important;
+
+}
+.mr2{
+  padding-left: 120px!important; 
+}
+/*.footcopy{
+  margin-left: 450px!important;
+}
+.footcopy .sco{
+   margin-right: -190px!important;
+}*/
+
+}
+@media (min-width: 768px) and (max-width: 1024px){
+.site-footer__upper {
+    padding-top: 0px!important;
+    padding-bottom: 15px!important;
+}
+.mr{
+  margin-right: 0px!important;
+  padding-left: 34px!important;
+}
+
+.mr1{
+  margin-right: 0px!important;
+
+}
+.mr2{
+  padding-left: 60px!important; 
+}
+.footcopy{
+  margin-left: -170px!important;
+}
+.footcopy .sco{
+   margin-right: -190px!important;
+}
+}
+

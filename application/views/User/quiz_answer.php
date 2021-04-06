@@ -53,7 +53,7 @@
                             <td id="dynamic_checkbox" class="p-0"> 
                               <div class="form-check mb-2 mt-2" style="margin-left: -60px;">
 
-                            <input class="form-check-input" type="checkbox" name="correctans[]" value="1" id="flexCheckDefault" >
+                            <input class="form-check-input" type="checkbox" name="correctans[]" value="1" id="flexCheckDefault"  >
                               <label class="form-check-label" for="flexCheckDefault">
                                     <input type="text"  placeholder="Enter field name"  name="addmore[]" class="form-control " required="required" />
                                   </label>
@@ -144,6 +144,19 @@
       toastr.success('Question Saved successfully');
     });
   <?php } ?>
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#btn_save').click(function() {
+      checked = $("input[type=checkbox]:checked").length;
+
+      if(!checked) {
+        alert("You must check at least one checkbox of correct answer.");
+        return false;
+      }
+    });
+});
+
 </script>
 <script type="text/javascript">
     $(document).ready(function(){      
