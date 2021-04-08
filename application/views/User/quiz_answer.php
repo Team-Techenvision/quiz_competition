@@ -145,10 +145,16 @@
     });
   <?php } ?>
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function () {
+
+
     $('#btn_save').click(function() {
-      checked = $("input[type=checkbox]:checked").length;
+      
+    $("#flexCheckDefault").prop('required',false);
+
+     
+      checked = $("#flexCheckDefault:checked").length;
 
       if(!checked) {
         alert("You must check at least one checkbox of correct answer.");
@@ -157,7 +163,7 @@ $(document).ready(function () {
     });
 });
 
-</script>
+</script> -->
 <script type="text/javascript">
     $(document).ready(function(){      
       var i=1; 

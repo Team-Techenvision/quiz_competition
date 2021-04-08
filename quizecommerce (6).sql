@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2021 at 08:09 AM
+-- Generation Time: Apr 08, 2021 at 08:43 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -704,6 +704,7 @@ INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`
 ('75XTL3F6ZZWOPAG', 'mahesh ', 'mahesh ', '', '', '', '', '', '', '', '', '8695651424', 'maheshhh114@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 559, 0, 0),
 ('7O4LX279WHBUL1P', 'sdfaf', 'sdfaf', '', '', '', '', '', '', '', '', '4343541111', 'manish1121@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 551, 0, 0),
 ('89D4PRLDOTHXCFZ', 'dcsd', 'dcsd', '', '', '', '', '', '', '', '', '8698066998', 'ggg@dfd.df', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('8FYOTVFIHA4OGRA', 'asdaD', 'asdaD', '', '', '', '', '', '', '', '', '7895887788', 'ASSDDG@AWE.DSA', NULL, '64388fe9a33c112c5663e3aed55a5f12', '', NULL, 0, 567, 0, 0),
 ('8NKCHP8UYFMJNCJ', 'name19', 'name19', '', '', '', '', '', '', '', '', '8668318812', 'qwerty112@gamil.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 547, 0, 0),
 ('8VRP1U7CJXWPQRL', 'dfsgsdfg', 'dfsgsdfg', '', '', '', '', '', '', '', '', '8698562398', 'aass@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
 ('9F2U4R557BFWVI2', 'name14', 'name14', '', '', '', '', '', '', '', '', '9403604855', 'abcdef1234@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 530, 0, 0),
@@ -712,6 +713,7 @@ INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`
 ('A22ET6DD5LFSZYT', 'asdfghj', 'asdfghj', '', '', '', '', '', '', '', '', '8888555552', 'asdfghjk@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 543, 0, 0),
 ('ACED1RHWUHK9FV5', 'asdadf', 'asdadf', '', '', '', '', '', '', '', '', '4343512345', 'manish123456@gmail.com', NULL, '5092023c3031bd13d45d32c35e6cc715', '', NULL, 0, 553, 0, 0),
 ('AFCYGGPVX3LVIAL', 'Kartik Powar', 'Kartik Powar', '', '', '', '', '', '', '', '', '9603917086', 'kartik@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 345, 0, 0),
+('B3UTDRGAGUBLD71', 'zxfsd', 'zxfsd', '', '', '', '', '', '', '', '', '8569899999', 'abclkjh@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 570, 0, 0),
 ('BLAU85UB7APRO47', 'name15', 'name15', '', '', '', '', '', '', '', '', '9403604856', 'abcdefg1234@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 531, 0, 0),
 ('BMZ9XL6RH86GPVJ', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '8421751111', 'asdf1234@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 541, 0, 0),
 ('BXVH9HASILX6ULC', 'asdhf', 'asdhf', '', '', '', '', '', '', '', '', '8698055632', 'qwe@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
@@ -734,6 +736,7 @@ INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`
 ('I1QWPK34FVMWOJY', 'aaaaaa bbbbb', 'aaaaaa', 'bbbbb', 'dhaka,Dhaka,Bangladesh,', '45435', '23423', 'dhaka', 'Dhaka', '18', '', '11212', 'abc@abc.com', NULL, '41d99b369894eb1ec3f461135132d8bb', '', '', 0, 0, 0, 0),
 ('I5UWT7ZYT7KRZ6S', 'dfgd', 'dfgd', '', '', '', '', '', '', '', '', '7412589633', 'kkk@kkk.kkk', NULL, '129e659741e4265678708bb98db8577f', '', NULL, 0, 0, 0, 0),
 ('KB9NNA46W2WI9K8', 'assdd', 'assdd', '', '', '', '', '', '', '', '', '7854785478', 'kiran1111@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 555, 0, 0),
+('KCDHK6AN8RGZ3V6', 'fghfgh', 'fghfgh', '', '', '', '', '', '', '', '', '8585999999', 'asdflkjh@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 571, 0, 0),
 ('KDOBOUD7K9V677T', 'lkjh gfdsa', 'lkjh', 'gfdsa', '', '', '', '', '', '', '', '9812981298', 'lkjh@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 538, 0, 0),
 ('KHRMWPQETEK5DIW', 'Manish Kore', 'Manish Kore', '', '', '', '', '', '', '', '', '9603917085', 'manishk@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 346, 0, 0),
 ('KY3TZTY6FB9XLJH', 'name19', 'name19', '', '', '', '', '', '', '', '', '8668318811', 'qwerty11@gamil.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 545, 0, 0),
@@ -743,11 +746,13 @@ INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`
 ('MH4WZ6H9TDASEDB', 'dfgd', 'dfgd', '', '', '', '', '', '', '', '', '7412589632', 'kkk@kkk.kk', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
 ('NDXFKEFGV88KUCH', 'dfds', NULL, '', '', '', '', '', '', '', '', '8698066943', 'manish12@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
 ('NJMK5AYZXHLYYPA', 'zxddcd', 'zxddcd', '', '', '', '', '', '', '', '', '8454125441', 'xzcz@dfs.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 556, 0, 0),
+('NLYOR1HNASUXWBF', 'asdffg', 'asdffg', '', '', '', '', '', '', '', '', '8458965745', 'asdfadghh@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 566, 0, 0),
 ('NSKXO3SNOWOWH7T', 'aaaa', NULL, '', '', '', '', '', '', '', '', '8698066333', '', NULL, 'Ki@12345', '', NULL, 0, 0, 0, 0),
 ('NY99DBU43AZZFN4', 'dfsd', 'dfsd', '', '', '', '', '', '', '', '', '7415896589', 'aaaa@12h.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
 ('OD1RTNLYTDHH13Q', 'name25', 'name25', '', '', '', '', '', '', '', '', '9822119999', 'dhnanjay11122@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 562, 0, 0),
 ('OFV5OM65K7BQMJF', 'assss', 'assss', '', '', '', '', '', '', '', '', '7854858585', 'mm@gmail.com', NULL, 'a7835b18322aa0184a262c91d6fc0ec8', '', NULL, 0, 0, 0, 0),
 ('OJBLESCP11L73BB', 'Assdf', 'Assdf', '', '', '', '', '', '', '', '', '8698064155', 'asdf1@gmail.com', NULL, 'dff94678e50a86e49227669824e587e3', '', NULL, 0, 338, 0, 0),
+('OPTJ9MM6XGTUSCE', 'mahesh ', 'mahesh ', '', '', '', '', '', '', '', '', '9604161034', 'maaaa4@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 569, 0, 0),
 ('OT6RHLT876MFH9S', 'Pratham Chavan', 'Pratham Chavan', '', '', '', '', '', '', '', '', '8698066925', 'pratham@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 334, 0, 0),
 ('PKWC9OYNCCG32R6', 'poiuy qwerty', 'poiuy', 'qwerty', '', '', '', '', '', '', '', '8668318836', 'qwerty@gamil.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 539, 0, 0),
 ('PRSHZDE9GDO7F7P', 'asdf', 'asdf', '', '', '', '', '', '', '', '', '9284355151', 'aasdf@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 340, 0, 0),
@@ -770,7 +775,8 @@ INSERT INTO `customer_information` (`customer_id`, `customer_name`, `first_name`
 ('WMBB53URNAB358C', 'name14', 'name14', '', '', '', '', '', '', '', '', '8484759156', 'abcd1234@gmail.com', NULL, 'be6148685373df5bcc6f0baffda23be3', '', NULL, 0, 529, 0, 0),
 ('YGGPVX3LVIALPKH', 'dd', NULL, '', '', '', '', '', '', '', '', '7458965896', 'dd@gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
 ('ZFJY8JUGMQFWTPM', 'mnbv zxcv', 'mnbv', 'zxcv', '', '', '', '', '', '', '', '8668318837', 'mnbv@gmail.com', 'assets/dist/img/user.png', '709c279cc00678917f1184ae56b7ece6', '', NULL, 1, 540, 0, 0),
-('ZNZLA2FT28O4ECL', 'abcd', 'abcd', '', '', '', '', '', '', '', '', '8698066123', 'abcd@1gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0);
+('ZNZLA2FT28O4ECL', 'abcd', 'abcd', '', '', '', '', '', '', '', '', '8698066123', 'abcd@1gmail.com', NULL, '709c279cc00678917f1184ae56b7ece6', '', NULL, 0, 0, 0, 0),
+('ZUWLV1UB32341CR', 'ASDS', 'ASDS', '', '', '', '', '', '', '', '', '8748888888', 'ASD@123HJ.GBH', NULL, 'ace97c4cfbea1e91b8ce2c096819f5b6', '', NULL, 0, 568, 0, 0);
 
 -- --------------------------------------------------------
 

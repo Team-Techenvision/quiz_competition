@@ -45,6 +45,12 @@
                     <p class="comptypeval mb-0" id="comptypeval" style="font-size:14px;  color: red;"></p>
 
                   </div>
+                  <!--  <div class="form-group col-md-6" hidden>
+                    < ?php  if(empty($quiz_flag)){$quiz_flag="";} ?>
+                   <div class="radio">
+                        <label><input type="radio" name="quiz_flag" id="quiz_flag" value="1"< ?php if($quiz_flag=="1") { echo "checked";} ?> > Quiz</label>
+                    </div>
+                  </div> -->
                   
                 </div>
                   

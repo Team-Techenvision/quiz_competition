@@ -76,9 +76,9 @@
                             $selectanswertext = $value['selectanswertext'];
                             $question_id = $value['question_id'];
 
+                            
 
-
-                            // print_r($result);
+                            // print_r($selectanswertext);
 
                             ?>
                             <!-- <input type="hidden" name="question_id" value="<?php echo $question_id; ?>"> -->
@@ -145,13 +145,14 @@
                          if($value['answertype']!="3" && $value['answertype']!="4"  ){
                            foreach($correctA as $my_Array)
                             {   
+                              // print_r($my_Array);
                               // echo $my_Array;
                             }
                              if($my_Array==$selectanswertext)
                              {
                                $databasecorrect = $my_Array;
                                $userselected = $selectanswertext;
-                               // print_r($databasecorrect);
+                               // print_r($correct);
                                // print_r($userselected);
 
                               $correct ="hii";   ?>
@@ -172,7 +173,7 @@
                               $wrong = "hello";
                               $databasecorrect = $my_Array;
                                $userselected = $selectanswertext; 
-                                // print_r($databasecorrect);
+                              // print_r($correct);
                                // print_r($userselected); ?>
 
                             <?php if(empty($wrong)){}else{ ?>

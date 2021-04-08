@@ -1731,10 +1731,15 @@ public function check_userdata_profile(){
     $gender = $this->input->post('gender');
     $current_date = date("Y-m-d");
 
+
+
     //difference between bithdate and current date in year
 
-    $date1 = date("Y-m-d",strtotime($current_date));
-    $date2 = date("Y-m-d",strtotime($birthdate));
+    $date1 = date("d-m-y",strtotime($current_date));
+    $date2 = date("d-m-y",strtotime($birthdate));
+
+    // print_r($date1);
+
 
     $diff = abs(strtotime($date2) - strtotime($date1));
 

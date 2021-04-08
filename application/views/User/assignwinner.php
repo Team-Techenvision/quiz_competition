@@ -222,11 +222,19 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 <script>
-  // <?php if($this->session->flashdata('admincheck_success')){ ?>
-    $(document).ready(function(){
+  // < ?php if($this->session->flashdata('admincheck_success')){ ?>
+    // $(document).ready(function(){
       // toastr.success('Quiz Checked and Saved Successfully');
     // });
-  // <?php } ?> 
+  // < ?php } ?> 
+//   (function(){
+//   $('#example').dataTable( {
+//     "autoWidth": false,
+//     "language": {
+//       "emptyTable": "No data available in table"
+//     }
+// } );
+// });
 
   <?php if($this->session->flashdata('save_success')){ ?>
     $(document).ready(function(){

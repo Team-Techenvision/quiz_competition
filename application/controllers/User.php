@@ -860,6 +860,7 @@ public function check_competitiontype(){
       $save_data = array(
    
         'competitiontype' => $this->input->post('competitiontype'),
+        // 'quiz_flag' => $this->input->post('quiz_flag'),
         'created_date' => date('Y-m-d H:i:s'),
         
       );
@@ -903,6 +904,7 @@ public function check_competitiontype(){
     if ($this->form_validation->run() != FALSE) {
       $update_data = array(
          'competitiontype' => $this->input->post('competitiontype'),
+         // 'quiz_flag' => $this->input->post('quiz_flag'),
          'created_date' => date('Y-m-d H:i:s'),
       );
       $this->User_Model->update_info('competitiontypeid', $competitiontypeid, 'competitiontype', $update_data);
@@ -915,6 +917,7 @@ public function check_competitiontype(){
     foreach($user_info as $info){
       $data['update'] = 'update';
       $data['competitiontype'] = $info->competitiontype;
+      // $data['quiz_flag'] = $info->quiz_flag;
      
     }
     $this->load->view('Include/head',$data);

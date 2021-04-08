@@ -883,7 +883,7 @@ function fetch_user_uploadfile($competitionid)
     $this->db->where('userquizsubmit.user_id',$user_id);
     $result = $this->db->get('userquizsubmit');
     //$result = $this->db->query($cmd);
-    //print_r($result->result_array());die();
+    // print_r($result->result_array());die();
    
     return $result->result_array();
 

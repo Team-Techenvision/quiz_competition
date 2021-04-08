@@ -62,7 +62,7 @@
 
                        <?php if(isset($update)){ ?>
 
-                 <select name="competitiontypeid" id="competitiontypeid" class="form-control" readonly>
+                 <select name="competitiontypeid" id="competitiontypeid" class="form-control competitiontypeid1" readonly>
                         <option value="">Select Competition Type</option>
                           <?php foreach($competitiontype as $competitiontype)
                           {
@@ -93,13 +93,13 @@
                   </div> -->
                   <div class="form-group col-md-12">
                     <label>Competition Title <span style="color: red;">*</span></label>
-                    <input type="text" class="form-control required title-case text " name="title" id="title" value="<?php if(isset($title)){ echo $title; } ?>" placeholder="Enter title" required >
+                    <input type="text"  class="form-control required title-case text " name="title" id="title" onkeypress="return blockSpecialChar(event)"  value="<?php if(isset($title)){ echo $title; } ?>"  placeholder="Enter title" required >
                   </div>
                   
                   <div class="form-group col-md-12">
                     <label>Competition Sub Title <span style="color: red;">*</span></label>
 
-                    <input type="text" class="form-control" name="subtitle" id="subtitle" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
+                    <input type="text" class="form-control" name="subtitle" id="subtitle" onkeypress="return blockSpecialChar(event)" value="<?php if(isset($subtitle)){ echo $subtitle; } ?>" placeholder="Enter sub title" required>
                   </div>
                    <div class="form-group col-md-12">
                     <label>Competition Subject</label>
@@ -120,7 +120,7 @@
 
                        <?php if(isset($update)){ ?>
 
-                         <select name="standard" id="standard" onchange="change();" class="form-control" readonly>
+                         <select name="standard" id="standard" onchange="change();" class="form-control standard1" readonly>
                         <option value="">Select From Class-To Class</option>
                        <?php foreach($class as $classname)
                         {
@@ -156,12 +156,12 @@
                       <?php
                       if(isset($tabinputtextid)){?>
 
-                       <input type="hidden" class="form-control required title-case text" name="tabinputtextid" id="tabinputtext" value="<?php if(isset($tabinputtextid)){ echo $tabinputtextid; } ?>" disabled="">
+                       <input type="hidden" class="form-control required title-case text" name="tabinputtextid1" id="tabinputtext" value="<?php if(isset($tabinputtextid)){ echo $tabinputtextid; } ?>" disabled="">
                        <?php }?>
 
 
 
-                      <select name="tabinputtextid" id="tabinputtextid"class="form-control" required readonly="readonly" >
+                      <select name="tabinputtextid" id="tabinputtextid" class="form-control tabinputtextid" readonly="readonly" >
                         <option value="">Select Input Text</option>
 
 
@@ -267,7 +267,7 @@
                     <input type="number" min="0" step="1" oninput="validity.valid||(value='')" class="form-control required title-case text notext " name="conversionpoints" id="conversionpoints" value="< ?php if(isset($conversionpoints)){ echo $conversionpoints; } ?>" placeholder=" Enter Conversion Points" required>
                   </div> -->
                   <div class="form-group col-md-6">
-                    <label>Competition User Type</label>
+                    <label>Competition User Type <span style="color: red;">*</span> </label>
 
                     <?php
                       if(isset($competitionusertype)){?>
@@ -275,7 +275,7 @@
                        <input type="hidden" class="form-control required title-case text" name="competitionusertype" id="competitionuser" value="<?php if(isset($competitionusertype)){ echo $competitionusertype; } ?>" disabled="">
                        <?php }?>
                         <?php if(isset($update)){ ?>
-                            <select name="competitionusertype" id="competitionusertype" class="form-control" readonly>
+                            <select name="competitionusertype" id="competitionusertype" class="form-control competitionusertype1" readonly>
                               <!-- disabled -->
                             <option value="">Competition User Type</option>
                             <option value="1">All</option>
@@ -283,7 +283,7 @@
                            
                             </select>
                           <?php }else{ ?>
-                            <select name="competitionusertype" id="competitionusertype" class="form-control" >
+                            <select name="competitionusertype" id="competitionusertype" class="form-control" required>
                             <option value="">Competition User Type</option>
                             <option value="1">All</option>
                             <option value="2">one to one</option>
@@ -342,7 +342,7 @@
                        <input type="hidden" class="form-control required title-case text file_format" name="file_format" id="fileformat" value="<?php if(isset($file_format)){ echo $file_format; } ?>" disabled="">
                        <?php }?>
                        <?php if(isset($update)){ ?>
-                      <select name="file_format" id="file_format"class="form-control" readonly>
+                      <select name="file_format" id="file_format"class="form-control file_format1" readonly>
                         <option value="">Select File Format</option>
                        
                         <option value="1">Document File / PDF file</option>
@@ -483,9 +483,19 @@
       toastr.error('Competition already exists for this standard');
     });
   <?php } ?>
+
+
+
 </script>
+
 <script type="text/javascript">
   $(document).ready(function(){
+
+   $('.competitiontypeid1').attr("style", "pointer-events: none;");
+   $('.standard1').attr("style", "pointer-events: none;");
+   $('.tabinputtextid').attr("style", "pointer-events: none;");
+   $('.competitionusertype1').attr("style", "pointer-events: none;");
+   $('.file_format1').attr("style", "pointer-events: none;");
 
         // $("#u_video").hide();
         // $("#u_image").hide();
@@ -500,7 +510,7 @@
       }
       else if(this.value == '2')
       {
-        alert("hii");
+        // alert("hii");
          $("#file_size").prop('required',true);
       }
       else if(this.value == '3')
@@ -776,6 +786,10 @@ $('form').validate({
       {
         $(".uploadfile").hide();
         $(".upload_audio").show();
+        $('#upload_audio').prop('checked', true);
+        $('#upload_vedio').prop('checked', false);
+        $('#upload_image').prop('checked', false);
+        $('#uploadfile').prop('checked', false);
         $(".upload_image").hide();
         $(".upload_vedio").hide();
       }
@@ -784,14 +798,29 @@ $('form').validate({
         $(".upload_audio").hide();
         $(".upload_image").hide();
         $(".upload_vedio").show();
+        $('#upload_vedio').prop('checked', true);
+        $('#upload_audio').prop('checked', false);
+        $('#upload_image').prop('checked', false);
+        $('#uploadfile').prop('checked', false);
+
+
       }else if(this.value == '4'){
         $(".uploadfile").hide();
         $(".upload_audio").hide();
         $(".upload_image").show();
+        $('#upload_image').prop('checked', true);
+        $('#upload_vedio').prop('checked', false);
+        $('#upload_audio').prop('checked', false);
+        $('#uploadfile').prop('checked', false);
+
         $(".upload_vedio").hide();
       }else if(this.value == '1')
       {
         $(".uploadfile").show();
+        $('#uploadfile').prop('checked', true);
+        $('#upload_image').prop('checked', false);
+        $('#upload_vedio').prop('checked', false);
+        $('#upload_audio').prop('checked', false);
         $(".upload_audio").hide();
         $(".upload_image").hide();
         $(".upload_vedio").hide();
@@ -800,6 +829,10 @@ $('form').validate({
         $(".upload_audio").hide();
         $(".upload_image").hide();
         $(".upload_vedio").hide();
+        $('#uploadfile').prop('checked', false);
+        $('#upload_image').prop('checked', false);
+        $('#upload_vedio').prop('checked', false);
+        $('#upload_audio').prop('checked', false);
       }
     });
 });
@@ -808,19 +841,20 @@ $('form').validate({
 <!-- <script src="trunk/dev/validation.js"></script> -->
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function () {
  $('#file_format').change(function () {
-   var val = $(this).val();
+   // var val = $(this).val();
    // alert(val);
+   if($file_format)
    $('input[name="uploadfile"]').prop('checked', false);
-   $('input[name="uploadfile"][value=' + val + ']').prop('checked', true);
+   // $('input[name="uploadfile"][value=' + val + ']').prop('checked', true);
 
   });
 });
 
 
-</script>
+</script> -->
 
 <script type="text/javascript">
 var checkBox = document.querySelector('input[name="email"]');

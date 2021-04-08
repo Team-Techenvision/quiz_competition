@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2021 at 03:27 PM
+-- Generation Time: Apr 08, 2021 at 08:42 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -295,7 +295,7 @@ CREATE TABLE `competition` (
   `levelid` bigint(50) NOT NULL,
   `fromage` bigint(50) NOT NULL,
   `toage` bigint(50) NOT NULL,
-  `enddate` date NOT NULL,
+  `enddate` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `subjectstextarea` longtext NOT NULL,
@@ -379,12 +379,15 @@ INSERT INTO `competition` (`competitionid`, `competitiontypeid`, `competitionuse
 (83, 16, 1, 1, 2, 18, 25, '2021-05-03', 'Tshirt Hacks', 'Tshirt Hacks', '', 4, 4, 'photo_1614753537.jpg', '<p>address.</p><p><br></p><p>3. The winner will be the entrant who fulfills the task/s given in the competition (for example: “be the first to guess the right amount of Maltesers” or “provide the wittiest comment about the competition”, etc.)</p><p><br></p><p>4. The closing date is as specified in each competition, and Maltalingua reserves the right to amend the competition end date at any time.</p><p><br></p><p>5. If you win a competition, we will notify you by post and/or e-mail and/or Facebook. The judges’ decision will be final, and no correspondence will be entered into.</p>', '<p>1. The panel of judges for each competition will be comprised of members of the marketing team of Maltalingua Ltd.</p><p><br></p><p>2. The prize will not be transferable to another person.</p><p><br></p><p>3. No part of a prize is exchangeable for cash or any other prize.</p><p><br></p><p>4. If an advertised prize is not available, we reserve the right to offer an alternative prize of equal or greater value.</p><p><br></p><p>5. Incorrectly completed entries will be disqualified.</p><div><br></div>', 0, 1, '', 1, '', '4', 0, 0, 1, 0, '2021-03-03 12:57:15', 1),
 (84, 17, 1, 2, 2, 18, 25, '2021-05-31', 'Rangoli', 'Art of mind', '', 5, 5, 'photo_1614753699.jpg', '<p>address.</p><p><br></p><p>3. The winner will be the entrant who fulfills the task/s given in the competition (for example: “be the first to guess the right amount of Maltesers” or “provide the wittiest comment about the competition”, etc.)</p><p><br></p><p>4. The closing date is as specified in each competition, and Maltalingua reserves the right to amend the competition end date at any time.</p><p><br></p><p>5. If you win a competition, we will notify you by post and/or e-mail and/or Facebook. The judges’ decision will be final, and no correspondence will be entered into.</p>', '<p>1. The panel of judges for each competition will be comprised of members of the marketing team of Maltalingua Ltd.</p><p><br></p><p>2. The prize will not be transferable to another person.</p><p><br></p><p>3. No part of a prize is exchangeable for cash or any other prize.</p><p><br></p><p>4. If an advertised prize is not available, we reserve the right to offer an alternative prize of equal or greater value.</p><p><br></p><p>5. Incorrectly completed entries will be disqualified.</p><div><br></div>', 0, 1, '', 1, '', '4', 0, 0, 1, 0, '2021-03-03 12:56:29', 1),
 (85, 18, 1, 2, 6, 18, 25, '2021-05-31', 'Jewellery Making', 'Art & creativity', '', 5, 5, 'photo_85_1614774413.jpg', '<p>address.</p><p><br></p><p>3. The winner will be the entrant who fulfills the task/s given in the competition (for example: “be the first to guess the right amount of Maltesers” or “provide the wittiest comment about the competition”, etc.)</p><p><br></p><p>4. The closing date is as specified in each competition, and Maltalingua reserves the right to amend the competition end date at any time.</p><p><br></p><p>5. If you win a competition, we will notify you by post and/or e-mail and/or Facebook. The judges’ decision will be final, and no correspondence will be entered into.</p>', '<p>1. The panel of judges for each competition will be comprised of members of the marketing team of Maltalingua Ltd.</p><p><br></p><p>2. The prize will not be transferable to another person.</p><p><br></p><p>3. No part of a prize is exchangeable for cash or any other prize.</p><p><br></p><p>4. If an advertised prize is not available, we reserve the right to offer an alternative prize of equal or greater value.</p><p><br></p><p>5. Incorrectly completed entries will be disqualified.</p><div><br></div>', 0, 1, '', 1, '', '3', 0, 0, 0, 1, '2021-03-03 12:57:02', 1),
-(86, 19, 1, 3, 1, 5, 7, '2021-05-31', 'Paper Craft', 'Art& creativity', '', 1, 1, 'photo_1614754058.jpg', '<p>address.</p><p><br></p><p>3. The winner will be the entrant who fulfills the task/s given in the competition (for example: “be the first to guess the right amount of Maltesers” or “provide the wittiest comment about the competition”, etc.)</p><p><br></p><p>4. The closing date is as specified in each competition, and Maltalingua reserves the right to amend the competition end date at any time.</p><p><br></p><p>5. If you win a competition, we will notify you by post and/or e-mail and/or Facebook. The judges’ decision will be final, and no correspondence will be entered into.</p>', '<p>1. The panel of judges for each competition will be comprised of members of the marketing team of Maltalingua Ltd.</p><p><br></p><p>2. The prize will not be transferable to another person.</p><p><br></p><p>3. No part of a prize is exchangeable for cash or any other prize.</p><p><br></p><p>4. If an advertised prize is not available, we reserve the right to offer an alternative prize of equal or greater value.</p><p><br></p><p>5. Incorrectly completed entries will be disqualified.</p><div><br></div>', 0, 1, 'abc@gmail.com', 1, '9999999999', '4', 0, 0, 1, 0, '2021-03-17 11:07:00', 1),
+(86, 19, 1, 3, 1, 5, 7, '2021-05-31', 'Paper Craft', 'Art& creativity', '', 1, 1, 'photo_1614754058.jpg', '<p>address.</p><p><br></p><p>3. The winner will be the entrant who fulfills the task/s given in the competition (for example: “be the first to guess the right amount of Maltesers” or “provide the wittiest comment about the competition”, etc.)</p><p><br></p><p>4. The closing date is as specified in each competition, and Maltalingua reserves the right to amend the competition end date at any time.</p><p><br></p><p>5. If you win a competition, we will notify you by post and/or e-mail and/or Facebook. The judges’ decision will be final, and no correspondence will be entered into.</p>', '<p>1. The panel of judges for each competition will be comprised of members of the marketing team of Maltalingua Ltd.</p><p><br></p><p>2. The prize will not be transferable to another person.</p><p><br></p><p>3. No part of a prize is exchangeable for cash or any other prize.</p><p><br></p><p>4. If an advertised prize is not available, we reserve the right to offer an alternative prize of equal or greater value.</p><p><br></p><p>5. Incorrectly completed entries will be disqualified.</p><div><br></div>', 0, 1, NULL, 1, NULL, '4', 3, 0, 1, 0, '2021-04-07 10:15:20', 1),
 (87, 20, 2, 3, 1, 15, 17, '2021-04-30', 'Chess Competition', 'Register to see competition topic', '<p><span style=\"color: rgb(32, 33, 36); font-family: arial, sans-serif;\">tactics: forks, skewers, pins, double attacks, clearance sacrifices</span></p>', 3, 3, 'photo_1614774227.jpg', '<h2 style=\"padding: 20px 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-weight: bold; color: rgb(39, 54, 66); font-size: 21px; line-height: 30px; text-shadow: rgba(255, 255, 255, 0.64) 0px 1px; font-family: Arial, Helvetica, sans-serif;\"><span style=\"font-size: 14px; font-weight: 400; text-align: justify;\">White is always first to move and players take turns alternately moving one piece at a time. Movement is required. If a player´s turn is to move, he is not in check but has no legal moves, this situation is called “Stalemate” and it ends the game in a draw. Each type of piece has its own method of movement. A piece may be moved to another position or may capture an opponent´s piece, replacing on its square (en passant being the only exception). With the exception of the knight, a piece may not move over or through any of the other pieces. When a king is threatened with capture (but can protect himself or escape), it´s called check. If a king is in check, then the player must make a move that eliminates the threat of capture and cannot leave the king in check. Checkmate happens when a king is placed in check and there is no legal move to escape. Checkmate ends the game and the side whose king was checkmated looses. </span><a href=\"http://www.chesscoachonline.com/chess-articles/chess-for-kids-adhd-programs\" style=\"font-size: 14px; font-weight: 400; text-align: justify; background-color: rgb(255, 255, 255); color: rgb(75, 125, 175);\">Chess for kids</a><span style=\"font-size: 14px; font-weight: 400; text-align: justify;\"> would be a great option to help the kid enhance his thinking capability with the </span><a href=\"http://www.chesscoachonline.com/chess-articles/chess-strategy\" style=\"font-size: 14px; font-weight: 400; text-align: justify; background-color: rgb(255, 255, 255); color: rgb(75, 125, 175);\">chess strategies</a><span style=\"font-size: 14px; font-weight: 400; text-align: justify;\"> involved. Visit our affiliate </span><a title=\"ChessOnlineLessons\" href=\"https://chessonlinelessons.com/\" target=\"_blank\" style=\"font-size: 14px; font-weight: 400; text-align: justify; background-color: rgb(255, 255, 255); color: rgb(75, 125, 175);\">chess online lessons</a><span style=\"font-size: 14px; font-weight: 400; text-align: justify;\"> website for scheduling an evaluation session with one of our experienced chess coaches.</span></h2>', '<h2 style=\"padding: 20px 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; font-weight: bold; color: rgb(39, 54, 66); font-size: 21px; line-height: 30px; text-shadow: rgba(255, 255, 255, 0.64) 0px 1px; font-family: Arial, Helvetica, sans-serif;\"><span style=\"font-size: 14px; text-align: justify; font-weight: 400;\">White is always first to move and players take turns alternately moving one piece at a time. Movement is required. If a player´s turn is to move, he is not in check but has no legal moves, this situation is called “Stalemate” and it ends the game in a draw. Each type of piece has its own method of movement. A piece may be moved to another position or may capture an opponent´s piece, replacing on its square (en passant being the only exception). With the exception of the knight, a piece may not move over or through any of the other pieces. When a king is threatened with capture (but can protect himself or escape), it´s called check. If a king is in check, then the player must make a move that eliminates the threat of capture and cannot leave the king in check. Checkmate happens when a king is placed in check and there is no legal move to escape. Checkmate ends the game and the side whose king was checkmated looses. </span><a href=\"http://www.chesscoachonline.com/chess-articles/chess-for-kids-adhd-programs\" style=\"font-size: 14px; text-align: justify; background-color: rgb(255, 255, 255); font-weight: 400; color: rgb(75, 125, 175);\">Chess for kids</a><span style=\"font-size: 14px; text-align: justify; font-weight: 400;\"> would be a great option to help the kid enhance his thinking capability with the </span><a href=\"http://www.chesscoachonline.com/chess-articles/chess-strategy\" style=\"font-size: 14px; text-align: justify; background-color: rgb(255, 255, 255); font-weight: 400; color: rgb(75, 125, 175);\">chess strategies</a><span style=\"font-size: 14px; text-align: justify; font-weight: 400;\"> involved. Visit our affiliate </span><a title=\"ChessOnlineLessons\" href=\"https://chessonlinelessons.com/\" target=\"_blank\" style=\"font-size: 14px; text-align: justify; background-color: rgb(255, 255, 255); font-weight: 400; color: rgb(75, 125, 175);\">chess online lessons</a><span style=\"font-size: 14px; text-align: justify; font-weight: 400;\"> website for scheduling an evaluation session with one of our experienced chess coaches.</span></h2>', 0, 0, NULL, 1, NULL, '3', 0, 0, 0, 1, '2021-04-02 08:33:34', 1),
 (88, 21, 2, 3, 1, 8, 11, '2021-03-31', 'Carrom Competition', 'Register to see competition topic', '', 2, 2, 'photo_1614774387.jpg', '<h3 style=\"margin: 1em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 1em; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: \"Trebuchet MS\", serif; font-weight: bold; color: rgb(0, 0, 0);\">Fouls</h3><p><br style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\"><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">When a player commits a foul, the turn comes to an end immediately and a penalty is incurred. The penalty is that one pocketed piece is returned to the board by the opponent anywhere within the main circle. Any other pieces requiring to be returned to the board are also placed within the main circle by the opponent. It is normal for pieces to be positioned in order to confer an advantage for the opponent.</span><br style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\"><br style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\"><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">A foul is recorded in the following situations:</span></p><p style=\"margin-right: 0px; margin-bottom: 1.2em; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; line-height: 1.3em; font-family: Arial, Helvetica, sans-serif;\"></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px 0px 0px 4em; border: 0px; outline: 0px; font-size: 15px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: Arial, Helvetica, sans-serif;\"><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">The striker is pocketed.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">The striker or any other piece leaves the board.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player pockets an opponent\'s piece. If the Queen was also pocketed, it is returned to the centre by the opponent together with the penalty piece. Any other pieces pocketed in the same strike remain pocketed.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player pockets the final opponent\'s piece. Regardless of whether the Queen has been covered, the opponent\'s piece is returned to the centre in addition to the penalty piece.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player pockets the final piece before the Queen has been covered. In this case both the pocketed piece and a penalty piece are returned to the centre.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player contravenes the rules for striking.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player touches any piece in play, other than the striker.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">The first player to strike fails to break the counters in three attempts.</li></ul><p style=\"margin-right: 0px; margin-bottom: 1.2em; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; line-height: 1.3em; font-family: Arial, Helvetica, sans-serif;\">Where a penalty is incurred but no pocketed pieces exist to return, the penalty is \"owed\" until a piece becomes available. If a penalty is owed, when a piece becomes available due to being pocketed, the piece is returned to the centre by the opponent at the end of the turn. Should the opponent forget to do this before the start of the next turn, any owed penalties are lost.<br></p>', '<h3 style=\"margin: 1em 0px; padding: 0px; border: 0px; outline: 0px; font-size: 1em; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: \"Trebuchet MS\", serif; font-weight: bold; color: rgb(0, 0, 0);\">Fouls</h3><p><br style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\"><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">When a player commits a foul, the turn comes to an end immediately and a penalty is incurred. The penalty is that one pocketed piece is returned to the board by the opponent anywhere within the main circle. Any other pieces requiring to be returned to the board are also placed within the main circle by the opponent. It is normal for pieces to be positioned in order to confer an advantage for the opponent.</span><br style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\"><br style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\"><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">A foul is recorded in the following situations:</span></p><p style=\"margin-right: 0px; margin-bottom: 1.2em; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; line-height: 1.3em; font-family: Arial, Helvetica, sans-serif;\"></p><ul style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px 0px 0px 4em; border: 0px; outline: 0px; font-size: 15px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: Arial, Helvetica, sans-serif;\"><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">The striker is pocketed.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">The striker or any other piece leaves the board.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player pockets an opponent\'s piece. If the Queen was also pocketed, it is returned to the centre by the opponent together with the penalty piece. Any other pieces pocketed in the same strike remain pocketed.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player pockets the final opponent\'s piece. Regardless of whether the Queen has been covered, the opponent\'s piece is returned to the centre in addition to the penalty piece.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player pockets the final piece before the Queen has been covered. In this case both the pocketed piece and a penalty piece are returned to the centre.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player contravenes the rules for striking.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">A player touches any piece in play, other than the striker.</li><li style=\"margin: 0px; padding: 0px 0px 1em; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;\">The first player to strike fails to break the counters in three attempts.</li></ul><p style=\"margin-right: 0px; margin-bottom: 1.2em; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15px; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; line-height: 1.3em; font-family: Arial, Helvetica, sans-serif;\">Where a penalty is incurred but no pocketed pieces exist to return, the penalty is \"owed\" until a piece becomes available. If a penalty is owed, when a piece becomes available due to being pocketed, the piece is returned to the centre by the opponent at the end of the turn. Should the opponent forget to do this before the start of the next turn, any owed penalties are lost.<br></p>', 0, 0, NULL, 1, NULL, '3', 3, 0, 0, 1, '2021-03-30 11:38:18', 1),
 (94, 4, 2, 3, 0, 3, 6, '2021-04-30', 'first package', 'gbv', '<p>kgh</p>', 1, 1, 'photo_94_1616411816.jpg', '<p>bvbv</p>', '<p>cvnc</p>', 0, 0, NULL, 0, NULL, '0', 0, 0, 0, 0, '2021-04-02 08:35:19', 1),
 (95, 2, 1, 3, 0, 3, 6, '2021-04-06', 'first package', 'dkaslja;adlag', '<p><br></p>', 1, 1, '', '', '', 0, 0, NULL, 0, NULL, '0', 0, 0, 0, 0, '2021-04-01 10:58:20', 0),
-(96, 2, 0, 3, 0, 7, 10, '2021-04-02', 'first package', 'Australia host India in the first of four Tests starting this Thursday and here\'s all you need to know', '', 2, 2, '', '', '', 0, 0, NULL, 0, NULL, '0', 0, 0, 0, 0, '2021-04-01 11:13:49', 0);
+(96, 2, 0, 3, 0, 7, 10, '2021-04-02', 'first package', 'Australia host India in the first of four Tests starting this Thursday and here\'s all you need to know', '', 2, 2, '', '', '', 0, 0, NULL, 0, NULL, '0', 0, 0, 0, 0, '2021-04-01 11:13:49', 0),
+(97, 19, 1, 3, 0, 7, 10, '07-04-2021', 'Paper Craft', 'asssdd', 'dsaf', 2, 2, 'photo_1617692543.jpg', 'zxcc', 'cxv', 0, 0, NULL, 0, NULL, '0', 0, 0, 0, 0, '2021-04-06 07:02:23', 0),
+(98, 2, 1, 3, 0, 3, 6, '07-04-2021', 'asdf', 'asdf', 'xzcxc', 1, 1, 'photo_1617702596.jpg', 'sasd', 'dcasd', 0, 0, NULL, 0, NULL, '2', 0, 0, 0, 0, '2021-04-06 09:49:56', 0),
+(99, 3, 1, 3, 0, 3, 6, '08-04-2021', 'xdsad', 'daf', 'adf', 1, 1, 'photo_1617790579.jpg', 'dafs', 'daf', 0, 0, NULL, 0, NULL, '3', 5, 0, 0, 1, '2021-04-07 10:16:18', 0);
 
 -- --------------------------------------------------------
 
@@ -427,6 +430,7 @@ INSERT INTO `competitionquizsubject` (`quizsubjectid`, `competitionid`, `quizsub
 CREATE TABLE `competitiontype` (
   `competitiontypeid` bigint(50) NOT NULL,
   `competitiontype` varchar(255) NOT NULL,
+  `quiz_flag` int(11) DEFAULT '0',
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -434,47 +438,49 @@ CREATE TABLE `competitiontype` (
 -- Dumping data for table `competitiontype`
 --
 
-INSERT INTO `competitiontype` (`competitiontypeid`, `competitiontype`, `created_date`) VALUES
-(1, 'Quiz', '2021-03-16 07:18:33'),
-(2, 'Singing', '2021-01-11 07:03:32'),
-(3, 'Dancing', '2021-01-11 07:03:42'),
-(4, 'Essay Writing', '2021-02-04 13:13:16'),
-(5, 'Poster Presentation', '2021-02-15 06:00:59'),
-(6, 'Drawing', '2021-02-22 08:07:25'),
-(7, 'Soap Creativity', '2021-03-02 07:50:14'),
-(8, 'Best out of Waste', '2021-03-02 08:06:34'),
-(9, 'Story Telling', '2021-03-02 08:15:54'),
-(10, 'Nail Art', '2021-03-02 09:40:44'),
-(11, 'Mehandi', '2021-03-02 10:18:35'),
-(12, 'Competitive Reasoning', '2021-03-02 11:09:55'),
-(13, 'Videography', '2021-03-03 06:23:43'),
-(14, 'Robo race', '2021-03-03 06:33:03'),
-(15, 'Logo Builder', '2021-03-03 06:34:57'),
-(16, 'Tshirt Hacks', '2021-03-03 06:37:27'),
-(17, 'Rangoli', '2021-03-03 06:40:06'),
-(18, 'Jewellery Making', '2021-03-03 06:42:59'),
-(19, 'Paper Craft', '2021-03-03 06:46:10'),
-(20, 'Chess Competition', '2021-03-03 12:19:14'),
-(21, 'Carrom Competition', '2021-03-03 12:19:30'),
-(22, 'quizz', '2021-04-03 11:41:19'),
-(23, 'mehndi', '2021-04-03 11:42:16'),
-(24, 'ppp', '2021-04-03 11:43:00'),
-(25, 'quizzz', '2021-04-03 11:47:47'),
-(26, 'xyz', '2021-04-03 11:48:23'),
-(27, 'xxx', '2021-04-03 11:48:44'),
-(28, 'y', '2021-04-03 11:48:56'),
-(29, 'zz', '2021-04-03 11:49:04'),
-(30, 'lll', '2021-04-03 11:49:42'),
-(31, 'abc', '2021-04-03 12:04:24'),
-(32, 'nbvc', '2021-04-03 12:05:00'),
-(33, 'mnbvc', '2021-04-03 12:05:09'),
-(34, 'mnbgh', '2021-04-03 12:05:19'),
-(35, 'lkjhg', '2021-04-03 12:05:25'),
-(36, 'lkkjkhg', '2021-04-03 12:05:34'),
-(37, 'poiuyt', '2021-04-03 12:05:41'),
-(38, 'lkjsdhsgh', '2021-04-03 12:05:48'),
-(39, 'lkjhgdfs', '2021-04-03 12:06:11'),
-(40, 'assddff', '2021-04-03 12:06:18');
+INSERT INTO `competitiontype` (`competitiontypeid`, `competitiontype`, `quiz_flag`, `created_date`) VALUES
+(1, 'Quiz', 1, '2021-03-16 07:18:33'),
+(2, 'Singing', 0, '2021-01-11 07:03:32'),
+(3, 'Dancing', 0, '2021-01-11 07:03:42'),
+(4, 'Essay Writing', 0, '2021-02-04 13:13:16'),
+(5, 'Poster Presentation', 0, '2021-02-15 06:00:59'),
+(6, 'Drawing', 0, '2021-02-22 08:07:25'),
+(7, 'Soap Creativity', 0, '2021-03-02 07:50:14'),
+(8, 'Best out of Waste', 0, '2021-03-02 08:06:34'),
+(9, 'Story Telling', 0, '2021-03-02 08:15:54'),
+(10, 'Nail Art', 0, '2021-03-02 09:40:44'),
+(11, 'Mehandi', 0, '2021-03-02 10:18:35'),
+(12, 'Competitive Reasoning', 0, '2021-03-02 11:09:55'),
+(13, 'Videography', 0, '2021-03-03 06:23:43'),
+(14, 'Robo race', 0, '2021-03-03 06:33:03'),
+(15, 'Logo Builder', 0, '2021-03-03 06:34:57'),
+(16, 'Tshirt Hacks', 0, '2021-03-03 06:37:27'),
+(17, 'Rangoli', 0, '2021-03-03 06:40:06'),
+(18, 'Jewellery Making', 0, '2021-03-03 06:42:59'),
+(19, 'Paper Craft', 0, '2021-03-03 06:46:10'),
+(20, 'Chess Competition', 0, '2021-03-03 12:19:14'),
+(21, 'Carrom Competition', 0, '2021-03-03 12:19:30'),
+(22, 'quizz', 0, '2021-04-03 11:41:19'),
+(23, 'mehndi', 0, '2021-04-03 11:42:16'),
+(24, 'ppp', 0, '2021-04-03 11:43:00'),
+(25, 'quizzz', 0, '2021-04-03 11:47:47'),
+(26, 'xyz', 0, '2021-04-03 11:48:23'),
+(27, 'xxx', 0, '2021-04-03 11:48:44'),
+(28, 'y', 0, '2021-04-03 11:48:56'),
+(29, 'zz', 0, '2021-04-03 11:49:04'),
+(30, 'lll', 0, '2021-04-03 11:49:42'),
+(31, 'abc', 0, '2021-04-03 12:04:24'),
+(32, 'nbvc', 0, '2021-04-03 12:05:00'),
+(33, 'mnbvc', 0, '2021-04-03 12:05:09'),
+(34, 'mnbgh', 0, '2021-04-03 12:05:19'),
+(35, 'lkjhg', 0, '2021-04-03 12:05:25'),
+(36, 'lkkjkhg', 0, '2021-04-03 12:05:34'),
+(37, 'poiuyt', 0, '2021-04-03 12:05:41'),
+(38, 'lkjsdhsgh', 0, '2021-04-03 12:05:48'),
+(39, 'lkjhgdfs', 0, '2021-04-03 12:06:11'),
+(40, 'assddff', 0, '2021-04-03 12:06:18'),
+(41, 'asdd', NULL, '2021-04-07 07:39:43'),
+(42, 'Aassd', 0, '2021-04-07 07:41:30');
 
 -- --------------------------------------------------------
 
@@ -562,13 +568,13 @@ INSERT INTO `district` (`districtid`, `districtname`, `countryid`, `stateid`, `c
 CREATE TABLE `dynamiccompetition` (
   `dynamiccompetitionid` bigint(50) NOT NULL,
   `competitionid` bigint(50) NOT NULL,
-  `question` varchar(255) NOT NULL,
+  `question` longtext NOT NULL,
   `file_type` int(11) NOT NULL,
   `upload_file` varchar(255) NOT NULL,
   `upload_image` varchar(255) NOT NULL,
   `answertype` varchar(255) NOT NULL COMMENT '1=RBbtn,2=ChkBbtn,3=textbox,4=textarea,5=ddl',
-  `optionvalues` varchar(255) NOT NULL,
-  `correctans` varchar(255) NOT NULL,
+  `optionvalues` longtext NOT NULL,
+  `correctans` longtext NOT NULL,
   `created_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -627,8 +633,10 @@ INSERT INTO `dynamiccompetition` (`dynamiccompetitionid`, `competitionid`, `ques
 (100, 12, 'In which year of First World War Germany declared war on Russia and France?', 2, 'upload_file_100_1616228232.mp4', '', '1', '1,2,3,4', '2', '2021-03-20'),
 (101, 12, 'how are you?', 0, '', '', '3', '', '', '2021-03-29'),
 (102, 12, 'how are uiou?', 0, '', '', '4', '', '', '2021-03-29'),
-(103, 79, 'how are you?', 0, '', '', '1', '', '', '2021-04-03'),
-(104, 79, 'rfd', 2, '', '', '1', '', '', '2021-04-03');
+(112, 79, 'On what does Dakota rely in making her argument?', 0, '', '', '2', 'statistics,emotion,fairness,anecdotes,actualities', '5', '2021-04-07'),
+(113, 79, 'On what does Quinn rely in making her argument?', 0, '', '', '2', 'statistics,emotion,fairness,anecdotes,actualities', '2,4', '2021-04-07'),
+(114, 79, 'What is the point at issue between Quinn and Dakota?', 0, '', '', '2', 'whether sixteen-year-olds should be required to take drivers education before being issued a license,whether schools ought to provide drivers education to fourteen- and fifteen-year-old students,whether the standards for issuing drivers licenses should be', '2,3', '2021-04-07'),
+(115, 79, 'asdf', 0, '', '', '1', '', '', '2021-04-08');
 
 -- --------------------------------------------------------
 
@@ -897,7 +905,9 @@ INSERT INTO `profile` (`profileid`, `parentname`, `birthdate`, `emailid`, `stand
 (154, 'Mahesh', '2004-10-12', 'fortestingpurpose05@gmail.com', '10', 'sm', 'kolhapur', 416012, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 87, 333, 87, 'profile_image_333_1615025594.PNG', '2021-03-29'),
 (155, 'Mahesh', '2002-01-29', 'fortestingpurpose05@gmail.com', '14', 'sm', 'kolhapur', 416012, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 81, 333, 87, 'profile_image_333_1615025594.PNG', '2021-04-03'),
 (156, '', '2017-02-21', 'asdfadghh@gmail.com', '3', 'sm', 'dsd', 410012, 'asdffg', '', 1, 'sds', 'sd', 1, 75, 566, 151, 'profile_image_566_1617444481.jpg', '2021-04-03'),
-(157, 'Mahesh', '2002-01-29', 'fortestingpurpose05@gmail.com', '14', 'sm', 'kolhapur', 416012, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 75, 333, 87, 'profile_image_333_1615025594.PNG', '2021-04-03');
+(157, 'Mahesh', '2002-01-29', 'fortestingpurpose05@gmail.com', '14', 'sm', 'kolhapur', 416012, 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 75, 333, 87, 'profile_image_333_1615025594.PNG', '2021-04-03'),
+(158, '', '2014-01-29', 'xzcz@dfs.com', '7', 'sad', 'sda', 416012, 'zxddcd', '', 1, 'SAD', 'saD', 7, 79, 556, 146, 'profile_image_556_1617281419.jpg', '2021-04-06'),
+(159, '', '2013-01-29', 'dhnanjay11122@gmail.com', '7', 'sm', 'gfh', 416012, 'name25', '', 1, 'fgh', 'gh', 2, 79, 562, 150, 'profile_image_562_1617782940.PNG', '2021-04-07');
 
 -- --------------------------------------------------------
 
@@ -1300,7 +1310,10 @@ INSERT INTO `user` (`user_id`, `company_id`, `branch_id`, `roll_id`, `user_name`
 (562, 1, '', 2, 'name25', '', 416012, '', 'dhnanjay11122@gmail.com', '9822119999', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-04-03 05:13:13', 1),
 (566, 0, '', 3, 'asdffg', '', 410012, '', 'asdfadghh@gmail.com', '8458965745', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-04-03 07:34:42', 3),
 (567, 0, '', 2, 'asdaD', '', 416231, '', 'ASSDDG@AWE.DSA', '7895887788', '3e84b76996c3e3bfeaceef527afc9df7', 0, 0, NULL, 'active', '333', '2021-04-03 11:06:41', 1),
-(568, 0, '', 2, 'ASDS', '', 416012, '', 'ASD@123HJ.GBH', '8748888888', 'fb331153e0a7ad1eefa45c2361feae45', 0, 0, NULL, 'active', '333', '2021-04-03 11:12:22', 1);
+(568, 0, '', 2, 'ASDS', '', 416012, '', 'ASD@123HJ.GBH', '8748888888', 'fb331153e0a7ad1eefa45c2361feae45', 0, 0, NULL, 'active', '333', '2021-04-03 11:12:22', 1),
+(569, 0, '', 2, 'mahesh ', '', 416012, '', 'maaaa4@gmail.com', '9604161034', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-04-06 09:30:52', 1),
+(570, 0, '', 3, 'zxfsd', '', 416012, '', 'abclkjh@gmail.com', '8569899999', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-04-08 06:06:48', 3),
+(571, 0, '', 3, 'fghfgh', '', 416012, '', 'asdflkjh@gmail.com', '8585999999', 'be6148685373df5bcc6f0baffda23be3', 0, 0, NULL, 'active', '', '2021-04-08 06:17:00', 3);
 
 -- --------------------------------------------------------
 
@@ -1419,7 +1432,7 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (84, 306, 0, 'Manisha Rane', '416012', '7798025888', 'Ki@123456', 'manisha1@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-05 12:29:49'),
 (85, 307, 1, 'Chinmayi Patil', '416012', '7798025899', 'Ki@123456', 'chinu@gmail.com', 'ramesh', '2015-07-08', '', 9, 'sm', 'kolhapur', '', 'Chinmayi Patil', '4343545666', 2, 'kolhapur', 'kolhapur', 22, 'profile_image_307_1614947895.jpg', 0, '2021-03-05 12:32:04'),
 (86, 332, 0, 'Ramesh Rane', '416012', '8698066954', 'Ki@1234567', 'ramesh1@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-06 08:39:02'),
-(87, 333, 1, 'Ramesh Shinde', '416012', '8421751623', 'be6148685373df5bcc6f0baffda23be3', 'fortestingpurpose05@gmail.com', 'Mahesh', '2002-01-29', 'fortestingpurpose05@gmail.com', 14, 'sm', 'kolhapur', '416012', 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_333_1615025594.PNG', 1, '2021-03-06 09:57:59'),
+(87, 333, 1, 'Ramesh Shinde', '416012', '8421751623', 'be6148685373df5bcc6f0baffda23be3', 'fortestingpurpose05@gmail.com', 'Mahesh', '0000-00-00', 'fortestingpurpose05@gmail.com', 14, 'sm', 'kolhapur', '416012', 'Ramesh Shinde', '7458745874', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_333_1615025594.PNG', 1, '2021-03-06 09:57:59'),
 (88, 334, 1, 'Pratham Chavan', '416012', '8698066925', 'be6148685373df5bcc6f0baffda23be3', 'pratham@gmail.com', 'Vinay', '2014-02-04', '', 6, 'rainbow school', 'kolhapur', '', 'Pratham Chavan', '9856321456', 1, 'kolhapur', 'kolhapur', 22, 'profile_image_334_1615187696.PNG', 0, '2021-03-08 06:59:15'),
 (89, 335, 0, 'Vedu Patil', '416012', '8698055940', '96ca1a1962182255e3b5b08dddaa0ed6', 'manish1233@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-15 04:57:16'),
 (90, 336, 0, 'dfsd', '416012', '8698044650', 'be6148685373df5bcc6f0baffda23be3', 'manish11111@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-15 05:21:47'),
@@ -1466,14 +1479,17 @@ INSERT INTO `userprofile_master` (`userprofileid`, `user_id`, `profile_submitted
 (143, 553, 0, 'asdadf', '410012', '4343512345', '', 'manish123456@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-31 08:50:40'),
 (144, 554, 0, 'asdd', '416012', '4343123456', '', 'manish1234567@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-03-31 10:14:28'),
 (145, 555, 0, 'assdd', '410012', '7854785478', '', 'kiran1111@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-01 08:09:40'),
-(146, 556, 1, 'zxddcd', '416012', '8454125441', '', 'xzcz@dfs.com', '', '2018-03-13', 'xzcz@dfs.com', 1, 'sad', 'sda', '416012', 'zxddcd', '', 1, 'SAD', 'saD', 7, 'profile_image_556_1617281419.jpg', 1, '2021-04-01 12:44:14'),
+(146, 556, 1, 'zxddcd', '416012', '8454125441', '', 'xzcz@dfs.com', '', '2014-01-29', 'xzcz@dfs.com', 7, 'sad', 'sda', '416012', 'zxddcd', '', 1, 'SAD', 'saD', 7, 'profile_image_556_1617281419.jpg', 1, '2021-04-01 12:44:14'),
 (147, 557, 1, 'XCFZX', '416012', '4154455255', '', 'SDFAF@DSRS.COM', '', '2018-02-28', 'SDFAF@DSRS.COM', 2, 'asd', 'asdf', '416012', 'XCFZX', '', 1, 'asdf', 'asdf', 15, '', 1, '2021-04-01 12:52:04'),
 (148, 559, 0, 'mahesh ', '416012', '8695651424', '', 'maheshhh114@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-03 04:56:07'),
 (149, 560, 0, 'mahesh kulkani', '416012', '869856239', '', 'mahesgKKK@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-03 05:02:43'),
-(150, 562, 0, 'name25', '416012', '9822119999', '', 'dhnanjay11122@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-03 05:13:13'),
+(150, 562, 1, 'name25', '416012', '9822119999', '', 'dhnanjay11122@gmail.com', '', '2013-01-29', 'dhnanjay11122@gmail.com', 7, 'sm', 'gfh', '416012', 'name25', '', 1, 'fgh', 'gh', 2, 'profile_image_562_1617782940.PNG', 1, '2021-04-03 05:13:13'),
 (151, 566, 1, 'asdffg', '410012', '8458965745', '', 'asdfadghh@gmail.com', '', '2017-02-21', 'asdfadghh@gmail.com', 3, 'sm', 'dsd', '410012', 'asdffg', '', 1, 'sds', 'sd', 1, 'profile_image_566_1617444481.jpg', 1, '2021-04-03 07:34:42'),
 (152, 567, 0, 'asdaD', '416231', '7895887788', '', 'ASSDDG@AWE.DSA', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-03 11:06:41'),
-(153, 568, 0, 'ASDS', '416012', '8748888888', '', 'ASD@123HJ.GBH', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-03 11:12:22');
+(153, 568, 0, 'ASDS', '416012', '8748888888', '', 'ASD@123HJ.GBH', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-03 11:12:22'),
+(154, 569, 0, 'mahesh ', '416012', '9604161034', '', 'maaaa4@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-06 09:30:52'),
+(155, 570, 1, 'zxfsd', '416012', '8569899999', '', 'abclkjh@gmail.com', '', '0000-00-00', 'abclkjh@gmail.com', 2, 'sm', 'ss', '416012', 'zxfsd', '', 1, 'ss', 'ss', 2, '', 1, '2021-04-08 06:06:48'),
+(156, 571, 0, 'fghfgh', '416012', '8585999999', '', 'asdflkjh@gmail.com', '', '0000-00-00', '', 0, '', '', '', '', '', 0, '', '', 0, '', 0, '2021-04-08 06:17:00');
 
 -- --------------------------------------------------------
 
@@ -1569,8 +1585,13 @@ INSERT INTO `userquizsubmit` (`userquizsubmitid`, `user_id`, `dynamiccompetition
 (113, 333, 12, '98', '2', '2021-03-29 07:04:28'),
 (114, 333, 12, '99', '2', '2021-03-29 07:04:28'),
 (115, 333, 12, '100', '2', '2021-03-29 07:04:28'),
-(116, 333, 79, '72', '2', '2021-04-03 12:44:35'),
-(117, 333, 79, '73', '2', '2021-04-03 12:44:35');
+(116, 562, 79, '72', '2', '2021-04-07 08:12:34'),
+(117, 562, 79, '73', '2', '2021-04-07 08:12:34'),
+(118, 562, 79, '112', '5', '2021-04-07 08:12:34'),
+(119, 562, 79, '113', '1', '2021-04-07 08:12:34'),
+(120, 562, 79, '113', '3', '2021-04-07 08:12:34'),
+(121, 562, 79, '114', '1', '2021-04-07 08:12:34'),
+(122, 562, 79, '114', '2', '2021-04-07 08:12:34');
 
 -- --------------------------------------------------------
 
@@ -1850,7 +1871,7 @@ ALTER TABLE `compeitionprofilemaster`
 -- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `competitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `competitionquizsubject`
@@ -1862,7 +1883,7 @@ ALTER TABLE `competitionquizsubject`
 -- AUTO_INCREMENT for table `competitiontype`
 --
 ALTER TABLE `competitiontype`
-  MODIFY `competitiontypeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `competitiontypeid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `competition_uploadfile_submit`
@@ -1886,7 +1907,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `dynamiccompetition`
 --
 ALTER TABLE `dynamiccompetition`
-  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `dynamiccompetitionid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `forgotpassword`
@@ -1922,7 +1943,7 @@ ALTER TABLE `points_master`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `profileid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -1940,19 +1961,19 @@ ALTER TABLE `tabcompetition`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=569;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=572;
 
 --
 -- AUTO_INCREMENT for table `userprofile_master`
 --
 ALTER TABLE `userprofile_master`
-  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `userprofileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `userquizsubmit`
 --
 ALTER TABLE `userquizsubmit`
-  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `userquizsubmitid` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `userscore_master`
